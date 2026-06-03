@@ -1,0 +1,24 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { {{pascalCase name}} } from "@northwind/ui/{{kebabCase name}}";
+
+const meta = {
+  title: "Primitives/{{pascalCase name}}",
+  component: {{pascalCase name}},
+  tags: ["autodocs"],
+  parameters: {
+    layout: "centered",
+    docs: {
+      description: {
+        component:
+          "{{#if description}}{{{description}}} — {{/if}}TODO: list this component's token bindings (e.g. bg-surface, text-primary) so it's discoverable via the Storybook MCP manifest.",
+      },
+    },
+  },
+} satisfies Meta<typeof {{pascalCase name}}>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  render: () => <{{pascalCase name}}>{{pascalCase name}}</{{pascalCase name}}>,
+};

@@ -28,6 +28,8 @@ export {
 } from "./card";
 export { Tabs, TabsList, TabsTrigger, TabsContent } from "./tabs";
 export { Alert, AlertTitle, AlertDescription, alertVariants } from "./alert";
+
+// @gen:promote anchor — `bun run gen:promote` inserts new primitive exports above this line.
 export {
   AlertDialog,
   AlertDialogPortal,

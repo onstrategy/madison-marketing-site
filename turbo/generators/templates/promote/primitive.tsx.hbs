@@ -1,0 +1,12 @@
+import * as React from "react";
+
+import { cn } from "../ui/utils";
+
+// {{pascalCase name}} — promoted from a sandbox prototype. Replace this starter with the
+// real component: keep it on-token (load the design-system skill), merge `className` last,
+// accept `ref` via props (React 19), and add variants with `cva` if needed (see button/alert).
+function {{pascalCase name}}({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn("text-primary", className)} {...props} />;
+}
+
+export { {{pascalCase name}} };
