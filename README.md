@@ -23,6 +23,7 @@ made safe by governance-as-code.
 
 ## Docs
 
+- [`docs/architecture.md`](docs/architecture.md) — **engineer's deep-dive: how every piece fits together (start here)**
 - [`docs/contributor-guide.md`](docs/contributor-guide.md) — the 5-step recipe to ship on-system UI (incl. non-technical contributors via Claude Code)
 - [`docs/promote.md`](docs/promote.md) — promote a sandbox prototype into a `packages/ui` primitive
 - [`docs/governance.md`](docs/governance.md) — governance-as-code: three-layer model, token lifecycle, quarterly audit

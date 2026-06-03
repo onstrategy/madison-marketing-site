@@ -1,0 +1,305 @@
+# Architecture — How Northwind Fits Together
+
+> **Engineer's deep-dive.** Read this to understand the machinery end-to-end. It traces the data
+> flow through every moving part and ends with "follow-the-flow" walkthroughs and an FAQ. For the
+> *why* (governance, commercial), see [`governance.md`](./governance.md) and
+> [`business-model.md`](./business-model.md).
+
+---
+
+## 1. Two products in one repo
+
+- **The kit** (this whole repo) — a full standalone Turborepo: token engine + primitives + sandbox
+  + Storybook + governance. It's the **sales demo** and the **clone-for-greenfield** template.
+- **The overlay** ([`overlay/`](../overlay)) — just the **governance layer**, extracted so it
+  **installs into a client's existing repo**. You never hand a client the kit; you install its overlay.
+
+Everything below is the kit. §10 covers the overlay.
+
+---
+
+## 2. Repo map
+
+```
+ai-kit/
+├─ packages/ui/            @northwind/ui — the design system
+│  ├─ src/ui/tokens.tsx        ← SOURCE OF TRUTH for all design tokens
+│  ├─ scripts/generate-theme.ts ← tokens.tsx → dist/*.css (the build)
+│  ├─ dist/                    ← generated CSS (gitignored)
+│  ├─ src/primitives/          ← 12 primitives (button, card, alert, …) + index.ts barrel
+│  ├─ src/theme/               ← ThemeProvider (light/dark)
+│  ├─ src/ui/style-guide.tsx   ← living visual spec of every token
+│  ├─ src/stories/             ← Storybook stories (feed the MCP manifest)
+│  └─ .storybook/              ← Storybook config (port 6007 + MCP)
+├─ apps/sandbox/           @northwind/sandbox — on-system Vite app for prototypes
+│  └─ src/prototypes/<slug>/{index.tsx, meta.ts}  ← self-register via import.meta.glob
+├─ .agents/skills/         design-system · react · typescript · testing  (the conventions)
+├─ .claude/                hooks/ (skill-gate engine) · settings.json · skills→../.agents/skills
+├─ turbo/generators/       gen:prototype · gen:promote
+├─ eslint/no-raw-colors.js the token-lint rule (shippable)
+├─ overlay/               install.sh + README — drop governance into an existing repo
+├─ docs/                  these docs
+└─ turbo.json · package.json · eslint.config.js · tsconfig.base.json   (workspace plumbing)
+```
+
+Tooling: **bun** workspaces (`packages/*`, `apps/*`) + **turbo** task runner. No webpack/jest —
+Vite + Vitest + tsc + ESLint.
+
+---
+
+## 3. The token pipeline (the heart of the system)
+
+Everything visual flows from one file. This is the single most important concept.
+
+```
+ packages/ui/src/ui/tokens.tsx                (hand-edited: hex values, light/dark, semantic triads)
+        │  bun run build  →  scripts/generate-theme.ts
+        ▼
+ packages/ui/dist/theme.css                   :root{ --bg-surface: 0 0% 100%; … } + .bg-surface{…} utilities
+ packages/ui/dist/tailwind-tokens.css         @theme inline { --color-surface: hsl(var(--bg-surface)); … }
+        │  imported via the 4-line CSS header
+        ▼
+ apps (sandbox, Storybook, client app)        use `bg-surface`, `text-primary`, `bg-success/10`, …
+```
+
+**Why HSL channels, not hex.** Tokens are stored as raw HSL *channels* (`240 6% 90%`, no `hsl()`
+wrapper) so Tailwind can inject an alpha: `bg-success/10` → `hsl(var(--semantic-success) / 0.1)`.
+Hex can't do that. This is why opacity modifiers "just work."
+
+**The two CSS layers (a subtle but important gotcha):**
+| | Source | Example | Opacity? |
+|---|---|---|---|
+| **Static utilities** | `dist/theme.css` | `.border-default { border-color: hsl(var(--border-default)); }` | **No** (`border-default/40` is silently ignored) |
+| **Tailwind `@theme` colors** | `dist/tailwind-tokens.css` | `--color-surface: hsl(var(--bg-surface))` | **Yes** (`bg-surface/50` works via `color-mix`) |
+
+So `bg-surface/50` works but `border-default/40` doesn't — for opacity on borders you use the
+arbitrary form `border-[hsl(var(--border-default)/0.4)]`. (The `design-system` skill documents this.)
+
+**The 4-line header** that puts an app "on the system" (see `apps/sandbox/src/index.css`):
+```css
+@import "tailwindcss";
+@source "../../../packages/ui/src";                     /* scan primitives for class names */
+@import "../../../packages/ui/dist/theme.css" layer(design-system);   /* vars + static utilities */
+@import "../../../packages/ui/dist/tailwind-tokens.css";              /* @theme color registrations */
+```
+
+**Brand is overridable in ~3 lines.** The defaults are neutral (near-black). Each app overrides
+`--brand-primary/-foreground/-subtle` in its CSS. That's the "re-skin live in a workshop" trick.
+
+**`dist/` is generated, not committed** (gitignored). `turbo dev` has `dependsOn: ["build"]`, so
+`bun run dev` regenerates the CSS before starting Storybook/sandbox. Never hand-edit `dist/`.
+
+---
+
+## 4. Primitives (`packages/ui/src/primitives`)
+
+Each primitive is a small, on-token React component. The conventions:
+
+- **Plain function components** taking `React.ComponentProps<…>`. **No `forwardRef`** — in React 19
+  `ref` is a normal prop and flows through `{...props}`. (We modernized all 12 off `forwardRef`.)
+- **`cn(...)`** = `twMerge(clsx(...))` — merges incoming `className` last so consumers can override.
+- **`cva`** for variants (button/badge/alert) — variants map to token classes, never booleans-soup.
+- **Only token classes** — `bg-surface`, `text-primary`, `bg-error-subtle`. No raw `bg-zinc-800`.
+
+**Public API is explicit** (not glob): `packages/ui/package.json` `exports` maps each subpath
+(`"./button": "./src/primitives/button.tsx"`), and `src/primitives/index.ts` re-exports each member
+by name (no `export *`). An app imports `import { Button } from "@northwind/ui/button"`. TypeScript
+resolves the `.tsx` source directly (bundler resolution + the `exports` map) — there's no compile
+step for the components; Vite/Storybook transpile them.
+
+---
+
+## 5. `apps/sandbox` — the on-system playground
+
+A Vite + React app (port 5173) wired on-system via the 4-line header. It's where contributors
+(human or agent) build prototypes. The clever bit is **zero-config self-registration**:
+
+```
+src/prototypes/<slug>/
+├─ index.tsx   ← default-exported page component   (LAZY-loaded → code-split per prototype)
+└─ meta.ts     ← default-exported { title, description }   (EAGER-loaded → powers the gallery)
+```
+
+`App.tsx` discovers them with two `import.meta.glob` calls — eager over `meta.ts`, lazy over
+`index.tsx` — and generates routes + the gallery. **Drop a folder in, it appears. No central file to
+edit.** (The two-file split is deliberate: eager-loading only the tiny `meta.ts` keeps the gallery
+rich while the page components stay code-split.)
+
+---
+
+## 6. The governance machinery (the differentiator)
+
+This is what makes "non-technical people ship into the real repo, safely" true. Four layers, each
+catching a different class of mistake.
+
+### 6a. The skill-gate — *path-based, enforced by the Claude Code harness*
+
+Three bash hooks wired in `.claude/settings.json`:
+
+| Hook | Event | Job |
+|---|---|---|
+| `enforce-skill-gates.sh` | **PreToolUse** `Edit\|Write` | Block the edit (exit 2) if a required skill isn't loaded |
+| `on-skill-loaded.sh` | **PostToolUse** `Skill` | Write a per-session marker when a skill loads |
+| `clear-skill-gates.sh` | **SessionStart / PostCompact** | Wipe markers (fresh session / after compaction) |
+
+`skill-requirements.json` maps **path patterns → required skills**:
+```json
+{ "pattern": "packages/ui/",        "skills": ["design-system"] }
+{ "pattern": "\\.module\\.css$",    "skills": ["design-system"] }
+{ "pattern": "\\.test\\.(ts|tsx)$", "skills": ["testing"] }
+```
+
+**The flow** (the demo everyone sees):
+```
+edit packages/ui/button.tsx
+   → enforce hook: no marker for "design-system" → exit 2, "SKILL GATE BLOCKED: … design-system"
+   → agent loads the design-system skill (Skill tool)
+   → on-skill-loaded hook writes .claude/.skill-gates/<session>/design-system
+   → retry the edit → marker exists → passes
+```
+
+Markers live under `.claude/.skill-gates/<session-id>/<skill>` (per-session, gitignored), so loading
+a skill once per session unlocks it; a fresh session or compaction forces a reload (the rules stay
+fresh). **Honest scope:** the hook matches *file paths*, not file *content* — it gates design-system
+*files*, not every `className`. Content discipline is §6c.
+
+### 6b. The skills (`.agents/skills/`, symlinked to `.claude/skills`)
+
+Markdown conventions the agent loads on demand: **design-system** (the token vocabulary + the
+two-layer/opacity/contrast rules), **react** (dumb-vs-smart, component rules), **typescript**
+(the `any` ban, prop typing), **testing** (Vitest conventions). `design-system` + `testing` are
+hard-gated (above); `react`/`typescript` are advisory (load proactively).
+
+### 6c. The content gate — `no-raw-colors` ESLint rule (advisory → CI)
+
+`eslint/no-raw-colors.js` flags raw Tailwind color scales (`bg-indigo-500`) and arbitrary hex
+(`text-[#3b82f6]`) in any string literal. It rides `bun run check` (§9), so off-system colors fail
+on every diff — catching exactly what the path-gate can't see.
+
+### 6d. The merge gate — `bun run check`
+
+`turbo run typecheck test && eslint .` — TypeScript + Vitest + ESLint (incl. `no-raw-colors`). This
+is **the** gate: green check = mergeable. Runs locally and in CI.
+
+### 6e. The health gate — `react-doctor` (CI)
+
+A React code-health linter (security/perf/a11y/correctness) run in CI at `--fail-on error` (errors
+block; warnings annotate the PR). Distinct from §6c — react-doctor lints *React*, not *tokens*.
+
+**The gate matrix** (what catches what):
+| Layer | Enforced by | Catches |
+|---|---|---|
+| Skill-gate | PreToolUse hook | Editing `packages/ui`/`.module.css`/tests without the right skill loaded |
+| Type / test | `bun run check` (CI) | Type errors, failing tests |
+| Off-system colors | `no-raw-colors` → `bun run check` (CI) | `bg-indigo-500`, `text-[#hex]` |
+| React health | `react-doctor` (CI) | Security/perf/a11y/correctness issues |
+
+---
+
+## 7. Generators (`turbo/generators`)
+
+Two `turbo gen` (plop) generators. Their *difference* teaches the architecture:
+
+- **`gen:prototype`** → `addMany` (adds files only). Works because the sandbox **auto-discovers** via
+  `import.meta.glob` — nothing central to edit.
+- **`gen:promote`** → `add` the primitive + story, then **`modify`** two existing files: insert the
+  `exports` entry into `package.json` (anchored on `"exports": {`) and the barrel re-export into
+  `index.ts` (anchored on a `// @gen:promote anchor` comment). It *has* to edit those because
+  `packages/ui` exposes an **intentional, explicit public API** — there's no glob magic there
+  (that's the typescript skill's "no `export *`" rule). The generated shell passes `check`
+  immediately; you then port the real component.
+
+---
+
+## 8. Storybook + MCP
+
+`.storybook/main.ts` enables `addon-mcp` + `features: { componentsManifest: true }`. Running
+`storybook dev -p 6007` serves a **components manifest** (props from TS + stories + docs) at
+`http://localhost:6007/mcp`. The checked-in `.mcp.json` connects Claude Code to it. Net effect:
+ask *"what props does `Button` take and which tokens?"* → answered from the **real** manifest, not a
+guess. (We enriched Button/Card/Badge/Alert stories with token-binding descriptions so the manifest
+is rich.)
+
+---
+
+## 9. Build & CI plumbing
+
+- **`turbo.json`** task graph: `build` (`dependsOn ^build`, outputs `dist/**`), `typecheck`/`test`
+  (`dependsOn ^build`), `dev` (`dependsOn build`, persistent). So typechecking the sandbox first
+  builds `@northwind/ui` (generating `dist/`).
+- **`bun run check`** = `turbo run typecheck test && eslint .` (lint runs once from root, robust).
+- **CI** (`.github/workflows/ci.yml`): two parallel jobs — `check` and `react-doctor` — on every
+  push to `main` and every PR. `setup-bun@v2` (pinned 1.3.9) + `bun install --frozen-lockfile`.
+
+---
+
+## 10. The overlay (`overlay/`)
+
+`overlay/install.sh <target-repo> [components-path]` extracts the kit's **live** governance files
+into an existing repo:
+- the 3 skill-gate hooks (verbatim) + `skill-requirements.json` (with the component path
+  **parameterized**), the `settings.json` hooks block (or a `settings.northwind.json` to merge if one
+  exists — **never clobbers**), the 4 skills + the `.claude/skills` symlink, `eslint/no-raw-colors.js`,
+  and `.mcp.json`.
+- Then you adapt the stack-specific bits (your tokens → the design-system skill, ESLint wiring, CI,
+  Storybook). See [`../overlay/README.md`](../overlay/README.md).
+
+It pulls from the kit's live files, so there's **no duplication to drift**. Proven by installing into
+a throwaway repo and confirming the gate fires on the client's own component path.
+
+---
+
+## 11. Follow-the-flow walkthroughs
+
+**Change a token.** Edit `packages/ui/src/ui/tokens.tsx` → `bun run build` regenerates
+`dist/{theme,tailwind-tokens}.css` → every app/Storybook picks it up (light + dark) → verify in the
+style guide. (Gate: editing under `packages/ui/` requires the design-system skill.)
+
+**Build a page (contributor loop).** `bun run gen:prototype` → folder self-registers in the gallery
++ a route → compose `@northwind/ui` primitives on-token → `bun run check` green → PR.
+
+**Promote a component.** `bun run gen:promote` scaffolds the primitive + story + wires exports/barrel
+→ port the real JSX, rewrite off-system classes via `migration.md` → `bun run check` → it appears in
+the MCP manifest → draft PR.
+
+**The gate fires.** Edit a `packages/ui` file without `design-system` → blocked → load it → marker
+written → retry passes. The clean diff is what an engineer reviews.
+
+**Re-skin the brand.** Change the 3 `--brand-*` lines in an app's `index.css` → every brand surface
+recolors, semantic colors stay constant. (The workshop "aha.")
+
+---
+
+## 12. "To understand X, read Y"
+
+| Want to understand… | Read |
+|---|---|
+| The tokens themselves | `packages/ui/src/ui/tokens.tsx` + `src/ui/style-guide.tsx` |
+| How CSS is generated | `packages/ui/scripts/generate-theme.ts` |
+| A primitive's shape | `packages/ui/src/primitives/button.tsx` (cva) · `card.tsx` (simple) · `alert.tsx` (variants+icon) |
+| Self-registration | `apps/sandbox/src/App.tsx` |
+| The skill-gate | `.claude/hooks/enforce-skill-gates.sh` + `.claude/hooks/skill-requirements.json` + `.claude/settings.json` |
+| The token-lint rule | `eslint/no-raw-colors.js` |
+| The generators | `turbo/generators/config.ts` + `templates/` |
+| The overlay | `overlay/install.sh` + `overlay/README.md` |
+
+---
+
+## 13. FAQ (what a CTO / engineer will ask)
+
+- **Is this just shadcn?** The primitives are shadcn-flavored, but the product is the **token engine
+  + governance-as-code** (gates + check + MCP) that keeps a whole org *on* the system. That's the moat.
+- **What's enforced vs advisory?** Enforced: the skill-gate (harness), `bun run check`/CI (types,
+  tests, `no-raw-colors`), `react-doctor` errors. Advisory: load `react`/`typescript` proactively;
+  most react-doctor findings are warnings.
+- **Why HSL channels?** Native opacity modifiers (`bg-success/10`). Hex can't.
+- **Is `dist/` committed?** No — generated from `tokens.tsx`; `turbo dev` builds it first.
+- **How does `ref` work with no `forwardRef`?** React 19 treats `ref` as a normal prop; it flows
+  through `{...props}`. `forwardRef` is dead weight (react-doctor flagged it; we removed it).
+- **Why bun + turbo?** Fast installs/tasks, the W3C-tokens-friendly Vite v4 stack, and the LLM-native
+  story (code, not Figma's closed format, is what the agent reads).
+- **How does the MCP actually help?** The agent reads true component APIs + token bindings from the
+  live Storybook manifest instead of hallucinating props/classes.
+- **Where's the business case?** [`business-model.md`](./business-model.md) +
+  [`governance.md`](./governance.md). The one-breath pitch: *democratize a code-first design system —
+  non-technical people ship real PRs into the real repo, made safe by guardrails.*
