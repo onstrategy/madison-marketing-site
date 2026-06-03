@@ -1,0 +1,46 @@
+import meta from "./meta";
+import { Button } from "@northwind/ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@northwind/ui/card";
+
+// This prototype self-registers via import.meta.glob in apps/sandbox/src/App.tsx —
+// meta.ts powers the gallery; this file is the lazy-loaded page. No edits to App.tsx.
+export default function {{pascalCase slug}}Prototype() {
+  return (
+    <div className="min-h-screen bg-app text-primary">
+      <div className="mx-auto max-w-3xl px-6 py-16 space-y-6">
+        <header className="space-y-2">
+          <a
+            href="/"
+            className="text-sm text-secondary transition-colors hover:text-primary"
+          >
+            ← All prototypes
+          </a>
+          <h1 className="text-3xl font-semibold tracking-tight">{meta.title}</h1>
+          {meta.description ? (
+            <p className="text-secondary">{meta.description}</p>
+          ) : null}
+        </header>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg">Start building</CardTitle>
+            <CardDescription>
+              On-token starter. Compose primitives from @northwind/ui — load the
+              design-system skill before choosing classes.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-wrap gap-3">
+            <Button>Primary action</Button>
+            <Button variant="outline">Secondary</Button>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}

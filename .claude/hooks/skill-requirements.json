@@ -1,0 +1,8 @@
+{
+  "rules": [
+    { "pattern": "\\.test\\.(ts|tsx)$", "skills": ["testing"] },
+    { "pattern": "/__tests__/", "skills": ["testing"] },
+    { "pattern": "\\.module\\.css$", "skills": ["design-system"] },
+    { "pattern": "packages/ui/", "skills": ["design-system"] }
+  ]
+}

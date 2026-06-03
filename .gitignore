@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.turbo/
+storybook-static/
+*.tsbuildinfo
+*.log
+.DS_Store
+.claude/.skill-gates/
+.claude/settings.local.json

@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@source "../../../packages/ui/src";
+
+@import "../../../packages/ui/dist/theme.css" layer(design-system);
+@import "../../../packages/ui/dist/tailwind-tokens.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Northwind demo brand — the ~3-line override apps own. Re-skinnable live in workshops. */
+:root {
+  --brand-primary: 212 92% 45%;
+  --brand-foreground: 0 0% 100%;
+  --brand-subtle: 212 92% 95%;
+}
+.dark {
+  --brand-primary: 212 92% 60%;
+  --brand-foreground: 0 0% 100%;
+  --brand-subtle: 212 45% 22%;
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border-default));
+  }
+  body {
+    background-color: hsl(var(--bg-app));
+    color: hsl(var(--text-primary));
+    -webkit-font-smoothing: antialiased;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  }
+}
