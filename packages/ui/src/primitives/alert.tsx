@@ -33,52 +33,37 @@ const VARIANT_ICONS = {
 } as const;
 
 interface AlertProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends React.ComponentProps<"div">,
     VariantProps<typeof alertVariants> {
   /** Override the default per-variant icon. Pass `null` to hide it. */
   icon?: React.ReactNode;
 }
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-  ({ className, variant, icon, children, ...props }, ref) => {
-    const DefaultIcon = VARIANT_ICONS[variant ?? "default"];
-    return (
-      <div
-        ref={ref}
-        role="alert"
-        className={cn(alertVariants({ variant }), className)}
-        {...props}
-      >
-        {icon === undefined ? <DefaultIcon /> : icon}
-        <div className="flex min-w-0 flex-col gap-1">{children}</div>
-      </div>
-    );
-  },
-);
-Alert.displayName = "Alert";
+function Alert({ className, variant, icon, children, ...props }: AlertProps) {
+  const DefaultIcon = VARIANT_ICONS[variant ?? "default"];
+  return (
+    <div
+      role="alert"
+      className={cn(alertVariants({ variant }), className)}
+      {...props}
+    >
+      {icon === undefined ? <DefaultIcon /> : icon}
+      <div className="flex min-w-0 flex-col gap-1">{children}</div>
+    </div>
+  );
+}
 
-const AlertTitle = React.forwardRef<
-  HTMLHeadingElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-  <h5
-    ref={ref}
-    className={cn("font-medium leading-none tracking-tight", className)}
-    {...props}
-  />
-));
-AlertTitle.displayName = "AlertTitle";
+function AlertTitle({ className, ...props }: React.ComponentProps<"h5">) {
+  return (
+    <h5
+      className={cn("font-medium leading-none tracking-tight", className)}
+      {...props}
+    />
+  );
+}
 
-const AlertDescription = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("text-sm text-secondary", className)}
-    {...props}
-  />
-));
-AlertDescription.displayName = "AlertDescription";
+function AlertDescription({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn("text-sm text-secondary", className)} {...props} />;
+}
 
 export { Alert, AlertTitle, AlertDescription, alertVariants };
