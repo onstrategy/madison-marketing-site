@@ -18,6 +18,7 @@ made safe by governance-as-code.
 | `.agents/skills` | The conventions: `design-system`, `react`, `typescript`, `testing` (symlinked to `.claude/skills`) |
 | `.claude/hooks` | Skill-gate bundle — blocks edits to guarded paths until the right skill is loaded |
 | `turbo/generators` | `gen:prototype` (new on-token prototype) + `gen:promote` (promote a prototype to a `packages/ui` primitive) |
+| `overlay/` | The **installable governance overlay** — drop the gates + skills + token-lint into an existing client repo |
 | `docs/` | Contributor, promote, governance, enablement, and business-model docs |
 
 ## Docs
@@ -28,6 +29,7 @@ made safe by governance-as-code.
 - [`docs/enablement-roadmap.md`](docs/enablement-roadmap.md) — the 30-60-90 plan after the enablement workshop
 - [`docs/business-model.md`](docs/business-model.md) — the commercial model (idea-level)
 - [`AGENTS.md`](AGENTS.md) — the agent constitution (architecture, mandates, commands)
+- [`overlay/README.md`](overlay/README.md) — install the governance overlay (gates + skills + token-lint) into an existing repo
 
 ## Token system
 
