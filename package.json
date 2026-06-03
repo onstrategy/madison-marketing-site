@@ -18,6 +18,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "check": "turbo run typecheck test && eslint .",
+    "react-doctor": "react-doctor . -y --no-telemetry --fail-on error",
     "clean": "turbo run clean",
     "gen": "turbo gen",
     "gen:prototype": "turbo gen prototype"
@@ -27,6 +28,7 @@
     "@turbo/gen": "^2.9.6",
     "eslint": "^9.39.1",
     "globals": "^15.14.0",
+    "react-doctor": "^0.2.16",
     "turbo": "^2.6.1",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4"
