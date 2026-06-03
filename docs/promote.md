@@ -24,6 +24,10 @@ Why all three: a primitive is a React component (`react`) written in strict Type
 
 ## Checklist
 
+> **Shortcut:** `bun run gen:promote -- --args <slug> "<description>"` scaffolds steps 2, 4, and 5
+> (the primitive file, the `exports` + barrel entries, and the story stub) — see [`gen:promote`](#genpromote)
+> below. You still do step 3 (the real port) and steps 6–8 by hand.
+
 1. **Pick a validated prototype component.** It should be doing real work in a sandbox
    prototype and be genuinely reusable (passes the "Open Source Test" — copy-pasteable into
    any app, no domain/business coupling). If it's app-specific, it stays a dumb app
@@ -31,7 +35,7 @@ Why all three: a primitive is a React component (`react`) written in strict Type
 
 2. **Create the primitive** at `packages/ui/src/primitives/<name>.tsx` and apply primitive
    rigor (see the `react` skill, dumb-components reference):
-   - `React.forwardRef` + a `displayName`.
+   - A plain **function component** taking `React.ComponentProps<...>` — `ref` flows through `{...props}` (React 19; no `forwardRef`/`displayName` needed).
    - Merge incoming `className` last via `cn(...)` so consumers can extend.
    - Model variants with `cva` (like `button`/`badge`/`alert`), not boolean props.
    - Props are primitives/UI shapes — **never** a domain type.
@@ -93,8 +97,17 @@ Promotion produced [`packages/ui/src/primitives/alert.tsx`](../packages/ui/src/p
 | Any `packages/ui/` or token change (incl. promotions) | **draft PR** — engineer reviews |
 | Token deprecations, `scripts/generate-theme.ts`, editing the gates/hooks themselves | **suggest-only** — maintainer applies |
 
-## Planned: `gen:promote`
+## `gen:promote`
 
-A `gen:promote` generator (mirroring `gen:prototype`) will scaffold steps 2, 4, and 5 —
-the primitive file, the `exports`/index entries, and the story stub. Until then, follow this
-checklist manually.
+`bun run gen:promote` scaffolds steps 2, 4, and 5 automatically:
+
+```bash
+bun run gen:promote -- --args <slug> "<one-line description>"
+# e.g. bun run gen:promote -- --args stat-card "A compact metric display"
+```
+
+It creates an on-token function-component starter at `packages/ui/src/primitives/<slug>.tsx`, a
+`<Name>.stories.tsx` autodocs stub, inserts the `./<slug>` entry into `packages/ui/package.json`
+`exports`, and adds the named re-export to `src/primitives/index.ts`. The generated shell passes
+`bun run check` immediately — you then do step 3 (port the real JSX/props and rewrite off-system
+classes) and steps 6–8 (point the prototype at it, check, PR).

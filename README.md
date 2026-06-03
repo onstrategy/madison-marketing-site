@@ -17,7 +17,7 @@ made safe by governance-as-code.
 | `apps/sandbox` | On-system Vite app; on-token prototypes that self-register (`gen:prototype`) |
 | `.agents/skills` | The conventions: `design-system`, `react`, `typescript`, `testing` (symlinked to `.claude/skills`) |
 | `.claude/hooks` | Skill-gate bundle — blocks edits to guarded paths until the right skill is loaded |
-| `turbo/generators` | `gen:prototype` (scaffold an on-token prototype) |
+| `turbo/generators` | `gen:prototype` (new on-token prototype) + `gen:promote` (promote a prototype to a `packages/ui` primitive) |
 | `docs/` | Contributor, promote, governance, enablement, and business-model docs |
 
 ## Docs
