@@ -24,6 +24,7 @@ made safe by governance-as-code.
 ## Docs
 
 - [`docs/architecture.md`](docs/architecture.md) — **engineer's deep-dive: how every piece fits together (start here)**
+- [`docs/prompts.md`](docs/prompts.md) — **what to say to Claude in plain language** (`/build`, `/restyle`, `/submit`, `/promote`) — non-technical contributors start here
 - [`docs/contributor-guide.md`](docs/contributor-guide.md) — the 5-step recipe to ship on-system UI (incl. non-technical contributors via Claude Code)
 - [`docs/promote.md`](docs/promote.md) — promote a sandbox prototype into a `packages/ui` primitive
 - [`docs/governance.md`](docs/governance.md) — governance-as-code: three-layer model, token lifecycle, quarterly audit
@@ -56,3 +57,6 @@ bun run gen:prototype   # scaffold a new on-token prototype in apps/sandbox
 ```
 
 Prefer `bun run dev` — Turbo regenerates the token CSS before starting Storybook and the sandbox.
+
+**Not an engineer?** You don't need these commands. Open Claude Code and just say what you want —
+or type `/prompts` to see the menu. See [`docs/prompts.md`](docs/prompts.md).

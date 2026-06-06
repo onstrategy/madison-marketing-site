@@ -77,6 +77,10 @@ touch tooling.** Hold this contract:
   than interrogating.
 - **Report only what they care about** — a preview URL, a PR link, "it's on-brand and the checks
   pass" — not raw command output, unless they ask or you need a decision from them.
+- **The phrasing→action map above is also encoded as slash commands** — `/build`, `/restyle`,
+  `/submit`, `/promote` (and `/prompts` for the menu), defined in `.claude/commands/` and cataloged
+  in [`docs/prompts.md`](./docs/prompts.md). Treat them as canonical entry points; a free-typed
+  request maps to the same workflows.
 
 ## Commands
 

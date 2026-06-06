@@ -4,6 +4,9 @@ You don't need to be an engineer to ship UI into this repo. Drive Claude Code, f
 recipe below, and the guardrails keep your work on-system and safe to merge. The goal:
 **real components in the real repo**, not throwaway prototypes.
 
+> **Not sure what to say to Claude?** Type `/prompts`, or see [`prompts.md`](./prompts.md) — the
+> plain-language menu of what you can ask for (`/build`, `/restyle`, `/submit`, `/promote`).
+
 ## The 5-step context recipe
 
 Give the agent the right context, in this order, every session:
