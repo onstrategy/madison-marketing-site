@@ -15,8 +15,8 @@ function Checkbox({
       className={cn(
         "grid place-content-center h-4 w-4 shrink-0",
         "rounded-sm border border-default bg-surface shadow",
-        "focus:outline-none focus:ring-2 focus:ring-muted/50 focus:ring-offset-2",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+        "focus:outline-none focus:ring-[length:var(--ring-width)] focus:ring-muted/50 focus:ring-offset-[length:var(--ring-offset)]",
+        "focus-visible:outline-none focus-visible:ring-[length:var(--ring-width)] focus-visible:ring-offset-[length:var(--ring-offset)]",
         "focus-visible:ring-muted/50",
         "disabled:cursor-not-allowed disabled:opacity-50",
         "data-[state=checked]:!bg-brand data-[state=checked]:!text-brand-fg data-[state=checked]:!border-transparent",
