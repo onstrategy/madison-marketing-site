@@ -18,9 +18,44 @@ Claude Code in plain English. The audience watches the screen. Total run time: *
 2. **One source of truth is real.** Change one token and the *entire* product re-skins, live —
    no two-places drift.
 3. **The guardrails are code, not trust.** An agent (or a person) *cannot* drift off-system —
-   the gates and `bun run check` catch it every time. **That's the moat.**
+   the lint gates keep it on-token, the Storybook MCP keeps it on real components, and
+   `bun run check` catches what slips. **That's the moat.**
 
 Keep coming back to these three. Everything you type is in service of one of them.
+
+---
+
+## Behind the curtain: the Storybook MCP (the harness's component sense)
+
+The governance story has **two halves** — name both and the demo lands harder:
+
+1. **The token dictionary** — the design *vocabulary* (color, spacing, type, radii, z-index…). The
+   lint gates (`no-raw-colors`, `no-raw-dimensions`, `no-raw-rings-zindex`) keep every change *on-token*.
+2. **The component library** — the *building blocks* (`@northwind/ui` primitives: Button, Card,
+   Badge, Tabs…), surfaced to the AI through the **Storybook MCP**.
+
+When Storybook runs (`:6007`), it publishes a **live manifest** of every primitive — real props,
+variants, and token bindings, generated from the actual TypeScript + stories. The checked-in
+`.mcp.json` wires Claude Code to it (`http://localhost:6007/mcp`). So when a contributor says
+*"build a pricing page,"* the AI doesn't *guess* that `Button` has a `variant` prop or invent a
+`<PriceCard>` that doesn't exist — it **reads the real library** and composes the actual primitives
+with their actual APIs.
+
+**Why it matters for governance:** the lint gates stop the AI drifting *off-token*; the MCP stops
+it drifting *off-component* — hallucinated props, made-up components, stale APIs. Together that's
+why a non-technical person's output is real, mergeable code that doesn't look "AI-generated" — it's
+on-token **and** on-component, by construction. (Governance even tracks "is the MCP manifest
+current?" as a health check — see [`governance.md`](./governance.md) and [`architecture.md`](./architecture.md) §8.)
+
+> **One-liner for the room:** *"The tokens tell the AI what our design language is; the Storybook
+> MCP tells it what our actual components are. It can't make up a component any more than it can
+> make up a color."*
+
+### Show it live
+
+This isn't just backstage theory — **Scenario 1b** ("What components can I use?") turns it into a
+one-minute demo beat: ask in plain language and watch the AI answer from the live library, right
+before the first Build.
 
 ---
 
@@ -28,6 +63,10 @@ Keep coming back to these three. Everything you type is in service of one of the
 
 - [ ] **Servers running.** In a terminal: `bun run dev` (starts Storybook on `:6007` and the
       sandbox on `:5173`). Leave it running.
+- [ ] **Storybook MCP connected.** In your Claude Code session, confirm the `storybook` MCP server
+      (from `.mcp.json`, at `:6007/mcp`) is approved/connected — a fresh session may prompt to
+      approve it. This is how the AI reads the *real* component library; if it's down, Claude falls
+      back to guessing. (See "Behind the curtain" above.)
 - [ ] **Browser open** to `http://localhost:5173/landing`, zoomed so the room can read it.
 - [ ] **Terminal + browser side by side** (or quick to alt-tab). The audience should see *both*
       the conversation with Claude and the page updating.
@@ -51,6 +90,7 @@ yourself about to say "slug" or "token" or "PR" — *that's the point*, you don'
 |---|------|--------------------------|-----------|------|
 | 0 | Frame | *(talk, no typing)* | the landing page | 1 |
 | 1 | "What can I ask?" | `/prompts` | the menu Claude lists | 1 |
+| 1b | "What components can I use?" | "What components can I use here?" | Claude answering from the live library (Storybook `:6007`) | 1 |
 | 2 | Build | "Add a section to our landing page with three customer testimonials." | the new section appearing | 3 |
 | 3 | Restyle (the showstopper) | "Make our brand color a deep forest green." | the whole page re-skinning | 3 |
 | 4 | The guardrail (centerpiece) | "Make the main button this exact purple: #7C3AED." | the check turning red on a raw color *and* a raw size | 4 |
@@ -61,14 +101,37 @@ yourself about to say "slug" or "token" or "PR" — *that's the point*, you don'
 
 ## The scenarios, in detail
 
-### 0 · Frame it (1 min, no typing)
+### 0 · Frame it (1–2 min, no typing)
 
-Open on the landing page. Say something like:
+Open on the landing page. This is the story; tell it as a story, in your own words:
 
-> "Everyone wants their design system in code — but then only engineers can touch it. Northwind
-> lets *anyone* on the team ship real UI into the real repo, in plain language, and makes it safe
-> with guardrails written *as code*. I'm going to play our marketer. I won't type a single command
-> or color code. Watch what the system lets me do — and what it *won't*."
+> "Every team's design system lives in two places at once — a Figma file *and* the actual code —
+> and the moment someone ships, the two start to drift. The mockup says one thing, the product
+> does another. That gap is where design-to-dev handoff goes to die: slow, lossy, and full of
+> prototypes that look great but can't actually be shipped.
+>
+> Northwind closes that gap by making **code the single source of truth.** The design system *is*
+> the repo — the tokens, the components, the rules. Change it in one place and it propagates
+> everywhere. Design and implementation can't drift apart, because they're the same artifact.
+>
+> The usual catch: once your system lives in code, only *engineers* can touch it. Northwind
+> removes that catch — it lets *anyone* on the team, a designer, a PM, me as a marketer, make
+> real changes, in plain language, directly in the real repo.
+>
+> And here's the key shift — I'm not going to *write code.* I'm going to describe what I want, and
+> Claude Code translates it into real, on-system components: the kind your engineers actually
+> merge, not a throwaway mockup. What makes that safe isn't trust — it's **governance written as
+> code.** Guardrails that run on every change and never get tired or forget.
+>
+> Watch what the system lets me do — and, just as important, what it *won't.*"
+
+**Facilitator note — the frame that sells.** Don't pitch this as *"Claude replaces Figma."* Pitch
+it as *"the source of truth moves into code, and non-technical people author change requests that
+Claude implements."* That's the credible version: it targets the pain companies actually feel —
+drift, slow handoff, un-shippable prototype code — without claiming Figma is dead. Figma stays
+useful for exploration and stakeholder alignment; what moves into code is **implementation-grade
+product work.** (If anyone pushes back with "so you're killing Figma?" — that distinction is your
+answer.)
 
 ---
 
@@ -83,6 +146,25 @@ and asks which you'd like. No commands to memorize.
 
 ---
 
+### 1b · "What components can I use?" (1 min)
+
+**Say:**
+> "What components can I use here? And what can I change about a button?"
+
+**Watch for (narrate this):**
+- Claude reaches into the **Storybook MCP** and answers from the **live component library** — the
+  real primitives (Button, Card, Badge, Tabs…), their actual variants and props, and the tokens they
+  bind to. Not from memory, not a guess — it's reading our real system right now.
+- Flip to **Storybook at `http://localhost:6007`** as it answers: the very same components,
+  documented. *"It's looking at exactly this."*
+
+**The point:** this is the *other* guardrail. The tokens keep it on-brand; the MCP keeps it on
+**real components** — so when you ask it to build next, it composes these exact parts and can't
+invent a component or a prop that doesn't exist. (The "Behind the curtain" section up top explains
+the wiring.)
+
+---
+
 ### 2 · Build something real (3 min)
 
 **Say:**
@@ -92,6 +174,9 @@ and asks which you'd like. No commands to memorize.
 - Claude doesn't ask you for a file path or a component name — it just gets to work.
 - Behind the scenes it composes the system's building blocks (`@northwind/ui` primitives) using
   **only design-system tokens** — no off-brand colors — and runs the quality check.
+- It uses *real* components, not invented ones — it reads their actual props and variants from the
+  **Storybook MCP** (the live component manifest) instead of guessing. That's the on-component half
+  of governance (see "Behind the curtain").
 - It reports back a preview link and "it's on-brand, checks pass" — not raw command output.
 
 **Payoff:** **hard-refresh `/landing`.** A real testimonials section appears — neutral-first,
@@ -255,6 +340,7 @@ branch: `git branch -D <branch>` and close the test PR.)
 | **Claude "takes a while" on a build** | That's it doing the real work (scaffold → compose → check). Narrate it — the wait *is* the value. |
 | **The skill-gate didn't fire in Scenario 4** | You're in a session that already loaded the skill. Start a fresh Claude Code session for that beat — markers reset per session. The `bun run check` lint failure (Beat B) fires regardless, so lead with that. |
 | **The spacing/type guardrail (Beat C) didn't go red** | You (or Claude) used the numeric scale (`py-24`) or a named step — those are *on-token* and pass. To trip the gate you need a *raw literal*: `p-[17px]`, `text-[10px]`. That contrast is the lesson. |
+| **Claude can't "see" components / invents props** | The `storybook` MCP isn't connected. Make sure Storybook is up on `:6007` and the `storybook` server (from `.mcp.json`) is approved in the session — without it, Claude falls back to guessing component APIs. |
 | **`/submit` can't open a PR** | Needs a GitHub remote + `gh auth login`. Either set that up beforehand or use the "here's what it would do" framing. |
 
 ---
