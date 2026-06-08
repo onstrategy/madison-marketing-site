@@ -57,3 +57,86 @@ describe("TOKENS dictionary", () => {
     }
   });
 });
+
+describe("TOKENS dimensional system", () => {
+  // Every group whose tokens are plain { name, value } scale entries.
+  const SCALE_GROUPS = [
+    "spacing",
+    "fontFamilies",
+    "fontWeights",
+    "letterSpacing",
+    "breakpoints",
+    "radii",
+    "durations",
+    "easings",
+    "zIndex",
+    "interaction",
+  ] as const;
+
+  it("defines every dimensional group with at least one token", () => {
+    for (const group of SCALE_GROUPS) {
+      expect(TOKENS[group].length).toBeGreaterThan(0);
+    }
+    expect(TOKENS.fontSizes.length).toBeGreaterThan(0);
+    expect(TOKENS.shadows.length).toBeGreaterThan(0);
+  });
+
+  it("gives every scale token a `--` CSS variable name and a non-empty value", () => {
+    for (const group of SCALE_GROUPS) {
+      for (const token of TOKENS[group]) {
+        expect(token.name.startsWith("--")).toBe(true);
+        expect(token.value.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("pairs every type-scale step with a font-size and a line-height", () => {
+    for (const token of TOKENS.fontSizes) {
+      expect(token.name.startsWith("--text-")).toBe(true);
+      expect(token.value).toMatch(/(rem|px|em)$/);
+      expect(token.lineHeight.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("makes every elevation token mode-aware (distinct light/dark shadows)", () => {
+    for (const token of TOKENS.shadows) {
+      expect(token.name.startsWith("--shadow-")).toBe(true);
+      expect(token.light.length).toBeGreaterThan(0);
+      expect(token.dark.length).toBeGreaterThan(0);
+      // Dark surfaces need heavier shadows — the pair must not be identical.
+      expect(token.light).not.toBe(token.dark);
+    }
+  });
+
+  it("derives the radius scale from the --radius base", () => {
+    const names = TOKENS.radii.map((t) => t.name);
+    expect(names).toContain("--radius-md");
+    const md = TOKENS.radii.find((t) => t.name === "--radius-md");
+    expect(md?.value).toBe("var(--radius)");
+  });
+
+  it("keeps every CSS variable name unique across the whole dictionary", () => {
+    const named = [
+      ...TOKENS.backgrounds,
+      ...TOKENS.borders,
+      ...TOKENS.typography,
+      ...TOKENS.brand,
+      ...TOKENS.globals,
+      ...TOKENS.spacing,
+      ...TOKENS.fontFamilies,
+      ...TOKENS.fontSizes,
+      ...TOKENS.fontWeights,
+      ...TOKENS.letterSpacing,
+      ...TOKENS.breakpoints,
+      ...TOKENS.radii,
+      ...TOKENS.shadows,
+      ...TOKENS.durations,
+      ...TOKENS.easings,
+      ...TOKENS.zIndex,
+      ...TOKENS.interaction,
+    ];
+    const names = named.map((t) => t.name);
+    const duplicates = names.filter((name, i) => names.indexOf(name) !== i);
+    expect(duplicates).toEqual([]);
+  });
+});

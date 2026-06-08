@@ -20,7 +20,7 @@ function Input({
   return (
     <div
       className={cn(
-        "flex h-9 w-full rounded-md border border-default bg-transparent text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-primary focus-within:outline-none focus-within:ring-1 focus-within:ring-brand disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        "flex h-9 w-full rounded-md border border-default bg-transparent text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-primary focus-within:outline-none focus-within:ring-[length:var(--ring-width)] focus-within:ring-brand disabled:cursor-not-allowed disabled:opacity-[var(--disabled-opacity)] md:text-sm",
         className,
       )}
     >

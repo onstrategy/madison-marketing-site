@@ -9,6 +9,11 @@ const scriptDir = scriptPath.includes("bun:")
   ? join(process.cwd(), "scripts")
   : dirname(scriptPath);
 
+/** Strip a known prefix from a token var name (e.g. "--shadow-sm" → "sm"). */
+function suffix(name: string, prefix: string): string {
+  return name.replace(prefix, "");
+}
+
 function generateCSS() {
   let css = `/* ==========================================
     NORTHWIND DESIGN TOKENS
@@ -16,11 +21,15 @@ function generateCSS() {
     ========================================== */
 
 :root {
-  --radius: 0.375rem;
-
 `;
 
-  // Light mode
+  // Globals (the radius base the radius scale derives from)
+  for (const t of TOKENS.globals) {
+    css += `  ${t.name}: ${t.value};\n`;
+  }
+  css += `\n`;
+
+  // Light mode colors
   const categories = ["backgrounds", "borders", "typography", "brand"] as const;
   for (const cat of categories) {
     for (const t of TOKENS[cat]) {
@@ -31,6 +40,22 @@ function generateCSS() {
     css += `  --semantic-${t.id}: ${hexToHslChannels(t.base)};\n`;
     css += `  --semantic-${t.id}-fg: ${hexToHslChannels(t.fg)};\n`;
     css += `  --semantic-${t.id}-subtle: ${hexToHslChannels(t.subtleLight)};\n`;
+  }
+
+  // Mode-aware elevation (light) — referenced by the shadow-* utilities.
+  css += `\n  /* Elevation (light) */\n`;
+  for (const t of TOKENS.shadows) {
+    css += `  --elevation-${suffix(t.name, "--shadow-")}: ${t.light};\n`;
+  }
+
+  // Layering + interaction constants (mode-agnostic).
+  css += `\n  /* Layering */\n`;
+  for (const t of TOKENS.zIndex) {
+    css += `  ${t.name}: ${t.value};\n`;
+  }
+  css += `\n  /* Interaction */\n`;
+  for (const t of TOKENS.interaction) {
+    css += `  ${t.name}: ${t.value};\n`;
   }
 
   css += `}
@@ -46,6 +71,11 @@ function generateCSS() {
     css += `  --semantic-${t.id}: ${hexToHslChannels(t.base)};\n`;
     css += `  --semantic-${t.id}-fg: ${hexToHslChannels(t.fg)};\n`;
     css += `  --semantic-${t.id}-subtle: ${hexToHslChannels(t.subtleDark)};\n`;
+  }
+  // Mode-aware elevation (dark) — heavier shadows for dark surfaces.
+  css += `\n  /* Elevation (dark) */\n`;
+  for (const t of TOKENS.shadows) {
+    css += `  --elevation-${suffix(t.name, "--shadow-")}: ${t.dark};\n`;
   }
 
   // Generate plain CSS utilities
@@ -122,6 +152,13 @@ function generateCSS() {
     css += `.group:hover .group-hover\\:border-${t.id} { border-color: hsl(var(--semantic-${t.id})); }\n`;
   }
 
+  css += `\n/* Layering — named z-index scale */
+`;
+  for (const t of TOKENS.zIndex) {
+    const name = suffix(t.name, "--z-");
+    css += `.z-${name} { z-index: var(${t.name}); }\n`;
+  }
+
   css += `\n/* Radius */
 .rounded-md { border-radius: var(--radius); }
 
@@ -143,12 +180,35 @@ textarea:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px hsl(var(--bg-surface)) inset;
   -webkit-text-fill-color: hsl(var(--text-primary));
 }
+
+/* Interactive cursor — Tailwind v4 no longer sets pointer on buttons by default. */
+button:not(:disabled),
+[role="button"]:not(:disabled),
+label[for],
+select:not(:disabled),
+summary {
+  cursor: pointer;
+}
+
+/* Respect reduced-motion preferences globally. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 `;
 
   return css;
 }
 
 function generateTailwindTokens() {
+  // Block 1: colors + mode-aware shadows registered `inline` (value inlined
+  // into utilities, referencing the runtime vars from theme.css).
   let css = `/* ==========================================
     NORTHWIND TAILWIND v4 TOKEN REGISTRATIONS
     Generated from tokens.tsx - DO NOT EDIT MANUALLY
@@ -185,6 +245,68 @@ function generateTailwindTokens() {
     css += `  --color-${t.id}-fg: hsl(var(--semantic-${t.id}-fg));\n`;
     css += `  --color-${t.id}-subtle: hsl(var(--semantic-${t.id}-subtle));\n`;
   }
+
+  // Mode-aware shadows — the utility (shadow-sm) references the themed var.
+  css += `\n  /* Elevation (theme-aware via --elevation-* in theme.css) */\n`;
+  for (const t of TOKENS.shadows) {
+    css += `  ${t.name}: var(--elevation-${suffix(t.name, "--shadow-")});\n`;
+  }
+
+  css += `}\n`;
+
+  // Block 2: dimensional constants — a NON-inline @theme block. This both
+  // generates the utilities (p-section, text-display, rounded-lg, md:, …) AND
+  // emits each var to :root, so `var(--spacing-section)` arbitrary values work.
+  css += `\n@theme {\n`;
+
+  css += `  /* Spacing */\n`;
+  for (const t of TOKENS.spacing) {
+    css += `  ${t.name}: ${t.value};\n`;
+  }
+
+  css += `\n  /* Font families */\n`;
+  for (const t of TOKENS.fontFamilies) {
+    css += `  ${t.name}: ${t.value};\n`;
+  }
+
+  css += `\n  /* Type scale (font-size + line-height) */\n`;
+  for (const t of TOKENS.fontSizes) {
+    css += `  ${t.name}: ${t.value};\n`;
+    css += `  ${t.name}--line-height: ${t.lineHeight};\n`;
+    if (t.tracking) css += `  ${t.name}--letter-spacing: ${t.tracking};\n`;
+    if (t.weight) css += `  ${t.name}--font-weight: ${t.weight};\n`;
+  }
+
+  css += `\n  /* Font weights */\n`;
+  for (const t of TOKENS.fontWeights) {
+    css += `  ${t.name}: ${t.value};\n`;
+  }
+
+  css += `\n  /* Letter spacing */\n`;
+  for (const t of TOKENS.letterSpacing) {
+    css += `  ${t.name}: ${t.value};\n`;
+  }
+
+  css += `\n  /* Breakpoints */\n`;
+  for (const t of TOKENS.breakpoints) {
+    css += `  ${t.name}: ${t.value};\n`;
+  }
+
+  css += `\n  /* Radii (derived from --radius) */\n`;
+  for (const t of TOKENS.radii) {
+    css += `  ${t.name}: ${t.value};\n`;
+  }
+
+  css += `\n  /* Motion */\n`;
+  for (const t of TOKENS.easings) {
+    css += `  ${t.name}: ${t.value};\n`;
+  }
+  for (const t of TOKENS.durations) {
+    css += `  ${t.name}: ${t.value};\n`;
+  }
+  // Make every transition-* utility adopt the tokenized base duration + easing.
+  css += `  --default-transition-duration: var(--duration-base);\n`;
+  css += `  --default-transition-timing-function: var(--ease-standard);\n`;
 
   css += `}\n`;
   return css;

@@ -9,6 +9,9 @@ import {
   Copy,
   Check,
   MousePointerClick,
+  Ruler,
+  Square,
+  Gauge,
 } from "lucide-react";
 import { TOKENS, generateCSS, type TokenDefinition } from "./tokens";
 import { hexToHslChannels } from "./utils";
@@ -354,6 +357,217 @@ export function StyleGuide() {
               <p className="text-xs text-muted font-mono uppercase tracking-widest">
                 Last synced: 2026-02-28 14:32 UTC
               </p>
+            </div>
+          </div>
+        </section>
+
+        <hr className="border-default" />
+
+        {/* SECTION: Type Scale */}
+        <section>
+          <SectionHeader
+            icon={<Type />}
+            title="Type Scale"
+            description="Font sizes paired with line-heights. The display step is reserved for hero headings."
+          />
+          <div className="border border-default rounded-lg bg-surface p-card">
+            {TOKENS.fontSizes.map((token) => (
+              <div
+                key={token.name}
+                className="flex items-baseline gap-6 border-b border-default py-3 last:border-0"
+              >
+                <span className="w-20 shrink-0 text-xs font-mono text-muted">
+                  {token.name.replace("--text-", "")}
+                </span>
+                <span
+                  className="flex-1 truncate text-primary"
+                  style={{
+                    fontSize: `var(${token.name})`,
+                    lineHeight: token.lineHeight,
+                    letterSpacing: token.tracking,
+                    fontWeight: token.weight ? Number(token.weight) : undefined,
+                  }}
+                >
+                  The quick brown fox
+                </span>
+                <span className="shrink-0 text-xs font-mono text-secondary">
+                  {token.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <hr className="border-default" />
+
+        {/* SECTION: Spacing Scale */}
+        <section>
+          <SectionHeader
+            icon={<Ruler />}
+            title="Spacing Scale"
+            description="Named layout rhythm. Reach for these utilities (p-card, px-gutter, gap-section) instead of ad-hoc numbers."
+          />
+          <div className="border border-default rounded-lg bg-surface p-card flex flex-col gap-3">
+            {TOKENS.spacing.map((token) => (
+              <div key={token.name} className="flex items-center gap-4">
+                <span className="w-28 shrink-0 text-sm text-secondary">
+                  {token.label}
+                </span>
+                <div
+                  className="h-4 rounded bg-brand"
+                  style={{ width: `var(${token.name})` }}
+                />
+                <span className="ml-auto text-xs font-mono text-muted">
+                  {token.name} · {token.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <hr className="border-default" />
+
+        {/* SECTION: Corner Radii */}
+        <section>
+          <SectionHeader
+            icon={<Square />}
+            title="Corner Radii"
+            description="Every step derives from the --radius base, so softening all corners is a one-token change."
+          />
+          <div className="flex flex-wrap gap-6">
+            {TOKENS.radii.map((token) => (
+              <div key={token.name} className="flex flex-col items-center gap-2">
+                <div
+                  className="w-20 h-20 bg-brand-subtle border border-active"
+                  style={{ borderRadius: `var(${token.name})` }}
+                />
+                <span className="text-xs font-mono text-muted">
+                  {token.name.replace("--radius-", "rounded-")}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <hr className="border-default" />
+
+        {/* SECTION: Elevation */}
+        <section>
+          <SectionHeader
+            icon={<Layers />}
+            title="Elevation"
+            description="Theme-aware shadows — heavier in dark mode so depth still reads. Toggle the theme to compare."
+          />
+          <div className="flex flex-wrap gap-8 p-card">
+            {TOKENS.shadows.map((token) => {
+              const step = token.name.replace("--shadow-", "");
+              return (
+                <div
+                  key={token.name}
+                  className="flex flex-col items-center gap-3"
+                >
+                  <div
+                    className="w-24 h-24 rounded-lg bg-surface border border-default"
+                    style={{ boxShadow: `var(--elevation-${step})` }}
+                  />
+                  <span className="text-xs font-mono text-muted">
+                    shadow-{step}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        <hr className="border-default" />
+
+        {/* SECTION: Motion */}
+        <section>
+          <SectionHeader
+            icon={<Gauge />}
+            title="Motion"
+            description="Durations and easings. Every transition-* utility adopts the base duration + easing by default."
+          />
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="border border-default rounded-lg bg-surface p-card flex flex-col gap-3">
+              {[...TOKENS.durations, ...TOKENS.easings].map((token) => (
+                <div
+                  key={token.name}
+                  className="flex items-center justify-between gap-4"
+                >
+                  <span className="text-sm text-secondary">{token.label}</span>
+                  <span className="text-xs font-mono text-muted">
+                    {token.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="group border border-default rounded-lg bg-surface p-card flex flex-col justify-center gap-3">
+              <span className="text-xs text-muted">Hover this panel →</span>
+              <div className="h-3 w-12 rounded-full bg-brand transition-all group-hover:w-full" />
+            </div>
+          </div>
+        </section>
+
+        <hr className="border-default" />
+
+        {/* SECTION: Layering */}
+        <section>
+          <SectionHeader
+            icon={<Layers />}
+            title="Layering (z-index)"
+            description="A named stacking scale so overlays, modals, and toasts never fight over magic numbers."
+          />
+          <div className="border border-default rounded-lg bg-surface p-card grid gap-2 sm:grid-cols-2">
+            {TOKENS.zIndex.map((token) => (
+              <div
+                key={token.name}
+                className="flex items-center justify-between gap-4 rounded-md bg-app px-3 py-2"
+              >
+                <span className="text-sm font-mono text-secondary">
+                  z-{token.name.replace("--z-", "")}
+                </span>
+                <span className="text-xs font-mono text-muted">
+                  {token.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <hr className="border-default" />
+
+        {/* SECTION: Interaction */}
+        <section>
+          <SectionHeader
+            icon={<MousePointerClick />}
+            title="Interaction"
+            description="Standardized focus ring, disabled affordance, and cursor. Tab to the button to see the ring."
+          />
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="border border-default rounded-lg bg-surface p-card flex items-center gap-4">
+              <button className="px-4 py-2 text-sm font-medium rounded-md bg-brand text-brand-fg outline-none transition-all focus-visible:ring-[length:var(--ring-width)] focus-visible:ring-brand/50">
+                Focusable
+              </button>
+              <button
+                disabled
+                className="px-4 py-2 text-sm font-medium rounded-md bg-brand text-brand-fg opacity-[var(--disabled-opacity)] cursor-not-allowed"
+              >
+                Disabled
+              </button>
+            </div>
+            <div className="border border-default rounded-lg bg-surface p-card flex flex-col gap-2">
+              {TOKENS.interaction.map((token) => (
+                <div
+                  key={token.name}
+                  className="flex items-center justify-between gap-4"
+                >
+                  <span className="text-sm text-secondary">{token.label}</span>
+                  <span className="text-xs font-mono text-muted">
+                    {token.value}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </section>

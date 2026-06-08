@@ -1,6 +1,6 @@
 ---
 name: design-system
-description: REQUIRED before editing any file under packages/ui/ or any .module.css — a PreToolUse skill-gate blocks the Edit/Write tool on those paths until this skill is loaded. Also load it proactively before setting any className or choosing colors/spacing/borders/Tailwind classes (that content-level usage is advisory + CI-enforced, not gated). Covers the packages/ui token dictionary (backgrounds, borders, typography, brand, semantic colors), the Tailwind utility vocabulary, and migrating legacy shadcn-style variables.
+description: REQUIRED before editing any file under packages/ui/ or any .module.css — a PreToolUse skill-gate blocks the Edit/Write tool on those paths until this skill is loaded. Also load it proactively before setting any className or choosing colors/spacing/borders/Tailwind classes (that content-level usage is advisory + CI-enforced, not gated). Covers the packages/ui token dictionary (backgrounds, borders, typography, brand, semantic colors), the dimensional system (spacing, type scale, radii, elevation, motion, z-index, interaction), the Tailwind utility vocabulary, and migrating legacy shadcn-style variables.
 ---
 
 # Northwind Design System
@@ -89,7 +89,66 @@ All classes also have `hover:` variants (e.g. `hover:bg-brand`, `hover:text-succ
 
 | Token | Value | Purpose |
 |-------|-------|---------|
-| `--radius` | `0.375rem` | Standard border radius (`rounded-md`) |
+| `--radius` | `0.375rem` | Base radius the `rounded-*` scale derives from |
+
+## Dimensional Tokens
+
+Color is only half the system. Spacing, type, radii, elevation, motion, and layering are tokenized
+too — all real Tailwind utilities **and** runtime CSS vars (`var(--spacing-section)` works for
+one-offs). Reach for the named token; never hardcode the equivalent value.
+
+### Spacing
+
+Tailwind's numeric scale (`p-4`, `gap-2`) derives from the `--spacing` base. Named layout-intent
+steps add governed rhythm:
+
+| Utility | Token | Value | Use |
+|---------|-------|-------|-----|
+| `gap-inline` / `p-inline` | `--spacing-inline` | 0.5rem | Icon + label, chips |
+| `gap-stack` / `space-y-stack` | `--spacing-stack` | 1rem | Stacked blocks |
+| `p-card` | `--spacing-card` | 1.5rem | Card / panel padding |
+| `px-gutter` | `--spacing-gutter` | 1.5rem | Page side padding |
+| `py-section` / `gap-section` | `--spacing-section` | 4rem | Between page sections |
+
+### Type Scale
+
+`text-xs … text-5xl` are the standard steps (each pairs a size + line-height). `text-display`
+(3.75rem, tight tracking) is for hero headings **only**. Families: `font-sans` (default body),
+`font-mono`. Weights: `font-normal / medium / semibold / bold`. Tracking: `tracking-tight`
+(headings) … `tracking-widest` (uppercase eyebrows). Don't use arbitrary `text-[40px]`.
+
+### Radii
+
+`rounded-sm / md / lg / xl / 2xl / full` — all derived from `--radius`. Inputs/badges `rounded-sm`,
+buttons `rounded-md`, cards/popovers `rounded-lg`, modals `rounded-xl`, pills/avatars `rounded-full`.
+
+### Elevation (theme-aware)
+
+`shadow-xs / sm / md / lg / xl`. **Mode-aware** — heavier in dark mode automatically, so depth still
+reads. Cards/buttons `shadow-sm`, dropdowns/hover-lift `shadow-md`, popovers `shadow-lg`, modals
+`shadow-xl`. Never hand-roll `shadow-[0_1px_2px_...]`.
+
+### Motion
+
+Every `transition-*` utility uses the base duration (200ms) + standard easing by default. Easing
+utilities: `ease-standard` (default), `ease-out` (entering), `ease-in` (exiting). For a specific
+duration, use the var: `[transition-duration:var(--duration-slow)]` (`--duration-fast` 150ms /
+`-base` 200ms / `-slow` 300ms). `prefers-reduced-motion` is respected globally.
+
+### Layering (z-index)
+
+Named static utilities so stacking is intentional, never a magic `z-50`:
+`z-dropdown` (1000) · `z-sticky` (1100) · `z-overlay` (1200) · `z-modal` (1300) · `z-popover` (1400)
+· `z-toast` (1500) · `z-tooltip` (1600).
+
+### Interaction
+
+- **Focus ring:** `focus-visible:ring-[length:var(--ring-width)] focus-visible:ring-brand` (2px,
+  standardized). Don't hardcode `ring-[3px]` / `ring-1`.
+- **Disabled:** `disabled:opacity-[var(--disabled-opacity)]` plus `disabled:cursor-not-allowed` or
+  `disabled:pointer-events-none`.
+- **Cursor:** interactive elements get `cursor: pointer` automatically (a base rule restores it —
+  Tailwind v4 dropped the default on `<button>`). For `asChild` anchors/divs, add `cursor-pointer`.
 
 ## Source of Truth
 
@@ -166,3 +225,8 @@ The border tokens have known low-contrast characteristics. Always consider the a
 - Using `border-default/40` or `divide-default/40` — static utilities don't support opacity modifiers. Use `border-[hsl(var(--border-default)/0.4)]`
 - Using `border-default` for small interactive elements (circles, checkboxes, toggle rings) — invisible in dark mode. Use `border-active`
 - Assuming border visibility without checking both light AND dark mode contrast
+- Hand-rolling shadows (`shadow-[0_1px_2px_...]`) instead of `shadow-xs…xl` (which are theme-aware)
+- Magic z-index (`z-50`) for overlays/modals/toasts — use the named `z-*` layer scale
+- Hardcoding focus-ring width (`ring-[3px]`, `ring-1`, `ring-2`) — use `ring-[length:var(--ring-width)]`
+- Ad-hoc padding/gaps for layout rhythm when a named spacing token fits (`p-card`, `px-gutter`, `gap-section`)
+- Arbitrary font sizes (`text-[40px]`) instead of the type scale (`text-4xl`, `text-display`)

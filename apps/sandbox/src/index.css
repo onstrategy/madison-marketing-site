@@ -27,6 +27,6 @@
     background-color: hsl(var(--bg-app));
     color: hsl(var(--text-primary));
     -webkit-font-smoothing: antialiased;
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: var(--font-sans);
   }
 }
