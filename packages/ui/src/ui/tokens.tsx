@@ -186,6 +186,7 @@ export const TOKENS: TokenDictionary = {
   // Type scale — size + paired line-height. Mirrors common steps so existing
   // text-* usage is stable, plus a `display` step for hero headings.
   fontSizes: [
+    { name: "--text-2xs", label: "2X Small", value: "0.625rem", lineHeight: "0.875rem", desc: "Micro labels (10px) — overlines, swatch captions, dense mono tags. Below text-xs." },
     { name: "--text-xs", label: "Extra Small", value: "0.75rem", lineHeight: "1rem", desc: "Captions, overlines, dense metadata." },
     { name: "--text-sm", label: "Small", value: "0.875rem", lineHeight: "1.25rem", desc: "Secondary text, labels, table cells." },
     { name: "--text-base", label: "Base", value: "1rem", lineHeight: "1.5rem", desc: "Default body copy." },

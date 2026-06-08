@@ -433,13 +433,13 @@ function TokenBoard() {
                 sw.cls,
               )}
             />
-            <div className="font-mono text-[10px] text-muted">{sw.label}</div>
+            <div className="font-mono text-2xs text-muted">{sw.label}</div>
           </div>
         ))}
       </div>
       <Separator className="my-4" />
       <div className="flex items-center gap-3">
-        <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
+        <span className="font-mono text-2xs uppercase tracking-widest text-muted">
           signal
         </span>
         <div className="flex gap-2">
@@ -468,10 +468,10 @@ function TrustMatrix() {
   return (
     <div className="overflow-hidden rounded-xl border border-default bg-surface shadow-md">
       <div className="flex items-center justify-between gap-4 bg-panel px-4 py-2.5">
-        <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
+        <span className="font-mono text-2xs uppercase tracking-widest text-muted">
           Change
         </span>
-        <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
+        <span className="font-mono text-2xs uppercase tracking-widest text-muted">
           Outcome
         </span>
       </div>

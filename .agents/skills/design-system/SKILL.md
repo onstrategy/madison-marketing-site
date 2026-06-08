@@ -110,12 +110,18 @@ steps add governed rhythm:
 | `px-gutter` | `--spacing-gutter` | 1.5rem | Page side padding |
 | `py-section` / `gap-section` | `--spacing-section` | 4rem | Between page sections |
 
+The numeric scale is **on-token** — each step is `--spacing` × N — so `p-4`, `py-24`, `gap-8` are
+on-system, and equal a named step at the same value (`py-section` is `py-16` = 4rem; the named one
+just states intent). What is **off-system** is a raw length literal (`p-[17px]`, `gap-[13px]`,
+`mt-[20px]`), which is **lint-blocked** (`no-raw-dimensions`). Prefer a named step when one fits the
+intent; otherwise the numeric scale is correct.
+
 ### Type Scale
 
 `text-xs … text-5xl` are the standard steps (each pairs a size + line-height). `text-display`
 (3.75rem, tight tracking) is for hero headings **only**. Families: `font-sans` (default body),
 `font-mono`. Weights: `font-normal / medium / semibold / bold`. Tracking: `tracking-tight`
-(headings) … `tracking-widest` (uppercase eyebrows). Don't use arbitrary `text-[40px]`.
+(headings) … `tracking-widest` (uppercase eyebrows). Don't use arbitrary sizes (`text-[40px]`, `text-[10px]`) — they are **lint-blocked** (`no-raw-dimensions`); reach for a step (`text-2xs` through `text-display`). The micro step `text-2xs` (10px) sits just below `text-xs` — overlines, swatch captions, dense mono labels.
 
 ### Radii
 
@@ -214,7 +220,9 @@ The border tokens have known low-contrast characteristics. Always consider the a
 
 ## Red Flags — STOP and Revise
 
-- Using raw Tailwind colors (`bg-zinc-900`, `text-slate-500`) instead of token classes
+> **Enforcement:** items below tagged **lint-blocked** hard-fail `bun run check` via the governance overlay — `no-raw-colors` (off-system colors) and `no-raw-dimensions` (arbitrary spacing/type lengths). The rest are advisory but caught in review.
+
+- Using raw Tailwind colors (`bg-zinc-900`, `text-slate-500`) instead of token classes — **lint-blocked**
 - Using hex/rgb/hsl values in `className` or inline styles for colors
 - Using numbered color scales (`text-success-700`, `bg-neutral-200`) — use semantic triads + opacity modifiers instead
 - Using shadcn-style variable names (`bg-card`, `text-foreground`, `bg-destructive`) — see `references/migration.md`
@@ -228,5 +236,5 @@ The border tokens have known low-contrast characteristics. Always consider the a
 - Hand-rolling shadows (`shadow-[0_1px_2px_...]`) instead of `shadow-xs…xl` (which are theme-aware)
 - Magic z-index (`z-50`) for overlays/modals/toasts — use the named `z-*` layer scale
 - Hardcoding focus-ring width (`ring-[3px]`, `ring-1`, `ring-2`) — use `ring-[length:var(--ring-width)]`
-- Ad-hoc padding/gaps for layout rhythm when a named spacing token fits (`p-card`, `px-gutter`, `gap-section`)
-- Arbitrary font sizes (`text-[40px]`) instead of the type scale (`text-4xl`, `text-display`)
+- Raw length literals for spacing/layout — `p-[17px]`, `gap-[13px]`, `mt-[20px]` — **lint-blocked** (`no-raw-dimensions`). Use the numeric scale (`p-4`, `py-24`) or a named step (`p-card`, `px-gutter`, `gap-section`). The numeric scale is on-token; only arbitrary literals are banned.
+- Arbitrary font sizes — `text-[40px]`, `text-[10px]` — **lint-blocked** (`no-raw-dimensions`). Use the type scale (`text-2xs` through `text-5xl`, `text-display`).

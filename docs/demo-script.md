@@ -53,7 +53,7 @@ yourself about to say "slug" or "token" or "PR" — *that's the point*, you don'
 | 1 | "What can I ask?" | `/prompts` | the menu Claude lists | 1 |
 | 2 | Build | "Add a section to our landing page with three customer testimonials." | the new section appearing | 3 |
 | 3 | Restyle (the showstopper) | "Make our brand color a deep forest green." | the whole page re-skinning | 3 |
-| 4 | The guardrail (centerpiece) | "Make the main button this exact purple: #7C3AED." | the check turning red, then green | 3 |
+| 4 | The guardrail (centerpiece) | "Make the main button this exact purple: #7C3AED." | the check turning red on a raw color *and* a raw size | 4 |
 | 5 | Submit | "This looks great — send it for review." | the PR link + trust tier | 2 |
 | 6 | *(optional)* Promote | "Make that testimonial card an official, reusable component." | the draft PR | 2 |
 
@@ -119,13 +119,15 @@ mark, the featured pricing card, the links — all from one change. Toggle light
 the new brand holds in both. **This is "one source of truth" you can see.**
 
 > Want a second restyle? Try *"The page feels a little cramped — give it more breathing room."*
-> Claude adjusts the spacing rhythm, on-token.
+> Claude opens up the spacing **on the standard scale** (`py-24`, `gap-8` — each a multiple of the
+> spacing token, so it stays on-system and the check passes). This previews Scenario 4's spacing
+> guardrail: the scale is allowed; a *raw* `97px` is not.
 
 ---
 
-### 4 · The guardrail — governance catches drift (3 min) — *the centerpiece*
+### 4 · The guardrail — governance catches drift (4 min) — *the centerpiece*
 
-This is the moment that sells the product. Do it in two beats.
+This is the moment that sells the product. Do it in three beats.
 
 **Beat A — the agent won't drift.**
 
@@ -147,6 +149,25 @@ it on-brand even when you ask for a literal color.
 - *(Optional, in a fresh session)* ask it to change something in the **shared design system** —
   the **skill-gate blocks the edit** until Claude loads the `design-system` rules, then retries
   on-token. *"An agent literally cannot touch the design system without first reading its rules."*
+
+**Beat C — it's not only color: the whole vocabulary is governed.**
+
+**Say:**
+> "Just to show the team it's not only about color — force a 10-pixel text size and some 17-pixel
+> padding onto that card too, then run the check."
+
+**Watch for:**
+- The same red ❌ — this time from the **spacing/type** guard (`no-raw-dimensions`), naming the
+  off-system `text-[10px]` / `p-[17px]`. **Color, spacing, and type are all enforced — the whole
+  on-token vocabulary, not just color.**
+- Tie it back to Scenario 3: "breathing room" *passed* because `py-24` is on-token (the spacing
+  scale is `token × N`); a raw `97px` *fails*. **The gate tells on-token from arbitrary.**
+
+> **Optional — the governed escape hatch (great for a technical audience).** "But what if we
+> *genuinely* need a 10-pixel size?" You don't hardcode it — you say *"add a tiny 10-pixel text size
+> to our system."* Claude adds it as a **named token**, regenerates the system, and sends it to an
+> engineer to review (token changes are never silent). The rule isn't "off-system is forbidden" — it's
+> "make it on-system first." That's exactly how the system's smallest size, `text-2xs`, exists.
 
 **The point — say it out loud:**
 > "Everyone else keeps non-technical people *out* of the repo to stay safe. We let them *in* — and
@@ -196,7 +217,8 @@ Recap the three beliefs, pointing back at what they just saw:
 
 1. *Plain language in, real UI out* — the testimonials section.
 2. *One source of truth* — the live green rebrand.
-3. *Guardrails as code* — the check going red on a raw hex.
+3. *Guardrails as code* — the check going red on a raw hex *and* a raw pixel size; the on-token
+   vocabulary (color, spacing, type) is enforced on every change.
 
 > "That loop — describe it, the system builds it on-brand, governance keeps it safe, an engineer
 > merges it — is the entire product. It's how a whole team ships a design system without it drifting."
@@ -232,6 +254,7 @@ branch: `git branch -D <branch>` and close the test PR.)
 | **Page looks broken / unstyled after a token change** | Same cause. Hard-refresh; if it persists, restart the dev server (`Ctrl + C`, then `bun run dev`) — token/`@theme` changes are read at startup. |
 | **Claude "takes a while" on a build** | That's it doing the real work (scaffold → compose → check). Narrate it — the wait *is* the value. |
 | **The skill-gate didn't fire in Scenario 4** | You're in a session that already loaded the skill. Start a fresh Claude Code session for that beat — markers reset per session. The `bun run check` lint failure (Beat B) fires regardless, so lead with that. |
+| **The spacing/type guardrail (Beat C) didn't go red** | You (or Claude) used the numeric scale (`py-24`) or a named step — those are *on-token* and pass. To trip the gate you need a *raw literal*: `p-[17px]`, `text-[10px]`. That contrast is the lesson. |
 | **`/submit` can't open a PR** | Needs a GitHub remote + `gh auth login`. Either set that up beforehand or use the "here's what it would do" framing. |
 
 ---
@@ -254,6 +277,8 @@ Pick and mix. All plain language; no slash command required (the `/shortcut` is 
 **Guardrail (to demonstrate the gate)**
 - "I want the main button to be this exact purple: #7C3AED."
 - *(then)* "Force that exact hex in anyway and run the check, so the team can see the guardrail."
+- "Force a 10-pixel text size and 17-pixel padding onto that card, then run the check." *(spacing/type — the same gate)*
+- "We actually need a tiny 10-pixel caption everywhere — add it to our system properly." *(the governed escape hatch: a reviewed token change)*
 
 **Submit**
 - "This looks great — send it for review."
@@ -281,6 +306,10 @@ Pick and mix. All plain language; no slash command required (the `/shortcut` is 
 | Sandbox prototype content / copy | **auto-merge** | green check merges |
 | Any `packages/ui/` or token change (incl. promotions) | **draft PR** | an engineer reviews |
 | The gates/hooks, the token engine, token deprecations | **suggest-only** | a maintainer applies |
+
+> **What `bun run check` enforces on every change:** typecheck + tests + two on-token lint rules —
+> `no-raw-colors` (no off-system colors) and `no-raw-dimensions` (no arbitrary spacing/type lengths).
+> Both must be green to ship.
 
 > Deeper reading for the curious: [`prompts.md`](./prompts.md) (the contributor menu),
 > [`governance.md`](./governance.md) (the three-layer model + trust matrix),

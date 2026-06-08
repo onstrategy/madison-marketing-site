@@ -37,7 +37,7 @@ export function StyleGuide() {
       <StyleGuideStyles />
 
       {/* HEADER NAVIGATION */}
-      <header className="sticky top-0 z-50 border-b border-default bg-panel px-6 py-4 flex items-center justify-between shadow-sm">
+      <header className="sticky top-0 z-sticky border-b border-default bg-panel px-6 py-4 flex items-center justify-between shadow-sm">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-md bg-surface border border-default flex items-center justify-center">
             <Palette className="w-4 h-4 text-info" />
@@ -46,7 +46,7 @@ export function StyleGuide() {
             <h1 className="text-sm font-semibold tracking-wide">
               Northwind Design System
             </h1>
-            <p className="text-[10px] uppercase tracking-widest text-muted font-mono">
+            <p className="text-2xs uppercase tracking-widest text-muted font-mono">
               Token Dictionary &amp; Guidelines
             </p>
           </div>
@@ -202,7 +202,7 @@ export function StyleGuide() {
                       {token.icon} {token.label}
                     </div>
                     <div>
-                      <div className="text-[10px] font-mono opacity-80 mt-4">
+                      <div className="text-2xs font-mono opacity-80 mt-4">
                         --semantic-{token.id}
                       </div>
                       <div className="text-xs font-mono font-bold">
@@ -218,7 +218,7 @@ export function StyleGuide() {
                       style={{ backgroundColor: subtleHex }}
                     >
                       <div>
-                        <div className="text-[10px] font-mono text-muted">
+                        <div className="text-2xs font-mono text-muted">
                           --semantic-{token.id}-subtle
                         </div>
                         <div className="text-xs font-mono font-medium text-primary">
@@ -226,7 +226,7 @@ export function StyleGuide() {
                         </div>
                       </div>
                       <span
-                        className="px-2 py-1 text-[10px] font-medium rounded border"
+                        className="px-2 py-1 text-2xs font-medium rounded border"
                         style={{
                           backgroundColor: subtleHex,
                           color: token.base,
@@ -239,7 +239,7 @@ export function StyleGuide() {
 
                     <div className="flex-1 p-3 flex items-center justify-between bg-surface">
                       <div>
-                        <div className="text-[10px] font-mono text-muted">
+                        <div className="text-2xs font-mono text-muted">
                           --semantic-{token.id}-fg
                         </div>
                         <div className="text-xs font-mono font-medium text-primary">
@@ -682,7 +682,7 @@ function TokenGroup({
                 <span className="text-sm font-medium text-primary truncate">
                   {token.label}
                 </span>
-                <span className="text-[10px] font-mono text-muted truncate">
+                <span className="text-2xs font-mono text-muted truncate">
                   {token.name}
                 </span>
               </div>
