@@ -172,10 +172,11 @@ export function Hero() {
           </Reveal>
           <Reveal delay={120}>
             <p className="mt-5 max-w-xl text-pretty text-lg text-secondary">
-              Northwind makes code the single source of truth — and lets
-              designers, PMs, and marketing ship real components into the real
-              repo through Claude Code. Governance-as-code keeps every change
-              on-system.
+              Northwind makes code the single source of truth — so design and
+              implementation never drift apart. Designers, PMs, and marketing
+              don't write code; they describe what they want, and Claude Code
+              ships it as real, on-system components in the real repo —
+              governance-as-code keeping every change safe.
             </p>
           </Reveal>
           <Reveal delay={180}>
