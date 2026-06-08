@@ -29,6 +29,12 @@ export {
 export { Tabs, TabsList, TabsTrigger, TabsContent } from "./tabs";
 export { Alert, AlertTitle, AlertDescription, alertVariants } from "./alert";
 
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "./accordion";
 // @gen:promote anchor — `bun run gen:promote` inserts new primitive exports above this line.
 export {
   AlertDialog,
