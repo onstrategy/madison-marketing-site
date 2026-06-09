@@ -20,8 +20,12 @@ Claude Code in plain English. The audience watches the screen. Total run time: *
 3. **The guardrails are code, not trust.** An agent (or a person) *cannot* drift off-system —
    the lint gates keep it on-token, the Storybook MCP keeps it on real components, and
    `bun run check` catches what slips. **That's the moat.**
+4. **(Act 2) The system grows itself.** Non-technical people don't just *use* the system — they
+   *extend* it: a prototype becomes a reusable primitive, a missing piece becomes a new building
+   block, all in plain language and all reviewed by a human before they go live.
 
-Keep coming back to these three. Everything you type is in service of one of them.
+Keep coming back to these. Everything you type is in service of one of them. (Belief 4 only lands
+if you run **Act 2** — the optional lifecycle beats; see the arc below.)
 
 ---
 
@@ -84,7 +88,14 @@ yourself about to say "slug" or "token" or "PR" — *that's the point*, you don'
 
 ---
 
-## The 12–15 minute arc
+## The arc — two acts
+
+The demo has a tight **core arc (Act 1, ~12–15 min)** that lands the first three beliefs, and an
+optional **extended act (Act 2)** that shows the design system *growing itself* — the
+build → promote → reuse loop. Run Act 1 for a short demo; add as many Act 2 beats as time and room
+allow (they shine with engineering-curious audiences and in enablement workshops).
+
+### Act 1 — the core arc (~12–15 min)
 
 | # | Beat | You say (plain language) | Point at… | ~min |
 |---|------|--------------------------|-----------|------|
@@ -95,7 +106,19 @@ yourself about to say "slug" or "token" or "PR" — *that's the point*, you don'
 | 3 | Restyle (the showstopper) | "Make our brand color a deep forest green." | the whole page re-skinning | 3 |
 | 4 | The guardrail (centerpiece) | "Make the main button this exact purple: #7C3AED." | the check turning red on a raw color *and* a raw size | 4 |
 | 5 | Submit | "This looks great — send it for review." | the PR link + trust tier | 2 |
-| 6 | *(optional)* Promote | "Make that testimonial card an official, reusable component." | the draft PR | 2 |
+| 6 | Promote (the bridge) | "Make that testimonial card an official, reusable component." | the draft PR | 2 |
+
+### Act 2 — growing the system (optional; pick beats as time allows)
+
+Each beat is a self-contained *"hit a real-life gap → fix it the governed way"* vignette. They build
+on the testimonials from Scenario 2 and the promote from Scenario 6, so **run Act 1 first.**
+
+| # | Beat | You say (plain language) | Point at… | ~min |
+|---|------|--------------------------|-----------|------|
+| 6b | Reuse what you promoted | "Add two more testimonials using that card." | the promoted card now in the live library | 2 |
+| 7 | The variant gap | "Put a green 'Verified' badge by each testimonial author." | a new on-token Badge variant → draft PR | 3 |
+| 8 | The honest gap | "Add notification toggles for email, SMS, and product updates." | a missing `Switch` → a promoted primitive | 4 |
+| 9 | Grow & reuse | "Add a band of key numbers to the landing page." | a `StatCard` primitive reused across the page | 4 |
 
 ---
 
@@ -282,7 +305,7 @@ throwaway mockup. That's the whole differentiator.
 
 ---
 
-### 6 · *(Optional)* Promote to the system (2 min)
+### 6 · Promote to the system (2 min) — *the bridge into Act 2*
 
 **Say:**
 > "Let's make that testimonial card an official, reusable component."
@@ -294,19 +317,117 @@ always get a human review** (trust matrix), never auto-merge.
 **The point:** the path from "a non-technical person's prototype" to "a primitive every app reuses"
 is real, governed, and one sentence away.
 
+> **Stop here for a tight demo.** This is a natural ending for Act 1. If you have time and the room
+> is leaning in, keep going into **Act 2** below — that's where the promoted card comes *back* onto
+> the page and the system visibly grows.
+
+---
+
+## Act 2 · Growing the system (optional — the lifecycle loop)
+
+Act 1 ends with a *promoted* component sitting in a draft PR. Act 2 is the payoff most of the market
+can't show: that component — and the whole design system — **grows** through plain language, and the
+new pieces get **reused right back on the page.** Each beat below is a self-contained *"hit a
+real-life gap → fix it the governed way"* story. **Pick the ones that fit your time and room** — they
+don't all need to run. They build on the testimonials from Scenario 2 and the promote from
+Scenario 6, so do Act 1 first.
+
+> **Gear-shift to name for the room:** Act 1 was *using* the system; Act 2 is *extending* it.
+> Everything here touches the shared library, so the strongest guardrails fire by design — the
+> **skill-gate** makes Claude load the design-system rules before it can edit `packages/ui` (the same
+> gate from Scenario 4; it only re-fires if that skill wasn't already loaded this session), and every
+> new building block lands as a **draft PR** for an engineer (the trust matrix). *That's* the point:
+> non-technical people can grow the system, and a human still signs off on every primitive.
+
+---
+
+### 6b · Reuse what you just promoted (2 min) — *close the loop*
+
+**Say:**
+> "Now that the testimonial card is official, add two more testimonials using it."
+
+**Watch for (narrate this):**
+- Claude pulls in the **freshly-promoted primitive** from the shared library instead of the inline
+  copy — the section now renders from the real building block.
+- Re-ask **"what components can I use here?"** — the testimonial card **now appears in the live
+  library** (Storybook MCP) that didn't have it ten minutes ago.
+
+**Payoff:** the prototype a marketer built at the *start* of the demo is now a governed, reusable
+primitive *and* it's already back in use on the page. **That's the whole loop on one screen:** a
+plain-language prototype → a promoted primitive → reused everywhere, discoverable to the AI.
+
+---
+
+### 7 · The variant gap — a new Badge variant (3 min)
+
+**Say:**
+> "Put a little green 'Verified' badge next to each testimonial author."
+
+**Watch for (narrate this):**
+- The system's `Badge` has no "verified/success" look, and Claude **won't fake green with a raw
+  color** — the on-token gate would catch it anyway (tie this straight back to Scenario 4).
+- Give the governed go-ahead in plain language: *"Then add a proper 'verified' style to our badge."*
+  Claude adds an **on-token variant** to the Badge primitive (bound to the success token, dark-mode
+  handled automatically) and opens a **draft PR**.
+
+**The point:** Scenario 4's escape hatch was a *token*; this is the same rule for a *component
+variant* — "make it on-system first," never hardcode. The vocabulary **and** the component library
+grow the exact same governed way.
+
+---
+
+### 8 · The honest gap — promote a missing primitive (4 min)
+
+**Say:**
+> "Add a notifications section to the landing page with on/off toggles for email, SMS, and product
+> updates."
+
+**Watch for (narrate this):**
+- Claude builds the section but **tells you honestly** the system has no real on/off switch yet — it
+  can only reuse a checkbox, and it **won't invent a component that doesn't exist** (the on-component
+  guardrail from "Behind the curtain").
+- Give the go-ahead: *"Make those proper on/off switches, and add the switch to our system as an
+  official component."* Claude follows the **promote** path and opens a **draft PR** for a brand-new
+  `Switch` primitive (with a Storybook story).
+
+**Payoff:** a non-technical person discovered a **missing building block by trying to ship real
+work** — and the governed path *filled the gap* instead of the AI hallucinating a fake component.
+Once it merges, "what components can I use?" includes the new switch.
+
+---
+
+### 9 · Grow and reuse — a stats band from a new primitive (4 min)
+
+**Say:**
+> "Add a band of key numbers to the landing page — '14% of UI drifts off-system in a year', '70% of
+> the workshop is hands-on building', '3 phases to value'."
+
+**Watch for (narrate this):**
+- Claude builds the band from a repeated **number tile**, all on-token.
+- Then: *"Make that number tile an official, reusable component."* → a `StatCard` primitive, draft PR.
+- Close the loop again: *"And use it in the showcase section too."* — the same new primitive, reused
+  elsewhere on the page.
+
+**The point:** the build → promote → reuse loop one more time, with **hard numbers that double as the
+business pitch** (drift %, hands-on %, phases-to-value). The audience watches the system get richer
+*and* the sales story land in the same beat.
+
 ---
 
 ## Close (1 min)
 
-Recap the three beliefs, pointing back at what they just saw:
+Recap the beliefs, pointing back at what they just saw:
 
 1. *Plain language in, real UI out* — the testimonials section.
 2. *One source of truth* — the live green rebrand.
 3. *Guardrails as code* — the check going red on a raw hex *and* a raw pixel size; the on-token
    vocabulary (color, spacing, type) is enforced on every change.
+4. *(if you ran Act 2) The system grows itself* — a prototype became a primitive, a gap became a new
+   building block, and both were reused right back on the page — every new piece reviewed by a human.
 
 > "That loop — describe it, the system builds it on-brand, governance keeps it safe, an engineer
-> merges it — is the entire product. It's how a whole team ships a design system without it drifting."
+> merges it, and the system *grows* — is the entire product. It's how a whole team ships *and
+> extends* a design system without it drifting."
 
 ---
 
@@ -322,7 +443,12 @@ git checkout -- .
 git clean -fdn apps/sandbox/src/prototypes   # dry run — see what would be removed
 git clean -fd  apps/sandbox/src/prototypes    # actually remove it
 
-# If a restyle touched shared tokens, regenerate the CSS back to baseline
+# Act 2 also adds NEW files under packages/ui (a promoted primitive + its story) and edits
+# package.json / the barrel. `git checkout -- .` reverts the edits; remove the new files:
+git clean -fdn packages/ui/src   # dry run — see what would be removed
+git clean -fd  packages/ui/src    # actually remove the promoted-primitive files
+
+# If a restyle or a promotion touched shared tokens, regenerate the CSS back to baseline
 bun run build
 ```
 
@@ -342,6 +468,8 @@ branch: `git branch -D <branch>` and close the test PR.)
 | **The spacing/type guardrail (Beat C) didn't go red** | You (or Claude) used the numeric scale (`py-24`) or a named step — those are *on-token* and pass. To trip the gate you need a *raw literal*: `p-[17px]`, `text-[10px]`. That contrast is the lesson. |
 | **Claude can't "see" components / invents props** | The `storybook` MCP isn't connected. Make sure Storybook is up on `:6007` and the `storybook` server (from `.mcp.json`) is approved in the session — without it, Claude falls back to guessing component APIs. |
 | **`/submit` can't open a PR** | Needs a GitHub remote + `gh auth login`. Either set that up beforehand or use the "here's what it would do" framing. |
+| **An Act 2 promote (7 · 8 · 9) takes a while / opens a draft PR** | Expected. Promotions touch the shared `packages/ui` library, so the **skill-gate** fires (Claude loads the design-system rules first) and the real port + `bun run check` take longer than a sandbox build — and it always lands as a **draft PR** for an engineer, never auto-merge. Narrate the wait as the governed path. To avoid opening real PRs, use the "here's what it would do" framing from Scenario 5. |
+| **Act 2 says a component is "missing" (e.g. a Switch)** | That's the honest-gap beat working as designed — the system genuinely has no `Switch` primitive yet, so Claude won't fake one. Lead into the promote step ("add the switch to our system") to fill the gap on camera. |
 
 ---
 
@@ -370,8 +498,12 @@ Pick and mix. All plain language; no slash command required (the `/shortcut` is 
 - "This looks great — send it for review."
 - "Ship the landing page."
 
-**Promote**
-- "Make that testimonial card an official, reusable component."
+**Promote & grow the system (Act 2)**
+- "Make that testimonial card an official, reusable component." *(promote)*
+- "Now add two more testimonials using that card." *(reuse the promoted primitive — 6b)*
+- "Put a little green 'Verified' badge next to each testimonial author." → *(then)* "Add a proper 'verified' style to our badge." *(new on-token Badge variant — 7)*
+- "Add notification toggles for email, SMS, and product updates." → *(then)* "Make those proper on/off switches and add the switch to our system." *(promote a missing primitive — 8)*
+- "Add a band of key numbers to the landing page." → *(then)* "Make that number tile an official component, and use it in the showcase too." *(promote + reuse — 9)*
 
 ---
 
