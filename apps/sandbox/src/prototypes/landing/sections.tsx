@@ -23,6 +23,7 @@ import {
 } from "@northwind/ui/card";
 import { Badge } from "@northwind/ui/badge";
 import { Input } from "@northwind/ui/input";
+import { TestimonialCard } from "@northwind/ui/testimonial-card";
 import { Separator } from "@northwind/ui/separator";
 import { ThemeToggle } from "@northwind/ui/theme";
 import {
@@ -683,6 +684,55 @@ export function Showcase() {
             </div>
           </div>
         </Reveal>
+      </div>
+    </section>
+  );
+}
+
+const TESTIMONIALS = [
+  {
+    quote:
+      "Our marketing team ships landing pages without waiting on engineering — and every one is on-brand, because it has to be.",
+    name: "Maya Chen",
+    role: "Head of Design, Lumen",
+  },
+  {
+    quote:
+      "We deleted our second source of truth. Figma reads from the code now, and drift just stopped being something we fight.",
+    name: "Daniel Okoro",
+    role: "Staff Engineer, Patchwork",
+  },
+  {
+    quote:
+      "I described a pricing page in plain English and reviewed a real pull request an hour later. No redlines, no handoff.",
+    name: "Priya Nair",
+    role: "Product Manager, Northstar",
+  },
+];
+
+export function Testimonials() {
+  return (
+    <section className="border-b border-default">
+      <div className="mx-auto max-w-6xl px-gutter py-section">
+        <Reveal>
+          <SectionHeading
+            align="center"
+            eyebrow="What teams say"
+            title="Teams ship faster — and stay on-brand."
+            className="mx-auto"
+          />
+        </Reveal>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {TESTIMONIALS.map((testimonial, i) => (
+            <Reveal key={testimonial.name} delay={i * 80}>
+              <TestimonialCard
+                quote={testimonial.quote}
+                name={testimonial.name}
+                role={testimonial.role}
+              />
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

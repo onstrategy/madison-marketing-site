@@ -5,6 +5,7 @@
   "license": "UNLICENSED",
   "type": "module",
   "exports": {
+    "./testimonial-card": "./src/primitives/testimonial-card.tsx",
     "./accordion": "./src/primitives/accordion.tsx",
     ".": {
       "style": "./dist/theme.css",
