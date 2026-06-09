@@ -72,6 +72,11 @@ touch tooling.** Hold this contract:
     push, open a PR, and return the **link**. (The trust matrix decides auto-merge vs draft —
     they don't specify it.)
   - *"make this an official / reusable component"* → the promote flow ([`docs/promote.md`](./docs/promote.md)).
+  - *"what components can I use / what's available / what can I change about X"* → answer from the
+    **Storybook MCP as the primary source of truth when it's connected** (`list-all-documentation`
+    → `get-documentation`; offer `preview-stories` URLs so they can *see* the variants). Only if the
+    Storybook MCP is unavailable, fall back to reading the primitives source (`packages/ui/src/primitives/`,
+    `componentsManifest`). Either way, present it in plain language — names and what each does, not prop tables.
 - **Ask in plain language, never jargon.** Need a page name? Ask "what should we call this
   page?" — not "what slug?". Infer sensible defaults (including a one-line description) rather
   than interrogating.
