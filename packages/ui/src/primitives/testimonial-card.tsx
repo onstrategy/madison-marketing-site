@@ -8,8 +8,12 @@ interface TestimonialCardProps extends React.ComponentProps<typeof Card> {
   quote: string;
   /** Author's full name. Its initials become the monogram avatar. */
   name: string;
-  /** Author's role / company, shown beneath the name. */
-  role: string;
+  /**
+   * Author's role / company, shown beneath the name. Named `roleLabel` (not
+   * `role`) so it doesn't shadow the reserved ARIA `role` attribute — a plain
+   * `role` prop reads as an ARIA role to a11y linters and to anyone scanning the JSX.
+   */
+  roleLabel: string;
 }
 
 /** First letters of the first two words of a name, e.g. "Maya Chen" → "MC". */
@@ -29,7 +33,7 @@ function monogram(name: string) {
 function TestimonialCard({
   quote,
   name,
-  role,
+  roleLabel,
   className,
   ...props
 }: TestimonialCardProps) {
@@ -50,7 +54,7 @@ function TestimonialCard({
             </span>
             <span className="flex flex-col">
               <span className="text-sm font-medium text-primary">{name}</span>
-              <span className="text-xs text-muted">{role}</span>
+              <span className="text-xs text-muted">{roleLabel}</span>
             </span>
           </figcaption>
         </figure>

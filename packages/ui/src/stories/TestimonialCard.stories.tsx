@@ -14,7 +14,7 @@ const meta = {
           "Composes Card/CardContent; neutral-first. Token bindings: surface from Card " +
           "(bg-surface, border-default, shadow-sm); quote glyph text-brand; quote text " +
           "text-secondary; monogram bg-app + border-default + text-primary; name " +
-          "text-primary; role text-muted; spacing gap-6 + p-card.",
+          "text-primary; roleLabel text-muted; spacing gap-6 + p-card.",
       },
     },
   },
@@ -22,7 +22,7 @@ const meta = {
     quote:
       "Our marketing team ships landing pages without waiting on engineering — and every one is on-brand, because it has to be.",
     name: "Maya Chen",
-    role: "Head of Design, Lumen",
+    roleLabel: "Head of Design, Lumen",
   },
 } satisfies Meta<typeof TestimonialCard>;
 
@@ -44,7 +44,7 @@ export const LongQuote: Story = {
     quote:
       "We deleted our second source of truth. Figma reads from the code now, and drift just stopped being something we fight — the whole team moves faster and nothing slips off-brand.",
     name: "Daniel Okoro",
-    role: "Staff Engineer, Patchwork",
+    roleLabel: "Staff Engineer, Patchwork",
   },
   decorators: [
     (Story) => (
@@ -62,17 +62,17 @@ export const Grid: Story = {
       <TestimonialCard
         quote="Our marketing team ships landing pages without waiting on engineering — and every one is on-brand, because it has to be."
         name="Maya Chen"
-        role="Head of Design, Lumen"
+        roleLabel="Head of Design, Lumen"
       />
       <TestimonialCard
         quote="We deleted our second source of truth. Figma reads from the code now, and drift just stopped being something we fight."
         name="Daniel Okoro"
-        role="Staff Engineer, Patchwork"
+        roleLabel="Staff Engineer, Patchwork"
       />
       <TestimonialCard
         quote="I described a pricing page in plain English and reviewed a real pull request an hour later. No redlines, no handoff."
         name="Priya Nair"
-        role="Product Manager, Northstar"
+        roleLabel="Product Manager, Northstar"
       />
     </div>
   ),

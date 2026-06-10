@@ -694,19 +694,19 @@ const TESTIMONIALS = [
     quote:
       "Our marketing team ships landing pages without waiting on engineering — and every one is on-brand, because it has to be.",
     name: "Maya Chen",
-    role: "Head of Design, Lumen",
+    roleLabel: "Head of Design, Lumen",
   },
   {
     quote:
       "We deleted our second source of truth. Figma reads from the code now, and drift just stopped being something we fight.",
     name: "Daniel Okoro",
-    role: "Staff Engineer, Patchwork",
+    roleLabel: "Staff Engineer, Patchwork",
   },
   {
     quote:
       "I described a pricing page in plain English and reviewed a real pull request an hour later. No redlines, no handoff.",
     name: "Priya Nair",
-    role: "Product Manager, Northstar",
+    roleLabel: "Product Manager, Northstar",
   },
 ];
 
@@ -728,7 +728,7 @@ export function Testimonials() {
               <TestimonialCard
                 quote={testimonial.quote}
                 name={testimonial.name}
-                role={testimonial.role}
+                roleLabel={testimonial.roleLabel}
               />
             </Reveal>
           ))}
