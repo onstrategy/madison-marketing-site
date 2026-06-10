@@ -8,6 +8,7 @@ import {
   SystemSection,
   Audiences,
   Showcase,
+  Testimonials,
   Pricing,
   FinalCta,
   Footer,
@@ -36,6 +37,7 @@ export default function LandingPrototype() {
         <SystemSection />
         <Audiences />
         <Showcase />
+        <Testimonials />
         <Pricing />
         <FinalCta />
       </main>
