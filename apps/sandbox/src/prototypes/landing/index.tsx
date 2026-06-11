@@ -10,6 +10,7 @@ import {
   Showcase,
   Testimonials,
   Pricing,
+  Notifications,
   FinalCta,
   Footer,
 } from "./sections";
@@ -39,6 +40,7 @@ export default function LandingPrototype() {
         <Showcase />
         <Testimonials />
         <Pricing />
+        <Notifications />
         <FinalCta />
       </main>
       <Footer />

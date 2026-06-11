@@ -36,6 +36,7 @@ export {
   AccordionContent,
 } from "./accordion";
 export { TestimonialCard } from "./testimonial-card";
+export { Switch } from "./switch";
 // @gen:promote anchor — `bun run gen:promote` inserts new primitive exports above this line.
 export {
   AlertDialog,

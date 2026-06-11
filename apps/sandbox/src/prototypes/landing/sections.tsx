@@ -11,6 +11,7 @@ import {
   Megaphone,
   Code2,
   Check,
+  Mail,
 } from "lucide-react";
 import { cn } from "@northwind/ui/utils";
 import { Button } from "@northwind/ui/button";
@@ -25,6 +26,7 @@ import { Badge } from "@northwind/ui/badge";
 import { Input } from "@northwind/ui/input";
 import { TestimonialCard } from "@northwind/ui/testimonial-card";
 import { Separator } from "@northwind/ui/separator";
+import { Switch } from "@northwind/ui/switch";
 import { ThemeToggle } from "@northwind/ui/theme";
 import {
   Reveal,
@@ -708,6 +710,18 @@ const TESTIMONIALS = [
     name: "Priya Nair",
     roleLabel: "Product Manager, Northstar",
   },
+  {
+    quote:
+      "Onboarding a new brand used to take a quarter. We cloned the kit, swapped the tokens, and shipped a fully themed system in a week.",
+    name: "Sofia Almeida",
+    roleLabel: "Design Systems Lead, Cardinal",
+  },
+  {
+    quote:
+      "Our PMs open pull requests now and engineering just reviews them. The 'can you change this color' tickets vanished, and nothing lands off-brand.",
+    name: "Marcus Webb",
+    roleLabel: "VP Engineering, Tideline",
+  },
 ];
 
 export function Testimonials() {
@@ -729,6 +743,7 @@ export function Testimonials() {
                 quote={testimonial.quote}
                 name={testimonial.name}
                 roleLabel={testimonial.roleLabel}
+                verified
               />
             </Reveal>
           ))}
@@ -764,6 +779,95 @@ const TIERS = [
     featured: false,
   },
 ];
+
+const NOTIFICATION_CHANNELS = [
+  {
+    id: "email",
+    icon: Mail,
+    title: "Email notifications",
+    description: "Account activity, receipts, and security alerts.",
+    defaultOn: true,
+  },
+  {
+    id: "sms",
+    icon: MessageSquare,
+    title: "SMS notifications",
+    description: "Time-sensitive alerts sent straight to your phone.",
+    defaultOn: false,
+  },
+  {
+    id: "product",
+    icon: Megaphone,
+    title: "Product updates",
+    description: "New features, improvements, and the occasional tip.",
+    defaultOn: true,
+  },
+];
+
+export function Notifications() {
+  const [enabled, setEnabled] = useState<Record<string, boolean>>(() =>
+    Object.fromEntries(
+      NOTIFICATION_CHANNELS.map((channel) => [channel.id, channel.defaultOn]),
+    ),
+  );
+
+  return (
+    <section className="border-b border-default">
+      <div className="mx-auto max-w-2xl px-gutter py-section">
+        <Reveal>
+          <SectionHeading
+            align="center"
+            eyebrow="Stay in the loop"
+            title="Choose how you hear from us."
+            blurb="A live component built with the kit — neutral-first, on-token, and accessible. Flip any channel to see it work."
+            className="mx-auto"
+          />
+        </Reveal>
+        <Reveal delay={80}>
+          <Card className="mt-12">
+            <CardContent className="py-2">
+              {NOTIFICATION_CHANNELS.map((channel, i) => {
+                const Icon = channel.icon;
+                const labelId = `landing-${channel.id}-label`;
+                return (
+                  <div key={channel.id}>
+                    {i > 0 ? <Separator /> : null}
+                    <div className="flex items-center justify-between gap-4 py-4">
+                      <div className="flex items-start gap-3">
+                        <Icon
+                          className="mt-0.5 size-5 shrink-0 text-secondary"
+                          aria-hidden
+                        />
+                        <div className="space-y-1">
+                          <p
+                            id={labelId}
+                            className="text-sm font-medium text-primary"
+                          >
+                            {channel.title}
+                          </p>
+                          <p className="text-sm text-secondary">
+                            {channel.description}
+                          </p>
+                        </div>
+                      </div>
+                      <Switch
+                        checked={enabled[channel.id] ?? false}
+                        onCheckedChange={(next) =>
+                          setEnabled((prev) => ({ ...prev, [channel.id]: next }))
+                        }
+                        aria-labelledby={labelId}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </CardContent>
+          </Card>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
 
 export function Pricing() {
   return (
