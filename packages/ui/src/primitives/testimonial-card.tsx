@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Quote } from "lucide-react";
+import { BadgeCheck, Quote } from "lucide-react";
 import { cn } from "../ui/utils";
 import { Card, CardContent } from "./card";
 
@@ -14,6 +14,11 @@ interface TestimonialCardProps extends React.ComponentProps<typeof Card> {
    * `role` prop reads as an ARIA role to a11y linters and to anyone scanning the JSX.
    */
   roleLabel: string;
+  /**
+   * When true, renders a small green verified badge beside the author's name —
+   * a signal that the testimonial is from a vetted, authenticated customer.
+   */
+  verified?: boolean;
 }
 
 /** First letters of the first two words of a name, e.g. "Maya Chen" → "MC". */
@@ -27,13 +32,15 @@ function monogram(name: string) {
 
 /**
  * A customer testimonial — a quote with an author monogram, name, and role.
- * Composes Card/CardContent and stays neutral-first; the only accent is the
- * brand-colored quote glyph.
+ * Composes Card/CardContent and stays neutral-first; the brand-colored quote
+ * glyph is the only always-on accent, with an optional green verified badge
+ * beside the name.
  */
 function TestimonialCard({
   quote,
   name,
   roleLabel,
+  verified = false,
   className,
   ...props
 }: TestimonialCardProps) {
@@ -53,7 +60,16 @@ function TestimonialCard({
               {monogram(name)}
             </span>
             <span className="flex flex-col">
-              <span className="text-sm font-medium text-primary">{name}</span>
+              <span className="flex items-center gap-1">
+                <span className="text-sm font-medium text-primary">{name}</span>
+                {verified && (
+                  <BadgeCheck
+                    role="img"
+                    aria-label="Verified"
+                    className="size-4 shrink-0 text-success"
+                  />
+                )}
+              </span>
               <span className="text-xs text-muted">{roleLabel}</span>
             </span>
           </figcaption>

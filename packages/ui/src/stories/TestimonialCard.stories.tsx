@@ -14,7 +14,8 @@ const meta = {
           "Composes Card/CardContent; neutral-first. Token bindings: surface from Card " +
           "(bg-surface, border-default, shadow-sm); quote glyph text-brand; quote text " +
           "text-secondary; monogram bg-app + border-default + text-primary; name " +
-          "text-primary; roleLabel text-muted; spacing gap-6 + p-card.",
+          "text-primary; roleLabel text-muted; optional verified badge text-success; " +
+          "spacing gap-6 + p-card.",
       },
     },
   },
@@ -30,6 +31,17 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  decorators: [
+    (Story) => (
+      <div className="w-80">
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const Verified: Story = {
+  args: { verified: false },
   decorators: [
     (Story) => (
       <div className="w-80">

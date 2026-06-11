@@ -5,6 +5,7 @@
   "license": "UNLICENSED",
   "type": "module",
   "exports": {
+    "./switch": "./src/primitives/switch.tsx",
     "./testimonial-card": "./src/primitives/testimonial-card.tsx",
     "./accordion": "./src/primitives/accordion.tsx",
     ".": {
