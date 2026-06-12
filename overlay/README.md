@@ -9,6 +9,10 @@ real components into *their* product, made safe by the same guardrails Northwind
 > whatever a client already has. You never hand a client the kit; you install its overlay into
 > their repo.
 
+> **Doing a real client install?** This page is the reference. For the end-to-end engagement —
+> discovery → tokens → skill → install → CI → verify → enablement — follow the step-by-step
+> [`RUNBOOK.md`](./RUNBOOK.md).
+
 ## What it installs (the portable bundle)
 
 `install.sh` extracts these from the kit's **live files** (single source of truth — no
@@ -18,7 +22,7 @@ duplication):
 |-----------|------------|-------------------|
 | `.claude/hooks/{enforce,on-skill-loaded,clear}-skill-gates.sh` | The skill-gate engine (PreToolUse blocker, marker writer, session reset) | None — matches file paths, works in any repo |
 | `.claude/hooks/skill-requirements.json` | Pattern → required-skill rules | The component path is parameterized at install (`[components-path-prefix]`) |
-| `.claude/settings.json` (hooks block) | Wires the hooks into Claude Code | If you already have one, merge the emitted `settings.northwind.json` |
+| `.claude/settings.json` (hooks block) | Wires the **skill-gate** hooks into Claude Code (the demo's prompt-router is stripped) | If you already have one, merge the emitted `settings.northwind.json` |
 | `.agents/skills/{react,typescript,testing}` + `.claude/skills` symlink | The conventions | Generic (already de-branded) |
 | `.agents/skills/design-system` | The token vocabulary + rules | **Rewrite to your tokens** — this is the main setup work |
 | `eslint/no-raw-{colors,dimensions,rings-zindex}.js` | Ban off-system colors (`bg-indigo-500`), spacing/type (`p-[17px]`, `text-[40px]`), and rings/z-index (`ring-2`, `z-50`) | Compose into your ESLint flat config |
@@ -26,6 +30,13 @@ duplication):
 
 **Not included** (you keep your own): your components, your tokens, your app. The overlay is
 governance, not content.
+
+> **Prompt routing is intentionally not installed.** The kit's `route-prompt.sh` (a
+> `UserPromptSubmit` hook that maps plain-language requests to `/build`, `/restyle`, …) is
+> demo-specific — it points at `gen:prototype`, `apps/sandbox`, and the kit's slash commands, none
+> of which exist in a client repo. `install.sh` strips that hook and installs the **gate** only. If
+> you want plain-language routing, author it to *your* workflows using the kit's `route-prompt.sh`
+> as a reference (see the runbook).
 
 ## Install
 

@@ -23,6 +23,13 @@ fi
 KIT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 TARGET="$(cd "$TARGET" && pwd)"
 
+# jq is required: the skill-gate hooks parse their stdin JSON with it, and this
+# installer uses it to derive the client's settings.json.
+command -v jq >/dev/null 2>&1 || {
+  echo "error: jq not found. The skill-gate hooks depend on jq — install it and re-run." >&2
+  exit 1
+}
+
 echo "→ Installing Northwind governance overlay into: $TARGET"
 echo "  design-system gate will guard: $COMPONENTS"
 echo
@@ -51,12 +58,17 @@ sed "s#packages/ui/#${COMPONENTS}#g" \
 echo "  • added: .claude/hooks/skill-requirements.json (gating $COMPONENTS → design-system)"
 
 # 3) settings.json hooks block — copy if absent, else emit a merge file (never clobber).
+# Derive from the kit's live settings MINUS the demo-only UserPromptSubmit router: the kit's
+# route-prompt.sh hard-codes kit workflows (gen:prototype, apps/sandbox, /build, docs/prompts.md)
+# that don't exist in a client repo, so shipping it would inject misleading guidance. The overlay
+# installs the GATE (Pre/PostToolUse + SessionStart/PostCompact); routing is authored per client.
+GATE_ONLY='del(.hooks.UserPromptSubmit)'
 if [[ -f "$TARGET/.claude/settings.json" ]]; then
-  cp "$KIT_ROOT/.claude/settings.json" "$TARGET/.claude/settings.northwind.json"
+  jq "$GATE_ONLY" "$KIT_ROOT/.claude/settings.json" >"$TARGET/.claude/settings.northwind.json"
   echo '  • settings.json exists → wrote .claude/settings.northwind.json (merge its "hooks" block)'
 else
-  cp "$KIT_ROOT/.claude/settings.json" "$TARGET/.claude/settings.json"
-  echo "  • added: .claude/settings.json (hooks block)"
+  jq "$GATE_ONLY" "$KIT_ROOT/.claude/settings.json" >"$TARGET/.claude/settings.json"
+  echo "  • added: .claude/settings.json (skill-gate hooks)"
 fi
 
 # 4) Skills — design-system must be adapted to YOUR tokens. Don't clobber existing skills.
