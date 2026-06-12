@@ -70,10 +70,12 @@ if [[ ! -e "$TARGET/.claude/skills" ]]; then
   echo "  • added: .claude/skills → ../.agents/skills (symlink)"
 fi
 
-# 5) Token-lint ESLint rule (import into your flat config).
+# 5) Token-lint ESLint rules (import into your flat config).
 mkdir -p "$TARGET/eslint"
-cp "$KIT_ROOT/eslint/no-raw-colors.js" "$TARGET/eslint/no-raw-colors.js"
-echo "  • added: eslint/no-raw-colors.js"
+for r in no-raw-colors no-raw-dimensions no-raw-rings-zindex; do
+  cp "$KIT_ROOT/eslint/$r.js" "$TARGET/eslint/$r.js"
+done
+echo "  • added: eslint/no-raw-{colors,dimensions,rings-zindex}.js"
 
 # 6) Storybook MCP client config.
 copy_dir_if_absent "$KIT_ROOT/.mcp.json" "$TARGET/.mcp.json" ".mcp.json"
@@ -83,10 +85,16 @@ cat <<EOF
 ✅ Portable bundle installed. Now adapt the stack-specific bits (see overlay/README.md):
 
   1. Tokens     → make .agents/skills/design-system/SKILL.md describe YOUR token vocabulary.
-  2. ESLint     → add the rule to your flat config:
-                    import { northwind } from "./eslint/no-raw-colors.js";
-                    { files: ["**/*.{ts,tsx}"], plugins: { northwind },
-                      rules: { "northwind/no-raw-colors": "error" } }
+  2. ESLint     → compose the rules into one plugin in your flat config:
+                    import { noRawColors } from "./eslint/no-raw-colors.js";
+                    import { noRawDimensions } from "./eslint/no-raw-dimensions.js";
+                    import { noRawRingsZindex } from "./eslint/no-raw-rings-zindex.js";
+                    const northwind = { rules: {
+                      "no-raw-colors": noRawColors, "no-raw-dimensions": noRawDimensions,
+                      "no-raw-rings-zindex": noRawRingsZindex } };
+                    { files: ["**/*.{ts,tsx}"], plugins: { northwind }, rules: {
+                      "northwind/no-raw-colors": "error", "northwind/no-raw-dimensions": "error",
+                      "northwind/no-raw-rings-zindex": "error" } }
   3. Settings   → if you had a .claude/settings.json, merge the "hooks" block from
                   .claude/settings.northwind.json, then delete that file.
   4. Storybook  → add @storybook/addon-mcp + features.componentsManifest to .storybook/main.ts;

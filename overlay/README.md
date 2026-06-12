@@ -21,7 +21,7 @@ duplication):
 | `.claude/settings.json` (hooks block) | Wires the hooks into Claude Code | If you already have one, merge the emitted `settings.northwind.json` |
 | `.agents/skills/{react,typescript,testing}` + `.claude/skills` symlink | The conventions | Generic (already de-branded) |
 | `.agents/skills/design-system` | The token vocabulary + rules | **Rewrite to your tokens** — this is the main setup work |
-| `eslint/no-raw-colors.js` | Bans off-system color classes (`bg-indigo-500`, `text-[#hex]`) | Import into your ESLint flat config |
+| `eslint/no-raw-{colors,dimensions,rings-zindex}.js` | Ban off-system colors (`bg-indigo-500`), spacing/type (`p-[17px]`, `text-[40px]`), and rings/z-index (`ring-2`, `z-50`) | Compose into your ESLint flat config |
 | `.mcp.json` | Storybook MCP client config | Point at your Storybook port |
 
 **Not included** (you keep your own): your components, your tokens, your app. The overlay is
@@ -47,12 +47,26 @@ The installer prints these; in order of impact:
    token vocabulary. If you're moving from Figma/shadcn to code-as-source-of-truth, establish a
    `tokens.tsx` + a `generate-theme.ts` (use the kit's `packages/ui` as the reference) and map your
    Figma variables → semantic tokens via `references/migration.md`.
-2. **ESLint.** Add the token-lint rule:
+2. **ESLint.** Compose the token-lint rules into one `northwind` plugin (mirrors the kit's
+   `eslint.config.js`):
    ```js
-   import { northwind } from "./eslint/no-raw-colors.js";
+   import { noRawColors } from "./eslint/no-raw-colors.js";
+   import { noRawDimensions } from "./eslint/no-raw-dimensions.js";
+   import { noRawRingsZindex } from "./eslint/no-raw-rings-zindex.js";
+
+   const northwind = { rules: {
+     "no-raw-colors": noRawColors,
+     "no-raw-dimensions": noRawDimensions,
+     "no-raw-rings-zindex": noRawRingsZindex,
+   } };
+
    export default [
      // ...your config...
-     { files: ["**/*.{ts,tsx}"], plugins: { northwind }, rules: { "northwind/no-raw-colors": "error" } },
+     { files: ["**/*.{ts,tsx}"], plugins: { northwind }, rules: {
+       "northwind/no-raw-colors": "error",
+       "northwind/no-raw-dimensions": "error",
+       "northwind/no-raw-rings-zindex": "error",
+     } },
    ];
    ```
 3. **Settings.** If you already had `.claude/settings.json`, merge the `"hooks"` block from the
