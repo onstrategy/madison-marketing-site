@@ -62,8 +62,7 @@ Run drift control on a cadence (the retainer's heartbeat):
   candidates for deprecation.
 - **Guardrail health** — confirm the gates fire, `bun run check` is green on `main`, and the MCP
   manifest is current.
-- **Enablement** — how many non-technical seats are actively (and safely) contributing? See the
-  [enablement roadmap](./enablement-roadmap.md).
+- **Enablement** — how many non-technical seats are actively (and safely) contributing?
 
 ## Trust levels
 

@@ -26,7 +26,7 @@ ai-kit/
 │  ├─ src/ui/tokens.tsx        ← SOURCE OF TRUTH for all design tokens
 │  ├─ scripts/generate-theme.ts ← tokens.tsx → dist/*.css (the build)
 │  ├─ dist/                    ← generated CSS (gitignored)
-│  ├─ src/primitives/          ← 12 primitives (button, card, alert, …) + index.ts barrel
+│  ├─ src/primitives/          ← 14 primitives (button, card, alert, …) + index.ts barrel
 │  ├─ src/theme/               ← ThemeProvider (light/dark)
 │  ├─ src/ui/style-guide.tsx   ← living visual spec of every token
 │  ├─ src/stories/             ← Storybook stories (feed the MCP manifest)
@@ -36,7 +36,7 @@ ai-kit/
 ├─ .agents/skills/         design-system · react · typescript · testing  (the conventions)
 ├─ .claude/                hooks/ (skill-gate engine) · settings.json · skills→../.agents/skills
 ├─ turbo/generators/       gen:prototype · gen:promote
-├─ eslint/no-raw-colors.js the token-lint rule (shippable)
+├─ eslint/                 no-raw-{colors,dimensions,rings-zindex}.js — token-lint rules (shippable)
 ├─ overlay/               install.sh + README — drop governance into an existing repo
 ├─ docs/                  these docs
 └─ turbo.json · package.json · eslint.config.js · tsconfig.base.json   (workspace plumbing)
@@ -83,6 +83,10 @@ arbitrary form `border-[hsl(var(--border-default)/0.4)]`. (The `design-system` s
 @import "../../../packages/ui/dist/tailwind-tokens.css";              /* @theme color registrations */
 ```
 
+Those four imports are the system wiring. (In `apps/sandbox/src/index.css` you'll also see
+`@import "tw-animate-css";` for animation utilities and a `@custom-variant dark` — neither is part
+of the Northwind wiring.)
+
 **Brand is overridable in ~3 lines.** The defaults are neutral (near-black). Each app overrides
 `--brand-primary/-foreground/-subtle` in its CSS. That's the "re-skin live in a workshop" trick.
 
@@ -96,7 +100,7 @@ arbitrary form `border-[hsl(var(--border-default)/0.4)]`. (The `design-system` s
 Each primitive is a small, on-token React component. The conventions:
 
 - **Plain function components** taking `React.ComponentProps<…>`. **No `forwardRef`** — in React 19
-  `ref` is a normal prop and flows through `{...props}`. (We modernized all 12 off `forwardRef`.)
+  `ref` is a normal prop and flows through `{...props}`. (We modernized all 14 off `forwardRef`.)
 - **`cn(...)`** = `twMerge(clsx(...))` — merges incoming `className` last so consumers can override.
 - **`cva`** for variants (button/badge/alert) — variants map to token classes, never booleans-soup.
 - **Only token classes** — `bg-surface`, `text-primary`, `bg-error-subtle`. No raw `bg-zinc-800`.
@@ -134,7 +138,8 @@ catching a different class of mistake.
 
 ### 6a. The skill-gate — *path-based, enforced by the Claude Code harness*
 
-Three bash hooks wired in `.claude/settings.json`:
+Three bash hooks implement the gate, wired in `.claude/settings.json` (a fourth hook,
+`route-prompt.sh`, is wired there too but is unrelated to gating — see §6f):
 
 | Hook | Event | Job |
 |---|---|---|
@@ -144,9 +149,12 @@ Three bash hooks wired in `.claude/settings.json`:
 
 `skill-requirements.json` maps **path patterns → required skills**:
 ```json
-{ "pattern": "packages/ui/",        "skills": ["design-system"] }
-{ "pattern": "\\.module\\.css$",    "skills": ["design-system"] }
-{ "pattern": "\\.test\\.(ts|tsx)$", "skills": ["testing"] }
+{ "rules": [
+  { "pattern": "\\.test\\.(ts|tsx)$", "skills": ["testing"] },
+  { "pattern": "/__tests__/",         "skills": ["testing"] },
+  { "pattern": "\\.module\\.css$",    "skills": ["design-system"] },
+  { "pattern": "packages/ui/",        "skills": ["design-system"] }
+] }
 ```
 
 **The flow** (the demo everyone sees):
@@ -170,15 +178,25 @@ two-layer/opacity/contrast rules), **react** (dumb-vs-smart, component rules), *
 (the `any` ban, prop typing), **testing** (Vitest conventions). `design-system` + `testing` are
 hard-gated (above); `react`/`typescript` are advisory (load proactively).
 
-### 6c. The content gate — `no-raw-colors` ESLint rule (advisory → CI)
+### 6c. The content gate — the `no-raw-*` ESLint rules (CI-enforced)
 
-`eslint/no-raw-colors.js` flags raw Tailwind color scales (`bg-indigo-500`) and arbitrary hex
-(`text-[#3b82f6]`) in any string literal. It rides `bun run check` (§9), so off-system colors fail
-on every diff — catching exactly what the path-gate can't see.
+Three sibling rules in `eslint/`, all wired at `error` in `eslint.config.js` under the `northwind`
+plugin, flag off-system *values* inside any string literal — exactly what the path-gate can't see:
+
+- **`no-raw-colors`** — raw Tailwind color scales (`bg-indigo-500`) and arbitrary hex (`text-[#3b82f6]`).
+- **`no-raw-dimensions`** — arbitrary spacing/type lengths (`p-[17px]`, `gap-[13px]`, `text-[40px]`),
+  pushing you onto the tokenized scale (`p-4`, named steps like `py-section`, `text-xl`). Brackets that
+  *reference* a token (`p-[var(--spacing-card)]`) are allowed.
+- **`no-raw-rings-zindex`** — focus-ring widths/offsets and z-index magic numbers, *including the
+  numbered utilities* (`ring-2`, `ring-offset-2`, `z-50`) — because those hardcode px/index instead of
+  referencing `--ring-width` / the named `--z-*` layers (`z-modal`, `z-tooltip`). Use
+  `ring-[length:var(--ring-width)]` and the named z-scale.
+
+They all ride `bun run check` (§9), so off-system values fail on every diff.
 
 ### 6d. The merge gate — `bun run check`
 
-`turbo run typecheck test && eslint .` — TypeScript + Vitest + ESLint (incl. `no-raw-colors`). This
+`turbo run typecheck test && eslint .` — TypeScript + Vitest + ESLint (incl. the `no-raw-*` rules). This
 is **the** gate: green check = mergeable. Runs locally and in CI.
 
 ### 6e. The health gate — `react-doctor` (CI)
@@ -191,8 +209,19 @@ block; warnings annotate the PR). Distinct from §6c — react-doctor lints *Rea
 |---|---|---|
 | Skill-gate | PreToolUse hook | Editing `packages/ui`/`.module.css`/tests without the right skill loaded |
 | Type / test | `bun run check` (CI) | Type errors, failing tests |
-| Off-system colors | `no-raw-colors` → `bun run check` (CI) | `bg-indigo-500`, `text-[#hex]` |
+| Off-system values | `no-raw-{colors,dimensions,rings-zindex}` → `bun run check` (CI) | `bg-indigo-500`/`text-[#hex]`, `p-[17px]`/`text-[40px]`, `ring-2`/`z-50` |
 | React health | `react-doctor` (CI) | Security/perf/a11y/correctness issues |
+
+### 6f. The prompt router — `route-prompt.sh` (*not a gate*)
+
+A fourth hook on **UserPromptSubmit**, wired in the same `settings.json`. It **never blocks** (always
+exits 0): it classifies a free-typed, plain-language request into one of the approved workflows
+(**build · restyle · submit · promote**, plus a **maintainer** heads-up for gate/token-engine
+territory) and injects a short, governance-aware playbook as context — so the agent stays on the rails
+even on a vague prompt or after compaction. A wrong guess is harmless: it only adds an advisory pointer
+(and, for maintainer territory, a non-blocking `systemMessage`). It mirrors the catalog in
+[`prompts.md`](./prompts.md) and the `.claude/commands/`. (This is the "plain-language contributor"
+layer from `AGENTS.md`: the path-gate enforces, the router *guides*.)
 
 ---
 
@@ -239,7 +268,7 @@ is rich.)
 into an existing repo:
 - the 3 skill-gate hooks (verbatim) + `skill-requirements.json` (with the component path
   **parameterized**), the `settings.json` hooks block (or a `settings.northwind.json` to merge if one
-  exists — **never clobbers**), the 4 skills + the `.claude/skills` symlink, `eslint/no-raw-colors.js`,
+  exists — **never clobbers**), the 4 skills + the `.claude/skills` symlink, the three `eslint/no-raw-*.js` rules,
   and `.mcp.json`.
 - Then you adapt the stack-specific bits (your tokens → the design-system skill, ESLint wiring, CI,
   Storybook). See [`../overlay/README.md`](../overlay/README.md).
@@ -259,7 +288,7 @@ style guide. (Gate: editing under `packages/ui/` requires the design-system skil
 + a route → compose `@northwind/ui` primitives on-token → `bun run check` green → PR.
 
 **Promote a component.** `bun run gen:promote` scaffolds the primitive + story + wires exports/barrel
-→ port the real JSX, rewrite off-system classes via `migration.md` → `bun run check` → it appears in
+→ port the real JSX, rewrite off-system classes via the design-system skill's `references/migration.md` → `bun run check` → it appears in
 the MCP manifest → draft PR.
 
 **The gate fires.** Edit a `packages/ui` file without `design-system` → blocked → load it → marker
@@ -279,7 +308,7 @@ recolors, semantic colors stay constant. (The workshop "aha.")
 | A primitive's shape | `packages/ui/src/primitives/button.tsx` (cva) · `card.tsx` (simple) · `alert.tsx` (variants+icon) |
 | Self-registration | `apps/sandbox/src/App.tsx` |
 | The skill-gate | `.claude/hooks/enforce-skill-gates.sh` + `.claude/hooks/skill-requirements.json` + `.claude/settings.json` |
-| The token-lint rule | `eslint/no-raw-colors.js` |
+| The token-lint rules | `eslint/no-raw-colors.js` · `no-raw-dimensions.js` · `no-raw-rings-zindex.js` |
 | The generators | `turbo/generators/config.ts` + `templates/` |
 | The overlay | `overlay/install.sh` + `overlay/README.md` |
 
@@ -290,7 +319,7 @@ recolors, semantic colors stay constant. (The workshop "aha.")
 - **Is this just shadcn?** The primitives are shadcn-flavored, but the product is the **token engine
   + governance-as-code** (gates + check + MCP) that keeps a whole org *on* the system. That's the moat.
 - **What's enforced vs advisory?** Enforced: the skill-gate (harness), `bun run check`/CI (types,
-  tests, `no-raw-colors`), `react-doctor` errors. Advisory: load `react`/`typescript` proactively;
+  tests, the `no-raw-*` rules), `react-doctor` errors. Advisory: load `react`/`typescript` proactively;
   most react-doctor findings are warnings.
 - **Why HSL channels?** Native opacity modifiers (`bg-success/10`). Hex can't.
 - **Is `dist/` committed?** No — generated from `tokens.tsx`; `turbo dev` builds it first.

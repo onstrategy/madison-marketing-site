@@ -19,7 +19,7 @@ made safe by governance-as-code.
 | `.claude/hooks` | Skill-gate bundle — blocks edits to guarded paths until the right skill is loaded |
 | `turbo/generators` | `gen:prototype` (new on-token prototype) + `gen:promote` (promote a prototype to a `packages/ui` primitive) |
 | `overlay/` | The **installable governance overlay** — drop the gates + skills + token-lint into an existing client repo |
-| `docs/` | Contributor, promote, governance, enablement, and business-model docs |
+| `docs/` | Contributor, promote, governance, and business-model docs |
 
 ## Docs
 
@@ -28,7 +28,6 @@ made safe by governance-as-code.
 - [`docs/contributor-guide.md`](docs/contributor-guide.md) — the 5-step recipe to ship on-system UI (incl. non-technical contributors via Claude Code)
 - [`docs/promote.md`](docs/promote.md) — promote a sandbox prototype into a `packages/ui` primitive
 - [`docs/governance.md`](docs/governance.md) — governance-as-code: three-layer model, token lifecycle, quarterly audit
-- [`docs/enablement-roadmap.md`](docs/enablement-roadmap.md) — the 30-60-90 plan after the enablement workshop
 - [`docs/business-model.md`](docs/business-model.md) — the commercial model (idea-level)
 - [`AGENTS.md`](AGENTS.md) — the agent constitution (architecture, mandates, commands)
 - [`overlay/README.md`](overlay/README.md) — install the governance overlay (gates + skills + token-lint) into an existing repo
