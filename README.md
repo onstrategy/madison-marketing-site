@@ -47,15 +47,78 @@ Editing `tokens.tsx` and running `bun run build` regenerates
 
 ## Getting started
 
+This repo uses **[Bun](https://bun.com)** as its package manager and runtime (pinned to
+`bun@1.3.9`). Bun ships with its own JavaScript runtime, so **you do not need to install Node.js
+separately** — Git and Bun are the only prerequisites.
+
+### Step 1 — Install Git (if you don't have it)
+
+Check first by opening a terminal and running `git --version`. If you see a version number,
+skip this step.
+
+- **macOS:** run `xcode-select --install` and accept the prompt, or install from
+  [git-scm.com](https://git-scm.com/download/mac).
+- **Windows:** download and run the installer from [git-scm.com](https://git-scm.com/download/win)
+  (accept the defaults).
+
+### Step 2 — Install Bun
+
+Check first with `bun --version`. If you see `1.3.x` or newer, skip ahead to Step 3.
+
+- **macOS / Linux** — paste this into a terminal:
+  ```bash
+  curl -fsSL https://bun.com/install | bash
+  ```
+- **Windows** — paste this into **PowerShell**:
+  ```powershell
+  powershell -c "irm bun.com/install.ps1 | iex"
+  ```
+
+After it finishes, **close and reopen your terminal**, then confirm it worked:
+
+```bash
+bun --version
+```
+
+### Step 3 — Clone the repository
+
+```bash
+git clone https://github.com/pogadev18/northwind-design-system.git
+cd northwind-design-system
+```
+
+### Step 4 — Install dependencies
+
 ```bash
 bun install
-bun run build      # generate dist/theme.css + dist/tailwind-tokens.css from tokens.tsx
-bun run check      # typecheck + test + lint
-bun run dev        # Storybook (:6007, MCP) + sandbox (:5173) — Turbo builds tokens first
+```
+
+This reads `bun.lock` and installs everything for all workspaces (`packages/*` + `apps/*`) in one go.
+
+### Step 5 — Start it
+
+```bash
+bun run dev
+```
+
+This opens two local sites (Turbo regenerates the token CSS first, automatically):
+
+- **Storybook** → http://localhost:6007 — every component and its variants (also serves the MCP at `/mcp`)
+- **Sandbox** → http://localhost:5173 — the on-token prototypes / pages
+
+Leave that terminal running. To stop the servers, press `Ctrl + C`.
+
+> **Troubleshooting:** if `bun` is "command not found" after Step 2, fully quit and reopen your
+> terminal (the installer adds Bun to your PATH and the change only takes effect in a new window).
+
+### Daily commands (for engineers)
+
+```bash
+bun run build           # regenerate dist/theme.css + dist/tailwind-tokens.css from tokens.tsx
+bun run check           # typecheck + test + lint — the gate; run before opening a PR
 bun run gen:prototype   # scaffold a new on-token prototype in apps/sandbox
 ```
 
-Prefer `bun run dev` — Turbo regenerates the token CSS before starting Storybook and the sandbox.
-
-**Not an engineer?** You don't need these commands. Open Claude Code and just say what you want —
-or type `/prompts` to see the menu. See [`docs/prompts.md`](docs/prompts.md).
+**Not an engineer?** Once `bun run dev` is running (Step 5 above), you don't need any of these
+commands. Open Claude Code in this folder and just say what you want — or type `/prompts` to see
+the menu. See [`docs/prompts.md`](docs/prompts.md).
