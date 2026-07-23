@@ -1,10 +1,10 @@
 {
-  "name": "northwind",
+  "name": "madison",
   "version": "0.0.0",
   "private": true,
   "license": "UNLICENSED",
   "type": "module",
-  "description": "Northwind — an AI-native, code-first design system kit.",
+  "description": "Madison — an AI-native, code-first design system kit.",
   "packageManager": "bun@1.3.9",
   "workspaces": [
     "packages/*",

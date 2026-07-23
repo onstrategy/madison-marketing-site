@@ -4,11 +4,17 @@
 > [`../PLAN.md`](../PLAN.md) for later refinement. These are commercial *options*,
 > intentionally de-emphasized while the technical kit and enablement motion are
 > proven in production.
+>
+> **Repo note:** this repo has since been **specialized into Madison** (a real client's design
+> system); it began as a **neutral reference kit** (codenamed "Northwind"). Where the text below
+> says "kit," "template," "neutral," or "clone-per-client," that describes the productized
+> *approach* and the kit's origin — not this repo's current single-client state.
 
-The product is a **repeatable, productized kit** — sold to many clients, not a
-one-off. Northwind (this repo) is simultaneously the **sales demo**, the
-**clone-per-client template**, and the source of the **installable overlay** for
-existing client repos.
+The product is a **repeatable, productized kit approach** — sold to many clients, not a
+one-off. A **neutral reference kit** is the **sales demo**, the **clone-per-client
+template**, and the source of the **installable overlay** for existing client repos.
+**This repo is one concrete instance of that approach — specialized into Madison's design
+system** (see the repo note above).
 
 The moat is **governance-as-code**: non-technical people (designers, PMs,
 marketing) ship *real components into the real repo* via PRs engineers merge,
@@ -47,7 +53,7 @@ A ladder from low-touch/self-serve to high-touch/done-for-you:
 
 ## Open-core lead generation
 
-Open-source the neutral **Northwind** kit as:
+Open-source the neutral **reference kit** as:
 
 - a **credibility magnet** (a working, opinionated reference others can inspect), and
 - **top-of-funnel** for the paid motion.

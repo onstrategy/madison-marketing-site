@@ -1,5 +1,5 @@
 ---
-description: Turn a validated prototype component into an official, reusable @northwind/ui primitive.
+description: Turn a validated prototype component into an official, reusable @madison/ui primitive.
 argument-hint: which component, e.g. "the stat card from the pricing page"
 ---
 
@@ -16,6 +16,6 @@ always lands as a **draft PR** for an engineer (never auto-merge). Do all the te
 4. **Port + clean up** — move the real JSX in, rewrite any off-system classes via the
    design-system skill's `references/migration.md`, and point the prototype + consumers at the
    new primitive.
-5. **Check + build.** `bun --filter @northwind/ui build` if tokens changed, then `bun run check`
+5. **Check + build.** `bun --filter @madison/ui build` if tokens changed, then `bun run check`
    (must be green).
 6. **Open a draft PR** and return the link. Tell them an engineer will review before it's live.

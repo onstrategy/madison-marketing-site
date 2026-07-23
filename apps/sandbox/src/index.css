@@ -7,17 +7,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Northwind demo brand — the ~3-line override apps own. Re-skinnable live in workshops. */
-:root {
-  --brand-primary: 212 92% 45%;
-  --brand-foreground: 0 0% 100%;
-  --brand-subtle: 212 92% 95%;
-}
-.dark {
-  --brand-primary: 212 92% 60%;
-  --brand-foreground: 0 0% 100%;
-  --brand-subtle: 212 45% 22%;
-}
+/*
+ * Madison is now the design system's default brand (Terracotta), set in
+ * packages/ui/src/ui/tokens.tsx — so no per-app --brand-* override is needed here.
+ */
 
 @layer base {
   * {
@@ -28,5 +21,12 @@
     color: hsl(var(--text-primary));
     -webkit-font-smoothing: antialiased;
     font-family: var(--font-sans);
+  }
+  /* Madison identity: large headings (h1–h4) render in Lora; h5/h6 stay Inter. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
   }
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Northwind governance overlay — installer.
+# Madison governance overlay — installer.
 # Extracts the portable governance bundle (skill-gate hooks + skills + token-lint rule +
 # Storybook MCP client config) from this kit into an EXISTING repo. Run FROM the kit:
 #
@@ -30,7 +30,7 @@ command -v jq >/dev/null 2>&1 || {
   exit 1
 }
 
-echo "→ Installing Northwind governance overlay into: $TARGET"
+echo "→ Installing Madison governance overlay into: $TARGET"
 echo "  design-system gate will guard: $COMPONENTS"
 echo
 
@@ -64,8 +64,8 @@ echo "  • added: .claude/hooks/skill-requirements.json (gating $COMPONENTS →
 # installs the GATE (Pre/PostToolUse + SessionStart/PostCompact); routing is authored per client.
 GATE_ONLY='del(.hooks.UserPromptSubmit)'
 if [[ -f "$TARGET/.claude/settings.json" ]]; then
-  jq "$GATE_ONLY" "$KIT_ROOT/.claude/settings.json" >"$TARGET/.claude/settings.northwind.json"
-  echo '  • settings.json exists → wrote .claude/settings.northwind.json (merge its "hooks" block)'
+  jq "$GATE_ONLY" "$KIT_ROOT/.claude/settings.json" >"$TARGET/.claude/settings.madison.json"
+  echo '  • settings.json exists → wrote .claude/settings.madison.json (merge its "hooks" block)'
 else
   jq "$GATE_ONLY" "$KIT_ROOT/.claude/settings.json" >"$TARGET/.claude/settings.json"
   echo "  • added: .claude/settings.json (skill-gate hooks)"
@@ -101,14 +101,14 @@ cat <<EOF
                     import { noRawColors } from "./eslint/no-raw-colors.js";
                     import { noRawDimensions } from "./eslint/no-raw-dimensions.js";
                     import { noRawRingsZindex } from "./eslint/no-raw-rings-zindex.js";
-                    const northwind = { rules: {
+                    const madison = { rules: {
                       "no-raw-colors": noRawColors, "no-raw-dimensions": noRawDimensions,
                       "no-raw-rings-zindex": noRawRingsZindex } };
-                    { files: ["**/*.{ts,tsx}"], plugins: { northwind }, rules: {
-                      "northwind/no-raw-colors": "error", "northwind/no-raw-dimensions": "error",
-                      "northwind/no-raw-rings-zindex": "error" } }
+                    { files: ["**/*.{ts,tsx}"], plugins: { madison }, rules: {
+                      "madison/no-raw-colors": "error", "madison/no-raw-dimensions": "error",
+                      "madison/no-raw-rings-zindex": "error" } }
   3. Settings   → if you had a .claude/settings.json, merge the "hooks" block from
-                  .claude/settings.northwind.json, then delete that file.
+                  .claude/settings.madison.json, then delete that file.
   4. Storybook  → add @storybook/addon-mcp + features.componentsManifest to .storybook/main.ts;
                   point .mcp.json at your Storybook's port.
   5. CI         → run your check (typecheck + lint + test) + react-doctor on every PR

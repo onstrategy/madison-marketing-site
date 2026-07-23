@@ -1,5 +1,5 @@
 {
-  "name": "@northwind/sandbox",
+  "name": "@madison/sandbox",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",
-    "@northwind/ui": "workspace:*",
+    "@madison/ui": "workspace:*",
     "lucide-react": "^0.575.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

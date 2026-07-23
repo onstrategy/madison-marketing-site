@@ -1,11 +1,11 @@
 // Standalone ESLint flat-config rule: ban raw, off-system color utilities — Tailwind numbered
 // color scales (e.g. `bg-indigo-500`) and arbitrary hex (e.g. `text-[#3b82f6]`) — in favour of
-// design tokens. Part of the Northwind governance overlay; drop into any flat config:
+// design tokens. Part of the Madison governance overlay; drop into any flat config:
 //
-//   import { northwind } from "./eslint/no-raw-colors.js";
+//   import { madison } from "./eslint/no-raw-colors.js";
 //   export default [
 //     ...,
-//     { files: ["**/*.{ts,tsx}"], plugins: { northwind }, rules: { "northwind/no-raw-colors": "error" } },
+//     { files: ["**/*.{ts,tsx}"], plugins: { madison }, rules: { "madison/no-raw-colors": "error" } },
 //   ];
 //
 // Token classes (bg-surface, text-primary, bg-success-subtle, …) never match these patterns.
@@ -49,4 +49,4 @@ export const noRawColors = {
 };
 
 // Ready-to-spread flat-config plugin object.
-export const northwind = { rules: { "no-raw-colors": noRawColors } };
+export const madison = { rules: { "no-raw-colors": noRawColors } };

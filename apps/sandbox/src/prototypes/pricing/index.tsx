@@ -1,5 +1,5 @@
 import meta from "./meta";
-import { Button } from "@northwind/ui/button";
+import { Button } from "@madison/ui/button";
 import {
   Card,
   CardHeader,
@@ -7,7 +7,7 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "@northwind/ui/card";
+} from "@madison/ui/card";
 
 function formatPrice(amount: number): string {
   return amount === 0 ? "Free" : `$${amount}/mo`;

@@ -1,5 +1,12 @@
 # Design System as Code — Productized Kit
 
+> **Status note (this repo has since pivoted).** This is the *original* plan for a **neutral
+> reference kit** (codenamed **"Northwind"**). That kit has since been **specialized into
+> Madison** — a real client's design system — and the repo is now Madison-dedicated. Read the
+> "neutral demo brand," "template," and "clone-per-client" language below as the productized
+> *approach* and the kit's origin, **not** this repo's current single-client state. The neutral
+> starting point remains recoverable in git history.
+
 ## Context
 
 Target clients want to "ditch Figma" and maintain their design system **directly in code**, usable by **non-technical people** (designers, PMs, marketing) via Claude Code. You and Vlad built `prompt-evaluator`, which already embodies most of the answer. Decisions confirmed with the user:
@@ -20,7 +27,7 @@ Target clients want to "ditch Figma" and maintain their design system **directly
 
 ## Repo Strategy: the Kit Repo (extract & distill)
 
-A new **minimal Turborepo** under a **neutral demo brand** ("Northwind") — simultaneously your sales demo, the clone-per-client template, and the source of the installable overlay. Develop the kit here; **extract the overlay** from it for existing client repos.
+A new **minimal Turborepo** under a **neutral demo brand** (originally codenamed "Northwind", since specialized into **Madison**) — simultaneously your sales demo, the clone-per-client template, and the source of the installable overlay. Develop the kit here; **extract the overlay** from it for existing client repos.
 
 **PORT verbatim from `prompt-evaluator`, then trim/generalize** (proven — don't rewrite):
 - `.claude/hooks/{enforce-skill-gates,on-skill-loaded,clear-skill-gates}.sh` + `skill-requirements.json` + the `settings.json` hook wiring. Add `design-system` gate rules (below).
@@ -33,7 +40,7 @@ A new **minimal Turborepo** under a **neutral demo brand** ("Northwind") — sim
 **SCAFFOLD fresh (clean, intentional, kit-first):**
 - Turborepo root (workspaces, `turbo.json`, base tsconfig, root `package.json`).
 - `apps/sandbox` — **on the design system from day one**, wired via the canonical 4-line CSS header, with `gen:prototype` + `import.meta.glob` self-registration.
-- Neutral "Northwind" brand override (3-line CSS) + a couple of showcase pages; re-skinnable live in workshops.
+- Neutral brand override (3-line CSS) + a couple of showcase pages; re-skinnable live in workshops.
 - `AGENTS.md`/`CLAUDE.md` (kit-focused orchestration) + the contributor recipe.
 - Kit docs: `contributor-guide.md`, `governance.md`, the 30-60-90 enablement roadmap, `business-model.md`.
 
@@ -119,7 +126,7 @@ All paths below are relative to the source repo root `/Users/pogadev18/Developer
 
 ## Build order (in the new kit repo)
 
-1. Scaffold the minimal Turborepo + Northwind brand; port the **token engine** + ~8 primitives; get Storybook running.
+1. Scaffold the minimal Turborepo + Madison brand; port the **token engine** + ~8 primitives; get Storybook running.
 2. Port the **`.claude/` skill-gate bundle** + the `design-system`/`react`/`typescript` skills; **gate the design-system skill**.
 3. Build `apps/sandbox` **on-system**; add **`gen:prototype` + glob self-registration** + on-token starter template.
 4. Add **Storybook MCP** (addon + manifest + `.mcp.json`) + a few token-binding stories.
@@ -169,7 +176,7 @@ De-emphasized here by request; captured for later. Idea-level, not committed.
 
 - **Three-phase engagement:** (1) Setup/Migration — fixed-fee, scoped post-discovery; (2) Enablement Workshop — fixed per-cohort fee, includes the leave-behind kit; (3) Governance-as-code Retainer — monthly recurring (audits, token lifecycle, gate/CI upkeep, office hours). The retainer is the recurring-revenue engine.
 - **Productized tiers:** *Starter* (self-serve template + docs, low-touch / open-core) → *Done-with-you* (workshop + overlay install) → *Done-for-you + retainer* (high-touch).
-- **Open-core lead-gen:** open-source the neutral "Northwind" kit as a credibility magnet + top-of-funnel; monetize install, enablement, retainer, and premium skills/generators.
+- **Open-core lead-gen:** open-source the neutral **reference kit** as a credibility magnet + top-of-funnel; monetize install, enablement, retainer, and premium skills/generators.
 - **Retainer pricing levers:** repo size, # of components/tokens, audit cadence, # of enabled non-technical seats.
 - **v2 / optional SaaS:** a hosted "governance dashboard" — drift audits, token-usage reports, hosted MCP. Bigger build; only if the services motion proves demand.
 - **Verticalized templates:** pre-branded kits for common stacks (e.g. Next.js/shadcn shops) to shorten setup.

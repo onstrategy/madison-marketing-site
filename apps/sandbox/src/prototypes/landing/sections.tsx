@@ -1,7 +1,6 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import {
-  Wind,
-  Sparkles,
+  ChevronDown,
   ArrowRight,
   ArrowLeftRight,
   MessageSquare,
@@ -13,21 +12,29 @@ import {
   Check,
   Mail,
 } from "lucide-react";
-import { cn } from "@northwind/ui/utils";
-import { Button } from "@northwind/ui/button";
+import { cn } from "@madison/ui/utils";
+import { Button } from "@madison/ui/button";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarLinks,
+  NavbarLink,
+  NavbarActions,
+} from "@madison/ui/navbar";
+import { Logo } from "@madison/ui/logo";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
-} from "@northwind/ui/card";
-import { Badge } from "@northwind/ui/badge";
-import { Input } from "@northwind/ui/input";
-import { TestimonialCard } from "@northwind/ui/testimonial-card";
-import { Separator } from "@northwind/ui/separator";
-import { Switch } from "@northwind/ui/switch";
-import { ThemeToggle } from "@northwind/ui/theme";
+} from "@madison/ui/card";
+import { Badge } from "@madison/ui/badge";
+import { Input } from "@madison/ui/input";
+import { TestimonialCard } from "@madison/ui/testimonial-card";
+import { Separator } from "@madison/ui/separator";
+import { Switch } from "@madison/ui/switch";
+import { ThemeToggle } from "@madison/ui/theme";
 import {
   Reveal,
   Eyebrow,
@@ -38,171 +45,45 @@ import {
 } from "./parts";
 
 // ============================================================================
-// Northwind landing — sections. Neutral-first, product-as-illustration,
+// Madison landing — sections. Neutral-first, product-as-illustration,
 // every accent a token. Reads as a crafted dev/design tool, not SaaS slop.
 // ============================================================================
 
 const NAV_LINKS = [
-  { href: "#how-it-works", label: "How it works" },
-  { href: "#system", label: "The system" },
-  { href: "#pricing", label: "Pricing" },
+  { label: "Platform", menu: true },
+  { label: "Client Stories", menu: false },
+  { label: "Security", menu: false },
+  { label: "Company", menu: true },
+  { label: "Resources", menu: false },
 ];
-
-function Wordmark() {
-  return (
-    <a href="#top" className="flex items-center gap-2.5">
-      <span className="flex size-7 items-center justify-center rounded-md bg-brand">
-        <Wind className="size-4 text-brand-fg" />
-      </span>
-      <span className="text-sm font-semibold tracking-tight text-primary">
-        Northwind
-      </span>
-    </a>
-  );
-}
 
 export function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-sticky transition-colors",
-        scrolled
-          ? "border-b border-default bg-app/80 backdrop-blur"
-          : "border-b border-transparent",
-      )}
-    >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-gutter py-4">
-        <Wordmark />
-        <div className="hidden items-center gap-8 md:flex">
+    <Navbar contentClassName="mx-auto max-w-[var(--container-page)]">
+      <div className="flex items-center gap-8">
+        <NavbarBrand href="#top">
+          <Logo />
+        </NavbarBrand>
+        <NavbarLinks>
           {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-secondary transition-colors hover:text-primary"
-            >
+            <NavbarLink key={link.label} href="#top">
               {link.label}
-            </a>
+              {link.menu ? <ChevronDown className="size-4" /> : null}
+            </NavbarLink>
           ))}
-        </div>
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <Button size="sm">Book a demo</Button>
-        </div>
-      </nav>
-    </header>
-  );
-}
-
-const HERO_PLANS = [
-  { name: "Starter", price: "$0", featured: false },
-  { name: "Team", price: "$29", featured: true },
-  { name: "Scale", price: "$99", featured: false },
-];
-
-function HeroDevice() {
-  return (
-    <BrowserFrame title="northwind — sandbox">
-      <div className="space-y-4 p-card">
-        {/* The plain-language request */}
-        <div className="flex items-center gap-3 rounded-lg border border-default bg-app px-3 py-2.5">
-          <span className="font-mono text-sm text-brand">❯</span>
-          <span className="font-mono text-sm text-secondary">
-            build me a pricing page
-          </span>
-          <span className="ml-auto inline-block h-4 w-px animate-pulse bg-brand" />
-        </div>
-
-        <div className="flex items-center justify-between">
-          <Eyebrow>On-token result</Eyebrow>
-          <span className="font-mono text-xs text-muted">pricing.tsx</span>
-        </div>
-
-        {/* The result, rendered on-token */}
-        <div className="grid grid-cols-3 gap-2">
-          {HERO_PLANS.map((plan) => (
-            <div
-              key={plan.name}
-              className={cn(
-                "rounded-lg border p-3",
-                plan.featured
-                  ? "border-brand bg-brand-subtle"
-                  : "border-default bg-app",
-              )}
-            >
-              <div className="text-xs text-secondary">{plan.name}</div>
-              <div className="mt-1 text-lg font-semibold text-primary">
-                {plan.price}
-              </div>
-              <div className="mt-3 h-1.5 w-full rounded-full bg-hover" />
-            </div>
-          ))}
-        </div>
-
-        <div className="flex flex-wrap items-center gap-2 pt-1">
-          <CheckChip>on-token</CheckChip>
-          <CheckChip>bun run check</CheckChip>
-          <Badge variant="secondary">draft PR #128</Badge>
-        </div>
+        </NavbarLinks>
       </div>
-    </BrowserFrame>
-  );
-}
-
-export function Hero() {
-  return (
-    <section id="top" className="relative overflow-hidden border-b border-default">
-      <DotGrid className="opacity-60 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-gutter py-section lg:grid-cols-2 lg:py-28">
-        <div>
-          <Reveal>
-            <Eyebrow>
-              <Sparkles className="size-3.5" /> Design systems · as code
-            </Eyebrow>
-          </Reveal>
-          <Reveal delay={60}>
-            <h1 className="mt-5 text-balance text-4xl font-semibold tracking-tight text-primary sm:text-5xl">
-              Your design system, in code. Shipped by your whole team.
-            </h1>
-          </Reveal>
-          <Reveal delay={120}>
-            <p className="mt-5 max-w-xl text-pretty text-lg text-secondary">
-              Northwind makes code the single source of truth — so design and
-              implementation never drift apart. Designers, PMs, and marketing
-              don't write code; they describe what they want, and Claude Code
-              ships it as real, on-system components in the real repo —
-              governance-as-code keeping every change safe.
-            </p>
-          </Reveal>
-          <Reveal delay={180}>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Button size="lg">Book a demo</Button>
-              <Button size="lg" variant="outline" asChild>
-                <a href="#how-it-works">
-                  See how it works <ArrowRight className="size-4" />
-                </a>
-              </Button>
-            </div>
-          </Reveal>
-          <Reveal delay={240}>
-            <p className="mt-6 font-mono text-xs text-muted">
-              No Figma handoff · No raw hex · Real PRs your engineers merge
-            </p>
-          </Reveal>
-        </div>
-        <Reveal delay={120} className="lg:pl-6">
-          <HeroDevice />
-        </Reveal>
-      </div>
-    </section>
+      <NavbarActions>
+        <ThemeToggle />
+        <a
+          href="#top"
+          className="hidden text-sm font-medium text-primary transition-colors hover:text-brand sm:block"
+        >
+          Sign in
+        </a>
+        <Button size="sm">Book a demo</Button>
+      </NavbarActions>
+    </Navbar>
   );
 }
 
@@ -281,7 +162,7 @@ export function Problem() {
           </Reveal>
           <Reveal delay={80}>
             <div className="h-full rounded-xl border border-default bg-surface p-card">
-              <Eyebrow className="text-success">With Northwind</Eyebrow>
+              <Eyebrow className="text-success">With Madison</Eyebrow>
               <div className="mt-4 flex flex-wrap items-center gap-3">
                 <DiagramNode featured>Code</DiagramNode>
                 <ArrowRight className="size-5 shrink-0 text-muted" />
@@ -638,7 +519,7 @@ export function Showcase() {
           <SectionHeading
             eyebrow="Proof"
             title="This page is built from the system it sells."
-            blurb="Every button, badge, and input here is a real @northwind/ui primitive. Toggle the theme in the nav — the whole page recolors from the same tokens."
+            blurb="Every button, badge, and input here is a real @madison/ui primitive. Toggle the theme in the nav — the whole page recolors from the same tokens."
           />
         </Reveal>
         <Reveal>
@@ -968,7 +849,9 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-gutter py-12">
         <div className="flex flex-col items-start justify-between gap-10 md:flex-row">
           <div className="max-w-xs">
-            <Wordmark />
+            <a href="#top" className="flex items-center gap-2.5">
+              <Logo />
+            </a>
             <p className="mt-3 text-sm text-secondary">
               The code-first design system kit. Governance-as-code for teams
               that ship.
@@ -1001,7 +884,7 @@ export function Footer() {
 
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <p className="font-mono text-xs text-muted">
-            © 2026 Northwind. A neutral demo brand.
+            © 2026 Madison. A neutral demo brand.
           </p>
           <a
             href="/"

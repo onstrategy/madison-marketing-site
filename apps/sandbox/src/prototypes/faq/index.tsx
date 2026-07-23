@@ -1,11 +1,11 @@
 import meta from "./meta";
-import { Card } from "@northwind/ui/card";
+import { Card } from "@madison/ui/card";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@northwind/ui/accordion";
+} from "@madison/ui/accordion";
 
 // This prototype self-registers via import.meta.glob in apps/sandbox/src/App.tsx —
 // meta.ts powers the gallery; this file is the lazy-loaded page. No edits to App.tsx.
@@ -66,7 +66,7 @@ export default function FaqPrototype() {
 
         <Card className="overflow-hidden">
           {/* Independent toggles, first question open by default — now powered by the
-              promoted @northwind/ui/accordion primitive. */}
+              promoted @madison/ui/accordion primitive. */}
           <Accordion type="multiple" defaultValue={["q1"]}>
             {FAQS.map((faq) => (
               <AccordionItem key={faq.id} value={faq.id}>

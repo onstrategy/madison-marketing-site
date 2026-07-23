@@ -63,16 +63,16 @@ Why all three: a primitive is a React component (`react`) written in strict Type
    answer *"which tokens does `<Name>` use?"*.
 
 6. **Close the loop.** Point the prototype (and any other consumer) at the new primitive:
-   `import { <Name> } from "@northwind/ui/<name>";` and delete the inline copy.
+   `import { <Name> } from "@madison/ui/<name>";` and delete the inline copy.
 
 7. **Run the real gate.** Regenerate tokens if you added any, then run the full check:
    ```bash
-   bun --filter @northwind/ui build   # only needed if you changed tokens.tsx
+   bun --filter @madison/ui build   # only needed if you changed tokens.tsx
    bun run check                      # typecheck + test + lint — must be green
    ```
 
 8. **Open a draft PR.** An engineer reviews; once merged, the new primitive appears in the
-   MCP manifest and is available to every app via `@northwind/ui/<name>`.
+   MCP manifest and is available to every app via `@madison/ui/<name>`.
 
 ## Worked example: `Alert`
 
@@ -84,7 +84,7 @@ Promotion produced [`packages/ui/src/primitives/alert.tsx`](../packages/ui/src/p
   triad (`bg-<status>-subtle` + `border-<status>/30` + colored icon), text kept neutral.
 - `forwardRef`, `cn` merge, `Alert` / `AlertTitle` / `AlertDescription` sub-components.
 - The stray `text-muted-foreground` → `text-muted` (step 3).
-- Exported via `@northwind/ui/alert`, storied in `Alert.stories.tsx`, and consumed back in
+- Exported via `@madison/ui/alert`, storied in `Alert.stories.tsx`, and consumed back in
   the `alerts` sandbox prototype.
 
 `bun run check` green → ready for a draft PR.

@@ -1,25 +1,26 @@
-# Agent Guidelines — Northwind Design System Kit
+# Agent Guidelines — Madison Design System Kit
 
 High-level mandate for all AI agents working in this repo. Detailed recipes live in
 **Skills** under `.agents/skills/`; load them before editing.
 
 ## What this project is
 
-**Northwind** is an AI-native, **code-first design system kit**. Code is the single source
+**Madison** is an AI-native, **code-first design system**. Code is the single source
 of truth for design tokens and components; non-technical contributors (designers, PMs,
 marketing) ship real components into the real repo through Claude Code, made safe by
-**governance-as-code** (skill gates + `bun run check`). It doubles as the sales demo and the
-clone-per-client template. See [`PLAN.md`](./PLAN.md) for the full strategy.
+**governance-as-code** (skill gates + `bun run check`). This repo is **Madison's design
+system** — specialized from a neutral reference kit; see [`PLAN.md`](./PLAN.md) for that
+origin and the productization strategy.
 
 ## Architecture
 
 Code flows downward — apps depend on packages, never the reverse.
 
 ```
-apps/sandbox   (@northwind/sandbox)  on-system Vite app; hosts on-token prototypes
+apps/sandbox   (@madison/sandbox)  on-system Vite app; hosts on-token prototypes
       │  depends on
       ▼
-packages/ui    (@northwind/ui)       the design system: tokens → CSS, primitives, Storybook
+packages/ui    (@madison/ui)       the design system: tokens → CSS, primitives, Storybook
 ```
 
 - **`packages/ui`** — the system. Token dictionary `src/ui/tokens.tsx` (source of truth) →
@@ -62,7 +63,7 @@ touch tooling.** Hold this contract:
   commits, PRs. They never type a command. (Still never start long-running dev servers — assume
   they're already running or hosted.)
 - **Map their phrasing to the right action:**
-  - *"build / make me a [page/section]"* → scaffold a prototype, then compose `@northwind/ui`
+  - *"build / make me a [page/section]"* → scaffold a prototype, then compose `@madison/ui`
     primitives on-token.
   - *"change the [color / spacing / look]"* → act at the right altitude (prototype edit · brand
     override in the app CSS · token in `tokens.tsx`) and stay on-token — even if they say "make

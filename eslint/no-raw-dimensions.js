@@ -1,14 +1,14 @@
 // Standalone ESLint flat-config rule: ban raw, off-system spacing & type values —
 // arbitrary Tailwind length utilities for padding/margin/gap/space (e.g. `p-[17px]`,
 // `-mt-[4px]`, `gap-[13px]`) and arbitrary font sizes (e.g. `text-[40px]`, `text-[10px]`) —
-// in favour of the tokenized scale. Sibling to no-raw-colors.js; part of the Northwind
+// in favour of the tokenized scale. Sibling to no-raw-colors.js; part of the Madison
 // governance overlay. Drop into any flat config:
 //
 //   import { noRawDimensions } from "./eslint/no-raw-dimensions.js";
 //   export default [
 //     ...,
-//     { files: ["**/*.{ts,tsx}"], plugins: { northwind: { rules: { "no-raw-dimensions": noRawDimensions } } },
-//       rules: { "northwind/no-raw-dimensions": "error" } },
+//     { files: ["**/*.{ts,tsx}"], plugins: { madison: { rules: { "no-raw-dimensions": noRawDimensions } } },
+//       rules: { "madison/no-raw-dimensions": "error" } },
 //   ];
 //
 // ALLOWS (all on-token):
@@ -63,4 +63,4 @@ export const noRawDimensions = {
 };
 
 // Ready-to-spread flat-config plugin object (compose with no-raw-colors under one namespace).
-export const northwindDimensions = { rules: { "no-raw-dimensions": noRawDimensions } };
+export const madisonDimensions = { rules: { "no-raw-dimensions": noRawDimensions } };

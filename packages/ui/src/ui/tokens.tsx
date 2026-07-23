@@ -123,42 +123,47 @@ export interface TokenDictionary {
 
 export const TOKENS: TokenDictionary = {
   backgrounds: [
-    { name: "--bg-app", label: "App / Canvas", light: "#F8F9FA", dark: "#0E0E11", desc: "The absolute bottom layer." },
-    { name: "--bg-panel", label: "Panel / Sidebar", light: "#FFFFFF", dark: "#121214", desc: "Structural sidebars and headers." },
-    { name: "--bg-surface", label: "Surface / Card", light: "#FFFFFF", dark: "#18181B", desc: "Nested cards and popovers." },
-    { name: "--bg-stripe", label: "Zebra Stripe", light: "#F8F9FA", dark: "#16161A", desc: "Alternating row background — subtle offset from bg-surface." },
-    { name: "--bg-hover", label: "Hover State", light: "#F1F3F5", dark: "#27272A", desc: "Subtle background for interactive elements." },
-    { name: "--bg-row-selected", label: "Row Selected", light: blendHex("#09090B", "#FFFFFF", 0.05), dark: blendHex("#EDEDED", "#18181B", 0.05), desc: "Selected row — 5% brand over surface." },
-    { name: "--bg-row-selected-stripe", label: "Row Selected Stripe", light: blendHex("#09090B", "#F8F9FA", 0.05), dark: blendHex("#EDEDED", "#16161A", 0.05), desc: "Selected row stripe — 5% brand over stripe." },
-    { name: "--bg-row-selected-hover", label: "Row Selected Hover", light: blendHex("#09090B", "#F1F3F5", 0.1), dark: blendHex("#EDEDED", "#27272A", 0.1), desc: "Selected row hover — 10% brand over hover." },
-    { name: "--bg-row-active", label: "Row Active", light: blendHex("#09090B", "#FFFFFF", 0.1), dark: blendHex("#EDEDED", "#18181B", 0.1), desc: "Active row — 10% brand over surface." },
-    { name: "--bg-row-active-stripe", label: "Row Active Stripe", light: blendHex("#09090B", "#F8F9FA", 0.1), dark: blendHex("#EDEDED", "#16161A", 0.1), desc: "Active row stripe — 10% brand over stripe." },
+    { name: "--bg-app", label: "App / Canvas", light: "#EAE5DF", dark: "#1B2732", desc: "The absolute bottom layer — Madison Warm White (Dark Navy in dark)." },
+    { name: "--bg-panel", label: "Panel / Sidebar", light: "#F2EEE8", dark: "#202E3B", desc: "Structural sidebars and headers." },
+    { name: "--bg-surface", label: "Surface / Card", light: "#FBF9F6", dark: "#293845", desc: "Nested cards and popovers — lifts off the warm canvas." },
+    { name: "--bg-stripe", label: "Zebra Stripe", light: "#E5E0D8", dark: "#1F2C37", desc: "Alternating row background — subtle offset from bg-surface." },
+    { name: "--bg-hover", label: "Hover State", light: "#E1DBD1", dark: "#33424F", desc: "Subtle background for interactive elements." },
+    { name: "--bg-depth", label: "Depth (Deep Dust)", light: "#8A3A28", dark: "#9C4835", desc: "RESTRICTED — Deep Dust depth accent for hover/focus fills. Never a primary surface; max 10%; never paired with Terracotta or Neon." },
+    { name: "--bg-row-selected", label: "Row Selected", light: blendHex("#202E3B", "#FBF9F6", 0.05), dark: blendHex("#EAE5DF", "#293845", 0.05), desc: "Selected row — 5% foundation over surface." },
+    { name: "--bg-row-selected-stripe", label: "Row Selected Stripe", light: blendHex("#202E3B", "#E5E0D8", 0.05), dark: blendHex("#EAE5DF", "#1F2C37", 0.05), desc: "Selected row stripe — 5% foundation over stripe." },
+    { name: "--bg-row-selected-hover", label: "Row Selected Hover", light: blendHex("#202E3B", "#E1DBD1", 0.1), dark: blendHex("#EAE5DF", "#33424F", 0.1), desc: "Selected row hover — 10% foundation over hover." },
+    { name: "--bg-row-active", label: "Row Active", light: blendHex("#202E3B", "#FBF9F6", 0.1), dark: blendHex("#EAE5DF", "#293845", 0.1), desc: "Active row — 10% foundation over surface." },
+    { name: "--bg-row-active-stripe", label: "Row Active Stripe", light: blendHex("#202E3B", "#E5E0D8", 0.1), dark: blendHex("#EAE5DF", "#1F2C37", 0.1), desc: "Active row stripe — 10% foundation over stripe." },
   ],
   borders: [
-    { name: "--border-default", label: "Default", light: "#E4E4E7", dark: "#27272A", desc: "Standard structural dividers." },
-    { name: "--border-active", label: "Active / Hover", light: "#A1A1AA", dark: "#3F3F46", desc: "Hovered inputs or active states." },
+    { name: "--border-default", label: "Default", light: "#DBD5CB", dark: "#33414D", desc: "Standard structural dividers — warm taupe." },
+    { name: "--border-active", label: "Active / Hover", light: "#B9B0A1", dark: "#4B5A67", desc: "Hovered inputs or active states." },
+    { name: "--border-depth", label: "Depth (Deep Dust)", light: "#8A3A28", dark: "#9C4835", desc: "RESTRICTED — Deep Dust rule lines / thin dividers only; use at low opacity. Never paired with Terracotta or Neon." },
   ],
   typography: [
-    { name: "--text-primary", label: "Primary", light: "#18181B", dark: "#EDEDED", desc: "Headings and main body text." },
-    { name: "--text-secondary", label: "Secondary", light: "#52525B", dark: "#A1A1AA", desc: "Metadata and secondary labels." },
-    { name: "--text-muted", label: "Muted / Tertiary", light: "#71717A", dark: "#71717A", desc: "Disabled states and subtle hints." },
+    { name: "--text-primary", label: "Primary", light: "#2C2925", dark: "#EAE5DF", desc: "Headings and main body text — Madison warm near-black." },
+    { name: "--text-secondary", label: "Secondary", light: "#5D564C", dark: "#B7B0A5", desc: "Metadata and secondary labels." },
+    { name: "--text-muted", label: "Muted / Tertiary", light: "#8B8377", dark: "#8A8378", desc: "Disabled states and subtle hints." },
   ],
   brand: [
-    // DEFAULT NEUTRAL values. Each app overrides these with its own brand color.
-    // -foreground always contrasts with -primary (usually white or near-black).
-    // -subtle is a light/faded version for ghost buttons.
-    { name: "--brand-primary", label: "Primary Accent", light: "#09090B", dark: "#EDEDED", desc: "Primary CTAs. Override per-app with brand color." },
-    { name: "--brand-foreground", label: "Brand Foreground", light: "#FFFFFF", dark: "#09090B", desc: "Text on brand backgrounds. Invert when overriding --brand-primary." },
-    { name: "--brand-subtle", label: "Brand Subtle", light: "#E4E4E7", dark: "#27272A", desc: "Ghost buttons. Derive from --brand-primary at 10-20% opacity." },
+    // Madison brand: Terracotta is the single hero accent (15% of any layout).
+    // -foreground stays warm-white on Terracotta in BOTH themes (a saturated mid-tone,
+    // unlike a neutral brand it does not invert). -subtle is a pale terracotta ghost.
+    { name: "--brand-primary", label: "Primary Accent", light: "#C75A3B", dark: "#D46E50", desc: "Terracotta — the single hero accent. Primary CTAs and emphasis." },
+    { name: "--brand-foreground", label: "Brand Foreground", light: "#FBF9F6", dark: "#FBF9F6", desc: "Text on Terracotta surfaces — warm white." },
+    { name: "--brand-subtle", label: "Brand Subtle", light: "#F2E0D8", dark: "#3C2823", desc: "Ghost buttons — pale terracotta." },
   ],
   semantics: [
     { id: "success", label: "Success", icon: <CheckCircle2 className="w-4 h-4" />, base: "#10B981", fg: "#FFFFFF", subtleLight: "#D1FAE5", subtleDark: "#064E3B" },
     { id: "error", label: "Error", icon: <AlertTriangle className="w-4 h-4" />, base: "#EF4444", fg: "#FFFFFF", subtleLight: "#FEE2E2", subtleDark: "#7F1D1D" },
     { id: "warning", label: "Warning", icon: <Zap className="w-4 h-4" />, base: "#F59E0B", fg: "#FFFFFF", subtleLight: "#FEF3C7", subtleDark: "#78350F" },
-    { id: "info", label: "Info", icon: <Info className="w-4 h-4" />, base: "#3B82F6", fg: "#FFFFFF", subtleLight: "#DBEAFE", subtleDark: "#1E3A8A" },
+    // Info = Madison Neon Blue (#00B4FF) — the "digital signal". Dark foreground for
+    // legible contrast on the bright cyan. Reserved for the smallest signal moments.
+    { id: "info", label: "Info", icon: <Info className="w-4 h-4" />, base: "#00B4FF", fg: "#0B2833", subtleLight: "#D6F1FF", subtleDark: "#0A3446" },
   ],
   globals: [
     { name: "--radius", label: "Global Radius", value: "0.375rem", desc: "Base border radius the radius scale derives from (rounded-md)." },
+    { name: "--container-page", label: "Page Container", value: "86rem", desc: "Max width of centered page content — nav, hero, and sections align to it. Apply with `max-w-[var(--container-page)] mx-auto` (wide, but not edge-to-edge)." },
   ],
 
   // --------------------------------------------------------------------------
@@ -177,26 +182,31 @@ export const TOKENS: TokenDictionary = {
     { name: "--spacing-section", label: "Section Rhythm", value: "4rem", desc: "Vertical spacing between page sections (py-section, gap-section)." },
   ],
 
-  // Font families. Override --font-sans per brand; the app body inherits it.
+  // Font families. Madison pairs Lora (display/large headings) with Inter (body + UI).
   fontFamilies: [
-    { name: "--font-sans", label: "Sans (UI / Body)", value: "'Inter Variable', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif", desc: "Primary UI + body typeface (self-hosted Inter variable, system fallback)." },
+    { name: "--font-sans", label: "Sans (UI / Body)", value: "'Inter Variable', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif", desc: "Body + UI typeface (Inter). Also h5/h6 and subtitles." },
+    { name: "--font-serif", label: "Serif (Display / Headings)", value: "'Lora', Georgia, 'Times New Roman', serif", desc: "Madison display + large headings (Lora). HERO through h4 — apply with font-serif." },
     { name: "--font-mono", label: "Mono (Code)", value: "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace", desc: "Code, token names, numeric tables." },
   ],
 
   // Type scale — size + paired line-height. Mirrors common steps so existing
   // text-* usage is stable, plus a `display` step for hero headings.
+  // Madison type scale (exact px from Figma Dev Mode, expressed in rem). The large
+  // steps (2xl–display, 24–72px) are the Lora heading ramp — pair them with
+  // `font-serif`; their -1% tracking (-0.01em) is baked in. h5/h6 and everything
+  // below (text-xl and down) are Inter (font-sans).
   fontSizes: [
     { name: "--text-2xs", label: "2X Small", value: "0.625rem", lineHeight: "0.875rem", desc: "Micro labels (10px) — overlines, swatch captions, dense mono tags. Below text-xs." },
-    { name: "--text-xs", label: "Extra Small", value: "0.75rem", lineHeight: "1rem", desc: "Captions, overlines, dense metadata." },
-    { name: "--text-sm", label: "Small", value: "0.875rem", lineHeight: "1.25rem", desc: "Secondary text, labels, table cells." },
-    { name: "--text-base", label: "Base", value: "1rem", lineHeight: "1.5rem", desc: "Default body copy." },
-    { name: "--text-lg", label: "Large", value: "1.125rem", lineHeight: "1.75rem", desc: "Lead paragraphs, card titles." },
-    { name: "--text-xl", label: "Extra Large", value: "1.25rem", lineHeight: "1.75rem", desc: "Subheadings." },
-    { name: "--text-2xl", label: "2XL", value: "1.5rem", lineHeight: "2rem", desc: "Section headings." },
-    { name: "--text-3xl", label: "3XL", value: "1.875rem", lineHeight: "2.25rem", desc: "Page titles." },
-    { name: "--text-4xl", label: "4XL", value: "2.25rem", lineHeight: "2.5rem", desc: "Major headings." },
-    { name: "--text-5xl", label: "5XL", value: "3rem", lineHeight: "1", desc: "Large display headings." },
-    { name: "--text-display", label: "Display", value: "3.75rem", lineHeight: "1.05", tracking: "-0.02em", weight: "600", desc: "Hero / landing display type." },
+    { name: "--text-xs", label: "Caption", value: "0.75rem", lineHeight: "1rem", desc: "Madison CAPTION (12px) — captions, overlines, dense metadata." },
+    { name: "--text-sm", label: "Body 2 / Subtitle 2", value: "0.875rem", lineHeight: "1.25rem", desc: "Madison body2 / subtitle2 (14px) — secondary text, labels, table cells." },
+    { name: "--text-base", label: "Body 1 / Subtitle 1", value: "1rem", lineHeight: "1.5rem", desc: "Madison body1 / subtitle1 (16px) — default body copy." },
+    { name: "--text-lg", label: "h6", value: "1.125rem", lineHeight: "1.75rem", desc: "Madison h6 (18px, Inter 600) — small headings, lead paragraphs." },
+    { name: "--text-xl", label: "h5", value: "1.25rem", lineHeight: "1.875rem", desc: "Madison h5 (20px, Inter 600) — subheadings." },
+    { name: "--text-2xl", label: "h4", value: "1.5rem", lineHeight: "2.25rem", tracking: "-0.01em", desc: "Madison h4 (24px, Lora 500) — use with font-serif." },
+    { name: "--text-3xl", label: "h3", value: "2rem", lineHeight: "3rem", tracking: "-0.01em", desc: "Madison h3 (32px, Lora 500) — use with font-serif." },
+    { name: "--text-4xl", label: "h2", value: "3rem", lineHeight: "4rem", tracking: "-0.01em", desc: "Madison h2 (48px, Lora 500) — use with font-serif." },
+    { name: "--text-5xl", label: "h1", value: "4rem", lineHeight: "5rem", tracking: "-0.01em", desc: "Madison h1 (64px, Lora 500) — use with font-serif." },
+    { name: "--text-display", label: "HERO", value: "4.5rem", lineHeight: "1.05", tracking: "-0.01em", weight: "500", desc: "Madison HERO (72px, Lora 500) — hero / landing display; use with font-serif." },
   ],
 
   fontWeights: [
@@ -285,7 +295,7 @@ const FLAT_CATEGORIES = ["backgrounds", "borders", "typography", "brand"] as con
 /** Generate a raw CSS string of all token variables (light + dark). Used by the style guide's export action. */
 export function generateCSS(tokens: TokenDictionary): string {
   let css = `/* ==========================================
-   NORTHWIND DESIGN TOKENS
+   MADISON DESIGN TOKENS
    ========================================== */
 
 :root {

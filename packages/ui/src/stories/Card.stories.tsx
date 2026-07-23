@@ -6,9 +6,9 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "@northwind/ui/card";
-import { Button } from "@northwind/ui/button";
-import { Badge } from "@northwind/ui/badge";
+} from "@madison/ui/card";
+import { Button } from "@madison/ui/button";
+import { Badge } from "@madison/ui/badge";
 
 const meta = {
   title: "Primitives/Card",

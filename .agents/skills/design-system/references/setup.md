@@ -38,29 +38,30 @@ body {
 }
 ```
 
-## Brand Overrides
+## Brand tokens
 
-The default brand tokens are neutral (near-black / near-white). Override them per-app to set your brand color — this is the ~3-line re-skin:
+The brand is **Madison — Terracotta**, set as the token default in
+`packages/ui/src/ui/tokens.tsx` (`--brand-primary`/`--brand-foreground`/`--brand-subtle`). A normal
+app does **not** override it — it inherits Madison's brand automatically through the 4-line header.
+
+Only override `--brand-*` if a specific sub-app genuinely needs a *different* accent (rare). If you do,
+mirror the token shape and keep raw HSL channels so opacity modifiers work:
 
 ```css
 :root {
-  --brand-primary: 212 92% 45%;   /* Your brand color as HSL channels */
-  --brand-foreground: 0 0% 100%;  /* Contrasting text on brand surfaces */
-  --brand-subtle: 212 92% 95%;    /* Light version for ghost buttons */
-}
-
-.dark {
-  --brand-primary: 212 92% 60%;
-  --brand-foreground: 0 0% 100%;
-  --brand-subtle: 212 45% 22%;
+  --brand-primary: 13 56% 51%;    /* Terracotta — the Madison default (HSL channels) */
+  --brand-foreground: 36 38% 97%; /* Warm white text on Terracotta */
+  --brand-subtle: 20 55% 90%;     /* Pale terracotta for ghost buttons */
 }
 ```
 
-> Brand tokens are stored as raw HSL channels (no `hsl(...)` wrapper) so opacity modifiers work. Semantic tokens (success/error/warning/info) are constant across apps — never re-brand them.
+> Brand tokens are stored as raw HSL channels (no `hsl(...)` wrapper) so opacity modifiers work.
+> Semantic tokens (success/error/warning/info) are status signals — never re-brand them. Terracotta is
+> the *single* hero accent; see the `design-system` skill's color-usage governance.
 
 ## Dark mode
 
-Dark mode is driven by a `.dark` class on `<html>`. Use the `ThemeProvider` from `@northwind/ui/theme`, or add `@custom-variant dark (&:is(.dark *));` if you need the `dark:` variant in app CSS.
+Dark mode is driven by a `.dark` class on `<html>`. Use the `ThemeProvider` from `@madison/ui/theme`, or add `@custom-variant dark (&:is(.dark *));` if you need the `dark:` variant in app CSS.
 
 ## Reference
 

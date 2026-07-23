@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { expect, userEvent } from "storybook/test";
-import { Switch } from "@northwind/ui/switch";
+import { Switch } from "@madison/ui/switch";
 
 const meta = {
   title: "Primitives/Switch",

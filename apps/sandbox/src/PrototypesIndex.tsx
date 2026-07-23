@@ -16,7 +16,7 @@ export function PrototypesIndex({
       <div className="mx-auto max-w-3xl px-6 py-16">
         <header className="space-y-2">
           <h1 className="text-3xl font-semibold tracking-tight">
-            Northwind Sandbox
+            Madison Sandbox
           </h1>
           <p className="text-secondary">
             On-system prototypes. Run{" "}

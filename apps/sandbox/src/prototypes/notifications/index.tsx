@@ -7,9 +7,9 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-} from "@northwind/ui/card";
-import { Separator } from "@northwind/ui/separator";
-import { Switch } from "@northwind/ui/switch";
+} from "@madison/ui/card";
+import { Separator } from "@madison/ui/separator";
+import { Switch } from "@madison/ui/switch";
 
 type Channel = {
   id: string;

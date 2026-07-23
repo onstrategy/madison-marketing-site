@@ -1,6 +1,6 @@
 import type { Preview } from "@storybook/react-vite";
 import { withThemeByClassName } from "@storybook/addon-themes";
-import { ThemeProvider } from "@northwind/ui/theme";
+import { ThemeProvider } from "@madison/ui/theme";
 import "../src/stories/stories.css";
 
 const preview: Preview = {

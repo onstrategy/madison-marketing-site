@@ -1,4 +1,4 @@
-import { Alert, AlertTitle, AlertDescription } from "@northwind/ui/alert";
+import { Alert, AlertTitle, AlertDescription } from "@madison/ui/alert";
 
 export default function AlertsPrototype() {
   return (
@@ -15,7 +15,7 @@ export default function AlertsPrototype() {
           <p className="text-secondary">
             Built from the promoted{" "}
             <code className="rounded bg-hover px-1.5 py-0.5 text-sm">
-              @northwind/ui/alert
+              @madison/ui/alert
             </code>{" "}
             primitive — no inline styles, fully on-token.
           </p>

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { TestimonialCard } from "@northwind/ui/testimonial-card";
+import { TestimonialCard } from "@madison/ui/testimonial-card";
 
 const meta = {
   title: "Primitives/TestimonialCard",
