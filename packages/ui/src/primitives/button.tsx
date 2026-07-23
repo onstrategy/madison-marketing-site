@@ -54,9 +54,12 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline bg-transparent",
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        default: "h-9 rounded-full px-4 py-2 has-[>svg]:px-3",
+        sm: "h-8 rounded-full gap-1.5 px-3 has-[>svg]:px-2.5",
+        // Marketing CTA proportions from the Madison site: pill radius, generous
+        // padding (15px / 26px), and — unlike the compact sizes — no padding
+        // reduction when an icon is present.
+        lg: "rounded-full px-6.5 py-3.75",
         icon: "size-9 rounded-md",
         "icon-sm": "size-8 rounded-md",
         "icon-lg": "size-10 rounded-md",

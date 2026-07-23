@@ -5,6 +5,9 @@
   "license": "UNLICENSED",
   "type": "module",
   "exports": {
+    "./prompt-demo": "./src/primitives/prompt-demo.tsx",
+    "./logo": "./src/primitives/logo.tsx",
+    "./navbar": "./src/primitives/navbar.tsx",
     "./switch": "./src/primitives/switch.tsx",
     "./testimonial-card": "./src/primitives/testimonial-card.tsx",
     "./accordion": "./src/primitives/accordion.tsx",

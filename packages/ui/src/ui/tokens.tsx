@@ -163,6 +163,7 @@ export const TOKENS: TokenDictionary = {
   ],
   globals: [
     { name: "--radius", label: "Global Radius", value: "0.375rem", desc: "Base border radius the radius scale derives from (rounded-md)." },
+    { name: "--container-page", label: "Page Container", value: "86rem", desc: "Max width of centered page content — nav, hero, and sections align to it. Apply with `max-w-[var(--container-page)] mx-auto` (wide, but not edge-to-edge)." },
   ],
 
   // --------------------------------------------------------------------------
