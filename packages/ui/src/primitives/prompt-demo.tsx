@@ -56,11 +56,10 @@ function usePrefersReducedMotion(): boolean {
 function Caret({ blink }: { blink: boolean }) {
   const [on, setOn] = React.useState(true);
 
+  // The blink interval is the only external system here. When `blink` is false
+  // the caret is forced solid during render (below), so there's no state to sync.
   React.useEffect(() => {
-    if (!blink) {
-      setOn(true);
-      return;
-    }
+    if (!blink) return;
     const id = setInterval(() => setOn((v) => !v), CARET_BLINK_MS);
     return () => clearInterval(id);
   }, [blink]);
@@ -70,7 +69,7 @@ function Caret({ blink }: { blink: boolean }) {
       aria-hidden
       className={cn(
         "ml-0.5 inline-block h-4 w-0.5 translate-y-0.5 bg-brand align-middle transition-opacity",
-        on ? "opacity-100" : "opacity-0",
+        on || !blink ? "opacity-100" : "opacity-0",
       )}
     />
   );
@@ -82,20 +81,24 @@ function PromptDemo({ items, avatar, className, ...props }: PromptDemoProps) {
   const active = items.find((item) => item.id === activeId) ?? items[0];
   const prompt = active?.prompt ?? "";
 
-  const [typed, setTyped] = React.useState("");
-  const [answered, setAnswered] = React.useState(false);
+  const [typed, setTyped] = React.useState(reduced ? prompt : "");
+  const [answered, setAnswered] = React.useState(reduced);
 
-  // Type the active prompt out, then reveal the answer. Re-runs on every tab
-  // switch; reduced-motion users get the finished state immediately.
+  // Reset the animation when the active prompt (or motion preference) changes.
+  // Adjusted during render via a prev-value comparison — not synced through an
+  // effect, which would flash the previous prompt's text for one frame.
+  const animKey = `${prompt}|${reduced}`;
+  const [prevAnimKey, setPrevAnimKey] = React.useState(animKey);
+  if (prevAnimKey !== animKey) {
+    setPrevAnimKey(animKey);
+    setTyped(reduced ? prompt : "");
+    setAnswered(reduced);
+  }
+
+  // Drive the typing timers, then reveal the answer. Reduced-motion users get the
+  // finished state from the reset above, so this effect no-ops for them.
   React.useEffect(() => {
-    if (!prompt) return;
-    if (reduced) {
-      setTyped(prompt);
-      setAnswered(true);
-      return;
-    }
-    setTyped("");
-    setAnswered(false);
+    if (reduced || !prompt) return;
     let i = 0;
     let typeTimer: ReturnType<typeof setTimeout> | undefined;
     let answerTimer: ReturnType<typeof setTimeout> | undefined;
