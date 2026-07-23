@@ -15,7 +15,7 @@ import {
   Footer,
 } from "./sections";
 
-// Northwind marketing landing — an on-token demo surface for the sandbox.
+// Madison marketing landing — an on-token demo surface for the sandbox.
 // This prototype self-registers via import.meta.glob in App.tsx (route: /landing).
 // meta.ts powers the gallery card; this file is the lazy-loaded page.
 export default function LandingPrototype() {

@@ -1,4 +1,4 @@
-# Architecture — How Northwind Fits Together
+# Architecture — How Madison Fits Together
 
 > **Engineer's deep-dive.** Read this to understand the machinery end-to-end. It traces the data
 > flow through every moving part and ends with "follow-the-flow" walkthroughs and an FAQ. For the
@@ -10,7 +10,8 @@
 ## 1. Two products in one repo
 
 - **The kit** (this whole repo) — a full standalone Turborepo: token engine + primitives + sandbox
-  + Storybook + governance. It's the **sales demo** and the **clone-for-greenfield** template.
+  + Storybook + governance. Now **Madison's design system**; as a complete standalone setup it also
+  serves as the reference implementation and clone-for-greenfield template.
 - **The overlay** ([`overlay/`](../overlay)) — just the **governance layer**, extracted so it
   **installs into a client's existing repo**. You never hand a client the kit; you install its overlay.
 
@@ -22,7 +23,7 @@ Everything below is the kit. §10 covers the overlay.
 
 ```
 ai-kit/
-├─ packages/ui/            @northwind/ui — the design system
+├─ packages/ui/            @madison/ui — the design system
 │  ├─ src/ui/tokens.tsx        ← SOURCE OF TRUTH for all design tokens
 │  ├─ scripts/generate-theme.ts ← tokens.tsx → dist/*.css (the build)
 │  ├─ dist/                    ← generated CSS (gitignored)
@@ -31,7 +32,7 @@ ai-kit/
 │  ├─ src/ui/style-guide.tsx   ← living visual spec of every token
 │  ├─ src/stories/             ← Storybook stories (feed the MCP manifest)
 │  └─ .storybook/              ← Storybook config (port 6007 + MCP)
-├─ apps/sandbox/           @northwind/sandbox — on-system Vite app for prototypes
+├─ apps/sandbox/           @madison/sandbox — on-system Vite app for prototypes
 │  └─ src/prototypes/<slug>/{index.tsx, meta.ts}  ← self-register via import.meta.glob
 ├─ .agents/skills/         design-system · react · typescript · testing  (the conventions)
 ├─ .claude/                hooks/ (skill-gate engine) · settings.json · skills→../.agents/skills
@@ -85,10 +86,12 @@ arbitrary form `border-[hsl(var(--border-default)/0.4)]`. (The `design-system` s
 
 Those four imports are the system wiring. (In `apps/sandbox/src/index.css` you'll also see
 `@import "tw-animate-css";` for animation utilities and a `@custom-variant dark` — neither is part
-of the Northwind wiring.)
+of the Madison wiring.)
 
-**Brand is overridable in ~3 lines.** The defaults are neutral (near-black). Each app overrides
-`--brand-primary/-foreground/-subtle` in its CSS. That's the "re-skin live in a workshop" trick.
+**Brand is a token default (Madison — Terracotta), still overridable in ~3 lines.**
+`--brand-primary/-foreground/-subtle` default to Terracotta in `tokens.tsx`, so apps inherit the
+Madison brand with no per-app CSS. The tokens remain override-able in ~3 lines (the "re-skin live"
+mechanism) if a sub-app ever needs a different accent.
 
 **`dist/` is generated, not committed** (gitignored). `turbo dev` has `dependsOn: ["build"]`, so
 `bun run dev` regenerates the CSS before starting Storybook/sandbox. Never hand-edit `dist/`.
@@ -107,7 +110,7 @@ Each primitive is a small, on-token React component. The conventions:
 
 **Public API is explicit** (not glob): `packages/ui/package.json` `exports` maps each subpath
 (`"./button": "./src/primitives/button.tsx"`), and `src/primitives/index.ts` re-exports each member
-by name (no `export *`). An app imports `import { Button } from "@northwind/ui/button"`. TypeScript
+by name (no `export *`). An app imports `import { Button } from "@madison/ui/button"`. TypeScript
 resolves the `.tsx` source directly (bundler resolution + the `exports` map) — there's no compile
 step for the components; Vite/Storybook transpile them.
 
@@ -180,7 +183,7 @@ hard-gated (above); `react`/`typescript` are advisory (load proactively).
 
 ### 6c. The content gate — the `no-raw-*` ESLint rules (CI-enforced)
 
-Three sibling rules in `eslint/`, all wired at `error` in `eslint.config.js` under the `northwind`
+Three sibling rules in `eslint/`, all wired at `error` in `eslint.config.js` under the `madison`
 plugin, flag off-system *values* inside any string literal — exactly what the path-gate can't see:
 
 - **`no-raw-colors`** — raw Tailwind color scales (`bg-indigo-500`) and arbitrary hex (`text-[#3b82f6]`).
@@ -255,7 +258,7 @@ is rich.)
 
 - **`turbo.json`** task graph: `build` (`dependsOn ^build`, outputs `dist/**`), `typecheck`/`test`
   (`dependsOn ^build`), `dev` (`dependsOn build`, persistent). So typechecking the sandbox first
-  builds `@northwind/ui` (generating `dist/`).
+  builds `@madison/ui` (generating `dist/`).
 - **`bun run check`** = `turbo run typecheck test && eslint .` (lint runs once from root, robust).
 - **CI** (`.github/workflows/ci.yml`): two parallel jobs — `check` and `react-doctor` — on every
   push to `main` and every PR. `setup-bun@v2` (pinned 1.3.9) + `bun install --frozen-lockfile`.
@@ -267,7 +270,7 @@ is rich.)
 `overlay/install.sh <target-repo> [components-path]` extracts the kit's **live** governance files
 into an existing repo:
 - the 3 skill-gate hooks (verbatim) + `skill-requirements.json` (with the component path
-  **parameterized**), the `settings.json` hooks block (or a `settings.northwind.json` to merge if one
+  **parameterized**), the `settings.json` hooks block (or a `settings.madison.json` to merge if one
   exists — **never clobbers**), the 4 skills + the `.claude/skills` symlink, the three `eslint/no-raw-*.js` rules,
   and `.mcp.json`.
 - Then you adapt the stack-specific bits (your tokens → the design-system skill, ESLint wiring, CI,
@@ -285,7 +288,7 @@ a throwaway repo and confirming the gate fires on the client's own component pat
 style guide. (Gate: editing under `packages/ui/` requires the design-system skill.)
 
 **Build a page (contributor loop).** `bun run gen:prototype` → folder self-registers in the gallery
-+ a route → compose `@northwind/ui` primitives on-token → `bun run check` green → PR.
++ a route → compose `@madison/ui` primitives on-token → `bun run check` green → PR.
 
 **Promote a component.** `bun run gen:promote` scaffolds the primitive + story + wires exports/barrel
 → port the real JSX, rewrite off-system classes via the design-system skill's `references/migration.md` → `bun run check` → it appears in

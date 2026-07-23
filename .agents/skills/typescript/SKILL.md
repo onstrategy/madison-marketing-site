@@ -87,7 +87,7 @@ export function UserCard({ id, name, avatarUrl }: UserCardProps) { /* ... */ }
 
 Import directly from the source file within a package. Use barrels only at cross-package
 boundaries to define intentional public APIs — e.g. a package's `src/index.ts`, or the per-entry
-`exports` map in its `package.json` (as `@northwind/ui` does). Never use wildcard re-exports
+`exports` map in its `package.json` (as `@madison/ui` does). Never use wildcard re-exports
 (`export * from`) — export each member explicitly by name.
 
 ### Import types as types

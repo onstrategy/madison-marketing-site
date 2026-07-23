@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Alert, AlertTitle, AlertDescription } from "@northwind/ui/alert";
+import { Alert, AlertTitle, AlertDescription } from "@madison/ui/alert";
 
 const meta = {
   title: "Primitives/Alert",

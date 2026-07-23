@@ -1,13 +1,12 @@
-# Northwind
+# Madison
 
-An **AI-native, code-first design system kit**. Northwind is a neutral demo brand
-used to develop and showcase a productized approach to running a design system
-*directly in code* — usable by designers, PMs, and marketing through Claude Code,
-made safe by governance-as-code.
+**Madison** is an AI-native, **code-first design system** — run directly in code, usable by
+designers, PMs, and marketing through Claude Code, made safe by governance-as-code.
 
-> Northwind is the reference/template repo. See [`PLAN.md`](./PLAN.md) for the full
-> strategy and build order, and [`docs/business-model.md`](./docs/business-model.md)
-> for the commercial model.
+> This repo began as a **neutral reference kit** (codenamed "Northwind") and has since been
+> **specialized into Madison's design system**. The productized *approach* behind it — and the
+> commercial model — live in [`PLAN.md`](./PLAN.md) and
+> [`docs/business-model.md`](./docs/business-model.md).
 
 ## What's here
 
@@ -35,12 +34,14 @@ made safe by governance-as-code.
 ## Token system
 
 Styling is driven entirely by `packages/ui` — a centralized token dictionary
-(`src/ui/tokens.tsx`) that generates CSS variables and utility classes. The system is:
+(`src/ui/tokens.tsx`) that generates CSS variables and utility classes. This repo **is** the
+Madison design system:
 
-- **Neutral-first** — 90%+ of the UI is neutral backgrounds/borders/typography; color is a signal, not decoration.
+- **Warm neutral-first** — 90%+ of the UI is Madison's warm neutrals (Warm White surfaces, warm near-black text, taupe borders); color is a signal, not decoration.
+- **Disciplined 5-color palette** — Terracotta is the single hero accent (~15%), Deep Dust a restricted depth accent (`bg-depth`/`border-depth`, ≤10%), Neon Blue the reserved digital signal (mapped to `info`), over Warm White + Dark Navy. Usage governance (approved pairings, the Deep Dust restriction) lives in the `design-system` skill.
+- **Lora + Inter** — Lora (`font-serif`) for display and large headings (HERO–h4); Inter (`font-sans`) for body and small headings.
 - **Semantic triads** — each status color (success, error, warning, info) has exactly three levels: base, subtle, foreground. No numbered scales.
 - **HSL channels** — tokens are stored as raw HSL channels so opacity modifiers (`bg-success/10`) work natively.
-- **Brand-overridable** — brand tokens default to neutral; each app overrides `--brand-*` in ~3 lines of CSS.
 
 Editing `tokens.tsx` and running `bun run build` regenerates
 `dist/theme.css` + `dist/tailwind-tokens.css`. Never hand-edit `dist/`.

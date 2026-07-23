@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Search } from "lucide-react";
-import { Input } from "@northwind/ui/input";
-import { Label } from "@northwind/ui/label";
+import { Input } from "@madison/ui/input";
+import { Label } from "@madison/ui/label";
 
 const meta = {
   title: "Primitives/Input",

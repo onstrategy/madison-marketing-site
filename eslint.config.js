@@ -7,11 +7,11 @@ import { noRawRingsZindex } from "./eslint/no-raw-rings-zindex.js";
 
 // Shared flat config for the whole kit. ESLint resolves this from any
 // workspace package by walking up to the repo root.
-// The Northwind governance overlay composes the off-system rules into one plugin
+// The Madison governance overlay composes the off-system rules into one plugin
 // namespace: `no-raw-colors` (eslint/no-raw-colors.js) bans off-system color classes;
 // `no-raw-dimensions` (eslint/no-raw-dimensions.js) bans arbitrary spacing/type lengths.
 // Each rule is shippable on its own.
-const northwind = {
+const madison = {
   rules: {
     "no-raw-colors": noRawColors,
     "no-raw-dimensions": noRawDimensions,
@@ -35,11 +35,11 @@ export default tseslint.config(
     languageOptions: {
       globals: { ...globals.browser, ...globals.node },
     },
-    plugins: { northwind },
+    plugins: { madison },
     rules: {
-      "northwind/no-raw-colors": "error",
-      "northwind/no-raw-dimensions": "error",
-      "northwind/no-raw-rings-zindex": "error",
+      "madison/no-raw-colors": "error",
+      "madison/no-raw-dimensions": "error",
+      "madison/no-raw-rings-zindex": "error",
     },
   },
   {

@@ -2,12 +2,12 @@
 
 The **overlay** is the portable, repo-agnostic **governance layer** extracted from this kit —
 the part you drop into a client's **existing** repo so their non-technical contributors can ship
-real components into *their* product, made safe by the same guardrails Northwind demonstrates.
+real components into *their* product, made safe by the same guardrails Madison demonstrates.
 
-> **Kit vs overlay.** The kit (this repo) is a full standalone Turborepo — your sales demo and the
-> clone-for-greenfield template. The overlay is *just the machinery*: it installs **on top of**
-> whatever a client already has. You never hand a client the kit; you install its overlay into
-> their repo.
+> **Kit vs overlay.** The kit (this repo) is a full standalone Turborepo — now **Madison's design
+> system**, and a reference implementation of the complete setup. The overlay is *just the
+> machinery*: it installs **on top of** whatever a client already has. You never hand a client the
+> kit; you install its overlay into their repo.
 
 > **Doing a real client install?** This page is the reference. For the end-to-end engagement —
 > discovery → tokens → skill → install → CI → verify → enablement — follow the step-by-step
@@ -22,7 +22,7 @@ duplication):
 |-----------|------------|-------------------|
 | `.claude/hooks/{enforce,on-skill-loaded,clear}-skill-gates.sh` | The skill-gate engine (PreToolUse blocker, marker writer, session reset) | None — matches file paths, works in any repo |
 | `.claude/hooks/skill-requirements.json` | Pattern → required-skill rules | The component path is parameterized at install (`[components-path-prefix]`) |
-| `.claude/settings.json` (hooks block) | Wires the **skill-gate** hooks into Claude Code (the demo's prompt-router is stripped) | If you already have one, merge the emitted `settings.northwind.json` |
+| `.claude/settings.json` (hooks block) | Wires the **skill-gate** hooks into Claude Code (the demo's prompt-router is stripped) | If you already have one, merge the emitted `settings.madison.json` |
 | `.agents/skills/{react,typescript,testing}` + `.claude/skills` symlink | The conventions | Generic (already de-branded) |
 | `.agents/skills/design-system` | The token vocabulary + rules | **Rewrite to your tokens** — this is the main setup work |
 | `eslint/no-raw-{colors,dimensions,rings-zindex}.js` | Ban off-system colors (`bg-indigo-500`), spacing/type (`p-[17px]`, `text-[40px]`), and rings/z-index (`ring-2`, `z-50`) | Compose into your ESLint flat config |
@@ -47,7 +47,7 @@ Run it **from the kit**, pointing at the client repo:
 #                    └ target     └ the path prefix to gate with the design-system skill
 ```
 
-Existing skill/config files are never clobbered (they're skipped, or emitted as a `*.northwind.*`
+Existing skill/config files are never clobbered (they're skipped, or emitted as a `*.madison.*`
 merge file). Re-running updates the hooks and the gated path.
 
 ## Then adapt the stack-specific bits
@@ -58,14 +58,14 @@ The installer prints these; in order of impact:
    token vocabulary. If you're moving from Figma/shadcn to code-as-source-of-truth, establish a
    `tokens.tsx` + a `generate-theme.ts` (use the kit's `packages/ui` as the reference) and map your
    Figma variables → semantic tokens via `references/migration.md`.
-2. **ESLint.** Compose the token-lint rules into one `northwind` plugin (mirrors the kit's
+2. **ESLint.** Compose the token-lint rules into one `madison` plugin (mirrors the kit's
    `eslint.config.js`):
    ```js
    import { noRawColors } from "./eslint/no-raw-colors.js";
    import { noRawDimensions } from "./eslint/no-raw-dimensions.js";
    import { noRawRingsZindex } from "./eslint/no-raw-rings-zindex.js";
 
-   const northwind = { rules: {
+   const madison = { rules: {
      "no-raw-colors": noRawColors,
      "no-raw-dimensions": noRawDimensions,
      "no-raw-rings-zindex": noRawRingsZindex,
@@ -73,15 +73,15 @@ The installer prints these; in order of impact:
 
    export default [
      // ...your config...
-     { files: ["**/*.{ts,tsx}"], plugins: { northwind }, rules: {
-       "northwind/no-raw-colors": "error",
-       "northwind/no-raw-dimensions": "error",
-       "northwind/no-raw-rings-zindex": "error",
+     { files: ["**/*.{ts,tsx}"], plugins: { madison }, rules: {
+       "madison/no-raw-colors": "error",
+       "madison/no-raw-dimensions": "error",
+       "madison/no-raw-rings-zindex": "error",
      } },
    ];
    ```
 3. **Settings.** If you already had `.claude/settings.json`, merge the `"hooks"` block from the
-   emitted `.claude/settings.northwind.json`, then delete it.
+   emitted `.claude/settings.madison.json`, then delete it.
 4. **Storybook MCP.** Add `@storybook/addon-mcp` + `features: { componentsManifest: true }` to your
    `.storybook/main.ts`, and point `.mcp.json` at your Storybook's `/mcp` port. (For clients without
    local setup, host Storybook on Chromatic and point `.mcp.json` at the hosted URL.)

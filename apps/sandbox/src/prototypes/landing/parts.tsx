@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Check } from "lucide-react";
-import { cn } from "@northwind/ui/utils";
+import { cn } from "@madison/ui/utils";
 
 // ============================================================================
-// Shared building blocks for the Northwind landing prototype.
+// Shared building blocks for the Madison landing prototype.
 // Everything here is on-token — neutral-first, color as signal, no raw hex.
 // ============================================================================
 

@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@northwind/ui/accordion";
+} from "@madison/ui/accordion";
 
 const meta = {
   title: "Primitives/Accordion",
@@ -36,7 +36,7 @@ type Story = StoryObj<typeof meta>;
 const FAQS = [
   {
     value: "what",
-    question: "What is Northwind?",
+    question: "What is Madison?",
     answer:
       "An AI-native, code-first design system kit. Code is the single source of truth for design tokens and components.",
   },

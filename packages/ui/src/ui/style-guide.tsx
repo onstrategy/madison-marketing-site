@@ -44,7 +44,7 @@ export function StyleGuide() {
           </div>
           <div>
             <h1 className="text-sm font-semibold tracking-wide">
-              Northwind Design System
+              Madison Design System
             </h1>
             <p className="text-2xs uppercase tracking-widest text-muted font-mono">
               Token Dictionary &amp; Guidelines
@@ -329,7 +329,7 @@ export function StyleGuide() {
                 (text-base)
               </span>
               <p className="text-base text-primary">
-                Northwind keeps the design system in code as the single source of
+                Madison keeps the design system in code as the single source of
                 truth, so the same tokens drive every surface and stay in sync
                 across light and dark mode.
               </p>

@@ -1,11 +1,11 @@
 // Standalone ESLint flat-config rule: ban off-system focus-ring and z-index magic numbers in
 // favour of the kit's tokens — numbered OR arbitrary ring widths/offsets (`ring-2`, `ring-1`,
 // `ring-[3px]`, `ring-offset-2`) and numbered OR arbitrary z-index (`z-50`, `z-[70]`). Sibling to
-// no-raw-colors.js / no-raw-dimensions.js in the Northwind governance overlay.
+// no-raw-colors.js / no-raw-dimensions.js in the Madison governance overlay.
 //
 //   import { noRawRingsZindex } from "./eslint/no-raw-rings-zindex.js";
-//   ... plugins: { northwind: { rules: { "no-raw-rings-zindex": noRawRingsZindex } } },
-//       rules: { "northwind/no-raw-rings-zindex": "error" }
+//   ... plugins: { madison: { rules: { "no-raw-rings-zindex": noRawRingsZindex } } },
+//       rules: { "madison/no-raw-rings-zindex": "error" }
 //
 // Why numbered Tailwind utilities are off-system here (unlike the spacing scale): `ring-2` hardcodes
 // 2px and `z-50` hardcodes 50 — neither references the kit's `--ring-width` / `--z-*` tokens.
@@ -75,4 +75,4 @@ export const noRawRingsZindex = {
 };
 
 // Ready-to-spread flat-config plugin object (compose with the other overlay rules).
-export const northwindRingsZindex = { rules: { "no-raw-rings-zindex": noRawRingsZindex } };
+export const madisonRingsZindex = { rules: { "no-raw-rings-zindex": noRawRingsZindex } };

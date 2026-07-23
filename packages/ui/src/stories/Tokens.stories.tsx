@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { StyleGuide } from "@northwind/ui/style-guide";
+import { StyleGuide } from "@madison/ui/style-guide";
 
 const meta = {
   title: "Design System/Tokens",

@@ -15,7 +15,7 @@ Hold the non-technical-contributor contract in `AGENTS.md` throughout.
    `bun run gen:prototype -- --args <slug> "<title>" "<description>"`
    Don't hand-write the prototype files; the generator owns the contract.
 3. **Build it on-token.** Load the **design-system** skill, then replace the starter body in
-   `apps/sandbox/src/prototypes/<slug>/index.tsx` by composing `@northwind/ui` primitives.
+   `apps/sandbox/src/prototypes/<slug>/index.tsx` by composing `@madison/ui` primitives.
    Token classes only (`bg-surface`, `text-primary`, `bg-success-subtle`) — never raw Tailwind
    colors or hex/rgb. If the Storybook MCP is available, use it for real component APIs + tokens.
 4. **Check.** Run `bun run check` and fix anything red, including off-system colors.

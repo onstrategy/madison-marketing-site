@@ -13,21 +13,21 @@ import {
   Check,
   Mail,
 } from "lucide-react";
-import { cn } from "@northwind/ui/utils";
-import { Button } from "@northwind/ui/button";
+import { cn } from "@madison/ui/utils";
+import { Button } from "@madison/ui/button";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
-} from "@northwind/ui/card";
-import { Badge } from "@northwind/ui/badge";
-import { Input } from "@northwind/ui/input";
-import { TestimonialCard } from "@northwind/ui/testimonial-card";
-import { Separator } from "@northwind/ui/separator";
-import { Switch } from "@northwind/ui/switch";
-import { ThemeToggle } from "@northwind/ui/theme";
+} from "@madison/ui/card";
+import { Badge } from "@madison/ui/badge";
+import { Input } from "@madison/ui/input";
+import { TestimonialCard } from "@madison/ui/testimonial-card";
+import { Separator } from "@madison/ui/separator";
+import { Switch } from "@madison/ui/switch";
+import { ThemeToggle } from "@madison/ui/theme";
 import {
   Reveal,
   Eyebrow,
@@ -38,7 +38,7 @@ import {
 } from "./parts";
 
 // ============================================================================
-// Northwind landing — sections. Neutral-first, product-as-illustration,
+// Madison landing — sections. Neutral-first, product-as-illustration,
 // every accent a token. Reads as a crafted dev/design tool, not SaaS slop.
 // ============================================================================
 
@@ -55,7 +55,7 @@ function Wordmark() {
         <Wind className="size-4 text-brand-fg" />
       </span>
       <span className="text-sm font-semibold tracking-tight text-primary">
-        Northwind
+        Madison
       </span>
     </a>
   );
@@ -110,7 +110,7 @@ const HERO_PLANS = [
 
 function HeroDevice() {
   return (
-    <BrowserFrame title="northwind — sandbox">
+    <BrowserFrame title="madison — sandbox">
       <div className="space-y-4 p-card">
         {/* The plain-language request */}
         <div className="flex items-center gap-3 rounded-lg border border-default bg-app px-3 py-2.5">
@@ -175,7 +175,7 @@ export function Hero() {
           </Reveal>
           <Reveal delay={120}>
             <p className="mt-5 max-w-xl text-pretty text-lg text-secondary">
-              Northwind makes code the single source of truth — so design and
+              Madison makes code the single source of truth — so design and
               implementation never drift apart. Designers, PMs, and marketing
               don't write code; they describe what they want, and Claude Code
               ships it as real, on-system components in the real repo —
@@ -281,7 +281,7 @@ export function Problem() {
           </Reveal>
           <Reveal delay={80}>
             <div className="h-full rounded-xl border border-default bg-surface p-card">
-              <Eyebrow className="text-success">With Northwind</Eyebrow>
+              <Eyebrow className="text-success">With Madison</Eyebrow>
               <div className="mt-4 flex flex-wrap items-center gap-3">
                 <DiagramNode featured>Code</DiagramNode>
                 <ArrowRight className="size-5 shrink-0 text-muted" />
@@ -638,7 +638,7 @@ export function Showcase() {
           <SectionHeading
             eyebrow="Proof"
             title="This page is built from the system it sells."
-            blurb="Every button, badge, and input here is a real @northwind/ui primitive. Toggle the theme in the nav — the whole page recolors from the same tokens."
+            blurb="Every button, badge, and input here is a real @madison/ui primitive. Toggle the theme in the nav — the whole page recolors from the same tokens."
           />
         </Reveal>
         <Reveal>
@@ -1001,7 +1001,7 @@ export function Footer() {
 
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <p className="font-mono text-xs text-muted">
-            © 2026 Northwind. A neutral demo brand.
+            © 2026 Madison. A neutral demo brand.
           </p>
           <a
             href="/"

@@ -19,7 +19,7 @@ fills it in by composing the system's building blocks.
 - "Make me a settings screen with a profile section and notification toggles."
 - "Add a marketing hero with a headline, subtext, and a call-to-action button."
 
-**Behind the scenes:** Claude names the page, scaffolds it, composes `@northwind/ui` components
+**Behind the scenes:** Claude names the page, scaffolds it, composes `@madison/ui` components
 using only design-system tokens (no off-brand colors), runs the checks, and gives you a preview link.
 
 **Shortcut:** `/build a pricing page with three plans`

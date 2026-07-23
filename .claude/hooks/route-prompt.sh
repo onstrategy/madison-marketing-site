@@ -53,7 +53,7 @@ fi
 
 case "$KIND" in
   build)
-    CTX="This looks like a BUILD request (non-technical contributor). Run the build workflow: derive a short page name and a one-line description, scaffold it with the generator (bun run gen:prototype, giving slug + title + description, all three non-empty), load the design-system skill, compose @northwind/ui primitives on-token (never raw Tailwind or hex), run bun run check, and report the preview URL. Do all the tooling yourself. See docs/prompts.md or the /build command."
+    CTX="This looks like a BUILD request (non-technical contributor). Run the build workflow: derive a short page name and a one-line description, scaffold it with the generator (bun run gen:prototype, giving slug + title + description, all three non-empty), load the design-system skill, compose @madison/ui primitives on-token (never raw Tailwind or hex), run bun run check, and report the preview URL. Do all the tooling yourself. See docs/prompts.md or the /build command."
     ;;
   restyle)
     CTX="This looks like a RESTYLE request. Act at the right altitude: a single prototype's index.tsx, the app brand override in apps/sandbox/src/index.css, or a token in packages/ui/src/ui/tokens.tsx. Stay on-token: use a semantic or brand token, never a raw hex even if they name a color. Changes to tokens.tsx or packages/ui land as a draft PR. Run bun run check. See docs/prompts.md or the /restyle command."
@@ -62,7 +62,7 @@ case "$KIND" in
     CTX="This looks like a SUBMIT request: the contributor's explicit go-ahead for the commit-to-PR flow. Run bun run check, fix failures and off-system colors, branch and commit with a conventional message, push, open a PR, and return the link. The trust matrix decides auto-merge vs draft PR; do not ask them to choose. See docs/prompts.md or the /submit command."
     ;;
   promote)
-    CTX="This looks like a PROMOTE request (a prototype becoming a reusable @northwind/ui primitive). Follow docs/promote.md: load the design-system, react, and typescript skills, scaffold with bun run gen:promote, rewrite any off-system classes, add a Storybook story, run bun run check, and open a DRAFT PR (promotions never auto-merge). See docs/prompts.md or the /promote command."
+    CTX="This looks like a PROMOTE request (a prototype becoming a reusable @madison/ui primitive). Follow docs/promote.md: load the design-system, react, and typescript skills, scaffold with bun run gen:promote, rewrite any off-system classes, add a Storybook story, run bun run check, and open a DRAFT PR (promotions never auto-merge). See docs/prompts.md or the /promote command."
     ;;
   maintainer)
     CTX="This request appears to touch maintainer-only territory (the governance gates and hooks, scripts/generate-theme.ts, or token deprecations): the suggest-only trust tier. Do not auto-apply these changes. Prepare a clearly explained suggestion or diff for a maintainer to apply, and confirm intent before acting. Normal prototype and component work is unaffected."

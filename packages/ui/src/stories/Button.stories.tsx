@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Search, Trash2, CheckCircle2, AlertTriangle } from "lucide-react";
-import { Button } from "@northwind/ui/button";
+import { Button } from "@madison/ui/button";
 
 const meta = {
   title: "Primitives/Button",

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowLeft, Rocket, Info } from "lucide-react";
-import { Button } from "@northwind/ui/button";
+import { Button } from "@madison/ui/button";
 import {
   Card,
   CardHeader,
@@ -8,26 +8,26 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "@northwind/ui/card";
-import { Badge } from "@northwind/ui/badge";
-import { Input } from "@northwind/ui/input";
-import { Label } from "@northwind/ui/label";
-import { Checkbox } from "@northwind/ui/checkbox";
-import { Separator } from "@northwind/ui/separator";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@northwind/ui/tabs";
+} from "@madison/ui/card";
+import { Badge } from "@madison/ui/badge";
+import { Input } from "@madison/ui/input";
+import { Label } from "@madison/ui/label";
+import { Checkbox } from "@madison/ui/checkbox";
+import { Separator } from "@madison/ui/separator";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@madison/ui/tabs";
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
   TooltipProvider,
-} from "@northwind/ui/tooltip";
+} from "@madison/ui/tooltip";
 import {
   Select,
   SelectTrigger,
   SelectValue,
   SelectContent,
   SelectItem,
-} from "@northwind/ui/select";
+} from "@madison/ui/select";
 
 // Gallery metadata lives in ./meta.ts (eager-loaded by App.tsx for the gallery).
 const STATUS = [
@@ -58,7 +58,7 @@ export default function WelcomePrototype() {
               </div>
               <div>
                 <h1 className="text-2xl font-semibold tracking-tight">
-                  Welcome to Northwind
+                  Welcome to Madison
                 </h1>
                 <p className="text-sm text-secondary">
                   Every element below is driven by design tokens — no hardcoded

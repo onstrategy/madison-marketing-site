@@ -1,6 +1,6 @@
-# Northwind Governance Overlay — Client Onboarding Runbook
+# Madison Governance Overlay — Client Onboarding Runbook
 
-> **Purpose.** A step-by-step engagement guide for installing the Northwind governance overlay into
+> **Purpose.** A step-by-step engagement guide for installing the Madison governance overlay into
 > a client's **existing** repository and adapting it to *their* design system — so their team
 > (technical or not) can ship UI through Claude Code, on-system and safely.
 >
@@ -13,7 +13,7 @@
 ## The one idea to hold onto
 
 The overlay is **generic machinery**; the governance value is **client-specific content** you author
-on top of it. The hooks match file *paths* and load *markdown* — they know nothing about Northwind's
+on top of it. The hooks match file *paths* and load *markdown* — they know nothing about Madison's
 tokens — so the same plumbing drops into any repo unchanged. What's bespoke is what you pour into it.
 
 | Generic — ships as-is | Client-specific — you author |
@@ -87,7 +87,7 @@ design tokens; CSS is generated from it.
 
 **Verify** a teammate reading only `SKILL.md` can restyle a component correctly without asking.
 
-**Done when** `SKILL.md` describes the client's system, with zero Northwind-specific tokens left.
+**Done when** `SKILL.md` describes the client's system, with zero Madison-specific tokens left.
 
 > The generic `react`, `typescript`, and `testing` skills usually ship as-is. Tune only if the
 > client's conventions genuinely differ.
@@ -103,12 +103,12 @@ design tokens; CSS is generated from it.
 ./overlay/install.sh ../client-repo "src/components/"
 ```
 This copies the three skill-gate hooks, writes a `skill-requirements.json` gating `src/components/` →
-`design-system`, installs a **gate-only** `settings.json` (or a `settings.northwind.json` to merge if
+`design-system`, installs a **gate-only** `settings.json` (or a `settings.madison.json` to merge if
 one already exists — it never clobbers), the four skills + the `.claude/skills` symlink, the three
 `no-raw-*` rules, and `.mcp.json`.
 
 **Verify** `git status` in the client repo shows the new `.claude/`, `.agents/`, `eslint/`,
-`.mcp.json`. If a `settings.northwind.json` was emitted, merge its `"hooks"` block into the existing
+`.mcp.json`. If a `settings.madison.json` was emitted, merge its `"hooks"` block into the existing
 `settings.json`, then delete the temp file.
 
 **Done when** `.claude/hooks/` holds the three gate scripts and `settings.json` wires them
@@ -124,14 +124,14 @@ one already exists — it never clobbers), the four skills + the `.claude/skills
 **Goal:** off-system *values* fail the build, not just review.
 
 **Do**
-1. Compose the three rules into one `northwind` plugin in the client's flat config (mirrors the kit's
+1. Compose the three rules into one `madison` plugin in the client's flat config (mirrors the kit's
    `eslint.config.js`):
    ```js
    import { noRawColors } from "./eslint/no-raw-colors.js";
    import { noRawDimensions } from "./eslint/no-raw-dimensions.js";
    import { noRawRingsZindex } from "./eslint/no-raw-rings-zindex.js";
 
-   const northwind = { rules: {
+   const madison = { rules: {
      "no-raw-colors": noRawColors,
      "no-raw-dimensions": noRawDimensions,
      "no-raw-rings-zindex": noRawRingsZindex,
@@ -139,10 +139,10 @@ one already exists — it never clobbers), the four skills + the `.claude/skills
 
    export default [
      // ...their config...
-     { files: ["**/*.{ts,tsx}"], plugins: { northwind }, rules: {
-       "northwind/no-raw-colors": "error",
-       "northwind/no-raw-dimensions": "error",
-       "northwind/no-raw-rings-zindex": "error",
+     { files: ["**/*.{ts,tsx}"], plugins: { madison }, rules: {
+       "madison/no-raw-colors": "error",
+       "madison/no-raw-dimensions": "error",
+       "madison/no-raw-rings-zindex": "error",
      } },
    ];
    ```
@@ -233,7 +233,7 @@ This is the demo that sells the engagement — run it in *their* repo.
 ## Verification checklist (sign-off)
 
 - [ ] Editing a token regenerates CSS and re-themes both light and dark.
-- [ ] `SKILL.md` describes the client's system; no Northwind tokens remain.
+- [ ] `SKILL.md` describes the client's system; no Madison tokens remain.
 - [ ] `.claude/hooks/` has the three gate scripts; `settings.json` wires them with no dangling refs.
 - [ ] `skill-requirements.json` gates the client's real component path.
 - [ ] `eslint` errors on `bg-indigo-500` / `p-[17px]` / `ring-2`.

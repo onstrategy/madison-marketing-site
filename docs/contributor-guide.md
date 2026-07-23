@@ -26,7 +26,7 @@ Give the agent the right context, in this order, every session:
 
 4. **`bun run gen:prototype`.** Scaffold an on-token starter page in `apps/sandbox`. It
    **self-registers** in the gallery and gets a route with zero manual wiring. Build your idea
-   there by composing primitives from `@northwind/ui` — the agent stays on-token because the
+   there by composing primitives from `@madison/ui` — the agent stays on-token because the
    skill is loaded and the MCP knows the real APIs.
 
 5. **`bun run check` → PR.** A green check (typecheck + test + lint) is the gate. When it's

@@ -16,6 +16,6 @@ dump the file. They never need commands, file paths, or git; you do all the tech
 - **Submit for review** — "this is ready, send it for review." → checks run, a PR opens, you get
   a link back. (or `/submit`)
 - **Promote to the system** — "make this card an official reusable component." → it becomes a
-  `@northwind/ui` primitive via a draft PR an engineer reviews. (or `/promote <which component>`)
+  `@madison/ui` primitive via a draft PR an engineer reviews. (or `/promote <which component>`)
 
 Then ask which one they'd like to start with.

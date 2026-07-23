@@ -16,7 +16,7 @@ function suffix(name: string, prefix: string): string {
 
 function generateCSS() {
   let css = `/* ==========================================
-    NORTHWIND DESIGN TOKENS
+    MADISON DESIGN TOKENS
     Generated from tokens.tsx - DO NOT EDIT MANUALLY
     ========================================== */
 
@@ -210,7 +210,7 @@ function generateTailwindTokens() {
   // Block 1: colors + mode-aware shadows registered `inline` (value inlined
   // into utilities, referencing the runtime vars from theme.css).
   let css = `/* ==========================================
-    NORTHWIND TAILWIND v4 TOKEN REGISTRATIONS
+    MADISON TAILWIND v4 TOKEN REGISTRATIONS
     Generated from tokens.tsx - DO NOT EDIT MANUALLY
     ========================================== */
 

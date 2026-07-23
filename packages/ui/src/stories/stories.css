@@ -7,7 +7,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Northwind demo brand override — a confident blue. Apps override these ~3 lines. */
+/* Madison demo brand override — a confident blue. Apps override these ~3 lines. */
 :root {
   --brand-primary: 212 92% 45%;
   --brand-foreground: 0 0% 100%;
