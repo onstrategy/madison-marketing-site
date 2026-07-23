@@ -12,6 +12,7 @@ import {
   Ruler,
   Square,
   Gauge,
+  Monitor,
 } from "lucide-react";
 import { TOKENS, generateCSS, type TokenDefinition } from "./tokens";
 import { hexToHslChannels } from "./utils";
@@ -400,6 +401,98 @@ export function StyleGuide() {
 
         <hr className="border-default" />
 
+        {/* SECTION: Font Families */}
+        <section>
+          <SectionHeader
+            icon={<Type />}
+            title="Font Families"
+            description="Madison pairs Lora (display / large headings) with Inter (body + UI); JetBrains Mono for code. Apply the family with font-serif / font-sans / font-mono."
+          />
+          <div className="border border-default rounded-lg bg-surface p-card flex flex-col gap-6">
+            {TOKENS.fontFamilies.map((token) => (
+              <div
+                key={token.name}
+                className="grid grid-cols-1 gap-2 border-b border-default pb-6 last:border-0 last:pb-0 md:grid-cols-[180px_1fr] md:items-baseline md:gap-6"
+              >
+                <div className="flex flex-col">
+                  <span className="text-sm font-medium text-primary">
+                    {token.label}
+                  </span>
+                  <span className="text-2xs font-mono text-muted">
+                    {token.name}
+                  </span>
+                </div>
+                <p
+                  className="truncate text-2xl text-primary"
+                  style={{ fontFamily: `var(${token.name})` }}
+                >
+                  The quick brown fox jumps over the lazy dog
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <hr className="border-default" />
+
+        {/* SECTION: Font Weights */}
+        <section>
+          <SectionHeader
+            icon={<Type />}
+            title="Font Weights"
+            description="The weight ramp — body 400, labels 500, headings & buttons 600, strong emphasis 700."
+          />
+          <div className="border border-default rounded-lg bg-surface p-card flex flex-col gap-3">
+            {TOKENS.fontWeights.map((token) => (
+              <div
+                key={token.name}
+                className="flex items-baseline justify-between gap-6 border-b border-default py-3 last:border-0"
+              >
+                <span
+                  className="text-xl text-primary"
+                  style={{ fontWeight: Number(token.value) }}
+                >
+                  The quick brown fox
+                </span>
+                <span className="shrink-0 text-xs font-mono text-muted">
+                  {token.name.replace("--font-weight-", "font-")} · {token.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <hr className="border-default" />
+
+        {/* SECTION: Letter Spacing */}
+        <section>
+          <SectionHeader
+            icon={<Type />}
+            title="Letter Spacing"
+            description="Tracking steps — tighten large display headings, open up uppercase overlines and eyebrows."
+          />
+          <div className="border border-default rounded-lg bg-surface p-card flex flex-col gap-3">
+            {TOKENS.letterSpacing.map((token) => (
+              <div
+                key={token.name}
+                className="flex items-baseline justify-between gap-6 border-b border-default py-3 last:border-0"
+              >
+                <span
+                  className="text-lg uppercase text-primary"
+                  style={{ letterSpacing: token.value }}
+                >
+                  Madison Design
+                </span>
+                <span className="shrink-0 text-xs font-mono text-muted">
+                  {token.name.replace("--tracking-", "tracking-")} · {token.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <hr className="border-default" />
+
         {/* SECTION: Spacing Scale */}
         <section>
           <SectionHeader
@@ -422,6 +515,66 @@ export function StyleGuide() {
                 </span>
               </div>
             ))}
+          </div>
+        </section>
+
+        <hr className="border-default" />
+
+        {/* SECTION: Layout Container */}
+        <section>
+          <SectionHeader
+            icon={<Ruler />}
+            title="Layout Container"
+            description="Max width of centered page content — nav, hero, and sections align to it. Apply with max-w-[var(--container-page)] mx-auto."
+          />
+          <div className="rounded-lg border border-default bg-surface p-card">
+            {TOKENS.globals
+              .filter((token) => token.name === "--container-page")
+              .map((token) => (
+                <div key={token.name} className="flex items-center gap-4">
+                  <span className="w-28 shrink-0 text-sm text-secondary">
+                    {token.label}
+                  </span>
+                  <div className="h-4 flex-1 rounded border border-active bg-brand-subtle" />
+                  <span className="ml-auto font-mono text-xs text-muted">
+                    {token.name} · {token.value}
+                  </span>
+                </div>
+              ))}
+          </div>
+        </section>
+
+        <hr className="border-default" />
+
+        {/* SECTION: Breakpoints */}
+        <section>
+          <SectionHeader
+            icon={<Monitor />}
+            title="Breakpoints"
+            description="Responsive min-width thresholds driving md:, lg:, … Override to shift a client's responsive layout in one place."
+          />
+          <div className="border border-default rounded-lg bg-surface p-card flex flex-col gap-3">
+            {TOKENS.breakpoints.map((token) => {
+              const rem = parseFloat(token.value);
+              const px = Math.round(rem * 16);
+              return (
+                <div key={token.name} className="flex items-center gap-4">
+                  <span className="w-28 shrink-0 text-sm text-secondary">
+                    {token.label}
+                  </span>
+                  <div className="h-4 flex-1 overflow-hidden rounded bg-app">
+                    <div
+                      className="h-full rounded bg-brand"
+                      style={{ width: `${(rem / 96) * 100}%` }}
+                    />
+                  </div>
+                  <span className="ml-auto shrink-0 text-xs font-mono text-muted">
+                    {token.name.replace("--breakpoint-", "")} · {token.value} ·{" "}
+                    {px}px
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </section>
 
