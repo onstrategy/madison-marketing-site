@@ -4,8 +4,8 @@ You don't need to know any commands, file paths, or git. **Say what you want in 
 Claude does all the technical work — scaffolding, styling on-brand, running the checks, and opening
 the pull request. This page is the menu of what you can ask for.
 
-Each workflow also has a shortcut you can type instead of describing it: `/build`, `/restyle`,
-`/submit`, `/promote`. And `/prompts` shows this menu any time.
+Each workflow also has a shortcut you can type instead of describing it: `/build`, `/small-edit`,
+`/restyle`, `/undo`, `/submit`, `/promote`. And `/prompts` shows this menu any time.
 
 ---
 
@@ -26,10 +26,48 @@ using only design-system tokens (no off-brand colors), runs the checks, and give
 
 ---
 
+## Change one small thing
+
+One specific tweak on one page — a heading that needs more air, a word that's wrong, something a
+size too big. This is the quick lane: Claude makes the single change and comes straight back,
+without asking you a round of questions first.
+
+**Just say:**
+- "Increase the line height of the H1 on the landing page."
+- "Make the pricing page subtitle one size smaller."
+- "Change the button on the welcome page to say 'Get started'."
+
+**Behind the scenes:** Claude goes straight to that one page, makes exactly one change using a
+brand token, runs the checks, and reports back in a line. If it turns out the change belongs to
+the shared design system instead, it says so rather than quietly making a much bigger edit.
+
+**Shortcut:** `/small-edit increase the line height of the H1 on the landing page`
+
+---
+
+## Undo something
+
+Changed your mind, or it looked better before? Put it back. Nothing you try in the sandbox is
+permanent, so it's safe to experiment.
+
+**Just say:**
+- "Undo that."
+- "Put it back the way it was."
+- "That was worse — go back."
+
+**Behind the scenes:** Claude shows you what it's about to undo in plain words and waits for your
+yes before touching anything. It only ever undoes work you haven't submitted yet — once something
+has been sent for review, unwinding it is an engineer's call.
+
+**Shortcut:** `/undo`
+
+---
+
 ## Restyle something
 
 Change how something looks — a color, more or less spacing, a different feel. Claude makes the change
-in the right place and keeps it on-brand, even if you describe a literal color.
+in the right place and keeps it on-brand, even if you describe a literal color. This is the one to
+use when the change is broader than a single tweak, or when it might affect more than one page.
 
 **Just say:**
 - "Make our main color green."

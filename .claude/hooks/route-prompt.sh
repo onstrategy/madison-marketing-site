@@ -4,7 +4,7 @@ set -euo pipefail
 # UserPromptSubmit hook: a SOFT router for non-technical contributors.
 #
 # It NEVER blocks (always exits 0). It classifies the prompt into one of the
-# kit's approved workflows (build / restyle / submit / promote) and injects a
+# kit's approved workflows (build / restyle / undo / submit / promote) and injects a
 # short, governance-aware playbook as context, so the agent stays on the rails
 # even on free-typed prompts and after compaction. A wrong guess is harmless —
 # it only adds an advisory pointer, never a rejection.
@@ -40,9 +40,11 @@ elif match 'promote|reusable component|official component|make (this|it|that).*(
   KIND="promote"
 elif match 'submit|send .*for review|ready for review|ship (it|this|that|the)|publish (it|this|the)|open a (pull request|pr)|merge (this|it|that)'; then
   KIND="submit"
+elif match 'undo|revert|roll ?back|put (it|that|this) back|change (it|that|this) back|go back to|that was worse|never ?mind'; then
+  KIND="undo"
 elif match 'build|scaffold|create a|create me|new (page|screen|section|component)|make (me )?a (new )?(page|screen|section|component|hero|dashboard|form|table|card|landing|view)|add a (page|section|hero|button|card|form)|design (me )?a'; then
   KIND="build"
-elif match 'restyle|reskin|re-skin|colou?r|spacing|padding|margin|breathing room|more room|font|typography|theme|look|feel|bigger|smaller|compact|denser|spacious|tweak the (look|style|design)'; then
+elif match 'restyle|reskin|re-skin|colou?r|spacing|padding|margin|breathing room|more room|font|typography|line ?-?height|leading|line spacing|theme|look|feel|bigger|smaller|compact|denser|spacious|tweak the (look|style|design)'; then
   KIND="restyle"
 fi
 
@@ -56,7 +58,10 @@ case "$KIND" in
     CTX="This looks like a BUILD request (non-technical contributor). Run the build workflow: derive a short page name and a one-line description, scaffold it with the generator (bun run gen:prototype, giving slug + title + description, all three non-empty), load the design-system skill, compose @madison/ui primitives on-token (never raw Tailwind or hex), run bun run check, and report the preview URL. Do all the tooling yourself. See docs/prompts.md or the /build command."
     ;;
   restyle)
-    CTX="This looks like a RESTYLE request. Act at the right altitude: a single prototype's index.tsx, the app brand override in apps/sandbox/src/index.css, or a token in packages/ui/src/ui/tokens.tsx. Stay on-token: use a semantic or brand token, never a raw hex even if they name a color. Changes to tokens.tsx or packages/ui land as a draft PR. Run bun run check. See docs/prompts.md or the /restyle command."
+    CTX="This looks like a RESTYLE request. Act at the right altitude: a single prototype's index.tsx, the app brand override in apps/sandbox/src/index.css, or a token in packages/ui/src/ui/tokens.tsx. Stay on-token: use a semantic or brand token, never a raw hex even if they name a color. Changes to tokens.tsx or packages/ui land as a draft PR. Run bun run check. If this is really a SINGLE bounded property change on one page (one size, one spacing, one line height, one word), take the fast lane instead: .claude/commands/small-edit.md — one file, one pass, no exploring, no clarifying questions. See docs/prompts.md or the /restyle command."
+    ;;
+  undo)
+    CTX="This looks like an UNDO request, which is the contributor's explicit go-ahead to run git for this purpose only. Scope: UNCOMMITTED working-tree changes. Run git status and git diff first, describe in plain words what would be reverted, and wait for a yes before touching anything. Revert only the files the named change touched (git checkout -- <files>), never a bare git checkout that sweeps in unrelated work. If the change is already committed or pushed, stop and say so — never git reset --hard, never rewrite history, never force-push. Run bun run check afterwards. See docs/prompts.md or the /undo command."
     ;;
   submit)
     CTX="This looks like a SUBMIT request: the contributor's explicit go-ahead for the commit-to-PR flow. Run bun run check, fix failures and off-system colors, branch and commit with a conventional message, push, open a PR, and return the link. The trust matrix decides auto-merge vs draft PR; do not ask them to choose. See docs/prompts.md or the /submit command."
