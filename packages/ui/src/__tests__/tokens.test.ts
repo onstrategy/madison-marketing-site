@@ -99,9 +99,11 @@ describe("TOKENS dimensional system", () => {
     }
   });
 
-  // Any step left undeclared silently falls back to Tailwind's own --leading-* default,
-  // which is exactly the ungoverned value the token system exists to prevent.
-  it("covers Tailwind's whole --leading-* namespace with unitless ratios", () => {
+  // Declaring every name in the namespace keeps each step's VALUE Madison's rather
+  // than Tailwind's — an undeclared step would inherit whatever Tailwind ships next.
+  // This does NOT make line-height fully governed: `leading-none` is a Tailwind static
+  // utility hardcoded to 1, outside --leading-* entirely, and no token reaches it.
+  it("declares every name in Tailwind's --leading-* namespace, as unitless ratios", () => {
     const names = TOKENS.lineHeights.map((t) => t.name);
     expect(names).toEqual([
       "--leading-tight",
@@ -114,6 +116,40 @@ describe("TOKENS dimensional system", () => {
     for (const token of TOKENS.lineHeights) {
       expect(token.value).toMatch(/^\d+(\.\d+)?$/);
     }
+  });
+
+  // Three of these deliberately diverge from Tailwind's defaults, and `leading-relaxed`
+  // had call sites before the tokens existed — so its value is a live visual decision,
+  // not a private detail. Pin all five: moving one should be a visible diff and a
+  // conscious re-review of what it already restyles, never a silent retune.
+  it("pins each line-height value, flagging the three that diverge from Tailwind", () => {
+    const TAILWIND_DEFAULTS: Record<string, string> = {
+      "--leading-tight": "1.25",
+      "--leading-snug": "1.375",
+      "--leading-normal": "1.5",
+      "--leading-relaxed": "1.625",
+      "--leading-loose": "2",
+    };
+    const MADISON: Record<string, string> = {
+      "--leading-tight": "1.15",
+      "--leading-snug": "1.3",
+      "--leading-normal": "1.5",
+      "--leading-relaxed": "1.75",
+      "--leading-loose": "2",
+    };
+
+    for (const token of TOKENS.lineHeights) {
+      expect(token.value).toBe(MADISON[token.name]);
+    }
+
+    const diverging = TOKENS.lineHeights
+      .filter((t) => t.value !== TAILWIND_DEFAULTS[t.name])
+      .map((t) => t.name);
+    expect(diverging).toEqual([
+      "--leading-tight",
+      "--leading-snug",
+      "--leading-relaxed",
+    ]);
   });
 
   it("makes every elevation token mode-aware (distinct light/dark shadows)", () => {

@@ -72,8 +72,10 @@ touch tooling.** Hold this contract:
     one size smaller") → the **fast lane**: one property, one file, one pass, no exploring, no
     round of clarifying questions. Escalate out loud instead of quietly editing `packages/ui/`.
   - *"undo / put it back / that was worse"* → their explicit go-ahead to revert **uncommitted**
-    work only: show what would be undone in plain words, confirm, revert those files. Never
-    rewrite history; anything already submitted is an engineer's call.
+    work only: show what would be undone in plain words, confirm, then `git stash push -u` those
+    specific paths — `-u` also catches a whole new page left untracked by `/build`, and a stash
+    keeps the undo itself reversible. Never rewrite history; anything already submitted is an
+    engineer's call.
   - *"submit / send for review / ship / publish this"* → their **explicit go-ahead** for the
     commit→PR flow: run `bun run check`, fix any failures or off-system colors, branch, commit,
     push, open a PR, and return the **link**. (The trust matrix decides auto-merge vs draft —

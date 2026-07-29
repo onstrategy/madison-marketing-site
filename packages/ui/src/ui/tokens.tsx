@@ -213,9 +213,27 @@ export const TOKENS: TokenDictionary = {
   // Each step in the type scale already carries its own line-height — that pairing
   // is the default and stays the right answer. These are the *override* scale, for
   // the cases where copy needs to breathe (or tighten) without changing its size.
-  // These names deliberately cover Tailwind's whole `--leading-*` namespace: any
-  // step left undeclared would silently fall back to Tailwind's default value, which
-  // is exactly the ungoverned drift the token system exists to prevent.
+  //
+  // These names deliberately cover Tailwind's whole `--leading-*` namespace. Two
+  // reasons, and it is worth being precise about both:
+  //   1. A step left undeclared falls back to Tailwind's own default, so its value
+  //      would be Tailwind's to change, not Madison's. `--leading-normal` (1.5) and
+  //      `--leading-loose` (2) are byte-identical to Tailwind's defaults today; they
+  //      are declared anyway so a future Tailwind minor cannot retune Madison's
+  //      typography from underneath us.
+  //   2. THREE steps deliberately DIVERGE from Tailwind's defaults:
+  //      tight 1.25 → 1.15 · snug 1.375 → 1.3 · relaxed 1.625 → 1.75.
+  //      `leading-relaxed` was already in use before these tokens existed, so that
+  //      third divergence is a real, intended visual change at its call sites
+  //      (accordion body, prompt-demo paragraph, landing mono block) — not a no-op.
+  //      tokens.test.ts pins all five values so any further move shows up as a diff.
+  //
+  // This namespace is not the whole story: `leading-none` is a Tailwind STATIC
+  // utility hardcoded to 1, outside `--leading-*` entirely, so no token governs it.
+  // It cannot drift (it never reads the theme) and the kit uses it deliberately for
+  // single-line labels and titles — see the design-system skill. The numeric form
+  // (`leading-7`) resolves via `--spacing` into a fixed rem and IS banned by
+  // `no-raw-dimensions`.
   lineHeights: [
     { name: "--leading-tight", label: "Tight", value: "1.15", desc: "Large display headings — HERO / h1 / h2 set as one block." },
     { name: "--leading-snug", label: "Snug", value: "1.3", desc: "Smaller headings and short two-line labels." },

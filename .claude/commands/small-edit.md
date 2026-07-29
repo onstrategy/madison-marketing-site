@@ -3,7 +3,7 @@ description: Make one small, bounded change — a size, a spacing, a word, a lin
 argument-hint: one specific change, e.g. "increase the line height of the H1 on the landing page"
 model: sonnet
 effort: medium
-allowed-tools: Read, Grep, Glob, Edit, Bash(bun run check)
+allowed-tools: Read, Grep, Glob, Edit, Skill, Bash(bun run check*)
 disable-model-invocation: true
 ---
 
@@ -24,9 +24,12 @@ The pages that exist right now:
    the codebase to figure it out.
 2. **Go straight to the target.** You already have the page list above. Grep that one prototype
    directory for the element (the heading text, the component name) — don't read the whole tree.
-3. **Swap a token class, never a raw value.** `leading-relaxed`, `text-lg`, `p-card`,
-   `text-secondary` — never `leading-[1.6]`, `text-[40px]`, a hex, or a numbered scale. The
-   vocabulary is in the **design-system** skill; load it if you're unsure which token applies.
+3. **Swap a token class, never a raw value.** `leading-relaxed`, `text-lg`, `p-card`, `p-4`,
+   `text-secondary` — never `leading-[1.6]`, `text-[40px]`, `leading-7`, a hex, or a numbered
+   **color** scale (`text-success-700`, `bg-neutral-200`). Note the numeric *spacing* scale
+   (`p-4`, `py-24`, `gap-8`) **is** on-token and fine — only arbitrary literals and numbered
+   color scales are banned. The vocabulary is in the **design-system** skill; load it if you're
+   unsure which token applies.
 4. **Refuse to escalate silently.** If the only real fix lives in `packages/ui/` or
    `tokens.tsx`, **stop**. Say plainly that it's a change to the shared design system — it
    affects every page and needs an engineer — and offer `/restyle` instead. Don't edit it here,

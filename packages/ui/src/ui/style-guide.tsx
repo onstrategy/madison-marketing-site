@@ -456,7 +456,9 @@ export function StyleGuide() {
                 </div>
                 <p
                   className="mt-2 max-w-prose text-base text-primary"
-                  style={{ lineHeight: token.value }}
+                  /* Render through the generated var, not the raw value: this makes the
+                     style guide prove --leading-* actually reaches the browser. */
+                  style={{ lineHeight: `var(${token.name})` }}
                 >
                   Madison is a code-first design system. The tokens live in code, generate the
                   CSS, and every page composes from the same vocabulary.

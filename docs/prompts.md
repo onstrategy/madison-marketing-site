@@ -56,8 +56,9 @@ permanent, so it's safe to experiment.
 - "That was worse — go back."
 
 **Behind the scenes:** Claude shows you what it's about to undo in plain words and waits for your
-yes before touching anything. It only ever undoes work you haven't submitted yet — once something
-has been sent for review, unwinding it is an engineer's call.
+yes before touching anything. It works on a single tweak or on a whole new page you just built, and
+it's **reversible** — changed your mind again? Ask for it back. It only ever undoes work you haven't
+submitted yet; once something has been sent for review, unwinding it is an engineer's call.
 
 **Shortcut:** `/undo`
 

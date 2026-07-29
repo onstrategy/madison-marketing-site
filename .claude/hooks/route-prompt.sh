@@ -40,9 +40,16 @@ elif match 'promote|reusable component|official component|make (this|it|that).*(
   KIND="promote"
 elif match 'submit|send .*for review|ready for review|ship (it|this|that|the)|publish (it|this|the)|open a (pull request|pr)|merge (this|it|that)'; then
   KIND="submit"
-elif match 'undo|revert|roll ?back|put (it|that|this) back|change (it|that|this) back|go back to|that was worse|never ?mind'; then
+# Undo sits ABOVE build/restyle, so its patterns must be tight or they hijack the
+# branch below. Deliberately NOT matched: a bare "never mind" (it usually precedes a
+# NEW request — "never mind, build me a pricing page instead") and a bare "go back to"
+# (almost always navigation — "go back to the landing page and add a section").
+# Both are anchored to phrasing that can only mean reverting.
+elif match 'undo|revert|roll ?back|put (it|that|this) back|change (it|that|this) back|change the [a-z]+( [a-z]+)? back|go back to (how|what|the way|the previous)|that was worse|like it was before'; then
   KIND="undo"
-elif match 'build|scaffold|create a|create me|new (page|screen|section|component)|make (me )?a (new )?(page|screen|section|component|hero|dashboard|form|table|card|landing|view)|add a (page|section|hero|button|card|form)|design (me )?a'; then
+# The `([a-z-]+ )*` before each noun lets an adjective through — "make me a new PRICING page",
+# "add a TESTIMONIALS section" — which the bare noun list used to drop on the floor.
+elif match 'build|scaffold|create a|create me|new (page|screen|section|component)|make (me )?an? (new )?([a-z-]+ )*(page|screen|section|component|hero|dashboard|form|table|card|landing|view)|add an? ([a-z-]+ )*(page|section|hero|banner|button|card|form|table|list)|design (me )?a'; then
   KIND="build"
 elif match 'restyle|reskin|re-skin|colou?r|spacing|padding|margin|breathing room|more room|font|typography|line ?-?height|leading|line spacing|theme|look|feel|bigger|smaller|compact|denser|spacious|tweak the (look|style|design)'; then
   KIND="restyle"
@@ -61,7 +68,7 @@ case "$KIND" in
     CTX="This looks like a RESTYLE request. Act at the right altitude: a single prototype's index.tsx, the app brand override in apps/sandbox/src/index.css, or a token in packages/ui/src/ui/tokens.tsx. Stay on-token: use a semantic or brand token, never a raw hex even if they name a color. Changes to tokens.tsx or packages/ui land as a draft PR. Run bun run check. If this is really a SINGLE bounded property change on one page (one size, one spacing, one line height, one word), take the fast lane instead: .claude/commands/small-edit.md — one file, one pass, no exploring, no clarifying questions. See docs/prompts.md or the /restyle command."
     ;;
   undo)
-    CTX="This looks like an UNDO request, which is the contributor's explicit go-ahead to run git for this purpose only. Scope: UNCOMMITTED working-tree changes. Run git status and git diff first, describe in plain words what would be reverted, and wait for a yes before touching anything. Revert only the files the named change touched (git checkout -- <files>), never a bare git checkout that sweeps in unrelated work. If the change is already committed or pushed, stop and say so — never git reset --hard, never rewrite history, never force-push. Run bun run check afterwards. See docs/prompts.md or the /undo command."
+    CTX="This looks like an UNDO request, which is the contributor's explicit go-ahead to run git for this purpose only. Scope: UNCOMMITTED working-tree changes. Run git status --porcelain and git diff first, describe in plain words what would be reverted, and wait for a yes before touching anything. Then revert with git stash push -u -m <label> -- <the specific paths>, never a bare stash or checkout that sweeps in unrelated work — stash keeps the undo itself reversible (git stash pop) and -u also removes whole new pages that /build left untracked, which git checkout cannot. Tell them it is recoverable. If the change is already committed or pushed, stop and say so — never git reset --hard, never rewrite history, never force-push. Run bun run check afterwards. See docs/prompts.md or the /undo command."
     ;;
   submit)
     CTX="This looks like a SUBMIT request: the contributor's explicit go-ahead for the commit-to-PR flow. Run bun run check, fix failures and off-system colors, branch and commit with a conventional message, push, open a PR, and return the link. The trust matrix decides auto-merge vs draft PR; do not ask them to choose. See docs/prompts.md or the /submit command."

@@ -192,9 +192,13 @@ plugin, flag off-system *values* inside any string literal — exactly what the 
 - **`no-raw-dimensions`** — arbitrary spacing/type lengths (`p-[17px]`, `gap-[13px]`, `text-[40px]`)
   and arbitrary line-heights (`leading-[1.4]`, `leading-[28px]`), pushing you onto the tokenized scale
   (`p-4`, named steps like `py-section`, `text-xl`, `leading-snug`). Brackets that *reference* a token
-  (`p-[var(--spacing-card)]`, `leading-[var(--leading-snug)]`) are allowed. Line-height needs its own
-  pattern inside the rule because its values are legitimately **unitless** — every other scale here
-  requires a unit.
+  (`p-[var(--spacing-card)]`, `leading-[var(--leading-snug)]`) are allowed. Line-height carries **two**
+  extra patterns of its own: one because its values are legitimately **unitless** (every other scale
+  here requires a unit), and one banning the numeric form `leading-7` — which *looks* like the on-token
+  numeric spacing scale but resolves through `--spacing` to a fixed `1.75rem`, pinning line-height
+  against the font-size instead of scaling with it. `leading-none` is deliberately allowed: it's a
+  Tailwind *static* utility hardcoded to `1`, so it sits outside the `--leading-*` namespace and no
+  token governs it — but it never reads the theme, so unlike an undeclared step it cannot drift.
 - **`no-raw-rings-zindex`** — focus-ring widths/offsets and z-index magic numbers, *including the
   numbered utilities* (`ring-2`, `ring-offset-2`, `z-50`) — because those hardcode px/index instead of
   referencing `--ring-width` / the named `--z-*` layers (`z-modal`, `z-tooltip`). Use
@@ -217,7 +221,7 @@ block; warnings annotate the PR). Distinct from §6c — react-doctor lints *Rea
 |---|---|---|
 | Skill-gate | PreToolUse hook | Editing `packages/ui`/`.module.css`/tests without the right skill loaded |
 | Type / test | `bun run check` (CI) | Type errors, failing tests |
-| Off-system values | `no-raw-{colors,dimensions,rings-zindex}` → `bun run check` (CI) | `bg-indigo-500`/`text-[#hex]`, `p-[17px]`/`text-[40px]`/`leading-[1.4]`, `ring-2`/`z-50` |
+| Off-system values | `no-raw-{colors,dimensions,rings-zindex}` → `bun run check` (CI) | `bg-indigo-500`/`text-[#hex]`, `p-[17px]`/`text-[40px]`/`leading-[1.4]`/`leading-7`, `ring-2`/`z-50` |
 | React health | `react-doctor` (CI) | Security/perf/a11y/correctness issues |
 
 ### 6f. The prompt router — `route-prompt.sh` (*not a gate*)
@@ -235,6 +239,15 @@ Note there is deliberately **no `small-edit` branch**. The `restyle` pattern alr
 `spacing`, `bigger`, `smaller` — and no regex reliably separates "small" from "big". So the `restyle`
 playbook itself carries a pointer to the fast lane, rather than the router pretending to a judgement
 it can't make.
+
+**Branch order is load-bearing**, and `undo` is where it bites. It sits above `build`/`restyle` in the
+`elif` chain, so a loose pattern there doesn't just mislabel an undo — it *hijacks* the branch below.
+Two tempting patterns are deliberately excluded for exactly that reason: a bare `never mind` (it
+usually introduces a **new** request — *"never mind, build me a pricing page instead"*) and a bare
+`go back to` (almost always navigation — *"go back to the landing page and add a section"*). Both are
+anchored instead to phrasing that can only mean reverting (`go back to how/what/the way/the previous`).
+When adding a pattern to any branch, test it against the *other* kinds' example prompts, not just its
+own — the pipeline in [`prompts.md`](./prompts.md) exists for this.
 
 ### 6g. The commands layer — `.claude/commands/`
 
@@ -264,7 +277,19 @@ and they are what makes a one-line tweak cost less than a page build:
 | `model` · `effort` | Pins a cheaper model / lower reasoning effort **for that command's turn only** — not saved to settings, the session model resumes on the next prompt. `/small-edit` and `/undo` use `sonnet`. |
 | `allowed-tools` | Pre-approves a narrow tool set so the command runs without permission prompts. **It grants, it does not restrict** — every other tool stays callable, governed by normal permissions. `disallowed-tools` is the field that removes tools. Either way the grant clears on the next message. |
 | `disable-model-invocation` | Stops Claude from firing the command on its own. Set on anything with side effects (`/undo`), so reverting is always the contributor's call. |
-| `` !`cmd` `` in the body | Runs at invocation and injects the output. `/small-edit` uses `` !`ls apps/sandbox/src/prototypes` `` so it starts knowing the page list instead of spending a turn discovering it. |
+| `` !`cmd` `` in the body | Runs at invocation and injects the output. `/small-edit` uses `` !`ls apps/sandbox/src/prototypes` `` so it starts knowing the page list instead of spending a turn discovering it. This is *preprocessing* — it runs before Claude sees anything, so it needs no `allowed-tools` entry of its own. |
+
+**Two failure modes to check when authoring a command,** both of which surface as a permission prompt
+in front of the one person the command exists to shield:
+
+- **Every command a step tells you to run must be granted.** If the body says "run `bun run check`",
+  `allowed-tools` needs it. A maintainer won't notice the omission — their gitignored
+  `settings.local.json` already allows `Bash(bun *)`; a fresh contributor's does not.
+- **`Bash(...)` rules are literal unless you glob.** `Bash(bun run check)` matches *only* that exact
+  string, so `bun run check --filter …` prompts. Prefer `Bash(bun run check*)`.
+
+The inverse is just as sharp: **don't grant what no step asks for.** A tool in `allowed-tools` that the
+body never mentions is silent latitude to do something the prose never sanctioned.
 
 **Scope caveat:** `.claude/commands/` is deliberately **not** part of the shippable overlay (§10) —
 the commands hard-code kit paths (`apps/sandbox`, `gen:prototype`), so they'd break in a client repo.
