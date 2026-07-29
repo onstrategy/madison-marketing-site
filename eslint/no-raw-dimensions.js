@@ -15,10 +15,13 @@
 //   - the numeric scale, which derives from --spacing:  p-4, py-24, gap-8, mt-16
 //   - named layout-intent steps:                        py-section, p-card, px-gutter, gap-stack
 //   - the type scale:                                   text-xs … text-5xl, text-display
-//   - arbitrary values that REFERENCE a token:          text-[length:var(--x)], p-[var(--spacing-card)]
-//     (anything whose bracket content is not a bare length literal)
+//   - the line-height override scale:                   leading-tight … leading-relaxed
+//   - arbitrary values that REFERENCE a token:          text-[length:var(--x)], p-[var(--spacing-card)],
+//     (anything whose bracket content is not a bare      leading-[var(--leading-snug)]
+//     length literal)
 // BANS:
 //   - a bracketed RAW length on a spacing/type prefix:  p-[17px], text-[40px], gap-[1.5rem]
+//   - a bracketed RAW line-height:                      leading-[1.4], leading-[28px]
 //
 // Out of scope on purpose (separate token families — candidates for a follow-up rule):
 // width/height/inset/grid (often legitimately arbitrary), ring-width (`ring-[3px]`),
@@ -30,8 +33,19 @@
 const SPACING_TYPE_ARBITRARY =
   /\b(?:p[xytblrse]?|m[xytblrse]?|gap(?:-[xy])?|space-[xy]|text)-\[-?[0-9.]+(?:px|rem|em|ch|ex|vh|vw|vmin|vmax|pt|cm|mm|in)\]/;
 
+// Line-height gets its own pattern: unlike every other scale here, its values are
+// commonly UNITLESS (`leading-[1.4]`), so the unit group has to be optional. Token
+// references (`leading-[var(--leading-snug)]`) still pass — the bracket must hold a
+// bare number or length for this to fire.
+const LEADING_ARBITRARY =
+  /\bleading-\[-?[0-9.]+(?:px|rem|em|ch|ex|vh|vw|vmin|vmax|pt|cm|mm|in|%)?\]/;
+
 function findRawDimension(value) {
-  return value.match(SPACING_TYPE_ARBITRARY)?.[0] ?? null;
+  return (
+    value.match(SPACING_TYPE_ARBITRARY)?.[0] ??
+    value.match(LEADING_ARBITRARY)?.[0] ??
+    null
+  );
 }
 
 export const noRawDimensions = {
@@ -42,7 +56,7 @@ export const noRawDimensions = {
         "Use the tokenized spacing/type scale, not arbitrary length values.",
     },
     messages: {
-      raw: 'Off-system spacing/type value "{{cls}}". Use the tokenized scale instead — the numeric scale (p-4, py-24), a named step (py-section, p-card, px-gutter), or the type scale (text-xs…text-5xl, text-display). See the design-system skill.',
+      raw: 'Off-system spacing/type value "{{cls}}". Use the tokenized scale instead — the numeric scale (p-4, py-24), a named step (py-section, p-card, px-gutter), the type scale (text-xs…text-5xl, text-display), or the line-height scale (leading-tight…leading-relaxed). See the design-system skill.',
     },
     schema: [],
   },

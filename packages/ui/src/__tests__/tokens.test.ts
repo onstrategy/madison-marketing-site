@@ -63,6 +63,7 @@ describe("TOKENS dimensional system", () => {
   const SCALE_GROUPS = [
     "spacing",
     "fontFamilies",
+    "lineHeights",
     "fontWeights",
     "letterSpacing",
     "breakpoints",
@@ -98,6 +99,23 @@ describe("TOKENS dimensional system", () => {
     }
   });
 
+  // Any step left undeclared silently falls back to Tailwind's own --leading-* default,
+  // which is exactly the ungoverned value the token system exists to prevent.
+  it("covers Tailwind's whole --leading-* namespace with unitless ratios", () => {
+    const names = TOKENS.lineHeights.map((t) => t.name);
+    expect(names).toEqual([
+      "--leading-tight",
+      "--leading-snug",
+      "--leading-normal",
+      "--leading-relaxed",
+      "--leading-loose",
+    ]);
+    // Unitless, so a line-height scales with whatever font-size it lands on.
+    for (const token of TOKENS.lineHeights) {
+      expect(token.value).toMatch(/^\d+(\.\d+)?$/);
+    }
+  });
+
   it("makes every elevation token mode-aware (distinct light/dark shadows)", () => {
     for (const token of TOKENS.shadows) {
       expect(token.name.startsWith("--shadow-")).toBe(true);
@@ -125,6 +143,7 @@ describe("TOKENS dimensional system", () => {
       ...TOKENS.spacing,
       ...TOKENS.fontFamilies,
       ...TOKENS.fontSizes,
+      ...TOKENS.lineHeights,
       ...TOKENS.fontWeights,
       ...TOKENS.letterSpacing,
       ...TOKENS.breakpoints,

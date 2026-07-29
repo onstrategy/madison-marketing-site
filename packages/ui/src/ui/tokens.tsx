@@ -110,6 +110,7 @@ export interface TokenDictionary {
   spacing: ScaleToken[];
   fontFamilies: ScaleToken[];
   fontSizes: TypeScaleToken[];
+  lineHeights: ScaleToken[];
   fontWeights: ScaleToken[];
   letterSpacing: ScaleToken[];
   breakpoints: ScaleToken[];
@@ -207,6 +208,20 @@ export const TOKENS: TokenDictionary = {
     { name: "--text-4xl", label: "h2", value: "3rem", lineHeight: "4rem", tracking: "-0.01em", desc: "Madison h2 (48px, Lora 500) — use with font-serif." },
     { name: "--text-5xl", label: "h1", value: "4rem", lineHeight: "5rem", tracking: "-0.01em", desc: "Madison h1 (64px, Lora 500) — use with font-serif." },
     { name: "--text-display", label: "HERO", value: "4.5rem", lineHeight: "1.05", tracking: "-0.01em", weight: "500", desc: "Madison HERO (72px, Lora 500) — hero / landing display; use with font-serif." },
+  ],
+
+  // Each step in the type scale already carries its own line-height — that pairing
+  // is the default and stays the right answer. These are the *override* scale, for
+  // the cases where copy needs to breathe (or tighten) without changing its size.
+  // These names deliberately cover Tailwind's whole `--leading-*` namespace: any
+  // step left undeclared would silently fall back to Tailwind's default value, which
+  // is exactly the ungoverned drift the token system exists to prevent.
+  lineHeights: [
+    { name: "--leading-tight", label: "Tight", value: "1.15", desc: "Large display headings — HERO / h1 / h2 set as one block." },
+    { name: "--leading-snug", label: "Snug", value: "1.3", desc: "Smaller headings and short two-line labels." },
+    { name: "--leading-normal", label: "Normal", value: "1.5", desc: "Body copy — matches the text-base pairing." },
+    { name: "--leading-relaxed", label: "Relaxed", value: "1.75", desc: "Long-form paragraphs that need air." },
+    { name: "--leading-loose", label: "Loose", value: "2", desc: "Maximum air — sparse editorial blocks, widely spaced lists." },
   ],
 
   fontWeights: [

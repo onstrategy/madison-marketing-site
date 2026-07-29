@@ -198,6 +198,18 @@ a large heading, add `font-serif` explicitly.
 
 Families: `font-sans` (Inter, default body) · `font-serif` (Lora, display/headings) · `font-mono`.
 Weights: `font-normal / medium / semibold / bold`. Tracking: `tracking-tight` … `tracking-widest`.
+
+**Line height — the type scale carries the default; `leading-*` is the override.** Every step
+above already pairs a size with a line-height, and that pairing is the right answer most of the
+time. When copy genuinely needs to breathe (or tighten) *at the same size*, use the override
+scale: `leading-tight` (1.15, large display headings set as one block) · `leading-snug` (1.3,
+smaller headings and two-line labels) · `leading-normal` (1.5, body) · `leading-relaxed` (1.75,
+long-form paragraphs) · `leading-loose` (2, maximum air). Those five cover Tailwind's whole
+`--leading-*` namespace, so there is no ungoverned step to fall through to.
+Never `leading-[1.4]` or `leading-[28px]` — **lint-blocked**
+(`no-raw-dimensions`). Changing the *default* line-height of a heading is a different act: that
+edits the step's `lineHeight` in `tokens.tsx` and lands as a draft PR.
+
 Don't use arbitrary sizes (`text-[40px]`, `text-[10px]`) — **lint-blocked** (`no-raw-dimensions`);
 reach for a step (`text-2xs` through `text-display`). The micro step `text-2xs` (10px) sits just below
 `text-xs` — overlines, swatch captions, dense mono labels.
@@ -325,4 +337,5 @@ elevation shadow instead.
 - Hardcoding focus-ring width (`ring-[3px]`, `ring-1`, `ring-2`) — use `ring-[length:var(--ring-width)]`
 - Raw length literals for spacing/layout — `p-[17px]`, `gap-[13px]`, `mt-[20px]` — **lint-blocked** (`no-raw-dimensions`). Use the numeric scale (`p-4`, `py-24`) or a named step (`p-card`, `px-gutter`, `gap-section`). The numeric scale is on-token; only arbitrary literals are banned.
 - Arbitrary font sizes — `text-[40px]`, `text-[10px]` — **lint-blocked** (`no-raw-dimensions`). Use the type scale (`text-2xs` through `text-5xl`, `text-display`).
+- Arbitrary line heights — `leading-[1.4]`, `leading-[28px]` — **lint-blocked** (`no-raw-dimensions`). Use `leading-tight` … `leading-relaxed`, or leave the type step's default alone.
 - **Large headings in the wrong family** — HERO/h1–h4 are Lora (`font-serif`); a big heading left in `font-sans` (Inter) is off-brand. h5/h6 and body stay Inter.
