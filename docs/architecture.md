@@ -27,7 +27,7 @@ ai-kit/
 │  ├─ src/ui/tokens.tsx        ← SOURCE OF TRUTH for all design tokens
 │  ├─ scripts/generate-theme.ts ← tokens.tsx → dist/*.css (the build)
 │  ├─ dist/                    ← generated CSS (gitignored)
-│  ├─ src/primitives/          ← 14 primitives (button, card, alert, …) + index.ts barrel
+│  ├─ src/primitives/          ← 18 primitives (button, card, alert, …) + index.ts barrel
 │  ├─ src/theme/               ← ThemeProvider (light/dark)
 │  ├─ src/ui/style-guide.tsx   ← living visual spec of every token
 │  ├─ src/stories/             ← Storybook stories (feed the MCP manifest)
@@ -36,6 +36,7 @@ ai-kit/
 │  └─ src/prototypes/<slug>/{index.tsx, meta.ts}  ← self-register via import.meta.glob
 ├─ .agents/skills/         design-system · react · typescript · testing  (the conventions)
 ├─ .claude/                hooks/ (skill-gate engine) · settings.json · skills→../.agents/skills
+│  └─ commands/               ← the contributor workflows as slash commands (§6g)
 ├─ turbo/generators/       gen:prototype · gen:promote
 ├─ eslint/                 no-raw-{colors,dimensions,rings-zindex}.js — token-lint rules (shippable)
 ├─ overlay/               install.sh + README — drop governance into an existing repo
@@ -103,7 +104,8 @@ mechanism) if a sub-app ever needs a different accent.
 Each primitive is a small, on-token React component. The conventions:
 
 - **Plain function components** taking `React.ComponentProps<…>`. **No `forwardRef`** — in React 19
-  `ref` is a normal prop and flows through `{...props}`. (We modernized all 14 off `forwardRef`.)
+  `ref` is a normal prop and flows through `{...props}`. (No primitive uses `forwardRef` — the
+  whole set was modernized off it.)
 - **`cn(...)`** = `twMerge(clsx(...))` — merges incoming `className` last so consumers can override.
 - **`cva`** for variants (button/badge/alert) — variants map to token classes, never booleans-soup.
 - **Only token classes** — `bg-surface`, `text-primary`, `bg-error-subtle`. No raw `bg-zinc-800`.
@@ -187,9 +189,12 @@ Three sibling rules in `eslint/`, all wired at `error` in `eslint.config.js` und
 plugin, flag off-system *values* inside any string literal — exactly what the path-gate can't see:
 
 - **`no-raw-colors`** — raw Tailwind color scales (`bg-indigo-500`) and arbitrary hex (`text-[#3b82f6]`).
-- **`no-raw-dimensions`** — arbitrary spacing/type lengths (`p-[17px]`, `gap-[13px]`, `text-[40px]`),
-  pushing you onto the tokenized scale (`p-4`, named steps like `py-section`, `text-xl`). Brackets that
-  *reference* a token (`p-[var(--spacing-card)]`) are allowed.
+- **`no-raw-dimensions`** — arbitrary spacing/type lengths (`p-[17px]`, `gap-[13px]`, `text-[40px]`)
+  and arbitrary line-heights (`leading-[1.4]`, `leading-[28px]`), pushing you onto the tokenized scale
+  (`p-4`, named steps like `py-section`, `text-xl`, `leading-snug`). Brackets that *reference* a token
+  (`p-[var(--spacing-card)]`, `leading-[var(--leading-snug)]`) are allowed. Line-height needs its own
+  pattern inside the rule because its values are legitimately **unitless** — every other scale here
+  requires a unit.
 - **`no-raw-rings-zindex`** — focus-ring widths/offsets and z-index magic numbers, *including the
   numbered utilities* (`ring-2`, `ring-offset-2`, `z-50`) — because those hardcode px/index instead of
   referencing `--ring-width` / the named `--z-*` layers (`z-modal`, `z-tooltip`). Use
@@ -212,19 +217,59 @@ block; warnings annotate the PR). Distinct from §6c — react-doctor lints *Rea
 |---|---|---|
 | Skill-gate | PreToolUse hook | Editing `packages/ui`/`.module.css`/tests without the right skill loaded |
 | Type / test | `bun run check` (CI) | Type errors, failing tests |
-| Off-system values | `no-raw-{colors,dimensions,rings-zindex}` → `bun run check` (CI) | `bg-indigo-500`/`text-[#hex]`, `p-[17px]`/`text-[40px]`, `ring-2`/`z-50` |
+| Off-system values | `no-raw-{colors,dimensions,rings-zindex}` → `bun run check` (CI) | `bg-indigo-500`/`text-[#hex]`, `p-[17px]`/`text-[40px]`/`leading-[1.4]`, `ring-2`/`z-50` |
 | React health | `react-doctor` (CI) | Security/perf/a11y/correctness issues |
 
 ### 6f. The prompt router — `route-prompt.sh` (*not a gate*)
 
 A fourth hook on **UserPromptSubmit**, wired in the same `settings.json`. It **never blocks** (always
 exits 0): it classifies a free-typed, plain-language request into one of the approved workflows
-(**build · restyle · submit · promote**, plus a **maintainer** heads-up for gate/token-engine
+(**build · restyle · undo · submit · promote**, plus a **maintainer** heads-up for gate/token-engine
 territory) and injects a short, governance-aware playbook as context — so the agent stays on the rails
 even on a vague prompt or after compaction. A wrong guess is harmless: it only adds an advisory pointer
 (and, for maintainer territory, a non-blocking `systemMessage`). It mirrors the catalog in
-[`prompts.md`](./prompts.md) and the `.claude/commands/`. (This is the "plain-language contributor"
-layer from `AGENTS.md`: the path-gate enforces, the router *guides*.)
+[`prompts.md`](./prompts.md) and the `.claude/commands/` (§6g). (This is the "plain-language
+contributor" layer from `AGENTS.md`: the path-gate enforces, the router *guides*.)
+
+Note there is deliberately **no `small-edit` branch**. The `restyle` pattern already matches `font`,
+`spacing`, `bigger`, `smaller` — and no regex reliably separates "small" from "big". So the `restyle`
+playbook itself carries a pointer to the fast lane, rather than the router pretending to a judgement
+it can't make.
+
+### 6g. The commands layer — `.claude/commands/`
+
+The workflows a contributor can invoke by name. **Filename = command name**: `restyle.md` → `/restyle`.
+There is no registry to update.
+
+Two entry points, one set of instructions. A contributor who types `/restyle …` loads the command file
+directly; one who types *"make our main color green"* gets §6f's router injecting a condensed version
+of the same playbook. Keeping those two in sync is manual — when you change a command, check
+`route-prompt.sh` and [`prompts.md`](./prompts.md).
+
+**Authoring conventions** (read `restyle.md` for the plain shape, `small-edit.md` for the
+cost-controlled one):
+
+- Frontmatter `description` (one imperative line) + `argument-hint` (plain language, with an `e.g.`).
+- First body line restates the persona and the request as `**$ARGUMENTS**`.
+- Then "do all the technical work yourself" plus a pointer to `AGENTS.md` or a doc.
+- Numbered steps, each opening with a **bolded imperative title.**
+- Always a `bun run check` step and a "report outcomes only" step.
+- Close with the trust tier the work lands in.
+
+**The frontmatter that controls cost and scope.** These are Claude Code fields, not repo conventions,
+and they are what makes a one-line tweak cost less than a page build:
+
+| Field | What it does here |
+|---|---|
+| `model` · `effort` | Pins a cheaper model / lower reasoning effort **for that command's turn only** — not saved to settings, the session model resumes on the next prompt. `/small-edit` and `/undo` use `sonnet`. |
+| `allowed-tools` | Pre-approves a narrow tool set so the command runs without permission prompts. **It grants, it does not restrict** — every other tool stays callable, governed by normal permissions. `disallowed-tools` is the field that removes tools. Either way the grant clears on the next message. |
+| `disable-model-invocation` | Stops Claude from firing the command on its own. Set on anything with side effects (`/undo`), so reverting is always the contributor's call. |
+| `` !`cmd` `` in the body | Runs at invocation and injects the output. `/small-edit` uses `` !`ls apps/sandbox/src/prototypes` `` so it starts knowing the page list instead of spending a turn discovering it. |
+
+**Scope caveat:** `.claude/commands/` is deliberately **not** part of the shippable overlay (§10) —
+the commands hard-code kit paths (`apps/sandbox`, `gen:prototype`), so they'd break in a client repo.
+The overlay ships the gates, skills and lint rules; the commands stay kit-scoped until those paths are
+parameterized.
 
 ---
 
@@ -311,6 +356,7 @@ recolors, semantic colors stay constant. (The workshop "aha.")
 | A primitive's shape | `packages/ui/src/primitives/button.tsx` (cva) · `card.tsx` (simple) · `alert.tsx` (variants+icon) |
 | Self-registration | `apps/sandbox/src/App.tsx` |
 | The skill-gate | `.claude/hooks/enforce-skill-gates.sh` + `.claude/hooks/skill-requirements.json` + `.claude/settings.json` |
+| A slash command | `.claude/commands/restyle.md` (plain) · `small-edit.md` (cost-controlled frontmatter) |
 | The token-lint rules | `eslint/no-raw-colors.js` · `no-raw-dimensions.js` · `no-raw-rings-zindex.js` |
 | The generators | `turbo/generators/config.ts` + `templates/` |
 | The overlay | `overlay/install.sh` + `overlay/README.md` |
