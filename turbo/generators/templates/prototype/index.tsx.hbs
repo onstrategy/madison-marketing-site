@@ -15,11 +15,14 @@ export default function {{pascalCase slug}}Prototype() {
     <div className="min-h-screen bg-app text-primary">
       <div className="mx-auto max-w-3xl px-6 py-16 space-y-6">
         <header className="space-y-2">
+          {/* "Home" rather than "All prototypes": this page is rendered by BOTH
+              apps — the sandbox gallery locally and the published site — and on
+              the site there is no gallery. "/" is correct in both. */}
           <a
             href="/"
             className="text-sm text-secondary transition-colors hover:text-primary"
           >
-            ← All prototypes
+            ← Home
           </a>
           <h1 className="text-3xl font-semibold tracking-tight">{meta.title}</h1>
           {meta.description ? (
