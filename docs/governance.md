@@ -40,9 +40,9 @@ a **draft PR**. Run `bun run build` to regenerate `dist/*`.
 
 **Review.** A maintainer checks the proposal against the system's invariants:
 - Warm neutral-first — is this actually neutral structure, or are you reaching for color as decoration?
-- Palette discipline — Madison is five colors in fixed roles: Terracotta is the *single* hero accent,
+- Palette discipline — Madison is five colors in fixed roles: Neon Blue is the *single* hero accent,
   Deep Dust is depth-only and restricted (`bg-depth`/`border-depth`, ≤10%, never a surface or paired
-  with Terracotta/Neon), Neon Blue is the reserved digital signal (`info`). New brand-ish colors are a
+  with Terracotta), Terracotta is the reserved status signal (`info`). New brand-ish colors are a
   red flag. (Full rules: the `design-system` skill's color-usage governance.)
 - Semantic triad — status colors come as base / subtle / fg, no numbered scales.
 - HSL channels — stored as raw channels so opacity modifiers work.

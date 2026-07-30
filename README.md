@@ -39,7 +39,7 @@ Styling is driven entirely by `packages/ui` — a centralized token dictionary
 Madison design system:
 
 - **Warm neutral-first** — 90%+ of the UI is Madison's warm neutrals (Warm White surfaces, warm near-black text, taupe borders); color is a signal, not decoration.
-- **Disciplined 5-color palette** — Terracotta is the single hero accent (~15%), Deep Dust a restricted depth accent (`bg-depth`/`border-depth`, ≤10%), Neon Blue the reserved digital signal (mapped to `info`), over Warm White + Dark Navy. Usage governance (approved pairings, the Deep Dust restriction) lives in the `design-system` skill.
+- **Disciplined 5-color palette** — Neon Blue is the single hero accent (~15%), Deep Dust a restricted depth accent (`bg-depth`/`border-depth`, ≤10%), Terracotta the reserved status signal (mapped to `info`), over Warm White + Dark Navy. Usage governance (approved pairings, the Deep Dust restriction) lives in the `design-system` skill.
 - **Lora + Inter** — Lora (`font-serif`) for display and large headings (HERO–h4); Inter (`font-sans`) for body and small headings.
 - **Semantic triads** — each status color (success, error, warning, info) has exactly three levels: base, subtle, foreground. No numbered scales.
 - **HSL channels** — tokens are stored as raw HSL channels so opacity modifiers (`bg-success/10`) work natively.
