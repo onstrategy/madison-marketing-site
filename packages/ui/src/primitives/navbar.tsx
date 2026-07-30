@@ -54,7 +54,6 @@ function Navbar({
 }: NavbarProps) {
   const [scrolled, setScrolled] = React.useState(false);
   const [sectionIsDark, setSectionIsDark] = React.useState(overDarkHero);
-  const headerRef = React.useRef<HTMLHeadElement>(null);
 
   React.useEffect(() => {
     if (!sectionAware) return;
@@ -91,7 +90,6 @@ function Navbar({
 
   return (
     <header
-      ref={headerRef}
       className={cn(
         "fixed inset-x-0 top-0 z-sticky border-b transition-colors",
         scrolled
