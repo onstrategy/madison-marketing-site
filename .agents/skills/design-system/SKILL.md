@@ -95,10 +95,11 @@ large-text floor. So:
 - **Ink** (any brand-colored text, link, heading, or icon) → use **`text-brand-accent`**, which
   re-tunes the same hue per theme (`#1169A6` light / `#3DA3EB` dark) to clear AA everywhere.
 
-**Arrow-icon hover nudge:** any button containing a Lucide arrow icon (`ArrowRight`, `ArrowUpRight`,
-etc.) gets a small rightward nudge on hover automatically — it's built into the `Button` primitive's
-base classes (targets `[class*='lucide-arrow']`), not something to add per-instance. Applies to every
-variant, not just primary.
+**Arrow-icon hover nudge:** any button containing a Lucide arrow icon gets a small nudge on hover
+automatically, *in the direction the arrow points* — `ArrowRight` and `ArrowUpRight` drift right,
+`ArrowLeft` left, `ArrowUp` up. It's built into the `Button` primitive's base classes (matched per
+direction on Lucide's emitted `lucide-arrow-*` class), not something to add per-instance. Applies to
+every variant, not just primary.
 
 ### Row / Item Selection
 
