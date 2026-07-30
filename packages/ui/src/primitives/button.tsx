@@ -4,8 +4,17 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "../ui/utils";
 
+// Arrow-icon hover nudge: a Lucide arrow inside a button drifts a half-step in
+// the direction it points. The nudge is keyed on Lucide's emitted per-icon class
+// (`lucide-arrow-right`, …) — a coupling to a third-party's class naming, so if
+// an upgrade ever renames them the effect silently stops (it degrades to no
+// animation, never to a broken layout). Directions are matched individually and
+// as exact class tokens, NOT a `[class*='lucide-arrow']` substring: a substring
+// match sent `ArrowLeft` and `ArrowUp` sliding rightwards, which is what this
+// spells out. `.lucide-arrow-up` does not match `lucide-arrow-up-right`, since a
+// class selector matches a whole token.
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all cursor-pointer disabled:pointer-events-none disabled:opacity-[var(--disabled-opacity)] [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-brand focus-visible:ring-brand/50 focus-visible:ring-[length:var(--ring-width)] aria-invalid:ring-error/20 dark:aria-invalid:ring-error/40 aria-invalid:border-error [&_[class*='lucide-arrow']]:transition-transform hover:[&_[class*='lucide-arrow']]:translate-x-0.5",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all cursor-pointer disabled:pointer-events-none disabled:opacity-[var(--disabled-opacity)] [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-brand focus-visible:ring-brand/50 focus-visible:ring-[length:var(--ring-width)] aria-invalid:ring-error/20 dark:aria-invalid:ring-error/40 aria-invalid:border-error [&_[class*='lucide-arrow']]:transition-transform hover:[&_.lucide-arrow-right]:translate-x-0.5 hover:[&_.lucide-arrow-up-right]:translate-x-0.5 hover:[&_.lucide-arrow-up-right]:-translate-y-0.5 hover:[&_.lucide-arrow-left]:-translate-x-0.5 hover:[&_.lucide-arrow-up]:-translate-y-0.5",
   {
     variants: {
       variant: {
@@ -62,7 +71,10 @@ const buttonVariants = cva(
       // reserved for the one compact spot that needs it (the fixed site nav's
       // CTA), kept at the smaller 14px (`text-sm`) it always had so it doesn't
       // look oversized in that bar. Icon-only buttons mirror the same "two
-      // sizes" rule with `icon` / `icon-lg`.
+      // sizes" rule with `icon` / `icon-lg`; `icon-sm` is the same reserved
+      // compact case as `sm`, and stays in the API because this is a published
+      // package — dropping an exported variant breaks consumers outside this
+      // repo, which nothing in the design brief called for.
       size: {
         default: "h-9 rounded-full px-4 py-2 text-base has-[>svg]:px-3",
         sm: "h-8 rounded-full gap-1.5 px-3 text-sm has-[>svg]:px-2.5",
@@ -71,6 +83,7 @@ const buttonVariants = cva(
         // reduction when an icon is present.
         lg: "rounded-full px-6.5 py-3.75 text-base",
         icon: "size-9 rounded-md",
+        "icon-sm": "size-8 rounded-md",
         "icon-lg": "size-10 rounded-md",
       },
       rounded: {
