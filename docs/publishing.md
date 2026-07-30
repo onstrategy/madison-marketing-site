@@ -67,9 +67,9 @@ site is noindexed.
 
 | Context | URL | When |
 |---|---|---|
-| **Production** | `<site>.netlify.app` | every merge to `main` |
-| **Branch deploy** | `preview--<site>.netlify.app` | every push to the `preview` branch |
-| **Deploy Preview** | `deploy-preview-<n>--<site>.netlify.app` | every pull request |
+| **Production** | `madison-design-system.netlify.app` | every merge to `main` |
+| **Branch deploy** | `preview--madison-design-system.netlify.app` | every push to the `preview` branch |
+| **Deploy Preview** | `deploy-preview-<n>--madison-design-system.netlify.app` | every pull request |
 
 `main` is production — **never push to it directly.** Merging a PR is what publishes.
 

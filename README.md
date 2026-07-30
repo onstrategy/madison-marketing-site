@@ -3,6 +3,12 @@
 **Madison** is an AI-native, **code-first design system** — run directly in code, usable by
 designers, PMs, and marketing through Claude Code, made safe by governance-as-code.
 
+**Live site:** [madison-design-system.netlify.app](https://madison-design-system.netlify.app) —
+deployed from `main`. Every pull request gets its own preview link; the `preview` branch has a
+stable one at [preview--madison-design-system.netlify.app](https://preview--madison-design-system.netlify.app).
+This runs on a demo Netlify account and is deliberately not indexable — see
+[`docs/publishing.md`](docs/publishing.md).
+
 > This repo began as a **neutral reference kit** (codenamed "Northwind") and has since been
 > **specialized into Madison's design system**. The productized *approach* behind it — and the
 > commercial model — live in [`PLAN.md`](./PLAN.md) and
