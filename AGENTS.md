@@ -114,11 +114,11 @@ including the handover checklist for the client — is in [`docs/publishing.md`]
 
 - **`main` is production.** Never commit or push to `main` directly. Merging a PR is what
   publishes.
-- **Every pull request gets a Deploy Preview** at `deploy-preview-<number>--<site>.netlify.app`.
+- **Every pull request gets a Deploy Preview** at `deploy-preview-<number>--madison-design-system.netlify.app`.
   This is the link a non-technical contributor actually cares about — it's their work, live.
   Read it from the PR's Netlify check or comment (`gh pr checks <number>`). **Never guess or
   construct the URL**, and never substitute a one-off deploy-ID permalink.
-- **The `preview` branch** has a stable URL at `preview--<site>.netlify.app`, for a persistent
+- **The `preview` branch** has a stable URL at `preview--madison-design-system.netlify.app`, for a persistent
   staging link that doesn't churn per PR.
 - **A red Netlify check is a red gate.** Treat it exactly like a failing `bun run check`: fix it,
   don't report the work as done.

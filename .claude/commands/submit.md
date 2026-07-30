@@ -13,7 +13,7 @@ Do all the technical work yourself; they never type a command or touch git.
    (`feat(scope): …`, `fix(scope): …`) — match recent commits (`git log --oneline -10`).
 3. **Push + open the PR.**
 4. **Wait for the Deploy Preview.** Netlify builds every PR. Poll `gh pr checks <number>` until
-   the Netlify check finishes, then read the `deploy-preview-<number>--<site>.netlify.app` URL
+   the Netlify check finishes, then read the `deploy-preview-<number>--madison-design-system.netlify.app` URL
    from that check's details or the Netlify comment on the PR. **Never guess or construct the
    URL**, and never substitute a one-off deploy-ID permalink. A red Netlify check is a red gate —
    treat it exactly like a failing `bun run check`: fix it, don't report the work as done.
