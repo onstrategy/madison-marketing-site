@@ -1,16 +1,19 @@
-import { useState, type ReactNode } from "react";
+import { useLocation } from "react-router-dom";
 import {
-  ChevronDown,
   ArrowRight,
-  ArrowLeftRight,
-  MessageSquare,
+  ArrowUpRight,
+  Landmark,
+  Gavel,
+  Users,
   ShieldCheck,
-  GitPullRequest,
-  PenTool,
-  Megaphone,
-  Code2,
-  Check,
-  Mail,
+  Map as MapIcon,
+  Lock,
+  MessageSquare,
+  FileText,
+  Workflow,
+  Presentation,
+  BarChart3,
+  LayoutDashboard,
 } from "lucide-react";
 import { cn } from "@madison/ui/utils";
 import { Button } from "@madison/ui/button";
@@ -21,173 +24,425 @@ import {
   NavbarLink,
   NavbarActions,
 } from "@madison/ui/navbar";
+import { NavDropdown } from "@madison/ui/nav-dropdown";
 import { Logo } from "@madison/ui/logo";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from "@madison/ui/card";
-import { Badge } from "@madison/ui/badge";
-import { Input } from "@madison/ui/input";
-import { TestimonialCard } from "@madison/ui/testimonial-card";
-import { Separator } from "@madison/ui/separator";
-import { Switch } from "@madison/ui/switch";
-import { ThemeToggle } from "@madison/ui/theme";
-import {
-  Reveal,
-  Eyebrow,
-  SectionHeading,
-  DotGrid,
-  BrowserFrame,
-  CheckChip,
-} from "./parts";
+import { Reveal, Marquee } from "./parts";
+import { CLIENT_LOGOS } from "./logos";
+import { IntelDiagram } from "./intel";
+import { PHOTOS, type StockPhoto } from "./photos";
+import visionCollab from "./vision-collab.jpg";
 
 // ============================================================================
-// Madison landing — sections. Neutral-first, product-as-illustration,
-// every accent a token. Reads as a crafted dev/design tool, not SaaS slop.
+// Madison landing — sections, rebuilt to the "Platform Home 2a" design file.
+// Every band, color, and type choice maps to a token: the design's cream
+// bands are bg-app / bg-surface, its blue accents are `brand`, Lora
+// headlines come from the global h1–h4 serif rule.
 // ============================================================================
 
-const NAV_LINKS = [
-  { label: "Platform", menu: true },
-  { label: "Client Stories", menu: false },
-  { label: "Security", menu: false },
-  { label: "Company", menu: true },
-  { label: "Resources", menu: false },
+// Icons mirror the ones on the Capabilities section below — same job, same glyph.
+const PLATFORM_LINKS = [
+  { label: "Overview", href: "#top", icon: LayoutDashboard },
+  { label: "Chat", href: "#top", icon: MessageSquare },
+  { label: "Reports", href: "#top", icon: FileText },
+  { label: "Workflows", href: "#top", icon: Workflow },
+  { label: "Briefings", href: "#top", icon: Presentation },
+  { label: "Analysis", href: "#top", icon: BarChart3 },
 ];
 
-export function Nav() {
+const COMPANY_LINKS = [
+  { label: "About us", href: "/about-us" },
+  { label: "Newsroom", href: "/newsroom" },
+  { label: "Contact", href: "/contact" },
+];
+
+// Nav items don't map 1:1 onto route paths — a story/resource/news detail page
+// (e.g. "/city-of-corona") is a flat top-level route, not a URL sub-path of its
+// index (e.g. "/client-stories"). This is the explicit "which pages count as
+// under this nav item" map "sectionAware" alone can't derive from the URL.
+const CLIENT_STORIES_PATHS = ["/client-stories", "/city-of-corona"];
+const RESOURCES_PATHS = ["/resources", "/director-of-ai-assistant", "/ai-guiding-principles"];
+const NEWSROOM_PATHS = ["/newsroom", "/proof-ai-works"];
+
+export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAware?: boolean; overDarkHero?: boolean }) {
+  const { pathname } = useLocation();
+  const companyLinks = COMPANY_LINKS.map((item) => ({
+    ...item,
+    active:
+      item.href === "/newsroom" ? NEWSROOM_PATHS.includes(pathname) : item.href === pathname,
+  }));
+
   return (
-    <Navbar contentClassName="mx-auto max-w-[var(--container-page)]">
-      <div className="flex items-center gap-8">
-        <NavbarBrand href="#top">
-          <Logo />
-        </NavbarBrand>
-        <NavbarLinks>
-          {NAV_LINKS.map((link) => (
-            <NavbarLink key={link.label} href="#top">
-              {link.label}
-              {link.menu ? <ChevronDown className="size-4" /> : null}
-            </NavbarLink>
-          ))}
-        </NavbarLinks>
-      </div>
+    <Navbar contentClassName="mx-auto max-w-6xl" sectionAware={sectionAware} overDarkHero={overDarkHero}>
+      <NavbarBrand href="/landing">
+        <Logo />
+      </NavbarBrand>
+      <NavbarLinks>
+        <NavDropdown label="Platform" items={PLATFORM_LINKS} active={pathname === "/landing"} />
+        <NavbarLink href="/client-stories" active={CLIENT_STORIES_PATHS.includes(pathname)}>
+          Client Stories
+        </NavbarLink>
+        <NavbarLink href="/security" active={pathname === "/security"}>
+          Security
+        </NavbarLink>
+        <NavDropdown label="Company" items={companyLinks} active={companyLinks.some((item) => item.active)} />
+        <NavbarLink href="/resources" active={RESOURCES_PATHS.includes(pathname)}>
+          Resources
+        </NavbarLink>
+      </NavbarLinks>
       <NavbarActions>
-        <ThemeToggle />
         <a
           href="#top"
-          className="hidden text-sm font-medium text-primary transition-colors hover:text-brand sm:block"
+          className="hidden text-sm font-medium text-primary transition-colors hover:text-brand-accent sm:block"
         >
           Sign in
         </a>
-        <Button size="sm">Book a demo</Button>
+        <Button size="sm" asChild>
+          <a href="/book-a-demo">Book a demo</a>
+        </Button>
       </NavbarActions>
     </Navbar>
   );
 }
 
-const STACK = [
-  "React",
-  "Tailwind CSS",
-  "Storybook",
-  "Claude Code",
-  "W3C Design Tokens",
-];
-
-export function LogoStrip() {
+/** Lowercase micro-label in brand blue — the design's `.ey` treatment. */
+function Kicker({ children }: { children: string }) {
   return (
-    <div className="border-b border-default bg-panel">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-3 px-gutter py-6">
-        <span className="font-mono text-xs uppercase tracking-widest text-muted">
-          Built on
-        </span>
-        {STACK.map((item) => (
-          <span key={item} className="text-sm font-medium text-secondary">
-            {item}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function DiagramNode({
-  children,
-  featured,
-}: {
-  children: ReactNode;
-  featured?: boolean;
-}) {
-  return (
-    <span
-      className={cn(
-        "rounded-md border px-3 py-1.5 text-sm font-medium",
-        featured
-          ? "border-brand bg-brand-subtle text-primary"
-          : "border-default bg-app text-secondary",
-      )}
-    >
+    <span className="font-sans text-sm lowercase tracking-wide text-brand-accent">
       {children}
     </span>
   );
 }
 
-export function Problem() {
-  return (
-    <section className="border-b border-default">
-      <div className="mx-auto max-w-6xl px-gutter py-section">
-        <Reveal>
-          <SectionHeading
-            eyebrow="The problem"
-            title="Your design system lives in two places. They drift."
-            blurb="Most teams maintain a system in Figma and rebuild it in code — two sources of truth that fall out of sync the moment someone ships."
-          />
-        </Reveal>
+// ---------------------------------------------------------------------------
+// LOGO WALL — "Live in 65+ local governments"
+// ---------------------------------------------------------------------------
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <Reveal>
-            <div className="h-full rounded-xl border border-default bg-surface p-card">
-              <Eyebrow className="text-error">Today</Eyebrow>
-              <div className="mt-4 flex flex-wrap items-center gap-3">
-                <DiagramNode>Figma</DiagramNode>
-                <ArrowLeftRight className="size-5 shrink-0 text-muted" />
-                <DiagramNode>Code</DiagramNode>
+export function ClientLogos() {
+  return (
+    <section className="light bg-plate px-gutter pb-14 pt-18">
+      <div className="mx-auto max-w-6xl">
+        <p className="mb-8 text-center font-sans text-sm uppercase tracking-widest text-muted">
+          Live in 65+ local governments
+        </p>
+        <Marquee
+          durationSeconds={60}
+          items={CLIENT_LOGOS}
+          renderItem={(logo) => (
+            <img
+              src={logo.src}
+              alt={logo.name}
+              loading="lazy"
+              // Uniform display height; width follows each mark's own aspect
+              // ratio, so the wall reads as one optical line.
+              className="h-17.5 w-auto object-contain"
+            />
+          )}
+        />
+      </div>
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// INTELLIGENCE LAYER — headline over the animated diagram
+// ---------------------------------------------------------------------------
+
+export function IntelligenceLayer() {
+  return (
+    <section className="border-t border-default bg-app px-gutter py-26">
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <h2 className="mx-auto mb-11 max-w-4xl text-balance text-center text-4xl font-medium tracking-tight text-primary">
+            We&rsquo;re building your city&rsquo;s AI data layer, and the
+            agents to accelerate your work.
+          </h2>
+        </Reveal>
+        <Reveal delay={100}>
+          <IntelDiagram />
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// CAPABILITIES — five jobs, five cards
+// ---------------------------------------------------------------------------
+
+const CAPABILITIES = [
+  {
+    icon: MessageSquare,
+    title: "Chat",
+    desc: "Ask anything across every file your government has ever filed. Cited to the page, paragraph, and vote.",
+  },
+  {
+    icon: FileText,
+    title: "Reports",
+    desc: "Staff reports, planning findings, and procurement memos drafted in your county's format and tone.",
+  },
+  {
+    icon: Workflow,
+    title: "Workflows",
+    desc: "Pre-built agents for the work your office already does — code lookup, parcel research, RFP drafting.",
+  },
+  {
+    icon: Presentation,
+    title: "Briefings",
+    desc: "Hand Madison an agenda packet — get a five-minute briefing per item with cited history and prior votes.",
+  },
+  {
+    icon: BarChart3,
+    title: "Analysis",
+    desc: "Fiscal impact models, comparable-jurisdiction analysis, and trend reports across your corpus.",
+  },
+];
+
+export function Capabilities() {
+  return (
+    <section className="dark border-t border-default bg-app px-gutter py-30">
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <div className="mb-6">
+            <h5 className="font-sans text-xl font-semibold text-brand-accent">
+              The assistant you always wanted but could never afford.
+            </h5>
+            <h2 className="text-balance text-4xl font-medium tracking-tight text-primary">
+              Give an assistant to everyone on your staff.
+            </h2>
+          </div>
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+            <p className="max-w-2xl text-lg text-secondary">
+              One platform, five jobs — powered by department-specific models
+              trained on your government&rsquo;s record.
+            </p>
+            <a
+              href="#top"
+              className="inline-flex items-center gap-1.5 whitespace-nowrap pb-1 font-semibold text-brand-accent"
+            >
+              See the full platform <ArrowRight className="size-4" />
+            </a>
+          </div>
+        </Reveal>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {CAPABILITIES.map((cap, i) => (
+            <Reveal key={cap.title} delay={i * 60}>
+              {/* Non-interactive: a static summary tile, not a link. */}
+              <div className="flex h-full flex-col rounded-2xl border border-active bg-surface p-5">
+                {/* Icon chip — a small gradient tile rather than a flat rectangle,
+                    with a soft duplicate icon behind the main glyph for depth. */}
+                <div className="relative mb-5 flex size-14 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-brand to-brand-hover shadow-sm">
+                  <cap.icon
+                    aria-hidden="true"
+                    className="absolute size-10 -translate-y-1 text-brand-fg/25"
+                  />
+                  <cap.icon className="relative size-6 text-brand-fg" />
+                </div>
+                <div className="mb-1.5 text-lg font-bold tracking-tight text-primary">
+                  {cap.title}
+                </div>
+                <p className="flex-1 text-sm leading-relaxed text-secondary">
+                  {cap.desc}
+                </p>
               </div>
-              <p className="mt-4 text-sm text-secondary">
-                Two sources of truth. Every change is made — and reviewed —
-                twice. Drift is inevitable.
-              </p>
-            </div>
-          </Reveal>
-          <Reveal delay={80}>
-            <div className="h-full rounded-xl border border-default bg-surface p-card">
-              <Eyebrow className="text-success">With Madison</Eyebrow>
-              <div className="mt-4 flex flex-wrap items-center gap-3">
-                <DiagramNode featured>Code</DiagramNode>
-                <ArrowRight className="size-5 shrink-0 text-muted" />
-                <DiagramNode>Tokens</DiagramNode>
-                <ArrowRight className="size-5 shrink-0 text-muted" />
-                <DiagramNode>Figma</DiagramNode>
-              </div>
-              <p className="mt-4 text-sm text-secondary">
-                Code is the source. Tokens generate the rest, and Figma reads
-                from it — not the other way around.
-              </p>
-            </div>
+            </Reveal>
+          ))}
+          <Reveal delay={CAPABILITIES.length * 60}>
+            <a
+              href="#top"
+              className="light flex h-full flex-col items-start justify-center rounded-2xl bg-brand-subtle p-5 transition-transform hover:-translate-y-1"
+            >
+              <span className="mb-5 flex size-14 items-center justify-center rounded-2xl bg-brand text-brand-fg">
+                <LayoutDashboard className="size-6" />
+              </span>
+              <span className="mb-1.5 text-lg font-bold tracking-tight text-primary">
+                Explore the platform
+              </span>
+              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
+                See every capability <ArrowRight className="size-4" />
+              </span>
+            </a>
           </Reveal>
         </div>
+      </div>
+    </section>
+  );
+}
 
+// ---------------------------------------------------------------------------
+// CLIENT STORIES — photo-tile grid (two tall + 2×2)
+// ---------------------------------------------------------------------------
+
+interface StoryTile {
+  name: string;
+  kind: "roi" | "quote";
+  line: string;
+  photo: StockPhoto;
+  tall?: boolean;
+  href: string;
+}
+
+const STORY_TILES: StoryTile[] = [
+  {
+    name: "Washoe County, NV",
+    kind: "roi",
+    line: "$41K+ saved every month",
+    photo: PHOTOS.govBuildingFlag,
+    tall: true,
+    href: "https://www.madisonai.com/client-stories/washoe-county",
+  },
+  {
+    name: "City of Reno",
+    kind: "roi",
+    line: "75% less time on staff reports",
+    photo: PHOTOS.meetingPens,
+    tall: true,
+    href: "https://www.madisonai.com/client-stories",
+  },
+  {
+    name: "Carson City, NV",
+    kind: "quote",
+    line: "Exactly what I need, faster.",
+    photo: PHOTOS.govBuildingWhite,
+    href: "https://www.madisonai.com/client-stories/carson-city-client-story",
+  },
+  {
+    name: "City of Corona, CA",
+    kind: "quote",
+    line: "Every decision at our fingertips.",
+    photo: PHOTOS.laptopsTable,
+    href: "/city-of-corona",
+  },
+  {
+    name: "Aspen, CO",
+    kind: "roi",
+    line: "140 hrs reclaimed / month",
+    photo: PHOTOS.govBuildingColumns,
+    href: "https://www.madisonai.com/client-stories",
+  },
+  {
+    name: "Pasadena, CA",
+    kind: "quote",
+    line: "One source of truth for legal.",
+    photo: PHOTOS.groupDiscussion,
+    href: "https://www.madisonai.com/client-stories",
+  },
+];
+
+/**
+ * A photo tile is an always-dark region (photo under a navy scrim), so its
+ * caption block is wrapped in the `dark` token scope: text-primary resolves
+ * to warm white and bg-app to Dark Navy in BOTH themes — no raw colors.
+ */
+function StoryTileCard({ tile }: { tile: StoryTile }) {
+  return (
+    <article
+      className={cn(
+        "group relative overflow-hidden rounded-2xl transition-transform hover:-translate-y-1",
+        tile.tall ? "h-115" : "h-55",
+      )}
+    >
+      <img
+        src={tile.photo.url}
+        alt={tile.photo.alt}
+        loading="lazy"
+        className="absolute inset-0 size-full object-cover"
+      />
+      <div className="dark absolute inset-0">
+        {/* Two pre-rendered gradients cross-fade on hover (opacity, not the
+            gradient stops themselves — browsers can't tween gradient-stop
+            positions smoothly, but a plain opacity transition is silky).
+            Both ramp to full opacity (not a faded /90) so the text stays
+            legible even at rest. The small tiles are short enough that the
+            text sits much higher up proportionally, so their rest gradient
+            spans the full card instead of just the bottom portion. */}
+        <div
+          className={cn(
+            "pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-app transition-opacity group-hover:opacity-0",
+            tile.tall ? "from-25%" : "from-10%",
+          )}
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-5% to-app opacity-0 transition-opacity group-hover:opacity-100" />
+        {/* The button is absolutely positioned (not in normal flow) so it
+            reserves no space at rest — the text sits flush at the true
+            bottom of the card. On hover it rises + fades in from below,
+            and the text rides up further to clear it, reading as the
+            button "pushing" the text up rather than two independent moves. */}
+        <div
+          className={cn(
+            "absolute inset-x-0 bottom-0",
+            tile.tall ? "p-6" : "p-4.5",
+          )}
+        >
+          <div className="transition-transform group-hover:-translate-y-11">
+            <div className="mb-2 font-sans text-sm uppercase tracking-widest text-secondary">
+              {tile.name}
+            </div>
+            {tile.kind === "quote" ? (
+              <div
+                className={cn(
+                  "font-serif font-medium italic tracking-tight text-primary",
+                  tile.tall ? "text-2xl" : "text-lg",
+                )}
+              >
+                &ldquo;{tile.line}&rdquo;
+              </div>
+            ) : (
+              <div
+                className={cn(
+                  "font-bold tracking-tight text-primary",
+                  tile.tall ? "text-2xl" : "text-lg",
+                )}
+              >
+                {tile.line}
+              </div>
+            )}
+          </div>
+          <a
+            href={tile.href}
+            {...(tile.href.startsWith("/") ? {} : { target: "_blank", rel: "noopener" })}
+            className={cn(
+              "absolute inline-flex w-fit translate-y-2 items-center gap-1.5 rounded-full bg-brand px-4 py-2 text-xs font-semibold text-brand-fg opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100",
+              // Absolute children align to the parent's border box, not its
+              // padding box, so the inset has to restate the parent's own
+              // p-6 / p-4.5 explicitly — bottom-0/inset-x-0 would sit flush
+              // with the card edge instead of matching the text's margin.
+              tile.tall ? "inset-x-6 bottom-6" : "inset-x-4.5 bottom-4.5",
+            )}
+          >
+            See the story <ArrowRight className="size-3.5" />
+          </a>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export function ClientStories() {
+  return (
+    <section className="border-t border-default bg-surface px-gutter py-27">
+      <div className="mx-auto max-w-6xl">
         <Reveal>
-          <div className="mt-8 flex items-start gap-5 rounded-xl border border-default bg-panel p-card">
-            <span className="text-4xl font-semibold tracking-tight text-primary">
-              14%
-            </span>
-            <p className="text-pretty text-secondary">
-              of Shopify's admin UI had drifted off its own Polaris design system
-              within a year. The real failure mode isn't tooling — it's
-              governance.
-            </p>
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+            <h2 className="text-balance text-4xl font-medium tracking-tight text-primary">
+              Every customer is a community we serve.
+            </h2>
+            <a
+              href="/client-stories"
+              className="whitespace-nowrap font-semibold text-brand-accent"
+            >
+              See all 60+ customers →
+            </a>
+          </div>
+        </Reveal>
+        <Reveal delay={80}>
+          <div className="grid gap-3 lg:grid-cols-4">
+            <StoryTileCard tile={STORY_TILES[0]} />
+            <StoryTileCard tile={STORY_TILES[1]} />
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:col-span-2">
+              {STORY_TILES.slice(2).map((tile) => (
+                <StoryTileCard key={tile.name} tile={tile} />
+              ))}
+            </div>
           </div>
         </Reveal>
       </div>
@@ -195,615 +450,284 @@ export function Problem() {
   );
 }
 
-const STEPS = [
+// ---------------------------------------------------------------------------
+// WHO & HOW — three audiences
+// ---------------------------------------------------------------------------
+
+const ROLES = [
   {
-    n: "01",
-    icon: MessageSquare,
-    title: "Ask in plain language",
-    body: "“Build a pricing page.” Contributors speak in outcomes — no tools, commands, file paths, or slugs to learn.",
+    icon: Landmark,
+    photo: PHOTOS.seatedMeeting,
+    cap: "Public records office · Washoe County, NV",
+    tag: "for staff",
+    title: "Built for the people who run the building.",
+    desc: "Clerks, planners, finance directors, and records officers — Madison was co-designed with the staff who use it daily.",
+    stat: "5 hrs",
+    statLabel: "back to each staff member, weekly",
   },
   {
-    n: "02",
-    icon: ShieldCheck,
-    title: "The agent stays on-system",
-    body: "Claude Code loads the design-system skill, pulls real components from Storybook, and emits on-token code. Reach for a raw hex and the skill-gate blocks it.",
+    icon: Gavel,
+    photo: PHOTOS.presenting,
+    cap: "Council district overview · Reno, NV",
+    tag: "for electeds",
+    title: "Five-minute briefings before five-hour meetings.",
+    desc: "Hand Madison the agenda packet. Get back a per-item summary with cited history, prior votes, and staff position.",
+    stat: "120+",
+    statLabel: "council & board members briefed weekly",
   },
   {
-    n: "03",
-    icon: GitPullRequest,
-    title: "Governance gates the merge",
-    body: "bun run check runs typecheck, tests, and the on-token lint. What lands is a real pull request your engineers review and merge.",
+    icon: Users,
+    photo: PHOTOS.govBuildingWhite,
+    cap: "Resident self-service portal",
+    tag: "for citizens",
+    title: "Answers without the wait.",
+    desc: "Public records handled from intake to response letter — and self-service answers that resolve routine questions instantly.",
+    stat: "90%",
+    statLabel: "faster records fulfillment",
   },
 ];
 
-function GateTerminal() {
+export function Roles() {
   return (
-    <BrowserFrame title="claude code — governance">
-      <div className="space-y-2 bg-app p-card font-mono text-sm leading-relaxed">
-        <div className="text-muted">
-          <span className="text-brand">❯</span> add a “Choose plan” button
+    <section className="border-t border-default bg-app px-gutter py-30">
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <h3 className="mb-10 text-balance text-3xl font-medium tracking-tight text-primary">
+            One platform, three audiences — and the people they&rsquo;re for.
+          </h3>
+        </Reveal>
+        <div className="grid gap-5 md:grid-cols-3">
+          {ROLES.map((role, i) => (
+            <Reveal key={role.tag} delay={i * 80}>
+              <div className="h-full overflow-hidden rounded-2xl border border-default bg-surface transition-transform hover:-translate-y-1">
+                <div className="relative h-52">
+                  <img
+                    src={role.photo.url}
+                    alt={role.photo.alt}
+                    loading="lazy"
+                    className="absolute inset-0 size-full object-cover"
+                  />
+                  {/* Caption pill is an always-dark region — `dark` scope keeps it on-token */}
+                  <div className="dark pointer-events-none absolute inset-x-3 bottom-3 flex items-center justify-between gap-2 rounded-lg bg-app/75 px-3 py-2 text-xs text-primary backdrop-blur-sm">
+                    <span>{role.cap}</span>
+                    <ArrowUpRight className="size-3.5" />
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="mb-2.5 flex items-center gap-2">
+                    <span className="flex size-6.5 items-center justify-center rounded-md bg-brand-subtle text-brand-accent">
+                      <role.icon className="size-4" />
+                    </span>
+                    <Kicker>{role.tag}</Kicker>
+                  </div>
+                  <h3 className="mb-2.5 font-sans text-xl font-bold leading-snug tracking-tight text-primary">
+                    {role.title}
+                  </h3>
+                  <p className="mb-4.5 text-sm leading-relaxed text-secondary">
+                    {role.desc}
+                  </p>
+                  <div className="flex items-baseline gap-2 border-t border-default pt-3.5">
+                    <span className="text-2xl font-bold text-primary">
+                      {role.stat}
+                    </span>
+                    <span className="text-xs text-muted">{role.statLabel}</span>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
-        <div className="text-secondary">
-          Editing <span className="text-primary">pricing.tsx</span> …
-        </div>
-        <div className="text-error">
-          ✗ SKILL GATE BLOCKED — load the design-system skill
-        </div>
-        <div className="text-secondary">
-          ↳ skill loaded · using <span className="text-primary">bg-brand</span>,
-          not <span className="text-muted line-through">#7c3aed</span>
-        </div>
-        <div className="pt-1 text-secondary">
-          <span className="text-brand">❯</span> bun run check
-        </div>
-        <div className="flex flex-wrap gap-2 pt-1">
-          <CheckChip>typecheck</CheckChip>
-          <CheckChip>test</CheckChip>
-          <CheckChip>lint</CheckChip>
-        </div>
-        <div className="pt-1 text-success">✓ on-system · opened PR #128</div>
       </div>
-    </BrowserFrame>
+    </section>
   );
 }
 
-export function HowItWorks() {
-  return (
-    <section
-      id="how-it-works"
-      className="scroll-mt-24 border-b border-default"
-    >
-      <div className="mx-auto max-w-6xl px-gutter py-section">
-        <Reveal>
-          <SectionHeading
-            eyebrow="How it works"
-            title="From a plain-language request to a clean, on-system PR."
-            blurb="The same loop every time — and the guardrails are code, not a checklist someone has to remember."
-          />
-        </Reveal>
+// ---------------------------------------------------------------------------
+// THE MOMENT — big-number proof
+// ---------------------------------------------------------------------------
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="space-y-8">
-            {STEPS.map((step, i) => (
-              <Reveal key={step.n} delay={i * 80}>
-                <div className="flex gap-4">
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-default bg-surface">
-                    <step.icon className="size-5 text-brand" />
+const MOMENT_STATS = [
+  { value: "75%", label: "less time on staff report drafting, measured at City of Reno" },
+  { value: "5 hrs", label: "given back per staff member each week, across 65+ governments" },
+  { value: "$2.1m", label: "annual labor recouped per 100 staff, modeled across departments" },
+];
+
+export function TheMoment() {
+  return (
+    <section className="border-t border-default bg-surface px-gutter py-30">
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <h2 className="mb-14 max-w-3xl text-balance text-4xl font-medium tracking-tight text-primary">
+            AI is changing local government.
+          </h2>
+        </Reveal>
+        <div className="grid items-start gap-8 lg:grid-cols-[2fr_3fr] lg:gap-16">
+          <Reveal>
+            <p className="max-w-md text-pretty leading-relaxed text-secondary">
+              The municipal sector is undergoing its most significant
+              operational shift in a generation. Governments that leaned into
+              purpose-built AI early are already seeing tangible returns.
+              <br />
+              <br />
+              This is the early framework for what staff and electeds can
+              reasonably expect.
+            </p>
+          </Reveal>
+          <div className="flex flex-col">
+            {MOMENT_STATS.map((stat, i) => (
+              <Reveal key={stat.value} delay={i * 80}>
+                <div
+                  className={cn(
+                    "grid items-baseline gap-4 border-t border-default py-7 sm:grid-cols-[280px_1fr] sm:gap-8",
+                    i === MOMENT_STATS.length - 1 && "border-b",
+                  )}
+                >
+                  <div className="font-sans text-5xl font-bold tracking-tight text-primary md:text-6xl">
+                    {stat.value}
                   </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="font-mono text-xs text-muted">
-                        {step.n}
-                      </span>
-                      <h3 className="text-lg font-semibold text-primary">
-                        {step.title}
-                      </h3>
-                    </div>
-                    <p className="mt-1.5 text-pretty text-secondary">
-                      {step.body}
-                    </p>
-                  </div>
+                  <p className="text-sm leading-normal text-secondary">
+                    {stat.label}
+                  </p>
                 </div>
               </Reveal>
             ))}
           </div>
-          <Reveal delay={120}>
-            <GateTerminal />
-          </Reveal>
         </div>
       </div>
     </section>
   );
 }
 
-const NEUTRAL_SWATCHES: { cls: string; label: string }[] = [
-  { cls: "bg-app", label: "app" },
-  { cls: "bg-panel", label: "panel" },
-  { cls: "bg-surface", label: "surface" },
-  { cls: "bg-hover", label: "hover" },
-];
+// ---------------------------------------------------------------------------
+// OUR VISION
+// ---------------------------------------------------------------------------
 
-const ACCENT_SWATCHES = ["bg-brand", "bg-success", "bg-warning", "bg-error"];
-
-function TokenBoard() {
+export function Vision() {
   return (
-    <div className="rounded-xl border border-default bg-surface p-card shadow-md">
-      <Eyebrow>tokens.tsx</Eyebrow>
-      <div className="mt-4 grid grid-cols-4 gap-3">
-        {NEUTRAL_SWATCHES.map((sw) => (
-          <div key={sw.label} className="space-y-1.5">
-            <div
-              className={cn(
-                "h-12 rounded-md border border-default",
-                sw.cls,
-              )}
-            />
-            <div className="font-mono text-2xs text-muted">{sw.label}</div>
-          </div>
-        ))}
-      </div>
-      <Separator className="my-4" />
-      <div className="flex items-center gap-3">
-        <span className="font-mono text-2xs uppercase tracking-widest text-muted">
-          signal
-        </span>
-        <div className="flex gap-2">
-          {ACCENT_SWATCHES.map((cls) => (
-            <div key={cls} className={cn("size-8 rounded-md", cls)} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const TRUST_ROWS: { change: string; outcome: string; tone: string }[] = [
-  { change: "Sandbox copy & content", outcome: "Auto-merge", tone: "success" },
-  { change: "Any token or ui/ change", outcome: "Draft PR", tone: "warning" },
-  { change: "Token deprecations, the gates", outcome: "Suggest only", tone: "info" },
-];
-
-const TONE_CHIP: Record<string, string> = {
-  success: "bg-success-subtle text-success",
-  warning: "bg-warning-subtle text-warning",
-  info: "bg-info-subtle text-info",
-};
-
-function TrustMatrix() {
-  return (
-    <div className="overflow-hidden rounded-xl border border-default bg-surface shadow-md">
-      <div className="flex items-center justify-between gap-4 bg-panel px-4 py-2.5">
-        <span className="font-mono text-2xs uppercase tracking-widest text-muted">
-          Change
-        </span>
-        <span className="font-mono text-2xs uppercase tracking-widest text-muted">
-          Outcome
-        </span>
-      </div>
-      {TRUST_ROWS.map((row) => (
-        <div
-          key={row.change}
-          className="flex items-center justify-between gap-4 border-t border-default px-4 py-3"
-        >
-          <span className="text-sm text-secondary">{row.change}</span>
-          <span
-            className={cn(
-              "shrink-0 rounded-full px-2.5 py-1 text-xs font-medium",
-              TONE_CHIP[row.tone],
-            )}
-          >
-            {row.outcome}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-const SYSTEM_POINTS = [
-  "Neutral-first — color is a signal, not decoration",
-  "Semantic triads for status, never a raw red or green",
-  "Dark mode is automatic — the same token, both themes",
-];
-
-export function SystemSection() {
-  return (
-    <section id="system" className="scroll-mt-24 border-b border-default">
-      <div className="mx-auto max-w-6xl space-y-16 px-gutter py-section">
+    <section className="border-t border-default bg-app px-gutter py-30">
+      <div className="mx-auto max-w-6xl">
         <Reveal>
-          <SectionHeading
-            eyebrow="The system"
-            title="Tokens are the contract. Everything derives from them."
-            blurb="One dictionary of design decisions — color, spacing, type, elevation, motion — generates CSS variables and Tailwind utilities for every surface, light and dark."
-          />
-        </Reveal>
-
-        <div className="grid items-center gap-10 lg:grid-cols-2">
-          <Reveal>
-            <div>
-              <h3 className="text-xl font-semibold text-primary">
-                A single source of truth
-              </h3>
-              <p className="mt-3 text-pretty text-secondary">
-                Edit one file; regenerate the theme. No ad-hoc hex, no numbered
-                scales — a curated vocabulary that's impossible to drift from.
+          <div className="mb-14 grid gap-10 lg:grid-cols-[260px_1fr_1fr] lg:gap-16">
+            <h2 className="text-balance text-4xl font-medium tracking-tight text-primary">
+              Our Vision
+            </h2>
+            <div className="space-y-4 leading-relaxed text-secondary">
+              <p>
+                Local government holds the longest, deepest, most decision-rich
+                record of how a community lives. That record is currently
+                scattered across PDFs, filing cabinets, and three decades of
+                meeting tapes.
               </p>
-              <ul className="mt-5 space-y-2.5">
-                {SYSTEM_POINTS.map((point) => (
-                  <li
-                    key={point}
-                    className="flex gap-2.5 text-sm text-secondary"
-                  >
-                    <Check className="mt-0.5 size-4 shrink-0 text-success" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-          <Reveal delay={80}>
-            <TokenBoard />
-          </Reveal>
-        </div>
-
-        <div className="grid items-center gap-10 lg:grid-cols-2">
-          <Reveal className="lg:order-2">
-            <div>
-              <h3 className="text-xl font-semibold text-primary">
-                Guardrails decide what's safe
-              </h3>
-              <p className="mt-3 text-pretty text-secondary">
-                A trust matrix routes every change to the right outcome — so
-                non-technical contributors move fast without touching anything
-                they shouldn't. Skill-gates and{" "}
-                <span className="font-mono text-sm text-primary">
-                  bun run check
-                </span>{" "}
-                enforce it in CI.
+              <p>
+                Our vision is to make that record continuously useful — so
+                every staff member has the institutional knowledge of a
+                thirty-year clerk, on demand, and every elected official walks
+                into the room already briefed.
               </p>
             </div>
-          </Reveal>
-          <Reveal delay={80} className="lg:order-1">
-            <TrustMatrix />
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const AUDIENCES = [
-  {
-    icon: PenTool,
-    title: "Designers",
-    body: "Ship the component, not a redline. Your tokens are the source — Figma reads from code, not the other way around.",
-  },
-  {
-    icon: Megaphone,
-    title: "PMs & Marketing",
-    body: "Spin up a landing page, change copy, adjust a price — in plain language, safely, without filing a ticket.",
-  },
-  {
-    icon: Code2,
-    title: "Engineers",
-    body: "Stop being the pixel-pushing bottleneck. Review real PRs that already pass bun run check on the way in.",
-  },
-];
-
-export function Audiences() {
-  return (
-    <section className="border-b border-default">
-      <div className="mx-auto max-w-6xl px-gutter py-section">
-        <Reveal>
-          <SectionHeading
-            align="center"
-            eyebrow="Who it's for"
-            title="Built for the whole product team."
-            className="mx-auto"
-          />
-        </Reveal>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {AUDIENCES.map((audience, i) => (
-            <Reveal key={audience.title} delay={i * 80}>
-              <Card className="h-full">
-                <CardHeader>
-                  <div className="mb-2 flex size-10 items-center justify-center rounded-lg border border-default bg-app">
-                    <audience.icon className="size-5 text-brand" />
-                  </div>
-                  <CardTitle className="text-lg">{audience.title}</CardTitle>
-                  <CardDescription className="text-pretty">
-                    {audience.body}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const STATUS_CHIPS: { label: string; cls: string }[] = [
-  { label: "Passing", cls: "bg-success-subtle text-success" },
-  { label: "In review", cls: "bg-warning-subtle text-warning" },
-  { label: "Failed", cls: "bg-error-subtle text-error" },
-  { label: "Info", cls: "bg-info-subtle text-info" },
-];
-
-export function Showcase() {
-  return (
-    <section className="border-b border-default">
-      <div className="mx-auto max-w-6xl px-gutter py-section">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Proof"
-            title="This page is built from the system it sells."
-            blurb="Every button, badge, and input here is a real @madison/ui primitive. Toggle the theme in the nav — the whole page recolors from the same tokens."
-          />
-        </Reveal>
-        <Reveal>
-          <div className="mt-12 rounded-xl border border-default bg-surface p-card shadow-md">
-            <div className="grid gap-8 md:grid-cols-2">
-              <div>
-                <Eyebrow>Buttons</Eyebrow>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  <Button>Primary</Button>
-                  <Button variant="outline">Outline</Button>
-                  <Button variant="secondary">Secondary</Button>
-                  <Button variant="ghost">Ghost</Button>
-                  <Button variant="destructive">Delete</Button>
-                </div>
-              </div>
-              <div>
-                <Eyebrow>Status</Eyebrow>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {STATUS_CHIPS.map((chip) => (
-                    <span
-                      key={chip.label}
-                      className={cn(
-                        "rounded-full px-2.5 py-1 text-xs font-medium",
-                        chip.cls,
-                      )}
-                    >
-                      {chip.label}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <Eyebrow>Input</Eyebrow>
-                <div className="mt-4 max-w-sm">
-                  <Input placeholder="you@company.com" />
-                </div>
-              </div>
-              <div>
-                <Eyebrow>Neutral-first</Eyebrow>
-                <p className="mt-4 text-pretty text-sm text-secondary">
-                  ~90% of the surface is neutral. Brand and semantic color appear
-                  only where they carry meaning — a CTA, a status, a warning.
-                </p>
-              </div>
+            <div className="space-y-4 leading-relaxed text-secondary">
+              <p>
+                Madison is built with — not for — the people who run the
+                building. Every workflow we ship was prototyped first in a real
+                county office, with the staff who will use it daily.
+              </p>
+              <p>
+                The goal is not to replace civic judgment. The goal is to clear
+                the path so judgment can focus on the work that only humans can
+                do.
+              </p>
             </div>
           </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-const TESTIMONIALS = [
-  {
-    quote:
-      "Our marketing team ships landing pages without waiting on engineering — and every one is on-brand, because it has to be.",
-    name: "Maya Chen",
-    roleLabel: "Head of Design, Lumen",
-  },
-  {
-    quote:
-      "We deleted our second source of truth. Figma reads from the code now, and drift just stopped being something we fight.",
-    name: "Daniel Okoro",
-    roleLabel: "Staff Engineer, Patchwork",
-  },
-  {
-    quote:
-      "I described a pricing page in plain English and reviewed a real pull request an hour later. No redlines, no handoff.",
-    name: "Priya Nair",
-    roleLabel: "Product Manager, Northstar",
-  },
-  {
-    quote:
-      "Onboarding a new brand used to take a quarter. We cloned the kit, swapped the tokens, and shipped a fully themed system in a week.",
-    name: "Sofia Almeida",
-    roleLabel: "Design Systems Lead, Cardinal",
-  },
-  {
-    quote:
-      "Our PMs open pull requests now and engineering just reviews them. The 'can you change this color' tickets vanished, and nothing lands off-brand.",
-    name: "Marcus Webb",
-    roleLabel: "VP Engineering, Tideline",
-  },
-];
-
-export function Testimonials() {
-  return (
-    <section className="border-b border-default">
-      <div className="mx-auto max-w-6xl px-gutter py-section">
-        <Reveal>
-          <SectionHeading
-            align="center"
-            eyebrow="What teams say"
-            title="Teams ship faster — and stay on-brand."
-            className="mx-auto"
-          />
-        </Reveal>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {TESTIMONIALS.map((testimonial, i) => (
-            <Reveal key={testimonial.name} delay={i * 80}>
-              <TestimonialCard
-                quote={testimonial.quote}
-                name={testimonial.name}
-                roleLabel={testimonial.roleLabel}
-                verified
-              />
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const TIERS = [
-  {
-    name: "Setup & Migration",
-    cadence: "Fixed fee",
-    blurb: "We make code the source of truth and wire up governance.",
-    points: ["Token migration from Figma", "Storybook + MCP", "CI gates installed"],
-    cta: "Scope a setup",
-    featured: false,
-  },
-  {
-    name: "Enablement Workshop",
-    cadence: "Per cohort",
-    blurb: "Your team ships their first real components, hands-on.",
-    points: ["Half-day, ~70% build", "The leave-behind kit", "Recorded walkthrough"],
-    cta: "Plan a workshop",
-    featured: true,
-  },
-  {
-    name: "Governance Retainer",
-    cadence: "Monthly",
-    blurb: "We keep the system healthy as you scale.",
-    points: ["Quarterly drift audits", "Token lifecycle", "Office hours"],
-    cta: "Talk retainer",
-    featured: false,
-  },
-];
-
-const NOTIFICATION_CHANNELS = [
-  {
-    id: "email",
-    icon: Mail,
-    title: "Email notifications",
-    description: "Account activity, receipts, and security alerts.",
-    defaultOn: true,
-  },
-  {
-    id: "sms",
-    icon: MessageSquare,
-    title: "SMS notifications",
-    description: "Time-sensitive alerts sent straight to your phone.",
-    defaultOn: false,
-  },
-  {
-    id: "product",
-    icon: Megaphone,
-    title: "Product updates",
-    description: "New features, improvements, and the occasional tip.",
-    defaultOn: true,
-  },
-];
-
-export function Notifications() {
-  const [enabled, setEnabled] = useState<Record<string, boolean>>(() =>
-    Object.fromEntries(
-      NOTIFICATION_CHANNELS.map((channel) => [channel.id, channel.defaultOn]),
-    ),
-  );
-
-  return (
-    <section className="border-b border-default">
-      <div className="mx-auto max-w-2xl px-gutter py-section">
-        <Reveal>
-          <SectionHeading
-            align="center"
-            eyebrow="Stay in the loop"
-            title="Choose how you hear from us."
-            blurb="A live component built with the kit — neutral-first, on-token, and accessible. Flip any channel to see it work."
-            className="mx-auto"
-          />
         </Reveal>
         <Reveal delay={80}>
-          <Card className="mt-12">
-            <CardContent className="py-2">
-              {NOTIFICATION_CHANNELS.map((channel, i) => {
-                const Icon = channel.icon;
-                const labelId = `landing-${channel.id}-label`;
-                return (
-                  <div key={channel.id}>
-                    {i > 0 ? <Separator /> : null}
-                    <div className="flex items-center justify-between gap-4 py-4">
-                      <div className="flex items-start gap-3">
-                        <Icon
-                          className="mt-0.5 size-5 shrink-0 text-secondary"
-                          aria-hidden
-                        />
-                        <div className="space-y-1">
-                          <p
-                            id={labelId}
-                            className="text-sm font-medium text-primary"
-                          >
-                            {channel.title}
-                          </p>
-                          <p className="text-sm text-secondary">
-                            {channel.description}
-                          </p>
-                        </div>
-                      </div>
-                      <Switch
-                        checked={enabled[channel.id] ?? false}
-                        onCheckedChange={(next) =>
-                          setEnabled((prev) => ({ ...prev, [channel.id]: next }))
-                        }
-                        aria-labelledby={labelId}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
-            </CardContent>
-          </Card>
+          <div className="grid items-end gap-10 lg:grid-cols-[260px_1fr] lg:gap-16">
+            <figure className="m-0 aspect-[4/5] overflow-hidden rounded-2xl border border-default">
+              <img
+                src={visionCollab}
+                alt="The people who run the building"
+                loading="lazy"
+                className="size-full object-cover"
+              />
+            </figure>
+            <div>
+              <div className="mb-1 font-serif text-3xl italic tracking-tight text-primary">
+                Erica Olsen
+              </div>
+              <div className="text-sm text-muted">
+                Co-founder &amp; CEO · former Washoe County strategy lead
+              </div>
+            </div>
+          </div>
         </Reveal>
       </div>
     </section>
   );
 }
 
-export function Pricing() {
+// ---------------------------------------------------------------------------
+// SECURITY — cool tinted band + four standards
+// ---------------------------------------------------------------------------
+
+const STANDARDS = [
+  {
+    icon: ShieldCheck,
+    title: "SOC 2 Type II",
+    desc: "Audited annually across security, availability, and confidentiality.",
+  },
+  {
+    icon: Landmark,
+    title: "FedRAMP",
+    desc: "Authorized for encryption, audit, and residency requirements.",
+  },
+  {
+    icon: MapIcon,
+    title: "StateRAMP",
+    desc: "In process. Continuous monitoring for SLG cloud workloads.",
+  },
+  {
+    icon: Lock,
+    title: "ISO 27001",
+    desc: "Information security management to the international standard.",
+  },
+];
+
+export function Security() {
   return (
-    <section id="pricing" className="scroll-mt-24 border-b border-default">
-      <div className="mx-auto max-w-6xl px-gutter py-section">
+    <section className="border-t border-default bg-brand-subtle px-gutter py-30">
+      <div className="mx-auto max-w-6xl">
         <Reveal>
-          <SectionHeading
-            align="center"
-            eyebrow="Engagement"
-            title="Three phases. Start small, scale to a retainer."
-            blurb="A productized path from first migration to ongoing governance — the recurring engine that keeps drift from creeping back."
-            className="mx-auto"
-          />
-        </Reveal>
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {TIERS.map((tier, i) => (
-            <Reveal key={tier.name} delay={i * 80}>
-              <Card
-                className={cn(
-                  "relative h-full",
-                  tier.featured && "border-brand shadow-lg",
-                )}
+          <div className="mb-11 grid gap-8 lg:grid-cols-2 lg:gap-14">
+            <h3 className="text-balance text-3xl font-medium tracking-tight text-primary">
+              Compliant with the most rigorous public-sector security
+              standards.
+            </h3>
+            <div className="self-end">
+              <p className="mb-4 leading-relaxed text-secondary">
+                SOC 2 Type II. FedRAMP-authorized. Hosted on Microsoft Azure
+                Government. Madison never trains on your data and never shares
+                records across tenants.
+              </p>
+              <a
+                href="/security"
+                className="inline-flex items-center gap-1.5 font-semibold text-brand-accent"
               >
-                {tier.featured ? (
-                  <Badge className="absolute right-4 top-4">Most popular</Badge>
-                ) : null}
-                <CardHeader>
-                  <span className="font-mono text-xs uppercase tracking-widest text-muted">
-                    {tier.cadence}
-                  </span>
-                  <CardTitle className="text-xl">{tier.name}</CardTitle>
-                  <CardDescription className="text-pretty">
-                    {tier.blurb}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-5">
-                  <ul className="space-y-2.5">
-                    {tier.points.map((point) => (
-                      <li
-                        key={point}
-                        className="flex gap-2.5 text-sm text-secondary"
-                      >
-                        <Check className="mt-0.5 size-4 shrink-0 text-success" />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    className="w-full"
-                    variant={tier.featured ? "default" : "outline"}
-                  >
-                    {tier.cta}
-                  </Button>
-                </CardContent>
-              </Card>
+                ↳ Read the Trust Center
+              </a>
+            </div>
+          </div>
+        </Reveal>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {STANDARDS.map((std, i) => (
+            <Reveal key={std.title} delay={i * 60}>
+              <div className="h-full rounded-xl border border-default bg-surface p-5.5">
+                <std.icon className="size-5.5 text-brand-accent" />
+                <div className="mb-2 mt-3 font-sans text-base font-bold text-primary">
+                  {std.title}
+                </div>
+                <p className="text-xs leading-relaxed text-secondary">
+                  {std.desc}
+                </p>
+              </div>
             </Reveal>
           ))}
         </div>
@@ -811,88 +735,108 @@ export function Pricing() {
     </section>
   );
 }
+
+// ---------------------------------------------------------------------------
+// FINAL CTA
+// ---------------------------------------------------------------------------
 
 export function FinalCta() {
   return (
-    <section className="relative overflow-hidden border-b border-default bg-panel">
-      <DotGrid className="opacity-50 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
-      <div className="relative mx-auto max-w-3xl px-gutter py-section text-center lg:py-28">
-        <Reveal>
-          <h2 className="text-balance text-4xl font-semibold tracking-tight text-primary sm:text-5xl">
-            Make code your single source of truth.
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-pretty text-lg text-secondary">
-            Give your whole team a safe, governed way to ship real UI — and never
-            maintain the same design system in two places again.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button size="lg">Book a demo</Button>
-            <Button size="lg" variant="outline">
-              Read the docs
-            </Button>
-          </div>
-        </Reveal>
-      </div>
+    <section className="border-t border-default bg-gradient-to-b from-brand-subtle to-app px-gutter py-38 text-center">
+      <Reveal>
+        <h1 className="mb-4.5 text-balance text-4xl font-medium tracking-tight text-primary md:text-5xl">
+          See it on your own files.
+        </h1>
+        <p className="mx-auto mb-8.5 max-w-lg text-lg leading-relaxed text-secondary">
+          We&rsquo;ll load Madison with a sample of your records and walk
+          through it live. Live deployment in four weeks.
+        </p>
+        <div className="flex flex-wrap justify-center gap-3.5">
+          <Button size="lg" asChild>
+            <a href="/book-a-demo">
+              Book a demo <ArrowRight className="size-4" />
+            </a>
+          </Button>
+          <Button size="lg" variant="outline" className="bg-surface" asChild>
+            <a href="/contact">Talk to sales</a>
+          </Button>
+        </div>
+      </Reveal>
     </section>
   );
 }
 
+// ---------------------------------------------------------------------------
+// FOOTER — always-dark navy band. The `dark` class re-scopes every token
+// variable inside it to the dark-mode (Dark Navy foundation) values, so the
+// footer stays on-token in both themes with zero raw color.
+// ---------------------------------------------------------------------------
+
 const FOOTER_COLUMNS = [
-  { title: "Product", links: ["How it works", "The system", "Pricing", "Components"] },
-  { title: "Resources", links: ["Docs", "Storybook", "Governance", "Changelog"] },
-  { title: "Company", links: ["About", "Contact", "Careers"] },
+  {
+    title: "platform",
+    links: [
+      { label: "Citywide model", href: "#top" },
+      { label: "FOIA / Public Records", href: "#top" },
+      { label: "Planning & Community Dev", href: "/community-development-ai" },
+      { label: "Procurement & Contracts", href: "#top" },
+    ],
+  },
+  {
+    title: "company",
+    links: [
+      { label: "About Us", href: "/about-us" },
+      { label: "Newsroom", href: "/newsroom" },
+      { label: "Contact", href: "/contact" },
+      { label: "Client Stories", href: "/client-stories" },
+    ],
+  },
+  {
+    title: "resources",
+    links: [
+      { label: "Security", href: "/security" },
+      { label: "Trust Center", href: "/security" },
+      { label: "Docs", href: "/resources" },
+      { label: "Privacy", href: "#top" },
+    ],
+  },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-app">
-      <div className="mx-auto max-w-6xl px-gutter py-12">
-        <div className="flex flex-col items-start justify-between gap-10 md:flex-row">
-          <div className="max-w-xs">
-            <a href="#top" className="flex items-center gap-2.5">
-              <Logo />
-            </a>
-            <p className="mt-3 text-sm text-secondary">
-              The code-first design system kit. Governance-as-code for teams
-              that ship.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-x-12 gap-y-6 sm:grid-cols-3">
-            {FOOTER_COLUMNS.map((column) => (
-              <div key={column.title}>
-                <h4 className="font-mono text-xs uppercase tracking-widest text-muted">
-                  {column.title}
-                </h4>
-                <ul className="mt-3 space-y-2">
-                  {column.links.map((link) => (
-                    <li key={link}>
-                      <a
-                        href="#top"
-                        className="text-sm text-secondary transition-colors hover:text-primary"
-                      >
-                        {link}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
+    <footer className="dark bg-app px-gutter pb-10 pt-14">
+      <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div>
+          <Logo className="mb-3.5" />
 
-        <Separator className="my-8" />
-
-        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="font-mono text-xs text-muted">
-            © 2026 Madison. A neutral demo brand.
+          <p className="max-w-70 text-sm leading-relaxed text-secondary">
+            The vertical AI platform for cities and counties — grounded in
+            your own record.
           </p>
-          <a
-            href="/"
-            className="text-xs text-muted transition-colors hover:text-secondary"
-          >
-            ← Back to all prototypes
-          </a>
         </div>
+        {FOOTER_COLUMNS.map((col) => (
+          <div key={col.title}>
+            <div className="mb-3.5 font-sans text-sm lowercase tracking-wide text-muted">
+              {col.title}
+            </div>
+            <ul className="space-y-2.5">
+              {col.links.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-secondary transition-colors hover:text-primary"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div className="mx-auto mt-9 flex max-w-6xl flex-wrap justify-between gap-2 border-t border-default pt-5.5 text-xs text-muted">
+        <span>© 2026 Madison AI, Inc.</span>
+        <span>Built in Reno · co-created with Washoe County, NV</span>
       </div>
     </footer>
   );

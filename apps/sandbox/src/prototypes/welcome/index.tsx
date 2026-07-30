@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { ArrowLeft, Rocket, Info } from "lucide-react";
+import { cn } from "@madison/ui/utils";
+import { TOKENS, type TokenDefinition } from "@madison/ui/tokens";
 import { Button } from "@madison/ui/button";
 import {
   Card,
@@ -30,12 +32,214 @@ import {
 } from "@madison/ui/select";
 
 // Gallery metadata lives in ./meta.ts (eager-loaded by App.tsx for the gallery).
+
+/**
+ * Every step in Madison's type scale (packages/ui/src/ui/tokens.tsx
+ * `fontSizes`) — HERO through the 2xs micro step. Sizes, line-heights, and
+ * the -1% tracking on Lora steps are exactly what `--text-*` emits; nothing
+ * here is invented. `sample` renders live with the real token classes so
+ * "simulated style" and "specs" always agree with what's actually on screen.
+ */
+const TYPE_SCALE: {
+  token: string;
+  label: string;
+  className: string;
+  family: string;
+  weight: string;
+  size: string;
+  leading: string;
+  tracking?: string;
+  sample: ReactNode;
+}[] = [
+  {
+    token: "text-display",
+    label: "HERO",
+    className: "font-serif font-medium text-display",
+    family: "Lora (font-serif)",
+    weight: "500 · Medium",
+    size: "4.5rem / 72px",
+    leading: "1.05",
+    tracking: "-0.01em",
+    sample: "Dedicated AI.",
+  },
+  {
+    token: "text-5xl",
+    label: "h1",
+    className: "font-serif font-medium text-5xl",
+    family: "Lora (font-serif)",
+    weight: "500 · Medium",
+    size: "4rem / 64px",
+    leading: "5rem / 80px",
+    tracking: "-0.01em",
+    sample: "Page headline",
+  },
+  {
+    token: "text-4xl",
+    label: "h2",
+    className: "font-serif font-medium text-4xl",
+    family: "Lora (font-serif)",
+    weight: "500 · Medium",
+    size: "3rem / 48px",
+    leading: "4rem / 64px",
+    tracking: "-0.01em",
+    sample: "Section heading",
+  },
+  {
+    token: "text-3xl",
+    label: "h3",
+    className: "font-serif font-medium text-3xl",
+    family: "Lora (font-serif)",
+    weight: "500 · Medium",
+    size: "2rem / 32px",
+    leading: "3rem / 48px",
+    tracking: "-0.01em",
+    sample: "Subsection heading",
+  },
+  {
+    token: "text-2xl",
+    label: "h4",
+    className: "font-serif font-medium text-2xl",
+    family: "Lora (font-serif)",
+    weight: "500 · Medium",
+    size: "1.5rem / 24px",
+    leading: "2.25rem / 36px",
+    tracking: "-0.01em",
+    sample: "Card title",
+  },
+  {
+    token: "text-xl",
+    label: "h5",
+    className: "font-sans font-semibold text-xl",
+    family: "Inter (font-sans)",
+    weight: "600 · Semibold",
+    size: "1.25rem / 20px",
+    leading: "1.875rem / 30px",
+    sample: "Subheading text",
+  },
+  {
+    token: "text-lg",
+    label: "h6",
+    className: "font-sans font-semibold text-lg",
+    family: "Inter (font-sans)",
+    weight: "600 · Semibold",
+    size: "1.125rem / 18px",
+    leading: "1.75rem / 28px",
+    sample: "Small heading",
+  },
+  {
+    token: "text-base",
+    label: "Body 1 / Subtitle 1",
+    className: "font-sans font-normal text-base",
+    family: "Inter (font-sans)",
+    weight: "400 · Normal",
+    size: "1rem / 16px",
+    leading: "1.5rem / 24px",
+    sample: "Default body copy reads at 16px.",
+  },
+  {
+    token: "text-sm",
+    label: "Body 2 / Subtitle 2",
+    className: "font-sans font-normal text-sm",
+    family: "Inter (font-sans)",
+    weight: "400 · Normal",
+    size: "0.875rem / 14px",
+    leading: "1.25rem / 20px",
+    sample: "Secondary text, labels, table cells.",
+  },
+  {
+    token: "text-xs",
+    label: "Caption",
+    className: "font-sans font-normal text-xs",
+    family: "Inter (font-sans)",
+    weight: "400 · Normal",
+    size: "0.75rem / 12px",
+    leading: "1rem / 16px",
+    sample: "Captions and dense metadata.",
+  },
+  {
+    token: "text-2xs",
+    label: "2X Small",
+    className: "font-sans font-normal text-2xs uppercase tracking-widest",
+    family: "Inter (font-sans)",
+    weight: "400 · Normal",
+    size: "0.625rem / 10px",
+    leading: "0.875rem / 14px",
+    sample: "Overline label",
+  },
+];
+
 const STATUS = [
   { label: "Success", className: "bg-success-subtle text-success" },
   { label: "Error", className: "bg-error-subtle text-error" },
   { label: "Warning", className: "bg-warning-subtle text-warning" },
   { label: "Info", className: "bg-info-subtle text-info" },
 ];
+
+/**
+ * The full color dictionary (packages/ui/src/ui/tokens.tsx), grouped exactly
+ * as the token file groups it. Every hex value rendered here is read straight
+ * off `TOKENS` — nothing is retyped, so this can't drift from the real
+ * source of truth.
+ */
+const COLOR_GROUPS: { title: string; tokens: TokenDefinition[] }[] = [
+  { title: "Backgrounds", tokens: TOKENS.backgrounds },
+  { title: "Borders", tokens: TOKENS.borders },
+  { title: "Typography", tokens: TOKENS.typography },
+  { title: "Brand", tokens: TOKENS.brand },
+];
+
+/** One token's light + dark hue, side by side, with both hex codes underneath. */
+function ColorSwatch({ token }: { token: TokenDefinition }) {
+  return (
+    <div className="overflow-hidden rounded-lg border border-default bg-surface">
+      <div className="grid grid-cols-2">
+        <div className="h-14" style={{ backgroundColor: token.light }} />
+        <div className="h-14" style={{ backgroundColor: token.dark }} />
+      </div>
+      <div className="grid grid-cols-2 border-t border-default font-sans text-sm text-secondary">
+        <div className="truncate border-r border-default p-1.5">{token.light}</div>
+        <div className="truncate p-1.5">{token.dark}</div>
+      </div>
+      <div className="border-t border-default p-2.5">
+        <div className="truncate text-sm font-medium text-primary">
+          {token.label}
+        </div>
+        <div className="truncate font-sans text-sm text-muted">
+          {token.name}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** A semantic triad (base + fg + subtle in each theme) — its own layout since the shape differs from TokenDefinition. */
+function SemanticSwatch({ token }: { token: (typeof TOKENS.semantics)[number] }) {
+  return (
+    <div className="overflow-hidden rounded-lg border border-default bg-surface">
+      <div
+        className="flex items-center gap-2 p-3 text-sm font-semibold"
+        style={{ backgroundColor: token.base, color: token.fg }}
+      >
+        {token.icon}
+        {token.label}
+      </div>
+      <div className="grid grid-cols-3 border-t border-default font-sans text-sm text-secondary">
+        <div className="border-r border-default p-1.5">
+          <div className="text-muted">base</div>
+          {token.base}
+        </div>
+        <div className="border-r border-default p-1.5">
+          <div className="text-muted">fg</div>
+          {token.fg}
+        </div>
+        <div className="p-1.5">
+          <div className="text-muted">subtle</div>
+          {token.subtleLight} / {token.subtleDark}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function WelcomePrototype() {
   const [subscribed, setSubscribed] = useState(true);
@@ -67,6 +271,103 @@ export default function WelcomePrototype() {
               </div>
             </div>
           </header>
+
+          {/* Type scale */}
+          <section className="space-y-4">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-muted">
+              Type scale
+            </h2>
+            <div className="overflow-x-auto rounded-lg border border-default">
+              <table className="w-full min-w-175 border-collapse text-left">
+                <thead>
+                  <tr className="border-b border-default bg-panel">
+                    <th className="p-4 text-xs font-bold uppercase tracking-widest text-muted">
+                      Token
+                    </th>
+                    <th className="p-4 text-xs font-bold uppercase tracking-widest text-muted">
+                      Simulated style
+                    </th>
+                    <th className="p-4 text-xs font-bold uppercase tracking-widest text-muted">
+                      Specs
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {TYPE_SCALE.map((row, i) => (
+                    <tr
+                      key={row.token}
+                      className={cn(
+                        "border-b border-default last:border-b-0",
+                        i % 2 === 1 && "bg-stripe",
+                      )}
+                    >
+                      <td className="whitespace-nowrap p-4 align-top">
+                        <div className="font-sans text-sm text-brand">
+                          {row.token}
+                        </div>
+                        <div className="mt-0.5 text-xs text-muted">
+                          {row.label}
+                        </div>
+                      </td>
+                      <td className="p-4 align-top">
+                        <div className={row.className}>{row.sample}</div>
+                      </td>
+                      <td className="whitespace-nowrap p-4 align-top font-sans text-sm leading-relaxed text-secondary">
+                        <div>{row.family}</div>
+                        <div>{row.weight}</div>
+                        <div>
+                          {row.size} · {row.leading} leading
+                        </div>
+                        {row.tracking ? <div>{row.tracking} tracking</div> : null}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-secondary">
+              HERO through h4 are set in Lora (<code>font-serif</code>); h5 and
+              below are Inter (<code>font-sans</code>) — apply the family
+              class explicitly on non-heading elements, since only the{" "}
+              <code>h1</code>–<code>h4</code> tags default to serif.
+            </p>
+          </section>
+
+          <Separator />
+
+          {/* Color palette */}
+          <section className="space-y-4">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-muted">
+              Color palette
+            </h2>
+            {COLOR_GROUPS.map((group) => (
+              <div key={group.title} className="space-y-2.5">
+                <h3 className="text-sm font-semibold text-primary">
+                  {group.title}
+                </h3>
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                  {group.tokens.map((token) => (
+                    <ColorSwatch key={token.name} token={token} />
+                  ))}
+                </div>
+              </div>
+            ))}
+            <div className="space-y-2.5">
+              <h3 className="text-sm font-semibold text-primary">Semantics</h3>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {TOKENS.semantics.map((token) => (
+                  <SemanticSwatch key={token.id} token={token} />
+                ))}
+              </div>
+            </div>
+            <p className="text-sm text-secondary">
+              Left half of every swatch is the light-theme hue, right half is
+              dark — every hex code shown is read straight from{" "}
+              <code>tokens.tsx</code>, the single source of truth.
+            </p>
+          </section>
+
+          <Separator />
 
           {/* Buttons */}
           <section className="space-y-4">
