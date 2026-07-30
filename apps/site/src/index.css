@@ -1,0 +1,26 @@
+/*
+ * apps/site renders @madison/sandbox's prototype components verbatim, so it
+ * needs the sandbox's stylesheet verbatim too — the marquee utility, the
+ * @layer base block and the whole @layer heading-leading formula are all
+ * load-bearing for how these pages look.
+ *
+ * Imported rather than copied on purpose: a copy would drift silently, and the
+ * failure mode is "the live site looks subtly wrong" with nothing in check,
+ * lint or CI to catch it. The component dependency already points
+ * site → sandbox, so this adds no new coupling direction.
+ *
+ * The nested relative imports inside it (../../../packages/ui/dist/*.css)
+ * resolve against that file, and apps/site/src sits at the same depth as
+ * apps/sandbox/src — so they land on the same files either way.
+ */
+@import "../../sandbox/src/index.css";
+
+/*
+ * Tailwind's automatic source detection is rooted at the Vite root (apps/site),
+ * which contains almost no utility classes — every class that matters lives in
+ * the sandbox's prototypes and the UI package's primitives. Without these two
+ * lines Tailwind emits a near-empty stylesheet and the site ships unstyled,
+ * with typecheck, lint and the build all green. Don't remove them.
+ */
+@source "../../sandbox/src/prototypes";
+@source "../../../packages/ui/src";
