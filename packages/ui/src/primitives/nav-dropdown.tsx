@@ -22,12 +22,30 @@ interface NavDropdownProps {
   /** The trigger label, e.g. "Platform". */
   label: string;
   items: NavDropdownItem[];
+  /** Classes for the root wrapper (the trigger's positioning context). */
   className?: string;
+  /** Classes for the open menu panel. */
+  contentClassName?: string;
   /** Marks the trigger itself as current — true when any item is the active page. */
   active?: boolean;
+  /**
+   * Theme scope for the open menu panel. Defaults to `"light"`: the Madison site
+   * nav sits over dark heroes and flips itself dark, but its menus stay a light
+   * floating surface. That is a site-design choice, not a law — a genuinely
+   * dark-themed consumer passes `"dark"`, and `"inherit"` follows whatever scope
+   * the panel is rendered inside.
+   */
+  contentTheme?: "light" | "dark" | "inherit";
 }
 
-function NavDropdown({ label, items, className, active = false }: NavDropdownProps) {
+function NavDropdown({
+  label,
+  items,
+  className,
+  contentClassName,
+  active = false,
+  contentTheme = "light",
+}: NavDropdownProps) {
   return (
     <NavigationMenuPrimitive.Root className={cn("relative z-dropdown", className)}>
       <NavigationMenuPrimitive.List className="m-0 flex list-none items-center p-0">
@@ -46,7 +64,11 @@ function NavDropdown({ label, items, className, active = false }: NavDropdownPro
             />
           </NavigationMenuPrimitive.Trigger>
           <NavigationMenuPrimitive.Content
-            className="light absolute left-0 top-full mt-3 min-w-52 rounded-lg border border-default bg-surface p-1.5 shadow-lg"
+            className={cn(
+              contentTheme !== "inherit" && contentTheme,
+              "absolute left-0 top-full mt-3 min-w-52 rounded-lg border border-default bg-surface p-1.5 shadow-lg",
+              contentClassName,
+            )}
           >
             <ul className="m-0 flex list-none flex-col gap-0.5 p-0">
               {items.map((item) => (
