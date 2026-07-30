@@ -4,6 +4,12 @@
   "private": true,
   "type": "module",
   "description": "On-system sandbox: host app for on-token prototypes (gen:prototype self-registers them).",
+  "//exports": "Consumed by @madison/site, which publishes these same prototypes. Raw source, like @madison/ui — the consuming app's Vite compiles it.",
+  "exports": {
+    "./prototypes": "./src/prototype-registry.ts",
+    "./prototypes/landing": "./src/prototypes/landing/index.tsx",
+    "./index.css": "./src/index.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
