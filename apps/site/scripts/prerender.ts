@@ -175,11 +175,24 @@ function documentFor(
     .replace('<div id="root"></div>', () => `<div id="root">${appHtml}</div>`);
 }
 
+/**
+ * `<path>.html`, NOT `<path>/index.html`.
+ *
+ * Netlify serves a directory index by 301-ing to the trailing-slash form:
+ * dist/about-us/index.html makes /about-us redirect to /about-us/. That would
+ * put a redirect hop on every link in the site (every href here is slash-less)
+ * and quietly change the canonical URL of every page — while the Webflow site
+ * being replaced serves /about-us directly with a 200. A sibling .html file is
+ * served at the slash-less path as-is.
+ *
+ * A page and a section can coexist: /client-stories writes client-stories.html
+ * and /client-stories/city-of-corona writes client-stories/city-of-corona.html.
+ */
 function writePage(routePath: string, html: string): void {
   const file =
     routePath === "/"
       ? join(distDir, "index.html")
-      : join(distDir, routePath.replace(/^\//, ""), "index.html");
+      : join(distDir, `${routePath.replace(/^\//, "")}.html`);
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, html);
 }
