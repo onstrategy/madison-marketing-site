@@ -110,6 +110,7 @@ export interface TokenDictionary {
   spacing: ScaleToken[];
   fontFamilies: ScaleToken[];
   fontSizes: TypeScaleToken[];
+  lineHeights: ScaleToken[];
   fontWeights: ScaleToken[];
   letterSpacing: ScaleToken[];
   breakpoints: ScaleToken[];
@@ -253,6 +254,44 @@ export const TOKENS: TokenDictionary = {
     { name: "--text-4xl", label: "h2", value: "3rem", lineHeight: "4rem", tracking: "-0.01em", desc: "Madison h2 (48px, Lora 500) — use with font-serif." },
     { name: "--text-5xl", label: "h1", value: "4rem", lineHeight: "5rem", tracking: "-0.01em", desc: "Madison h1 (64px, Lora 500) — use with font-serif." },
     { name: "--text-display", label: "HERO", value: "4.5rem", lineHeight: "1.05", tracking: "-0.01em", weight: "500", desc: "Madison HERO (72px, Lora 500) — hero / landing display; use with font-serif." },
+  ],
+
+  // Each step in the type scale already carries its own line-height — that pairing
+  // is the default and stays the right answer. These are the *override* scale, for
+  // the cases where copy needs to breathe (or tighten) without changing its size.
+  //
+  // An app may additionally set its own heading-level default on top of the step
+  // pairing (a rule that gives every h1–h6 a leading derived from its own rendered
+  // size, rather than retuning steps that body copy shares). Where it does, these
+  // five remain the explicit per-element override and still win — so `leading-tight`
+  // is "tighter than this heading's default", not "the heading default".
+  //
+  // These names deliberately cover Tailwind's whole `--leading-*` namespace. Two
+  // reasons, and it is worth being precise about both:
+  //   1. A step left undeclared falls back to Tailwind's own default, so its value
+  //      would be Tailwind's to change, not Madison's. `--leading-normal` (1.5) and
+  //      `--leading-loose` (2) are byte-identical to Tailwind's defaults today; they
+  //      are declared anyway so a future Tailwind minor cannot retune Madison's
+  //      typography from underneath us.
+  //   2. THREE steps deliberately DIVERGE from Tailwind's defaults:
+  //      tight 1.25 → 1.15 · snug 1.375 → 1.3 · relaxed 1.625 → 1.75.
+  //      `leading-relaxed` was already in use before these tokens existed, so that
+  //      third divergence is a real, intended visual change at its call sites
+  //      (accordion body, prompt-demo paragraph, landing mono block) — not a no-op.
+  //      tokens.test.ts pins all five values so any further move shows up as a diff.
+  //
+  // This namespace is not the whole story: `leading-none` is a Tailwind STATIC
+  // utility hardcoded to 1, outside `--leading-*` entirely, so no token governs it.
+  // It cannot drift (it never reads the theme) and the kit uses it deliberately for
+  // single-line labels and titles — see the design-system skill. The numeric form
+  // (`leading-7`) resolves via `--spacing` into a fixed rem and IS banned by
+  // `no-raw-dimensions`.
+  lineHeights: [
+    { name: "--leading-tight", label: "Tight", value: "1.15", desc: "Tightening override for large display headings set as one block — tighter than whatever default the heading already inherits." },
+    { name: "--leading-snug", label: "Snug", value: "1.3", desc: "Smaller headings and short two-line labels." },
+    { name: "--leading-normal", label: "Normal", value: "1.5", desc: "Body copy — matches the text-base pairing." },
+    { name: "--leading-relaxed", label: "Relaxed", value: "1.75", desc: "Long-form paragraphs that need air." },
+    { name: "--leading-loose", label: "Loose", value: "2", desc: "Maximum air — sparse editorial blocks, widely spaced lists." },
   ],
 
   fontWeights: [

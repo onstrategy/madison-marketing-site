@@ -27,6 +27,7 @@ designers, PMs, and marketing through Claude Code, made safe by governance-as-co
 - [`docs/contributor-guide.md`](docs/contributor-guide.md) — the 5-step recipe to ship on-system UI (incl. non-technical contributors via Claude Code)
 - [`docs/promote.md`](docs/promote.md) — promote a sandbox prototype into a `packages/ui` primitive
 - [`docs/governance.md`](docs/governance.md) — governance-as-code: three-layer model, token lifecycle, quarterly audit
+- [`docs/roadmap.md`](docs/roadmap.md) — where the AI harness goes next (roles, exploratory mode, audit, 0→1 adoption) — with the honest current state of each
 - [`docs/business-model.md`](docs/business-model.md) — the commercial model (idea-level) - CAN BE IGNORED FOR NOW
 - [`AGENTS.md`](AGENTS.md) — the agent constitution (architecture, mandates, commands)
 - [`overlay/README.md`](overlay/README.md) — install the governance overlay (gates + skills + token-lint) into an existing repo

@@ -5,7 +5,9 @@ recipe below, and the guardrails keep your work on-system and safe to merge. The
 **real components in the real repo**, not throwaway prototypes.
 
 > **Not sure what to say to Claude?** Type `/prompts`, or see [`prompts.md`](./prompts.md) — the
-> plain-language menu of what you can ask for (`/build`, `/restyle`, `/submit`, `/promote`).
+> plain-language menu of what you can ask for (`/build`, `/small-edit`, `/restyle`, `/undo`,
+> `/submit`, `/promote`). For a single tweak on one page, `/small-edit` is the quick lane — and
+> nothing you try is permanent, since `/undo` puts it back.
 
 ## The 5-step context recipe
 
@@ -42,6 +44,10 @@ Promoting a validated prototype into a reusable primitive? See [`promote.md`](./
    migration table in the design-system skill (`references/migration.md`).
 - ❌ Numbered color scales (`text-success-700`, `bg-neutral-200`). ✅ Semantic triads +
    opacity (`text-success`, `bg-success/10`).
+- ❌ Arbitrary sizes — `p-[17px]`, `text-[40px]`, `leading-[1.4]`, `leading-7`, `ring-2`, `z-50`.
+   ✅ The tokenized scales (`p-4`, `py-section`, `text-xl`, `leading-snug`, the named `z-*` layers).
+   These fail `bun run check` the same way off-brand colors do. Note `p-4` is fine — the numeric
+   *spacing* scale is on-token; it's arbitrary literals and numbered *color* scales that are banned.
 - ❌ Hand-edit `packages/ui/dist/*` — it's generated. ✅ Edit `tokens.tsx`, run `bun run build`.
 - ❌ Invent a new token because one seems missing. ✅ Check `tokens.tsx` + the style guide;
    propose an addition in a draft PR.

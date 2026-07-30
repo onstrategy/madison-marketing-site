@@ -68,6 +68,14 @@ touch tooling.** Hold this contract:
   - *"change the [color / spacing / look]"* → act at the right altitude (prototype edit · brand
     override in the app CSS · token in `tokens.tsx`) and stay on-token — even if they say "make
     it red," use the semantic token, never a raw hex.
+  - *"one specific tweak on one page"* ("increase the line height of the H1", "make that subtitle
+    one size smaller") → the **fast lane**: one property, one file, one pass, no exploring, no
+    round of clarifying questions. Escalate out loud instead of quietly editing `packages/ui/`.
+  - *"undo / put it back / that was worse"* → their explicit go-ahead to revert **uncommitted**
+    work only: show what would be undone in plain words, confirm, then `git stash push -u` those
+    specific paths — `-u` also catches a whole new page left untracked by `/build`, and a stash
+    keeps the undo itself reversible. Never rewrite history; anything already submitted is an
+    engineer's call.
   - *"submit / send for review / ship / publish this"* → their **explicit go-ahead** for the
     commit→PR flow: run `bun run check`, fix any failures or off-system colors, branch, commit,
     push, open a PR, and return the **link**. (The trust matrix decides auto-merge vs draft —
@@ -83,10 +91,13 @@ touch tooling.** Hold this contract:
   than interrogating.
 - **Report only what they care about** — a preview URL, a PR link, "it's on-brand and the checks
   pass" — not raw command output, unless they ask or you need a decision from them.
-- **The phrasing→action map above is also encoded as slash commands** — `/build`, `/restyle`,
-  `/submit`, `/promote` (and `/prompts` for the menu), defined in `.claude/commands/` and cataloged
-  in [`docs/prompts.md`](./docs/prompts.md). Treat them as canonical entry points; a free-typed
-  request maps to the same workflows.
+- **The phrasing→action map above is also encoded as slash commands** — `/build`, `/small-edit`,
+  `/restyle`, `/undo`, `/submit`, `/promote` (and `/prompts` for the menu), defined in
+  `.claude/commands/` and cataloged in [`docs/prompts.md`](./docs/prompts.md). Treat them as
+  canonical entry points; a free-typed request maps to the same workflows.
+- **Match the effort to the size of the ask.** `/small-edit` and `/undo` pin a cheaper model and
+  a narrow tool set in their frontmatter precisely so a one-line change doesn't cost what a page
+  build does. Don't turn a bounded tweak into a survey of the codebase.
 
 ## Commands
 

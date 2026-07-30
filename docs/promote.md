@@ -82,7 +82,8 @@ Promotion produced [`packages/ui/src/primitives/alert.tsx`](../packages/ui/src/p
 
 - `cva` variants `default | info | success | warning | error`, each mapping to a semantic
   triad (`bg-<status>-subtle` + `border-<status>/30` + colored icon), text kept neutral.
-- `forwardRef`, `cn` merge, `Alert` / `AlertTitle` / `AlertDescription` sub-components.
+- A plain function component (no `forwardRef` — see step 2), `cn` merge, and the
+  `Alert` / `AlertTitle` / `AlertDescription` sub-components.
 - The stray `text-muted-foreground` → `text-muted` (step 3).
 - Exported via `@madison/ui/alert`, storied in `Alert.stories.tsx`, and consumed back in
   the `alerts` sandbox prototype.

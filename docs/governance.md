@@ -23,7 +23,7 @@ machine-enforced:
    - **Skill-gate hooks** (`.claude/hooks/`) *block* edits to guarded paths until the right
      skill is loaded — so an agent can't touch `packages/ui` without first reading the
      design-system rules.
-   - **`bun run check`** (typecheck + lint + test) is the merge gate. `className`/token
+   - **`bun run check`** (typecheck + test + lint) is the merge gate. `className`/token
      discipline the path-gate can't see is enforced here (lint / `react-doctor` in CI).
 
 The layers reinforce each other: the constitution tells you the rule, the skill teaches you how
@@ -67,6 +67,9 @@ Run drift control on a cadence (the retainer's heartbeat):
 - **Guardrail health** — confirm the gates fire, `bun run check` is green on `main`, and the MCP
   manifest is current.
 - **Enablement** — how many non-technical seats are actively (and safely) contributing?
+
+Today this is a checklist a human runs by hand; automating it as an `/audit` command is
+[roadmap §3](./roadmap.md#3-audit--the-drift-scan-as-a-command).
 
 ## Trust levels
 
