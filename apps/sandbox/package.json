@@ -7,6 +7,7 @@
   "//exports": "Consumed by @madison/site, which publishes these same prototypes. Raw source, like @madison/ui — the consuming app's Vite compiles it.",
   "exports": {
     "./prototypes": "./src/prototype-registry.ts",
+    "./prototypes/server": "./src/prototype-registry.server.ts",
     "./prototypes/landing": "./src/prototypes/landing/index.tsx",
     "./index.css": "./src/index.css"
   },

@@ -408,7 +408,7 @@ function FinalCtaSection() {
           </p>
           <div className="flex flex-wrap justify-center gap-3.5">
             <Button size="lg" asChild>
-              <a href="/book-a-demo">
+              <a href="/demo">
                 Schedule a security review <ArrowRight className="size-4" />
               </a>
             </Button>

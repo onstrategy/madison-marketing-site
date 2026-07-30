@@ -51,24 +51,29 @@ const PLATFORM_LINKS = [
 
 const COMPANY_LINKS = [
   { label: "About us", href: "/about-us" },
-  { label: "Newsroom", href: "/newsroom" },
+  { label: "Newsroom", href: "/updates" },
   { label: "Contact", href: "/contact" },
 ];
 
-// Nav items don't map 1:1 onto route paths — a story/resource/news detail page
-// (e.g. "/city-of-corona") is a flat top-level route, not a URL sub-path of its
-// index (e.g. "/client-stories"). This is the explicit "which pages count as
-// under this nav item" map "sectionAware" alone can't derive from the URL.
-const CLIENT_STORIES_PATHS = ["/client-stories", "/city-of-corona"];
-const RESOURCES_PATHS = ["/resources", "/director-of-ai-assistant", "/ai-guiding-principles"];
-const NEWSROOM_PATHS = ["/newsroom", "/proof-ai-works"];
+// Nav items don't map 1:1 onto route paths. The live site's IA is mixed: client
+// stories and resources sit under their index ("/client-stories/city-of-corona"),
+// while news items are flat top-level routes ("/proof-ai-works-in-the-public-sector"
+// under the "/updates" index). So "which pages count as under this nav item" can't
+// be derived from the URL and stays an explicit map here.
+const CLIENT_STORIES_PATHS = ["/client-stories", "/client-stories/city-of-corona"];
+const RESOURCES_PATHS = [
+  "/resources",
+  "/director-of-ai-assistant",
+  "/resources/how-to-develop-your-governments-ai-guiding-principles",
+];
+const NEWSROOM_PATHS = ["/updates", "/proof-ai-works-in-the-public-sector"];
 
 export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAware?: boolean; overDarkHero?: boolean }) {
   const { pathname } = useLocation();
   const companyLinks = COMPANY_LINKS.map((item) => ({
     ...item,
     active:
-      item.href === "/newsroom" ? NEWSROOM_PATHS.includes(pathname) : item.href === pathname,
+      item.href === "/updates" ? NEWSROOM_PATHS.includes(pathname) : item.href === pathname,
   }));
 
   return (
@@ -102,7 +107,7 @@ export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAwa
           Sign in
         </a>
         <Button size="sm" asChild>
-          <a href="/book-a-demo">Book a demo</a>
+          <a href="/demo">Book a demo</a>
         </Button>
       </NavbarActions>
     </Navbar>
@@ -315,7 +320,7 @@ const STORY_TILES: StoryTile[] = [
     kind: "quote",
     line: "Every decision at our fingertips.",
     photo: PHOTOS.laptopsTable,
-    href: "/city-of-corona",
+    href: "/client-stories/city-of-corona",
   },
   {
     name: "Aspen, CO",
@@ -758,7 +763,7 @@ export function FinalCta() {
         </p>
         <div className="flex flex-wrap justify-center gap-3.5">
           <Button size="lg" asChild>
-            <a href="/book-a-demo">
+            <a href="/demo">
               Book a demo <ArrowRight className="size-4" />
             </a>
           </Button>
@@ -791,7 +796,7 @@ const FOOTER_COLUMNS = [
     title: "company",
     links: [
       { label: "About Us", href: "/about-us" },
-      { label: "Newsroom", href: "/newsroom" },
+      { label: "Newsroom", href: "/updates" },
       { label: "Contact", href: "/contact" },
       { label: "Client Stories", href: "/client-stories" },
     ],

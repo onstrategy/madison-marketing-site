@@ -25,6 +25,8 @@ export default tseslint.config(
   {
     ignores: [
       "**/dist/**",
+      // @madison/site's prerender bundle — build output, same as dist.
+      "**/dist-ssr/**",
       "**/node_modules/**",
       "**/storybook-static/**",
       "**/.turbo/**",

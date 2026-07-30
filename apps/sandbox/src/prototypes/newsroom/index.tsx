@@ -32,7 +32,7 @@ const NEWS: NewsCard[] = [
     title: "1,204 Hours Reclaimed: Proof AI Works in the Public Sector",
     category: "Insights",
     description: "Three lessons that separate AI that delivers from AI that disappoints.",
-    href: "/proof-ai-works",
+    href: "/proof-ai-works-in-the-public-sector",
   },
   {
     title: "Peter Pirnejad Joins Madison AI as Strategic Advisor",
@@ -155,7 +155,7 @@ function CtaSection() {
             Fill in the form and our team will get back to you within one business day.
           </p>
           <Button size="lg" asChild>
-            <a href="/book-a-demo">
+            <a href="/demo">
               Book a demo <ArrowRight className="size-4" />
             </a>
           </Button>

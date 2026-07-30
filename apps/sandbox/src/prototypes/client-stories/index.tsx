@@ -23,7 +23,7 @@ const FEATURED = {
     "How the City of Corona cut through administrative complexity and reclaimed 104 staff hours every month.",
   logo: { src: coronaLogo, alt: "City of Corona, California" },
   photo: PHOTOS.govBuildingFlag,
-  href: "/city-of-corona",
+  href: "/client-stories/city-of-corona",
 };
 
 interface ClientStorySummary {

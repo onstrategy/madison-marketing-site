@@ -33,13 +33,18 @@
   status = 301
   force = true
 
-# MANDATORY — do not remove. Every cross-page link in these pages is a plain
-# <a href="/slug">, i.e. a full browser load straight to a deep path. Only
-# /index.html exists on disk, so without this rule every single link 404s.
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# NO SPA CATCH-ALL. There used to be a mandatory `/*` → `/index.html` 200 rule
+# here, because only /index.html existed on disk and every cross-page link is a
+# plain <a href="/slug"> — a full browser load straight to a deep path.
+#
+# The build now prerenders one real index.html per route
+# (apps/site/scripts/prerender.ts), so Netlify serves each deep link as a file
+# and the rule is not just unnecessary but harmful: it rewrote every unknown
+# path to a 200, so /typo returned "200 OK" with a 404 page — a soft 404 that
+# Google flags and that the Webflow site this replaces never had.
+#
+# With no catch-all, unmatched paths fall through to dist/404.html with a real
+# HTTP 404. Do not re-add a `/*` rule without deleting the prerender step first.
 
 # ─── Headers ──────────────────────────────────────────────────────────────────
 
