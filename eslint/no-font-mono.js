@@ -13,7 +13,12 @@
 //       rules: { "madison/no-font-mono": "error" } },
 //   ];
 
-const FONT_MONO = /\bfont-mono\b/;
+// `font-mono` as a standalone class token. The leading guard rejects the cases
+// where "font-mono" is a substring of something that is NOT the utility:
+// `--font-mono` (the CSS custom property) and `no-font-mono` (this rule's own
+// name, which appears in config and docs strings). A plain `\bfont-mono\b`
+// matches both, because `-` is a word boundary.
+const FONT_MONO = /(?<![\w-])font-mono(?![\w-])/;
 
 function findFontMono(value) {
   return value.match(FONT_MONO)?.[0] ?? null;

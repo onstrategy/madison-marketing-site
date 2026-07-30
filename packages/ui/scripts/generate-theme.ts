@@ -164,6 +164,17 @@ function generateCSS() {
   css += `.focus\\:bg-brand-subtle:focus { background-color: hsl(var(--brand-subtle)); }\n`;
   css += `.focus\\:text-brand-subtle:focus { color: hsl(var(--brand-subtle)); }\n`;
   // Palette expansion — two tints, two shades (see tokens.tsx brand array).
+  // FILL AND BORDER ONLY, deliberately: no `text-*` utility is emitted for these.
+  // The four values are theme-INVARIANT, so as ink each one is unreadable in one
+  // of the two themes — measured against the canvas it would sit on:
+  //   text-brand-tint       1.27:1 on light   (8.69:1 on dark)
+  //   text-brand-tint-pale  1.00:1 on light  (11.10:1 on dark)
+  //   text-brand-shade      1.22:1 on dark    (9.07:1 on light)
+  //   text-brand-shade-deep 1.17:1 on dark   (12.98:1 on light)
+  // Emitting `text-brand-tint-pale` would hand contributors a class that renders
+  // literally invisible text on the default canvas. Brand-colored ink has exactly
+  // one correct answer in this system: `text-brand-accent`, which is theme-aware
+  // and clears AA in both. Add a `text-*` here only if these gain light/dark pairs.
   for (const [suffix, varName] of [
     ["tint", "--brand-tint"],
     ["tint-pale", "--brand-tint-pale"],
@@ -171,10 +182,8 @@ function generateCSS() {
     ["shade-deep", "--brand-shade-deep"],
   ] as const) {
     css += `.bg-brand-${suffix} { background-color: hsl(var(${varName})); }\n`;
-    css += `.text-brand-${suffix} { color: hsl(var(${varName})); }\n`;
     css += `.border-brand-${suffix} { border-color: hsl(var(${varName})); }\n`;
     css += `.hover\\:bg-brand-${suffix}:hover { background-color: hsl(var(${varName})); }\n`;
-    css += `.hover\\:text-brand-${suffix}:hover { color: hsl(var(${varName})); }\n`;
   }
 
   css += `\n/* Semantic */

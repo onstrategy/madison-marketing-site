@@ -152,12 +152,12 @@ export const TOKENS: TokenDictionary = {
   ],
   brand: [
     // Madison brand: Neon Blue is the single hero accent (15% of any layout).
-    // Darkened to #1479C0 (from #2B8FD6) specifically so WHITE text clears
-    // WCAG AA on primary CTAs — #2B8FD6 only gave white 3.50:1 (fails the
-    // 4.5:1 normal-text minimum). Nudged again to #147AC2 (near-identical hue,
-    // white still clears AA at 4.58:1). -foreground is white in both themes
-    // (Neon Blue doesn't invert). -subtle is a pale-blue ghost derived from
-    // the same hue.
+    // #147AC2 is deliberately a darker mid-blue than the brighter cyan the brand
+    // reads as: it is tuned so WHITE clears WCAG AA on primary CTAs (4.58:1).
+    // Don't lighten it toward the cyan without re-measuring — at #2B8FD6 white
+    // falls to 3.50:1 and every primary button fails the 4.5:1 normal-text
+    // minimum. -foreground is white in both themes (Neon Blue doesn't invert).
+    // -subtle is a pale-blue ghost derived from the same hue.
     { name: "--brand-primary", label: "Primary Accent", light: "#147AC2", dark: "#147AC2", desc: "Neon Blue — the single hero accent. Primary CTAs and emphasis." },
     { name: "--brand-primary-hover", label: "Primary Hover", light: "#10629B", dark: "#10629B", desc: "Primary CTA hover — same hue, 8% darker (white stays 6.48:1)." },
     // --brand-primary is tuned to be a FILL (white on it = 4.58:1) and so is too
@@ -186,6 +186,22 @@ export const TOKENS: TokenDictionary = {
     // Info = Madison Terracotta (#C75A3B) — reserved, the smallest signal moments
     // (~5% of any layout). Warm-white foreground, same in both themes (a saturated
     // mid-tone, like Neon Blue, that doesn't invert).
+    //
+    // CONTRAST CEILING — measured, and a real constraint on how this is used.
+    // Terracotta is a true mid-tone, so NO foreground clears AA (4.5:1) on it
+    // except pure black (4.95:1), which is off-palette here:
+    //   warm-white #FBF9F6 on #C75A3B → 4.03:1   white → 4.24:1
+    //   text-info #C75A3B on bg-info-subtle      → 3.32:1 light / 3.26:1 dark
+    // All of these clear the 3:1 floor for large text (≥24px, or ≥19px bold) and
+    // for icons and other non-text graphics — which is exactly the "smallest
+    // signal moments" role. So: `bg-info` behind an icon, a dot, a rule, or a
+    // large label is fine; `bg-info` + `text-info-fg` behind normal-size body
+    // copy is not, and a small `text-info` label on `bg-info-subtle` is not.
+    // This is inherited from Madison's palette (the same 4.03:1 applied when
+    // Terracotta was --brand-primary), NOT introduced by the brand swap — but
+    // it moved somewhere less scrutinised, so it is written down here. Fixing it
+    // properly means darkening the base to ~#B4502F (4.84:1), which is a brand
+    // decision, not an engineering one.
     { id: "info", label: "Info", icon: <Info className="w-4 h-4" />, base: "#C75A3B", fg: "#FBF9F6", subtleLight: "#F2E0D8", subtleDark: "#3C2823" },
   ],
   globals: [
