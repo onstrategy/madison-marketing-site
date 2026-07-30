@@ -89,8 +89,8 @@ Those four imports are the system wiring. (In `apps/sandbox/src/index.css` you'l
 `@import "tw-animate-css";` for animation utilities and a `@custom-variant dark` — neither is part
 of the Madison wiring.)
 
-**Brand is a token default (Madison — Terracotta), still overridable in ~3 lines.**
-`--brand-primary/-foreground/-subtle` default to Terracotta in `tokens.tsx`, so apps inherit the
+**Brand is a token default (Madison — Neon Blue), still overridable in ~3 lines.**
+`--brand-primary/-foreground/-subtle` default to Neon Blue in `tokens.tsx`, so apps inherit the
 Madison brand with no per-app CSS. The tokens remain override-able in ~3 lines (the "re-skin live"
 mechanism) if a sub-app ever needs a different accent.
 

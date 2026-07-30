@@ -40,7 +40,7 @@ body {
 
 ## Brand tokens
 
-The brand is **Madison — Terracotta**, set as the token default in
+The brand is **Madison — Neon Blue**, set as the token default in
 `packages/ui/src/ui/tokens.tsx` (`--brand-primary`/`--brand-foreground`/`--brand-subtle`). A normal
 app does **not** override it — it inherits Madison's brand automatically through the 4-line header.
 
@@ -49,15 +49,16 @@ mirror the token shape and keep raw HSL channels so opacity modifiers work:
 
 ```css
 :root {
-  --brand-primary: 13 56% 51%;    /* Terracotta — the Madison default (HSL channels) */
-  --brand-foreground: 36 38% 97%; /* Warm white text on Terracotta */
-  --brand-subtle: 20 55% 90%;     /* Pale terracotta for ghost buttons */
+  --brand-primary: 205 81% 42%;   /* Neon Blue — the Madison default (HSL channels) */
+  --brand-foreground: 0 0% 100%;  /* White text on Neon Blue — 4.64:1 contrast */
+  --brand-subtle: 204 89% 93%;    /* Pale blue for ghost buttons */
 }
 ```
 
 > Brand tokens are stored as raw HSL channels (no `hsl(...)` wrapper) so opacity modifiers work.
-> Semantic tokens (success/error/warning/info) are status signals — never re-brand them. Terracotta is
-> the *single* hero accent; see the `design-system` skill's color-usage governance.
+> Semantic tokens (success/error/warning/info) are status signals — never re-brand them. Neon Blue is
+> the *single* hero accent; Terracotta is the reserved `info` signal. See the `design-system` skill's
+> color-usage governance.
 
 ## Dark mode
 

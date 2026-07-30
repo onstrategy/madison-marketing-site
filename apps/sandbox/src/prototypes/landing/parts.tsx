@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Check } from "lucide-react";
+import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
+import { Check, Landmark } from "lucide-react";
 import { cn } from "@madison/ui/utils";
 
 // ============================================================================
@@ -87,7 +87,7 @@ export function Eyebrow({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted",
+        "inline-flex items-center gap-2 font-sans text-sm uppercase tracking-widest text-muted",
         className,
       )}
     >
@@ -120,7 +120,7 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? <Eyebrow className="mb-4">{eyebrow}</Eyebrow> : null}
-      <h2 className="text-balance text-3xl font-semibold tracking-tight text-primary md:text-4xl">
+      <h2 className="text-balance text-3xl font-medium tracking-tight text-primary md:text-4xl">
         {title}
       </h2>
       {blurb ? (
@@ -165,7 +165,7 @@ export function BrowserFrame({
         <span className="size-3 rounded-full bg-warning" />
         <span className="size-3 rounded-full bg-success" />
         {title ? (
-          <span className="ml-3 truncate font-mono text-xs text-muted">
+          <span className="ml-3 truncate font-sans text-sm text-muted">
             {title}
           </span>
         ) : null}
@@ -181,6 +181,71 @@ export function CheckChip({ children }: { children: ReactNode }) {
     <span className="inline-flex items-center gap-1.5 rounded-full bg-success-subtle px-2.5 py-1 text-xs font-medium text-success">
       <Check className="size-3.5" />
       {children}
+    </span>
+  );
+}
+
+interface MarqueeProps<T> {
+  items: T[];
+  renderItem: (item: T, index: number) => ReactNode;
+  /** Time for one full loop — lower is faster. Constant speed (linear, no easing). */
+  durationSeconds?: number;
+  className?: string;
+}
+
+/**
+ * Infinite, constant-speed horizontal scroller. The track renders `items`
+ * twice back-to-back (second copy `aria-hidden`) with the loop-connecting
+ * gap baked into each copy's own width via `pr-8` — so translateX(-50%)
+ * always lands on a pixel-identical copy, with no visible seam or snap.
+ */
+export function Marquee<T>({
+  items,
+  renderItem,
+  durationSeconds = 32,
+  className,
+}: MarqueeProps<T>) {
+  return (
+    <div
+      className={cn(
+        "group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]",
+        className,
+      )}
+    >
+      <div
+        className="flex w-max animate-marquee group-hover:[animation-play-state:paused]"
+        style={{ "--marquee-duration": `${durationSeconds}s` } as CSSProperties}
+      >
+        {[items, items].map((track, copy) => (
+          <div
+            key={copy}
+            aria-hidden={copy === 1}
+            className="flex shrink-0 items-center gap-8 pr-8"
+          >
+            {track.map((item, i) => (
+              <div key={i} className="shrink-0">
+                {renderItem(item, i)}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * A stand-in "logo" chip — an icon + name lockup. We don't hold rights to
+ * real client wordmarks, so every client is represented the same on-token
+ * way rather than a fabricated logo image.
+ */
+export function LogoMark({ name }: { name: string }) {
+  return (
+    <span className="flex items-center gap-2 rounded-lg border border-default bg-surface px-4 py-2.5">
+      <Landmark className="size-4 text-muted" aria-hidden />
+      <span className="whitespace-nowrap text-sm font-semibold tracking-tight text-secondary">
+        {name}
+      </span>
     </span>
   );
 }

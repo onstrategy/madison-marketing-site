@@ -1,5 +1,6 @@
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@madison/ui/button";
+import { LogoMark } from "@madison/ui/logo";
 import { PromptDemo, type PromptDemoItem } from "@madison/ui/prompt-demo";
 import { Reveal } from "./parts";
 import heroIllustration from "./hero-illustration.jpg";
@@ -42,7 +43,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative isolate overflow-hidden border-b border-default bg-app"
+      className="relative isolate flex min-h-[70vh] items-center overflow-hidden border-b border-default bg-app"
     >
       {/* Full-bleed warm illustration (dimmed in dark mode so it reads as texture) */}
       <img
@@ -67,23 +68,23 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-app to-transparent"
       />
 
-      <div className="relative mx-auto grid max-w-[var(--container-page)] items-center gap-12 px-6 pb-section pt-28 lg:grid-cols-2 lg:gap-8 lg:px-12 lg:pb-28 lg:pt-40">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-gutter pb-22 pt-38 lg:grid-cols-2 lg:gap-8 lg:px-0 lg:pb-38 lg:pt-54">
         {/* Left — the message */}
         <div>
           <Reveal>
             <a
-              href="#top"
+              href="/director-of-ai-assistant"
               className="inline-flex items-center gap-2.5 rounded-full border border-default bg-surface px-3.5 py-1.5 text-sm text-secondary shadow-xs transition-colors hover:border-active"
             >
               <span className="size-1.5 rounded-full bg-info" />
               AI in Action webinar · June 6
-              <span className="font-medium text-brand">Register →</span>
+              <span className="font-medium text-brand-accent">Register →</span>
             </a>
           </Reveal>
           <Reveal delay={60}>
-            <h1 className="mt-7 max-w-xl text-balance font-serif text-4xl font-medium tracking-tight text-primary sm:text-5xl">
+            <h1 className="mt-7 max-w-xl text-balance font-serif text-4xl font-medium tracking-tight text-primary md:text-5xl">
               Dedicated AI for{" "}
-              <span className="text-brand">local government.</span>
+              <span className="text-brand-accent">local government.</span>
             </h1>
           </Reveal>
           <Reveal delay={120}>
@@ -98,19 +99,20 @@ export function Hero() {
                 Book a demo <ArrowRight className="size-4" />
               </Button>
               <Button size="lg" variant="outline" className="bg-surface/70">
-                <Play className="size-4" /> Watch the 90-sec tour
+                Why we&rsquo;re 95% accurate <ArrowRight className="size-4" />
               </Button>
             </div>
           </Reveal>
         </div>
 
         {/* Right — the product, as illustration */}
-        <Reveal delay={150} className="w-full max-w-md lg:justify-self-end">
+        <Reveal delay={150} className="w-full max-w-lg lg:justify-self-end">
           <PromptDemo
             items={AUDIENCES}
+            className="shadow-2xl"
             avatar={
-              <span className="flex size-8 items-center justify-center rounded-lg bg-brand text-sm font-bold text-brand-fg">
-                M
+              <span className="flex size-8 items-center justify-center rounded-lg bg-brand">
+                <LogoMark width={20} height={12} className="text-brand-fg" />
               </span>
             }
           />

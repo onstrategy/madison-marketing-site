@@ -78,6 +78,30 @@ function generateCSS() {
     css += `  --elevation-${suffix(t.name, "--shadow-")}: ${t.dark};\n`;
   }
 
+  // `.light` — the mirror of `.dark`. `:root` already defaults to light values,
+  // so this exists purely as a class-scope escape hatch: nested inside a `.dark`
+  // ancestor (or a `.dark`-scoped subtree), applying `className="light"` forces
+  // that subtree's tokens back to light, the same way `className="dark"` forces
+  // a subtree dark inside an otherwise-light page.
+  css += `}
+
+.light {
+`;
+  for (const cat of categories) {
+    for (const t of TOKENS[cat]) {
+      css += `  ${t.name}: ${hexToHslChannels(t.light)};\n`;
+    }
+  }
+  for (const t of TOKENS.semantics) {
+    css += `  --semantic-${t.id}: ${hexToHslChannels(t.base)};\n`;
+    css += `  --semantic-${t.id}-fg: ${hexToHslChannels(t.fg)};\n`;
+    css += `  --semantic-${t.id}-subtle: ${hexToHslChannels(t.subtleLight)};\n`;
+  }
+  css += `\n  /* Elevation (light) */\n`;
+  for (const t of TOKENS.shadows) {
+    css += `  --elevation-${suffix(t.name, "--shadow-")}: ${t.light};\n`;
+  }
+
   // Generate plain CSS utilities
   css += `}
 
@@ -121,6 +145,12 @@ function generateCSS() {
   css += `.hover\\:text-brand:hover { color: hsl(var(--brand-primary)); }\n`;
   css += `.focus\\:bg-brand:focus { background-color: hsl(var(--brand-primary)); }\n`;
   css += `.focus\\:text-brand:focus { color: hsl(var(--brand-primary)); }\n`;
+  css += `.bg-brand-hover { background-color: hsl(var(--brand-primary-hover)); }\n`;
+  css += `.hover\\:bg-brand-hover:hover { background-color: hsl(var(--brand-primary-hover)); }\n`;
+  css += `.text-brand-accent { color: hsl(var(--brand-accent)); }\n`;
+  css += `.hover\\:text-brand-accent:hover { color: hsl(var(--brand-accent)); }\n`;
+  css += `.focus\\:text-brand-accent:focus { color: hsl(var(--brand-accent)); }\n`;
+  css += `.bg-brand-accent { background-color: hsl(var(--brand-accent)); }\n`;
   css += `.bg-brand-fg { background-color: hsl(var(--brand-foreground)); }\n`;
   css += `.text-brand-fg { color: hsl(var(--brand-foreground)); }\n`;
   css += `.hover\\:bg-brand-fg:hover { background-color: hsl(var(--brand-foreground)); }\n`;
@@ -133,6 +163,28 @@ function generateCSS() {
   css += `.hover\\:text-brand-subtle:hover { color: hsl(var(--brand-subtle)); }\n`;
   css += `.focus\\:bg-brand-subtle:focus { background-color: hsl(var(--brand-subtle)); }\n`;
   css += `.focus\\:text-brand-subtle:focus { color: hsl(var(--brand-subtle)); }\n`;
+  // Palette expansion — two tints, two shades (see tokens.tsx brand array).
+  // FILL AND BORDER ONLY, deliberately: no `text-*` utility is emitted for these.
+  // The four values are theme-INVARIANT, so as ink each one is unreadable in one
+  // of the two themes — measured against the canvas it would sit on:
+  //   text-brand-tint       1.27:1 on light   (8.69:1 on dark)
+  //   text-brand-tint-pale  1.00:1 on light  (11.10:1 on dark)
+  //   text-brand-shade      1.22:1 on dark    (9.07:1 on light)
+  //   text-brand-shade-deep 1.17:1 on dark   (12.98:1 on light)
+  // Emitting `text-brand-tint-pale` would hand contributors a class that renders
+  // literally invisible text on the default canvas. Brand-colored ink has exactly
+  // one correct answer in this system: `text-brand-accent`, which is theme-aware
+  // and clears AA in both. Add a `text-*` here only if these gain light/dark pairs.
+  for (const [suffix, varName] of [
+    ["tint", "--brand-tint"],
+    ["tint-pale", "--brand-tint-pale"],
+    ["shade", "--brand-shade"],
+    ["shade-deep", "--brand-shade-deep"],
+  ] as const) {
+    css += `.bg-brand-${suffix} { background-color: hsl(var(${varName})); }\n`;
+    css += `.border-brand-${suffix} { border-color: hsl(var(${varName})); }\n`;
+    css += `.hover\\:bg-brand-${suffix}:hover { background-color: hsl(var(${varName})); }\n`;
+  }
 
   css += `\n/* Semantic */
 `;
@@ -219,8 +271,14 @@ function generateTailwindTokens() {
 
   // Brand tokens
   css += `  --color-brand: hsl(var(--brand-primary));\n`;
+  css += `  --color-brand-hover: hsl(var(--brand-primary-hover));\n`;
+  css += `  --color-brand-accent: hsl(var(--brand-accent));\n`;
   css += `  --color-brand-fg: hsl(var(--brand-foreground));\n`;
   css += `  --color-brand-subtle: hsl(var(--brand-subtle));\n`;
+  css += `  --color-brand-tint: hsl(var(--brand-tint));\n`;
+  css += `  --color-brand-tint-pale: hsl(var(--brand-tint-pale));\n`;
+  css += `  --color-brand-shade: hsl(var(--brand-shade));\n`;
+  css += `  --color-brand-shade-deep: hsl(var(--brand-shade-deep));\n`;
 
   // Background tokens
   for (const t of TOKENS.backgrounds) {
