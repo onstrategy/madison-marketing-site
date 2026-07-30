@@ -30,7 +30,8 @@ This runs on a demo Netlify account and is deliberately not indexable — see
 ## Docs
 
 - [`docs/architecture.md`](docs/architecture.md) — **engineer's deep-dive: how every piece fits together (start here)**
-- [`docs/prompts.md`](docs/prompts.md) — **what to say to Claude in plain language** (`/build`, `/restyle`, `/submit`, `/promote`) — non-technical contributors start here
+- [`docs/getting-started.md`](docs/getting-started.md) — **no code required: how to run this repo, build a page, and get a live link** — non-technical contributors start here
+- [`docs/prompts.md`](docs/prompts.md) — **what to say to Claude in plain language** (`/build`, `/restyle`, `/submit`, `/promote`)
 - [`docs/contributor-guide.md`](docs/contributor-guide.md) — the 5-step recipe to ship on-system UI (incl. non-technical contributors via Claude Code)
 - [`docs/promote.md`](docs/promote.md) — promote a sandbox prototype into a `packages/ui` primitive
 - [`docs/governance.md`](docs/governance.md) — governance-as-code: three-layer model, token lifecycle, quarterly audit
@@ -135,4 +136,5 @@ bun run gen:prototype   # scaffold a new on-token prototype in apps/sandbox
 
 **Not an engineer?** Once `bun run dev` is running (Step 5 above), you don't need any of these
 commands. Open Claude Code in this folder and just say what you want — or type `/prompts` to see
-the menu. See [`docs/prompts.md`](docs/prompts.md).
+the menu. Start with [`docs/getting-started.md`](docs/getting-started.md), the no-code walkthrough
+from setup to a live link.

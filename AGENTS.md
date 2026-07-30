@@ -140,6 +140,9 @@ bun run gen:prototype  # scaffold a prototype — use --args <slug> "<title>" "<
 
 ## Workflows
 
+- **Onboard a non-technical contributor:** [`docs/getting-started.md`](./docs/getting-started.md) —
+  setup, the build→tweak→submit→live loop, and which link to send. Point newcomers there, not at the
+  engineer docs.
 - **Contribute a component/page:** follow the recipe in [`docs/contributor-guide.md`](./docs/contributor-guide.md).
 - **Promote a prototype component to a primitive:** follow [`docs/promote.md`](./docs/promote.md).
 - **Governance (tokens, audits, trust levels):** [`docs/governance.md`](./docs/governance.md).

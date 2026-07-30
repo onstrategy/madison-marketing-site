@@ -20,7 +20,9 @@ fills it in by composing the system's building blocks.
 - "Add a marketing hero with a headline, subtext, and a call-to-action button."
 
 **Behind the scenes:** Claude names the page, scaffolds it, composes `@madison/ui` components
-using only design-system tokens (no off-brand colors), runs the checks, and gives you a preview link.
+using only design-system tokens (no off-brand colors), runs the checks, and tells you where to find
+the page. Building doesn't publish anything — when you want a **web link you can open anywhere or
+send to someone**, that's *Submit for review* below.
 
 **Shortcut:** `/build a pricing page with three plans`
 
@@ -153,4 +155,5 @@ The full version lives in [`governance.md`](./governance.md).
 - Know what a "slug," "primitive," or "token" is — say it in everyday words.
 - Deploy anything, or know what "Netlify" is — the live links just show up when you submit.
 
-New here? Start with the [contributor guide](./contributor-guide.md). Then just say what you want — or type `/prompts`.
+New here? Start with [getting started](./getting-started.md) — setup, the build→submit→live loop, and
+where the links come from. Then just say what you want — or type `/prompts`.
