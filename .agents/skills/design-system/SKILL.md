@@ -19,7 +19,7 @@ Consult references when needed:
 1. **Neutral-first, and warm.** 90%+ of the UI uses Madison's warm neutral backgrounds (Warm White),
    borders (taupe), and typography (warm near-black) tokens. Color is a signal, not decoration.
 2. **Disciplined palette.** Five colors in fixed roles. **Neon Blue is the *single* hero accent**;
-   **Deep Dust is depth-only and restricted**; Terracotta is a reserved digital signal. See
+   **Deep Dust is depth-only and restricted**; Terracotta is the reserved status signal (`info`). See
    "Madison Color — Usage Governance" below — usage matters as much as the values.
 3. **Semantic triads.** Each status color (success, error, warning, info) has exactly three levels:
    base, subtle, and fg. No numbered scales. (Madison's `info` is Terracotta.)
@@ -154,7 +154,7 @@ on-brand.
 | Dark Navy `#202E3B` | dark-mode surfaces / foundation | Foundation | ~35% |
 | Neon Blue `#147AC2` | `bg-brand` / `text-brand` | **Single** hero accent | ~15% |
 | Deep Dust `#8A3A28` | `bg-depth` / `border-depth` | Depth (restricted) | ~5%, **max 10%** |
-| Terracotta `#C75A3B` | `bg-info` / `text-info` | Digital signal (reserved) | ~5% |
+| Terracotta `#C75A3B` | `bg-info` / `text-info` | Status signal (reserved) | ~5% |
 
 **Approved background + text pairings — the only legal ones:**
 
@@ -162,9 +162,12 @@ on-brand.
 - **Primary Light** — Warm White background + Dark Navy / near-black text.
 - **Digital Dark** — Dark Navy background + Neon Blue accent (digital-first energy).
 
-**Prohibited pairings:** Deep Dust as a background surface · Terracotta + Neon Blue together (they
-fight visually) · Neon Blue as body text on white (low contrast) · Neon Blue as a background (it's an
-accent, never a surface).
+**Prohibited pairings:** Deep Dust as a background surface · Neon Blue as a page or section *surface*
+(it is an accent **fill** for CTAs and emphasis — `bg-brand` on a button is correct, `bg-brand` as a
+canvas is not) · `text-brand` used as ink (tuned as a fill, it fails AA as text — use
+`text-brand-accent`; see the Brand section) · Terracotta next to Deep Dust (sibling warm rusts — side
+by side they flatten the palette) · Terracotta as body copy (it is the reserved `info` status signal,
+not a text color).
 
 **Neon Blue is the sole hero accent** — one accent per view, used sparingly (`bg-brand` CTAs, a key
 emphasis). Don't spread it across a layout; that's what dilutes the system.
@@ -174,8 +177,9 @@ emphasis). Don't spread it across a layout; that's what dilutes the system.
 - ✅ Hover/focus states · thin dividers and rule lines · depth shadows · secondary micro-labels —
   always on light (Warm White / White) backgrounds; **≤10% of the surface**.
 - ❌ Page/section backgrounds · primary CTAs or buttons · headlines or body copy · the logo —
-  and **never paired with Terracotta or Neon Blue** (Deep Dust and Terracotta are sibling warm rusts;
-  side by side they flatten the palette).
+  and **never paired with Terracotta** (Deep Dust and Terracotta are sibling warm rusts; side by side
+  they flatten the palette). Since Terracotta is now the `info` signal, that means: don't put
+  `bg-depth`/`border-depth` and `bg-info`/`text-info` in the same component.
 - When in doubt, reach for **Neon Blue**. Deep Dust is a last resort.
 
 ## Dimensional Tokens
@@ -342,8 +346,8 @@ elevation shadow instead.
 - Nesting elevation layers out of order (e.g. `bg-app` inside `bg-surface`)
 - Using semantic colors for branding (e.g. `bg-info`/Terracotta for a primary CTA — use `bg-brand`/Neon Blue)
 - **Spreading Neon Blue around** — it's the *single* hero accent (~15%). One accent per view, used sparingly.
-- **Misusing Deep Dust** (`bg-depth`/`border-depth`): as a background surface, a CTA, headline/body text, or paired with Terracotta or Neon Blue. It is depth-only, ≤10%, on light backgrounds. See the governance section.
-- **An unapproved bg/text pairing** — only Primary Dark, Primary Light, and Digital Dark are legal (see governance). Never Neon Blue as body text on white or as a background.
+- **Misusing Deep Dust** (`bg-depth`/`border-depth`): as a background surface, a CTA, headline/body text, or paired with Terracotta (`bg-info`/`text-info`). It is depth-only, ≤10%, on light backgrounds. See the governance section.
+- **An unapproved bg/text pairing** — only Primary Dark, Primary Light, and Digital Dark are legal (see governance). Never Neon Blue as a page/section surface (it's a CTA fill, not a canvas), and never `text-brand` as ink — use `text-brand-accent`.
 - Using `bg-brand-subtle` for selected rows/items — collides with `bg-hover` in dark mode. Use `bg-row-selected` + `hover:bg-row-selected-hover`
 - Using `border-default/40` or `divide-default/40` — static utilities don't support opacity modifiers. Use `border-[hsl(var(--border-default)/0.4)]`
 - Using `border-default` for small interactive elements (circles, checkboxes, toggle rings) — invisible in dark mode. Use `border-active`
