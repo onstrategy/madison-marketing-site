@@ -47,7 +47,7 @@ export function StyleGuide() {
             <h1 className="text-sm font-semibold tracking-wide">
               Madison Design System
             </h1>
-            <p className="text-2xs uppercase tracking-widest text-muted font-mono">
+            <p className="text-sm uppercase tracking-widest text-muted font-sans">
               Token Dictionary &amp; Guidelines
             </p>
           </div>
@@ -109,7 +109,7 @@ export function StyleGuide() {
                   <strong className="text-info"> constant</strong> across all
                   apps — they signal status only.
                 </p>
-                <div className="mt-4 p-3 bg-app rounded-md font-mono text-xs">
+                <div className="mt-4 p-3 bg-app rounded-md font-sans text-sm">
                   <span className="text-success">
                     /* Example: override in your app's CSS */
                   </span>
@@ -203,10 +203,10 @@ export function StyleGuide() {
                       {token.icon} {token.label}
                     </div>
                     <div>
-                      <div className="text-2xs font-mono opacity-80 mt-4">
+                      <div className="text-sm font-sans opacity-80 mt-4">
                         --semantic-{token.id}
                       </div>
-                      <div className="text-xs font-mono font-bold">
+                      <div className="text-sm font-sans font-bold">
                         {token.base}
                       </div>
                     </div>
@@ -219,15 +219,15 @@ export function StyleGuide() {
                       style={{ backgroundColor: subtleHex }}
                     >
                       <div>
-                        <div className="text-2xs font-mono text-muted">
+                        <div className="text-sm font-sans text-muted">
                           --semantic-{token.id}-subtle
                         </div>
-                        <div className="text-xs font-mono font-medium text-primary">
+                        <div className="text-sm font-sans font-medium text-primary">
                           {subtleHex}
                         </div>
                       </div>
                       <span
-                        className="px-2 py-1 text-2xs font-medium rounded border"
+                        className="px-2 py-1 text-sm font-medium rounded border"
                         style={{
                           backgroundColor: subtleHex,
                           color: token.base,
@@ -240,10 +240,10 @@ export function StyleGuide() {
 
                     <div className="flex-1 p-3 flex items-center justify-between bg-surface">
                       <div>
-                        <div className="text-2xs font-mono text-muted">
+                        <div className="text-sm font-sans text-muted">
                           --semantic-{token.id}-fg
                         </div>
-                        <div className="text-xs font-mono font-medium text-primary">
+                        <div className="text-sm font-sans font-medium text-primary">
                           {token.fg}
                         </div>
                       </div>
@@ -272,16 +272,16 @@ export function StyleGuide() {
           />
 
           <div className="p-8 border border-default rounded-xl bg-app">
-            <span className="text-xs font-mono text-muted mb-2 block">--bg-app</span>
+            <span className="text-sm font-sans text-muted mb-2 block">--bg-app</span>
 
             <div className="p-6 border border-default rounded-md bg-panel shadow-sm">
-              <span className="text-xs font-mono text-muted mb-2 block">
+              <span className="text-sm font-sans text-muted mb-2 block">
                 --bg-panel
               </span>
 
               <div className="grid grid-cols-2 gap-4 mt-4">
                 <div className="p-4 border border-default rounded-md bg-surface hover:border-active transition-colors cursor-pointer">
-                  <span className="text-xs font-mono text-muted mb-2 block">
+                  <span className="text-sm font-sans text-muted mb-2 block">
                     --bg-surface (Hoverable)
                   </span>
                   <div className="h-8 rounded bg-hover flex items-center px-3 text-xs text-secondary">
@@ -289,7 +289,7 @@ export function StyleGuide() {
                   </div>
                 </div>
                 <div className="p-4 border border-default rounded-md bg-surface">
-                  <span className="text-xs font-mono text-muted mb-2 block">
+                  <span className="text-sm font-sans text-muted mb-2 block">
                     --bg-surface
                   </span>
                   <div className="h-8 rounded border border-active flex items-center px-3 text-xs text-secondary">
@@ -313,7 +313,7 @@ export function StyleGuide() {
 
           <div className="border border-default rounded-xl bg-surface p-6 md:p-10 flex flex-col gap-8">
             <div className="grid grid-cols-[100px_1fr] md:grid-cols-[150px_1fr] items-baseline gap-4 border-b border-default pb-6">
-              <span className="text-xs font-mono text-muted">
+              <span className="text-sm font-sans text-muted">
                 --text-primary
                 <br />
                 (text-2xl)
@@ -324,7 +324,7 @@ export function StyleGuide() {
             </div>
 
             <div className="grid grid-cols-[100px_1fr] md:grid-cols-[150px_1fr] items-baseline gap-4 border-b border-default pb-6">
-              <span className="text-xs font-mono text-muted">
+              <span className="text-sm font-sans text-muted">
                 --text-primary
                 <br />
                 (text-base)
@@ -337,7 +337,7 @@ export function StyleGuide() {
             </div>
 
             <div className="grid grid-cols-[100px_1fr] md:grid-cols-[150px_1fr] items-baseline gap-4 border-b border-default pb-6">
-              <span className="text-xs font-mono text-muted">
+              <span className="text-sm font-sans text-muted">
                 --text-secondary
                 <br />
                 (text-sm)
@@ -350,12 +350,12 @@ export function StyleGuide() {
             </div>
 
             <div className="grid grid-cols-[100px_1fr] md:grid-cols-[150px_1fr] items-baseline gap-4">
-              <span className="text-xs font-mono text-muted">
+              <span className="text-sm font-sans text-muted">
                 --text-muted
                 <br />
                 (text-xs)
               </span>
-              <p className="text-xs text-muted font-mono uppercase tracking-widest">
+              <p className="text-sm text-muted font-sans uppercase tracking-widest">
                 Last synced: 2026-02-28 14:32 UTC
               </p>
             </div>
@@ -377,7 +377,7 @@ export function StyleGuide() {
                 key={token.name}
                 className="flex items-baseline gap-6 border-b border-default py-3 last:border-0"
               >
-                <span className="w-20 shrink-0 text-xs font-mono text-muted">
+                <span className="w-20 shrink-0 text-sm font-sans text-muted">
                   {token.name.replace("--text-", "")}
                 </span>
                 <span
@@ -391,7 +391,7 @@ export function StyleGuide() {
                 >
                   The quick brown fox
                 </span>
-                <span className="shrink-0 text-xs font-mono text-secondary">
+                <span className="shrink-0 text-sm font-sans text-secondary">
                   {token.value}
                 </span>
               </div>
@@ -406,7 +406,7 @@ export function StyleGuide() {
           <SectionHeader
             icon={<Type />}
             title="Font Families"
-            description="Madison pairs Lora (display / large headings) with Inter (body + UI); JetBrains Mono for code. Apply the family with font-serif / font-sans / font-mono."
+            description="Madison pairs Lora (display / large headings) with Inter (body + UI). Apply the family with font-serif / font-sans."
           />
           <div className="border border-default rounded-lg bg-surface p-card flex flex-col gap-6">
             {TOKENS.fontFamilies.map((token) => (
@@ -418,7 +418,7 @@ export function StyleGuide() {
                   <span className="text-sm font-medium text-primary">
                     {token.label}
                   </span>
-                  <span className="text-2xs font-mono text-muted">
+                  <span className="text-sm font-sans text-muted">
                     {token.name}
                   </span>
                 </div>
@@ -454,7 +454,7 @@ export function StyleGuide() {
                 >
                   The quick brown fox
                 </span>
-                <span className="shrink-0 text-xs font-mono text-muted">
+                <span className="shrink-0 text-sm font-sans text-muted">
                   {token.name.replace("--font-weight-", "font-")} · {token.value}
                 </span>
               </div>
@@ -483,7 +483,7 @@ export function StyleGuide() {
                 >
                   Madison Design
                 </span>
-                <span className="shrink-0 text-xs font-mono text-muted">
+                <span className="shrink-0 text-sm font-sans text-muted">
                   {token.name.replace("--tracking-", "tracking-")} · {token.value}
                 </span>
               </div>
@@ -510,7 +510,7 @@ export function StyleGuide() {
                   className="h-4 rounded bg-brand"
                   style={{ width: `var(${token.name})` }}
                 />
-                <span className="ml-auto text-xs font-mono text-muted">
+                <span className="ml-auto text-sm font-sans text-muted">
                   {token.name} · {token.value}
                 </span>
               </div>
@@ -536,7 +536,7 @@ export function StyleGuide() {
                     {token.label}
                   </span>
                   <div className="h-4 flex-1 rounded border border-active bg-brand-subtle" />
-                  <span className="ml-auto font-mono text-xs text-muted">
+                  <span className="ml-auto font-sans text-sm text-muted">
                     {token.name} · {token.value}
                   </span>
                 </div>
@@ -568,7 +568,7 @@ export function StyleGuide() {
                       style={{ width: `${(rem / 96) * 100}%` }}
                     />
                   </div>
-                  <span className="ml-auto shrink-0 text-xs font-mono text-muted">
+                  <span className="ml-auto shrink-0 text-sm font-sans text-muted">
                     {token.name.replace("--breakpoint-", "")} · {token.value} ·{" "}
                     {px}px
                   </span>
@@ -594,7 +594,7 @@ export function StyleGuide() {
                   className="w-20 h-20 bg-brand-subtle border border-active"
                   style={{ borderRadius: `var(${token.name})` }}
                 />
-                <span className="text-xs font-mono text-muted">
+                <span className="text-sm font-sans text-muted">
                   {token.name.replace("--radius-", "rounded-")}
                 </span>
               </div>
@@ -623,7 +623,7 @@ export function StyleGuide() {
                     className="w-24 h-24 rounded-lg bg-surface border border-default"
                     style={{ boxShadow: `var(--elevation-${step})` }}
                   />
-                  <span className="text-xs font-mono text-muted">
+                  <span className="text-sm font-sans text-muted">
                     shadow-{step}
                   </span>
                 </div>
@@ -649,7 +649,7 @@ export function StyleGuide() {
                   className="flex items-center justify-between gap-4"
                 >
                   <span className="text-sm text-secondary">{token.label}</span>
-                  <span className="text-xs font-mono text-muted">
+                  <span className="text-sm font-sans text-muted">
                     {token.value}
                   </span>
                 </div>
@@ -677,10 +677,10 @@ export function StyleGuide() {
                 key={token.name}
                 className="flex items-center justify-between gap-4 rounded-md bg-app px-3 py-2"
               >
-                <span className="text-sm font-mono text-secondary">
+                <span className="text-sm font-sans text-secondary">
                   z-{token.name.replace("--z-", "")}
                 </span>
-                <span className="text-xs font-mono text-muted">
+                <span className="text-sm font-sans text-muted">
                   {token.value}
                 </span>
               </div>
@@ -716,7 +716,7 @@ export function StyleGuide() {
                   className="flex items-center justify-between gap-4"
                 >
                   <span className="text-sm text-secondary">{token.label}</span>
-                  <span className="text-xs font-mono text-muted">
+                  <span className="text-sm font-sans text-muted">
                     {token.value}
                   </span>
                 </div>
@@ -835,11 +835,11 @@ function TokenGroup({
                 <span className="text-sm font-medium text-primary truncate">
                   {token.label}
                 </span>
-                <span className="text-2xs font-mono text-muted truncate">
+                <span className="text-sm font-sans text-muted truncate">
                   {token.name}
                 </span>
               </div>
-              <div className="ml-auto text-xs font-mono text-secondary opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="ml-auto text-sm font-sans text-secondary opacity-0 group-hover:opacity-100 transition-opacity">
                 {activeHex}
               </div>
             </div>

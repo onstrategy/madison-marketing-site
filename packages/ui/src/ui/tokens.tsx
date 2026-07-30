@@ -134,6 +134,11 @@ export const TOKENS: TokenDictionary = {
     { name: "--bg-row-selected-hover", label: "Row Selected Hover", light: blendHex("#202E3B", "#E1DBD1", 0.1), dark: blendHex("#EAE5DF", "#33424F", 0.1), desc: "Selected row hover — 10% foundation over hover." },
     { name: "--bg-row-active", label: "Row Active", light: blendHex("#202E3B", "#FBF9F6", 0.1), dark: blendHex("#EAE5DF", "#293845", 0.1), desc: "Active row — 10% foundation over surface." },
     { name: "--bg-row-active-stripe", label: "Row Active Stripe", light: blendHex("#202E3B", "#E5E0D8", 0.1), dark: blendHex("#EAE5DF", "#1F2C37", 0.1), desc: "Active row stripe — 10% foundation over stripe." },
+    // Deliberately OUTSIDE the warm-neutral family and identical in both themes:
+    // a true #FFF plate for hosting third-party artwork (client logos, partner
+    // marks) that was authored against white. Warm White would tint it. Use only
+    // to host foreign media — never as a general page or card surface.
+    { name: "--bg-plate", label: "Plate (pure white)", light: "#FFFFFF", dark: "#FFFFFF", desc: "Pure white in BOTH themes — hosts third-party logos/artwork authored on white. Not a general surface." },
   ],
   borders: [
     { name: "--border-default", label: "Default", light: "#DBD5CB", dark: "#33414D", desc: "Standard structural dividers — warm taupe." },
@@ -146,20 +151,42 @@ export const TOKENS: TokenDictionary = {
     { name: "--text-muted", label: "Muted / Tertiary", light: "#8B8377", dark: "#8A8378", desc: "Disabled states and subtle hints." },
   ],
   brand: [
-    // Madison brand: Terracotta is the single hero accent (15% of any layout).
-    // -foreground stays warm-white on Terracotta in BOTH themes (a saturated mid-tone,
-    // unlike a neutral brand it does not invert). -subtle is a pale terracotta ghost.
-    { name: "--brand-primary", label: "Primary Accent", light: "#C75A3B", dark: "#D46E50", desc: "Terracotta — the single hero accent. Primary CTAs and emphasis." },
-    { name: "--brand-foreground", label: "Brand Foreground", light: "#FBF9F6", dark: "#FBF9F6", desc: "Text on Terracotta surfaces — warm white." },
-    { name: "--brand-subtle", label: "Brand Subtle", light: "#F2E0D8", dark: "#3C2823", desc: "Ghost buttons — pale terracotta." },
+    // Madison brand: Neon Blue is the single hero accent (15% of any layout).
+    // Darkened to #1479C0 (from #2B8FD6) specifically so WHITE text clears
+    // WCAG AA on primary CTAs — #2B8FD6 only gave white 3.50:1 (fails the
+    // 4.5:1 normal-text minimum). Nudged again to #147AC2 (near-identical hue,
+    // white still clears AA at 4.58:1). -foreground is white in both themes
+    // (Neon Blue doesn't invert). -subtle is a pale-blue ghost derived from
+    // the same hue.
+    { name: "--brand-primary", label: "Primary Accent", light: "#147AC2", dark: "#147AC2", desc: "Neon Blue — the single hero accent. Primary CTAs and emphasis." },
+    { name: "--brand-primary-hover", label: "Primary Hover", light: "#10629B", dark: "#10629B", desc: "Primary CTA hover — same hue, 8% darker (white stays 6.48:1)." },
+    // --brand-primary is tuned to be a FILL (white on it = 4.58:1) and so is too
+    // mid-toned to be legible as TEXT: as ink it only reaches 3.71:1 on the warm-
+    // white canvas and 2.99:1 on Dark Navy — both fail AA. This is the same hue
+    // re-tuned per theme for use as ink: darkened in light mode (4.67:1 on the
+    // worst light surface), lightened in dark mode (5.04:1 on Dark Navy).
+    { name: "--brand-accent", label: "Brand Accent (text-safe)", light: "#1169A6", dark: "#3DA3EB", desc: "Brand blue as TEXT — theme-aware, clears WCAG AA on every surface in its theme. Use for brand-colored copy/links; use --brand-primary for fills." },
+    { name: "--brand-foreground", label: "Brand Foreground", light: "#FFFFFF", dark: "#FFFFFF", desc: "Text on Neon Blue surfaces — white, 4.58:1 contrast." },
+    { name: "--brand-subtle", label: "Brand Subtle", light: "#DDF0FD", dark: "#193243", desc: "Ghost buttons — pale blue." },
+    // Palette expansion: two tints (lighter than primary) and two shades
+    // (darker than primary), same hue family. Theme-invariant, like
+    // --brand-primary itself — these are fixed points on the Neon Blue
+    // ladder, not adaptive per-theme roles. Named tint/shade (not a numbered
+    // scale) per governance — pick by role as you use them, e.g. --brand-tint
+    // for a soft highlight, --brand-shade-deep for a near-navy accent.
+    { name: "--brand-tint", label: "Brand Tint", light: "#AAD2EF", dark: "#AAD2EF", desc: "Light tint of Neon Blue — soft highlights, chart fills, decorative accents." },
+    { name: "--brand-tint-pale", label: "Brand Tint (Pale)", light: "#D5E9F7", dark: "#D5E9F7", desc: "Palest tint of Neon Blue — subtle background washes, faint highlights." },
+    { name: "--brand-shade", label: "Brand Shade", light: "#143D5B", dark: "#143D5B", desc: "Dark shade of Neon Blue — deep accents, hover states needing more contrast than --brand-primary-hover." },
+    { name: "--brand-shade-deep", label: "Brand Shade (Deep)", light: "#0D2232", dark: "#0D2232", desc: "Deepest shade of Neon Blue — near-navy accents, dark decorative fills." },
   ],
   semantics: [
     { id: "success", label: "Success", icon: <CheckCircle2 className="w-4 h-4" />, base: "#10B981", fg: "#FFFFFF", subtleLight: "#D1FAE5", subtleDark: "#064E3B" },
     { id: "error", label: "Error", icon: <AlertTriangle className="w-4 h-4" />, base: "#EF4444", fg: "#FFFFFF", subtleLight: "#FEE2E2", subtleDark: "#7F1D1D" },
     { id: "warning", label: "Warning", icon: <Zap className="w-4 h-4" />, base: "#F59E0B", fg: "#FFFFFF", subtleLight: "#FEF3C7", subtleDark: "#78350F" },
-    // Info = Madison Neon Blue (#00B4FF) — the "digital signal". Dark foreground for
-    // legible contrast on the bright cyan. Reserved for the smallest signal moments.
-    { id: "info", label: "Info", icon: <Info className="w-4 h-4" />, base: "#00B4FF", fg: "#0B2833", subtleLight: "#D6F1FF", subtleDark: "#0A3446" },
+    // Info = Madison Terracotta (#C75A3B) — reserved, the smallest signal moments
+    // (~5% of any layout). Warm-white foreground, same in both themes (a saturated
+    // mid-tone, like Neon Blue, that doesn't invert).
+    { id: "info", label: "Info", icon: <Info className="w-4 h-4" />, base: "#C75A3B", fg: "#FBF9F6", subtleLight: "#F2E0D8", subtleDark: "#3C2823" },
   ],
   globals: [
     { name: "--radius", label: "Global Radius", value: "0.375rem", desc: "Base border radius the radius scale derives from (rounded-md)." },
@@ -183,10 +210,13 @@ export const TOKENS: TokenDictionary = {
   ],
 
   // Font families. Madison pairs Lora (display/large headings) with Inter (body + UI).
+  // JetBrains Mono is retired — Madison is a two-family system now (Lora +
+  // Inter only). Anywhere that used to be `font-mono` (token names, numeric
+  // tags, dense labels) is `font-sans` at `text-2xs` instead — see the
+  // no-font-mono lint rule, which bans `font-mono` from ever coming back.
   fontFamilies: [
-    { name: "--font-sans", label: "Sans (UI / Body)", value: "'Inter Variable', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif", desc: "Body + UI typeface (Inter). Also h5/h6 and subtitles." },
+    { name: "--font-sans", label: "Sans (UI / Body)", value: "'Inter Variable', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif", desc: "Body + UI typeface (Inter). Also h5/h6, subtitles, and dense/tag labels at text-2xs." },
     { name: "--font-serif", label: "Serif (Display / Headings)", value: "'Lora', Georgia, 'Times New Roman', serif", desc: "Madison display + large headings (Lora). HERO through h4 — apply with font-serif." },
-    { name: "--font-mono", label: "Mono (Code)", value: "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace", desc: "Code, token names, numeric tables." },
   ],
 
   // Type scale — size + paired line-height. Mirrors common steps so existing
@@ -218,7 +248,7 @@ export const TOKENS: TokenDictionary = {
 
   letterSpacing: [
     { name: "--tracking-tighter", label: "Tighter", value: "-0.04em", desc: "Large display headings." },
-    { name: "--tracking-tight", label: "Tight", value: "-0.02em", desc: "Headings (tracking-tight)." },
+    { name: "--tracking-tight", label: "Tight", value: "-0.03em", desc: "Headings (tracking-tight)." },
     { name: "--tracking-normal", label: "Normal", value: "0em", desc: "Body default." },
     { name: "--tracking-wide", label: "Wide", value: "0.04em", desc: "Buttons, short labels." },
     { name: "--tracking-widest", label: "Widest", value: "0.1em", desc: "Uppercase overlines / eyebrows." },
@@ -253,6 +283,7 @@ export const TOKENS: TokenDictionary = {
     { name: "--shadow-md", label: "Medium", light: "0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.08)", dark: "0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5)", desc: "Raised cards, dropdowns, hover lift." },
     { name: "--shadow-lg", label: "Large", light: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)", dark: "0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.6)", desc: "Popovers, menus." },
     { name: "--shadow-xl", label: "Extra Large", light: "0 20px 25px -5px rgb(0 0 0 / 0.12), 0 8px 10px -6px rgb(0 0 0 / 0.12)", dark: "0 20px 25px -5px rgb(0 0 0 / 0.7), 0 8px 10px -6px rgb(0 0 0 / 0.7)", desc: "Modals, dialogs." },
+    { name: "--shadow-2xl", label: "2X Large", light: "0 25px 50px -12px rgb(0 0 0 / 0.18)", dark: "0 25px 50px -12px rgb(0 0 0 / 0.85)", desc: "Strongest lift — a single spotlight widget, not page chrome." },
   ],
 
   // Motion — durations + easings. Setting the Tailwind defaults (in the

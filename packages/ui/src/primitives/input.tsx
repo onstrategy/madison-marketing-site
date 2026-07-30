@@ -30,7 +30,7 @@ function Input({
       <input
         type={type}
         className={cn(
-          "flex-1 min-w-0 bg-transparent outline-none py-1 placeholder:text-muted",
+          "flex-1 min-w-0 bg-transparent text-primary outline-none py-1 placeholder:text-muted",
           // Left padding: reduce when start content exists, otherwise default.
           hasStartContent ? "pl-2" : "pl-3",
           // Right padding: reduce when end content exists, otherwise default.

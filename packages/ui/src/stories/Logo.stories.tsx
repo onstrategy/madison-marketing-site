@@ -10,11 +10,11 @@ const meta = {
     docs: {
       description: {
         component: [
-          "The Madison Ai brand logo. `Logo` is the full lockup (mark + wordmark); `LogoMark` is the glyph on its own.",
+          "The Madison Ai brand logo — real brand artwork, not a placeholder. `Logo` is the full lockup (mark + wordmark); `LogoMark` is the glyph on its own.",
           "",
           "**Token bindings:**",
-          "- `LogoMark` → `text-info` (Neon Blue `#00B4FF`) by default — recolor via `className`",
-          "- `Logo` wordmark → `text-primary`, `text-xl`, `font-bold`",
+          "- `LogoMark` (and the lockup's mark) → `text-brand` (Neon Blue `#1479C0`) by default — recolor via `className`",
+          "- `Logo` wordmark → `text-primary` — inverts automatically in dark mode",
           "",
           "Wrap `Logo` in an anchor to make it a home link. Neon Blue here is the reserved brand mark, not a status signal.",
         ].join("\n"),

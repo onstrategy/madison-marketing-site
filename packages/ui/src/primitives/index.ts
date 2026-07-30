@@ -44,6 +44,7 @@ export {
   NavbarLink,
   NavbarActions,
 } from "./navbar";
+export { NavDropdown, type NavDropdownItem } from "./nav-dropdown";
 export { Logo, LogoMark } from "./logo";
 export { PromptDemo, type PromptDemoItem } from "./prompt-demo";
 // @gen:promote anchor — `bun run gen:promote` inserts new primitive exports above this line.

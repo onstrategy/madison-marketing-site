@@ -1,13 +1,13 @@
 ---
 name: design-system
-description: REQUIRED before editing any file under packages/ui/ or any .module.css — a PreToolUse skill-gate blocks the Edit/Write tool on those paths until this skill is loaded. Also load it proactively before setting any className or choosing colors/spacing/borders/Tailwind classes (that content-level usage is advisory + CI-enforced, not gated). Covers the Madison token dictionary (warm neutral backgrounds/borders/typography, Terracotta brand, Neon-Blue info, restricted Deep Dust depth, semantic triads), the Lora + Inter type scale, the dimensional system (spacing, radii, elevation, motion, z-index, interaction), the Tailwind utility vocabulary, Madison's color-usage governance (approved pairings, the Deep Dust restriction), and migrating legacy shadcn-style variables.
+description: REQUIRED before editing any file under packages/ui/ or any .module.css — a PreToolUse skill-gate blocks the Edit/Write tool on those paths until this skill is loaded. Also load it proactively before setting any className or choosing colors/spacing/borders/Tailwind classes (that content-level usage is advisory + CI-enforced, not gated). Covers the Madison token dictionary (warm neutral backgrounds/borders/typography, Neon-Blue brand, Terracotta info, restricted Deep Dust depth, semantic triads), the Lora + Inter type scale, the dimensional system (spacing, radii, elevation, motion, z-index, interaction), the Tailwind utility vocabulary, Madison's color-usage governance (approved pairings, the Deep Dust restriction), and migrating legacy shadcn-style variables.
 ---
 
 # Madison Design System
 
 All styling in this repo is driven by `packages/ui` — a centralized token system that generates CSS
 variables and Tailwind utility classes from a single source of truth (`packages/ui/src/ui/tokens.tsx`).
-This repo *is* the Madison design system: the tokens are Madison's brand (Terracotta), warm neutrals,
+This repo *is* the Madison design system: the tokens are Madison's brand (Neon Blue), warm neutrals,
 Lora + Inter type, and the disciplined 5-color palette. This file contains the rules and vocabulary.
 Consult references when needed:
 
@@ -18,11 +18,11 @@ Consult references when needed:
 
 1. **Neutral-first, and warm.** 90%+ of the UI uses Madison's warm neutral backgrounds (Warm White),
    borders (taupe), and typography (warm near-black) tokens. Color is a signal, not decoration.
-2. **Disciplined palette.** Five colors in fixed roles. **Terracotta is the *single* hero accent**;
-   **Deep Dust is depth-only and restricted**; Neon Blue is a reserved digital signal. See
+2. **Disciplined palette.** Five colors in fixed roles. **Neon Blue is the *single* hero accent**;
+   **Deep Dust is depth-only and restricted**; Terracotta is a reserved digital signal. See
    "Madison Color — Usage Governance" below — usage matters as much as the values.
 3. **Semantic triads.** Each status color (success, error, warning, info) has exactly three levels:
-   base, subtle, and fg. No numbered scales. (Madison's `info` is Neon Blue.)
+   base, subtle, and fg. No numbered scales. (Madison's `info` is Terracotta.)
 4. **Opacity for fine-tuning.** Tokens are stored as raw HSL channels. See "Opacity Modifiers" below —
    static CSS utilities do NOT support `/40` shorthand.
 5. **No hardcoded colors.** Never use raw Tailwind colors (`bg-gray-800`, `text-blue-500`) or hex/rgb
@@ -42,9 +42,16 @@ same class works in both themes) — Madison's dark mode is the Dark Navy family
 | `bg-surface` | Nested cards, popovers, inputs — lifts off the warm canvas |
 | `bg-hover` | Subtle background for interactive elements on hover |
 | `bg-depth` | **RESTRICTED** — Deep Dust depth fill (hover/focus). See governance below. Never a primary surface. |
+| `bg-plate` | **NARROW USE** — true `#FFF` in *both* themes. Only for hosting third-party artwork (client logos, partner marks) authored against white, which Warm White would tint. Never a general page/card surface. Pair with a `light` scope so the text on it resolves light too. |
 
 Elevation nesting: `bg-app` → `bg-panel` → `bg-surface` → `bg-hover`. Each layer is visually distinct
 in both light and dark mode. `bg-depth` is **not** an elevation layer — it's a restricted accent.
+
+**Forcing a subtree's theme regardless of the page's actual mode:** add `className="dark"` or
+`className="light"` to any element. Both mirror `:root`/`.dark` exactly, so every token used inside
+that subtree (backgrounds, borders, typography, brand, semantics) resolves to that theme locally —
+e.g. an always-dark footer on an otherwise-light page, or a guaranteed-white card inside an
+always-dark section. Nest them to punch back out (a `light` card inside a `dark` section).
 
 ### Borders
 
@@ -62,19 +69,36 @@ in both light and dark mode. `bg-depth` is **not** an elevation layer — it's a
 | `text-secondary` | Metadata, descriptions, labels |
 | `text-muted` | Disabled states, hints, placeholders |
 
-### Brand — Terracotta
+### Brand — Neon Blue
 
-Madison's brand color is **Terracotta**, the single hero accent (~15% of any layout). It is the token
+Madison's brand color is **Neon Blue**, the single hero accent (~15% of any layout). It is the token
 default — you do **not** override `--brand-*` per app.
 
 | Class | Purpose |
 |-------|---------|
-| `bg-brand` / `text-brand` | Primary CTAs and the one hero accent per view (Terracotta) |
-| `text-brand-fg` / `bg-brand-fg` | Text/bg on Terracotta surfaces (warm white, in both themes) |
-| `bg-brand-subtle` / `text-brand-subtle` | Ghost buttons only (pale terracotta). **Not for row/item selection** — use `bg-row-selected`. In dark mode `bg-brand-subtle` collides with `bg-hover`. |
+| `bg-brand` / `text-brand` | Primary CTAs and the one hero accent per view (Neon Blue). `bg-brand` is the **fill**; see the warning below before using `text-brand` as ink. |
+| `text-brand-accent` | **Brand blue as TEXT.** Theme-aware (darker in light, lighter in dark) so it clears WCAG AA on every surface in its theme. Use this for brand-colored copy, links, headings, and icons. |
+| `bg-brand-hover` | Hover state for primary (`bg-brand`) surfaces — same hue, ~8% darker. Use instead of an opacity modifier so the shift reads as a real shade change, not a fade. |
+| `text-brand-fg` / `bg-brand-fg` | Text/bg on Neon Blue surfaces (white, in both themes) |
+| `bg-brand-subtle` / `text-brand-subtle` | Ghost buttons only (pale cyan). **Not for row/item selection** — use `bg-row-selected`. In dark mode `bg-brand-subtle` collides with `bg-hover`. |
 
-Note: the shorthand is `bg-brand`, not `bg-brand-primary`. Terracotta is a *saturated mid-tone*, so
-its foreground stays warm-white in **both** themes (it does not invert like a neutral brand would).
+Note: the shorthand is `bg-brand`, not `bg-brand-primary`. Neon Blue is deliberately a darker mid-blue
+(not the brighter electric cyan you might expect) so that **white** text on it clears WCAG AA
+(4.58:1) — its foreground stays white in **both** themes (it does not invert like a neutral brand would).
+
+**`text-brand` vs `text-brand-accent` — CRITICAL.** `--brand-primary` is tuned to be a *fill*
+(white on it = 4.58:1). That same mid-tone is **not** legible as ink: `text-brand` measures only
+**3.71:1** on the warm-white canvas and **2.99:1** on Dark Navy — the latter fails even the 3:1
+large-text floor. So:
+
+- **Fills** (`bg-brand`) + text on them (`text-brand-fg`) → keep using `--brand-primary`. Correct.
+- **Ink** (any brand-colored text, link, heading, or icon) → use **`text-brand-accent`**, which
+  re-tunes the same hue per theme (`#1169A6` light / `#3DA3EB` dark) to clear AA everywhere.
+
+**Arrow-icon hover nudge:** any button containing a Lucide arrow icon (`ArrowRight`, `ArrowUpRight`,
+etc.) gets a small rightward nudge on hover automatically — it's built into the `Button` primitive's
+base classes (targets `[class*='lucide-arrow']`), not something to add per-instance. Applies to every
+variant, not just primary.
 
 ### Row / Item Selection
 
@@ -93,15 +117,15 @@ text stays neutral.
 
 ### Semantic Colors (Status Only)
 
-Each semantic has a **triad** — three levels that cover all use cases. Madison's `info` is Neon Blue
-(`#00B4FF`, the "digital signal") — status only, **not** a brand accent (that's Terracotta).
+Each semantic has a **triad** — three levels that cover all use cases. Madison's `info` is Terracotta
+(`#C75A3B`, reserved) — status only, **not** a brand accent (that's Neon Blue).
 
 | Base | Subtle | Foreground | Use |
 |------|--------|------------|-----|
 | `bg-success` / `text-success` / `border-success` | `bg-success-subtle` | `text-success-fg` | Positive outcomes |
 | `bg-error` / `text-error` / `border-error` | `bg-error-subtle` | `text-error-fg` | Failures, destructive actions |
 | `bg-warning` / `text-warning` / `border-warning` | `bg-warning-subtle` | `text-warning-fg` | Caution states |
-| `bg-info` / `text-info` / `border-info` | `bg-info-subtle` | `text-info-fg` | Informational highlights (Neon Blue) |
+| `bg-info` / `text-info` / `border-info` | `bg-info-subtle` | `text-info-fg` | Informational highlights (Terracotta) |
 
 **Pattern:** a status badge uses `bg-success-subtle` + `text-success` for the label. A destructive
 button uses `bg-error` + `text-error-fg`. Need 10% opacity? Use `bg-success/10` — the HSL channel
@@ -128,9 +152,9 @@ on-brand.
 |-------|--------|------|--------|
 | Warm White `#EAE5DF` | `bg-app` + surfaces | Primary surface | ~40% |
 | Dark Navy `#202E3B` | dark-mode surfaces / foundation | Foundation | ~35% |
-| Terracotta `#C75A3B` | `bg-brand` / `text-brand` | **Single** hero accent | ~15% |
+| Neon Blue `#147AC2` | `bg-brand` / `text-brand` | **Single** hero accent | ~15% |
 | Deep Dust `#8A3A28` | `bg-depth` / `border-depth` | Depth (restricted) | ~5%, **max 10%** |
-| Neon Blue `#00B4FF` | `bg-info` / `text-info` | Digital signal (reserved) | ~5% |
+| Terracotta `#C75A3B` | `bg-info` / `text-info` | Digital signal (reserved) | ~5% |
 
 **Approved background + text pairings — the only legal ones:**
 
@@ -142,7 +166,7 @@ on-brand.
 fight visually) · Neon Blue as body text on white (low contrast) · Neon Blue as a background (it's an
 accent, never a surface).
 
-**Terracotta is the sole hero accent** — one accent per view, used sparingly (`bg-brand` CTAs, a key
+**Neon Blue is the sole hero accent** — one accent per view, used sparingly (`bg-brand` CTAs, a key
 emphasis). Don't spread it across a layout; that's what dilutes the system.
 
 **Deep Dust is depth, not presence** (`bg-depth` / `border-depth`):
@@ -152,7 +176,7 @@ emphasis). Don't spread it across a layout; that's what dilutes the system.
 - ❌ Page/section backgrounds · primary CTAs or buttons · headlines or body copy · the logo —
   and **never paired with Terracotta or Neon Blue** (Deep Dust and Terracotta are sibling warm rusts;
   side by side they flatten the palette).
-- When in doubt, reach for **Terracotta**. Deep Dust is a last resort.
+- When in doubt, reach for **Neon Blue**. Deep Dust is a last resort.
 
 ## Dimensional Tokens
 
@@ -196,11 +220,14 @@ So: a hero is `text-display font-serif`; an h2 is `text-4xl font-serif font-medi
 HTML tags already default to `font-serif` in the app base layer — for a non-heading element styled *as*
 a large heading, add `font-serif` explicitly.
 
-Families: `font-sans` (Inter, default body) · `font-serif` (Lora, display/headings) · `font-mono`.
+Families: `font-sans` (Inter, default body) · `font-serif` (Lora, display/headings). That's it —
+**`font-mono` is retired** (JetBrains Mono is gone from the system; the `no-font-mono` lint rule
+hard-fails `bun run check` if it reappears). Anywhere that used to be a small monospace tag (token
+names, numeric badges, dense labels) is `font-sans` at `text-2xs` instead.
 Weights: `font-normal / medium / semibold / bold`. Tracking: `tracking-tight` … `tracking-widest`.
 Don't use arbitrary sizes (`text-[40px]`, `text-[10px]`) — **lint-blocked** (`no-raw-dimensions`);
 reach for a step (`text-2xs` through `text-display`). The micro step `text-2xs` (10px) sits just below
-`text-xs` — overlines, swatch captions, dense mono labels.
+`text-xs` — overlines, swatch captions, dense tag labels.
 
 ### Radii
 
@@ -209,9 +236,10 @@ buttons `rounded-md`, cards/popovers `rounded-lg`, modals `rounded-xl`, pills/av
 
 ### Elevation (theme-aware)
 
-`shadow-xs / sm / md / lg / xl`. **Mode-aware** — heavier in dark mode automatically, so depth still
-reads. Cards/buttons `shadow-sm`, dropdowns/hover-lift `shadow-md`, popovers `shadow-lg`, modals
-`shadow-xl`. Never hand-roll `shadow-[0_1px_2px_...]`.
+`shadow-xs / sm / md / lg / xl / 2xl`. **Mode-aware** — heavier in dark mode automatically, so depth
+still reads. Cards/buttons `shadow-sm`, dropdowns/hover-lift `shadow-md`, popovers `shadow-lg`, modals
+`shadow-xl`, a single spotlight widget (not page chrome) `shadow-2xl`. Never hand-roll
+`shadow-[0_1px_2px_...]`.
 
 ### Motion
 
@@ -304,7 +332,7 @@ elevation shadow instead.
 
 ## Red Flags — STOP and Revise
 
-> **Enforcement:** items below tagged **lint-blocked** hard-fail `bun run check` via the governance overlay — `no-raw-colors` (off-system colors) and `no-raw-dimensions` (arbitrary spacing/type lengths). The rest are advisory but caught in review.
+> **Enforcement:** items below tagged **lint-blocked** hard-fail `bun run check` via the governance overlay — `no-raw-colors` (off-system colors), `no-raw-dimensions` (arbitrary spacing/type lengths), and `no-font-mono` (the retired JetBrains Mono family). The rest are advisory but caught in review.
 
 - Using raw Tailwind colors (`bg-zinc-900`, `text-slate-500`) instead of token classes — **lint-blocked**
 - Using hex/rgb/hsl values in `className` or inline styles for colors
@@ -312,17 +340,18 @@ elevation shadow instead.
 - Using shadcn-style variable names (`bg-card`, `text-foreground`, `bg-destructive`) — see `references/migration.md`
 - Inventing a new color token without first checking `tokens.tsx` and the style guide
 - Nesting elevation layers out of order (e.g. `bg-app` inside `bg-surface`)
-- Using semantic colors for branding (e.g. `bg-info`/Neon Blue for a primary CTA — use `bg-brand`/Terracotta)
-- **Spreading Terracotta around** — it's the *single* hero accent (~15%). One accent per view, used sparingly.
+- Using semantic colors for branding (e.g. `bg-info`/Terracotta for a primary CTA — use `bg-brand`/Neon Blue)
+- **Spreading Neon Blue around** — it's the *single* hero accent (~15%). One accent per view, used sparingly.
 - **Misusing Deep Dust** (`bg-depth`/`border-depth`): as a background surface, a CTA, headline/body text, or paired with Terracotta or Neon Blue. It is depth-only, ≤10%, on light backgrounds. See the governance section.
 - **An unapproved bg/text pairing** — only Primary Dark, Primary Light, and Digital Dark are legal (see governance). Never Neon Blue as body text on white or as a background.
 - Using `bg-brand-subtle` for selected rows/items — collides with `bg-hover` in dark mode. Use `bg-row-selected` + `hover:bg-row-selected-hover`
 - Using `border-default/40` or `divide-default/40` — static utilities don't support opacity modifiers. Use `border-[hsl(var(--border-default)/0.4)]`
 - Using `border-default` for small interactive elements (circles, checkboxes, toggle rings) — invisible in dark mode. Use `border-active`
 - Assuming border visibility without checking both light AND dark mode contrast
-- Hand-rolling shadows (`shadow-[0_1px_2px_...]`) instead of `shadow-xs…xl` (which are theme-aware)
+- Hand-rolling shadows (`shadow-[0_1px_2px_...]`) instead of `shadow-xs…2xl` (which are theme-aware)
 - Magic z-index (`z-50`) for overlays/modals/toasts — use the named `z-*` layer scale
 - Hardcoding focus-ring width (`ring-[3px]`, `ring-1`, `ring-2`) — use `ring-[length:var(--ring-width)]`
 - Raw length literals for spacing/layout — `p-[17px]`, `gap-[13px]`, `mt-[20px]` — **lint-blocked** (`no-raw-dimensions`). Use the numeric scale (`p-4`, `py-24`) or a named step (`p-card`, `px-gutter`, `gap-section`). The numeric scale is on-token; only arbitrary literals are banned.
 - Arbitrary font sizes — `text-[40px]`, `text-[10px]` — **lint-blocked** (`no-raw-dimensions`). Use the type scale (`text-2xs` through `text-5xl`, `text-display`).
 - **Large headings in the wrong family** — HERO/h1–h4 are Lora (`font-serif`); a big heading left in `font-sans` (Inter) is off-brand. h5/h6 and body stay Inter.
+- Using `font-mono` — **lint-blocked** (`no-font-mono`). JetBrains Mono is retired; use `font-sans` (Inter), paired with `text-2xs` for the old micro-label/tag role.
