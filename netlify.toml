@@ -1,0 +1,65 @@
+# Netlify build contract for @madison/site.
+#
+# `base` is deliberately UNSET, i.e. the repo root. This is a bun workspace
+# monorepo: pointing `base` at apps/site would make Netlify install from inside
+# the workspace and fail to resolve @madison/ui and @madison/sandbox. Don't
+# "fix" it by adding base = "apps/site".
+
+[build]
+  # Must run through turbo from the root. `dependsOn: ["^build"]` on the build
+  # task pulls @madison/ui#build into the graph first, which generates the
+  # gitignored packages/ui/dist/theme.css that the stylesheet @imports. A bare
+  # `vite build` inside apps/site would fail on the missing CSS import.
+  command = "bunx turbo run build --filter=@madison/site"
+  publish = "apps/site/dist"
+
+[build.environment]
+  # BUN_VERSION is the knob Netlify honors. The root package.json's
+  # `packageManager: "bun@1.3.9"` is a Corepack field and Corepack does not
+  # support bun, so it pins the local toolchain only — keep both in sync.
+  BUN_VERSION = "1.3.9"
+  NODE_VERSION = "22"
+
+# ─── Redirects ────────────────────────────────────────────────────────────────
+# Order matters: Netlify applies the first matching rule. Real files on disk are
+# always served before any rule here, so /assets/* and /favicon.svg are safe.
+
+# landing/sections.tsx hardcodes href="/landing" on the brand mark, and `/` is
+# the canonical homepage. apps/site/src/App.tsx has the matching client-side
+# redirect so dev and `vite preview` behave the same way.
+[[redirects]]
+  from = "/landing"
+  to = "/"
+  status = 301
+  force = true
+
+# MANDATORY — do not remove. Every cross-page link in these pages is a plain
+# <a href="/slug">, i.e. a full browser load straight to a deep path. Only
+# /index.html exists on disk, so without this rule every single link 404s.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# ─── Headers ──────────────────────────────────────────────────────────────────
+
+# Vite content-hashes everything under /assets, so it can be cached forever.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ─── DEMO DEPLOY: not indexable ───────────────────────────────────────────────
+# This runs on a DEMO Netlify account, so it is kept out of search engines in
+# every context — production, branch deploys and deploy previews alike. That's
+# why this block is top-level rather than per-context: nothing to miss.
+#
+# When the client deploys from their own account:
+#   1. delete this block,
+#   2. flip apps/site/public/robots.txt to `Allow: /`,
+#   3. drop the <meta name="robots"> tag in apps/site/index.html.
+# See docs/publishing.md § "Handover: going live on the client's account".
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
