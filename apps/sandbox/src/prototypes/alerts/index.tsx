@@ -9,7 +9,7 @@ export default function AlertsPrototype() {
             href="/"
             className="text-sm text-secondary transition-colors hover:text-primary"
           >
-            ← All prototypes
+            ← Home
           </a>
           <h1 className="text-3xl font-semibold tracking-tight">Alerts</h1>
           <p className="text-secondary">

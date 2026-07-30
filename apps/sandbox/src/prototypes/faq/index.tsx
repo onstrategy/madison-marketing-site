@@ -58,7 +58,7 @@ export default function FaqPrototype() {
             href="/"
             className="text-sm text-secondary transition-colors hover:text-primary"
           >
-            ← All prototypes
+            ← Home
           </a>
           <h1 className="text-3xl font-semibold tracking-tight">{meta.title}</h1>
           <p className="text-secondary">{meta.description}</p>

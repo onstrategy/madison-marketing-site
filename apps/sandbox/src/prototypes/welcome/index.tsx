@@ -254,7 +254,7 @@ export default function WelcomePrototype() {
               href="/"
               className="inline-flex items-center gap-1.5 text-sm text-secondary hover:text-primary transition-colors"
             >
-              <ArrowLeft className="h-4 w-4" /> All prototypes
+              <ArrowLeft className="h-4 w-4" /> Home
             </a>
             <div className="flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-md bg-brand text-brand-fg">
