@@ -277,6 +277,11 @@ function generateTailwindTokens() {
     if (t.weight) css += `  ${t.name}--font-weight: ${t.weight};\n`;
   }
 
+  css += `\n  /* Line heights (override scale — the type scale carries the default) */\n`;
+  for (const t of TOKENS.lineHeights) {
+    css += `  ${t.name}: ${t.value};\n`;
+  }
+
   css += `\n  /* Font weights */\n`;
   for (const t of TOKENS.fontWeights) {
     css += `  ${t.name}: ${t.value};\n`;

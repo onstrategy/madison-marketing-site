@@ -435,6 +435,41 @@ export function StyleGuide() {
 
         <hr className="border-default" />
 
+        {/* SECTION: Line Height */}
+        <section>
+          <SectionHeader
+            icon={<Type />}
+            title="Line Height"
+            description="The override scale — every type step already carries its own line-height, so reach for these only when copy needs to breathe (or tighten) at the same size."
+          />
+          <div className="border border-default rounded-lg bg-surface p-card flex flex-col gap-6">
+            {TOKENS.lineHeights.map((token) => (
+              <div
+                key={token.name}
+                className="border-b border-default pb-6 last:border-0 last:pb-0"
+              >
+                <div className="flex items-baseline justify-between gap-6">
+                  <span className="text-xs font-mono text-muted">
+                    {token.name.replace("--leading-", "leading-")} · {token.value}
+                  </span>
+                  <span className="shrink-0 text-xs text-secondary">{token.label}</span>
+                </div>
+                <p
+                  className="mt-2 max-w-prose text-base text-primary"
+                  /* Render through the generated var, not the raw value: this makes the
+                     style guide prove --leading-* actually reaches the browser. */
+                  style={{ lineHeight: `var(${token.name})` }}
+                >
+                  Madison is a code-first design system. The tokens live in code, generate the
+                  CSS, and every page composes from the same vocabulary.
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <hr className="border-default" />
+
         {/* SECTION: Font Weights */}
         <section>
           <SectionHeader
