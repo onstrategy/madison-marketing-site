@@ -90,6 +90,11 @@ export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAwa
         </NavbarLink>
       </NavbarLinks>
       <NavbarActions>
+        {/*
+          The one intentional placeholder left in the site: there is no sign-in
+          prototype to point at, and the marketing pages don't own the app's
+          auth route. Every other `#top` has been resolved to a real page.
+        */}
         <a
           href="#top"
           className="hidden text-sm font-medium text-primary transition-colors hover:text-brand-accent sm:block"
@@ -216,7 +221,7 @@ export function Capabilities() {
               trained on your government&rsquo;s record.
             </p>
             <a
-              href="#top"
+              href="/community-development-ai"
               className="inline-flex items-center gap-1.5 whitespace-nowrap pb-1 font-semibold text-brand-accent"
             >
               See the full platform <ArrowRight className="size-4" />
@@ -248,7 +253,7 @@ export function Capabilities() {
           ))}
           <Reveal delay={CAPABILITIES.length * 60}>
             <a
-              href="#top"
+              href="/community-development-ai"
               className="light flex h-full flex-col items-start justify-center rounded-2xl bg-brand-subtle p-5 transition-transform hover:-translate-y-1"
             >
               <span className="mb-5 flex size-14 items-center justify-center rounded-2xl bg-brand text-brand-fg">

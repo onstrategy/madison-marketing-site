@@ -133,7 +133,7 @@ function CtaSection({ data }: { data: NewsItemData["cta"] }) {
           </h2>
           <p className="mb-8 text-pretty text-lg text-secondary">{data.description}</p>
           <Button size="lg" asChild>
-            <a href="#top">
+            <a href="/book-a-demo">
               {data.primaryCta} <ArrowRight className="size-4" />
             </a>
           </Button>
