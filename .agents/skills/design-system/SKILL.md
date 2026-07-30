@@ -202,7 +202,8 @@ Weights: `font-normal / medium / semibold / bold`. Tracking: `tracking-tight` �
 **Line height — the type scale carries the default; `leading-*` is the override.** Every step
 above already pairs a size with a line-height, and that pairing is the right answer most of the
 time. When copy genuinely needs to breathe (or tighten) *at the same size*, use the override
-scale: `leading-tight` (1.15, large display headings set as one block) · `leading-snug` (1.3,
+scale: `leading-tight` (1.15, a tightening override for large display headings set as one
+block) · `leading-snug` (1.3,
 smaller headings and two-line labels) · `leading-normal` (1.5, body) · `leading-relaxed` (1.75,
 long-form paragraphs) · `leading-loose` (2, maximum air). Those five declare every name in
 Tailwind's `--leading-*` namespace, so each step's *value* is Madison's rather than inherited —
@@ -216,8 +217,13 @@ It is on-system; reach for it deliberately, not as a way to dodge the scale.
 Never `leading-[1.4]` or `leading-[28px]`, and never the numeric form `leading-7` — all
 **lint-blocked** (`no-raw-dimensions`). `leading-7` looks like the on-token numeric spacing scale
 but resolves to a *fixed* `1.75rem`, pinning line-height against the font-size instead of scaling
-with it. Line-height stays a unitless ratio. Changing the *default* line-height of a heading is a
-different act: that edits the step's `lineHeight` in `tokens.tsx` and lands as a draft PR.
+with it. Line-height stays a unitless ratio.
+
+Overriding *one element* and changing a *default* are different acts. The `leading-*` classes above
+do the first. The second edits the step's `lineHeight` in `tokens.tsx` — or, where an app sets its
+own heading-level default (a rule deriving every h1–h6's leading from its own rendered size,
+instead of retuning steps that body copy shares), that app rule — and lands as a draft PR. Either
+way the `leading-*` classes stay the per-element override and still win over the default.
 
 Don't use arbitrary sizes (`text-[40px]`, `text-[10px]`) — **lint-blocked** (`no-raw-dimensions`);
 reach for a step (`text-2xs` through `text-display`). The micro step `text-2xs` (10px) sits just below

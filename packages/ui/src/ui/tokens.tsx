@@ -214,6 +214,12 @@ export const TOKENS: TokenDictionary = {
   // is the default and stays the right answer. These are the *override* scale, for
   // the cases where copy needs to breathe (or tighten) without changing its size.
   //
+  // An app may additionally set its own heading-level default on top of the step
+  // pairing (a rule that gives every h1–h6 a leading derived from its own rendered
+  // size, rather than retuning steps that body copy shares). Where it does, these
+  // five remain the explicit per-element override and still win — so `leading-tight`
+  // is "tighter than this heading's default", not "the heading default".
+  //
   // These names deliberately cover Tailwind's whole `--leading-*` namespace. Two
   // reasons, and it is worth being precise about both:
   //   1. A step left undeclared falls back to Tailwind's own default, so its value
@@ -235,7 +241,7 @@ export const TOKENS: TokenDictionary = {
   // (`leading-7`) resolves via `--spacing` into a fixed rem and IS banned by
   // `no-raw-dimensions`.
   lineHeights: [
-    { name: "--leading-tight", label: "Tight", value: "1.15", desc: "Large display headings — HERO / h1 / h2 set as one block." },
+    { name: "--leading-tight", label: "Tight", value: "1.15", desc: "Tightening override for large display headings set as one block — tighter than whatever default the heading already inherits." },
     { name: "--leading-snug", label: "Snug", value: "1.3", desc: "Smaller headings and short two-line labels." },
     { name: "--leading-normal", label: "Normal", value: "1.5", desc: "Body copy — matches the text-base pairing." },
     { name: "--leading-relaxed", label: "Relaxed", value: "1.75", desc: "Long-form paragraphs that need air." },
