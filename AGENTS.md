@@ -17,6 +17,9 @@ origin and the productization strategy.
 Code flows downward — apps depend on packages, never the reverse.
 
 ```
+apps/site      (@madison/site)     the PUBLISHED site (Netlify); owns no page content
+      │  depends on
+      ▼
 apps/sandbox   (@madison/sandbox)  on-system Vite app; hosts on-token prototypes
       │  depends on
       ▼
@@ -28,8 +31,12 @@ packages/ui    (@madison/ui)       the design system: tokens → CSS, primitives
   Primitives in `src/primitives/`. Theme provider in `src/theme/`. Storybook in `.storybook/`
   (port 6007) with the MCP manifest (`componentsManifest`).
 - **`apps/sandbox`** — prototypes live in `src/prototypes/<slug>/` (`index.tsx` + `meta.ts`)
-  and self-register via `import.meta.glob`. Wired to the system via the canonical 4-line CSS
-  header in `src/index.css`.
+  and self-register via `src/prototype-registry.ts` (`import.meta.glob`). Wired to the system
+  via the canonical 4-line CSS header in `src/index.css`.
+- **`apps/site`** — the production shell deployed to Netlify. It **owns no page content**: it
+  mounts the sandbox's prototypes at their public slugs, with the landing page at `/` and no
+  gallery. Page content is always edited in `apps/sandbox/src/prototypes/`, never copied here —
+  so anything a contributor builds shows up on the site automatically.
 - **`.agents/skills/`** — the conventions (design-system, react, typescript, testing),
   symlinked into `.claude/skills`.
 - **`.claude/hooks/`** — the skill-gate bundle (enforces skill loading on guarded paths).
@@ -78,8 +85,9 @@ touch tooling.** Hold this contract:
     engineer's call.
   - *"submit / send for review / ship / publish this"* → their **explicit go-ahead** for the
     commit→PR flow: run `bun run check`, fix any failures or off-system colors, branch, commit,
-    push, open a PR, and return the **link**. (The trust matrix decides auto-merge vs draft —
-    they don't specify it.)
+    push, open a PR, wait for its Netlify Deploy Preview, and return **both links** — the PR and
+    the live preview URL. (The trust matrix decides auto-merge vs draft — they don't specify it.)
+    See *Publishing and previews* below.
   - *"make this an official / reusable component"* → the promote flow ([`docs/promote.md`](./docs/promote.md)).
   - *"what components can I use / what's available / what can I change about X"* → answer from the
     **Storybook MCP as the primary source of truth when it's connected** (`list-all-documentation`
@@ -89,8 +97,8 @@ touch tooling.** Hold this contract:
 - **Ask in plain language, never jargon.** Need a page name? Ask "what should we call this
   page?" — not "what slug?". Infer sensible defaults (including a one-line description) rather
   than interrogating.
-- **Report only what they care about** — a preview URL, a PR link, "it's on-brand and the checks
-  pass" — not raw command output, unless they ask or you need a decision from them.
+- **Report only what they care about** — a live preview URL, a PR link, "it's on-brand and the
+  checks pass" — not raw command output, unless they ask or you need a decision from them.
 - **The phrasing→action map above is also encoded as slash commands** — `/build`, `/small-edit`,
   `/restyle`, `/undo`, `/submit`, `/promote` (and `/prompts` for the menu), defined in
   `.claude/commands/` and cataloged in [`docs/prompts.md`](./docs/prompts.md). Treat them as
@@ -99,12 +107,34 @@ touch tooling.** Hold this contract:
   a narrow tool set in their frontmatter precisely so a one-line change doesn't cost what a page
   build does. Don't turn a bounded tweak into a survey of the codebase.
 
+## Publishing and previews
+
+`apps/site` is deployed to Netlify from [`netlify.toml`](./netlify.toml). Full detail —
+including the handover checklist for the client — is in [`docs/publishing.md`](./docs/publishing.md).
+
+- **`main` is production.** Never commit or push to `main` directly. Merging a PR is what
+  publishes.
+- **Every pull request gets a Deploy Preview** at `deploy-preview-<number>--<site>.netlify.app`.
+  This is the link a non-technical contributor actually cares about — it's their work, live.
+  Read it from the PR's Netlify check or comment (`gh pr checks <number>`). **Never guess or
+  construct the URL**, and never substitute a one-off deploy-ID permalink.
+- **The `preview` branch** has a stable URL at `preview--<site>.netlify.app`, for a persistent
+  staging link that doesn't churn per PR.
+- **A red Netlify check is a red gate.** Treat it exactly like a failing `bun run check`: fix it,
+  don't report the work as done.
+- **Don't infer production authority from repo access.** "Publish this" / "share this" means a
+  branch + PR. Going straight to production takes an explicit maintainer request.
+- **The site is deliberately not indexable** — it runs on a demo Netlify account. Don't "fix" the
+  `noindex` header in `netlify.toml` or the `Disallow` in `apps/site/public/robots.txt`; they come
+  off during handover, together.
+
 ## Commands
 
 ```bash
 bun run check          # typecheck + test + lint — the gate (run before concluding)
 bun run build          # regenerate token CSS + build apps
 bun run dev            # Storybook (:6007) + sandbox (:5173)  — the user starts servers
+bun run dev:site       # the published site (:5174)           — the user starts servers
 bun run gen:prototype  # scaffold a prototype — use --args <slug> "<title>" "<desc>" (all 3 required)
 ```
 
@@ -134,3 +164,10 @@ title-case prose messages.
   default-export `{ title, description }`); replace the starter body *after* scaffolding.
 - **Don't run git history commands** (commit, push, pull, rebase) unless the user explicitly asks.
 - New tokens go through `tokens.tsx` + the style guide + a draft PR — never invent ad-hoc values.
+- **`apps/site` is a shell, not a page store.** It holds routing, the 404 and the deploy wiring.
+  Page content lives in `apps/sandbox/src/prototypes/` and is rendered by both apps — if you find
+  yourself copying a page into `apps/site/src/`, stop; that's the drift this design exists to
+  prevent.
+- **Never remove the two `@source` lines in `apps/site/src/index.css`.** Tailwind roots its
+  automatic source detection at the Vite root, so without them it emits a near-empty stylesheet
+  and the site ships unstyled — with typecheck, lint and the build all green.

@@ -10,8 +10,8 @@
 ## 1. Two products in one repo
 
 - **The kit** (this whole repo) — a full standalone Turborepo: token engine + primitives + sandbox
-  + Storybook + governance. Now **Madison's design system**; as a complete standalone setup it also
-  serves as the reference implementation and clone-for-greenfield template.
+  + a published site + Storybook + governance. Now **Madison's design system**; as a complete
+  standalone setup it also serves as the reference implementation and clone-for-greenfield template.
 - **The overlay** ([`overlay/`](../overlay)) — just the **governance layer**, extracted so it
   **installs into a client's existing repo**. You never hand a client the kit; you install its overlay.
 
@@ -33,7 +33,10 @@ ai-kit/
 │  ├─ src/stories/             ← Storybook stories (feed the MCP manifest)
 │  └─ .storybook/              ← Storybook config (port 6007 + MCP)
 ├─ apps/sandbox/           @madison/sandbox — on-system Vite app for prototypes
+│  ├─ src/prototype-registry.ts  ← the import.meta.glob registry (exported to apps/site)
 │  └─ src/prototypes/<slug>/{index.tsx, meta.ts}  ← self-register via import.meta.glob
+├─ apps/site/              @madison/site — the PUBLISHED site (Netlify); a routing shell
+│  └─ src/App.tsx              ← mounts the sandbox's prototypes; landing at /, no gallery
 ├─ .agents/skills/         design-system · react · typescript · testing  (the conventions)
 ├─ .claude/                hooks/ (skill-gate engine) · settings.json · skills→../.agents/skills
 │  └─ commands/               ← the contributor workflows as slash commands (§6g)
@@ -41,6 +44,7 @@ ai-kit/
 ├─ eslint/                 no-raw-{colors,dimensions,rings-zindex}.js — token-lint rules (shippable)
 ├─ overlay/               install.sh + README — drop governance into an existing repo
 ├─ docs/                  these docs
+├─ netlify.toml           the deploy contract for apps/site (§9b)
 └─ turbo.json · package.json · eslint.config.js · tsconfig.base.json   (workspace plumbing)
 ```
 
@@ -129,10 +133,36 @@ src/prototypes/<slug>/
 └─ meta.ts     ← default-exported { title, description }   (EAGER-loaded → powers the gallery)
 ```
 
-`App.tsx` discovers them with two `import.meta.glob` calls — eager over `meta.ts`, lazy over
-`index.tsx` — and generates routes + the gallery. **Drop a folder in, it appears. No central file to
-edit.** (The two-file split is deliberate: eager-loading only the tiny `meta.ts` keeps the gallery
-rich while the page components stay code-split.)
+`src/prototype-registry.ts` discovers them with two `import.meta.glob` calls — eager over `meta.ts`,
+lazy over `index.tsx` — and `App.tsx` turns that into routes + the gallery. **Drop a folder in, it
+appears. No central file to edit.** (The two-file split is deliberate: eager-loading only the tiny
+`meta.ts` keeps the gallery rich while the page components stay code-split.)
+
+Note that "sandbox" no longer means "throwaway": these same prototypes **are** the published site's
+pages (§5b). The registry lives in its own module, exported as `@madison/sandbox/prototypes`,
+precisely so the rule that decides "which folders are pages" exists once rather than once per app.
+
+---
+
+## 5b. `apps/site` — the published surface
+
+A second Vite + React app (dev port 5174) that **owns no page content**. It imports the registry
+above and mounts the same components at their public slugs, with three deliberate differences:
+
+| | `apps/sandbox` | `apps/site` |
+|---|---|---|
+| `/` | prototype gallery | the landing page |
+| `/landing` | the landing page | 301 → `/` |
+| gallery | yes | no — internal surface |
+| page transitions | yes | no (every link is a full page load) |
+
+`apps/site/src/index.css` **imports** the sandbox's stylesheet rather than copying it — the marquee
+utility, base layer and heading-leading formula are all load-bearing, and a copy would drift with
+nothing in `check` or CI to catch it. It adds two `@source` lines because Tailwind roots automatic
+source detection at the Vite root; without them the site ships unstyled while every check stays
+green.
+
+Deploy config and the client handover checklist: [`docs/publishing.md`](./publishing.md).
 
 ---
 
@@ -332,6 +362,18 @@ is rich.)
 - **`bun run check`** = `turbo run typecheck test && eslint .` (lint runs once from root, robust).
 - **CI** (`.github/workflows/ci.yml`): two parallel jobs — `check` and `react-doctor` — on every
   push to `main` and every PR. `setup-bun@v2` (pinned 1.3.9) + `bun install --frozen-lockfile`.
+  The `check` job also runs `bun run build`: `check` alone never bundles the apps, so a build
+  break (a bad glob, a missing `@source`) would otherwise reach Netlify before a reviewer. It's
+  kept out of `bun run check` itself because agents run that on every turn.
+
+### 9b. Netlify
+
+`netlify.toml` at the repo root is the whole deploy contract — build command
+(`bunx turbo run build --filter=@madison/site`), publish dir (`apps/site/dist`), the mandatory SPA
+fallback, and a top-level `noindex` header because this runs on a demo account. `base` is
+deliberately unset: pointing it at `apps/site` would make Netlify install from inside the workspace
+and fail to resolve the workspace deps. `main` → production, `preview` → a stable branch deploy,
+every PR → a Deploy Preview. Full detail: [`docs/publishing.md`](./publishing.md).
 
 ---
 
@@ -379,7 +421,8 @@ recolors, semantic colors stay constant. (The workshop "aha.")
 | The tokens themselves | `packages/ui/src/ui/tokens.tsx` + `src/ui/style-guide.tsx` |
 | How CSS is generated | `packages/ui/scripts/generate-theme.ts` |
 | A primitive's shape | `packages/ui/src/primitives/button.tsx` (cva) · `card.tsx` (simple) · `alert.tsx` (variants+icon) |
-| Self-registration | `apps/sandbox/src/App.tsx` |
+| Self-registration | `apps/sandbox/src/prototype-registry.ts` (+ `App.tsx` for the gallery) |
+| Publishing / previews | `netlify.toml` + `docs/publishing.md` · the site shell is `apps/site/src/App.tsx` |
 | The skill-gate | `.claude/hooks/enforce-skill-gates.sh` + `.claude/hooks/skill-requirements.json` + `.claude/settings.json` |
 | A slash command | `.claude/commands/restyle.md` (plain) · `small-edit.md` (cost-controlled frontmatter) |
 | The token-lint rules | `eslint/no-raw-colors.js` · `no-raw-dimensions.js` · `no-raw-rings-zindex.js` |

@@ -81,3 +81,8 @@ Today this is a checklist a human runs by hand; automating it as an `/audit` com
 
 The matrix is itself governance-as-code: it maps *blast radius* to *required oversight*, so speed
 on low-risk work doesn't cost safety on high-risk work.
+
+**Merging now publishes.** `apps/site` deploys from `main`, so the top row's "auto-merge" is also
+an auto-deploy. Two things keep that safe: every PR gets a Netlify Deploy Preview, so the change is
+reviewable *as a live page* before it lands; and the Netlify check is a merge gate like any other.
+Nobody pushes to `main` directly. See [`docs/publishing.md`](./publishing.md).
