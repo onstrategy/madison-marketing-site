@@ -8,9 +8,62 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Madison is now the design system's default brand (Terracotta), set in
+ * Madison is now the design system's default brand (Neon Blue), set in
  * packages/ui/src/ui/tokens.tsx — so no per-app --brand-* override is needed here.
  */
+
+/* Infinite-marquee utility for logo strips (see prototypes/landing/parts.tsx).
+   Constant speed (linear, no easing) via a duplicated track. The global
+   prefers-reduced-motion rule in theme.css already collapses
+   `animation-duration`, so reduced-motion users see a static strip. */
+@layer utilities {
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-marquee {
+    animation: marquee var(--marquee-duration, 32s) linear infinite;
+  }
+}
+
+/* Page transitions (driven by usePageTransition in App.tsx): the outgoing page
+   fades out, then the shell remounts and the incoming one fades + un-blurs in.
+ *
+ * Why the blur is on the ENTER only, and the exit is opacity-only:
+ * a non-`none` filter makes an element a containing block for its
+ * `position: fixed` descendants. The site nav is fixed, so blurring the shell
+ * re-anchors the nav to the shell instead of the viewport. On enter that's
+ * invisible (scroll was just reset, so shell top === viewport top), but on exit
+ * the reader is usually scrolled down — a blurred exit yanked the nav hundreds
+ * of pixels off-screen for the whole fade. Measured, not theorized. Don't add
+ * `filter` to the exit without re-checking the nav while scrolled.
+ *
+ * The blur radius stays small (6px): a full-viewport blur is recomposited every
+ * frame and these pages carry photos, marquees, and animated SVG.
+ * `animation-fill-mode` is left at `none` so the shell settles back to
+ * `filter: none` and stops being a containing block once the enter is done.
+ * The global prefers-reduced-motion rule in theme.css zeroes both the animation
+ * and the transition; the hook drops its matching swap delay. */
+@layer utilities {
+  @keyframes page-enter {
+    from {
+      opacity: 0;
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+  .page-shell {
+    animation: page-enter var(--duration-slow) var(--ease-out);
+    transition: opacity var(--duration-fast) var(--ease-in);
+  }
+  .page-shell-leaving {
+    opacity: 0;
+  }
+}
 
 @layer base {
   * {
@@ -28,5 +81,72 @@
   h3,
   h4 {
     font-family: var(--font-serif);
+  }
+}
+
+/* Titles (h1–h6): line-height is exactly 120% of the heading's OWN rendered
+   font-size, rounded down to the nearest pixel (e.g. a 72px title gets 86px,
+   not 86.4px) — a fixed formula, not a percentage of the shared type-scale
+   step's own line-height. Matching tag + size class together (rather than a
+   bare tag selector) keeps this proportional to whatever size class the
+   heading actually carries, since a heading in this codebase isn't always
+   sized at its "canonical" step (e.g. a sub-feature `<h2 className="text-2xl">`
+   next to a real section `<h2 className="text-4xl">`). The compound
+   selector's specificity already out-ranks the plain `.text-*` utility class
+   alone, so no `!important` is needed. Any non-heading element merely sized
+   with a `text-*` class is untouched and keeps the token's normal line-height. */
+@layer heading-leading {
+  :is(h1, h2, h3, h4, h5, h6).text-2xs {
+    line-height: round(down, calc(var(--text-2xs) * 1.2), 1px);
+  }
+  :is(h1, h2, h3, h4, h5, h6).text-xs {
+    line-height: round(down, calc(var(--text-xs) * 1.2), 1px);
+  }
+  :is(h1, h2, h3, h4, h5, h6).text-sm {
+    line-height: round(down, calc(var(--text-sm) * 1.2), 1px);
+  }
+  :is(h1, h2, h3, h4, h5, h6).text-base {
+    line-height: round(down, calc(var(--text-base) * 1.2), 1px);
+  }
+  :is(h1, h2, h3, h4, h5, h6).text-lg {
+    line-height: round(down, calc(var(--text-lg) * 1.2), 1px);
+  }
+  :is(h1, h2, h3, h4, h5, h6).text-xl {
+    line-height: round(down, calc(var(--text-xl) * 1.2), 1px);
+  }
+  :is(h1, h2, h3, h4, h5, h6).text-2xl {
+    line-height: round(down, calc(var(--text-2xl) * 1.2), 1px);
+  }
+  :is(h1, h2, h3, h4, h5, h6).text-3xl {
+    line-height: round(down, calc(var(--text-3xl) * 1.2), 1px);
+  }
+  :is(h1, h2, h3, h4, h5, h6).text-4xl {
+    line-height: round(down, calc(var(--text-4xl) * 1.2), 1px);
+  }
+  :is(h1, h2, h3, h4, h5, h6).text-5xl {
+    line-height: round(down, calc(var(--text-5xl) * 1.2), 1px);
+  }
+  :is(h1, h2, h3, h4, h5, h6).text-display {
+    line-height: round(down, calc(var(--text-display) * 1.2), 1px);
+  }
+  /* A heading with no explicit text-* class (relying on the browser's UA
+     default size) still gets its tag's own canonical step's formula. */
+  h6:not([class*="text-"]) {
+    line-height: round(down, calc(var(--text-lg) * 1.2), 1px);
+  }
+  h5:not([class*="text-"]) {
+    line-height: round(down, calc(var(--text-xl) * 1.2), 1px);
+  }
+  h4:not([class*="text-"]) {
+    line-height: round(down, calc(var(--text-2xl) * 1.2), 1px);
+  }
+  h3:not([class*="text-"]) {
+    line-height: round(down, calc(var(--text-3xl) * 1.2), 1px);
+  }
+  h2:not([class*="text-"]) {
+    line-height: round(down, calc(var(--text-4xl) * 1.2), 1px);
+  }
+  h1:not([class*="text-"]) {
+    line-height: round(down, calc(var(--text-5xl) * 1.2), 1px);
   }
 }
