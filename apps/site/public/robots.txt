@@ -1,0 +1,6 @@
+# This deployment runs on a DEMO Netlify account and is deliberately kept out
+# of search engines. When the client deploys from their own account, flip the
+# rule below to `Allow: /` and delete the matching noindex block in
+# netlify.toml. See docs/publishing.md § "Handover: going live".
+User-agent: *
+Disallow: /

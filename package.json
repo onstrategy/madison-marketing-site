@@ -11,7 +11,8 @@
     "apps/*"
   ],
   "scripts": {
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --filter=@madison/ui --filter=@madison/sandbox",
+    "dev:site": "bun --filter @madison/site dev",
     "build": "turbo run build",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",

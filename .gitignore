@@ -7,3 +7,6 @@ storybook-static/
 .DS_Store
 .claude/.skill-gates/
 .claude/settings.local.json
+# Netlify CLI link state (contains the site id) — the deploy config that IS
+# checked in lives in netlify.toml.
+.netlify/

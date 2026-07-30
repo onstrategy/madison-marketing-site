@@ -1,10 +1,5 @@
 import { Link } from "react-router-dom";
-
-export type PrototypeSummary = {
-  slug: string;
-  title: string;
-  description?: string;
-};
+import type { PrototypeSummary } from "./prototype-registry";
 
 export function PrototypesIndex({
   prototypes,

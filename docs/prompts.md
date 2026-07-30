@@ -94,10 +94,27 @@ gives you the link. This is your explicit go-ahead — Claude won't push anythin
 - "Submit this."
 
 **Behind the scenes:** Claude runs the checks, fixes anything off-brand, and opens the pull request.
-You get a link back. Where it lands (straight in, or to an engineer) is decided by the trust levels —
-you don't have to think about it.
+You get **two links** back: the pull request, and a **live web link** you can open on your phone or
+send to anyone — that's your change, actually deployed. Where it lands (straight in, or to an
+engineer) is decided by the trust levels — you don't have to think about it.
 
 **Shortcut:** `/submit`
+
+---
+
+## Share a link to what you built
+
+Want to show someone who doesn't have this repo on their computer? You don't need to send
+screenshots or ask them to install anything.
+
+**Just say:**
+- "Get me a link I can share."
+- "Can my boss see this?"
+- "Send this to someone outside the team."
+
+**Behind the scenes:** this is the same flow as submitting for review. Claude gives you a real web
+address, and that link **stays live and updates itself** every time you change the page — right up
+until the work is merged. After it's merged, it's on the main site.
 
 ---
 
@@ -134,5 +151,6 @@ The full version lives in [`governance.md`](./governance.md).
 - Type a command, remember a file path, or use git — Claude does all of it.
 - Pick a hex color or a Tailwind class — just describe the look; Claude stays on-brand.
 - Know what a "slug," "primitive," or "token" is — say it in everyday words.
+- Deploy anything, or know what "Netlify" is — the live links just show up when you submit.
 
 New here? Start with the [contributor guide](./contributor-guide.md). Then just say what you want — or type `/prompts`.

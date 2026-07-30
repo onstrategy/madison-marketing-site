@@ -14,6 +14,7 @@ designers, PMs, and marketing through Claude Code, made safe by governance-as-co
 |------|------------|
 | `packages/ui` | The token engine (source of truth) + primitives + Storybook (port 6007, MCP) |
 | `apps/sandbox` | On-system Vite app; on-token prototypes that self-register (`gen:prototype`) |
+| `apps/site` | The **published** site (Netlify). Renders the sandbox's prototypes at their public slugs — landing at `/`, no gallery. Owns no page content. |
 | `.agents/skills` | The conventions: `design-system`, `react`, `typescript`, `testing` (symlinked to `.claude/skills`) |
 | `.claude/hooks` | Skill-gate bundle — blocks edits to guarded paths until the right skill is loaded |
 | `turbo/generators` | `gen:prototype` (new on-token prototype) + `gen:promote` (promote a prototype to a `packages/ui` primitive) |
@@ -27,6 +28,7 @@ designers, PMs, and marketing through Claude Code, made safe by governance-as-co
 - [`docs/contributor-guide.md`](docs/contributor-guide.md) — the 5-step recipe to ship on-system UI (incl. non-technical contributors via Claude Code)
 - [`docs/promote.md`](docs/promote.md) — promote a sandbox prototype into a `packages/ui` primitive
 - [`docs/governance.md`](docs/governance.md) — governance-as-code: three-layer model, token lifecycle, quarterly audit
+- [`docs/publishing.md`](docs/publishing.md) — how the site deploys to Netlify, preview links, and the handover checklist
 - [`docs/roadmap.md`](docs/roadmap.md) — where the AI harness goes next (roles, exploratory mode, audit, 0→1 adoption) — with the honest current state of each
 - [`docs/business-model.md`](docs/business-model.md) — the commercial model (idea-level) - CAN BE IGNORED FOR NOW
 - [`AGENTS.md`](AGENTS.md) — the agent constitution (architecture, mandates, commands)
@@ -110,6 +112,9 @@ This opens two local sites (Turbo regenerates the token CSS first, automatically
 
 Leave that terminal running. To stop the servers, press `Ctrl + C`.
 
+To preview the **published** site as visitors see it (landing at `/`, no gallery), run
+`bun run dev:site` in a second terminal → http://localhost:5174.
+
 > **Troubleshooting:** if `bun` is "command not found" after Step 2, fully quit and reopen your
 > terminal (the installer adds Bun to your PATH and the change only takes effect in a new window).
 
@@ -118,6 +123,7 @@ Leave that terminal running. To stop the servers, press `Ctrl + C`.
 ```bash
 bun run build           # regenerate dist/theme.css + dist/tailwind-tokens.css from tokens.tsx
 bun run check           # typecheck + test + lint — the gate; run before opening a PR
+bun run dev:site        # the published site (:5174) — what Netlify deploys
 bun run gen:prototype   # scaffold a new on-token prototype in apps/sandbox
 ```
 

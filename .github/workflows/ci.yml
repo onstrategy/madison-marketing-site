@@ -1,7 +1,8 @@
 name: CI
 
 # Governance-as-code: the merge gate runs on every push to main and every PR.
-# `bun run check` = turbo typecheck + test + lint across packages/ui and apps/sandbox.
+# `bun run check` = turbo typecheck + test + lint across packages/ui, apps/sandbox
+# and apps/site, followed by a build so a bundle break can't reach Netlify first.
 on:
   push:
     branches: [main]
@@ -33,6 +34,14 @@ jobs:
 
       - name: Check (typecheck + test + lint)
         run: bun run check
+
+      # `check` doesn't bundle the apps, so an app that typechecks but fails to
+      # build (a bad glob, a missing @source, an unresolvable asset) would reach
+      # Netlify before it reached a reviewer. apps/site is published, so a red
+      # build here has to block the PR. Kept out of `bun run check` on purpose:
+      # agents run that on every turn and a bundle in the inner loop is waste.
+      - name: Build (tokens + apps)
+        run: bun run build
 
   react-doctor:
     name: react-doctor (react health)
