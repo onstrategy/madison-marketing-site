@@ -56,10 +56,13 @@ function AnimatedRoutes() {
       {/* Rendering the deferred location keeps the old page on screen while it fades. */}
       <Routes location={displayed}>
         <Route path="/" element={<PrototypesIndex prototypes={summaries} />} />
-        {prototypes.map(({ slug, Component }) => (
+        {prototypes.map(({ slug, path, Component }) => (
           <Route
             key={slug}
-            path={`/${slug}/*`}
+            // The page's real public URL, which may be nested ("/resources/…").
+            // No trailing wildcard: no prototype renders nested routes, and an
+            // exact path is what lets the published site 404 unknown deep links.
+            path={path}
             element={
               // A bare canvas, not "Loading…" — a text flash mid-fade undoes the
               // transition. Chunks are small and usually land inside the fade-out.

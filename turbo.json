@@ -4,7 +4,9 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      // dist-ssr is @madison/site's prerender bundle. Cached alongside dist so a
+      // cache hit can't leave the prerender step without the entry it renders from.
+      "outputs": ["dist/**", "dist-ssr/**"]
     },
     "typecheck": {
       "dependsOn": ["^build"],

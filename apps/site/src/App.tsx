@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, type ComponentType, type LazyExoticComponent } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { prototypes } from "@madison/sandbox/prototypes";
 import Landing from "@madison/sandbox/prototypes/landing";
@@ -15,24 +15,44 @@ import { NotFound } from "./NotFound";
 //
 // Page content is never edited here. It belongs in apps/sandbox/src/prototypes/.
 
-const pages = prototypes.filter((p) => p.slug !== "landing");
+export type SitePage = {
+  slug: string;
+  path: string;
+  Component: ComponentType | LazyExoticComponent<ComponentType>;
+};
 
-export default function App() {
+/**
+ * The route table, with no router around it — so the browser can mount it under
+ * a `BrowserRouter` and the prerender step under a `StaticRouter` (see
+ * ./entry-server.tsx) without the two trees drifting apart. They must render
+ * identical DOM or hydration will throw away the prerendered HTML.
+ *
+ * `pages` is injected rather than imported for the same reason: the client passes
+ * the lazy registry (code-split), the prerender passes the eager one, and the
+ * JSX around them stays one definition.
+ */
+export function AppRoutes({ pages }: { pages: SitePage[] }) {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Statically imported, not lazy: `/` is the LCP page and shouldn't pay
-            a chunk round-trip. Rollup hoists a module that is both statically
-            and dynamically imported, so this doesn't duplicate the landing code. */}
-        <Route path="/" element={<Landing />} />
-        {/* landing/sections.tsx hardcodes href="/landing" on the brand mark.
-            Canonicalize to `/`. Netlify serves a 301 for real requests; this
-            covers dev, `vite preview`, and any client-side navigation. */}
-        <Route path="/landing" element={<Navigate to="/" replace />} />
-        {pages.map(({ slug, Component }) => (
+    <Routes>
+      {/* Statically imported, not lazy: `/` is the LCP page and shouldn't pay
+          a chunk round-trip. Rollup hoists a module that is both statically
+          and dynamically imported, so this doesn't duplicate the landing code. */}
+      <Route path="/" element={<Landing />} />
+      {/* landing/sections.tsx hardcodes href="/landing" on the brand mark.
+          Canonicalize to `/`. Netlify serves a 301 for real requests; this
+          covers dev, `vite preview`, and any client-side navigation. */}
+      <Route path="/landing" element={<Navigate to="/" replace />} />
+      {pages
+        .filter((page) => page.slug !== "landing")
+        .map(({ slug, path, Component }) => (
           <Route
             key={slug}
-            path={`/${slug}/*`}
+            // The page's real public URL — possibly nested, e.g.
+            // "/client-stories/city-of-corona". Exact, with no trailing
+            // wildcard: no prototype renders nested routes, and matching
+            // exactly is what lets an unknown deep link fall through to the
+            // 404 instead of silently rendering a page.
+            path={path}
             element={
               <Suspense fallback={<div className="min-h-screen bg-app" />}>
                 <Component />
@@ -40,8 +60,15 @@ export default function App() {
             }
           />
         ))}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes pages={prototypes} />
     </BrowserRouter>
   );
 }

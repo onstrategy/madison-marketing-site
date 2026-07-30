@@ -6,11 +6,12 @@
   "description": "Madison's published marketing site — the production shell deployed to Netlify. Owns no page content: it mounts @madison/sandbox's prototypes at their public slugs.",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "//build": "Client bundle → SSR bundle → prerender. The prerender step needs both: dist/index.html as its template and dist-ssr/entry-server.js to render from.",
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && bun run scripts/prerender.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "preview": "vite preview",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist dist-ssr"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",

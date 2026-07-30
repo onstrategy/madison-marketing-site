@@ -33,13 +33,28 @@ interface RevealProps {
 }
 
 /**
+ * True when this document arrived as prerendered HTML rather than being booted
+ * client-side: any server render, plus the published site, whose prerender step
+ * stamps `data-prerendered` on <html> (apps/site/scripts/prerender.ts).
+ *
+ * Reveal starting hidden is right for the client-rendered sandbox and wrong for a
+ * prerendered page — the HTML that crawlers read and the browser paints first
+ * would be a wall of `opacity-0` blocks, which is most of the point of
+ * prerendering thrown away. Read once at module scope so hydration can't disagree
+ * with what the server emitted.
+ */
+const START_SHOWN =
+  typeof document === "undefined" ||
+  document.documentElement.hasAttribute("data-prerendered");
+
+/**
  * Fade + rise a block into view on scroll (IntersectionObserver). Purposeful, not
  * decorative: a small 12px offset, once. Reduced-motion users get it shown instantly.
  */
 export function Reveal({ children, className, delay = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
-  const [shown, setShown] = useState(false);
+  const [shown, setShown] = useState(START_SHOWN);
 
   useEffect(() => {
     if (reduced) {
@@ -48,6 +63,14 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
     }
     const el = ref.current;
     if (!el) return;
+    // Prerendered: this block is already painted and hydrated as visible. Leave
+    // whatever is on screen alone, and re-arm the reveal only for what's still
+    // below the fold — where hiding it again can't be seen, so the scroll
+    // animation survives without a flash.
+    if (START_SHOWN) {
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      setShown(false);
+    }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

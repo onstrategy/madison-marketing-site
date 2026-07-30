@@ -18,5 +18,13 @@ export default defineConfig({
   resolve: {
     dedupe: ["react", "react-dom", "react-router-dom"],
   },
+  // The prerender build (`vite build --ssr src/entry-server.tsx`) runs in bun,
+  // which cannot import the workspace packages directly: their `exports` maps
+  // point at raw .ts/.tsx source, on purpose, so the consuming app compiles
+  // them. Vite externalises bare specifiers in an SSR build by default, so they
+  // have to be opted back in or the prerender fails on the first import.
+  ssr: {
+    noExternal: [/^@madison\//],
+  },
   plugins: [react(), tailwindcss()],
 });

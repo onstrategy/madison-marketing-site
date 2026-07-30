@@ -31,7 +31,7 @@ export function PrototypesIndex({
             {prototypes.map((p) => (
               <li key={p.slug}>
                 <Link
-                  to={`/${p.slug}`}
+                  to={p.path}
                   className="block rounded-lg border border-default bg-surface p-5 transition-colors hover:border-active hover:bg-hover"
                 >
                   <div className="text-lg font-medium text-primary">
