@@ -110,7 +110,7 @@ function HeroSection() {
             back every week.
           </p>
           <Button size="lg" asChild>
-            <a href="/book-a-demo">
+            <a href="/demo">
               Book a demo <ArrowRight className="size-4" />
             </a>
           </Button>
@@ -213,7 +213,7 @@ function CtaSection() {
             Fill in the form and our team will get back to you within one business day.
           </p>
           <Button size="lg" asChild>
-            <a href="/book-a-demo">
+            <a href="/demo">
               Book a demo <ArrowRight className="size-4" />
             </a>
           </Button>

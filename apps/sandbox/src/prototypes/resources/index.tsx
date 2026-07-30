@@ -75,7 +75,7 @@ const RESPONSIBLE_AI_RESOURCES: ResourceCard[] = [
   {
     title: "How to Develop Your Government's AI Guiding Principles",
     description: "A framework for articulating responsible AI principles.",
-    href: "/ai-guiding-principles",
+    href: "/resources/how-to-develop-your-governments-ai-guiding-principles",
   },
   {
     title: "How to Select Your AI Governance Structure",
@@ -184,7 +184,7 @@ function CtaSection() {
             Fill in the form and our team will get back to you within one business day.
           </p>
           <Button size="lg" asChild>
-            <a href="/book-a-demo">
+            <a href="/demo">
               Book a demo <ArrowRight className="size-4" />
             </a>
           </Button>
