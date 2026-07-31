@@ -12,9 +12,16 @@ if (!rootElement) {
 }
 
 // Must match entry-server.tsx's tree exactly, minus the router.
+//
+// `forcedTheme="light"` pins the PUBLISHED site to Madison's Warm White brand
+// look. The design system supports dark mode fully (every token carries a dark
+// value), but these marketing pages have never been designed or reviewed in it —
+// so following the visitor's OS setting served an un-vetted dark rendering to
+// anyone whose machine sits in dark mode. The sandbox and Storybook are
+// unaffected and still exercise both themes.
 const tree = (
   <StrictMode>
-    <ThemeProvider>
+    <ThemeProvider forcedTheme="light">
       <App />
     </ThemeProvider>
   </StrictMode>
