@@ -40,19 +40,43 @@ function applyTheme(theme: Theme) {
   }
 }
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(() => {
+interface ThemeProviderProps {
+  children: ReactNode;
+  /**
+   * Pin the theme, ignoring BOTH the persisted preference and the visitor's OS
+   * `prefers-color-scheme`. `setTheme` becomes inert while it's set.
+   *
+   * `apps/site` passes `"light"`: the published marketing pages are designed and
+   * reviewed only in Madison's Warm White brand look, so a visitor whose OS sits
+   * in dark mode must not be served a dark rendering nobody has signed off on.
+   * It also keeps the prerendered HTML (which resolves light server-side) and the
+   * hydrated page in agreement, so there's no light→dark flash on first paint.
+   *
+   * Omit it — the sandbox, Storybook — for the normal persisted/system behavior.
+   * Dark mode itself is untouched: every token still carries its dark value.
+   */
+  forcedTheme?: Theme;
+}
+
+export function ThemeProvider({ children, forcedTheme }: ThemeProviderProps) {
+  // The visitor's OWN preference. Still tracked while pinned, so that lifting the
+  // pin restores what they'd chosen rather than resetting them to light.
+  const [preferredTheme, setPreferredTheme] = useState<Theme>(() => {
     // Hydrate from localStorage or system preference.
     const initialTheme = getPersistedTheme() ?? getSystemTheme();
     // Apply synchronously before React renders to prevent a flash.
     if (typeof window !== "undefined") {
-      applyTheme(initialTheme);
+      applyTheme(forcedTheme ?? initialTheme);
     }
     return initialTheme;
   });
 
+  const theme = forcedTheme ?? preferredTheme;
+
   const setTheme = (newTheme: Theme) => {
-    setThemeState(newTheme);
+    // Pinned: this app has opted out of theme switching entirely.
+    if (forcedTheme) return;
+    setPreferredTheme(newTheme);
     localStorage.setItem("theme", newTheme);
     applyTheme(newTheme);
   };
@@ -60,18 +84,21 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     applyTheme(theme);
 
+    // A pinned theme never follows the OS — nothing to subscribe to.
+    if (forcedTheme) return;
+
     // Follow system theme changes only while the user hasn't set a preference.
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = (e: MediaQueryListEvent) => {
       const persisted = getPersistedTheme();
       if (!persisted) {
-        setThemeState(e.matches ? "dark" : "light");
+        setPreferredTheme(e.matches ? "dark" : "light");
       }
     };
 
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [theme]);
+  }, [theme, forcedTheme]);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>

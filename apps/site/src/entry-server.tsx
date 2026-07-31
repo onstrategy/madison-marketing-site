@@ -13,9 +13,11 @@ import { AppRoutes } from "./App";
 // result to disk. Nothing here ships to the browser.
 //
 // The tree below must match main.tsx exactly apart from the router — same
-// StrictMode, same ThemeProvider, same AppRoutes — or hydration discards the
-// HTML we just paid to generate. ThemeProvider is already SSR-safe: it guards
-// every window/localStorage read and resolves to the light theme server-side.
+// StrictMode, same ThemeProvider (including `forcedTheme`), same AppRoutes — or
+// hydration discards the HTML we just paid to generate. ThemeProvider is already
+// SSR-safe: it guards every window/localStorage read and resolves to the light
+// theme server-side — which `forcedTheme="light"` now makes the client agree with
+// on first paint instead of flipping to dark after hydration.
 
 /** Every page the prerender step should emit, in registry order. */
 export const routes = serverPrototypes.map(
@@ -33,7 +35,7 @@ export const routes = serverPrototypes.map(
 export function render(url: string): string {
   return renderToString(
     <StrictMode>
-      <ThemeProvider>
+      <ThemeProvider forcedTheme="light">
         <StaticRouter location={url}>
           <AppRoutes pages={serverPrototypes} />
         </StaticRouter>
