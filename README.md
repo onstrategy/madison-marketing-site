@@ -131,6 +131,8 @@ To preview the **published** site as visitors see it (landing at `/`, no gallery
 bun run build           # regenerate dist/theme.css + dist/tailwind-tokens.css from tokens.tsx
 bun run check           # typecheck + test + lint — the gate; run before opening a PR
 bun run dev:site        # the published site (:5174) — what Netlify deploys
+bun run seo:audit:build # crawlable localhost bundle with source maps
+bun run seo:audit:serve # serve that bundle at http://127.0.0.1:4174
 bun run gen:prototype   # scaffold a new on-token prototype in apps/sandbox
 ```
 

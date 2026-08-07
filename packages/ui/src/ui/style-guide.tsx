@@ -353,7 +353,7 @@ export function StyleGuide() {
               <span className="text-sm font-sans text-muted">
                 --text-muted
                 <br />
-                (text-xs)
+                (AA-safe text-xs)
               </span>
               <p className="text-sm text-muted font-sans uppercase tracking-widest">
                 Last synced: 2026-02-28 14:32 UTC

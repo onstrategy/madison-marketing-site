@@ -118,14 +118,14 @@ function BestPracticesSection({ data }: { data: WebinarData }) {
         </Reveal>
         <ul className="space-y-4">
           {data.bestPractices.map((practice, i) => (
-            <Reveal key={practice} delay={i * 40}>
-              <li className="flex items-start gap-3.5">
+            <li key={practice}>
+              <Reveal className="flex items-start gap-3.5" delay={i * 40}>
                 <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-subtle text-xs font-semibold text-brand-accent">
                   {i + 1}
                 </span>
                 <span className="text-pretty text-secondary">{practice}</span>
-              </li>
-            </Reveal>
+              </Reveal>
+            </li>
           ))}
         </ul>
       </div>

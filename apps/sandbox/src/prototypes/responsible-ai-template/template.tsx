@@ -23,7 +23,7 @@ export interface GuidePrincipleSet {
 
 export interface RelatedResource {
   title: string;
-  href: string;
+  href?: string;
 }
 
 export interface ResponsibleAiData {
@@ -233,12 +233,19 @@ function RelatedSection({ data }: { data: RelatedResource[] }) {
         <div className="grid gap-4 sm:grid-cols-3">
           {data.map((resource, i) => (
             <Reveal key={resource.title} delay={i * 60}>
-              <a
-                href={resource.href}
-                className="block h-full rounded-2xl border border-default bg-app p-5 text-sm font-semibold text-primary transition-transform hover:-translate-y-1"
-              >
-                {resource.title}
-              </a>
+              {resource.href ? (
+                <a
+                  href={resource.href}
+                  className="block h-full rounded-2xl border border-default bg-app p-5 text-sm font-semibold text-primary transition-transform hover:-translate-y-1"
+                >
+                  {resource.title}
+                </a>
+              ) : (
+                <div className="h-full rounded-2xl border border-default bg-app p-5 text-sm font-semibold text-primary">
+                  {resource.title}
+                  <span className="mt-3 block text-xs font-normal text-muted">Coming soon</span>
+                </div>
+              )}
             </Reveal>
           ))}
         </div>

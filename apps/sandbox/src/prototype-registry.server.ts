@@ -49,6 +49,7 @@ export const serverPrototypes: ServerPrototype[] = Object.entries(components)
       description: meta?.description,
       seoTitle: meta?.seoTitle,
       ogImage: meta?.ogImage,
+      structuredData: meta?.structuredData,
       noindex: meta?.noindex,
       Component,
     };

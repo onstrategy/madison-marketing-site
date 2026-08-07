@@ -100,9 +100,9 @@ const DATA: ResponsibleAiData = {
     ],
   },
   related: [
-    { title: "The Free Miro Template to Build Your AI Governance Policy", href: "#" },
-    { title: "16 AI Governance Policy Examples", href: "#" },
-    { title: "AI Governance Blueprint: A Guide to Ethical AI in Local Government", href: "#" },
+    { title: "The Free Miro Template to Build Your AI Governance Policy" },
+    { title: "16 AI Governance Policy Examples" },
+    { title: "AI Governance Blueprint: A Guide to Ethical AI in Local Government" },
   ],
   cta: {
     title: "See it on your own files.",

@@ -149,7 +149,7 @@ export const TOKENS: TokenDictionary = {
   typography: [
     { name: "--text-primary", label: "Primary", light: "#2C2925", dark: "#EAE5DF", desc: "Headings and main body text — Madison warm near-black." },
     { name: "--text-secondary", label: "Secondary", light: "#5D564C", dark: "#B7B0A5", desc: "Metadata and secondary labels." },
-    { name: "--text-muted", label: "Muted / Tertiary", light: "#8B8377", dark: "#8A8378", desc: "Disabled states and subtle hints." },
+    { name: "--text-muted", label: "Muted / Tertiary", light: "#675F54", dark: "#B2AB9F", desc: "Disabled states and subtle hints — AA-safe on every neutral surface." },
   ],
   brand: [
     // Madison brand: Neon Blue is the single hero accent (15% of any layout).
@@ -233,7 +233,7 @@ export const TOKENS: TokenDictionary = {
   // no-font-mono lint rule, which bans `font-mono` from ever coming back.
   fontFamilies: [
     { name: "--font-sans", label: "Sans (UI / Body)", value: "'Inter Variable', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif", desc: "Body + UI typeface (Inter). Also h5/h6, subtitles, and dense/tag labels at text-2xs." },
-    { name: "--font-serif", label: "Serif (Display / Headings)", value: "'Lora', Georgia, 'Times New Roman', serif", desc: "Madison display + large headings (Lora). HERO through h4 — apply with font-serif." },
+    { name: "--font-serif", label: "Serif (Display / Headings)", value: "'Lora Variable', Lora, Georgia, 'Times New Roman', serif", desc: "Madison display + large headings (Lora). HERO through h4 — apply with font-serif." },
   ],
 
   // Type scale — size + paired line-height. Mirrors common steps so existing

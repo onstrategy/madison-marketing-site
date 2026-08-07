@@ -21,13 +21,14 @@ import { AppRoutes } from "./App";
 
 /** Every page the prerender step should emit, in registry order. */
 export const routes = serverPrototypes.map(
-  ({ slug, path, title, description, seoTitle, ogImage, noindex }) => ({
+  ({ slug, path, title, description, seoTitle, ogImage, structuredData, noindex }) => ({
     slug,
     path,
     title,
     description,
     seoTitle,
     ogImage,
+    structuredData,
     noindex,
   }),
 );

@@ -2,8 +2,9 @@ import { StrictMode } from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import { ThemeProvider } from "@madison/ui/theme";
 import App from "./App";
-// Self-hosted Inter (variable) — registers the `Inter Variable` family that --font-sans leads with.
-import "@fontsource-variable/inter";
+// The published shell preloads its exact Latin brand-font files before CSS is
+// evaluated. The sandbox keeps Fontsource's full language-subset imports.
+import "./fonts.css";
 import "./index.css";
 
 const rootElement = document.getElementById("root");

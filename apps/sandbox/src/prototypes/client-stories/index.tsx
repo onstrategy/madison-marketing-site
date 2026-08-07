@@ -21,7 +21,7 @@ const FEATURED = {
   title: "Reclaiming $11,000 in Staff Time Monthly with Instant Institutional Knowledge",
   oneLiner:
     "How the City of Corona cut through administrative complexity and reclaimed 104 staff hours every month.",
-  logo: { src: coronaLogo, alt: "City of Corona, California" },
+  logo: { src: coronaLogo, alt: "City of Corona, California", width: 402, height: 252 },
   photo: PHOTOS.govBuildingFlag,
   href: "/client-stories/city-of-corona",
 };
@@ -29,7 +29,7 @@ const FEATURED = {
 interface ClientStorySummary {
   title: string;
   oneLiner: string;
-  logo: { src: string; alt: string };
+  logo: { src: string; alt: string; width: number; height: number };
   href: string;
 }
 
@@ -37,31 +37,31 @@ const OTHER_STORIES: ClientStorySummary[] = [
   {
     title: "Washoe County, NV",
     oneLiner: "Saving $41K+ in staff time every month.",
-    logo: { src: washoeCountyLogo, alt: "Washoe County, Nevada" },
+    logo: { src: washoeCountyLogo, alt: "Washoe County, Nevada", width: 215, height: 252 },
     href: "https://www.madisonai.com/client-stories/washoe-county",
   },
   {
     title: "City of Reno",
     oneLiner: "Cut time spent on staff reports by 75%.",
-    logo: { src: renoLogo, alt: "City of Reno, Nevada" },
+    logo: { src: renoLogo, alt: "City of Reno, Nevada", width: 304, height: 252 },
     href: "https://www.madisonai.com/client-stories",
   },
   {
     title: "Carson City, NV",
     oneLiner: "“Exactly what I need, faster.”",
-    logo: { src: carsonCityLogo, alt: "Carson City, Nevada" },
+    logo: { src: carsonCityLogo, alt: "Carson City, Nevada", width: 541, height: 252 },
     href: "https://www.madisonai.com/client-stories/carson-city-client-story",
   },
   {
     title: "Aspen, CO",
     oneLiner: "Reclaiming 140 staff hours every month.",
-    logo: { src: aspenLogo, alt: "City of Aspen, Colorado" },
+    logo: { src: aspenLogo, alt: "City of Aspen, Colorado", width: 237, height: 252 },
     href: "https://www.madisonai.com/client-stories",
   },
   {
     title: "Pasadena, CA",
     oneLiner: "One source of truth for the City Attorney's office.",
-    logo: { src: pasadenaLogo, alt: "City of Pasadena, California" },
+    logo: { src: pasadenaLogo, alt: "City of Pasadena, California", width: 273, height: 252 },
     href: "https://www.madisonai.com/client-stories",
   },
 ];
@@ -73,6 +73,8 @@ function FeaturedHero({ data }: { data: typeof FEATURED }) {
         <img
           src={data.photo.url}
           alt={data.photo.alt}
+          width={data.photo.width}
+          height={data.photo.height}
           loading="lazy"
           className="size-full object-cover"
         />
@@ -83,7 +85,13 @@ function FeaturedHero({ data }: { data: typeof FEATURED }) {
           <Eyebrow className="mb-6 text-brand-accent">{data.kicker}</Eyebrow>
           <div className="mb-6 flex items-center gap-3">
             <span className="flex size-20 items-center justify-center rounded-full border border-default bg-plate p-4">
-              <img src={data.logo.src} alt={data.logo.alt} className="size-full object-contain" />
+              <img
+                src={data.logo.src}
+                alt={data.logo.alt}
+                width={data.logo.width}
+                height={data.logo.height}
+                className="size-full object-contain"
+              />
             </span>
             <span className="font-sans text-sm font-semibold text-secondary">
               {data.clientName}
@@ -114,9 +122,15 @@ function StoryCard({ story, delay }: { story: ClientStorySummary; delay: number 
         className="group flex h-full flex-col rounded-2xl border border-default bg-surface p-6 transition-transform hover:-translate-y-1"
       >
         <span className="mb-5 flex size-20 items-center justify-center rounded-full border border-default bg-plate p-4">
-          <img src={story.logo.src} alt={story.logo.alt} className="size-full object-contain" />
+          <img
+            src={story.logo.src}
+            alt={story.logo.alt}
+            width={story.logo.width}
+            height={story.logo.height}
+            className="size-full object-contain"
+          />
         </span>
-        <h5 className="font-sans text-xl font-semibold tracking-tight text-primary">{story.title}</h5>
+        <h3 className="font-sans text-xl font-semibold tracking-tight text-primary">{story.title}</h3>
         <p className="mt-2 flex-1 text-secondary">{story.oneLiner}</p>
         <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
           Read the story{" "}

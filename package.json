@@ -13,6 +13,8 @@
   "scripts": {
     "dev": "turbo run dev --filter=@madison/ui --filter=@madison/sandbox",
     "dev:site": "bun --filter @madison/site dev",
+    "seo:audit:build": "bun --filter @madison/ui build && bun --filter @madison/site build:seo-audit",
+    "seo:audit:serve": "bun --filter @madison/site preview:seo-audit",
     "build": "turbo run build",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",

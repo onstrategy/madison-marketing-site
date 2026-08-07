@@ -15,7 +15,7 @@ import { Reveal, Eyebrow } from "../landing/parts";
 interface ResourceCard {
   title: string;
   description: string;
-  href: string;
+  href?: string;
 }
 
 const WEBINAR_RESOURCES: ResourceCard[] = [
@@ -27,42 +27,34 @@ const WEBINAR_RESOURCES: ResourceCard[] = [
   {
     title: "How the City of Corona Evolved Its Procurement Process",
     description: "A look at how Corona's procurement team put Madison to work.",
-    href: "#",
   },
   {
     title: "Santa Clara Valley Water's Infrastructure Deployment",
     description: "Rolling out Madison across a complex water infrastructure agency.",
-    href: "#",
   },
   {
     title: "How Chanhassen Preserved Institutional Memory",
     description: "Keeping decades of city knowledge searchable and current.",
-    href: "#",
   },
   {
     title: "RTC's Workflow, Replicated Across Departments",
     description: "Taking one team's Madison workflow citywide.",
-    href: "#",
   },
   {
     title: "Two Years of Lessons from Washoe County",
     description: "What two years of daily use taught Madison's founding partner.",
-    href: "#",
   },
   {
     title: "Planning Work Made Simple: Parcel Lookups & Zoning",
     description: "How planning teams use Madison for day-to-day zoning questions.",
-    href: "#",
   },
   {
     title: "How FlashVote Optimizes Public Meetings",
     description: "Faster meeting prep, powered by Madison.",
-    href: "#",
   },
   {
     title: "WRCOG's Real-World Applications",
     description: "A regional council of governments puts Madison into daily practice.",
-    href: "#",
   },
 ];
 
@@ -70,7 +62,6 @@ const RESPONSIBLE_AI_RESOURCES: ResourceCard[] = [
   {
     title: "AI Governance Blueprint: A Guide to Ethical AI in Local Government",
     description: "A 4-step blueprint for bringing AI into your government ethically.",
-    href: "#",
   },
   {
     title: "How to Develop Your Government's AI Guiding Principles",
@@ -80,31 +71,52 @@ const RESPONSIBLE_AI_RESOURCES: ResourceCard[] = [
   {
     title: "How to Select Your AI Governance Structure",
     description: "A practical framework for structuring AI oversight and ownership.",
-    href: "#",
   },
   {
     title: "Worksheets to Develop Your AI Guiding Principles",
     description: "A facilitation exercise your team can run together.",
-    href: "#",
   },
   {
     title: "Choose Your AI Governance Structure (Miro Template)",
     description: "A ready-made template for mapping governance options.",
-    href: "#",
   },
   {
     title: "Build Your AI Governance Policy (Free Miro Template)",
     description: "A starting point for drafting your own policy.",
-    href: "#",
   },
   {
     title: "16 AI Governance Policy Examples",
     description: "Real policies from governments already doing this work.",
-    href: "#",
   },
 ];
 
 function ResourceCardItem({ resource }: { resource: ResourceCard }) {
+  const content = (
+    <>
+      <h2 className="font-sans text-lg font-semibold tracking-tight text-primary">
+        {resource.title}
+      </h2>
+      <p className="mt-2 flex-1 text-sm leading-relaxed text-secondary">{resource.description}</p>
+      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
+        {resource.href ? (
+          <>
+            Read more <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+          </>
+        ) : (
+          "Coming soon"
+        )}
+      </span>
+    </>
+  );
+
+  if (!resource.href) {
+    return (
+      <article className="flex h-full flex-col rounded-2xl border border-default bg-surface p-6">
+        {content}
+      </article>
+    );
+  }
+
   const isInternal = resource.href.startsWith("/");
   return (
     <a
@@ -112,12 +124,7 @@ function ResourceCardItem({ resource }: { resource: ResourceCard }) {
       {...(isInternal ? {} : { target: "_blank", rel: "noopener" })}
       className="group flex h-full flex-col rounded-2xl border border-default bg-surface p-6 transition-transform hover:-translate-y-1"
     >
-      <h6 className="font-sans text-lg font-semibold tracking-tight text-primary">{resource.title}</h6>
-      <p className="mt-2 flex-1 text-sm leading-relaxed text-secondary">{resource.description}</p>
-      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
-        Read more{" "}
-        <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-      </span>
+      {content}
     </a>
   );
 }

@@ -1,5 +1,13 @@
 import { lazy, type ComponentType, type LazyExoticComponent } from "react";
 
+export type StructuredData =
+  | null
+  | string
+  | number
+  | boolean
+  | StructuredData[]
+  | { [key: string]: StructuredData };
+
 // The single source of truth for "which folders are pages".
 //
 // Prototypes live in src/prototypes/<slug>/ with:
@@ -38,6 +46,8 @@ export type PrototypeMeta = {
   seoTitle?: string;
   /** Absolute URL of the social share image. Omitted when unset. */
   ogImage?: string;
+  /** JSON-LD emitted into the prerendered document head. */
+  structuredData?: StructuredData;
   /** Keep out of sitemap.xml and mark noindex — kit demos and internal surfaces. */
   noindex?: boolean;
 };
@@ -51,6 +61,7 @@ export type PrototypeSummary = {
   description?: string;
   seoTitle?: string;
   ogImage?: string;
+  structuredData?: StructuredData;
   noindex?: boolean;
 };
 
@@ -99,6 +110,7 @@ export const prototypes: Prototype[] = Object.keys(loaders)
       description: meta?.description,
       seoTitle: meta?.seoTitle,
       ogImage: meta?.ogImage,
+      structuredData: meta?.structuredData,
       noindex: meta?.noindex,
       Component: lazy(loaders[file]),
     };
@@ -106,13 +118,14 @@ export const prototypes: Prototype[] = Object.keys(loaders)
   .sort((a, b) => a.title.localeCompare(b.title));
 
 export const summaries: PrototypeSummary[] = prototypes.map(
-  ({ slug, path, title, description, seoTitle, ogImage, noindex }) => ({
+  ({ slug, path, title, description, seoTitle, ogImage, structuredData, noindex }) => ({
     slug,
     path,
     title,
     description,
     seoTitle,
     ogImage,
+    structuredData,
     noindex,
   }),
 );

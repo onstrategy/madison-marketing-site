@@ -3,6 +3,7 @@ import { Button } from "@madison/ui/button";
 import { LogoMark } from "@madison/ui/logo";
 import { PromptDemo, type PromptDemoItem } from "@madison/ui/prompt-demo";
 import { Reveal } from "./parts";
+import heroIllustrationAvif from "./hero-illustration.avif";
 import heroIllustration from "./hero-illustration.jpg";
 
 // ============================================================================
@@ -46,12 +47,20 @@ export function Hero() {
       className="relative isolate flex min-h-[70vh] items-center overflow-hidden border-b border-default bg-app"
     >
       {/* Full-bleed warm illustration (dimmed in dark mode so it reads as texture) */}
-      <img
-        src={heroIllustration}
-        alt=""
-        aria-hidden
-        className="pointer-events-none absolute inset-0 size-full object-cover opacity-95 [object-position:82%_0%] dark:opacity-40"
-      />
+      <picture
+        className="pointer-events-none absolute inset-0 block size-full opacity-95 dark:opacity-40"
+      >
+        <source srcSet={heroIllustrationAvif} type="image/avif" />
+        <img
+          src={heroIllustration}
+          alt=""
+          width={1920}
+          height={1276}
+          decoding="async"
+          fetchPriority="low"
+          className="size-full object-cover [object-position:82%_0%]"
+        />
+      </picture>
       {/* Warm left→right fade so the copy stays legible over the art */}
       <div
         aria-hidden

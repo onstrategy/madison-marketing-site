@@ -18,7 +18,7 @@ interface NewsCard {
   title: string;
   category: Category;
   description: string;
-  href: string;
+  href?: string;
 }
 
 const CATEGORY_ICON: Record<Category, LucideIcon> = {
@@ -38,73 +38,84 @@ const NEWS: NewsCard[] = [
     title: "Peter Pirnejad Joins Madison AI as Strategic Advisor",
     category: "Team",
     description: "Bringing municipal leadership experience to the organization.",
-    href: "#",
   },
   {
     title: "The Public Records Crisis Is Real",
     category: "Insights",
     description: "Charging citizens is the wrong way to solve it.",
-    href: "#",
   },
   {
     title: "Madison AI Welcomes Senior Software Engineer Reid Weber",
     category: "Team",
     description: "Leading data systems, acquisition, and AI initiatives.",
-    href: "#",
   },
   {
     title: "Tom Spangler Joins Madison AI as Board Member and Advisor",
     category: "Team",
     description: "Advancing company growth and impact efforts.",
-    href: "#",
   },
   {
     title: "Named GovTech's Most Innovative Solution, Madison AI Secures Funding",
     category: "Company",
     description: "Scaling to transform local government operations.",
-    href: "#",
   },
   {
     title: "Mark Wheeler Joins Madison AI as Chief Public Data Officer",
     category: "Team",
     description: "Adds trusted government AI expertise.",
-    href: "#",
   },
   {
     title: "Dana Searcy Joins Madison AI as a Principal Strategist",
     category: "Team",
     description: "Brings public-sector leadership background.",
-    href: "#",
   },
   {
     title: "Madison AI Awarded Most Innovative Solution at 2025 State of GovTech PitchFest",
     category: "Company",
     description: "Recognition during an active client deployment phase.",
-    href: "#",
   },
 ];
 
 function NewsCardItem({ item }: { item: NewsCard }) {
-  const isInternal = item.href.startsWith("/");
   const Icon = CATEGORY_ICON[item.category];
-  return (
-    <a
-      href={item.href}
-      {...(isInternal ? {} : { target: "_blank", rel: "noopener" })}
-      className="group flex h-full flex-col rounded-2xl border border-default bg-surface p-6 transition-transform hover:-translate-y-1"
-    >
+  const content = (
+    <>
       <div className="mb-4 flex items-center justify-between">
         <span className="flex size-9 items-center justify-center rounded-full bg-brand-subtle text-brand-accent">
           <Icon className="size-4" />
         </span>
         <Badge variant="secondary">{item.category}</Badge>
       </div>
-      <h6 className="font-sans text-lg font-semibold tracking-tight text-primary">{item.title}</h6>
+      <h2 className="font-sans text-lg font-semibold tracking-tight text-primary">{item.title}</h2>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-secondary">{item.description}</p>
       <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
-        Read more{" "}
-        <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+        {item.href ? (
+          <>
+            Read more <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+          </>
+        ) : (
+          "Coming soon"
+        )}
       </span>
+    </>
+  );
+
+  if (!item.href) {
+    return (
+      <article className="flex h-full flex-col rounded-2xl border border-default bg-surface p-6">
+        {content}
+      </article>
+    );
+  }
+
+  const isInternal = item.href.startsWith("/");
+  return (
+    <a
+      href={item.href}
+      {...(isInternal ? {} : { target: "_blank", rel: "noopener" })}
+      className="group flex h-full flex-col rounded-2xl border border-default bg-surface p-6 transition-transform hover:-translate-y-1"
+    >
+      {content}
     </a>
   );
 }

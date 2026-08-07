@@ -11,15 +11,20 @@
          when they deploy from their own account — see docs/publishing.md. -->
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <!-- Madison type: Lora (display/headings) + Inter (body). Inter is also self-hosted via @fontsource in main.tsx. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- The landing page hotlinks Unsplash (prototypes/landing/photos.ts); this
-         saves a DNS + TLS round-trip on the LCP image. -->
-    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/fonts/inter-latin-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/lora-latin-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
     <title>Madison Ai</title>
   </head>

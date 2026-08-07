@@ -382,7 +382,7 @@ export function PlatformPageTemplate({ data }: { data: PlatformPageData }) {
             </Reveal>
             <Reveal delay={100}>
               <div className="rounded-2xl border border-[hsl(var(--border-default)/0.5)] bg-surface/10 p-8">
-                <Eyebrow>{data.hero.card.eyebrow}</Eyebrow>
+                <Eyebrow className="text-secondary">{data.hero.card.eyebrow}</Eyebrow>
                 <div className="mt-4 font-serif text-3xl font-medium tracking-tight text-primary">
                   {data.hero.card.statement}
                 </div>

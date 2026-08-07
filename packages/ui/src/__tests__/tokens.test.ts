@@ -2,6 +2,29 @@ import { describe, it, expect } from "vitest";
 import { hexToHslChannels, blendHex } from "../ui/utils";
 import { TOKENS } from "../ui/tokens";
 
+function relativeLuminance(hex: string): number {
+  const channels = [
+    Number.parseInt(hex.slice(1, 3), 16),
+    Number.parseInt(hex.slice(3, 5), 16),
+    Number.parseInt(hex.slice(5, 7), 16),
+  ].map((channel) => {
+    const normalized = channel / 255;
+    return normalized <= 0.04045
+      ? normalized / 12.92
+      : ((normalized + 0.055) / 1.055) ** 2.4;
+  });
+
+  return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+}
+
+function contrastRatio(foreground: string, background: string): number {
+  const foregroundLuminance = relativeLuminance(foreground);
+  const backgroundLuminance = relativeLuminance(background);
+  const lighter = Math.max(foregroundLuminance, backgroundLuminance);
+  const darker = Math.min(foregroundLuminance, backgroundLuminance);
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
 describe("hexToHslChannels", () => {
   it("converts pure colors to HSL channels", () => {
     expect(hexToHslChannels("#FFFFFF")).toBe("0 0% 100%");
@@ -53,6 +76,40 @@ describe("TOKENS dictionary", () => {
       for (const token of TOKENS[category]) {
         expect(token.light).toMatch(/^#[0-9A-Fa-f]{6}$/);
         expect(token.dark).toMatch(/^#[0-9A-Fa-f]{6}$/);
+      }
+    }
+  });
+
+  it("keeps muted text AA-safe on every neutral surface", () => {
+    const muted = TOKENS.typography.find((token) => token.name === "--text-muted");
+    expect(muted).toBeDefined();
+    if (!muted) return;
+
+    const supportedSurfaceNames = new Set([
+      "--bg-app",
+      "--bg-panel",
+      "--bg-surface",
+      "--bg-stripe",
+      "--bg-hover",
+      "--bg-plate",
+    ]);
+    const neutralSurfaces = TOKENS.backgrounds.filter((token) =>
+      supportedSurfaceNames.has(token.name),
+    );
+
+    for (const surface of neutralSurfaces) {
+      expect(
+        contrastRatio(muted.light, surface.light),
+        `${muted.name} on ${surface.name} in light mode`,
+      ).toBeGreaterThanOrEqual(4.5);
+
+      // `--bg-plate` is always used inside a `light` scope, so its text tokens
+      // resolve to the light values even when the surrounding page is dark.
+      if (surface.name !== "--bg-plate") {
+        expect(
+          contrastRatio(muted.dark, surface.dark),
+          `${muted.name} on ${surface.name} in dark mode`,
+        ).toBeGreaterThanOrEqual(4.5);
       }
     }
   });

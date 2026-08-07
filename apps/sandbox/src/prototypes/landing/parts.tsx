@@ -46,6 +46,7 @@ interface RevealProps {
 const START_SHOWN =
   typeof document === "undefined" ||
   document.documentElement.hasAttribute("data-prerendered");
+const SEO_AUDIT = import.meta.env.VITE_SEO_AUDIT === "true";
 
 /**
  * Fade + rise a block into view on scroll (IntersectionObserver). Purposeful, not
@@ -57,7 +58,9 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
   const [shown, setShown] = useState(START_SHOWN);
 
   useEffect(() => {
-    if (reduced) {
+    // Lighthouse/axe must inspect below-fold content too. Hiding it after
+    // hydration would cause color-contrast checks to skip most of the page.
+    if (reduced || SEO_AUDIT) {
       setShown(true);
       return;
     }

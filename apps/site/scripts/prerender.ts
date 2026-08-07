@@ -1,6 +1,14 @@
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath, pathToFileURL } from "url";
+import type { StructuredData } from "@madison/sandbox/prototypes";
+import {
+  escapeAttribute,
+  isStructuredData,
+  socialImageMetadata,
+  stripAuditRobotsMeta,
+  structuredDataTag,
+} from "../src/prerender-metadata";
 
 // Turns the built SPA into one real HTML file per route.
 //
@@ -20,7 +28,8 @@ const scriptDir = scriptPath.includes("bun:")
   ? join(process.cwd(), "scripts")
   : dirname(scriptPath);
 const siteRoot = join(scriptDir, "..");
-const distDir = join(siteRoot, "dist");
+const seoAudit = process.env.SEO_AUDIT === "true";
+const distDir = join(siteRoot, seoAudit ? "dist-seo-audit" : "dist");
 const ssrEntry = join(siteRoot, "dist-ssr", "entry-server.js");
 
 const SITE_NAME = "Madison AI";
@@ -43,6 +52,7 @@ interface PrerenderRoute {
   description?: string;
   seoTitle?: string;
   ogImage?: string;
+  structuredData?: StructuredData;
   noindex?: boolean;
 }
 
@@ -60,7 +70,10 @@ function isPrerenderRoute(value: unknown): value is PrerenderRoute {
     "path" in value &&
     typeof value.path === "string" &&
     "title" in value &&
-    typeof value.title === "string"
+    typeof value.title === "string" &&
+    (!("structuredData" in value) ||
+      value.structuredData === undefined ||
+      isStructuredData(value.structuredData))
   );
 }
 
@@ -76,14 +89,6 @@ function isSsrModule(value: unknown): value is SsrModule {
   );
 }
 
-function escapeAttribute(value: string): string {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
-
 /** Load the SSR bundle. It's built JS, so validate its shape at the boundary. */
 const imported: unknown = await import(pathToFileURL(ssrEntry).href);
 if (!isSsrModule(imported)) {
@@ -93,7 +98,13 @@ if (!isSsrModule(imported)) {
 }
 const { render, routes } = imported;
 
-const template = readFileSync(join(distDir, "index.html"), "utf8");
+const templateSource = readFileSync(join(distDir, "index.html"), "utf8");
+// The source template and every deployed build remain noindexed. Only the
+// dedicated localhost audit output removes the site-wide meta directive; pages
+// explicitly marked `noindex` in meta.ts still receive their page-level tag.
+const template = seoAudit
+  ? stripAuditRobotsMeta(templateSource)
+  : templateSource;
 
 // The demo deploy carries a site-wide `noindex` robots meta (see netlify.toml
 // and docs/publishing.md). When it's present it already covers every page, so
@@ -118,6 +129,7 @@ function titleFor(page: PrerenderRoute): string {
 function headFor(page: PrerenderRoute, canonical: string | null): string {
   const title = titleFor(page);
   const description = page.description ?? templateDescription;
+  const socialImage = socialImageMetadata(page.ogImage, origin);
 
   // No canonical for the 404 document: it is served at every unknown path, so
   // claiming one URL would point an unbounded class of URLs at a single page.
@@ -132,17 +144,29 @@ function headFor(page: PrerenderRoute, canonical: string | null): string {
     `<meta property="og:site_name" content="${escapeAttribute(SITE_NAME)}" />`,
     `<meta property="og:title" content="${escapeAttribute(title)}" />`,
     `<meta property="og:description" content="${escapeAttribute(description)}" />`,
+    `<meta property="og:image" content="${escapeAttribute(socialImage.url)}" />`,
+    ...(socialImage.alt !== undefined &&
+    socialImage.width !== undefined &&
+    socialImage.height !== undefined
+      ? [
+          `<meta property="og:image:width" content="${socialImage.width}" />`,
+          `<meta property="og:image:height" content="${socialImage.height}" />`,
+          `<meta property="og:image:alt" content="${escapeAttribute(socialImage.alt)}" />`,
+        ]
+      : []),
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${escapeAttribute(title)}" />`,
     `<meta name="twitter:description" content="${escapeAttribute(description)}" />`,
+    `<meta name="twitter:image" content="${escapeAttribute(socialImage.url)}" />`,
+    ...(socialImage.alt !== undefined
+      ? [
+          `<meta name="twitter:image:alt" content="${escapeAttribute(socialImage.alt)}" />`,
+        ]
+      : []),
+    ...(page.structuredData === undefined
+      ? []
+      : [structuredDataTag(page.structuredData)]),
   ];
-
-  if (page.ogImage) {
-    tags.push(
-      `<meta property="og:image" content="${escapeAttribute(page.ogImage)}" />`,
-      `<meta name="twitter:image" content="${escapeAttribute(page.ogImage)}" />`,
-    );
-  }
 
   if (page.noindex && !templateHasRobots) {
     tags.push(`<meta name="robots" content="noindex, nofollow" />`);
@@ -236,6 +260,16 @@ ${indexable
 </urlset>
 `;
 writeFileSync(join(distDir, "sitemap.xml"), sitemap);
+
+if (seoAudit) {
+  writeFileSync(
+    join(distDir, "robots.txt"),
+    "User-agent: *\nAllow: /\nSitemap: http://127.0.0.1:4174/sitemap.xml\n",
+  );
+  console.log(
+    "✅ Local SEO audit build is isolated in dist-seo-audit, crawlable, and includes source maps",
+  );
+}
 
 const excluded = pages.length - indexable.length;
 console.log(

@@ -125,7 +125,7 @@ function OriginSection() {
     <section className="border-b border-default bg-app px-gutter py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
-          <Eyebrow className="mb-6">How it started</Eyebrow>
+          <Eyebrow className="mb-6 text-secondary">How it started</Eyebrow>
           <h2 className="mb-6 text-balance text-3xl font-medium tracking-tight text-primary">
             The first AI platform co-founded by a local government.
           </h2>

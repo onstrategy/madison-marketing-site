@@ -78,7 +78,7 @@ export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAwa
 
   return (
     <Navbar contentClassName="mx-auto max-w-6xl" sectionAware={sectionAware} overDarkHero={overDarkHero}>
-      <NavbarBrand href="/landing">
+      <NavbarBrand href="/">
         <Logo />
       </NavbarBrand>
       <NavbarLinks>
@@ -131,7 +131,7 @@ export function ClientLogos() {
   return (
     <section className="light bg-plate px-gutter pb-14 pt-18">
       <div className="mx-auto max-w-6xl">
-        <p className="mb-8 text-center font-sans text-sm uppercase tracking-widest text-muted">
+        <p className="mb-8 text-center font-sans text-sm uppercase tracking-widest text-secondary">
           Live in 65+ local governments
         </p>
         <Marquee
@@ -141,6 +141,8 @@ export function ClientLogos() {
             <img
               src={logo.src}
               alt={logo.name}
+              width={logo.width}
+              height={logo.height}
               loading="lazy"
               // Uniform display height; width follows each mark's own aspect
               // ratio, so the wall reads as one optical line.
@@ -213,9 +215,7 @@ export function Capabilities() {
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-6">
-            <h5 className="font-sans text-xl font-semibold text-brand-accent">
-              The assistant you always wanted but could never afford.
-            </h5>
+            <Kicker>The assistant you always wanted but could never afford.</Kicker>
             <h2 className="text-balance text-4xl font-medium tracking-tight text-primary">
               Give an assistant to everyone on your staff.
             </h2>
@@ -354,6 +354,8 @@ function StoryTileCard({ tile }: { tile: StoryTile }) {
       <img
         src={tile.photo.url}
         alt={tile.photo.alt}
+        width={tile.photo.width}
+        height={tile.photo.height}
         loading="lazy"
         className="absolute inset-0 size-full object-cover"
       />
@@ -514,6 +516,8 @@ export function Roles() {
                   <img
                     src={role.photo.url}
                     alt={role.photo.alt}
+                    width={role.photo.width}
+                    height={role.photo.height}
                     loading="lazy"
                     className="absolute inset-0 size-full object-cover"
                   />
@@ -655,6 +659,8 @@ export function Vision() {
               <img
                 src={visionCollab}
                 alt="The people who run the building"
+                width={1200}
+                height={800}
                 loading="lazy"
                 className="size-full object-cover"
               />
@@ -754,9 +760,9 @@ export function FinalCta() {
   return (
     <section className="border-t border-default bg-gradient-to-b from-brand-subtle to-app px-gutter py-38 text-center">
       <Reveal>
-        <h1 className="mb-4.5 text-balance text-4xl font-medium tracking-tight text-primary md:text-5xl">
+        <h2 className="mb-4.5 text-balance text-4xl font-medium tracking-tight text-primary md:text-5xl">
           See it on your own files.
-        </h1>
+        </h2>
         <p className="mx-auto mb-8.5 max-w-lg text-lg leading-relaxed text-secondary">
           We&rsquo;ll load Madison with a sample of your records and walk
           through it live. Live deployment in four weeks.
@@ -826,7 +832,7 @@ export function Footer() {
         </div>
         {FOOTER_COLUMNS.map((col) => (
           <div key={col.title}>
-            <div className="mb-3.5 font-sans text-sm lowercase tracking-wide text-muted">
+            <div className="mb-3.5 font-sans text-sm lowercase tracking-wide text-secondary">
               {col.title}
             </div>
             <ul className="space-y-2.5">
@@ -844,7 +850,7 @@ export function Footer() {
           </div>
         ))}
       </div>
-      <div className="mx-auto mt-9 flex max-w-6xl flex-wrap justify-between gap-2 border-t border-default pt-5.5 text-xs text-muted">
+      <div className="mx-auto mt-9 flex max-w-6xl flex-wrap justify-between gap-2 border-t border-default pt-5.5 text-xs text-secondary">
         <span>© 2026 Madison AI, Inc.</span>
         <span>Built in Reno · co-created with Washoe County, NV</span>
       </div>

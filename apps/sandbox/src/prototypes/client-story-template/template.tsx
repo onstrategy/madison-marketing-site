@@ -42,7 +42,7 @@ export interface ClientStoryData {
     modelsUsed: string[];
     photo: StockPhoto;
     /** The client's real logo mark (transparent PNG) — shown on a `bg-plate` chip so it isn't tinted by the warm canvas. */
-    logo: { src: string; alt: string };
+    logo: { src: string; alt: string; width: number; height: number };
   };
   intro: {
     headline: string;
@@ -100,7 +100,13 @@ function HeroMetaCard({ data }: { data: ClientStoryData["hero"] }) {
     <div className="light grid grid-cols-1 divide-y divide-default rounded-2xl border border-default bg-app shadow-xl sm:grid-cols-[auto_1fr_1fr_1.6fr] sm:divide-x sm:divide-y-0">
       <div className="flex items-center justify-center p-6 sm:px-10">
         <span className="flex size-20 items-center justify-center rounded-full border border-default bg-plate p-4">
-          <img src={data.logo.src} alt={data.logo.alt} className="size-full object-contain" />
+          <img
+            src={data.logo.src}
+            alt={data.logo.alt}
+            width={data.logo.width}
+            height={data.logo.height}
+            className="size-full object-contain"
+          />
         </span>
       </div>
       <div className="p-6 sm:px-8">
@@ -139,6 +145,8 @@ function HeroSection({ data }: { data: ClientStoryData["hero"] }) {
         <img
           src={data.photo.url}
           alt={data.photo.alt}
+          width={data.photo.width}
+          height={data.photo.height}
           loading="lazy"
           className="size-full object-cover"
         />
@@ -194,6 +202,8 @@ function IntroSection({ data }: { data: ClientStoryData["intro"] }) {
             <img
               src={data.photo.url}
               alt={data.photo.alt}
+              width={data.photo.width}
+              height={data.photo.height}
               loading="lazy"
               className="aspect-4/3 size-full object-cover"
             />

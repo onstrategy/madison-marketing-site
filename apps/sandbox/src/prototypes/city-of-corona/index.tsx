@@ -20,7 +20,12 @@ const DATA: ClientStoryData = {
       "Community Development",
     ],
     photo: PHOTOS.govBuildingFlag,
-    logo: { src: coronaLogo, alt: "City of Corona, California" },
+    logo: {
+      src: coronaLogo,
+      alt: "City of Corona, California",
+      width: 402,
+      height: 252,
+    },
   },
   intro: {
     headline:

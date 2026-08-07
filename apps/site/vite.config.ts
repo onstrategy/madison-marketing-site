@@ -2,6 +2,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
+const seoAudit = process.env.SEO_AUDIT === "true";
+
 export default defineConfig({
   server: {
     port: 5174,
@@ -9,6 +11,13 @@ export default defineConfig({
   },
   preview: {
     port: 4174,
+  },
+  // Local Lighthouse audits get source attribution without publishing source
+  // maps in normal Netlify builds. Audit output is isolated so a local audit
+  // can never leave the production publish directory crawlable.
+  build: {
+    outDir: seoAudit ? "dist-seo-audit" : "dist",
+    sourcemap: seoAudit,
   },
   // The pages live in @madison/sandbox, a symlinked workspace package, so bare
   // imports inside them resolve from apps/sandbox/node_modules. Two copies of
