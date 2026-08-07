@@ -46,22 +46,11 @@ A bare `vite build` inside `apps/site` would fail on the missing CSS import.
 `base` is deliberately **unset** (the repo root). Setting it to `apps/site` would make Netlify
 install from inside the workspace and fail to resolve `@madison/ui` / `@madison/sandbox`.
 
-### The SPA fallback is mandatory
+### Deep links are prerendered
 
-```toml
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-```
-
-Every cross-page link in these pages is a plain `<a href="/slug">` — a full browser load straight
-to a deep path. Only `/index.html` exists on disk. Without this rule, **every link on the site
-404s**. Netlify serves real files first, so this never shadows `/assets/*` or `/favicon.svg`.
-
-One consequence worth knowing: unknown paths return **HTTP 200** with the React 404 page (a "soft
-404"). Fixing that properly needs prerendering or an edge function; it isn't worth it while the
-site is noindexed.
+The build writes real HTML for every published route and a real `404.html`. There is deliberately
+no SPA catch-all redirect: Netlify serves deep links from disk, while an unknown URL keeps its
+correct HTTP 404 status instead of becoming a soft 404.
 
 ## The three contexts
 
@@ -83,6 +72,32 @@ Read the Netlify check's details URL, or the Netlify comment on the PR. **Never 
 the URL**, and never substitute a one-off deploy-ID permalink — those are per-build and rot.
 
 A red Netlify check is a red gate. Treat it exactly like a failing `bun run check`.
+
+## Hosted Storybook
+
+Storybook is a second Netlify project connected to this same repository. Keeping it separate from
+the published site gives the component reference its own stable production URL and its own Deploy
+Preview for every pull request, without coupling its redirects, headers, or build artifact to the
+marketing site.
+
+Its checked-in build contract lives in
+[`packages/ui/netlify.toml`](../packages/ui/netlify.toml). The Netlify project settings are:
+
+| Setting | Value |
+|---|---|
+| Package directory | `packages/ui` |
+| Base directory | unset (repository root) |
+| Production branch | `main` |
+| Build command | `bun --filter @madison/ui build && bun --filter @madison/ui build-storybook` |
+| Publish directory | `packages/ui/storybook-static` |
+
+The design-system build runs first because Storybook imports generated token CSS from
+`packages/ui/dist`. The hosted Storybook is intentionally served with `X-Robots-Tag: noindex,
+nofollow`; it is a development and review surface, not a search destination.
+
+As with the published site, read each preview URL from the PR's Netlify check or comment. Never
+guess it. If only one of the two Netlify projects reports a check, enable multiple repository
+webhooks in the Netlify team's Git settings.
 
 ## This deployment is not indexable
 
@@ -141,7 +156,7 @@ Netlify didn't detect the bun lockfile. `netlify.toml` has no install-command ke
 the dashboard, so the fix is to fold it into the build command:
 `bun install --frozen-lockfile && bunx turbo run build --filter=@madison/site`.
 
-**A deep link 404s on Netlify but works locally.**
-`vite preview` has its own SPA fallback, so local testing can't prove the redirect. Check that the
-`/*` → `/index.html` rule is still in `netlify.toml` and that nothing was added above it — Netlify
-is first-match-wins.
+**A known deep link 404s on Netlify but works locally.**
+Check that the route is registered in `apps/sandbox/src/prototype-registry.ts` and that the site
+build produced its matching HTML file. Do not add a `/*` → `/index.html` fallback; it would turn
+unknown URLs into soft 404s.

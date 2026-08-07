@@ -1,0 +1,27 @@
+# Netlify build contract for the hosted Storybook.
+#
+# In the Netlify project, set Package directory to `packages/ui` and leave
+# Base directory unset. Netlify will find this file in the package directory,
+# while installing dependencies and running this command from the repo root.
+
+[build]
+  # Storybook imports the generated token CSS from packages/ui/dist, so the
+  # design-system build must run first on a fresh clone.
+  command = "bun --filter @madison/ui build && bun --filter @madison/ui build-storybook"
+  publish = "packages/ui/storybook-static"
+
+[build.environment]
+  BUN_VERSION = "1.3.9"
+  NODE_VERSION = "22"
+
+# Vite content-hashes Storybook assets, so they can be cached indefinitely.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# This is a development and review surface, not a search destination.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
