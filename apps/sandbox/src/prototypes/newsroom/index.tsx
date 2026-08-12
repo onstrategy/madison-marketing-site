@@ -4,6 +4,8 @@ import { Badge } from "@madison/ui/badge";
 import { Nav, Footer } from "../landing/sections";
 import { Reveal, Eyebrow } from "../landing/parts";
 import { PHOTOS } from "../landing/photos";
+import { newsArticles } from "../../content/news/collection";
+import { resolveNewsAsset } from "../../content/news/assets";
 
 // Cards don't have real per-post photography — cycling through the shared
 // generic civic/at-work stock set (see landing/photos.ts) gives each card a
@@ -13,77 +15,98 @@ const CARD_PHOTOS = Object.values(PHOTOS);
 // ============================================================================
 // Newsroom — recreated from madisonai.com/updates. 2-column card grid per
 // spec (the source itself lays these out as a single stacked column, but the
-// request called for 2 columns, so that's what's built here). One card links
-// to a real article page (Proof AI Works in the Public Sector); the rest render
-// as non-interactive "Coming soon" cards until their pages exist.
+// request called for 2 columns, so that's what's built here). Cards with a
+// real article page (Proof AI Works, plus the JSON-driven News entries) link
+// to it; the rest render as non-interactive "Coming soon" cards until their
+// pages exist.
 // ============================================================================
 
 type Category = "Insights" | "Team" | "Company";
 
 interface NewsCard {
+  order: number;
   title: string;
   category: Category;
   description: string;
   href?: string;
+  photo?: string;
+  imageAlt?: string;
 }
 
-const NEWS: NewsCard[] = [
+const LEGACY_NEWS: NewsCard[] = [
   {
+    order: 10,
     title: "1,204 Hours Reclaimed: Proof AI Works in the Public Sector",
     category: "Insights",
     description: "Three lessons that separate AI that delivers from AI that disappoints.",
     href: "/proof-ai-works-in-the-public-sector/",
   },
   {
+    order: 20,
     title: "Peter Pirnejad Joins Madison AI as Strategic Advisor",
     category: "Team",
     description: "Bringing municipal leadership experience to the organization.",
   },
   {
-    title: "The Public Records Crisis Is Real",
-    category: "Insights",
-    description: "Charging citizens is the wrong way to solve it.",
-  },
-  {
+    order: 40,
     title: "Madison AI Welcomes Senior Software Engineer Reid Weber",
     category: "Team",
     description: "Leading data systems, acquisition, and AI initiatives.",
   },
   {
+    order: 50,
     title: "Tom Spangler Joins Madison AI as Board Member and Advisor",
     category: "Team",
     description: "Advancing company growth and impact efforts.",
   },
   {
+    order: 60,
     title: "Named GovTech's Most Innovative Solution, Madison AI Secures Funding",
     category: "Company",
     description: "Scaling to transform local government operations.",
   },
   {
+    order: 70,
     title: "Mark Wheeler Joins Madison AI as Chief Public Data Officer",
     category: "Team",
     description: "Adds trusted government AI expertise.",
   },
   {
+    order: 80,
     title: "Dana Searcy Joins Madison AI as a Principal Strategist",
     category: "Team",
     description: "Brings public-sector leadership background.",
   },
   {
+    order: 90,
     title: "Madison AI Awarded Most Innovative Solution at 2025 State of GovTech PitchFest",
     category: "Company",
     description: "Recognition during an active client deployment phase.",
   },
 ];
 
+const NEWS: NewsCard[] = [
+  ...LEGACY_NEWS,
+  ...newsArticles.map((article) => ({
+    order: article.order,
+    title: article.card.title,
+    category: article.category,
+    description: article.card.description,
+    href: article.path,
+    photo: resolveNewsAsset(article.card.imageAsset),
+    imageAlt: article.card.imageAlt,
+  })),
+].sort((left, right) => left.order - right.order);
+
 function NewsCardItem({ item, index }: { item: NewsCard; index: number }) {
-  const photo = CARD_PHOTOS[index % CARD_PHOTOS.length];
+  const fallbackPhoto = CARD_PHOTOS[index % CARD_PHOTOS.length];
+  const photo = item.photo ?? fallbackPhoto.url;
   const content = (
     <>
       <div className="aspect-video w-full overflow-hidden">
         <img
-          src={photo.url}
-          alt=""
+          src={photo}
+          alt={item.imageAlt ?? ""}
           loading="lazy"
           className="size-full object-cover"
         />

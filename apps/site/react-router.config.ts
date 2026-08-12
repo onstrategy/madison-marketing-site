@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import type { Config } from "@react-router/dev/config";
 import { buildClientStoryCollection } from "../sandbox/src/content/client-stories/schema";
+import { buildNewsArticleCollection } from "../sandbox/src/content/news/schema";
 
 const prototypesDirectory = fileURLToPath(
   new URL("../sandbox/src/prototypes/", import.meta.url),
@@ -12,6 +13,9 @@ const clientStoriesDirectory = fileURLToPath(
     "../sandbox/src/content/client-stories/entries/",
     import.meta.url,
   ),
+);
+const newsDirectory = fileURLToPath(
+  new URL("../sandbox/src/content/news/entries/", import.meta.url),
 );
 const seoAudit = process.env.SEO_AUDIT === "true";
 
@@ -97,8 +101,32 @@ async function clientStoryPaths(): Promise<string[]> {
   return result.value.map((story) => prerenderRequestPath(story.path));
 }
 
+async function newsArticlePaths(): Promise<string[]> {
+  const files = (await readdir(newsDirectory))
+    .filter((file) => file.endsWith(".json"))
+    .sort();
+  const sources = await Promise.all(
+    files.map(async (file) => {
+      const source = join(newsDirectory, file);
+      const value: unknown = JSON.parse(await readFile(source, "utf8"));
+      return { source, value };
+    }),
+  );
+  const result = buildNewsArticleCollection(sources);
+  if (!result.ok) {
+    throw new Error(
+      `Invalid news collection:\n${result.errors.map((error) => `- ${error}`).join("\n")}`,
+    );
+  }
+  return result.value.map((article) => prerenderRequestPath(article.path));
+}
+
 async function prerenderPaths(): Promise<string[]> {
-  const pagePaths = [...(await prototypePaths()), ...(await clientStoryPaths())];
+  const pagePaths = [
+    ...(await prototypePaths()),
+    ...(await clientStoryPaths()),
+    ...(await newsArticlePaths()),
+  ];
   const uniquePaths = new Set<string>();
   for (const path of pagePaths) {
     if (uniquePaths.has(path)) {

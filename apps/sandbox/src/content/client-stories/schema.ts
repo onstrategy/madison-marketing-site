@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { SectionInputSchema } from "../sections/schema";
 
 const PublicPathSchema = z
   .string()
@@ -20,34 +21,9 @@ const PhotoSchema = z
   })
   .strict();
 
-const StatSchema = z
-  .object({
-    value: NonEmptyStringSchema,
-    label: NonEmptyStringSchema,
-  })
-  .strict();
-
-export const ClientStoryChallengeIconSchema = z.enum([
-  "clock",
-  "database",
-  "file-search",
-]);
-
-const ChallengeSchema = z
-  .object({
-    icon: ClientStoryChallengeIconSchema,
-    title: NonEmptyStringSchema,
-    description: NonEmptyStringSchema,
-  })
-  .strict();
-
-const PhaseSchema = z
-  .object({
-    step: NonEmptyStringSchema,
-    title: NonEmptyStringSchema,
-    description: NonEmptyStringSchema,
-  })
-  .strict();
+const LogoAssetSchema = z
+  .string()
+  .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*\.(?:png|jpe?g|webp|avif)$/);
 
 export const ClientStoryDocumentSchema = z
   .object({
@@ -66,92 +42,22 @@ export const ClientStoryDocumentSchema = z
       .strict(),
     card: z
       .object({
+        kicker: NonEmptyStringSchema,
         title: NonEmptyStringSchema,
         summary: NonEmptyStringSchema,
+        clientName: NonEmptyStringSchema,
+        photo: PhotoSchema,
+        logoAsset: LogoAssetSchema,
+        logoAlt: NonEmptyStringSchema,
+        logoWidth: z.number().int().positive(),
+        logoHeight: z.number().int().positive(),
       })
       .strict(),
-    content: z
-      .object({
-        hero: z
-          .object({
-            kicker: NonEmptyStringSchema,
-            title: NonEmptyStringSchema,
-            clientName: NonEmptyStringSchema,
-            agencyType: NonEmptyStringSchema,
-            modelsUsed: z.array(NonEmptyStringSchema).min(1),
-            photo: PhotoSchema,
-            logoAsset: z
-              .string()
-              .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*\.(?:png|jpe?g|webp|avif)$/),
-            logoAlt: NonEmptyStringSchema,
-            logoWidth: z.number().int().positive(),
-            logoHeight: z.number().int().positive(),
-          })
-          .strict(),
-        intro: z
-          .object({
-            headline: NonEmptyStringSchema,
-            paragraphs: z.array(NonEmptyStringSchema).min(1),
-            photo: PhotoSchema,
-          })
-          .strict(),
-        quote: z
-          .object({
-            text: NonEmptyStringSchema,
-            attribution: NonEmptyStringSchema,
-          })
-          .strict(),
-        stats: z
-          .object({
-            eyebrow: NonEmptyStringSchema,
-            items: z.array(StatSchema).min(1),
-          })
-          .strict(),
-        challenge: z
-          .object({
-            eyebrow: NonEmptyStringSchema,
-            title: NonEmptyStringSchema,
-            intro: NonEmptyStringSchema,
-            items: z.array(ChallengeSchema).min(1),
-          })
-          .strict(),
-        solution: z
-          .object({
-            eyebrow: NonEmptyStringSchema,
-            title: NonEmptyStringSchema,
-            phases: z.array(PhaseSchema).min(1),
-          })
-          .strict(),
-        impact: z
-          .object({
-            eyebrow: NonEmptyStringSchema,
-            title: NonEmptyStringSchema,
-            paragraphs: z.array(NonEmptyStringSchema).min(1),
-          })
-          .strict(),
-        download: z
-          .object({
-            title: NonEmptyStringSchema,
-            description: NonEmptyStringSchema.optional(),
-            submitLabel: NonEmptyStringSchema,
-          })
-          .strict(),
-        cta: z
-          .object({
-            title: NonEmptyStringSchema,
-            description: NonEmptyStringSchema,
-            primaryCta: NonEmptyStringSchema,
-          })
-          .strict(),
-      })
-      .strict(),
+    sections: z.array(SectionInputSchema).min(1),
   })
   .strict();
 
 export type ClientStoryDocument = z.infer<typeof ClientStoryDocumentSchema>;
-export type ClientStoryChallengeIcon = z.infer<
-  typeof ClientStoryChallengeIconSchema
->;
 
 export type ClientStorySource = {
   source: string;

@@ -1,5 +1,6 @@
 import { siteSummaries } from "@madison/sandbox/prototypes";
 import { clientStories } from "@madison/sandbox/content/client-stories";
+import { newsArticles } from "@madison/sandbox/content/news";
 import { siteOrigin } from "../site-origin.server";
 
 function trailingSlash(path: string): string {
@@ -24,7 +25,12 @@ export function loader() {
   const storyPaths = clientStories
     .filter((story) => !story.metadata.noindex)
     .map((story) => story.path);
-  const paths = [...new Set([...prototypePaths, ...storyPaths])].sort();
+  const newsPaths = newsArticles
+    .filter((article) => !article.metadata.noindex)
+    .map((article) => article.path);
+  const paths = [
+    ...new Set([...prototypePaths, ...storyPaths, ...newsPaths]),
+  ].sort();
   const urls = paths
     .map((path) => {
       const url = path === "/" ? `${origin}/` : `${origin}${path}`;

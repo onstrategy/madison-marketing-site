@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import cityOfCorona from "../content/client-stories/entries/city-of-corona.json";
 import { buildClientStoryCollection } from "../content/client-stories/schema";
+import { parseProps as parseClientStoryChallengeProps } from "../content/sections/client-story-challenge";
 
 function withOverride(
   override: Record<string, unknown>,
@@ -71,55 +72,61 @@ describe("client story collection", () => {
       }
     });
 
-    it("rejects unsupported template icon names", () => {
-      const content = {
-        ...cityOfCorona.content,
-        challenge: {
-          ...cityOfCorona.content.challenge,
-          items: [
-            {
-              ...cityOfCorona.content.challenge.items[0],
-              icon: "unsupported-icon",
-            },
-          ],
-        },
-      };
+    it("preserves the authored section order", () => {
       const result = buildClientStoryCollection([
-        {
-          source: "invalid-icon.json",
-          value: withOverride({ content }),
-        },
+        { source: "city-of-corona.json", value: cityOfCorona },
       ]);
 
-      expect(result.ok).toBe(false);
-      if (!result.ok) {
-        expect(result.errors.join("\n")).toContain(
-          "content.challenge.items.0.icon",
-        );
+      expect(result.ok).toBe(true);
+      if (result.ok) {
+        expect(result.value[0]?.sections.map(({ type }) => type)).toEqual([
+          "client-story-hero-intro",
+          "client-story-quote-stats",
+          "client-story-challenge",
+          "client-story-solution-timeline",
+          "client-story-impact-download",
+          "client-logos",
+          "client-story-cta",
+        ]);
       }
     });
 
     it("requires intrinsic logo dimensions", () => {
-      const hero = Object.fromEntries(
-        Object.entries(cityOfCorona.content.hero).filter(
+      const card = Object.fromEntries(
+        Object.entries(cityOfCorona.card).filter(
           ([key]) => key !== "logoWidth",
         ),
       );
       const result = buildClientStoryCollection([
         {
           source: "missing-logo-width.json",
-          value: withOverride({
-            content: { ...cityOfCorona.content, hero },
-          }),
+          value: withOverride({ card }),
         },
       ]);
 
       expect(result.ok).toBe(false);
       if (!result.ok) {
-        expect(result.errors.join("\n")).toContain(
-          "content.hero.logoWidth",
-        );
+        expect(result.errors.join("\n")).toContain("card.logoWidth");
       }
+    });
+  });
+
+  describe("section prop validation", () => {
+    it("rejects unsupported challenge icon names", () => {
+      expect(() =>
+        parseClientStoryChallengeProps({
+          eyebrow: "The challenge",
+          title: "A challenge",
+          intro: "Challenge context",
+          items: [
+            {
+              icon: "unsupported-icon",
+              title: "Challenge item",
+              description: "Challenge description",
+            },
+          ],
+        }),
+      ).toThrow();
     });
   });
 });

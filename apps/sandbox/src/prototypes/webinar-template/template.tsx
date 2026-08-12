@@ -8,7 +8,7 @@ import { Reveal, Eyebrow } from "../landing/parts";
 // pages, recreated from madisonai.com/director-of-ai-assistant. One template,
 // one shape of data — a new webinar recap is a new data object, not new
 // layout code. Mirrors ../platform-page/template.tsx and
-// ../client-story-template/template.tsx.
+// content-driven section pages.
 // ============================================================================
 
 export interface WebinarTask {

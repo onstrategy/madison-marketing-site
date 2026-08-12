@@ -2,10 +2,9 @@
 
 ## Status
 
-React Router Framework Mode is the selected routing and static-generation path. The first validated
-Client Story entry is implemented as the routing proof. Section discovery and fallback behavior are
-agreed but deliberately deferred until the routing acceptance gate passes on a Netlify Deploy
-Preview.
+React Router Framework Mode is implemented as the routing and static-generation path. The first
+validated Client Story and News entries now use convention-discovered sections and JSON-owned public
+routes. News migration has begun with one article; the remaining Newsroom archive is still legacy.
 
 ## Goal
 
@@ -18,9 +17,9 @@ without a runtime application server.
 
 ## Framework direction
 
-Evaluate React Router Framework Mode as the first integration path. It should own the standard
+React Router Framework Mode owns the standard
 route-module, data-loading, server-rendering, hydration, and prerendering concerns that are currently
-handled by custom site infrastructure.
+required by the site.
 
 Astro is a fallback only if React Router cannot satisfy the requirements without additional custom
 post-build plumbing. Introducing Astro would add a second page-templating model to the existing
@@ -62,16 +61,38 @@ An entry is also the source of truth for:
 Collection index pages must derive their cards from the same entries rather than duplicate detail
 page content in a separate hard-coded array.
 
+For migrations, the existing Madison site is a content source, not a design source. Preserve its
+approved copy, metadata, public URL, hierarchy, and assets, but render them through the current
+Raz-aligned design system and section vocabulary. Do not carry legacy Webflow layout or styling into
+the new templates.
+
 ## Section discovery and fallback behavior
 
-Page content may be expressed as an ordered `sections` array. Section types are discovered by
-convention from React component modules in a dedicated sections folder; adding a section must not
-require maintaining a separate central registry by hand. Vite's build-time module discovery is the
-preferred mechanism unless a later requirement demonstrates a need for generated source files.
+Page content is expressed as an ordered array of `{ "type": "...", "props": { ... } }` objects.
+Section types are discovered eagerly from `content/sections/<type>/index.tsx` with Vite's build-time
+module discovery. The folder name is the public section type, so adding a section requires no
+hand-maintained registry or generated source file.
 
-A section module may export a custom `parseProps(input)` function. Discovery supplies a default
-passthrough parser when that export is absent, so every discovered section has the same rendering
-contract. The default parser provides no section-specific validation and must be treated as such.
+Each module default-exports its React component and may export `parseProps(input)`. Discovery
+supplies a default object passthrough parser when that export is absent, so every section has one
+rendering contract. TypeScript types remain useful to authors, but runtime content safety comes
+from `parseProps`; the passthrough parser deliberately provides no section-specific validation.
+
+The collection schema validates entry-level concerns such as paths, metadata, cards, and the base
+section shape. Each section module owns its detailed props schema. The City of Corona story is the
+first JSON composition and contains these independently safe units, in order:
+
+1. `client-story-hero-intro`
+2. `client-story-quote-stats`
+3. `client-story-challenge`
+4. `client-story-solution-timeline`
+5. `client-story-impact-download`
+6. `client-logos`
+7. `client-story-cta`
+
+Hero and intro remain one section because their overlapping metadata card makes either fragment
+unsafe as a standalone layout. Sections need not support arbitrary ordering; each supported unit
+must only render safely in its intended compositions.
 
 An unknown section type has three defensive behaviors:
 
@@ -84,10 +105,13 @@ An unknown section type has three defensive behaviors:
 
 ## Implementation sequence
 
-1. Integrate and validate React Router Framework Mode, build-time JSON route mapping, explicit public
-   paths, metadata, and Netlify output while retaining the current page rendering where practical.
-2. After the routing acceptance gate passes, extract supported sections into convention-based React
-   modules and introduce the ordered section renderer and parser/fallback behavior.
+1. React Router Framework Mode, build-time JSON route mapping, explicit public paths, metadata, and
+   Netlify output: implemented and locally validated.
+2. Convention-based section discovery, ordered rendering, validation, and failure behavior:
+   implemented and locally validated on Client Story and News page shapes.
+3. News collection routing and the first article composition (`public-records-crisis`): implemented
+   and locally validated with `article-hero-split` and `article-copy` sections.
+4. Netlify Deploy Preview: remains the deployment-environment acceptance gate.
 
 Keep these phases separable so a section-system redesign cannot hide whether the routing and static
 generation integration works on its own.
@@ -116,19 +140,20 @@ and an exact `sitemap.xml` resource without a runtime server. It emits non-root 
 of introducing a custom build-output adapter. Slashless requests should redirect once to the
 trailing-slash URL, while canonical tags, sitemap entries, and internal links use that final URL.
 
-The local acceptance proof covers every published prototype plus the JSON-owned City of Corona
-story, automatic prototype discovery, duplicate-route rejection, build-time JSON validation,
-route-specific metadata, hydration data, sitemap filtering, and a prerendered 404 page. The final
-framework checkpoint is a Netlify Deploy Preview confirming redirects, headers, assets, hydration,
-and real 404 status in the deployment environment.
+The local acceptance proof covers every published prototype plus the JSON-owned City of Corona story
+and Public Records Crisis article, automatic prototype and section discovery, duplicate-route
+rejection, build-time entry and section validation, route-specific metadata, hydration data, sitemap
+filtering, and a prerendered 404 page. Existing pages retain parity with the Raz-aligned branch; the
+migrated article deliberately adopts that current visual language rather than reproducing Webflow.
+The final framework checkpoint is a Netlify Deploy Preview confirming redirects, headers, assets,
+hydration, and real 404 status in the deployment environment.
 
 ## Not decided yet
 
-- The JSON schema for News. The initial fixed-template Client Story schema is implemented but may
-  evolve when a second story tests its boundaries.
-- The detailed JSON shape for ordered sections and their props.
-- The set of supported templates and how an entry selects one.
-- Asset-location and asset-validation conventions.
-- The implementation behind custom `parseProps` functions and stronger prop validation.
+- Whether the local per-collection asset folders should become a shared convention after another
+  content type demonstrates the same need.
+- The section vocabulary required by Team, Company, webinar, and other News article shapes; validate
+  those with representative entries rather than generalizing from the first editorial article.
+- Whether later page shapes need explicit composition rules beyond per-section prop validation.
 - Whether the Deploy Preview exposes any Netlify-specific behavior that requires revisiting the
   accepted trailing-slash contract.

@@ -1,4 +1,6 @@
 import { sitePrototypes, siteSummaries } from "@madison/sandbox/prototypes";
+import { NewsArticlePage } from "@madison/sandbox/content/news/page";
+import { newsArticleRouteData } from "@madison/sandbox/content/news/server";
 import { AppRoutes } from "./App";
 import { notFoundMeta, pageMeta } from "./site-meta";
 import { siteOrigin } from "./site-origin.server";
@@ -17,28 +19,55 @@ function findPage(pathname: string) {
 }
 
 export function loader({ request }: Route.LoaderArgs) {
-  const page = findPage(new URL(request.url).pathname);
-  return { page: page ?? null, origin: siteOrigin() };
+  const pathname = new URL(request.url).pathname;
+  const page = findPage(pathname);
+  const origin = siteOrigin();
+  const articleData = newsArticleRouteData(pathname, origin);
+  return {
+    page: page ?? null,
+    article: articleData?.article ?? null,
+    articleOgImage: articleData?.ogImage,
+    origin,
+  };
 }
 
 /**
  * In static SPA development, an arbitrary URL has no generated `.data` file.
- * Avoid requesting one for an unknown page so the local browser can render the
- * same 404 view that Netlify serves with status 404 in deployment.
+ * Known prototypes can request their generated data directly. Dynamic content
+ * attempts the same request, then falls back to the local 404 when no generated
+ * data file exists.
  */
 export async function clientLoader({
   request,
   serverLoader,
 }: Route.ClientLoaderArgs) {
-  const page = findPage(new URL(request.url).pathname);
-  if (!page) {
-    return { page: null, origin: new URL(request.url).origin };
+  const pathname = new URL(request.url).pathname;
+  const page = findPage(pathname);
+  if (page) {
+    return serverLoader();
   }
-  return serverLoader();
+  try {
+    return await serverLoader();
+  } catch {
+    return {
+      page: null,
+      article: null,
+      articleOgImage: undefined,
+      origin: new URL(request.url).origin,
+    };
+  }
 }
 clientLoader.hydrate = true as const;
 
 export function meta({ data: loaderData }: Route.MetaArgs) {
+  if (loaderData?.article) {
+    const { metadata, path } = loaderData.article;
+    return pageMeta(
+      { ...metadata, ogImage: loaderData.articleOgImage },
+      path,
+      loaderData.origin,
+    );
+  }
   if (!loaderData?.page) return notFoundMeta();
   const canonicalPath =
     loaderData.page.slug === "landing"
@@ -47,6 +76,9 @@ export function meta({ data: loaderData }: Route.MetaArgs) {
   return pageMeta(loaderData.page, canonicalPath, loaderData.origin);
 }
 
-export default function FrameworkRoute() {
+export default function FrameworkRoute({ loaderData }: Route.ComponentProps) {
+  if (loaderData.article) {
+    return <NewsArticlePage article={loaderData.article} />;
+  }
   return <AppRoutes pages={sitePrototypes} />;
 }

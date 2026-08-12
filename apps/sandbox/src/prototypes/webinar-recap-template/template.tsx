@@ -11,7 +11,7 @@ import { Reveal, Eyebrow } from "../landing/parts";
 // embedded segment videos), as distinct from ../webinar-template/template.tsx
 // (a flat "N tasks" playbook). One template, one shape of data — a new recap
 // is a new data object, not new layout code. Mirrors the other *-template
-// prototypes: ../platform-page/template.tsx, ../client-story-template/template.tsx.
+// prototypes: ../platform-page/template.tsx and content-driven section pages.
 //
 // Body sections alternate bg-surface/bg-app (both light) rather than dark —
 // the only dark section in the whole article is the closing "What's next"

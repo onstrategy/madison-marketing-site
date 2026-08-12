@@ -11,6 +11,11 @@
     "./content/client-stories": "./src/content/client-stories/collection.ts",
     "./content/client-stories/page": "./src/content/client-stories/page.tsx",
     "./content/client-stories/schema": "./src/content/client-stories/schema.ts",
+    "./content/news": "./src/content/news/collection.ts",
+    "./content/news/assets": "./src/content/news/assets.ts",
+    "./content/news/page": "./src/content/news/page.tsx",
+    "./content/news/schema": "./src/content/news/schema.ts",
+    "./content/news/server": "./src/content/news/collection.server.ts",
     "./index.css": "./src/index.css"
   },
   "scripts": {

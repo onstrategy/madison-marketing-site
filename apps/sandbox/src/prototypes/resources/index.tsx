@@ -163,7 +163,7 @@ function HeroSection() {
   return (
     // `relative` gives the floating tab switcher below a positioning
     // context — same straddle-the-boundary technique as the client story
-    // template's HeroMetaCard (see client-story-template/template.tsx).
+    // client story hero section's metadata card.
     <section className="dark relative border-b border-default bg-app px-gutter pb-20 pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>

@@ -43,12 +43,12 @@ function toSummary(story: ClientStoryDocument): ClientStorySummary {
 const featuredStory = requireFeaturedStory();
 
 const FEATURED = {
-  kicker: featuredStory.content.hero.kicker,
-  clientName: featuredStory.content.hero.clientName,
+  kicker: featuredStory.card.kicker,
+  clientName: featuredStory.card.clientName,
   title: featuredStory.card.title,
   oneLiner: featuredStory.card.summary,
   logo: clientStoryLogo(featuredStory),
-  photo: featuredStory.content.hero.photo,
+  photo: featuredStory.card.photo,
   href: featuredStory.path,
 };
 

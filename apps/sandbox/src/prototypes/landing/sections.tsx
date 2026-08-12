@@ -100,6 +100,8 @@ const RESOURCES_PATHS = [
 ];
 const NEWSROOM_PATHS = ["/updates", "/proof-ai-works-in-the-public-sector"];
 
+export type ActiveNavItem = "client-stories" | "newsroom";
+
 /** One row in the mobile menu — same active/icon shape as NavbarLink and NavDropdown's items, just stacked instead of inline. */
 function MobileNavLink({
   href,
@@ -130,14 +132,22 @@ function MobileNavLink({
   );
 }
 
-export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAware?: boolean; overDarkHero?: boolean }) {
+export function Nav({
+  sectionAware = false,
+  overDarkHero = false,
+  activeNavItem,
+}: {
+  sectionAware?: boolean;
+  overDarkHero?: boolean;
+  activeNavItem?: ActiveNavItem;
+}) {
   const { pathname } = useLocation();
   const activePath = pathname === "/" ? pathname : pathname.replace(/\/+$/, "");
   const companyLinks = COMPANY_LINKS.map((item) => ({
     ...item,
     active:
       item.href === "/updates/"
-        ? NEWSROOM_PATHS.includes(activePath)
+        ? activeNavItem === "newsroom" || NEWSROOM_PATHS.includes(activePath)
         : item.href.replace(/\/+$/, "") === activePath,
   }));
   const platformActive = activePath === "/landing";
@@ -155,7 +165,13 @@ export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAwa
           variant="mega"
           active={platformActive}
         />
-        <NavbarLink href="/client-stories/" active={CLIENT_STORIES_PATHS.includes(activePath)}>
+        <NavbarLink
+          href="/client-stories/"
+          active={
+            activeNavItem === "client-stories" ||
+            CLIENT_STORIES_PATHS.includes(activePath)
+          }
+        >
           Client Stories
         </NavbarLink>
         <NavbarLink href="/security/" active={activePath === "/security"}>
@@ -214,7 +230,13 @@ export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAwa
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-        <MobileNavLink href="/client-stories/" active={CLIENT_STORIES_PATHS.includes(activePath)}>
+        <MobileNavLink
+          href="/client-stories/"
+          active={
+            activeNavItem === "client-stories" ||
+            CLIENT_STORIES_PATHS.includes(activePath)
+          }
+        >
           Client Stories
         </MobileNavLink>
         <MobileNavLink href="/security/" active={activePath === "/security"}>

@@ -18,9 +18,11 @@
 /*
  * Tailwind's automatic source detection is rooted at the Vite root (apps/site),
  * which contains almost no utility classes — every class that matters lives in
- * the sandbox's prototypes and the UI package's primitives. Without these two
- * lines Tailwind emits a near-empty stylesheet and the site ships unstyled,
- * with typecheck, lint and the build all green. Don't remove them.
+ * the sandbox's prototypes and content sections, plus the UI package's
+ * primitives. Without these lines Tailwind omits classes used only outside the
+ * site app and can ship partially styled pages with typecheck, lint and the
+ * build all green. Don't remove them.
  */
 @source "../../sandbox/src/prototypes";
+@source "../../sandbox/src/content";
 @source "../../../packages/ui/src";
