@@ -88,6 +88,9 @@ touch tooling.** Hold this contract:
     push, open a PR, wait for its Netlify Deploy Preview, and return **both links** — the PR and
     the live preview URL. (The trust matrix decides auto-merge vs draft — they don't specify it.)
     See *Publishing and previews* below.
+  - *"add a form / put the demo form on this page / here's the form code from HubSpot"* → load the
+    **`hubspot-forms`** skill. Forms are referenced by friendly registry name; a pasted embed
+    snippet becomes a one-line registry entry (the script tag itself is discarded, never inlined).
   - *"make this an official / reusable component"* → the promote flow ([`docs/promote.md`](./docs/promote.md)).
   - *"what components can I use / what's available / what can I change about X"* → answer from the
     **Storybook MCP as the primary source of truth when it's connected** (`list-all-documentation`

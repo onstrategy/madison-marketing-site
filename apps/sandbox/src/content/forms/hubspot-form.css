@@ -1,0 +1,221 @@
+/*
+ * On-token adapter for HubSpot's embedded form markup.
+ *
+ * The v2 embed injects plain, unstyled HTML into our page (no iframe), using
+ * HubSpot's stable form classes (.hs-form-field, .hs-input, .hs-button, …).
+ * We can't put Tailwind classes on markup we don't render, so this scoped
+ * stylesheet maps those classes onto the design system instead: every color,
+ * radius, shadow, and ring below is a runtime CSS variable from
+ * packages/ui/dist/theme.css, and the metrics mirror the Input / Button
+ * primitives so embedded fields read as native ones. Dimension literals are
+ * annotated with the scale step they mirror (the named --spacing-* /
+ * --duration-* tokens are compile-time-only `@theme inline` values, not
+ * available to plain CSS).
+ *
+ * Scope: everything is nested under .hubspot-form, the wrapper rendered by
+ * HubSpotForm.tsx. New HubSpot field types get their rule added here — never
+ * inline styles in page code.
+ */
+
+.hubspot-form fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+/* 1rem = gap-4 / --spacing-stack: rhythm between fields, same as the old mock form grid */
+.hubspot-form fieldset + fieldset,
+.hubspot-form fieldset + div,
+.hubspot-form .hs-form-field + .hs-form-field {
+  margin-top: 1rem;
+}
+
+.hubspot-form fieldset.form-columns-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Collapse paired columns below Tailwind's sm breakpoint (40rem) */
+@media (max-width: 39.9375rem) {
+  .hubspot-form fieldset.form-columns-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*
+ * HubSpot injects its own float-based column stylesheet at runtime, scoped
+ * with a per-form-instance class (specificity 0,3,1) that loads after this
+ * file. These selectors out-specify it (0,3,2) so the grid above owns the
+ * layout: no floats, no half-width fields, no stray 8px margins.
+ */
+.hubspot-form form fieldset[class*="form-columns"] .hs-form-field {
+  float: none;
+  width: 100%;
+  margin-top: 0;
+}
+
+.hubspot-form form fieldset[class*="form-columns"] .input {
+  margin-right: 0;
+}
+
+.hubspot-form
+  form
+  fieldset[class*="form-columns"]
+  .hs-input:not([type="checkbox"]):not([type="radio"]) {
+  width: 100%;
+}
+
+/* Labels — mirrors the Label primitive (text-sm, font-medium) */
+.hubspot-form label {
+  display: block;
+  margin-bottom: 0.375rem; /* space-y-1.5 */
+  font-size: 0.875rem;
+  line-height: 1.3; /* leading-snug */
+  font-weight: 500;
+  color: hsl(var(--text-primary));
+}
+
+/* Text-like inputs — mirrors the Input primitive (h-9, rounded-md, border-default) */
+.hubspot-form .hs-input {
+  width: 100%;
+  height: 2.25rem; /* h-9 */
+  padding: 0.25rem 0.75rem; /* py-1 px-3 */
+  font: inherit;
+  font-size: 1rem; /* text-base — 16px keeps iOS Safari from zooming on focus */
+  color: hsl(var(--text-primary));
+  background: transparent;
+  border: 1px solid hsl(var(--border-default));
+  border-radius: var(--radius);
+  box-shadow: var(--elevation-sm);
+  transition:
+    border-color 200ms, /* --duration-base */
+    box-shadow 200ms;
+}
+
+.hubspot-form textarea.hs-input {
+  height: auto;
+  min-height: 6rem; /* ~rows={4}, matches the old mock's textarea */
+  padding: 0.5rem 0.75rem; /* py-2 px-3 */
+}
+
+.hubspot-form select.hs-input {
+  cursor: pointer;
+}
+
+/* Mirrors the Input primitive's md:text-sm (md = 48rem) */
+@media (min-width: 48rem) {
+  .hubspot-form .hs-input {
+    font-size: 0.875rem; /* text-sm */
+  }
+}
+
+.hubspot-form .hs-input::placeholder {
+  color: hsl(var(--text-muted));
+}
+
+.hubspot-form .hs-input:focus {
+  outline: none;
+  border-color: hsl(var(--brand-primary));
+  box-shadow: 0 0 0 var(--ring-width) hsl(var(--brand-primary) / 0.5);
+}
+
+/* Checkboxes / radios — .hs-input is also used on these; undo the text metrics */
+.hubspot-form .hs-input[type="checkbox"],
+.hubspot-form .hs-input[type="radio"] {
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+  box-shadow: none;
+  accent-color: hsl(var(--brand-primary));
+}
+
+.hubspot-form ul.inputs-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hubspot-form ul.inputs-list label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* gap-inline */
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+/* Validation — semantic error triad */
+.hubspot-form .hs-input.invalid,
+.hubspot-form .hs-input.error {
+  border-color: hsl(var(--semantic-error));
+}
+
+.hubspot-form ul.hs-error-msgs {
+  list-style: none;
+  margin: 0.375rem 0 0;
+  padding: 0;
+}
+
+.hubspot-form ul.hs-error-msgs label {
+  margin: 0;
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 400;
+  color: hsl(var(--semantic-error));
+}
+
+/* Legal consent / rich text blocks */
+.hubspot-form .hs-richtext,
+.hubspot-form .legal-consent-container {
+  font-size: 0.75rem;
+  color: hsl(var(--text-secondary));
+}
+
+.hubspot-form .hs-richtext a {
+  color: hsl(var(--brand-accent));
+  font-weight: 600;
+}
+
+/* Submit — mirrors the Button primitive's primary lg variant (pill, bg-brand) */
+.hubspot-form .hs-submit {
+  margin-top: 1.5rem; /* mt-6 / --spacing-card, matches the old mock's button offset */
+}
+
+.hubspot-form .hs-button {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9375rem 1.625rem; /* py-3.75 px-6.5, the Button lg size */
+  border: 0;
+  border-radius: 9999px; /* rounded-full */
+  background: hsl(var(--brand-primary));
+  color: hsl(var(--brand-foreground));
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+  box-shadow: var(--elevation-sm);
+  cursor: pointer;
+  transition: background-color 200ms; /* --duration-base */
+}
+
+.hubspot-form .hs-button:hover {
+  background: hsl(var(--brand-primary-hover));
+}
+
+.hubspot-form .hs-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--ring-width) hsl(var(--brand-primary) / 0.5);
+}
+
+.hubspot-form .hs-button:disabled {
+  opacity: var(--disabled-opacity);
+  cursor: not-allowed;
+}
+
+/* Post-submit confirmation */
+.hubspot-form .submitted-message {
+  font-size: 1rem;
+  color: hsl(var(--text-primary));
+}

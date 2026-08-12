@@ -1,12 +1,12 @@
-import { FileSearch, Workflow, Download } from "lucide-react";
-import { Button } from "@madison/ui/button";
-import { Input } from "@madison/ui/input";
-import { Label } from "@madison/ui/label";
+import { FileSearch, Workflow } from "lucide-react";
 import { Nav, Footer, ClientLogos } from "../landing/sections";
 import { Reveal, Eyebrow } from "../landing/parts";
+import { HubSpotForm } from "../../content/forms/HubSpotForm";
 
 // ============================================================================
-// Book a Demo — recreated from madisonai.com/demo.
+// Book a Demo — recreated from madisonai.com/demo. The form is the real
+// HubSpot "book-a-demo" form (see content/forms/hubspot.ts), embedded
+// client-side inside the on-token card shell.
 // ============================================================================
 
 const FEATURES = [
@@ -73,31 +73,7 @@ function HeroAndFormSection() {
             <p className="mb-6 text-sm text-secondary">
               Fill in the form below, and our team will get back to you within one business day.
             </p>
-            <form className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-1.5">
-                <Label htmlFor="demo-first-name">First name</Label>
-                <Input id="demo-first-name" name="firstName" />
-              </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="demo-last-name">Last name</Label>
-                <Input id="demo-last-name" name="lastName" />
-              </div>
-              <div className="space-y-1.5 sm:col-span-2">
-                <Label htmlFor="demo-email">Organization email address*</Label>
-                <Input id="demo-email" name="email" type="email" required />
-              </div>
-              <div className="space-y-1.5 sm:col-span-2">
-                <Label htmlFor="demo-phone">Phone number</Label>
-                <Input id="demo-phone" name="phone" type="tel" />
-              </div>
-              <div className="space-y-1.5 sm:col-span-2">
-                <Label htmlFor="demo-org">Government name and department*</Label>
-                <Input id="demo-org" name="organization" required />
-              </div>
-              <Button type="submit" size="lg" className="sm:col-span-2">
-                Book Your Demo <Download className="size-4" />
-              </Button>
-            </form>
+            <HubSpotForm form="book-a-demo" />
           </div>
         </Reveal>
       </div>
