@@ -1,15 +1,21 @@
-import { ArrowRight, type LucideIcon, Sparkles, Users, Building2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@madison/ui/button";
 import { Badge } from "@madison/ui/badge";
 import { Nav, Footer } from "../landing/sections";
 import { Reveal, Eyebrow } from "../landing/parts";
+import { PHOTOS } from "../landing/photos";
+
+// Cards don't have real per-post photography — cycling through the shared
+// generic civic/at-work stock set (see landing/photos.ts) gives each card a
+// distinct 16:9 image without inventing per-title art direction.
+const CARD_PHOTOS = Object.values(PHOTOS);
 
 // ============================================================================
 // Newsroom — recreated from madisonai.com/updates. 2-column card grid per
 // spec (the source itself lays these out as a single stacked column, but the
 // request called for 2 columns, so that's what's built here). One card links
-// to a real article page (Proof AI Works in the Public Sector); the rest link
-// to "#" since they don't have full pages yet.
+// to a real article page (Proof AI Works in the Public Sector); the rest render
+// as non-interactive "Coming soon" cards until their pages exist.
 // ============================================================================
 
 type Category = "Insights" | "Team" | "Company";
@@ -20,12 +26,6 @@ interface NewsCard {
   description: string;
   href?: string;
 }
-
-const CATEGORY_ICON: Record<Category, LucideIcon> = {
-  Insights: Sparkles,
-  Team: Users,
-  Company: Building2,
-};
 
 const NEWS: NewsCard[] = [
   {
@@ -76,33 +76,41 @@ const NEWS: NewsCard[] = [
   },
 ];
 
-function NewsCardItem({ item }: { item: NewsCard }) {
-  const Icon = CATEGORY_ICON[item.category];
+function NewsCardItem({ item, index }: { item: NewsCard; index: number }) {
+  const photo = CARD_PHOTOS[index % CARD_PHOTOS.length];
   const content = (
     <>
-      <div className="mb-4 flex items-center justify-between">
-        <span className="flex size-9 items-center justify-center rounded-full bg-brand-subtle text-brand-accent">
-          <Icon className="size-4" />
-        </span>
-        <Badge variant="secondary">{item.category}</Badge>
+      <div className="aspect-video w-full overflow-hidden">
+        <img
+          src={photo.url}
+          alt=""
+          loading="lazy"
+          className="size-full object-cover"
+        />
       </div>
-      <h2 className="font-sans text-lg font-semibold tracking-tight text-primary">{item.title}</h2>
-      <p className="mt-2 flex-1 text-sm leading-relaxed text-secondary">{item.description}</p>
-      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
-        {item.href ? (
-          <>
-            Read more <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-          </>
-        ) : (
-          "Coming soon"
-        )}
-      </span>
+      <div className="flex flex-1 flex-col p-6">
+        <div className="mb-4">
+          <Badge variant="secondary">{item.category}</Badge>
+        </div>
+        <h2 className="font-sans text-lg font-semibold tracking-tight text-primary">{item.title}</h2>
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-secondary">{item.description}</p>
+        <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
+          {item.href ? (
+            <>
+              Read more
+              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+            </>
+          ) : (
+            "Coming soon"
+          )}
+        </span>
+      </div>
     </>
   );
 
   if (!item.href) {
     return (
-      <article className="flex h-full flex-col rounded-2xl border border-default bg-surface p-6">
+      <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-default bg-surface">
         {content}
       </article>
     );
@@ -113,7 +121,7 @@ function NewsCardItem({ item }: { item: NewsCard }) {
     <a
       href={item.href}
       {...(isInternal ? {} : { target: "_blank", rel: "noopener" })}
-      className="group flex h-full flex-col rounded-2xl border border-default bg-surface p-6 transition-transform hover:-translate-y-1"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-default bg-surface transition-transform hover:-translate-y-1"
     >
       {content}
     </a>
@@ -145,7 +153,7 @@ function NewsGridSection() {
         <div className="grid gap-4 sm:grid-cols-2">
           {NEWS.map((item, i) => (
             <Reveal key={item.title} delay={i * 40}>
-              <NewsCardItem item={item} />
+              <NewsCardItem item={item} index={i} />
             </Reveal>
           ))}
         </div>

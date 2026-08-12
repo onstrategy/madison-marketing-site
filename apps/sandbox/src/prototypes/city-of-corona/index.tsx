@@ -119,7 +119,6 @@ const DATA: ClientStoryData = {
       "In just the first six months of deployment, Madison AI completely transformed how the City of Corona manages its data and institutional knowledge. Staff now get instant answers on contracts, budgets, council decisions, and planning records, successfully eliminating tedious manual research and saving staff hours every single month.",
       "This immediate access to critical data freed Corona's staff to focus on what matters most: delivering reliable, high-quality services to their residents.",
     ],
-    highlight: "104 hrs reclaimed every month",
   },
   download: {
     title: "Download this case study as a one-page PDF",

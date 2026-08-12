@@ -90,7 +90,7 @@ function LessonsSection({ lessons }: { lessons: NewsLesson[] }) {
                 ))}
               </div>
               {lesson.stats ? (
-                <div className="mt-6 grid grid-cols-2 gap-6 rounded-2xl border border-default bg-app p-6 sm:grid-cols-4">
+                <div className="mt-6 grid grid-cols-2 gap-6 rounded-2xl border border-default bg-panel p-6 sm:grid-cols-4">
                   {lesson.stats.map((stat) => (
                     <div key={stat.label}>
                       <div className="font-serif text-3xl font-medium tracking-tight text-brand-accent">

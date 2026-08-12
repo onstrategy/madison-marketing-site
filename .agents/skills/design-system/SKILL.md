@@ -38,14 +38,21 @@ same class works in both themes) — Madison's dark mode is the Dark Navy family
 | Class | Purpose |
 |-------|---------|
 | `bg-app` | Absolute bottom layer (page canvas) — Warm White (Dark Navy in dark mode) |
-| `bg-panel` | Structural sidebars and headers |
+| `bg-panel` | Structural sidebars and headers; also the approved darker inset-card treatment on `bg-surface` sections |
 | `bg-surface` | Nested cards, popovers, inputs — lifts off the warm canvas |
 | `bg-hover` | Subtle background for interactive elements on hover |
 | `bg-depth` | **RESTRICTED** — Deep Dust depth fill (hover/focus). See governance below. Never a primary surface. |
 | `bg-plate` | **NARROW USE** — true `#FFF` in *both* themes. Only for hosting third-party artwork (client logos, partner marks) authored against white, which Warm White would tint. Never a general page/card surface. Pair with a `light` scope so the text on it resolves light too. |
 
-Elevation nesting: `bg-app` → `bg-panel` → `bg-surface` → `bg-hover`. Each layer is visually distinct
-in both light and dark mode. `bg-depth` is **not** an elevation layer — it's a restricted accent.
+Surface relationships are intentional pairings, not a universal lightness ladder:
+
+- On `bg-app` or `bg-panel`, `bg-surface` reads as a raised card, popover, or input.
+- On `bg-surface`, `bg-panel` reads as a subtle darker inset card. This is the approved treatment
+  for grouped content that needs separation without adding another shadowed surface.
+- `bg-app` remains the page canvas. Never use it for cards inside `bg-surface`; the larger tonal
+  reversal makes the card look disconnected from the section rather than intentionally inset.
+- `bg-hover` is an interaction state, not another elevation layer. `bg-depth` is a restricted
+  accent, not a structural surface.
 
 **Forcing a subtree's theme regardless of the page's actual mode:** add `className="dark"` or
 `className="light"` to any element. Both mirror `:root`/`.dark` exactly, so every token used inside
@@ -371,7 +378,8 @@ elevation shadow instead.
 - Using numbered color scales (`text-success-700`, `bg-neutral-200`) — use semantic triads + opacity modifiers instead
 - Using shadcn-style variable names (`bg-card`, `text-foreground`, `bg-destructive`) — see `references/migration.md`
 - Inventing a new color token without first checking `tokens.tsx` and the style guide
-- Nesting elevation layers out of order (e.g. `bg-app` inside `bg-surface`)
+- Treating surface tokens as a universal "always lighter" elevation ladder. On `bg-surface`,
+  `bg-panel` is the approved darker inset-card pairing; `bg-app` remains canvas-only.
 - Using semantic colors for branding (e.g. `bg-info`/Terracotta for a primary CTA — use `bg-brand`/Neon Blue)
 - **Spreading Neon Blue around** — it's the *single* hero accent (~15%). One accent per view, used sparingly.
 - **Misusing Deep Dust** (`bg-depth`/`border-depth`): as a background surface, a CTA, headline/body text, or paired with Terracotta (`bg-info`/`text-info`). It is depth-only, ≤10%, on light backgrounds. See the governance section.

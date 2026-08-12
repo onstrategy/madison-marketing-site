@@ -43,6 +43,8 @@ export {
   NavbarLinks,
   NavbarLink,
   NavbarActions,
+  NavbarMobileTrigger,
+  NavbarMobileMenu,
 } from "./navbar";
 export { NavDropdown, type NavDropdownItem } from "./nav-dropdown";
 export { Logo, LogoMark } from "./logo";

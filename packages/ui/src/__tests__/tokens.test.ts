@@ -113,6 +113,17 @@ describe("TOKENS dictionary", () => {
       }
     }
   });
+
+  it("keeps panel darker than surface for the approved inset-card pairing", () => {
+    const panel = TOKENS.backgrounds.find((token) => token.name === "--bg-panel");
+    const surface = TOKENS.backgrounds.find((token) => token.name === "--bg-surface");
+    expect(panel).toBeDefined();
+    expect(surface).toBeDefined();
+    if (!panel || !surface) return;
+
+    expect(relativeLuminance(panel.light)).toBeLessThan(relativeLuminance(surface.light));
+    expect(relativeLuminance(panel.dark)).toBeLessThan(relativeLuminance(surface.dark));
+  });
 });
 
 describe("TOKENS dimensional system", () => {

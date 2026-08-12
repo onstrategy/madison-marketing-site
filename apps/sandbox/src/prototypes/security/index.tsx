@@ -247,7 +247,7 @@ function DataProtectionSection() {
         <div className="grid gap-4 sm:grid-cols-2">
           {DATA_PROMISES.map((item, i) => (
             <Reveal key={item.title} delay={i * 60}>
-              <div className="h-full rounded-2xl border border-default bg-app p-6">
+              <div className="h-full rounded-2xl border border-default bg-panel p-6">
                 <span className="flex size-9 items-center justify-center rounded-full bg-brand text-brand-fg">
                   <item.icon className="size-4" />
                 </span>
@@ -321,7 +321,7 @@ function ComplianceSection() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {COMPLIANCE_CERTS.map((cert, i) => (
             <Reveal key={cert.title} delay={i * 60}>
-              <div className="h-full rounded-2xl border border-default bg-app p-6 text-center">
+              <div className="h-full rounded-2xl border border-default bg-panel p-6 text-center">
                 <span className="mx-auto flex size-10 items-center justify-center rounded-full bg-brand-subtle text-brand-accent">
                   <cert.icon className="size-5" />
                 </span>
@@ -408,7 +408,7 @@ function FinalCtaSection() {
           </p>
           <div className="flex flex-wrap justify-center gap-3.5">
             <Button size="lg" asChild>
-              <a href="/demo">
+              <a href="/book-a-security-review">
                 Schedule a security review <ArrowRight className="size-4" />
               </a>
             </Button>

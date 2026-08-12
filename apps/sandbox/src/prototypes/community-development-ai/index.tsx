@@ -17,7 +17,6 @@ import {
   LayoutGrid,
   Building2,
   FileSignature,
-  Sparkles,
 } from "lucide-react";
 import { PlatformPageTemplate, type PlatformPageData } from "../platform-page/template";
 
@@ -284,32 +283,26 @@ const DATA: PlatformPageData = {
         title: "Core platform",
         description: "Staff, electeds, and citizens on one grounded record.",
         icon: LayoutGrid,
-        href: "#top",
+        href: "/citywide-ai",
       },
       {
         title: "FOIA / Public Records Fulfillment",
         description: "Scope, redact, and release requests defensibly.",
         icon: FileSearch,
-        href: "#top",
+        href: "/public-records-requests-ai",
       },
       {
         title: "Community Development AI",
         description: "Permitting, zoning, and planning, grounded in code.",
         icon: Building2,
-        href: "#top",
+        href: "/community-development-ai",
         current: true,
       },
       {
         title: "Contracts & Procurement AI",
         description: "Draft, compare, and track solicitations and awards.",
         icon: FileSignature,
-        href: "#top",
-      },
-      {
-        title: "Madison AI Universal",
-        description: "General-purpose assistant across every department.",
-        icon: Sparkles,
-        href: "#top",
+        href: "/procurement-contracts-ai",
       },
     ],
   },

@@ -263,12 +263,12 @@ export function StyleGuide() {
 
         <hr className="border-default" />
 
-        {/* SECTION: Architecture & Elevation */}
+        {/* SECTION: Surface Relationships */}
         <section>
           <SectionHeader
             icon={<Layers />}
-            title="Structural Elevation"
-            description="How backgrounds nest within each other to create depth without drop shadows."
+            title="Surface Relationships"
+            description="How raised surfaces and inset panels create hierarchy without relying on drop shadows."
           />
 
           <div className="p-8 border border-default rounded-xl bg-app">
@@ -297,6 +297,20 @@ export function StyleGuide() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div className="mt-6 rounded-xl border border-default bg-surface p-6">
+            <span className="mb-2 block font-sans text-sm text-muted">
+              --bg-surface section
+            </span>
+            <div className="mt-4 rounded-md border border-default bg-panel p-4">
+              <span className="mb-2 block font-sans text-sm text-muted">
+                --bg-panel inset card
+              </span>
+              <p className="text-sm text-secondary">
+                Panel is intentionally one tint darker when it groups content inside a surface.
+              </p>
             </div>
           </div>
         </section>

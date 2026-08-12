@@ -1,9 +1,11 @@
 import { type ReactNode } from "react";
 import { ArrowRight, type LucideIcon } from "lucide-react";
+import { cn } from "@madison/ui/utils";
 import { Button } from "@madison/ui/button";
 import { Input } from "@madison/ui/input";
 import { Label } from "@madison/ui/label";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@madison/ui/tabs";
+import { LogoMark as MadisonMark } from "@madison/ui/logo";
 import { Nav, Footer } from "../landing/sections";
 import { Reveal, Eyebrow, SectionHeading, BrowserFrame, LogoMark } from "../landing/parts";
 
@@ -146,13 +148,9 @@ function HowItWorksSection({ data }: { data: PlatformPageData["howItWorks"] }) {
         </Reveal>
         <Reveal delay={80}>
           <Tabs defaultValue={data.roles[0]?.id}>
-            <TabsList className="h-auto flex-wrap gap-2 bg-transparent p-0">
+            <TabsList className="light h-auto flex-wrap gap-1 rounded-full border border-default bg-hover p-1.5 shadow-xl">
               {data.roles.map((role) => (
-                <TabsTrigger
-                  key={role.id}
-                  value={role.id}
-                  className="rounded-full border border-default px-5 py-2.5 text-sm data-[state=active]:border-transparent data-[state=active]:bg-brand data-[state=active]:text-brand-fg data-[state=active]:shadow-none"
-                >
+                <TabsTrigger key={role.id} value={role.id} className="rounded-full px-5 py-2">
                   {role.label}
                 </TabsTrigger>
               ))}
@@ -182,6 +180,51 @@ function HowItWorksSection({ data }: { data: PlatformPageData["howItWorks"] }) {
   );
 }
 
+// Fixed spread of x-positions the cables fan out to, in the 240×56 viewBox
+// below — decorative, not tied 1:1 to `data.items` (that list runs 11–15
+// items deep and wraps across lines, so there's no stable per-item point to
+// route a real line to). Reads as "many systems," not a literal wiring diagram.
+const CABLE_XS = [14, 52, 90, 120, 150, 188, 226];
+
+/** The converging "cables" between the Madison hub and the source chips below it. */
+function ConnectorCables() {
+  return (
+    <svg
+      viewBox="0 0 240 56"
+      className="h-14 w-60 text-brand/25"
+      aria-hidden="true"
+    >
+      {CABLE_XS.map((x, i) => (
+        <path
+          key={x}
+          id={`cable-${i}`}
+          d={`M120 0 Q ${(x + 120) / 2} 22 ${x} 56`}
+          stroke="currentColor"
+          strokeWidth="1.5"
+          fill="none"
+        />
+      ))}
+      {/* A few traveling pulses along a subset of the cables — data flowing
+          up into the hub, not just static wires. Hidden under reduced motion. */}
+      <g className="motion-reduce:hidden">
+        {[1, 3, 5].map((i, dotIndex) => (
+          <circle key={i} r="2.5" className="text-brand">
+            <animateMotion
+              dur="2.4s"
+              begin={`${dotIndex * 0.8}s`}
+              repeatCount="indefinite"
+              keyPoints="1;0"
+              keyTimes="0;1"
+            >
+              <mpath xlinkHref={`#cable-${i}`} />
+            </animateMotion>
+          </circle>
+        ))}
+      </g>
+    </svg>
+  );
+}
+
 function ConnectorsSection({ data }: { data: PlatformPageData["connectors"] }) {
   return (
     <section className="border-t border-default bg-app px-gutter py-30 text-center">
@@ -191,14 +234,23 @@ function ConnectorsSection({ data }: { data: PlatformPageData["connectors"] }) {
             eyebrow={data.eyebrow}
             title={data.title}
             align="center"
-            className="mx-auto mb-12 max-w-2xl"
+            className="mx-auto mb-8 max-w-2xl"
           />
         </Reveal>
-        <Reveal delay={80}>
-          <div className="flex flex-wrap justify-center gap-3">
-            {data.items.map((name) => (
-              <LogoMark key={name} name={name} />
-            ))}
+        {/* The Madison mark sits right under the title as the hub every
+            source "cables" into — every system feeding into one platform,
+            not just a logo wall. */}
+        <Reveal delay={60}>
+          <div className="mx-auto flex flex-col items-center">
+            <span className="flex size-16 items-center justify-center rounded-full bg-brand text-brand-fg shadow-lg">
+              <MadisonMark width={32} height={19} className="text-brand-fg" />
+            </span>
+            <ConnectorCables />
+            <div className="-mt-1 flex max-w-2xl flex-wrap justify-center gap-3">
+              {data.items.map((name) => (
+                <LogoMark key={name} name={name} />
+              ))}
+            </div>
           </div>
         </Reveal>
         <Reveal delay={120}>
@@ -226,7 +278,7 @@ function WhatYouGetSection({ data }: { data: PlatformPageData["whatYouGet"] }) {
         <div className="grid gap-4 sm:grid-cols-2">
           {data.benefits.map((benefit, i) => (
             <Reveal key={benefit.title} delay={i * 60}>
-              <div className="h-full rounded-2xl border border-default bg-app p-6">
+              <div className="h-full rounded-2xl border border-default bg-panel p-6">
                 <div className="flex items-center gap-3">
                   <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand text-brand-fg">
                     <benefit.icon className="size-4" />
@@ -259,15 +311,18 @@ function SuiteSection({ data }: { data: PlatformPageData["suite"] }) {
             className="mb-12 max-w-2xl"
           />
         </Reveal>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {data.items.map((item, i) => (
-            <Reveal key={item.title} delay={i * 60}>
-              <a
-                href={item.href}
-                className="relative flex h-full flex-col rounded-2xl border border-default bg-surface p-4 transition-transform hover:-translate-y-1"
-              >
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {data.items.map((item, i) => {
+            const className = cn(
+              "relative flex h-full flex-col rounded-2xl bg-surface p-4",
+              item.current
+                ? "border-2 border-brand"
+                : "border border-default transition-transform hover:-translate-y-1",
+            );
+            const content = (
+              <>
                 {item.current ? (
-                  <span className="absolute left-3 top-3 rounded-full bg-app px-2 py-0.5 font-sans text-sm font-semibold uppercase tracking-widest text-brand-accent shadow-sm">
+                  <span className="dark absolute left-4 top-0 -translate-y-1/2 rounded-full bg-app px-2 py-0.5 font-serif text-sm font-semibold uppercase tracking-widest text-brand-accent shadow-sm">
                     You&rsquo;re here
                   </span>
                 ) : null}
@@ -280,13 +335,28 @@ function SuiteSection({ data }: { data: PlatformPageData["suite"] }) {
                 <p className="mt-1.5 flex-1 text-sm leading-relaxed text-secondary">
                   {item.description}
                 </p>
-                <span className="mt-3.5 inline-flex items-center gap-1 text-sm font-semibold text-brand-accent">
-                  {item.current ? "View page" : "Explore"}{" "}
-                  <ArrowRight className="size-3.5" />
-                </span>
-              </a>
-            </Reveal>
-          ))}
+                {item.current ? null : (
+                  <span className="mt-3.5 inline-flex items-center gap-1 text-sm font-semibold text-brand-accent">
+                    Explore <ArrowRight className="size-3.5" />
+                  </span>
+                )}
+              </>
+            );
+            return (
+              <Reveal key={item.title} delay={i * 60}>
+                {item.current ? (
+                  // The current page's own card is a status tile, not a
+                  // link — it can't navigate anywhere useful, so it's a
+                  // plain <div> (no href, no hover lift) instead of an <a>.
+                  <div className={className}>{content}</div>
+                ) : (
+                  <a href={item.href} className={className}>
+                    {content}
+                  </a>
+                )}
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

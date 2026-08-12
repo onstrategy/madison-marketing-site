@@ -108,7 +108,7 @@ function ReasonsSection({ data }: { data: ResponsibleAiData }) {
         <div className="space-y-4">
           {data.reasons.map((reason, i) => (
             <Reveal key={reason.title} delay={i * 60}>
-              <div className="flex gap-4 rounded-2xl border border-default bg-app p-6">
+              <div className="flex gap-4 rounded-2xl border border-default bg-panel p-6">
                 <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand text-brand-fg">
                   <reason.icon className="size-4" />
                 </span>
@@ -180,7 +180,7 @@ function ExamplesSection({ data }: { data: ResponsibleAiData }) {
         <div className="grid gap-4 sm:grid-cols-3">
           {data.examples.map((set, i) => (
             <Reveal key={set.org} delay={i * 60}>
-              <div className="h-full rounded-2xl border border-default bg-app p-6">
+              <div className="h-full rounded-2xl border border-default bg-panel p-6">
                 <h3 className="font-sans text-lg font-semibold tracking-tight text-primary">
                   {set.org}
                 </h3>
@@ -236,12 +236,12 @@ function RelatedSection({ data }: { data: RelatedResource[] }) {
               {resource.href ? (
                 <a
                   href={resource.href}
-                  className="block h-full rounded-2xl border border-default bg-app p-5 text-sm font-semibold text-primary transition-transform hover:-translate-y-1"
+                  className="block h-full rounded-2xl border border-default bg-panel p-5 text-sm font-semibold text-primary transition-transform hover:-translate-y-1"
                 >
                   {resource.title}
                 </a>
               ) : (
-                <div className="h-full rounded-2xl border border-default bg-app p-5 text-sm font-semibold text-primary">
+                <div className="h-full rounded-2xl border border-default bg-panel p-5 text-sm font-semibold text-primary">
                   {resource.title}
                   <span className="mt-3 block text-xs font-normal text-muted">Coming soon</span>
                 </div>

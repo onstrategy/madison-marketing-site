@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import {
   ArrowRight,
@@ -8,12 +9,13 @@ import {
   ShieldCheck,
   Map as MapIcon,
   Lock,
-  MessageSquare,
-  FileText,
-  Workflow,
-  Presentation,
-  BarChart3,
-  LayoutDashboard,
+  Building2,
+  LandPlot,
+  FileSignature,
+  FileSearch,
+  Plug,
+  Target,
+  type LucideIcon,
 } from "lucide-react";
 import { cn } from "@madison/ui/utils";
 import { Button } from "@madison/ui/button";
@@ -23,8 +25,11 @@ import {
   NavbarLinks,
   NavbarLink,
   NavbarActions,
+  NavbarMobileTrigger,
+  NavbarMobileMenu,
 } from "@madison/ui/navbar";
 import { NavDropdown } from "@madison/ui/nav-dropdown";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@madison/ui/accordion";
 import { Logo } from "@madison/ui/logo";
 import { Reveal, Marquee } from "./parts";
 import { CLIENT_LOGOS } from "./logos";
@@ -39,14 +44,41 @@ import visionCollab from "./vision-collab.jpg";
 // headlines come from the global h1–h4 serif rule.
 // ============================================================================
 
-// Icons mirror the ones on the Capabilities section below — same job, same glyph.
+// The four featured modules — rendered as cards in the "Platform" mega menu
+// (below) and, with the same icons, as the four cards on the home page's
+// Capabilities section. `description` is the mega menu's card body copy.
 const PLATFORM_LINKS = [
-  { label: "Overview", href: "#top", icon: LayoutDashboard },
-  { label: "Chat", href: "#top", icon: MessageSquare },
-  { label: "Reports", href: "#top", icon: FileText },
-  { label: "Workflows", href: "#top", icon: Workflow },
-  { label: "Briefings", href: "#top", icon: Presentation },
-  { label: "Analysis", href: "#top", icon: BarChart3 },
+  {
+    label: "Citywide AI",
+    href: "/citywide-ai",
+    icon: Building2,
+    description: "One model grounded across every department's record.",
+  },
+  {
+    label: "AI for Community Development",
+    href: "/community-development-ai",
+    icon: LandPlot,
+    description: "Permitting, zoning, and planning grounded in your GIS.",
+  },
+  {
+    label: "AI for Procurement & Contracts",
+    href: "/procurement-contracts-ai",
+    icon: FileSignature,
+    description: "RFP drafting and contract review, cited to your record.",
+  },
+  {
+    label: "AI for Public Records Requests",
+    href: "/public-records-requests-ai",
+    icon: FileSearch,
+    description: "PRA fulfillment from intake to response letter.",
+  },
+];
+
+// Lighter-weight, cross-cutting properties of the platform rather than
+// departmental modules — the mega menu's secondary link row.
+const PLATFORM_SECONDARY_LINKS = [
+  { label: "Integrations", href: "#top", icon: Plug },
+  { label: "Accuracy", href: "#top", icon: Target },
 ];
 
 const COMPANY_LINKS = [
@@ -68,6 +100,36 @@ const RESOURCES_PATHS = [
 ];
 const NEWSROOM_PATHS = ["/updates", "/proof-ai-works-in-the-public-sector"];
 
+/** One row in the mobile menu — same active/icon shape as NavbarLink and NavDropdown's items, just stacked instead of inline. */
+function MobileNavLink({
+  href,
+  active,
+  icon: Icon,
+  className,
+  children,
+}: {
+  href: string;
+  active?: boolean;
+  icon?: LucideIcon;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      aria-current={active ? "page" : undefined}
+      className={cn(
+        "flex items-center gap-2.5 rounded-md px-3 py-2.5 text-sm font-medium transition-colors hover:bg-hover",
+        active ? "text-brand-accent" : "text-secondary hover:text-primary",
+        className,
+      )}
+    >
+      {Icon ? <Icon aria-hidden="true" className="size-4 shrink-0 text-brand-accent" /> : null}
+      {children}
+    </a>
+  );
+}
+
 export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAware?: boolean; overDarkHero?: boolean }) {
   const { pathname } = useLocation();
   const companyLinks = COMPANY_LINKS.map((item) => ({
@@ -75,6 +137,7 @@ export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAwa
     active:
       item.href === "/updates" ? NEWSROOM_PATHS.includes(pathname) : item.href === pathname,
   }));
+  const platformActive = pathname === "/landing";
 
   return (
     <Navbar contentClassName="mx-auto max-w-6xl" sectionAware={sectionAware} overDarkHero={overDarkHero}>
@@ -82,7 +145,13 @@ export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAwa
         <Logo />
       </NavbarBrand>
       <NavbarLinks>
-        <NavDropdown label="Platform" items={PLATFORM_LINKS} active={pathname === "/landing"} />
+        <NavDropdown
+          label="Platform"
+          items={PLATFORM_LINKS}
+          secondaryItems={PLATFORM_SECONDARY_LINKS}
+          variant="mega"
+          active={platformActive}
+        />
         <NavbarLink href="/client-stories" active={CLIENT_STORIES_PATHS.includes(pathname)}>
           Client Stories
         </NavbarLink>
@@ -109,7 +178,77 @@ export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAwa
         <Button size="sm" asChild>
           <a href="/demo">Book a demo</a>
         </Button>
+        <NavbarMobileTrigger />
       </NavbarActions>
+      {/* Mobile/tablet substitute for NavbarLinks above (which is lg:hidden).
+          Every row — plain link or dropdown trigger — shares MobileNavLink's
+          exact text style (font-sans text-sm font-medium) so the list reads
+          as one consistent set; only the two that are DROPDOWNS on desktop
+          (Platform, Company) differ, and only by the trailing chevron +
+          being collapsed until tapped, not by how their own label looks.
+          `font-sans` on the triggers isn't decorative: AccordionTrigger's
+          Radix wrapper renders as an <h3>, and this app's global base layer
+          puts every h1–h4 in the Lora serif display face — without an
+          explicit reset here, "Platform"/"Company" would silently render in
+          a different typeface than every other row. */}
+      <NavbarMobileMenu className="flex flex-col gap-0.5">
+        <Accordion type="single" collapsible>
+          <AccordionItem value="platform" className="border-none">
+            <AccordionTrigger
+              className={cn(
+                "rounded-md px-3 py-2.5 font-sans text-sm font-medium hover:bg-hover",
+                platformActive ? "text-brand-accent" : "text-secondary hover:text-primary",
+              )}
+            >
+              Platform
+            </AccordionTrigger>
+            <AccordionContent className="flex flex-col gap-0.5 p-0 pb-1">
+              {[...PLATFORM_LINKS, ...PLATFORM_SECONDARY_LINKS].map((item) => (
+                <MobileNavLink key={item.label} href={item.href} icon={item.icon} className="pl-8">
+                  {item.label}
+                </MobileNavLink>
+              ))}
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+        <MobileNavLink href="/client-stories" active={CLIENT_STORIES_PATHS.includes(pathname)}>
+          Client Stories
+        </MobileNavLink>
+        <MobileNavLink href="/security" active={pathname === "/security"}>
+          Security
+        </MobileNavLink>
+        <MobileNavLink href="/resources" active={RESOURCES_PATHS.includes(pathname)}>
+          Resources
+        </MobileNavLink>
+        <Accordion type="single" collapsible>
+          <AccordionItem value="company" className="border-none">
+            <AccordionTrigger
+              className={cn(
+                "rounded-md px-3 py-2.5 font-sans text-sm font-medium hover:bg-hover",
+                companyLinks.some((item) => item.active) ? "text-brand-accent" : "text-secondary hover:text-primary",
+              )}
+            >
+              Company
+            </AccordionTrigger>
+            <AccordionContent className="flex flex-col gap-0.5 p-0 pb-1">
+              {companyLinks.map((item) => (
+                <MobileNavLink key={item.label} href={item.href} active={item.active} className="pl-8">
+                  {item.label}
+                </MobileNavLink>
+              ))}
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+        {/* Below `sm` (640px), NavbarActions' own "Sign in" link is `hidden`
+            with nothing standing in for it — the same gap NavbarMobileTrigger
+            fixed for NavbarLinks. `sm:hidden` here is the exact mirror of that
+            link's `sm:block`: this row only exists in the width range where
+            the standalone one has already disappeared, so there's never a
+            duplicate. */}
+        <MobileNavLink href="#top" className="sm:hidden">
+          Sign in
+        </MobileNavLink>
+      </NavbarMobileMenu>
     </Navbar>
   );
 }
@@ -183,30 +322,37 @@ export function IntelligenceLayer() {
 
 const CAPABILITIES = [
   {
-    icon: MessageSquare,
-    title: "Chat",
-    desc: "Ask anything across every file your government has ever filed. Cited to the page, paragraph, and vote.",
+    icon: Building2,
+    title: "Citywide AI",
+    desc: "One model grounded across every department — trained on your government's full record, not just one office's files.",
+    href: "/citywide-ai",
   },
   {
-    icon: FileText,
-    title: "Reports",
-    desc: "Staff reports, planning findings, and procurement memos drafted in your county's format and tone.",
+    icon: LandPlot,
+    title: "AI for Community Development",
+    desc: "Permitting, zoning, and planning answers grounded in your code, GIS, and parcel history.",
+    href: "/community-development-ai",
   },
   {
-    icon: Workflow,
-    title: "Workflows",
-    desc: "Pre-built agents for the work your office already does — code lookup, parcel research, RFP drafting.",
+    icon: FileSignature,
+    title: "AI for Procurement & Contracts",
+    desc: "RFP drafting, contract review, and vendor history — cited to your own procurement record.",
+    href: "/procurement-contracts-ai",
   },
   {
-    icon: Presentation,
-    title: "Briefings",
-    desc: "Hand Madison an agenda packet — get a five-minute briefing per item with cited history and prior votes.",
+    icon: FileSearch,
+    title: "AI for Public Records Requests",
+    desc: "AI-assisted PRA fulfillment, from intake to response letter, grounded in the record you already hold.",
+    href: "/public-records-requests-ai",
   },
-  {
-    icon: BarChart3,
-    title: "Analysis",
-    desc: "Fiscal impact models, comparable-jurisdiction analysis, and trend reports across your corpus.",
-  },
+];
+
+// Rendered below the card grid, not as cards themselves — Integrations and
+// Accuracy are cross-cutting properties of the platform rather than
+// departmental modules, so they read as a lighter-weight link row.
+const CAPABILITIES_LINKS = [
+  { label: "Integrations", href: "#top", icon: Plug },
+  { label: "Accuracy", href: "#top", icon: Target },
 ];
 
 export function Capabilities() {
@@ -220,24 +366,18 @@ export function Capabilities() {
               Give an assistant to everyone on your staff.
             </h2>
           </div>
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
-            <p className="max-w-2xl text-lg text-secondary">
-              One platform, five jobs — powered by department-specific models
-              trained on your government&rsquo;s record.
-            </p>
-            <a
-              href="/community-development-ai"
-              className="inline-flex items-center gap-1.5 whitespace-nowrap pb-1 font-semibold text-brand-accent"
-            >
-              See the full platform <ArrowRight className="size-4" />
-            </a>
-          </div>
+          <p className="mb-10 max-w-2xl text-lg text-secondary">
+            One platform, four modules — powered by department-specific
+            models trained on your government&rsquo;s record.
+          </p>
         </Reveal>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {CAPABILITIES.map((cap, i) => (
             <Reveal key={cap.title} delay={i * 60}>
-              {/* Non-interactive: a static summary tile, not a link. */}
-              <div className="flex h-full flex-col rounded-2xl border border-active bg-surface p-5">
+              <a
+                href={cap.href}
+                className="flex h-full flex-col rounded-2xl border border-active bg-surface p-5 transition-transform hover:-translate-y-1"
+              >
                 {/* Icon chip — a small gradient tile rather than a flat rectangle,
                     with a soft duplicate icon behind the main glyph for depth. */}
                 <div className="relative mb-5 flex size-14 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-brand to-brand-hover shadow-sm">
@@ -250,29 +390,31 @@ export function Capabilities() {
                 <div className="mb-1.5 text-lg font-bold tracking-tight text-primary">
                   {cap.title}
                 </div>
-                <p className="flex-1 text-sm leading-relaxed text-secondary">
+                <p className="mb-4 flex-1 text-sm leading-relaxed text-secondary">
                   {cap.desc}
                 </p>
-              </div>
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
+                  Explore <ArrowRight className="size-4" />
+                </span>
+              </a>
             </Reveal>
           ))}
-          <Reveal delay={CAPABILITIES.length * 60}>
-            <a
-              href="/community-development-ai"
-              className="light flex h-full flex-col items-start justify-center rounded-2xl bg-brand-subtle p-5 transition-transform hover:-translate-y-1"
-            >
-              <span className="mb-5 flex size-14 items-center justify-center rounded-2xl bg-brand text-brand-fg">
-                <LayoutDashboard className="size-6" />
-              </span>
-              <span className="mb-1.5 text-lg font-bold tracking-tight text-primary">
-                Explore the platform
-              </span>
-              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
-                See every capability <ArrowRight className="size-4" />
-              </span>
-            </a>
-          </Reveal>
         </div>
+        <Reveal delay={CAPABILITIES.length * 60}>
+          <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-default pt-8">
+            <span className="text-sm text-muted">Also part of the platform:</span>
+            {CAPABILITIES_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="inline-flex items-center gap-1.5 font-semibold text-brand-accent"
+              >
+                <link.icon aria-hidden="true" className="size-4" />
+                {link.label} <ArrowRight className="size-4" />
+              </a>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -792,10 +934,10 @@ const FOOTER_COLUMNS = [
   {
     title: "platform",
     links: [
-      { label: "Citywide model", href: "#top" },
-      { label: "FOIA / Public Records", href: "#top" },
+      { label: "Citywide model", href: "/citywide-ai" },
+      { label: "FOIA / Public Records", href: "/public-records-requests-ai" },
       { label: "Planning & Community Dev", href: "/community-development-ai" },
-      { label: "Procurement & Contracts", href: "#top" },
+      { label: "Procurement & Contracts", href: "/procurement-contracts-ai" },
     ],
   },
   {

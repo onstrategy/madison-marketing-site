@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Menu, X } from "lucide-react";
 
 import { cn } from "../ui/utils";
 
@@ -26,6 +27,28 @@ const SCROLL_THRESHOLD = 8;
 // Where we probe for the section sitting behind the bar — far enough below the
 // fixed row to hit page content rather than the bar itself.
 const SECTION_PROBE_Y = 100;
+
+// Below `lg`, NavbarLinks (the center link cluster) is hidden outright with no
+// substitute — a caller who never adds the pieces below simply loses every
+// link but the brand and NavbarActions on mobile/tablet. NavbarMobileTrigger
+// + NavbarMobileMenu are that substitute: a hamburger toggle and the panel it
+// opens, sharing open/close state through this context so they can be placed
+// independently (trigger inside NavbarActions, menu as a sibling of
+// NavbarLinks) while staying in sync.
+const NavbarMobileContext = React.createContext<{
+  open: boolean;
+  setOpen: (open: boolean) => void;
+} | null>(null);
+
+function useNavbarMobile() {
+  const ctx = React.useContext(NavbarMobileContext);
+  if (!ctx) {
+    throw new Error(
+      "NavbarMobileTrigger and NavbarMobileMenu must be rendered inside <Navbar>.",
+    );
+  }
+  return ctx;
+}
 
 interface NavbarProps extends React.ComponentProps<"header"> {
   /** Extra classes for the inner <nav> row — override width/gutters here. */
@@ -60,6 +83,8 @@ function Navbar({
   // into state. `overDarkHero` is applied during render, in `themeScope`.
   const [scrolled, setScrolled] = React.useState(false);
   const [sectionIsDark, setSectionIsDark] = React.useState(false);
+  // The mobile menu's own open/closed state — see NavbarMobileContext above.
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   // `sectionAware` gates the (layout-forcing) section probe. Held in a ref so
   // the listener is a plain mount-time subscription: flipping the flag must not
@@ -88,7 +113,16 @@ function Navbar({
       // `.dark` as a class selector, not a `[class*='dark']` substring match:
       // a section named e.g. "darkroom" must not count, and a `dark` scope on
       // any ancestor should — not only on a <section>.
-      setSectionIsDark(!!el?.closest(".dark"));
+      const darkAncestor = el?.closest(".dark");
+      // A `dark` scope alone isn't enough: a small contained card (a quote
+      // box, a stats plate) can carry `dark` while sitting on an otherwise
+      // light section, and the bar shouldn't flip for that — only for an
+      // actual full-bleed dark section passing underneath. Distinguish the
+      // two by width: a real section spans (near enough) the full viewport;
+      // a contained card doesn't. `-2` absorbs sub-pixel/scrollbar rounding.
+      const isFullBleed =
+        !!darkAncestor && darkAncestor.getBoundingClientRect().width >= window.innerWidth - 2;
+      setSectionIsDark(isFullBleed);
     };
 
     const onScroll = () => {
@@ -104,6 +138,17 @@ function Navbar({
     };
   }, []);
 
+  // Lock page scroll behind the open mobile menu — otherwise the page content
+  // scrolls underneath the (non-full-height) panel, which reads as broken.
+  React.useEffect(() => {
+    if (!mobileOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [mobileOpen]);
+
   // Resolved during render rather than stored: when `sectionAware`, the bar
   // follows the measured section; otherwise `overDarkHero` scopes the still-
   // transparent bar dark until it goes solid on scroll.
@@ -116,26 +161,28 @@ function Navbar({
       : undefined;
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-sticky border-b transition-colors",
-        scrolled
-          ? "border-default bg-app/95 backdrop-blur"
-          : "border-transparent",
-        themeScope,
-        className,
-      )}
-      {...props}
-    >
-      <nav
+    <NavbarMobileContext.Provider value={{ open: mobileOpen, setOpen: setMobileOpen }}>
+      <header
         className={cn(
-          "grid grid-cols-[1fr_auto_1fr] items-center px-gutter py-4 lg:px-0",
-          contentClassName,
+          "fixed inset-x-0 top-0 z-sticky border-b transition-colors",
+          scrolled || mobileOpen
+            ? "border-default bg-app/95 backdrop-blur"
+            : "border-transparent",
+          themeScope,
+          className,
         )}
+        {...props}
       >
-        {children}
-      </nav>
-    </header>
+        <nav
+          className={cn(
+            "relative grid grid-cols-[1fr_auto_1fr] items-center px-gutter py-4 lg:px-0",
+            contentClassName,
+          )}
+        >
+          {children}
+        </nav>
+      </header>
+    </NavbarMobileContext.Provider>
   );
 }
 
@@ -198,4 +245,92 @@ function NavbarActions({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-export { Navbar, NavbarBrand, NavbarLinks, NavbarLink, NavbarActions };
+/**
+ * The hamburger/close toggle for the mobile menu below. Place it inside
+ * `<NavbarActions>` (after the CTA is the usual spot) — it's `lg:hidden`
+ * itself, so it only ever shows up where NavbarLinks is actually missing.
+ */
+function NavbarMobileTrigger({ className, ...props }: React.ComponentProps<"button">) {
+  const { open, setOpen } = useNavbarMobile();
+  return (
+    <button
+      type="button"
+      aria-expanded={open}
+      aria-label={open ? "Close menu" : "Open menu"}
+      onClick={() => setOpen(!open)}
+      className={cn(
+        "flex size-9 shrink-0 items-center justify-center rounded-md text-primary transition-colors hover:bg-hover lg:hidden",
+        className,
+      )}
+      {...props}
+    >
+      {open ? <X aria-hidden="true" className="size-5" /> : <Menu aria-hidden="true" className="size-5" />}
+    </button>
+  );
+}
+
+interface NavbarMobileMenuProps extends React.ComponentProps<"div"> {
+  /**
+   * Theme scope for the open panel. Defaults to `"light"` — same call as
+   * NavDropdown's `contentTheme`: the nav sits over dark heroes and flips
+   * itself dark, but its menus (this one included) stay a consistent light
+   * floating surface. Pass `"dark"` or `"inherit"` to opt out.
+   */
+  contentTheme?: "light" | "dark" | "inherit";
+}
+
+/**
+ * The panel NavbarMobileTrigger opens — the mobile/tablet substitute for
+ * NavbarLinks. Renders as a sibling of NavbarLinks inside `<Navbar>`; only
+ * mounts while open, and is `lg:hidden` itself so it can never show up
+ * alongside the desktop link row. A click anywhere inside on an `<a>` closes
+ * it (event delegation, so callers don't have to wire `onClick` on every
+ * link they pass in), and so does Escape.
+ */
+function NavbarMobileMenu({
+  className,
+  contentTheme = "light",
+  children,
+  ...props
+}: NavbarMobileMenuProps) {
+  const { open, setOpen } = useNavbarMobile();
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open, setOpen]);
+
+  if (!open) return null;
+
+  return (
+    <div
+      ref={ref}
+      onClick={(e) => {
+        if ((e.target as HTMLElement).closest("a")) setOpen(false);
+      }}
+      className={cn(
+        contentTheme !== "inherit" && contentTheme,
+        "absolute inset-x-0 top-full max-h-[calc(100vh-5rem)] overflow-y-auto border-b border-default bg-app px-gutter py-4 shadow-lg lg:hidden",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
+
+export {
+  Navbar,
+  NavbarBrand,
+  NavbarLinks,
+  NavbarLink,
+  NavbarActions,
+  NavbarMobileTrigger,
+  NavbarMobileMenu,
+};

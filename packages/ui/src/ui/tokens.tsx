@@ -125,15 +125,15 @@ export interface TokenDictionary {
 export const TOKENS: TokenDictionary = {
   backgrounds: [
     { name: "--bg-app", label: "App / Canvas", light: "#EAE5DF", dark: "#1B2732", desc: "The absolute bottom layer — Madison Warm White (Dark Navy in dark)." },
-    { name: "--bg-panel", label: "Panel / Sidebar", light: "#F2EEE8", dark: "#202E3B", desc: "Structural sidebars and headers." },
-    { name: "--bg-surface", label: "Surface / Card", light: "#FBF9F6", dark: "#293845", desc: "Nested cards and popovers — lifts off the warm canvas." },
+    { name: "--bg-panel", label: "Panel / Inset", light: "#F2EFEC", dark: "#202E3B", desc: "Structural sidebars and headers; also the approved darker inset-card treatment on bg-surface sections." },
+    { name: "--bg-surface", label: "Surface / Card", light: "#FBFAF9", dark: "#293845", desc: "Nested cards and popovers — lifts off the warm canvas." },
     { name: "--bg-stripe", label: "Zebra Stripe", light: "#E5E0D8", dark: "#1F2C37", desc: "Alternating row background — subtle offset from bg-surface." },
     { name: "--bg-hover", label: "Hover State", light: "#E1DBD1", dark: "#33424F", desc: "Subtle background for interactive elements." },
     { name: "--bg-depth", label: "Depth (Deep Dust)", light: "#8A3A28", dark: "#9C4835", desc: "RESTRICTED — Deep Dust depth accent for hover/focus fills. Never a primary surface; max 10%; never paired with Terracotta or Neon." },
-    { name: "--bg-row-selected", label: "Row Selected", light: blendHex("#202E3B", "#FBF9F6", 0.05), dark: blendHex("#EAE5DF", "#293845", 0.05), desc: "Selected row — 5% foundation over surface." },
+    { name: "--bg-row-selected", label: "Row Selected", light: blendHex("#202E3B", "#FBFAF9", 0.05), dark: blendHex("#EAE5DF", "#293845", 0.05), desc: "Selected row — 5% foundation over surface." },
     { name: "--bg-row-selected-stripe", label: "Row Selected Stripe", light: blendHex("#202E3B", "#E5E0D8", 0.05), dark: blendHex("#EAE5DF", "#1F2C37", 0.05), desc: "Selected row stripe — 5% foundation over stripe." },
     { name: "--bg-row-selected-hover", label: "Row Selected Hover", light: blendHex("#202E3B", "#E1DBD1", 0.1), dark: blendHex("#EAE5DF", "#33424F", 0.1), desc: "Selected row hover — 10% foundation over hover." },
-    { name: "--bg-row-active", label: "Row Active", light: blendHex("#202E3B", "#FBF9F6", 0.1), dark: blendHex("#EAE5DF", "#293845", 0.1), desc: "Active row — 10% foundation over surface." },
+    { name: "--bg-row-active", label: "Row Active", light: blendHex("#202E3B", "#FBFAF9", 0.1), dark: blendHex("#EAE5DF", "#293845", 0.1), desc: "Active row — 10% foundation over surface." },
     { name: "--bg-row-active-stripe", label: "Row Active Stripe", light: blendHex("#202E3B", "#E5E0D8", 0.1), dark: blendHex("#EAE5DF", "#1F2C37", 0.1), desc: "Active row stripe — 10% foundation over stripe." },
     // Deliberately OUTSIDE the warm-neutral family and identical in both themes:
     // a true #FFF plate for hosting third-party artwork (client logos, partner
@@ -148,7 +148,7 @@ export const TOKENS: TokenDictionary = {
   ],
   typography: [
     { name: "--text-primary", label: "Primary", light: "#2C2925", dark: "#EAE5DF", desc: "Headings and main body text — Madison warm near-black." },
-    { name: "--text-secondary", label: "Secondary", light: "#5D564C", dark: "#B7B0A5", desc: "Metadata and secondary labels." },
+    { name: "--text-secondary", label: "Secondary", light: "#5D564C", dark: "#BFD4DE", desc: "Metadata, secondary labels, and body copy — on dark backgrounds only, always this pale blue." },
     { name: "--text-muted", label: "Muted / Tertiary", light: "#675F54", dark: "#B2AB9F", desc: "Disabled states and subtle hints — AA-safe on every neutral surface." },
   ],
   brand: [

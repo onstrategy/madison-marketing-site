@@ -87,24 +87,31 @@
 /* Titles (h1–h6): line-height is exactly 120% of the heading's OWN rendered
    font-size, rounded down to the nearest pixel (e.g. a 72px title gets 86px,
    not 86.4px) — a fixed formula, not a percentage of the shared type-scale
-   step's own line-height. Matching tag + size class together (rather than a
-   bare tag selector) keeps this proportional to whatever size class the
-   heading actually carries, since a heading in this codebase isn't always
-   sized at its "canonical" step (e.g. a sub-feature `<h2 className="text-2xl">`
-   next to a real section `<h2 className="text-4xl">`). The compound
-   selector's specificity already out-ranks the plain `.text-*` utility class
-   alone, so no `!important` is needed. Any non-heading element merely sized
-   with a `text-*` class is untouched and keeps the token's normal line-height.
+   step's own line-height.
 
-   ESCAPE HATCH — every rule below is guarded with `:not([class*="leading-"])`.
-   This layer is declared after Tailwind's, so the emitted cascade order is
-   `… components, utilities, design-system, heading-leading`. A later layer
-   beats an earlier one REGARDLESS of specificity, so without that guard an
-   author writing `<h2 className="text-4xl leading-tight">` would silently get
-   nothing — the `leading-tight` utility lives in `utilities` and would lose.
-   The guard makes any explicit `leading-*` on a heading opt that heading out
-   of the formula, which is what an author writing it plainly intends. Don't
-   drop it; the failure it prevents is invisible and un-debuggable.
+   WHY `1em` AND NOT A PER-`.text-*`-CLASS SELECTOR (bug fixed here — was
+   previously one selector per step, e.g. `.text-3xl { line-height: round(down,
+   calc(var(--text-3xl) * 1.2), 1px) }`). `em` in a `line-height` declaration
+   resolves against the element's OWN computed font-size at whatever
+   breakpoint is currently active, so it tracks a *responsive* size pair like
+   `text-3xl md:text-4xl` for free. A class-keyed selector can't: Tailwind
+   emits `md:text-4xl` as its own literal, breakpoint-gated class name, so an
+   element carrying `text-3xl md:text-4xl` only ever matches the `.text-3xl`
+   selector — at `md+` widths the font-size visually became the *larger* step
+   while the line-height formula stayed pinned to the *smaller* one's number,
+   squashing a wrapped heading's second line up into the first. `1em` has no
+   class list to fall out of sync with; it just reads whatever font-size is
+   actually rendering.
+
+   ESCAPE HATCH — guarded with `:not([class*="leading-"])`. This layer is
+   declared after Tailwind's, so the emitted cascade order is `… components,
+   utilities, design-system, heading-leading`. A later layer beats an earlier
+   one REGARDLESS of specificity, so without that guard an author writing
+   `<h2 className="text-4xl leading-tight">` would silently get nothing — the
+   `leading-tight` utility lives in `utilities` and would lose. The guard
+   makes any explicit `leading-*` on a heading opt that heading out of the
+   formula, which is what an author writing it plainly intends. Don't drop it;
+   the failure it prevents is invisible and un-debuggable.
 
    RELATIONSHIP TO THE `--leading-*` TOKEN SCALE. Two mechanisms set heading
    line-height and they are deliberately layered, not competing:
@@ -121,57 +128,7 @@
    If that default ever needs to change, change the 1.2 here — not the type
    step, and not `--leading-tight`. */
 @layer heading-leading {
-  :is(h1, h2, h3, h4, h5, h6).text-2xs:not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-2xs) * 1.2), 1px);
-  }
-  :is(h1, h2, h3, h4, h5, h6).text-xs:not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-xs) * 1.2), 1px);
-  }
-  :is(h1, h2, h3, h4, h5, h6).text-sm:not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-sm) * 1.2), 1px);
-  }
-  :is(h1, h2, h3, h4, h5, h6).text-base:not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-base) * 1.2), 1px);
-  }
-  :is(h1, h2, h3, h4, h5, h6).text-lg:not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-lg) * 1.2), 1px);
-  }
-  :is(h1, h2, h3, h4, h5, h6).text-xl:not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-xl) * 1.2), 1px);
-  }
-  :is(h1, h2, h3, h4, h5, h6).text-2xl:not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-2xl) * 1.2), 1px);
-  }
-  :is(h1, h2, h3, h4, h5, h6).text-3xl:not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-3xl) * 1.2), 1px);
-  }
-  :is(h1, h2, h3, h4, h5, h6).text-4xl:not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-4xl) * 1.2), 1px);
-  }
-  :is(h1, h2, h3, h4, h5, h6).text-5xl:not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-5xl) * 1.2), 1px);
-  }
-  :is(h1, h2, h3, h4, h5, h6).text-display:not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-display) * 1.2), 1px);
-  }
-  /* A heading with no explicit text-* class (relying on the browser's UA
-     default size) still gets its tag's own canonical step's formula. */
-  h6:not([class*="text-"]):not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-lg) * 1.2), 1px);
-  }
-  h5:not([class*="text-"]):not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-xl) * 1.2), 1px);
-  }
-  h4:not([class*="text-"]):not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-2xl) * 1.2), 1px);
-  }
-  h3:not([class*="text-"]):not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-3xl) * 1.2), 1px);
-  }
-  h2:not([class*="text-"]):not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-4xl) * 1.2), 1px);
-  }
-  h1:not([class*="text-"]):not([class*="leading-"]) {
-    line-height: round(down, calc(var(--text-5xl) * 1.2), 1px);
+  :is(h1, h2, h3, h4, h5, h6):not([class*="leading-"]) {
+    line-height: round(down, calc(1em * 1.2), 1px);
   }
 }
