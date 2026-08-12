@@ -11,7 +11,12 @@
   # gitignored packages/ui/dist/theme.css that the stylesheet @imports. A bare
   # `vite build` inside apps/site would fail on the missing CSS import.
   command = "bunx turbo run build --filter=@madison/site"
-  publish = "apps/site/dist"
+  publish = "apps/site/dist/client"
+
+[build.processing.html]
+  # React Router prerenders non-root pages as `<path>/index.html`. Keep Netlify's
+  # public URL normalization explicit so `/about-us` redirects to `/about-us/`.
+  pretty_urls = true
 
 [build.environment]
   # BUN_VERSION is the knob Netlify honors. The root package.json's
@@ -33,18 +38,13 @@
   status = 301
   force = true
 
-# NO SPA CATCH-ALL. There used to be a mandatory `/*` → `/index.html` 200 rule
-# here, because only /index.html existed on disk and every cross-page link is a
-# plain <a href="/slug"> — a full browser load straight to a deep path.
-#
-# The build now prerenders one real index.html per route
-# (apps/site/scripts/prerender.ts), so Netlify serves each deep link as a file
-# and the rule is not just unnecessary but harmful: it rewrote every unknown
-# path to a 200, so /typo returned "200 OK" with a 404 page — a soft 404 that
-# Google flags and that the Webflow site this replaces never had.
-#
-# With no catch-all, unmatched paths fall through to dist/404.html with a real
-# HTTP 404. Do not re-add a `/*` rule without deleting the prerender step first.
+# React Router emits a generic SPA fallback as well as one real index.html per
+# declared route. Do not route to the SPA fallback: unknown URLs must preserve
+# their URL and return the prerendered Madison 404 with a real HTTP 404 status.
+[[redirects]]
+  from = "/*"
+  to = "/404/"
+  status = 404
 
 # ─── Headers ──────────────────────────────────────────────────────────────────
 
@@ -70,7 +70,7 @@
 # When the client deploys from their own account:
 #   1. delete this block,
 #   2. flip apps/site/public/robots.txt to `Allow: /`,
-#   3. drop the <meta name="robots"> tag in apps/site/index.html.
+#   3. set SITE_WIDE_NOINDEX to false in apps/site/src/site-meta.ts.
 # See docs/publishing.md § "Handover: going live on the client's account".
 [[headers]]
   for = "/*"

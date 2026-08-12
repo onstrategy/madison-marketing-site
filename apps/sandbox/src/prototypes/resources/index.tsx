@@ -28,7 +28,7 @@ const WEBINAR_RESOURCES: ResourceCard[] = [
   {
     title: "The Director's Playbook to Put Your AI Assistant to Work",
     description: "Five real work tasks, with downloadable Task Cards for daily use.",
-    href: "/director-of-ai-assistant",
+    href: "/director-of-ai-assistant/",
   },
   {
     title: "Turning Your ACFR into Indicators, with GFOA",
@@ -84,7 +84,7 @@ const RESPONSIBLE_AI_RESOURCES: ResourceCard[] = [
   {
     title: "How to Develop Your Government's AI Guiding Principles",
     description: "A framework for articulating responsible AI principles.",
-    href: "/resources/how-to-develop-your-governments-ai-guiding-principles",
+    href: "/resources/how-to-develop-your-governments-ai-guiding-principles/",
   },
   {
     title: "How to Select Your AI Governance Structure",
@@ -237,7 +237,7 @@ function CtaSection() {
             Fill in the form and our team will get back to you within one business day.
           </p>
           <Button size="lg" asChild>
-            <a href="/demo">
+            <a href="/demo/">
               Book a demo <ArrowRight className="size-4" />
             </a>
           </Button>

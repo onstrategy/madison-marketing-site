@@ -3,9 +3,8 @@ import { Button } from "@madison/ui/button";
 /**
  * Catch-all for paths that don't map to a prototype slug.
  *
- * Note this always arrives with HTTP 200: the Netlify SPA fallback rewrites
- * every unmatched path to index.html so deep links survive a refresh, which
- * means unknown paths are "soft" 404s. Documented in docs/publishing.md.
+ * React Router prerenders this view at `/404/`. Netlify rewrites unmatched
+ * requests to that file with status 404, preserving the requested URL.
  */
 export function NotFound() {
   return (

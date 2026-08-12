@@ -1,6 +1,5 @@
 import { Suspense, type ComponentType, type LazyExoticComponent } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { prototypes } from "@madison/sandbox/prototypes";
+import { Routes, Route, Navigate } from "react-router";
 import Landing from "@madison/sandbox/prototypes/landing";
 import { NotFound } from "./NotFound";
 
@@ -22,14 +21,9 @@ export type SitePage = {
 };
 
 /**
- * The route table, with no router around it — so the browser can mount it under
- * a `BrowserRouter` and the prerender step under a `StaticRouter` (see
- * ./entry-server.tsx) without the two trees drifting apart. They must render
- * identical DOM or hydration will throw away the prerendered HTML.
- *
- * `pages` is injected rather than imported for the same reason: the client passes
- * the lazy registry (code-split), the prerender passes the eager one, and the
- * JSX around them stays one definition.
+ * The route table lives inside React Router Framework Mode's catch-all route.
+ * `pages` remains injected so the shell owns routing while the sandbox registry
+ * remains the source of page components and public paths.
  */
 export function AppRoutes({ pages }: { pages: SitePage[] }) {
   return (
@@ -38,7 +32,7 @@ export function AppRoutes({ pages }: { pages: SitePage[] }) {
           a chunk round-trip. Rollup hoists a module that is both statically
           and dynamically imported, so this doesn't duplicate the landing code. */}
       <Route path="/" element={<Landing />} />
-      {/* landing/sections.tsx hardcodes href="/landing" on the brand mark.
+      {/* landing/sections.tsx links to `/landing/` on the brand mark.
           Canonicalize to `/`. Netlify serves a 301 for real requests; this
           covers dev, `vite preview`, and any client-side navigation. */}
       <Route path="/landing" element={<Navigate to="/" replace />} />
@@ -62,13 +56,5 @@ export function AppRoutes({ pages }: { pages: SitePage[] }) {
         ))}
       <Route path="*" element={<NotFound />} />
     </Routes>
-  );
-}
-
-export default function App() {
-  return (
-    <BrowserRouter>
-      <AppRoutes pages={prototypes} />
-    </BrowserRouter>
   );
 }

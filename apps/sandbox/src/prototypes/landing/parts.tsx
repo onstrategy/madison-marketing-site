@@ -34,8 +34,8 @@ interface RevealProps {
 
 /**
  * True when this document arrived as prerendered HTML rather than being booted
- * client-side: any server render, plus the published site, whose prerender step
- * stamps `data-prerendered` on <html> (apps/site/scripts/prerender.ts).
+ * client-side: any server render, plus the published site, whose React Router
+ * document keeps `data-prerendered` on <html> (apps/site/src/root.tsx).
  *
  * Reveal starting hidden is right for the client-rendered sandbox and wrong for a
  * prerendered page — the HTML that crawlers read and the browser paints first

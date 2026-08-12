@@ -468,7 +468,7 @@ function CtaSection({ data }: { data: ClientStoryData["cta"] }) {
           </h2>
           <p className="mt-4 text-pretty text-lg text-secondary">{data.description}</p>
           <Button size="lg" className="mt-8" asChild>
-            <a href="/demo">
+            <a href="/demo/">
               {data.primaryCta} <ArrowRight className="size-4" />
             </a>
           </Button>

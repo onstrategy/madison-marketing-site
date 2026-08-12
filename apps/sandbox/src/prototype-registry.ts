@@ -26,9 +26,8 @@ export type StructuredData =
 // The globs are relative to THIS file, so they resolve to
 // apps/sandbox/src/prototypes/* no matter which app's Vite root is compiling.
 //
-// Lazy on purpose: this module is imported by the *client* bundle, so every page
-// must stay code-split. The prerender step needs the opposite — see
-// ./prototype-registry.server.ts.
+// Lazy on purpose: this module is imported by the client bundle, so every page
+// stays code-split. React Router resolves these modules while prerendering.
 
 export type PrototypeMeta = {
   /** Shown in the sandbox gallery, and the basis of the published <title>. */
@@ -50,6 +49,8 @@ export type PrototypeMeta = {
   structuredData?: StructuredData;
   /** Keep out of sitemap.xml and mark noindex — kit demos and internal surfaces. */
   noindex?: boolean;
+  /** Keep the prototype in the sandbox gallery without publishing it as a site route. */
+  publish?: boolean;
 };
 
 export type PrototypeSummary = {
@@ -63,6 +64,7 @@ export type PrototypeSummary = {
   ogImage?: string;
   structuredData?: StructuredData;
   noindex?: boolean;
+  publish?: boolean;
 };
 
 export interface Prototype extends PrototypeSummary {
@@ -83,8 +85,9 @@ function slugFrom(path: string): string {
 }
 
 /**
- * Both apps and the prerender step must agree on a page's URL down to the
- * trailing slash, so the normalisation lives here rather than at each call site.
+ * Both apps must agree on a page's route identity, so normalisation lives here
+ * rather than at each call site. The Netlify deployment's public URL adds a
+ * trailing slash because React Router emits directory-index HTML.
  */
 export function resolvePath(slug: string, meta?: PrototypeMeta): string {
   const raw = meta?.path?.trim();
@@ -112,13 +115,14 @@ export const prototypes: Prototype[] = Object.keys(loaders)
       ogImage: meta?.ogImage,
       structuredData: meta?.structuredData,
       noindex: meta?.noindex,
+      publish: meta?.publish,
       Component: lazy(loaders[file]),
     };
   })
   .sort((a, b) => a.title.localeCompare(b.title));
 
 export const summaries: PrototypeSummary[] = prototypes.map(
-  ({ slug, path, title, description, seoTitle, ogImage, structuredData, noindex }) => ({
+  ({ slug, path, title, description, seoTitle, ogImage, structuredData, noindex, publish }) => ({
     slug,
     path,
     title,
@@ -127,5 +131,15 @@ export const summaries: PrototypeSummary[] = prototypes.map(
     ogImage,
     structuredData,
     noindex,
+    publish,
   }),
+);
+
+/** The subset mounted by the public site. Content collections own their routes separately. */
+export const sitePrototypes: Prototype[] = prototypes.filter(
+  ({ publish }) => publish !== false,
+);
+
+export const siteSummaries: PrototypeSummary[] = summaries.filter(
+  ({ publish }) => publish !== false,
 );

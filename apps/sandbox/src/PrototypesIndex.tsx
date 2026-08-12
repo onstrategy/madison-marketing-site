@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import type { PrototypeSummary } from "./prototype-registry";
 
 export function PrototypesIndex({

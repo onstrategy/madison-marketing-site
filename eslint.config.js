@@ -25,8 +25,9 @@ export default tseslint.config(
   {
     ignores: [
       "**/dist/**",
-      // @madison/site's prerender bundle — build output, same as dist.
-      "**/dist-ssr/**",
+      // Named build/audit outputs and React Router's generated route types.
+      "**/dist-*/**",
+      "**/.react-router/**",
       "**/node_modules/**",
       "**/storybook-static/**",
       "**/.turbo/**",

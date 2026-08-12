@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -50,25 +50,25 @@ import visionCollab from "./vision-collab.jpg";
 const PLATFORM_LINKS = [
   {
     label: "Citywide AI",
-    href: "/citywide-ai",
+    href: "/citywide-ai/",
     icon: Building2,
     description: "One model grounded across every department's record.",
   },
   {
     label: "AI for Community Development",
-    href: "/community-development-ai",
+    href: "/community-development-ai/",
     icon: LandPlot,
     description: "Permitting, zoning, and planning grounded in your GIS.",
   },
   {
     label: "AI for Procurement & Contracts",
-    href: "/procurement-contracts-ai",
+    href: "/procurement-contracts-ai/",
     icon: FileSignature,
     description: "RFP drafting and contract review, cited to your record.",
   },
   {
     label: "AI for Public Records Requests",
-    href: "/public-records-requests-ai",
+    href: "/public-records-requests-ai/",
     icon: FileSearch,
     description: "PRA fulfillment from intake to response letter.",
   },
@@ -82,9 +82,9 @@ const PLATFORM_SECONDARY_LINKS = [
 ];
 
 const COMPANY_LINKS = [
-  { label: "About us", href: "/about-us" },
-  { label: "Newsroom", href: "/updates" },
-  { label: "Contact", href: "/contact" },
+  { label: "About us", href: "/about-us/" },
+  { label: "Newsroom", href: "/updates/" },
+  { label: "Contact", href: "/contact/" },
 ];
 
 // Nav items don't map 1:1 onto route paths. The live site's IA is mixed: client
@@ -132,12 +132,15 @@ function MobileNavLink({
 
 export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAware?: boolean; overDarkHero?: boolean }) {
   const { pathname } = useLocation();
+  const activePath = pathname === "/" ? pathname : pathname.replace(/\/+$/, "");
   const companyLinks = COMPANY_LINKS.map((item) => ({
     ...item,
     active:
-      item.href === "/updates" ? NEWSROOM_PATHS.includes(pathname) : item.href === pathname,
+      item.href === "/updates/"
+        ? NEWSROOM_PATHS.includes(activePath)
+        : item.href.replace(/\/+$/, "") === activePath,
   }));
-  const platformActive = pathname === "/landing";
+  const platformActive = activePath === "/landing";
 
   return (
     <Navbar contentClassName="mx-auto max-w-6xl" sectionAware={sectionAware} overDarkHero={overDarkHero}>
@@ -152,14 +155,14 @@ export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAwa
           variant="mega"
           active={platformActive}
         />
-        <NavbarLink href="/client-stories" active={CLIENT_STORIES_PATHS.includes(pathname)}>
+        <NavbarLink href="/client-stories/" active={CLIENT_STORIES_PATHS.includes(activePath)}>
           Client Stories
         </NavbarLink>
-        <NavbarLink href="/security" active={pathname === "/security"}>
+        <NavbarLink href="/security/" active={activePath === "/security"}>
           Security
         </NavbarLink>
         <NavDropdown label="Company" items={companyLinks} active={companyLinks.some((item) => item.active)} />
-        <NavbarLink href="/resources" active={RESOURCES_PATHS.includes(pathname)}>
+        <NavbarLink href="/resources/" active={RESOURCES_PATHS.includes(activePath)}>
           Resources
         </NavbarLink>
       </NavbarLinks>
@@ -176,7 +179,7 @@ export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAwa
           Sign in
         </a>
         <Button size="sm" asChild>
-          <a href="/demo">Book a demo</a>
+          <a href="/demo/">Book a demo</a>
         </Button>
         <NavbarMobileTrigger />
       </NavbarActions>
@@ -211,13 +214,13 @@ export function Nav({ sectionAware = false, overDarkHero = false }: { sectionAwa
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-        <MobileNavLink href="/client-stories" active={CLIENT_STORIES_PATHS.includes(pathname)}>
+        <MobileNavLink href="/client-stories/" active={CLIENT_STORIES_PATHS.includes(activePath)}>
           Client Stories
         </MobileNavLink>
-        <MobileNavLink href="/security" active={pathname === "/security"}>
+        <MobileNavLink href="/security/" active={activePath === "/security"}>
           Security
         </MobileNavLink>
-        <MobileNavLink href="/resources" active={RESOURCES_PATHS.includes(pathname)}>
+        <MobileNavLink href="/resources/" active={RESOURCES_PATHS.includes(activePath)}>
           Resources
         </MobileNavLink>
         <Accordion type="single" collapsible>
@@ -325,25 +328,25 @@ const CAPABILITIES = [
     icon: Building2,
     title: "Citywide AI",
     desc: "One model grounded across every department — trained on your government's full record, not just one office's files.",
-    href: "/citywide-ai",
+    href: "/citywide-ai/",
   },
   {
     icon: LandPlot,
     title: "AI for Community Development",
     desc: "Permitting, zoning, and planning answers grounded in your code, GIS, and parcel history.",
-    href: "/community-development-ai",
+    href: "/community-development-ai/",
   },
   {
     icon: FileSignature,
     title: "AI for Procurement & Contracts",
     desc: "RFP drafting, contract review, and vendor history — cited to your own procurement record.",
-    href: "/procurement-contracts-ai",
+    href: "/procurement-contracts-ai/",
   },
   {
     icon: FileSearch,
     title: "AI for Public Records Requests",
     desc: "AI-assisted PRA fulfillment, from intake to response letter, grounded in the record you already hold.",
-    href: "/public-records-requests-ai",
+    href: "/public-records-requests-ai/",
   },
 ];
 
@@ -462,7 +465,7 @@ const STORY_TILES: StoryTile[] = [
     kind: "quote",
     line: "Every decision at our fingertips.",
     photo: PHOTOS.laptopsTable,
-    href: "/client-stories/city-of-corona",
+    href: "/client-stories/city-of-corona/",
   },
   {
     name: "Aspen, CO",
@@ -581,7 +584,7 @@ export function ClientStories() {
               Every customer is a community we serve.
             </h2>
             <a
-              href="/client-stories"
+              href="/client-stories/"
               className="whitespace-nowrap font-semibold text-brand-accent"
             >
               See all 60+ customers →
@@ -866,7 +869,7 @@ export function Security() {
                 records across tenants.
               </p>
               <a
-                href="/security"
+                href="/security/"
                 className="inline-flex items-center gap-1.5 font-semibold text-brand-accent"
               >
                 ↳ Read the Trust Center
@@ -911,12 +914,12 @@ export function FinalCta() {
         </p>
         <div className="flex flex-wrap justify-center gap-3.5">
           <Button size="lg" asChild>
-            <a href="/demo">
+            <a href="/demo/">
               Book a demo <ArrowRight className="size-4" />
             </a>
           </Button>
           <Button size="lg" variant="outline" className="bg-surface" asChild>
-            <a href="/contact">Talk to sales</a>
+            <a href="/contact/">Talk to sales</a>
           </Button>
         </div>
       </Reveal>
@@ -934,27 +937,27 @@ const FOOTER_COLUMNS = [
   {
     title: "platform",
     links: [
-      { label: "Citywide model", href: "/citywide-ai" },
-      { label: "FOIA / Public Records", href: "/public-records-requests-ai" },
-      { label: "Planning & Community Dev", href: "/community-development-ai" },
-      { label: "Procurement & Contracts", href: "/procurement-contracts-ai" },
+      { label: "Citywide model", href: "/citywide-ai/" },
+      { label: "FOIA / Public Records", href: "/public-records-requests-ai/" },
+      { label: "Planning & Community Dev", href: "/community-development-ai/" },
+      { label: "Procurement & Contracts", href: "/procurement-contracts-ai/" },
     ],
   },
   {
     title: "company",
     links: [
-      { label: "About Us", href: "/about-us" },
-      { label: "Newsroom", href: "/updates" },
-      { label: "Contact", href: "/contact" },
-      { label: "Client Stories", href: "/client-stories" },
+      { label: "About Us", href: "/about-us/" },
+      { label: "Newsroom", href: "/updates/" },
+      { label: "Contact", href: "/contact/" },
+      { label: "Client Stories", href: "/client-stories/" },
     ],
   },
   {
     title: "resources",
     links: [
-      { label: "Security", href: "/security" },
-      { label: "Trust Center", href: "/security" },
-      { label: "Docs", href: "/resources" },
+      { label: "Security", href: "/security/" },
+      { label: "Trust Center", href: "/security/" },
+      { label: "Docs", href: "/resources/" },
       { label: "Privacy", href: "#top" },
     ],
   },

@@ -408,13 +408,13 @@ function FinalCtaSection() {
           </p>
           <div className="flex flex-wrap justify-center gap-3.5">
             <Button size="lg" asChild>
-              <a href="/book-a-security-review">
+              <a href="/book-a-security-review/">
                 Schedule a security review <ArrowRight className="size-4" />
               </a>
             </Button>
             <Button size="lg" variant="outline" asChild>
               {/* No hosted asset yet — route the request through contact. */}
-              <a href="/contact">
+              <a href="/contact/">
                 Vendor fact sheet <Download className="size-4" />
               </a>
             </Button>

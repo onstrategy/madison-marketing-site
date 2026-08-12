@@ -5,30 +5,33 @@
   "type": "module",
   "description": "Madison's published marketing site — the production shell deployed to Netlify. Owns no page content: it mounts @madison/sandbox's prototypes at their public slugs.",
   "scripts": {
-    "dev": "vite",
-    "//build": "Client bundle → SSR bundle → prerender. The prerender step needs both: dist/index.html as its template and dist-ssr/entry-server.js to render from.",
-    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && bun run scripts/prerender.ts",
-    "build:seo-audit": "SEO_AUDIT=true VITE_SEO_AUDIT=true SITE_ORIGIN=http://127.0.0.1:4174 bun run build",
-    "typecheck": "tsc --noEmit",
+    "dev": "react-router dev",
+    "build": "react-router build",
+    "build:seo-audit": "SEO_AUDIT=true VITE_SEO_AUDIT=true SITE_ORIGIN=http://127.0.0.1:4174 react-router build",
+    "typegen": "react-router typegen",
+    "typecheck": "react-router typegen && tsc --noEmit",
     "test": "vitest run",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "preview:seo-audit": "vite preview --outDir dist-seo-audit --host 127.0.0.1 --port 4174",
-    "clean": "rm -rf dist dist-seo-audit dist-ssr"
+    "preview": "vite preview --outDir dist/client",
+    "preview:seo-audit": "vite preview --outDir dist-seo-audit/client --host 127.0.0.1 --port 4174",
+    "clean": "rm -rf dist dist-seo-audit .react-router"
   },
   "dependencies": {
     "@madison/sandbox": "workspace:*",
     "@madison/ui": "workspace:*",
+    "@react-router/node": "7.18.2",
+    "isbot": "^5.1.35",
     "lucide-react": "^0.575.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.9.4"
+    "react-router": "7.18.2"
   },
   "devDependencies": {
+    "@react-router/dev": "7.18.2",
     "@tailwindcss/vite": "^4.2.1",
+    "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.0.4",
     "tailwindcss": "^4.2.1",
     "tw-animate-css": "^1.4.0",
     "typescript": "~5.9.3",

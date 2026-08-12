@@ -18,7 +18,8 @@ not a localhost URL.
 |---|---|---|
 | `/` | the prototype gallery | the **landing page** |
 | `/landing` | the landing page | **301 → `/`** |
-| `/<slug>` | every prototype | every prototype |
+| `/<slug>` | every prototype | every published prototype at `/<slug>/` |
+| content entry | n/a | its explicit JSON `path` |
 | gallery | yes | **no** — it's an internal surface |
 | page transitions | yes | no (every link is a full page load anyway) |
 | unknown path | React Router falls through | on-token 404 page |
@@ -30,7 +31,7 @@ That's the whole design. **If you find yourself copying a page into `apps/site/s
 
 ```toml
 command = "bunx turbo run build --filter=@madison/site"
-publish = "apps/site/dist"
+publish = "apps/site/dist/client"
 ```
 
 The build **must** run from the repo root through turbo. `packages/ui/dist/theme.css` is generated
@@ -41,16 +42,27 @@ from `tokens.tsx` and is gitignored, so it doesn't exist on a fresh clone — an
 @madison/ui#build  →  @madison/sandbox#build  →  @madison/site#build
 ```
 
-A bare `vite build` inside `apps/site` would fail on the missing CSS import.
+A bare React Router build inside `apps/site` would fail on the missing CSS import.
 
 `base` is deliberately **unset** (the repo root). Setting it to `apps/site` would make Netlify
 install from inside the workspace and fail to resolve `@madison/ui` / `@madison/sandbox`.
 
-### Deep links are prerendered
+### Static routes and real 404s
 
-The build writes real HTML for every published route and a real `404.html`. There is deliberately
-no SPA catch-all redirect: Netlify serves deep links from disk, while an unknown URL keeps its
-correct HTTP 404 status instead of becoming a soft 404.
+```toml
+[[redirects]]
+  from = "/*"
+  to = "/404/"
+  status = 404
+```
+
+React Router receives the complete public route list at build time and emits one directory-index
+HTML file per route. Netlify serves those real files before redirects, so the wildcard applies only
+to unknown paths and returns the prerendered Madison 404 with HTTP 404. It must never point to
+React Router's generated `__spa-fallback.html`, which would turn unknown URLs into soft 404s.
+
+Non-root public URLs end in `/`. Netlify redirects a slashless request such as `/about-us` to
+`/about-us/`; canonical tags, sitemap entries, and internal links use the latter directly.
 
 ## The three contexts
 
@@ -106,7 +118,7 @@ It runs on a **demo Netlify account**, so it's kept out of search engines in thr
 1. `netlify.toml` — a top-level `X-Robots-Tag: noindex, nofollow` header. Top-level rather than
    per-context on purpose, so production is covered too.
 2. `apps/site/public/robots.txt` — `Disallow: /`.
-3. `apps/site/index.html` — a `<meta name="robots">` tag.
+3. `apps/site/src/site-meta.ts` — `SITE_WIDE_NOINDEX` controls the document-level robots tag.
 
 Don't "fix" any of them individually. They come off together, during handover.
 
@@ -122,10 +134,11 @@ When Madison takes this over and deploys from their own Netlify account:
    `main`, Deploy Previews on, and branch deploys for `preview`.
 2. **Delete the `DEMO DEPLOY: not indexable` `[[headers]]` block** from `netlify.toml`.
 3. **Flip `apps/site/public/robots.txt`** to `Allow: /`.
-4. **Remove the `<meta name="robots" content="noindex, nofollow" />`** from `apps/site/index.html`.
+4. **Set `SITE_WIDE_NOINDEX` to `false`** in `apps/site/src/site-meta.ts`. Entries explicitly
+   marked `noindex` remain excluded after this site-wide switch is removed.
 5. **Point a custom domain** at the site.
-6. *Then* — and only then — add a `sitemap.xml` and submit it. A sitemap on a noindexed site does
-   nothing.
+6. *Then* submit the already-generated `/sitemap.xml` to the search engines. A sitemap on a
+   noindexed site does nothing.
 
 Steps 2–4 are the whole "go live" switch, and each one carries a comment pointing back here.
 
@@ -138,13 +151,13 @@ class that matters lives in the sandbox's prototypes and the UI package's primit
 passes typecheck, lint *and* the build. Catch it with:
 
 ```bash
-bun run build && grep -c 'bg-app' apps/site/dist/assets/*.css   # expect 1, and a ~90 kB file
+bun run build && grep -c 'bg-app' apps/site/dist/client/assets/*.css
 ```
 
 **Every page is blank, console says `useLocation() may be used only in the context of a <Router>`.**
-Two copies of `react-router-dom` — the pages resolve a different copy than the `BrowserRouter` in
-`apps/site`. Check `resolve.dedupe` in `apps/site/vite.config.ts` and that the `react-router-dom`
-range matches `apps/sandbox`'s exactly. The sandbox keeps working, so this looks like a deploy bug.
+Two copies of React Router — the pages resolve a different copy than the framework shell. Check
+`resolve.dedupe` in `apps/site/vite.config.ts` and the resolved dependency versions. The sandbox
+can keep working, so this looks like a deploy bug.
 
 **Netlify fails at install with a lockfile error.**
 `bun.lock` is stale. Netlify sets `CI=true`, which makes bun enable `--frozen-lockfile`
@@ -156,7 +169,10 @@ Netlify didn't detect the bun lockfile. `netlify.toml` has no install-command ke
 the dashboard, so the fix is to fold it into the build command:
 `bun install --frozen-lockfile && bunx turbo run build --filter=@madison/site`.
 
-**A known deep link 404s on Netlify but works locally.**
-Check that the route is registered in `apps/sandbox/src/prototype-registry.ts` and that the site
-build produced its matching HTML file. Do not add a `/*` → `/index.html` fallback; it would turn
-unknown URLs into soft 404s.
+**A deep link 404s on Netlify but works locally.**
+Confirm that the page's path appears in React Router's prerender build output and that Netlify's
+publish directory is `apps/site/dist/client`. Local preview cannot prove Netlify redirects.
+
+**An unknown URL returns 200 instead of 404.**
+The wildcard redirect is missing or points at `__spa-fallback.html`. It must rewrite `/*` to
+`/404/` with `status = 404`; verify the actual status on the Deploy Preview.

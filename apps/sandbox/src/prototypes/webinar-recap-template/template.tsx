@@ -307,7 +307,7 @@ function WhatsNextAndCtaSection({
             <p className="mb-6 text-pretty text-secondary">{cta.description}</p>
             <div className="flex flex-wrap items-center justify-center gap-3.5">
               <Button size="lg" asChild>
-                <a href="/demo">
+                <a href="/demo/">
                   {cta.primaryCta} <ArrowRight className="size-4" />
                 </a>
               </Button>

@@ -20,7 +20,7 @@ function HeroAndFormSection() {
           </h1>
           <p className="mb-10 text-pretty text-lg text-secondary">
             Looking for a demo?{" "}
-            <a href="/demo" className="font-semibold text-brand-accent">
+            <a href="/demo/" className="font-semibold text-brand-accent">
               Book one here
             </a>
             . For everything else, fill in the form below.

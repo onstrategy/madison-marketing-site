@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router";
 import { cn } from "@madison/ui/utils";
 import { PrototypesIndex } from "./PrototypesIndex";
 // Prototypes self-register in the registry — see prototype-registry.ts. It's a

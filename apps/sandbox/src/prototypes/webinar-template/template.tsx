@@ -143,13 +143,13 @@ function CtaSection({ data }: { data: WebinarData["cta"] }) {
           </h2>
           <p className="mb-8 text-pretty text-lg text-secondary">{data.description}</p>
           <Button size="lg" asChild>
-            <a href="/demo">
+            <a href="/demo/">
               {data.primaryCta} <ArrowRight className="size-4" />
             </a>
           </Button>
           <p className="mt-6">
             <a
-              href="/resources"
+              href="/resources/"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent"
             >
               Download the Task Cards <Download className="size-3.5" />

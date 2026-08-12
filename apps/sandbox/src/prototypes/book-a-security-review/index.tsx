@@ -113,7 +113,7 @@ function ResponsibleByDesignSection() {
         <Reveal delay={60}>
           <p className="mt-6 text-center">
             <a
-              href="/security"
+              href="/security/"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent"
             >
               See our full security &amp; compliance overview <ArrowRight className="size-3.5" />

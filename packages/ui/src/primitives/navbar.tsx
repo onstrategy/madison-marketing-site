@@ -118,10 +118,14 @@ function Navbar({
       // box, a stats plate) can carry `dark` while sitting on an otherwise
       // light section, and the bar shouldn't flip for that — only for an
       // actual full-bleed dark section passing underneath. Distinguish the
-      // two by width: a real section spans (near enough) the full viewport;
-      // a contained card doesn't. `-2` absorbs sub-pixel/scrollbar rounding.
+      // two by width: a real section spans (near enough) the layout viewport;
+      // a contained card doesn't. `clientWidth` excludes the browser scrollbar,
+      // while `window.innerWidth` includes it and rejects an otherwise full-
+      // bleed section whenever a vertical scrollbar is present. `-2` absorbs
+      // sub-pixel rounding.
       const isFullBleed =
-        !!darkAncestor && darkAncestor.getBoundingClientRect().width >= window.innerWidth - 2;
+        !!darkAncestor &&
+        darkAncestor.getBoundingClientRect().width >= document.documentElement.clientWidth - 2;
       setSectionIsDark(isFullBleed);
     };
 

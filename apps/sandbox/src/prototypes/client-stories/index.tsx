@@ -1,8 +1,9 @@
 import { ArrowRight } from "lucide-react";
+import { clientStories } from "../../content/client-stories/collection";
+import { clientStoryLogo } from "../../content/client-stories/page";
+import type { ClientStoryDocument } from "../../content/client-stories/schema";
 import { Nav, Footer } from "../landing/sections";
 import { Reveal, Eyebrow, SectionHeading } from "../landing/parts";
-import { PHOTOS } from "../landing/photos";
-import coronaLogo from "../landing/logos/corona.png";
 import washoeCountyLogo from "../landing/logos/washoe-county.png";
 import renoLogo from "../landing/logos/reno.png";
 import carsonCityLogo from "../landing/logos/carson-city.png";
@@ -15,17 +16,6 @@ import pasadenaLogo from "../landing/logos/pasadena.png";
 // below, each with the real client logo already used in the homepage's logo
 // marquee (see ../landing/logos.ts) rather than a fabricated mark.
 
-const FEATURED = {
-  kicker: "Client Story",
-  clientName: "City of Corona",
-  title: "Reclaiming $11,000 in Staff Time Monthly with Instant Institutional Knowledge",
-  oneLiner:
-    "How the City of Corona cut through administrative complexity and reclaimed 104 staff hours every month.",
-  logo: { src: coronaLogo, alt: "City of Corona, California", width: 402, height: 252 },
-  photo: PHOTOS.govBuildingFlag,
-  href: "/client-stories/city-of-corona",
-};
-
 interface ClientStorySummary {
   title: string;
   oneLiner: string;
@@ -33,7 +23,36 @@ interface ClientStorySummary {
   href: string;
 }
 
-const OTHER_STORIES: ClientStorySummary[] = [
+function requireFeaturedStory(): ClientStoryDocument {
+  const featured = clientStories.find((story) => story.featured);
+  if (!featured) {
+    throw new Error("Client story collection must contain a featured entry");
+  }
+  return featured;
+}
+
+function toSummary(story: ClientStoryDocument): ClientStorySummary {
+  return {
+    title: story.card.title,
+    oneLiner: story.card.summary,
+    logo: clientStoryLogo(story),
+    href: story.path,
+  };
+}
+
+const featuredStory = requireFeaturedStory();
+
+const FEATURED = {
+  kicker: featuredStory.content.hero.kicker,
+  clientName: featuredStory.content.hero.clientName,
+  title: featuredStory.card.title,
+  oneLiner: featuredStory.card.summary,
+  logo: clientStoryLogo(featuredStory),
+  photo: featuredStory.content.hero.photo,
+  href: featuredStory.path,
+};
+
+const LEGACY_EXTERNAL_STORIES: ClientStorySummary[] = [
   {
     title: "Washoe County, NV",
     oneLiner: "Saving $41K+ in staff time every month.",
@@ -64,6 +83,13 @@ const OTHER_STORIES: ClientStorySummary[] = [
     logo: { src: pasadenaLogo, alt: "City of Pasadena, California", width: 273, height: 252 },
     href: "https://www.madisonai.com/client-stories",
   },
+];
+
+const OTHER_STORIES: ClientStorySummary[] = [
+  ...clientStories
+    .filter((story) => story.id !== featuredStory.id)
+    .map(toSummary),
+  ...LEGACY_EXTERNAL_STORIES,
 ];
 
 function FeaturedHero({ data }: { data: typeof FEATURED }) {

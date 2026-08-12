@@ -1,8 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["vite/client"],
-    "baseUrl": "."
+    "types": ["vite/client", "node"],
+    "baseUrl": ".",
+    "rootDirs": [".", "./.react-router/types"]
   },
-  "include": ["src"]
+  "include": ["src", ".react-router/types/**/*"]
 }
