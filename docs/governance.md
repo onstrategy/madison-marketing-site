@@ -23,6 +23,8 @@ machine-enforced:
    - **Skill-gate hooks** (`.claude/hooks/`) *block* edits to guarded paths until the right
      skill is loaded — so an agent can't touch `packages/ui` without first reading the
      design-system rules.
+   - A **freshness gate** (same hook bundle) auto-syncs the workspace with `origin/main` at
+     session start and *blocks* edits while it's behind — so no one builds on stale code.
    - **`bun run check`** (typecheck + test + lint) is the merge gate. `className`/token
      discipline the path-gate can't see is enforced here (lint / `react-doctor` in CI).
 

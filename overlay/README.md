@@ -21,6 +21,7 @@ duplication):
 | Installed | What it is | Adaptation needed |
 |-----------|------------|-------------------|
 | `.claude/hooks/{enforce,on-skill-loaded,clear}-skill-gates.sh` | The skill-gate engine (PreToolUse blocker, marker writer, session reset) | None — matches file paths, works in any repo |
+| `.claude/hooks/check-main-freshness.sh` | Session-freshness gate (auto-fast-forward at SessionStart, edit-block while the tree is behind `origin/<base>`) | The base branch is parameterized at install (`[base-branch]`, default `main`) |
 | `.claude/hooks/skill-requirements.json` | Pattern → required-skill rules | The component path is parameterized at install (`[components-path-prefix]`) |
 | `.claude/settings.json` (hooks block) | Wires the **skill-gate** hooks into Claude Code (the demo's prompt-router is stripped) | If you already have one, merge the emitted `settings.madison.json` |
 | `.agents/skills/{react,typescript,testing}` + `.claude/skills` symlink | The conventions | Generic (already de-branded) |
@@ -43,8 +44,10 @@ governance, not content.
 Run it **from the kit**, pointing at the client repo:
 
 ```bash
-./overlay/install.sh ../acme-app "src/components/"
-#                    └ target     └ the path prefix to gate with the design-system skill
+./overlay/install.sh ../acme-app "src/components/" main
+#                    └ target     └ the path prefix    └ base branch for the sync gate
+#                                   to gate with the     (optional, default main)
+#                                   design-system skill
 ```
 
 Existing skill/config files are never clobbered (they're skipped, or emitted as a `*.madison.*`
@@ -103,3 +106,7 @@ This mirrors the engagement arc in [`../docs/governance.md`](../docs/governance.
 Load the `design-system` skill, then edit a file under your gated path (e.g. `src/components/…`)
 without it — the PreToolUse gate should block with `SKILL GATE BLOCKED: … design-system`. Load the
 skill, retry, and it passes. That loop — running in *your* repo — is the whole point.
+
+For the sync gate: check out a branch that's behind your base branch and try an edit — it should
+block with `SYNC GATE BLOCKED` and print the plain-language catch-up steps; merging the base
+branch in unblocks it.

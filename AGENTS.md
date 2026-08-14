@@ -49,6 +49,14 @@ packages/ui    (@madison/ui)       the design system: tokens → CSS, primitives
   `__tests__/` until **`testing`** is loaded. Load `react`/`typescript` proactively for
   component/TS work (advisory). Load once per session; markers reset on a new session or after
   compaction.
+- **Start from the latest main (session freshness).** A SessionStart hook fetches `origin/main`
+  and fast-forwards the local `main` when that's safe. If the workspace is behind and can't
+  auto-sync, a **sync gate** blocks Edit/Write on repo files until the tree contains
+  `origin/main`'s head. Running the remediation the gate prints — fetching and merging
+  `origin/main` into the current branch, or rescuing stray commits off `main` — is
+  **pre-authorized**; it's the one standing exception to the "don't run git commands unasked"
+  rule. If the merge conflicts beyond confident resolution, stop and tell the contributor an
+  engineer needs to help.
 - **On-token only.** Never use raw Tailwind colors (`bg-gray-800`), hex/rgb in `className`, or
   shadcn-style legacy classes (`bg-card`, `text-foreground`). Use the token vocabulary from the
   `design-system` skill. Color is a signal, not decoration (neutral-first).
@@ -168,7 +176,9 @@ title-case prose messages.
   description, infer one. Don't hand-write `apps/sandbox/src/prototypes/<slug>/` files — the
   generator owns the prototype contract (`index.tsx` default-export page + `meta.ts`
   default-export `{ title, description }`); replace the starter body *after* scaffolding.
-- **Don't run git history commands** (commit, push, pull, rebase) unless the user explicitly asks.
+- **Don't run git history commands** (commit, push, pull, rebase) unless the user explicitly asks —
+  with one exception: syncing the workspace with `origin/main` at session start or when the sync
+  gate blocks (see *Core mandates*) is expected and pre-authorized.
 - New tokens go through `tokens.tsx` + the style guide + a draft PR — never invent ad-hoc values.
 - **`apps/site` is a shell, not a page store.** It holds routing, the 404 and the deploy wiring.
   Page content lives in `apps/sandbox/src/prototypes/` and is rendered by both apps — if you find

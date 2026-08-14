@@ -100,18 +100,19 @@ design tokens; CSS is generated from it.
 
 **Do** — run from the kit, pointing at the client repo and its component path:
 ```bash
-./overlay/install.sh ../client-repo "src/components/"
+./overlay/install.sh ../client-repo "src/components/" main
 ```
-This copies the three skill-gate hooks, writes a `skill-requirements.json` gating `src/components/` →
-`design-system`, installs a **gate-only** `settings.json` (or a `settings.madison.json` to merge if
-one already exists — it never clobbers), the four skills + the `.claude/skills` symlink, the three
-`no-raw-*` rules, and `.mcp.json`.
+This copies the three skill-gate hooks plus the session-freshness gate (`check-main-freshness.sh`,
+base branch parameterized by the third arg, default `main`), writes a `skill-requirements.json`
+gating `src/components/` → `design-system`, installs a **gate-only** `settings.json` (or a
+`settings.madison.json` to merge if one already exists — it never clobbers), the four skills + the
+`.claude/skills` symlink, the three `no-raw-*` rules, and `.mcp.json`.
 
 **Verify** `git status` in the client repo shows the new `.claude/`, `.agents/`, `eslint/`,
 `.mcp.json`. If a `settings.madison.json` was emitted, merge its `"hooks"` block into the existing
 `settings.json`, then delete the temp file.
 
-**Done when** `.claude/hooks/` holds the three gate scripts and `settings.json` wires them
+**Done when** `.claude/hooks/` holds the four gate scripts and `settings.json` wires them
 (Pre/PostToolUse + SessionStart/PostCompact) — no dangling references.
 
 > **Note:** the installer ships the **gate**, not the kit's demo prompt-router. Routing is optional
@@ -234,7 +235,7 @@ This is the demo that sells the engagement — run it in *their* repo.
 
 - [ ] Editing a token regenerates CSS and re-themes both light and dark.
 - [ ] `SKILL.md` describes the client's system; no Madison tokens remain.
-- [ ] `.claude/hooks/` has the three gate scripts; `settings.json` wires them with no dangling refs.
+- [ ] `.claude/hooks/` has the four gate scripts; `settings.json` wires them with no dangling refs.
 - [ ] `skill-requirements.json` gates the client's real component path.
 - [ ] `eslint` errors on `bg-indigo-500` / `p-[17px]` / `ring-2`.
 - [ ] MCP resolves and returns the client's components.
@@ -255,7 +256,8 @@ This is the demo that sells the engagement — run it in *their* repo.
 
 ## Uninstall / rollback
 
-The overlay is additive. To remove it: delete the three
-`.claude/hooks/{enforce,on-skill-loaded,clear}-skill-gates.sh`, the `"hooks"` block in
-`settings.json`, the `.claude/.skill-gates/` markers, the `eslint/no-raw-*.js` rules and their config
-wiring, and `.mcp.json`. The skills under `.agents/skills/` and your tokens are yours to keep.
+The overlay is additive. To remove it: delete the four hook scripts
+(`.claude/hooks/{enforce,on-skill-loaded,clear}-skill-gates.sh` and
+`.claude/hooks/check-main-freshness.sh`), the `"hooks"` block in `settings.json`, the
+`.claude/.skill-gates/` and `.claude/.sync-gate/` markers, the `eslint/no-raw-*.js` rules and their
+config wiring, and `.mcp.json`. The skills under `.agents/skills/` and your tokens are yours to keep.

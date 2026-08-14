@@ -5,18 +5,19 @@ set -euo pipefail
 # Extracts the portable governance bundle (skill-gate hooks + skills + token-lint rule +
 # Storybook MCP client config) from this kit into an EXISTING repo. Run FROM the kit:
 #
-#   ./overlay/install.sh <target-repo-dir> [components-path-prefix]
-#   e.g. ./overlay/install.sh ../acme-app "src/components/"
+#   ./overlay/install.sh <target-repo-dir> [components-path-prefix] [base-branch]
+#   e.g. ./overlay/install.sh ../acme-app "src/components/" main
 #
 # Stack-specific bits (your tokens, CI, Storybook) are adapted by hand afterwards —
 # see overlay/README.md. Existing skill/config files are never clobbered.
 
 TARGET="${1:-}"
 COMPONENTS="${2:-packages/ui/}"
+BASE_BRANCH="${3:-main}"
 
 if [[ -z "$TARGET" || ! -d "$TARGET" ]]; then
-  echo "usage: ./overlay/install.sh <target-repo-dir> [components-path-prefix]" >&2
-  echo '  e.g. ./overlay/install.sh ../acme-app "src/components/"' >&2
+  echo "usage: ./overlay/install.sh <target-repo-dir> [components-path-prefix] [base-branch]" >&2
+  echo '  e.g. ./overlay/install.sh ../acme-app "src/components/" main' >&2
   exit 1
 fi
 
@@ -50,6 +51,13 @@ for h in enforce-skill-gates on-skill-loaded clear-skill-gates; do
   chmod +x "$TARGET/.claude/hooks/$h.sh"
 done
 echo "  • added: .claude/hooks/{enforce,on-skill-loaded,clear}-skill-gates.sh"
+
+# 1b) Session-freshness gate — repo-agnostic, but the base branch is parameterized.
+sed "s/^DEFAULT_BASE_BRANCH=.*/DEFAULT_BASE_BRANCH=\"${BASE_BRANCH}\"/" \
+  "$KIT_ROOT/.claude/hooks/check-main-freshness.sh" \
+  >"$TARGET/.claude/hooks/check-main-freshness.sh"
+chmod +x "$TARGET/.claude/hooks/check-main-freshness.sh"
+echo "  • added: .claude/hooks/check-main-freshness.sh (sync gate, base branch: $BASE_BRANCH)"
 
 # 2) skill-requirements.json — parameterize the gated component path.
 sed "s#packages/ui/#${COMPONENTS}#g" \
@@ -115,4 +123,6 @@ cat <<EOF
                   (see the kit's .github/workflows/ci.yml as a reference).
 
 Then load the design-system skill and edit a file under $COMPONENTS — the gate should fire.
+The sync gate keeps every session on the latest ${BASE_BRANCH} (auto-fast-forward at session
+start; edits block while the working tree is behind origin/${BASE_BRANCH}).
 EOF

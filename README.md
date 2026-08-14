@@ -22,7 +22,7 @@ This runs on a demo Netlify account and is deliberately not indexable — see
 | `apps/sandbox` | On-system Vite app; on-token prototypes that self-register (`gen:prototype`) |
 | `apps/site` | The **published** site (Netlify). Renders the sandbox's prototypes at their public slugs — landing at `/`, no gallery. Owns no page content. |
 | `.agents/skills` | The conventions: `design-system`, `react`, `typescript`, `testing` (symlinked to `.claude/skills`) |
-| `.claude/hooks` | Skill-gate bundle — blocks edits to guarded paths until the right skill is loaded |
+| `.claude/hooks` | Skill-gate bundle — blocks edits to guarded paths until the right skill is loaded, and keeps every session on the latest `main` (freshness gate) |
 | `turbo/generators` | `gen:prototype` (new on-token prototype) + `gen:promote` (promote a prototype to a `packages/ui` primitive) |
 | `overlay/` | The **installable governance overlay** — drop the gates + skills + token-lint into an existing client repo |
 | `docs/` | Contributor, promote, governance, and business-model docs |

@@ -168,12 +168,12 @@ Deploy config and the client handover checklist: [`docs/publishing.md`](./publis
 
 ## 6. The governance machinery (the differentiator)
 
-This is what makes "non-technical people ship into the real repo, safely" true. Four layers, each
+This is what makes "non-technical people ship into the real repo, safely" true. Five layers, each
 catching a different class of mistake.
 
 ### 6a. The skill-gate — *path-based, enforced by the Claude Code harness*
 
-Three bash hooks implement the gate, wired in `.claude/settings.json` (a fourth hook,
+Four bash hooks implement the gates, wired in `.claude/settings.json` (a fifth hook,
 `route-prompt.sh`, is wired there too but is unrelated to gating — see §6f):
 
 | Hook | Event | Job |
@@ -181,6 +181,7 @@ Three bash hooks implement the gate, wired in `.claude/settings.json` (a fourth 
 | `enforce-skill-gates.sh` | **PreToolUse** `Edit\|Write` | Block the edit (exit 2) if a required skill isn't loaded |
 | `on-skill-loaded.sh` | **PostToolUse** `Skill` | Write a per-session marker when a skill loads |
 | `clear-skill-gates.sh` | **SessionStart / PostCompact** | Wipe markers (fresh session / after compaction) |
+| `check-main-freshness.sh` | **SessionStart / PostCompact** (`sync`) + **PreToolUse** `Edit\|Write` (`gate`) | Fetch + auto-fast-forward `main` at session start; block edits (exit 2) while the tree lacks `origin/main`'s head |
 
 `skill-requirements.json` maps **path patterns → required skills**:
 ```json
@@ -205,6 +206,19 @@ Markers live under `.claude/.skill-gates/<session-id>/<skill>` (per-session, git
 a skill once per session unlocks it; a fresh session or compaction forces a reload (the rules stay
 fresh). **Honest scope:** the hook matches *file paths*, not file *content* — it gates design-system
 *files*, not every `className`. Content discipline is §6c.
+
+**The sync gate** (`check-main-freshness.sh`) rides the same wiring but guards *time*, not paths:
+every session must start from the latest `origin/main`. At SessionStart/PostCompact its `sync` mode
+runs a time-bounded `git fetch` and fast-forwards the local `main` when that's safe (on `main`, no
+local commits ahead); when it can't sync safely it arms a marker at `.claude/.sync-gate/stale`. The
+`gate` mode on PreToolUse is **local-only** (no network) — it blocks repo-file edits while the tree
+lacks `origin/main`'s head, printing plain-language catch-up steps, and clears the marker the moment
+the tree is current. Unlike the skill-gate markers, this marker is deliberately **repo-global**, not
+per-session: staleness is a property of the shared working tree, and SessionStart doesn't fire for
+subagents — a per-session marker would let them bypass the gate. It fails open everywhere it can't
+be sure (no remote, offline fetch, shallow clone, merge/rebase in progress — the last one because
+the remediation itself needs edits); offline it still gates against the last-known
+`refs/remotes/origin/main`.
 
 ### 6b. The skills (`.agents/skills/`, symlinked to `.claude/skills`)
 
@@ -250,13 +264,14 @@ block; warnings annotate the PR). Distinct from §6c — react-doctor lints *Rea
 | Layer | Enforced by | Catches |
 |---|---|---|
 | Skill-gate | PreToolUse hook | Editing `packages/ui`/`.module.css`/tests without the right skill loaded |
+| Sync gate | SessionStart auto-sync + PreToolUse hook | Editing a working tree that's behind `origin/main` |
 | Type / test | `bun run check` (CI) | Type errors, failing tests |
 | Off-system values | `no-raw-{colors,dimensions,rings-zindex}` → `bun run check` (CI) | `bg-indigo-500`/`text-[#hex]`, `p-[17px]`/`text-[40px]`/`leading-[1.4]`/`leading-7`, `ring-2`/`z-50` |
 | React health | `react-doctor` (CI) | Security/perf/a11y/correctness issues |
 
 ### 6f. The prompt router — `route-prompt.sh` (*not a gate*)
 
-A fourth hook on **UserPromptSubmit**, wired in the same `settings.json`. It **never blocks** (always
+A fifth hook on **UserPromptSubmit**, wired in the same `settings.json`. It **never blocks** (always
 exits 0): it classifies a free-typed, plain-language request into one of the approved workflows
 (**build · restyle · undo · submit · promote**, plus a **maintainer** heads-up for gate/token-engine
 territory) and injects a short, governance-aware playbook as context — so the agent stays on the rails

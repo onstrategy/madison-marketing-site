@@ -7,6 +7,10 @@
           {
             "type": "command",
             "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/enforce-skill-gates.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/check-main-freshness.sh gate"
           }
         ]
       }
@@ -38,6 +42,10 @@
           {
             "type": "command",
             "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/clear-skill-gates.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/check-main-freshness.sh sync"
           }
         ]
       }
@@ -48,6 +56,10 @@
           {
             "type": "command",
             "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/clear-skill-gates.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/check-main-freshness.sh sync"
           }
         ]
       }
