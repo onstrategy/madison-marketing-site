@@ -3,7 +3,7 @@ import { clientStories } from "../../content/client-stories/collection";
 import { clientStoryLogo } from "../../content/client-stories/page";
 import type { ClientStoryDocument } from "../../content/client-stories/schema";
 import { Nav, Footer } from "../landing/sections";
-import { Reveal, Eyebrow, SectionHeading } from "../landing/parts";
+import { Reveal, SectionHeading } from "../landing/parts";
 import washoeCountyLogo from "../landing/logos/washoe-county.png";
 import renoLogo from "../landing/logos/reno.png";
 import carsonCityLogo from "../landing/logos/carson-city.png";
@@ -43,7 +43,6 @@ function toSummary(story: ClientStoryDocument): ClientStorySummary {
 const featuredStory = requireFeaturedStory();
 
 const FEATURED = {
-  kicker: featuredStory.card.kicker,
   clientName: featuredStory.card.clientName,
   title: featuredStory.card.title,
   oneLiner: featuredStory.card.summary,
@@ -108,7 +107,6 @@ function FeaturedHero({ data }: { data: typeof FEATURED }) {
       </div>
       <div className="relative mx-auto max-w-6xl px-gutter pt-28 pb-24 lg:px-0 lg:pt-40">
         <Reveal>
-          <Eyebrow className="mb-6 text-brand-accent">{data.kicker}</Eyebrow>
           <div className="mb-6 flex items-center gap-3">
             <span className="flex size-20 items-center justify-center rounded-full border border-default bg-plate p-4">
               <img

@@ -135,7 +135,7 @@ function HeroSection() {
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">About Us</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-4xl font-medium tracking-tight text-primary lg:text-5xl">
+          <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary lg:text-4xl">
             Shaping the Future of Our Communities, Together
           </h1>
           <p className="mb-8 max-w-lg text-pretty text-lg text-secondary">

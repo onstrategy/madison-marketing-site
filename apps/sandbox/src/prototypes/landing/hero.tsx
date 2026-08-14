@@ -82,7 +82,7 @@ export function Hero() {
         <div>
           <Reveal>
             <a
-              href="/director-of-ai-assistant/"
+              href="/ai-in-action-webinar-registration/"
               className="inline-flex items-center gap-2.5 rounded-full border border-default bg-surface px-3.5 py-1.5 text-sm text-secondary shadow-xs transition-colors hover:border-active"
             >
               <span className="size-1.5 rounded-full bg-info" />
@@ -104,8 +104,10 @@ export function Hero() {
           </Reveal>
           <Reveal delay={180}>
             <div className="mt-9 flex flex-wrap items-center gap-3">
-              <Button size="lg">
-                Book a demo <ArrowRight className="size-4" />
+              <Button size="lg" asChild>
+                <a href="/demo">
+                  Book a demo <ArrowRight className="size-4" />
+                </a>
               </Button>
               <Button size="lg" variant="outline" className="bg-surface/70">
                 Why we&rsquo;re 95% accurate <ArrowRight className="size-4" />

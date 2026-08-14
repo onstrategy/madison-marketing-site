@@ -26,12 +26,7 @@ const DATA: PlatformPageData = {
     secondaryCta: "How it works",
     card: {
       eyebrow: "Procurement staff, requesters, and leadership.",
-      statement: (
-        <>
-          One AI, <span className="text-brand-accent">grounded</span> in your
-          solicitations and contracts.
-        </>
-      ),
+      statement: "One AI, grounded in your solicitations and contracts.",
       description:
         "RFPs, RFQs, contracts, amendments, and vendor performance — unified and cited, inside your own tenant.",
     },
@@ -119,6 +114,12 @@ const DATA: PlatformPageData = {
   connectors: {
     eyebrow: "Built from data across your gov.",
     title: "Instantly search across every procurement system your city runs.",
+    // Title container widened ~33% (max-w-2xl → max-w-4xl, the nearest token
+    // step to the requested 30%) at the contributor's request — the outer
+    // wrapper widens to match so the title isn't clipped, but the logo grid
+    // below is intrinsically sized and stays exactly as it was.
+    titleClassName: "mx-auto mb-8 max-w-4xl",
+    containerClassName: "mx-auto max-w-4xl",
     description:
       "Solicitations, contracts, and vendor records — plus Bonfire, OpenGov, Workday, and dozens more.",
     items: [

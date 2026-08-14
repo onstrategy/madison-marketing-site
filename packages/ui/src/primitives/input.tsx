@@ -20,7 +20,12 @@ function Input({
   return (
     <div
       className={cn(
-        "flex h-9 w-full rounded-md border border-default bg-transparent text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-primary focus-within:outline-none focus-within:ring-[length:var(--ring-width)] focus-within:ring-brand disabled:cursor-not-allowed disabled:opacity-[var(--disabled-opacity)] md:text-sm",
+        // `light` — an input field is always a white field, regardless of
+        // whether it sits on a light or dark-scoped section/card. Without
+        // it, bg-transparent would just show through to whatever's behind
+        // it, so a dark card made the field itself go dark and lose its
+        // "this is a field" affordance.
+        "light flex h-9 w-full rounded-md border border-default bg-surface text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-primary focus-within:outline-none focus-within:ring-[length:var(--ring-width)] focus-within:ring-brand disabled:cursor-not-allowed disabled:opacity-[var(--disabled-opacity)] md:text-sm",
         className,
       )}
     >

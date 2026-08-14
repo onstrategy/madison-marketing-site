@@ -28,12 +28,7 @@ const DATA: PlatformPageData = {
     secondaryCta: "How it works",
     card: {
       eyebrow: "Every department, one grounded model.",
-      statement: (
-        <>
-          One AI, <span className="text-brand-accent">grounded</span> across
-          your entire government.
-        </>
-      ),
+      statement: "One AI, grounded across your entire government.",
       description:
         "Finance, HR, public works, the clerk's office, and every other department's record — unified and cited, inside your own tenant.",
     },

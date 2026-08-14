@@ -1,4 +1,4 @@
-import { FileSearch, Workflow } from "lucide-react";
+import { FileSearch, Scale, FileText, Archive } from "lucide-react";
 import { Nav, Footer, ClientLogos } from "../landing/sections";
 import { Reveal, Eyebrow } from "../landing/parts";
 import { HubSpotForm } from "../../content/forms/HubSpotForm";
@@ -9,24 +9,24 @@ import { HubSpotForm } from "../../content/forms/HubSpotForm";
 // client-side inside the on-token card shell.
 // ============================================================================
 
+// The knowledge-assistant and smart-workflow feature sets, recombined from six
+// points down to four, one icon per point (not one icon per group).
 const FEATURES = [
   {
     icon: FileSearch,
-    title: "Knowledge assistants",
-    items: [
-      "Query decades of historical documents",
-      "Zoning and code research",
-      "Policy and issue analysis",
-    ],
+    text: "Query decades of historical documents",
   },
   {
-    icon: Workflow,
-    title: "Smart workflows",
-    items: [
-      "Automated staff report generation",
-      "Records request drafting",
-      "Meeting minutes, drafted for you",
-    ],
+    icon: Scale,
+    text: "Policy and issue analysis",
+  },
+  {
+    icon: FileText,
+    text: "Staff reports and meeting minutes, drafted for you",
+  },
+  {
+    icon: Archive,
+    text: "Records request drafting",
   },
 ];
 
@@ -44,25 +44,16 @@ function HeroAndFormSection() {
               Madison turns your agency's own records into an assistant that completes real work
               in minutes, not hours.
             </p>
-            <div className="space-y-8">
+            <ul className="space-y-4">
               {FEATURES.map((feature) => (
-                <div key={feature.title}>
-                  <span className="flex size-9 items-center justify-center rounded-full bg-brand text-brand-fg">
+                <li key={feature.text} className="flex items-start gap-3.5">
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand text-brand-fg">
                     <feature.icon className="size-4" />
                   </span>
-                  <h2 className="mt-4 text-2xl font-medium tracking-tight text-primary">
-                    {feature.title}
-                  </h2>
-                  <ul className="mt-3 space-y-1.5">
-                    {feature.items.map((item) => (
-                      <li key={item} className="text-secondary">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  <span className="pt-1.5 text-pretty text-secondary">{feature.text}</span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </Reveal>
         <Reveal delay={100}>

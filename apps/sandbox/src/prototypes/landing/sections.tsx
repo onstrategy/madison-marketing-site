@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useLocation } from "react-router";
 import {
   ArrowRight,
@@ -31,7 +31,7 @@ import {
 import { NavDropdown } from "@madison/ui/nav-dropdown";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@madison/ui/accordion";
 import { Logo } from "@madison/ui/logo";
-import { Reveal, Marquee } from "./parts";
+import { Reveal, Marquee, useInView } from "./parts";
 import { CLIENT_LOGOS } from "./logos";
 import { IntelDiagram } from "./intel";
 import { PHOTOS, type StockPhoto } from "./photos";
@@ -281,7 +281,7 @@ export function Nav({
 /** Lowercase micro-label in brand blue — the design's `.ey` treatment. */
 function Kicker({ children }: { children: string }) {
   return (
-    <span className="font-sans text-sm lowercase tracking-wide text-brand-accent">
+    <span className="font-sans text-sm uppercase tracking-widest text-brand-accent">
       {children}
     </span>
   );
@@ -381,12 +381,17 @@ const CAPABILITIES_LINKS = [
 ];
 
 export function Capabilities() {
+  // Drives the icon draw-in below — the whole row of icons draws once the card
+  // grid reaches the viewport, staggered per card.
+  const { ref: gridRef, inView } = useInView<HTMLDivElement>();
   return (
     <section className="dark border-t border-default bg-app px-gutter py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-6">
-            <Kicker>The assistant you always wanted but could never afford.</Kicker>
+            <h5 className="mb-5 font-sans text-xl font-semibold text-brand-accent">
+              The assistant you always wanted but could never afford.
+            </h5>
             <h2 className="text-balance text-4xl font-medium tracking-tight text-primary">
               Give an assistant to everyone on your staff.
             </h2>
@@ -396,21 +401,37 @@ export function Capabilities() {
             models trained on your government&rsquo;s record.
           </p>
         </Reveal>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div ref={gridRef} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {CAPABILITIES.map((cap, i) => (
             <Reveal key={cap.title} delay={i * 60}>
               <a
                 href={cap.href}
-                className="flex h-full flex-col rounded-2xl border border-active bg-surface p-5 transition-transform hover:-translate-y-1"
+                className="group flex h-full flex-col rounded-2xl border border-active bg-surface p-5 transition-transform hover:-translate-y-1"
               >
-                {/* Icon chip — a small gradient tile rather than a flat rectangle,
-                    with a soft duplicate icon behind the main glyph for depth. */}
-                <div className="relative mb-5 flex size-14 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-brand to-brand-hover shadow-sm">
+                {/* Icon chip — a small gradient tile rather than a flat rectangle.
+                    The glyph draws itself in when the grid reaches the viewport:
+                    Lucide icons are stroked paths with no fill, so offsetting a
+                    dash the length of the whole path hides it, and easing that
+                    offset to 0 traces each line back on. 100 user units covers
+                    every path in a 24×24 icon, so one value works for all of
+                    them without needing per-path lengths. The stagger rides an
+                    inherited custom property, since transition-delay itself
+                    doesn't inherit down to the paths. */}
+                <div
+                  style={{ "--draw-delay": `${i * 140}ms` } as CSSProperties}
+                  className="mb-5 flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand to-brand-hover shadow-sm"
+                >
+                  {/* The dash pair is set inline on the <svg>, not via utility
+                      classes on its paths: stroke-dasharray/-dashoffset are
+                      INHERITED SVG properties, so one inline declaration
+                      cascades to every path — and, being inline, it can't lose
+                      to a same-specificity utility the way two competing
+                      arbitrary classes do. Only the transition lives in
+                      classes, on the paths where the value actually changes. */}
                   <cap.icon
-                    aria-hidden="true"
-                    className="absolute size-10 -translate-y-1 text-brand-fg/25"
+                    style={{ strokeDasharray: 100, strokeDashoffset: inView ? 0 : 100 }}
+                    className="size-6 text-brand-fg [&_*]:transition-[stroke-dashoffset] [&_*]:[transition-duration:1100ms] [&_*]:[transition-delay:var(--draw-delay)] [&_*]:ease-out motion-reduce:[&_*]:transition-none"
                   />
-                  <cap.icon className="relative size-6 text-brand-fg" />
                 </div>
                 <div className="mb-1.5 text-lg font-bold tracking-tight text-primary">
                   {cap.title}
@@ -419,7 +440,7 @@ export function Capabilities() {
                   {cap.desc}
                 </p>
                 <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
-                  Explore <ArrowRight className="size-4" />
+                  Explore <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
               </a>
             </Reveal>
@@ -427,7 +448,6 @@ export function Capabilities() {
         </div>
         <Reveal delay={CAPABILITIES.length * 60}>
           <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-default pt-8">
-            <span className="text-sm text-muted">Also part of the platform:</span>
             {CAPABILITIES_LINKS.map((link) => (
               <a
                 key={link.label}
@@ -496,13 +516,10 @@ const STORY_TILES: StoryTile[] = [
     photo: PHOTOS.govBuildingColumns,
     href: "https://www.madisonai.com/client-stories",
   },
-  {
-    name: "Pasadena, CA",
-    kind: "quote",
-    line: "One source of truth for legal.",
-    photo: PHOTOS.groupDiscussion,
-    href: "https://www.madisonai.com/client-stories",
-  },
+  // Pasadena previously filled the grid's last slot; that slot is now the
+  // "Read more client stories" CTA card (see ClientStories below), which
+  // absorbed the "See all 60+ customers" link that used to sit above the
+  // grid instead.
 ];
 
 /**
@@ -511,10 +528,16 @@ const STORY_TILES: StoryTile[] = [
  * to warm white and bg-app to Dark Navy in BOTH themes — no raw colors.
  */
 function StoryTileCard({ tile }: { tile: StoryTile }) {
+  const isInternal = tile.href.startsWith("/");
   return (
-    <article
+    // The whole tile is the link — the "See the story" pill below is now just
+    // the visual affordance (a span), since nesting an anchor inside an anchor
+    // isn't valid HTML and would swallow part of the card's own hit area.
+    <a
+      href={tile.href}
+      {...(isInternal ? {} : { target: "_blank", rel: "noopener" })}
       className={cn(
-        "group relative overflow-hidden rounded-2xl transition-transform hover:-translate-y-1",
+        "group relative block cursor-pointer overflow-hidden rounded-2xl transition-transform hover:-translate-y-1",
         tile.tall ? "h-115" : "h-55",
       )}
     >
@@ -524,23 +547,27 @@ function StoryTileCard({ tile }: { tile: StoryTile }) {
         width={tile.photo.width}
         height={tile.photo.height}
         loading="lazy"
-        className="absolute inset-0 size-full object-cover"
+        className="absolute inset-0 size-full scale-100 object-cover transition-transform [transition-duration:var(--duration-slow)] group-hover:scale-105"
       />
       <div className="dark absolute inset-0">
-        {/* Two pre-rendered gradients cross-fade on hover (opacity, not the
-            gradient stops themselves — browsers can't tween gradient-stop
-            positions smoothly, but a plain opacity transition is silky).
-            Both ramp to full opacity (not a faded /90) so the text stays
-            legible even at rest. The small tiles are short enough that the
-            text sits much higher up proportionally, so their rest gradient
-            spans the full card instead of just the bottom portion. */}
+        {/* Base scrim — always at full opacity, never animated. The small
+            tiles are short enough that the text sits much higher up
+            proportionally, so theirs both starts at the very top and reaches
+            full opacity by 60% down — covering well over half the photo at
+            rest, rather than only shading the bottom edge. */}
         <div
           className={cn(
-            "pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-app transition-opacity group-hover:opacity-0",
-            tile.tall ? "from-25%" : "from-10%",
+            "pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-app",
+            tile.tall ? "from-15%" : "from-0% to-60%",
           )}
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-5% to-app opacity-0 transition-opacity group-hover:opacity-100" />
+        {/* Hover scrim STACKS on top of the base one rather than replacing it:
+            it only ever fades in, so two scrims are compounding at the end and
+            the tile reads genuinely darker. Cross-fading them (base out while
+            this one came in) was the flicker — mid-transition both sat at
+            partial opacity, so the photo briefly showed through brighter than
+            either end state. */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-0% to-app opacity-0 transition-opacity group-hover:opacity-100" />
         {/* The button is absolutely positioned (not in normal flow) so it
             reserves no space at rest — the text sits flush at the true
             bottom of the card. On hover it rises + fades in from below,
@@ -556,29 +583,21 @@ function StoryTileCard({ tile }: { tile: StoryTile }) {
             <div className="mb-2 font-sans text-sm uppercase tracking-widest text-secondary">
               {tile.name}
             </div>
-            {tile.kind === "quote" ? (
-              <div
-                className={cn(
-                  "font-serif font-medium italic tracking-tight text-primary",
-                  tile.tall ? "text-2xl" : "text-lg",
-                )}
-              >
-                &ldquo;{tile.line}&rdquo;
-              </div>
-            ) : (
-              <div
-                className={cn(
-                  "font-bold tracking-tight text-primary",
-                  tile.tall ? "text-2xl" : "text-lg",
-                )}
-              >
-                {tile.line}
-              </div>
-            )}
+            {/* Same weight/size/family for both kinds — a quote and a number
+                callout are equally "the headline" of their card, so neither
+                should read as more or less prominent than the other. Only
+                the quote marks differ, since that's what actually signals
+                which kind of claim this is. */}
+            <div
+              className={cn(
+                "font-sans font-bold tracking-tight text-primary",
+                tile.tall ? "text-2xl" : "text-lg",
+              )}
+            >
+              {tile.kind === "quote" ? <>&ldquo;{tile.line}&rdquo;</> : tile.line}
+            </div>
           </div>
-          <a
-            href={tile.href}
-            {...(tile.href.startsWith("/") ? {} : { target: "_blank", rel: "noopener" })}
+          <span
             className={cn(
               "absolute inline-flex w-fit translate-y-2 items-center gap-1.5 rounded-full bg-brand px-4 py-2 text-xs font-semibold text-brand-fg opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100",
               // Absolute children align to the parent's border box, not its
@@ -589,10 +608,10 @@ function StoryTileCard({ tile }: { tile: StoryTile }) {
             )}
           >
             See the story <ArrowRight className="size-3.5" />
-          </a>
+          </span>
         </div>
       </div>
-    </article>
+    </a>
   );
 }
 
@@ -601,17 +620,11 @@ export function ClientStories() {
     <section className="border-t border-default bg-surface px-gutter py-27">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
-            <h2 className="text-balance text-4xl font-medium tracking-tight text-primary">
-              Every customer is a community we serve.
-            </h2>
-            <a
-              href="/client-stories/"
-              className="whitespace-nowrap font-semibold text-brand-accent"
-            >
-              See all 60+ customers →
-            </a>
-          </div>
+          {/* No "See all 60+ customers" link here: it moved into the grid's
+              last slot as a "Read more client stories" CTA card below. */}
+          <h2 className="mb-10 text-balance text-4xl font-medium tracking-tight text-primary">
+            Every customer is a community we serve.
+          </h2>
         </Reveal>
         <Reveal delay={80}>
           <div className="grid gap-3 lg:grid-cols-4">
@@ -621,6 +634,24 @@ export function ClientStories() {
               {STORY_TILES.slice(2).map((tile) => (
                 <StoryTileCard key={tile.name} tile={tile} />
               ))}
+              {/* Absorbs the "See all 60+ customers" link that used to sit
+                  above the grid — now the grid's own last card instead of a
+                  separate header link. */}
+              <a
+                href="/client-stories"
+                className="flex h-55 flex-col items-center justify-center rounded-2xl bg-brand-shade p-4.5 text-center transition-transform hover:-translate-y-1"
+              >
+                {/* A fixed width, not max-width — as a centered flex-column
+                    child with no explicit width, the box shrink-fits well
+                    below the available space (one word per line), so the
+                    width has to be stated directly to land on a clean,
+                    predictable 2 lines. text-balance was tried first but
+                    picks an even narrower "most even split" (4 lines) for
+                    this particular phrase. */}
+                <span className="w-32 text-lg font-semibold text-brand-fg">
+                  Read more client stories
+                </span>
+              </a>
             </div>
           </div>
         </Reveal>
@@ -671,14 +702,16 @@ export function Roles() {
     <section className="border-t border-default bg-app px-gutter py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <h3 className="mb-10 text-balance text-3xl font-medium tracking-tight text-primary">
-            One platform, three audiences — and the people they&rsquo;re for.
+          <h3 className="mx-auto mb-10 max-w-3xl text-balance text-center text-3xl font-medium tracking-tight text-primary">
+            One platform, three audiences. And the people they&rsquo;re for.
           </h3>
         </Reveal>
         <div className="grid gap-5 md:grid-cols-3">
           {ROLES.map((role, i) => (
             <Reveal key={role.tag} delay={i * 80}>
-              <div className="h-full overflow-hidden rounded-2xl border border-default bg-surface transition-transform hover:-translate-y-1">
+              {/* The card itself is inert — no lift, no pointer. The only
+                  interactive affordance is the caption pill over the photo. */}
+              <div className="h-full overflow-hidden rounded-2xl border border-default bg-surface">
                 <div className="relative h-52">
                   <img
                     src={role.photo.url}
@@ -688,10 +721,12 @@ export function Roles() {
                     loading="lazy"
                     className="absolute inset-0 size-full object-cover"
                   />
-                  {/* Caption pill is an always-dark region — `dark` scope keeps it on-token */}
-                  <div className="dark pointer-events-none absolute inset-x-3 bottom-3 flex items-center justify-between gap-2 rounded-lg bg-app/75 px-3 py-2 text-xs text-primary backdrop-blur-sm">
+                  {/* Caption pill is an always-dark region — `dark` scope keeps
+                      it on-token. Named group (`group/cap`) so its own hover
+                      drives the arrow nudge without the card reacting too. */}
+                  <div className="group/cap dark absolute inset-x-3 bottom-3 flex cursor-pointer items-center justify-between gap-2 rounded-lg bg-app/75 px-3 py-2 text-xs text-primary backdrop-blur-sm transition-colors hover:bg-app/90">
                     <span>{role.cap}</span>
-                    <ArrowUpRight className="size-3.5" />
+                    <ArrowUpRight className="size-3.5 transition-transform group-hover/cap:translate-x-0.5 group-hover/cap:-translate-y-0.5" />
                   </div>
                 </div>
                 <div className="p-6">
@@ -957,30 +992,31 @@ export function FinalCta() {
 
 const FOOTER_COLUMNS = [
   {
-    title: "platform",
-    links: [
-      { label: "Citywide model", href: "/citywide-ai/" },
-      { label: "FOIA / Public Records", href: "/public-records-requests-ai/" },
-      { label: "Planning & Community Dev", href: "/community-development-ai/" },
-      { label: "Procurement & Contracts", href: "/procurement-contracts-ai/" },
-    ],
+    title: "Platform",
+    // Same four modules, same labels/order/links as the nav's Platform
+    // dropdown (PLATFORM_LINKS above) — one list, so the footer can't drift
+    // out of sync with the nav as modules are added or renamed.
+    links: PLATFORM_LINKS.map(({ label, href }) => ({ label, href })),
   },
   {
-    title: "company",
+    title: "Company",
     links: [
+      { label: "Client Stories", href: "/client-stories/" },
       { label: "About Us", href: "/about-us/" },
       { label: "Newsroom", href: "/updates/" },
       { label: "Contact", href: "/contact/" },
-      { label: "Client Stories", href: "/client-stories/" },
     ],
   },
   {
-    title: "resources",
+    title: "Useful Links",
     links: [
       { label: "Security", href: "/security/" },
-      { label: "Trust Center", href: "/security/" },
-      { label: "Docs", href: "/resources/" },
-      { label: "Privacy", href: "#top" },
+      {
+        label: "Trust Center",
+        href: "https://app.vanta.com/madisonai.com/trust/lw17vjg03kvfbqeid6p9/controls",
+      },
+      { label: "Privacy Policy", href: "/privacy-policy/" },
+      { label: "Terms & Conditions", href: "/terms-and-conditions/" },
     ],
   },
 ];
@@ -999,7 +1035,8 @@ export function Footer() {
         </div>
         {FOOTER_COLUMNS.map((col) => (
           <div key={col.title}>
-            <div className="mb-3.5 font-sans text-sm lowercase tracking-wide text-secondary">
+            <div className="mb-3.5 font-sans text-xs font-semibold uppercase tracking-widest text-brand-accent">
+
               {col.title}
             </div>
             <ul className="space-y-2.5">
@@ -1007,6 +1044,9 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    {...(link.href.startsWith("http")
+                      ? { target: "_blank", rel: "noopener" }
+                      : {})}
                     className="text-sm text-secondary transition-colors hover:text-primary"
                   >
                     {link.label}

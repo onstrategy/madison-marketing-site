@@ -3,6 +3,7 @@ import { ArrowUp, Check, FileText, Lock, ArrowUpRight } from "lucide-react";
 import { cn } from "@madison/ui/utils";
 import { LogoMark } from "@madison/ui/logo";
 import { useReducedMotion } from "./parts";
+import { logoForSource } from "./source-logos";
 
 // ============================================================================
 // Intelligence Layer widget — the React port of the design file's
@@ -221,18 +222,35 @@ export function IntelDiagram() {
             <div className="flex flex-wrap content-start gap-2.5">
               {SYSTEMS.map((name, i) => {
                 const checked = i < checkedCount;
+                const logoSrc = logoForSource(name);
                 return (
                   <span
                     key={name}
+                    title={name}
                     className={cn(
-                      "inline-flex items-center gap-2 rounded-lg border px-3.5 py-2.5 text-sm font-semibold transition-all",
+                      "inline-flex h-11 items-center gap-2 rounded-lg border px-3 text-sm font-semibold transition-all",
                       checked
                         ? "border-brand/30 bg-surface text-primary opacity-100"
                         : "border-default bg-panel text-secondary",
                       searching || answered ? "opacity-100" : "opacity-40",
                     )}
                   >
-                    {name}
+                    {/* Real vendor logos where we have one (see ./source-logos.ts),
+                        on their own white plate — these marks carry their own ink
+                        and would be tinted by the warm canvas or lost against a
+                        dark chip. Sources with no logo keep their plain name. */}
+                    {logoSrc ? (
+                      <span className="light flex h-7 items-center rounded-sm bg-plate px-1.5">
+                        <img
+                          src={logoSrc}
+                          alt={name}
+                          loading="lazy"
+                          className="h-4.5 w-auto max-w-24 object-contain"
+                        />
+                      </span>
+                    ) : (
+                      name
+                    )}
                     <span
                       className={cn(
                         "flex size-4 items-center justify-center rounded-full bg-success-subtle text-success transition-opacity",
@@ -304,27 +322,34 @@ export function IntelDiagram() {
                   ))}
                 </div>
               </div>
-              {source ? (
-                <div className="flex gap-3 rounded-lg border border-brand/30 bg-brand-subtle p-3">
-                  <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-surface text-brand-accent">
-                    <FileText className="size-4" />
-                  </span>
-                  <div className="min-w-0">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-xs font-bold text-primary">
-                        {source.label}
-                      </span>
-                      <span className="text-sm text-muted">{source.meta}</span>
-                    </div>
-                    <p className="mt-1 text-xs italic leading-relaxed text-secondary">
-                      {source.quote}
-                    </p>
-                    <span className="mt-1.5 inline-flex items-center gap-1 text-sm font-semibold text-brand-accent">
-                      Open source document <ArrowUpRight className="size-3" />
+              {/* Fixed-height well. This block mounts only once a source is
+                  picked, and the three sources' quotes differ in length — both
+                  of which resized the card mid-loop and made the whole section
+                  jump. Reserving the tallest state's height up front keeps the
+                  layout still while the animation cycles. */}
+              <div className="min-h-28">
+                {source ? (
+                  <div className="flex gap-3 rounded-lg border border-brand/30 bg-brand-subtle p-3">
+                    <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-surface text-brand-accent">
+                      <FileText className="size-4" />
                     </span>
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-xs font-bold text-primary">
+                          {source.label}
+                        </span>
+                        <span className="text-sm text-muted">{source.meta}</span>
+                      </div>
+                      <p className="mt-1 text-xs italic leading-relaxed text-secondary">
+                        {source.quote}
+                      </p>
+                      <span className="mt-1.5 inline-flex items-center gap-1 text-sm font-semibold text-brand-accent">
+                        Open source document <ArrowUpRight className="size-3" />
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ) : null}
+                ) : null}
+              </div>
             </div>
           </div>
         </div>

@@ -25,12 +25,7 @@ const DATA: PlatformPageData = {
     secondaryCta: "How it works",
     card: {
       eyebrow: "Records staff, legal, and requesters.",
-      statement: (
-        <>
-          One AI, <span className="text-brand-accent">grounded</span> in your
-          records-request history.
-        </>
-      ),
+      statement: "One AI, grounded in your records-request history.",
       description:
         "Intake, search, redaction history, and response letters — unified and cited, inside your own tenant.",
     },

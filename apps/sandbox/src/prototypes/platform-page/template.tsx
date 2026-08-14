@@ -82,6 +82,12 @@ export interface PlatformPageData {
     title: string;
     description: string;
     items: string[];
+    /** A trailing catch-all ("Other permitting systems") that doesn't earn a grid card — rendered as plain text under the grid instead. */
+    note?: string;
+    /** Overrides the title/eyebrow block's width (default `max-w-2xl`). Widening this alone would clip against the section's own wrapper, so it also needs `containerClassName` widened to match. The logo grid is unaffected either way — it's intrinsically sized, not stretched by this container. */
+    titleClassName?: string;
+    /** Overrides the section's outer wrapper width (default `max-w-3xl`). Only needed together with `titleClassName` when widening the title beyond the default wrapper. */
+    containerClassName?: string;
   };
   whatYouGet: {
     eyebrow: string;
@@ -148,7 +154,7 @@ function HowItWorksSection({ data }: { data: PlatformPageData["howItWorks"] }) {
         </Reveal>
         <Reveal delay={80}>
           <Tabs defaultValue={data.roles[0]?.id}>
-            <TabsList className="light h-auto flex-wrap gap-1 rounded-full border border-default bg-hover p-1.5 shadow-xl">
+            <TabsList className="light h-auto flex-wrap gap-1 rounded-full border border-default bg-hover p-1.5">
               {data.roles.map((role) => (
                 <TabsTrigger key={role.id} value={role.id} className="rounded-full px-5 py-2">
                   {role.label}
@@ -160,7 +166,7 @@ function HowItWorksSection({ data }: { data: PlatformPageData["howItWorks"] }) {
                 {role.steps.map((step) => (
                   <div
                     key={step.title}
-                    className="grid gap-8 rounded-2xl border border-default bg-app p-8 md:grid-cols-2 md:items-center"
+                    className="grid gap-8 rounded-2xl border border-default bg-panel p-8 md:grid-cols-2 md:items-center"
                   >
                     <div>
                       <h3 className="text-2xl font-medium tracking-tight text-primary">
@@ -180,25 +186,35 @@ function HowItWorksSection({ data }: { data: PlatformPageData["howItWorks"] }) {
   );
 }
 
-// Fixed spread of x-positions the cables fan out to, in the 240×56 viewBox
-// below — decorative, not tied 1:1 to `data.items` (that list runs 11–15
-// items deep and wraps across lines, so there's no stable per-item point to
-// route a real line to). Reads as "many systems," not a literal wiring diagram.
-const CABLE_XS = [14, 52, 90, 120, 150, 188, 226];
+// One cable per card in the logo grid's first row — at the `lg` breakpoint
+// the grid is exactly 704px wide (5 tiles × 128px + 4 gaps × 16px, see the
+// connector grid's `lg:w-176` below), so these x-positions are those 5
+// tiles' literal horizontal centers (card i center = i×144 + 64) in a
+// viewBox scaled 1:1 to that same 704 width. The SVG's rendered width tracks
+// the grid's own responsive steps (`w-67 sm:w-102 lg:w-176`), so the two
+// stay in lockstep at every breakpoint; below `lg` there's no 5-card row to
+// line up with, so the fan just scales proportionally instead.
+const CABLE_XS = [64, 208, 352, 496, 640];
+const HUB_X = 352; // the grid's horizontal center at 704px — also card 3 of 5's own center, since 5 is odd.
 
 /** The converging "cables" between the Madison hub and the source chips below it. */
 function ConnectorCables() {
   return (
     <svg
-      viewBox="0 0 240 56"
-      className="h-14 w-60 text-brand/25"
+      viewBox="0 0 704 56"
+      className="h-14 w-67 text-brand/25 sm:w-102 lg:w-176"
       aria-hidden="true"
     >
       {CABLE_XS.map((x, i) => (
         <path
           key={x}
           id={`cable-${i}`}
-          d={`M120 0 Q ${(x + 120) / 2} 22 ${x} 56`}
+          // Cubic, not quadratic: both control points sit directly under
+          // their own endpoint (same x, at the vertical midpoint), so the
+          // curve leaves the hub going straight down before rounding out
+          // toward the card — a curly-bracket hook right at the M, instead
+          // of one flat arc leaning the same way its whole length.
+          d={`M${HUB_X} 0 C ${HUB_X} 28 ${x} 28 ${x} 56`}
           stroke="currentColor"
           strokeWidth="1.5"
           fill="none"
@@ -207,7 +223,7 @@ function ConnectorCables() {
       {/* A few traveling pulses along a subset of the cables — data flowing
           up into the hub, not just static wires. Hidden under reduced motion. */}
       <g className="motion-reduce:hidden">
-        {[1, 3, 5].map((i, dotIndex) => (
+        {[0, 2, 4].map((i, dotIndex) => (
           <circle key={i} r="2.5" className="text-brand">
             <animateMotion
               dur="2.4s"
@@ -228,13 +244,13 @@ function ConnectorCables() {
 function ConnectorsSection({ data }: { data: PlatformPageData["connectors"] }) {
   return (
     <section className="border-t border-default bg-app px-gutter py-30 text-center">
-      <div className="mx-auto max-w-3xl">
+      <div className={cn("mx-auto max-w-3xl", data.containerClassName)}>
         <Reveal>
           <SectionHeading
             eyebrow={data.eyebrow}
             title={data.title}
             align="center"
-            className="mx-auto mb-8 max-w-2xl"
+            className={cn("mx-auto mb-8 max-w-2xl", data.titleClassName)}
           />
         </Reveal>
         {/* The Madison mark sits right under the title as the hub every
@@ -246,11 +262,24 @@ function ConnectorsSection({ data }: { data: PlatformPageData["connectors"] }) {
               <MadisonMark width={32} height={19} className="text-brand-fg" />
             </span>
             <ConnectorCables />
-            <div className="-mt-1 flex max-w-2xl flex-wrap justify-center gap-3">
+            {/* Flex-wrap, not CSS Grid: a grid's column tracks are shared
+                across every row, so a ragged last row (2 or 3 tiles left
+                over) sits left-aligned in the first N tracks instead of
+                centered. Flex-wrap centers each wrapped line independently
+                via `justify-center`, so a partial last row centers itself
+                too. The explicit width at each breakpoint reproduces the
+                grid's old 2/3/5-per-row density (tile 128×64 + gap, exactly
+                sized so the Nth tile never has room to start a same-row
+                N+1th) — it has to be explicit since flex-wrap has no
+                `grid-cols` equivalent to size off of. */}
+            <div className="-mt-1 flex w-67 flex-wrap justify-center gap-3 sm:w-102 lg:w-176 lg:gap-4">
               {data.items.map((name) => (
                 <LogoMark key={name} name={name} />
               ))}
             </div>
+            {data.note ? (
+              <p className="mt-3 text-sm text-muted">{data.note}</p>
+            ) : null}
           </div>
         </Reveal>
         <Reveal delay={120}>
@@ -317,12 +346,12 @@ function SuiteSection({ data }: { data: PlatformPageData["suite"] }) {
               "relative flex h-full flex-col rounded-2xl bg-surface p-4",
               item.current
                 ? "border-2 border-brand"
-                : "border border-default transition-transform hover:-translate-y-1",
+                : "group border border-default transition-transform hover:-translate-y-1",
             );
             const content = (
               <>
                 {item.current ? (
-                  <span className="dark absolute left-4 top-0 -translate-y-1/2 rounded-full bg-app px-2 py-0.5 font-serif text-sm font-semibold uppercase tracking-widest text-brand-accent shadow-sm">
+                  <span className="absolute left-4 top-0 -translate-y-1/2 rounded-full bg-brand px-3 py-1 font-serif text-xs font-semibold uppercase tracking-widest text-brand-fg shadow-sm">
                     You&rsquo;re here
                   </span>
                 ) : null}
@@ -337,7 +366,7 @@ function SuiteSection({ data }: { data: PlatformPageData["suite"] }) {
                 </p>
                 {item.current ? null : (
                   <span className="mt-3.5 inline-flex items-center gap-1 text-sm font-semibold text-brand-accent">
-                    Explore <ArrowRight className="size-3.5" />
+                    Explore <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
                   </span>
                 )}
               </>
@@ -425,8 +454,9 @@ export function PlatformPageTemplate({ data }: { data: PlatformPageData }) {
     <div className="min-h-screen bg-app text-primary">
       <Nav sectionAware />
       <main>
-        {/* Hero (dark) */}
-        <section className="dark relative flex min-h-[70vh] items-center overflow-hidden border-b border-default bg-app">
+        {/* Hero (dark). No bottom border — the walkthrough frame below crosses
+            this boundary, so a rule line would cut straight through it. */}
+        <section className="dark relative flex min-h-[70vh] items-center overflow-hidden bg-app">
           <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-gutter pt-28 lg:grid-cols-2 lg:gap-16 lg:px-0 lg:pt-40">
             <Reveal>
               <Eyebrow className="text-brand-accent">
@@ -451,21 +481,44 @@ export function PlatformPageTemplate({ data }: { data: PlatformPageData }) {
               </div>
             </Reveal>
             <Reveal delay={100}>
-              <div className="rounded-2xl border border-[hsl(var(--border-default)/0.5)] bg-surface/10 p-8">
-                <Eyebrow className="text-secondary">{data.hero.card.eyebrow}</Eyebrow>
-                <div className="mt-4 font-serif text-3xl font-medium tracking-tight text-primary">
-                  {data.hero.card.statement}
+              {/* Glass panel: a translucent surface over the hero's dark field
+                  with a backdrop blur, so the art behind it reads through. */}
+              <div className="overflow-hidden rounded-2xl border border-[hsl(var(--border-default)/0.5)] bg-surface/10 shadow-xl backdrop-blur-md">
+                {/* Blue title bar — window chrome in shape only. Deliberately
+                    no traffic-light dots: this is a statement panel, not a
+                    mock browser (that's BrowserFrame's job, used below). */}
+                <div className="bg-brand px-6 py-3.5">
+                  <span className="font-sans text-sm font-semibold text-brand-fg">
+                    {data.hero.card.eyebrow}
+                  </span>
                 </div>
-                <p className="mt-5 text-secondary">{data.hero.card.description}</p>
+                <div className="p-8">
+                  <div className="font-serif text-3xl font-medium tracking-tight text-primary">
+                    {data.hero.card.statement}
+                  </div>
+                  <p className="mt-5 text-secondary">{data.hero.card.description}</p>
+                </div>
               </div>
             </Reveal>
           </div>
         </section>
 
-        {/* Media placeholder — a real animation/demo drops in here later */}
+        {/* Media placeholder — a real animation/demo drops in here later.
+            The frame straddles the hero boundary: its top fifth sits on the
+            hero's dark field, the rest on the cream page below. */}
         {data.media ? (
-          <section className="dark bg-app px-gutter pt-16 pb-30 lg:pt-20">
-            <div className="mx-auto max-w-6xl">
+          <section className="relative overflow-hidden bg-app px-gutter pb-30 pt-20">
+            <div className="relative mx-auto max-w-6xl">
+              {/* The dark field, carried down behind the frame's top 20%.
+                  Anchored to this wrapper — which is exactly the frame's box —
+                  so `bottom-[80%]` lands a true fifth down the frame whatever
+                  its height, rather than a pixel guess. `-top-20` covers the
+                  section's own pt-20 gap above it, and w-screen makes the band
+                  full-bleed instead of stopping at the 6xl column. */}
+              <div
+                aria-hidden
+                className="dark absolute -top-20 bottom-[80%] left-1/2 w-screen -translate-x-1/2 bg-app"
+              />
               <Reveal>
                 <BrowserFrame title={data.media.title}>
                   <div className="flex h-80 items-center justify-center bg-app text-sm text-muted">

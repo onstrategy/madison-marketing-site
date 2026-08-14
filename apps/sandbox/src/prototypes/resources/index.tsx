@@ -33,6 +33,7 @@ const WEBINAR_RESOURCES: ResourceCard[] = [
   {
     title: "Turning Your ACFR into Indicators, with GFOA",
     description: "A GFOA partnership piece on turning annual financial reports into usable indicators.",
+    href: "/turning-your-acfr-into-indicators-gfoa/",
   },
   {
     title: "How the City of Corona Evolved Its Procurement Process",

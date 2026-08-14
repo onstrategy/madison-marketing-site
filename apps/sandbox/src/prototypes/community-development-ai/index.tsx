@@ -34,12 +34,7 @@ const DATA: PlatformPageData = {
     secondaryCta: "How it works",
     card: {
       eyebrow: "Planners, engineers, and planning commissions.",
-      statement: (
-        <>
-          One AI, <span className="text-brand-accent">grounded</span> in
-          decades of plans, maps, and code.
-        </>
-      ),
+      statement: "One AI, grounded in decades of plans, maps, and code.",
       description:
         "Municipal code, master plans, parcel-level GIS, permit history, and planning-commission records — unified and cited, inside your own tenant.",
     },
@@ -238,8 +233,8 @@ const DATA: PlatformPageData = {
       "OnBase",
       "YouTube",
       "eScribe",
-      "Other permitting systems",
     ],
+    note: "Other permitting systems",
   },
   whatYouGet: {
     eyebrow: "What you get",

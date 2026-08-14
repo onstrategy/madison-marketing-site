@@ -1,6 +1,31 @@
 import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
-import { Check, Landmark } from "lucide-react";
+import {
+  Check,
+  Boxes,
+  Mail,
+  Video,
+  FolderOpen,
+  Map as MapIcon,
+  ClipboardCheck,
+  Globe,
+  BarChart3,
+  Archive,
+  MonitorPlay,
+  BookOpen,
+  Database,
+  PlayCircle,
+  Calendar,
+  Briefcase,
+  Server,
+  FileSignature,
+  Landmark,
+  PenTool,
+  Inbox,
+  HelpCircle,
+  type LucideIcon,
+} from "lucide-react";
 import { cn } from "@madison/ui/utils";
+import { logoForSource } from "./source-logos";
 
 // ============================================================================
 // Shared building blocks for the Madison landing prototype.
@@ -100,6 +125,47 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
       {children}
     </div>
   );
+}
+
+/**
+ * Latches true once the element scrolls into view. Same threshold/rootMargin
+ * as `Reveal`, so an animation keyed on it fires in step with the block's own
+ * reveal rather than a beat early or late. Use it when the trigger needs to
+ * drive something other than Reveal's own fade+rise (e.g. drawing an icon).
+ * Reduced-motion users start true — no draw, just the finished state.
+ */
+export function useInView<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  const reduced = useReducedMotion();
+  const [inView, setInView] = useState(START_SHOWN);
+
+  useEffect(() => {
+    if (reduced) {
+      setInView(true);
+      return;
+    }
+    const el = ref.current;
+    if (!el) return;
+    // Same prerender handling as Reveal: what's already on screen stays put;
+    // only what's still below the fold re-arms.
+    if (START_SHOWN) {
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      setInView(false);
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [reduced]);
+
+  return { ref, inView };
 }
 
 /** A monospace, uppercase overline — the "developer tool" credibility cue. */
@@ -260,18 +326,76 @@ export function Marquee<T>({
   );
 }
 
+// Keyword → generic icon for the integration/data-source tiles below.
+// Fallback only: a source with a real logo in ./source-logos.ts renders that
+// instead (see LogoMark). For everything else, we don't hold rights to the
+// vendor's real mark, so it gets a generic, on-token glyph for its category
+// rather than a fabricated logo image — same call as the rest of the kit's
+// stand-in "logo" treatment. Matched by substring against the lowercased
+// source name, first match wins.
+const SOURCE_ICONS: [string, LucideIcon][] = [
+  ["outlook", Mail],
+  ["exchange", Mail],
+  ["teams", Video],
+  ["sharepoint", FolderOpen],
+  ["arcgis", MapIcon],
+  ["esri", MapIcon],
+  ["accela", ClipboardCheck],
+  ["civicplus", Globe],
+  ["cleargov", BarChart3],
+  ["laserfiche", Archive],
+  ["granicus", MonitorPlay],
+  ["municode", BookOpen],
+  ["onbase", Database],
+  ["youtube", PlayCircle],
+  ["escribe", Calendar],
+  ["workday", Briefcase],
+  ["tyler", Server],
+  ["bonfire", FileSignature],
+  ["opengov", Landmark],
+  ["docusign", PenTool],
+  ["nextrequest", Inbox],
+  ["govqa", HelpCircle],
+];
+
+function iconForSource(name: string): LucideIcon {
+  const key = name.toLowerCase();
+  const match = SOURCE_ICONS.find(([keyword]) => key.includes(keyword));
+  return match ? match[1] : Boxes;
+}
+
 /**
- * A stand-in "logo" chip — an icon + name lockup. We don't hold rights to
- * real client wordmarks, so every client is represented the same on-token
- * way rather than a fabricated logo image.
+ * A tile for an integration/data source. Renders the vendor's real logo when
+ * we have one (see `./source-logos.ts`) — on a guaranteed-white `bg-plate`
+ * plate, since real marks carry their own ink color and the app's warm
+ * canvas (or a dark section) would tint or wash them out, same reasoning as
+ * the client-logo marquee. Falls back to a generic, category-matched icon
+ * (see `SOURCE_ICONS`) for sources with no supplied logo. Every tile is the
+ * same fixed 2:1 (width:height) size so the grid lines up cleanly and real
+ * wordmark logos — wider than they are tall — have room to sit un-squished;
+ * the name is still available as a tooltip and to screen readers, whether or
+ * not it's rendered as text.
  */
 export function LogoMark({ name }: { name: string }) {
-  return (
-    <span className="flex items-center gap-2 rounded-lg border border-default bg-surface px-4 py-2.5">
-      <Landmark className="size-4 text-muted" aria-hidden />
-      <span className="whitespace-nowrap text-sm font-semibold tracking-tight text-secondary">
-        {name}
+  const logoSrc = logoForSource(name);
+  if (logoSrc) {
+    return (
+      <span
+        title={name}
+        className="light flex h-16 w-32 items-center justify-center rounded-lg border border-default bg-plate p-3"
+      >
+        <img src={logoSrc} alt={name} loading="lazy" className="max-h-full max-w-full object-contain" />
       </span>
+    );
+  }
+  const Icon = iconForSource(name);
+  return (
+    <span
+      title={name}
+      className="flex h-16 w-32 items-center justify-center rounded-lg border border-default bg-surface text-muted"
+    >
+      <Icon className="size-6" aria-hidden="true" />
+      <span className="sr-only">{name}</span>
     </span>
   );
 }
