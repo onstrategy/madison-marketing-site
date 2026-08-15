@@ -3,9 +3,9 @@
 **Madison** is an AI-native, **code-first design system** — run directly in code, usable by
 designers, PMs, and marketing through Claude Code, made safe by governance-as-code.
 
-**Live site:** [madison-design-system.netlify.app](https://madison-design-system.netlify.app) —
+**Live site:** [madison-marketing-site.netlify.app](https://madison-marketing-site.netlify.app) —
 deployed from `main`. Every pull request gets its own preview link; the `preview` branch has a
-stable one at [preview--madison-design-system.netlify.app](https://preview--madison-design-system.netlify.app).
+stable one at [preview--madison-marketing-site.netlify.app](https://preview--madison-marketing-site.netlify.app).
 This runs on a demo Netlify account and is deliberately not indexable — see
 [`docs/publishing.md`](docs/publishing.md).
 
@@ -94,8 +94,8 @@ bun --version
 ### Step 3 — Clone the repository
 
 ```bash
-git clone https://github.com/pogadev18/northwind-design-system.git
-cd northwind-design-system
+git clone https://github.com/onstrategy/madison-marketing-site.git
+cd madison-marketing-site
 ```
 
 ### Step 4 — Install dependencies

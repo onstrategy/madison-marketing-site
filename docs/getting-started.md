@@ -135,7 +135,7 @@ in [`governance.md`](./governance.md).
 >
 > **You:** This is ready — send it for review.
 >
-> **Claude:** Checks are green. Here it is live: `https://deploy-preview-24--madison-design-system.netlify.app/careers`
+> **Claude:** Checks are green. Here it is live: `https://deploy-preview-24--madison-marketing-site.netlify.app/careers`
 > — and the pull request: `https://github.com/…/pull/24`.
 >
 > **You:** *(sends the first link to three people)*
@@ -148,9 +148,9 @@ There are exactly three kinds of real link, and they never expire into something
 
 | Link | What it is | When to send it |
 |---|---|---|
-| **`madison-design-system.netlify.app`** | **The site.** What everyone sees. | When the work is merged and done. |
-| **`deploy-preview-<number>--madison-design-system.netlify.app`** | **Your work in review.** One per pull request; refreshes on every change you make; goes away when the work merges. | For feedback — this is the link you'll use most. |
-| **`preview--madison-design-system.netlify.app`** | **A stable staging link** that doesn't change per piece of work. | When someone needs one address to bookmark. |
+| **`madison-marketing-site.netlify.app`** | **The site.** What everyone sees. | When the work is merged and done. |
+| **`deploy-preview-<number>--madison-marketing-site.netlify.app`** | **Your work in review.** One per pull request; refreshes on every change you make; goes away when the work merges. | For feedback — this is the link you'll use most. |
+| **`preview--madison-marketing-site.netlify.app`** | **A stable staging link** that doesn't change per piece of work. | When someone needs one address to bookmark. |
 
 Two things worth knowing:
 
