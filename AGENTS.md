@@ -9,8 +9,7 @@ High-level mandate for all AI agents working in this repo. Detailed recipes live
 of truth for design tokens and components; non-technical contributors (designers, PMs,
 marketing) ship real components into the real repo through Claude Code, made safe by
 **governance-as-code** (skill gates + `bun run check`). This repo is **Madison's design
-system** — specialized from a neutral reference kit; see [`PLAN.md`](./PLAN.md) for that
-origin and the productization strategy.
+system** — specialized from a neutral reference kit.
 
 ## Architecture
 

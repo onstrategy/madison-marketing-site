@@ -10,9 +10,7 @@ This runs on a demo Netlify account and is deliberately not indexable — see
 [`docs/publishing.md`](docs/publishing.md).
 
 > This repo began as a **neutral reference kit** (codenamed "Northwind") and has since been
-> **specialized into Madison's design system**. The productized *approach* behind it — and the
-> commercial model — live in [`PLAN.md`](./PLAN.md) and
-> [`docs/business-model.md`](./docs/business-model.md).
+> **specialized into Madison's design system**.
 
 ## What's here
 
@@ -25,7 +23,7 @@ This runs on a demo Netlify account and is deliberately not indexable — see
 | `.claude/hooks` | Skill-gate bundle — blocks edits to guarded paths until the right skill is loaded, and keeps every session on the latest `main` (freshness gate) |
 | `turbo/generators` | `gen:prototype` (new on-token prototype) + `gen:promote` (promote a prototype to a `packages/ui` primitive) |
 | `overlay/` | The **installable governance overlay** — drop the gates + skills + token-lint into an existing client repo |
-| `docs/` | Contributor, promote, governance, and business-model docs |
+| `docs/` | Contributor, promote, and governance docs |
 
 ## Docs
 
@@ -37,7 +35,6 @@ This runs on a demo Netlify account and is deliberately not indexable — see
 - [`docs/governance.md`](docs/governance.md) — governance-as-code: three-layer model, token lifecycle, quarterly audit
 - [`docs/publishing.md`](docs/publishing.md) — how the site deploys to Netlify, preview links, and the handover checklist
 - [`docs/roadmap.md`](docs/roadmap.md) — where the AI harness goes next (roles, exploratory mode, audit, 0→1 adoption) — with the honest current state of each
-- [`docs/business-model.md`](docs/business-model.md) — the commercial model (idea-level) - CAN BE IGNORED FOR NOW
 - [`AGENTS.md`](AGENTS.md) — the agent constitution (architecture, mandates, commands)
 - [`overlay/README.md`](overlay/README.md) — install the governance overlay (gates + skills + token-lint) into an existing repo
 
