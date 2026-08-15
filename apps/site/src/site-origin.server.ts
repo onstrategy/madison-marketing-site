@@ -1,4 +1,4 @@
-const DEFAULT_ORIGIN = "https://madison-design-system.netlify.app";
+const DEFAULT_ORIGIN = "https://madison-marketing-site.netlify.app";
 
 export function siteOrigin(): string {
   return (
