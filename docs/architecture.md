@@ -2,8 +2,7 @@
 
 > **Engineer's deep-dive.** Read this to understand the machinery end-to-end. It traces the data
 > flow through every moving part and ends with "follow-the-flow" walkthroughs and an FAQ. For the
-> *why* (governance, commercial), see [`governance.md`](./governance.md) and
-> [`business-model.md`](./business-model.md).
+> *why* (governance), see [`governance.md`](./governance.md).
 
 ---
 
@@ -461,6 +460,6 @@ recolors, semantic colors stay constant. (The workshop "aha.")
   story (code, not Figma's closed format, is what the agent reads).
 - **How does the MCP actually help?** The agent reads true component APIs + token bindings from the
   live Storybook manifest instead of hallucinating props/classes.
-- **Where's the business case?** [`business-model.md`](./business-model.md) +
-  [`governance.md`](./governance.md). The one-breath pitch: *democratize a code-first design system —
+- **Where's the business case?** [`governance.md`](./governance.md).
+  The one-breath pitch: *democratize a code-first design system —
   non-technical people ship real PRs into the real repo, made safe by guardrails.*
