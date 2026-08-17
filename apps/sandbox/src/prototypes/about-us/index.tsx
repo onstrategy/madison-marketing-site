@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Linkedin } from "lucide-react";
 import { Button } from "@madison/ui/button";
 import { Nav, Footer } from "../landing/sections";
 import { Reveal, Eyebrow } from "../landing/parts";
@@ -31,6 +31,8 @@ interface Person {
   title: string;
   bio: string;
   photo: string;
+  /** Personal LinkedIn profile — omitted for the county partners, who don't have one on the live site. */
+  linkedin?: string;
 }
 
 const LEADERSHIP: Person[] = [
@@ -39,78 +41,91 @@ const LEADERSHIP: Person[] = [
     title: "CEO, Co-Founder",
     bio: "2x founder and author of Strategic Planning for Dummies, with 20 years of organizational strategy experience.",
     photo: erica,
+    linkedin: "https://www.linkedin.com/in/ericajolsen/",
   },
   {
     name: "Todd Ballowe",
     title: "Head of Engineering & AI",
     bio: "15+ years building enterprise applications for clients including Make-A-Wish, Kia, and Chobani.",
     photo: todd,
+    linkedin: "https://www.linkedin.com/in/toddballowe/",
   },
   {
     name: "Tom Spengler",
     title: "Board Member / Investor",
     bio: "25 years in GovTech; co-founder and former CEO of Granicus; current CEO of SOVRA.",
     photo: tom,
+    linkedin: "https://www.linkedin.com/in/tomspengler/",
   },
   {
     name: "Kristine Richter",
     title: "Head of Client Success",
     bio: "Ex-Microsoft, with 50+ successful enterprise rollouts in local government.",
     photo: kristine,
+    linkedin: "https://www.linkedin.com/in/kristine-richter-83758810/",
   },
   {
     name: "Mark Wheeler",
     title: "Chief Public Data Officer",
     bio: "Former Philadelphia CIO and Director of Data and AI for Federal Centers of Excellence.",
     photo: mark,
+    linkedin: "https://www.linkedin.com/in/markwheelerphl/",
   },
   {
     name: "Kim Perkins",
     title: "Principal Strategist",
     bio: "Ex-Google, with 15+ years in strategic planning and change management.",
     photo: kim,
+    linkedin: "https://www.linkedin.com/in/kim-perkins-28948a6/",
   },
   {
     name: "Kendal Ferris",
     title: "Sales Manager",
     bio: "Background at GoDaddy and Citrix.",
     photo: kendal,
+    linkedin: "https://www.linkedin.com/in/kendalferris/",
   },
   {
     name: "Heyden Enochson",
     title: "Head of GTM",
     bio: "11 years in SaaS marketing; founding team member.",
     photo: heyden,
+    linkedin: "https://www.linkedin.com/in/heyden-enochson-b81b0a83/",
   },
   {
     name: "Dana Searcy",
     title: "Principal Strategist",
     bio: "Former Washoe County Division Director of Housing & Homeless Services.",
     photo: dana,
+    linkedin: "https://www.linkedin.com/in/danasearcy/",
   },
   {
     name: "Connor Ferris",
     title: "AI Solutions Advisor",
     bio: "Previously at AT&T, Citrix, and ShareFile.",
     photo: connor,
+    linkedin: "https://www.linkedin.com/in/connorpferris/",
   },
   {
     name: "Reid Weber",
     title: "Senior Software Engineer",
     bio: "Solution Architect for the Nevada Secretary of State; co-founder of TrainerRoad.",
     photo: reid,
+    linkedin: "https://www.linkedin.com/in/reid-weber-94ab491/",
   },
   {
     name: "Liv Bailey",
     title: "Software Engineer",
     bio: "2025 Boston University Computer Science graduate.",
     photo: liv,
+    linkedin: "https://www.linkedin.com/in/liv-bailey-2b5508217/",
   },
   {
     name: "Sarah Orner",
     title: "Software Engineer",
     bio: "University of Nevada, Reno graduate specializing in data systems and AI.",
     photo: sarah,
+    linkedin: "https://www.linkedin.com/in/sarah-orner-a2b83a330/",
   },
 ];
 
@@ -220,12 +235,28 @@ function LeadershipSection() {
           {LEADERSHIP.map((person, i) => (
             <Reveal key={person.name} delay={i * 30}>
               <div className="h-full rounded-2xl border border-default bg-panel p-5">
-                <img
-                  src={person.photo}
-                  alt={person.name}
-                  loading="lazy"
-                  className="mb-4 size-16 rounded-full border border-default object-cover"
-                />
+                <div className="mb-4 flex items-start justify-between gap-2">
+                  <img
+                    src={person.photo}
+                    alt={person.name}
+                    loading="lazy"
+                    className="size-16 rounded-full border border-default object-cover"
+                  />
+                  {/* Only this icon is interactive — the card itself stays
+                      static, per explicit request (not the whole-card link
+                      the site's other card grids use). */}
+                  {person.linkedin ? (
+                    <a
+                      href={person.linkedin}
+                      target="_blank"
+                      rel="noopener"
+                      aria-label={`${person.name} on LinkedIn`}
+                      className="flex size-8 shrink-0 items-center justify-center rounded-full text-muted transition-colors hover:bg-hover hover:text-brand-accent"
+                    >
+                      <Linkedin aria-hidden="true" className="size-4" />
+                    </a>
+                  ) : null}
+                </div>
                 <div className="font-sans text-base font-semibold text-primary">
                   {person.name}
                 </div>
