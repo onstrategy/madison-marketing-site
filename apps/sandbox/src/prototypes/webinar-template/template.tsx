@@ -170,8 +170,8 @@ export function WebinarTemplate({ data }: { data: WebinarData }) {
         <IntroSection intro={data.intro} />
         <TasksSection data={data} />
         <BestPracticesSection data={data} />
-        <CtaSection data={data.cta} />
         <ClientLogos />
+        <CtaSection data={data.cta} />
       </main>
       <Footer />
     </div>
