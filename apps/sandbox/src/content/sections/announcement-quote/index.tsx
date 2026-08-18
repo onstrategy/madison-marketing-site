@@ -37,7 +37,7 @@ export default function AnnouncementQuoteSection({
 }: AnnouncementQuoteProps) {
   const paragraphs = quote.text.split(/\n\n+/);
   return (
-    <section className="bg-app px-gutter py-16">
+    <section className="bg-app px-gutter py-8">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <div className="flex items-start gap-5 rounded-2xl bg-surface p-6 lg:p-8">

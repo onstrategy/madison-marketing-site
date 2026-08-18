@@ -14,18 +14,21 @@ export function parseProps(input: unknown): AnnouncementSubtitleProps {
 }
 
 // The announcement's lead statement, right under the hero — styled as a
-// heading (Lora serif, on the h4 step) rather than plain body copy like
-// news-intro's, and deliberately carries no border-b: it sits directly
-// above the first announcement-quote card, which is its own contained
-// card and doesn't want a divider line cutting across the gap above it.
+// heading (Inter, sized between body copy and the hero) rather than
+// plain body copy like news-intro's, and deliberately carries no
+// border-b: it sits directly above the first announcement-quote card,
+// which is its own contained card and doesn't want a divider line
+// cutting across the gap above it. Tighter py than news-intro's own —
+// this section's only neighbor below is a quote card, and that gap
+// should read as close, not like a full section break.
 export default function AnnouncementSubtitleSection({
   text,
 }: AnnouncementSubtitleProps) {
   return (
-    <section className="bg-app px-gutter py-16">
+    <section className="bg-app px-gutter py-8">
       <div className="mx-auto max-w-3xl">
         <Reveal>
-          <p className="text-balance font-serif text-xl font-medium tracking-tight text-primary lg:text-2xl">
+          <p className="text-balance font-sans text-xl font-medium tracking-tight text-primary lg:text-2xl">
             {text}
           </p>
         </Reveal>

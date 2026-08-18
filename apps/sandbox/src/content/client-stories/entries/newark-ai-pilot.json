@@ -51,7 +51,8 @@
     {
       "type": "news-intro",
       "props": {
-        "intro": "Since the initial phase of this pilot focuses on generating, structuring and refining staff reports, Madison AI promises the safety of Newark’s records and securely connects with the City’s proprietary data, syncing with existing codes, handbooks, and operational guidelines. Functioning as a tailored digital aide for the City, the system helps staff rapidly retrieve documents, digest lengthy materials and assemble essential documentation, freeing up hours previously spent on manual research. This freed-up time gives staff the opportunity to further serve their community."
+        "intro": "Since the initial phase of this pilot focuses on generating, structuring and refining staff reports, Madison AI promises the safety of Newark’s records and securely connects with the City’s proprietary data, syncing with existing codes, handbooks, and operational guidelines. Functioning as a tailored digital aide for the City, the system helps staff rapidly retrieve documents, digest lengthy materials and assemble essential documentation, freeing up hours previously spent on manual research. This freed-up time gives staff the opportunity to further serve their community.",
+        "divider": false
       }
     },
     {
@@ -78,7 +79,8 @@
               }
             ]
           }
-        ]
+        ],
+        "divider": false
       }
     },
     {
@@ -89,7 +91,8 @@
           "Madison AI is the AI engine for local government. Using enterprise data and systems of record, Madison AI’s suite of purpose-built artificial intelligence assistants is designed to support the primary internal functions of local government.",
           "These include assistants for the Office of the City Manager, Community Development, Procurement, and related operational areas. Madison AI accelerates administrative tasks, such as preparing staff reports, generating zoning verification letters, and drafting requests for proposals, using the agency’s own enterprise data to ensure accuracy and reliability.",
           "Co-founded by Washoe County and trusted by nearly 50 local governments, Madison AI supports public-sector staff by reducing administrative workload and enabling teams to direct more time to serving their communities."
-        ]
+        ],
+        "divider": false
       }
     },
     {
