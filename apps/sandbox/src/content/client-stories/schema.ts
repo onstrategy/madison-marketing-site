@@ -47,12 +47,41 @@ export const ClientStoryDocumentSchema = z
         summary: NonEmptyStringSchema,
         clientName: NonEmptyStringSchema,
         photo: PhotoSchema,
-        logoAsset: LogoAssetSchema,
-        logoAlt: NonEmptyStringSchema,
-        logoWidth: z.number().int().positive(),
-        logoHeight: z.number().int().positive(),
+        // Optional together: entries without a supplied client mark (e.g. a
+        // pilot announcement with no logo asset on hand yet) may omit all
+        // four and fall back to a generic icon badge — see clientStoryLogo()
+        // in page.tsx and StoryCard/FeaturedHero in
+        // prototypes/client-stories/index.tsx. The superRefine below still
+        // rejects a partial mix (some logo fields set, others missing).
+        logoAsset: LogoAssetSchema.optional(),
+        logoAlt: NonEmptyStringSchema.optional(),
+        logoWidth: z.number().int().positive().optional(),
+        logoHeight: z.number().int().positive().optional(),
       })
-      .strict(),
+      .strict()
+      .superRefine((card, ctx) => {
+        const logoFields = [
+          "logoAsset",
+          "logoAlt",
+          "logoWidth",
+          "logoHeight",
+        ] as const;
+        const presentCount = logoFields.filter(
+          (field) => card[field] !== undefined,
+        ).length;
+        if (presentCount > 0 && presentCount < logoFields.length) {
+          for (const field of logoFields) {
+            if (card[field] === undefined) {
+              ctx.addIssue({
+                code: "custom",
+                path: [field],
+                message:
+                  "must be set together with the other logo fields, or omitted entirely",
+              });
+            }
+          }
+        }
+      }),
     sections: z.array(SectionInputSchema).min(1),
   })
   .strict();

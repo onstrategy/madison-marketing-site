@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Landmark } from "lucide-react";
 import { clientStories } from "../../content/client-stories/collection";
 import { clientStoryLogo } from "../../content/client-stories/page";
 import type { ClientStoryDocument } from "../../content/client-stories/schema";
@@ -19,7 +19,10 @@ import pasadenaLogo from "../landing/logos/pasadena.png";
 interface ClientStorySummary {
   title: string;
   oneLiner: string;
-  logo: { src: string; alt: string; width: number; height: number };
+  clientName: string;
+  // Absent for entries with no supplied client mark on hand yet (e.g. a
+  // fresh pilot announcement) — LogoBadge renders a generic icon instead.
+  logo?: { src: string; alt: string; width: number; height: number };
   href: string;
 }
 
@@ -35,6 +38,7 @@ function toSummary(story: ClientStoryDocument): ClientStorySummary {
   return {
     title: story.card.title,
     oneLiner: story.card.summary,
+    clientName: story.card.clientName,
     logo: clientStoryLogo(story),
     href: story.path,
   };
@@ -55,30 +59,35 @@ const LEGACY_EXTERNAL_STORIES: ClientStorySummary[] = [
   {
     title: "Washoe County, NV",
     oneLiner: "Saving $41K+ in staff time every month.",
+    clientName: "Washoe County, NV",
     logo: { src: washoeCountyLogo, alt: "Washoe County, Nevada", width: 215, height: 252 },
     href: "https://www.madisonai.com/client-stories/washoe-county",
   },
   {
     title: "City of Reno",
     oneLiner: "Cut time spent on staff reports by 75%.",
+    clientName: "City of Reno",
     logo: { src: renoLogo, alt: "City of Reno, Nevada", width: 304, height: 252 },
     href: "https://www.madisonai.com/client-stories",
   },
   {
     title: "Carson City, NV",
     oneLiner: "“Exactly what I need, faster.”",
+    clientName: "Carson City, NV",
     logo: { src: carsonCityLogo, alt: "Carson City, Nevada", width: 541, height: 252 },
     href: "https://www.madisonai.com/client-stories/carson-city-client-story",
   },
   {
     title: "Aspen, CO",
     oneLiner: "Reclaiming 140 staff hours every month.",
+    clientName: "Aspen, CO",
     logo: { src: aspenLogo, alt: "City of Aspen, Colorado", width: 237, height: 252 },
     href: "https://www.madisonai.com/client-stories",
   },
   {
     title: "Pasadena, CA",
     oneLiner: "One source of truth for the City Attorney's office.",
+    clientName: "Pasadena, CA",
     logo: { src: pasadenaLogo, alt: "City of Pasadena, California", width: 273, height: 252 },
     href: "https://www.madisonai.com/client-stories",
   },
@@ -90,6 +99,43 @@ const OTHER_STORIES: ClientStorySummary[] = [
     .map(toSummary),
   ...LEGACY_EXTERNAL_STORIES,
 ];
+
+/**
+ * The client mark, at the size/shape shared by the featured hero and the
+ * story cards. Falls back to a generic icon — matching the LogoMark
+ * primitive's own fallback convention (../landing/parts.tsx) — for entries
+ * with no supplied logo asset yet, e.g. a fresh pilot announcement.
+ */
+function LogoBadge({
+  logo,
+  clientName,
+}: {
+  logo: ClientStorySummary["logo"];
+  clientName: string;
+}) {
+  if (logo) {
+    return (
+      <span className="flex size-20 items-center justify-center rounded-full border border-default bg-plate p-4">
+        <img
+          src={logo.src}
+          alt={logo.alt}
+          width={logo.width}
+          height={logo.height}
+          className="size-full object-contain"
+        />
+      </span>
+    );
+  }
+  return (
+    <span
+      title={clientName}
+      className="flex size-20 items-center justify-center rounded-full border border-default bg-surface text-muted"
+    >
+      <Landmark aria-hidden="true" className="size-8" />
+      <span className="sr-only">{clientName}</span>
+    </span>
+  );
+}
 
 function FeaturedHero({ data }: { data: typeof FEATURED }) {
   return (
@@ -108,15 +154,7 @@ function FeaturedHero({ data }: { data: typeof FEATURED }) {
       <div className="relative mx-auto max-w-6xl px-gutter pt-28 pb-24 lg:px-0 lg:pt-40">
         <Reveal>
           <div className="mb-6 flex items-center gap-3">
-            <span className="flex size-20 items-center justify-center rounded-full border border-default bg-plate p-4">
-              <img
-                src={data.logo.src}
-                alt={data.logo.alt}
-                width={data.logo.width}
-                height={data.logo.height}
-                className="size-full object-contain"
-              />
-            </span>
+            <LogoBadge logo={data.logo} clientName={data.clientName} />
             <span className="font-sans text-sm font-semibold text-secondary">
               {data.clientName}
             </span>
@@ -145,15 +183,9 @@ function StoryCard({ story, delay }: { story: ClientStorySummary; delay: number 
         {...(isInternal ? {} : { target: "_blank", rel: "noopener" })}
         className="group flex h-full flex-col rounded-2xl border border-default bg-surface p-6 transition-transform hover:-translate-y-1"
       >
-        <span className="mb-5 flex size-20 items-center justify-center rounded-full border border-default bg-plate p-4">
-          <img
-            src={story.logo.src}
-            alt={story.logo.alt}
-            width={story.logo.width}
-            height={story.logo.height}
-            className="size-full object-contain"
-          />
-        </span>
+        <div className="mb-5">
+          <LogoBadge logo={story.logo} clientName={story.clientName} />
+        </div>
         <h3 className="font-sans text-xl font-semibold tracking-tight text-primary">{story.title}</h3>
         <p className="mt-2 flex-1 text-secondary">{story.oneLiner}</p>
         <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">

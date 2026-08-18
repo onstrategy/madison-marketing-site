@@ -31,11 +31,13 @@ export function ClientStoryPage({ story }: { story: ClientStoryDocument }) {
 
 export function clientStoryLogo(
   story: ClientStoryDocument,
-): { src: string; alt: string; width: number; height: number } {
+): { src: string; alt: string; width: number; height: number } | undefined {
+  const { logoAsset, logoAlt, logoWidth, logoHeight } = story.card;
+  if (!logoAsset || !logoAlt || !logoWidth || !logoHeight) return undefined;
   return {
-    src: resolveLogo(story.card.logoAsset),
-    alt: story.card.logoAlt,
-    width: story.card.logoWidth,
-    height: story.card.logoHeight,
+    src: resolveLogo(logoAsset),
+    alt: logoAlt,
+    width: logoWidth,
+    height: logoHeight,
   };
 }
