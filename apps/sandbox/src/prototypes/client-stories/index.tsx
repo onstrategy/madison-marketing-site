@@ -17,7 +17,9 @@ import pasadenaLogo from "../landing/logos/pasadena.png";
 // marquee (see ../landing/logos.ts) rather than a fabricated mark.
 
 interface ClientStorySummary {
+  /** Always the city/agency name (e.g. "Newark, California") — never the story's own headline. */
   title: string;
+  /** What the story is actually about — the specific hook, in a sentence. */
   oneLiner: string;
   clientName: string;
   // Absent for entries with no supplied client mark on hand yet (e.g. a
@@ -153,15 +155,18 @@ function FeaturedHero({ data }: { data: typeof FEATURED }) {
       </div>
       <div className="relative mx-auto max-w-6xl px-gutter pt-28 pb-24 lg:px-0 lg:pt-40">
         <Reveal>
-          <div className="mb-6 flex items-center gap-3">
+          <div className="mb-6">
             <LogoBadge logo={data.logo} clientName={data.clientName} />
-            <span className="font-sans text-sm font-semibold text-secondary">
-              {data.clientName}
-            </span>
           </div>
-          <h1 className="mb-8 max-w-3xl text-balance font-serif text-4xl font-medium tracking-tight text-primary">
+          {/* The big title is always the city name — the story's specific
+              hook (what actually happened) lives in the description below
+              it, not the title. */}
+          <h1 className="mb-4 max-w-3xl text-balance font-serif text-4xl font-medium tracking-tight text-primary">
             {data.title}
           </h1>
+          <p className="mb-8 max-w-xl text-pretty text-lg text-secondary">
+            {data.oneLiner}
+          </p>
           <a
             href={data.href}
             className="inline-flex items-center gap-2 rounded-full bg-brand px-6.5 py-3.75 text-base font-medium text-brand-fg transition-colors hover:bg-brand-hover"

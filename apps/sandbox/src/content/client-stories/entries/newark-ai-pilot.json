@@ -9,8 +9,8 @@
   },
   "card": {
     "kicker": "New Deployment",
-    "title": "Newark, California Kicks Off Madison AI Pilot to Accelerate Internal Workflows",
-    "summary": "The City of Newark has launched a Madison AI pilot to streamline staff reports and support employees citywide.",
+    "title": "Newark, California",
+    "summary": "The city has launched a Madison AI pilot to streamline staff reports and support employees citywide.",
     "clientName": "City of Newark, California",
     "photo": {
       "url": "https://images.unsplash.com/photo-1625516581237-3d9d0a31538c?w=1200&q=80&auto=format&fit=crop",
@@ -43,7 +43,7 @@
       "type": "announcement-quote",
       "props": {
         "quote": {
-          "text": "There is a tremendous amount of excitement surrounding this pilot across our staff. We are particularly looking forward to utilizing Madison AI’s technology for staff report assistance, which will save valuable time and give our staff the tools they need to operate at their highest potential.",
+          "text": "There is a tremendous amount of excitement surrounding this pilot across our staff.\n\nWe are particularly looking forward to utilizing Madison AI’s technology for staff report assistance, which will save valuable time and give our staff the tools they need to operate at their highest potential.",
           "attribution": "Ed Miranda, Newark IT Director"
         }
       }
@@ -58,7 +58,7 @@
       "type": "announcement-quote",
       "props": {
         "quote": {
-          "text": "We are incredibly proud to partner with the City of Newark, a municipality that is clearly committed to innovation and empowering its workforce. Collaborating on this pilot alongside their dedicated staff allows us to deliver intelligent solutions that tackle heavy administrative lifting so the City can direct its focus back to serving its residents.",
+          "text": "We are incredibly proud to partner with the City of Newark, a municipality that is clearly committed to innovation and empowering its workforce.\n\nCollaborating on this pilot alongside their dedicated staff allows us to deliver intelligent solutions that tackle heavy administrative lifting so the City can direct its focus back to serving its residents.",
           "attribution": "Erica Olsen, CEO of Madison AI"
         }
       }
