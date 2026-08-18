@@ -1,20 +1,11 @@
 import { Download } from "lucide-react";
 import { z } from "zod";
 import { Button } from "@madison/ui/button";
+import { resolveClientStoryImage } from "../../client-stories/assets";
+import { ClientStoryImageInputSchema } from "../../client-stories/image";
 import { Reveal, Eyebrow } from "../../../prototypes/landing/parts";
 
 const NonEmptyStringSchema = z.string().trim().min(1);
-
-const PhotoSchema = z
-  .object({
-    url: z.string().url().refine((url) => url.startsWith("https://"), {
-      message: "must use an https URL",
-    }),
-    alt: NonEmptyStringSchema,
-    width: z.number().int().positive(),
-    height: z.number().int().positive(),
-  })
-  .strict();
 
 const LogoAssetSchema = z
   .string()
@@ -29,7 +20,7 @@ const ClientStoryHeroIntroInputSchema = z
         clientName: NonEmptyStringSchema,
         agencyType: NonEmptyStringSchema,
         modelsUsed: z.array(NonEmptyStringSchema).min(1),
-        photo: PhotoSchema,
+        photo: ClientStoryImageInputSchema,
         logoAsset: LogoAssetSchema,
         logoAlt: NonEmptyStringSchema,
         logoWidth: z.number().int().positive(),
@@ -40,7 +31,7 @@ const ClientStoryHeroIntroInputSchema = z
       .object({
         headline: NonEmptyStringSchema,
         paragraphs: z.array(NonEmptyStringSchema).min(1),
-        photo: PhotoSchema,
+        photo: ClientStoryImageInputSchema,
       })
       .strict(),
   })
@@ -68,6 +59,7 @@ const ClientStoryHeroIntroPropsSchema = ClientStoryHeroIntroInputSchema.transfor
   ({ hero, intro }) => ({
     hero: {
       ...hero,
+      photo: resolveClientStoryImage(hero.photo),
       logo: {
         src: resolveLogo(hero.logoAsset),
         alt: hero.logoAlt,
@@ -75,7 +67,10 @@ const ClientStoryHeroIntroPropsSchema = ClientStoryHeroIntroInputSchema.transfor
         height: hero.logoHeight,
       },
     },
-    intro,
+    intro: {
+      ...intro,
+      photo: resolveClientStoryImage(intro.photo),
+    },
   }),
 );
 

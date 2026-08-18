@@ -1,27 +1,32 @@
 {
   "id": "city-of-corona",
   "path": "/client-stories/city-of-corona/",
-  "order": 10,
+  "sourceUrl": "https://www.madisonai.com/client-stories/city-of-corona",
+  "order": 0,
   "featured": true,
   "metadata": {
     "title": "City of Corona",
-    "description": "Client story: how the City of Corona reclaimed staff time and institutional knowledge with Madison AI."
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "City of Corona - Client Story",
+    "ogImageAsset": "madison-client-story-og.jpg"
   },
   "card": {
     "kicker": "Client Story",
     "title": "Reclaiming $11,000 in Staff Time Monthly with Instant Institutional Knowledge",
-    "summary": "How the City of Corona cut through administrative complexity and reclaimed 104 staff hours every month.",
+    "summary": "How the City of Corona is cutting through administrative complexity, streamlining research, and empowering over 70 active users.",
     "clientName": "City of Corona",
     "photo": {
-      "url": "https://images.unsplash.com/photo-1634508943475-541d357f8a96?w=1200&q=80&auto=format&fit=crop",
-      "alt": "Government building exterior with a flag",
-      "width": 1200,
-      "height": 800
+      "asset": "city-of-corona-hero.avif",
+      "alt": "Aerial view of the City of Corona, California",
+      "width": 2015,
+      "height": 1200
     },
-    "logoAsset": "corona.webp",
-    "logoAlt": "City of Corona, California",
-    "logoWidth": 223,
-    "logoHeight": 140
+    "logo": {
+      "asset": "corona.webp",
+      "alt": "City of Corona, California",
+      "width": 223,
+      "height": 140
+    }
   },
   "sections": [
     {
@@ -38,10 +43,10 @@
             "Community Development"
           ],
           "photo": {
-            "url": "https://images.unsplash.com/photo-1634508943475-541d357f8a96?w=1200&q=80&auto=format&fit=crop",
-            "alt": "Government building exterior with a flag",
-            "width": 1200,
-            "height": 800
+            "asset": "city-of-corona-hero.avif",
+            "alt": "Aerial view of the City of Corona, California",
+            "width": 2015,
+            "height": 1200
           },
           "logoAsset": "corona.webp",
           "logoAlt": "City of Corona, California",
@@ -56,10 +61,10 @@
             "McMasters and his team are helping create the future of AI for local government. Not by waiting for it, but by building it alongside the people making the technology."
           ],
           "photo": {
-            "url": "https://images.unsplash.com/photo-1629333574602-00d8e5dee681?w=1200&q=80&auto=format&fit=crop",
-            "alt": "Government building surrounded by trees",
-            "width": 1200,
-            "height": 900
+            "asset": "city-of-corona-intro.avif",
+            "alt": "City of Corona government building and surrounding landscape",
+            "width": 2015,
+            "height": 1200
           }
         }
       }
@@ -166,7 +171,8 @@
         },
         "download": {
           "title": "Download this case study as a one-page PDF",
-          "submitLabel": "Download case study"
+          "asset": "city-of-corona-one-page.pdf",
+          "form": "book-a-demo"
         }
       }
     },

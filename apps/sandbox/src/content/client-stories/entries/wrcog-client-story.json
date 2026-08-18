@@ -1,0 +1,207 @@
+{
+  "id": "wrcog-client-story",
+  "path": "/client-stories/wrcog-client-story/",
+  "sourceUrl": "https://www.madisonai.com/client-stories/wrcog-client-story",
+  "order": 30,
+  "featured": false,
+  "metadata": {
+    "title": "WRCOG",
+    "description": "How an agency uniting representatives from 18 cities is automating governance research and staff reports like never before with Madison AI.",
+    "seoTitle": "WRCOG - Client Story",
+    "ogImageAsset": "madison-client-story-og.jpg"
+  },
+  "card": {
+    "kicker": "Client Story",
+    "title": "The Single Agency Serving 2M, Now Powered by AI",
+    "summary": "How WRCOG is automating governance research and staff reports",
+    "clientName": "Western Riverside Council of Governments",
+    "photo": {
+      "asset": "wrcog-intro.avif",
+      "alt": "Western Riverside County communities and landscape",
+      "width": 1411,
+      "height": 840
+    },
+    "logo": {
+      "asset": "wrcog.avif",
+      "alt": "Western Riverside Council of Governments",
+      "width": 208,
+      "height": 161
+    }
+  },
+  "sections": [
+    {
+      "type": "client-story-hero-intro",
+      "props": {
+        "hero": {
+          "kicker": "Client Story",
+          "title": "The Single Agency Serving 2M, Now Powered by AI",
+          "clientName": "Western Riverside Council of Governments",
+          "agencyType": "Organization",
+          "modelsUsed": [
+            "Agency-Wide General Assistance Model"
+          ],
+          "photo": {
+            "asset": "wrcog-hero.avif",
+            "alt": "Western Riverside County communities and landscape",
+            "width": 2015,
+            "height": 1200
+          },
+          "logoAsset": "wrcog.avif",
+          "logoAlt": "Western Riverside Council of Governments",
+          "logoWidth": 208,
+          "logoHeight": 161
+        },
+        "intro": {
+          "headline": "How an agency uniting representatives from 18 cities is automating governance research and staff reports like never before with Madison AI.",
+          "paragraphs": [
+            "Chris Gray, Deputy Executive Director for the Western Riverside Council of Governments (WRCOG), helps oversee one of the most dynamic joint powers authorities in California. Serving a massive population of nearly 2 million residents with a dedicated staff of 36, there is no room for extended administrative hours.",
+            "Through his time with WRCOG, Gray and his team recognized a looming challenge: the time-intensive nature of manual research and the loss of institutional knowledge. Like many large-scale agencies, WRCOG was navigating the need to deliver on ambitious regional goals while managing 94 active contracts and 50+ committee meetings per year. To solve this, WRCOG adopted Madison AI, using the technology to make 35 years of past records and complex governance documents available in seconds."
+          ],
+          "photo": {
+            "asset": "wrcog-intro.avif",
+            "alt": "Western Riverside County communities and landscape",
+            "width": 1411,
+            "height": 840
+          }
+        }
+      }
+    },
+    {
+      "type": "client-story-narrative",
+      "props": {
+        "title": "WRCOG’s Search for a Solution",
+        "paragraphs": [
+          "Operating across Western Riverside County, WRCOG has long been a forward-thinking organization that unifies its members to speak with a collective voice. Still, its data was historically complex, with thousands of records buried in archives spanning over three decades.",
+          "Before implementing AI, researching a past resolution, tracking down a governance authority, or preparing a staff report meant hours of manual searching. Sometimes, it just came down to hoping the right person remembered the information. Leadership sought a solution that could move beyond basic keyword searches to a system capable of reading and summarizing unstructured data across every department.",
+          "They needed a purpose-built model. One that used only the agency's official data to ensure accuracy and eliminate the hallucinations common in generic AI tools. WRCOG partnered with Madison AI to build a customized, secure environment, deploying a knowledge assistant trained on its governance documents and a staff report writer calibrated to instill specific formatting rules."
+        ]
+      }
+    },
+    {
+      "type": "client-story-quote-stats",
+      "props": {
+        "quote": {
+          "text": "With Madison AI, we've moved from searching for information to instantly accessing it. More importantly, Madison AI consistently uncovers our blind spots, delivering valuable insights that go far beyond what we originally knew to ask.",
+          "attribution": "Chris Gray, Deputy Executive Director, WRCOG",
+          "photo": {
+            "asset": "wrcog-quote.png",
+            "alt": "Chris Gray, Deputy Executive Director of WRCOG",
+            "width": 603,
+            "height": 603
+          }
+        },
+        "stats": {
+          "eyebrow": "Results",
+          "items": [
+            {
+              "value": "$107,000",
+              "label": "Saved in administrative costs"
+            },
+            {
+              "value": "316",
+              "label": "Research conversations handled"
+            },
+            {
+              "value": "42%",
+              "label": "Staff adoption rate"
+            },
+            {
+              "value": "870",
+              "label": "AI-assisted tasks completed"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "client-story-challenge",
+      "props": {
+        "eyebrow": "The challenge",
+        "title": "Managing a Massive Regional Footprint with a Lean Staff",
+        "intro": "With just 36 staff members, WRCOG coordinates complex regional services across 18 cities. This massive scope requires overseeing active contracts and preparing committee meetings every year. The volume of regional data created critical operational bottlenecks.",
+        "items": [
+          {
+            "icon": "file-search",
+            "title": "Decades of Buried History",
+            "description": "Finding a past resolution or tracking down a governance authority required hours of manual searching through 35 years of records."
+          },
+          {
+            "icon": "clock",
+            "title": "Administrative Overload",
+            "description": "Prepping for 50+ annual meetings meant endless hours dedicated to researching and drafting complex staff reports."
+          },
+          {
+            "icon": "database",
+            "title": "Siloed Contract Details",
+            "description": "Keeping track of the specific requirements, details, and histories within 94 active contracts was a heavy, manual lift."
+          }
+        ]
+      }
+    },
+    {
+      "type": "client-story-solution-timeline",
+      "props": {
+        "eyebrow": "The solution",
+        "title": "Leveraging WRCOG’s Data with AI",
+        "phases": [
+          {
+            "step": "Step 1",
+            "title": "Pinpointing High-Friction Workflows",
+            "description": "WRCOG leadership recognized that document drafting, regional program research, and finance and contract management were consuming the most staff time. They needed an AI solution tailored to these tasks rather than a generic search tool."
+          },
+          {
+            "step": "Step 2",
+            "title": "Integrating 35 Years of Governance History",
+            "description": "Madison AI deployed a Citywide assistant trained on WRCOG's governance documents. This instantly surfaced over three decades of data, empowering staff to locate critical historical details in seconds."
+          },
+          {
+            "step": "Step 3",
+            "title": "Launching the Custom Report Writer",
+            "description": "To streamline prep for their 50+ annual committee meetings, WRCOG integrated a purpose-built staff report writer calibrated to their formatting rules. The module automatically drafts committee-ready boilerplate sections."
+          },
+          {
+            "step": "Step 4",
+            "title": "Streamlining Contract Operations",
+            "description": "WRCOG centralized its contract management by making 94 active contracts searchable on demand, significantly accelerating oversight and organization."
+          },
+          {
+            "step": "Step 5",
+            "title": "Empowering Regional Program Research",
+            "description": "With core administrative tasks optimized, staff leveraged Madison AI to support broad regional initiatives. Employees can now pull instant answers on the Transportation Uniform Mitigation Fee (TUMF), transportation projects, energy programs, and habitat conservation spanning WRCOG's 18-city service area."
+          }
+        ]
+      }
+    },
+    {
+      "type": "client-story-impact-download",
+      "props": {
+        "impact": {
+          "eyebrow": "The impact",
+          "title": "Saving $107,000 in Administrative Costs",
+          "paragraphs": [
+            "Madison AI has radically shifted how WRCOG handles its extensive institutional knowledge. Staff can now obtain cited answers on resolutions, budgets, and policies in seconds. This rapid access drastically reduces time-consuming manual research, and allows the agency to locate a forgotten signing-authority resolution that saved outside counsel hours of billable research.",
+            "In just one year, WRCOG utilized Madison AI to generate 870 queries, successfully avoiding $107,000 in administrative costs. For an expansive joint powers authority operating with just 36 employees, this gained capacity is vital. It empowers the team to remain responsive and connected to the residents across the Western Riverside region."
+          ]
+        },
+        "download": {
+          "title": "Download this case study as a one-page PDF",
+          "description": "Submit the form to download the WRCOG client story.",
+          "asset": "wrcog-one-page.pdf",
+          "form": "book-a-demo"
+        }
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "client-story-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form below, and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

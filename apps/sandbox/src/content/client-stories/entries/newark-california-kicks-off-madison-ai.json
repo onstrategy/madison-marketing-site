@@ -1,0 +1,105 @@
+{
+  "id": "newark-california-kicks-off-madison-ai",
+  "path": "/newark-california-kicks-off-madison-ai/",
+  "sourceUrl": "https://www.madisonai.com/newark-california-kicks-off-madison-ai",
+  "order": 10,
+  "featured": false,
+  "metadata": {
+    "title": "Newark, California Kicks Off Madison AI Pilot to Accelerate Internal Workflows",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "Newark, California Kicks Off Madison AI Pilot to Accelerate Internal Workflows",
+    "ogImageAsset": "madison-client-story-og.jpg"
+  },
+  "card": {
+    "kicker": "New Deployment",
+    "title": "Newark, California Kicks Off Madison AI Pilot to Accelerate Internal Workflows",
+    "summary": "Designed to streamline local government operations",
+    "clientName": "City of Newark",
+    "photo": {
+      "asset": "newark-hero.avif",
+      "alt": "Newark, California municipal landscape",
+      "width": 2015,
+      "height": 1200
+    }
+  },
+  "sections": [
+    {
+      "type": "client-story-announcement-hero",
+      "props": {
+        "category": "New Deployment",
+        "title": "Newark, California Kicks Off Madison AI Pilot to Accelerate Internal Workflows",
+        "photo": {
+          "asset": "newark-hero.avif",
+          "alt": "Newark, California municipal landscape",
+          "width": 2015,
+          "height": 1200
+        }
+      }
+    },
+    {
+      "type": "client-story-announcement-body",
+      "props": {
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "The City of Newark, California , has tapped Madison AI to pilot a Citywide artificial intelligence (AI) assistant designed to streamline local government operations and provide support to employees."
+          },
+          {
+            "type": "quote",
+            "text": "There is a tremendous amount of excitement surrounding this pilot across our staff. We are particularly looking forward to utilizing Madison AI’s technology for staff report assistance, which will save valuable time and give our staff the tools they need to operate at their highest potential.",
+            "attribution": "Ed Miranda, Newark IT Director",
+            "photo": {
+              "asset": "newark-california-kicks-off-madison-ai-quote-1.avif",
+              "alt": "Ed Miranda, Newark IT Director",
+              "width": 603,
+              "height": 603
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Since the initial phase of this pilot focuses on generating, structuring and refining staff reports, Madison AI promises the safety of Newark’s records and securely connects with the City’s proprietary data, syncing with existing codes, handbooks, and operational guidelines. Functioning as a tailored digital aide for the City, the system helps staff rapidly retrieve documents, digest lengthy materials and assemble essential documentation, freeing up hours previously spent on manual research. This freed-up time gives staff the opportunity to further serve their community."
+          },
+          {
+            "type": "quote",
+            "text": "We are incredibly proud to partner with the City of Newark, a municipality that is clearly committed to innovation and empowering its workforce. Collaborating on this pilot alongside their dedicated staff allows us to deliver intelligent solutions that tackle heavy administrative lifting so the City can direct its focus back to serving its residents.",
+            "attribution": "Erica Olsen, CEO of Madison AI",
+            "photo": {
+              "asset": "madison-erica-olsen.png",
+              "alt": "Erica Olsen, CEO of Madison AI",
+              "width": 603,
+              "height": 603
+            }
+          },
+          {
+            "type": "heading",
+            "text": "About the City of Newark, California"
+          },
+          {
+            "type": "paragraph",
+            "text": "Located in Alameda County, the City of Newark is an independent enclave situated near the edge of the San Francisco Bay and the tech hub of Silicon Valley. Home to roughly 46,000 residents, the city prides itself on its diverse population, robust parks system, and family-friendly environment, maintaining a distinct small-town identity within a major metropolitan region. Learn more about the City of Newark, California ."
+          },
+          {
+            "type": "heading",
+            "text": "About Madison AI"
+          },
+          {
+            "type": "paragraph",
+            "text": "Madison AI is the AI engine for local government. Using enterprise data and systems of record, Madison AI’s suite of purpose-built artificial intelligence assistants is designed to support the primary internal functions of local government. These include assistants for the Office of the City Manager, Community Development, Procurement, and related operational areas. Madison AI accelerates administrative tasks, such as preparing staff reports, generating zoning verification letters, and drafting requests for proposals, using the agency’s own enterprise data to ensure accuracy and reliability. Co-founded by Washoe County and trusted by nearly 50 local governments, Madison AI supports public-sector staff by reducing administrative workload and enabling teams to direct more time to serving their communities."
+          }
+        ]
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "client-story-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form below, and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

@@ -7,11 +7,12 @@ const ClientStorySolutionTimelinePropsSchema = z
   .object({
     eyebrow: NonEmptyStringSchema,
     title: NonEmptyStringSchema,
+    intro: NonEmptyStringSchema.optional(),
     phases: z
       .array(
         z
           .object({
-            step: NonEmptyStringSchema,
+            step: NonEmptyStringSchema.optional(),
             title: NonEmptyStringSchema,
             description: NonEmptyStringSchema,
           })
@@ -34,6 +35,7 @@ export function parseProps(
 export default function ClientStorySolutionTimelineSection({
   eyebrow,
   title,
+  intro,
   phases,
 }: ClientStorySolutionTimelineProps) {
   return (
@@ -44,14 +46,22 @@ export default function ClientStorySolutionTimelineSection({
             eyebrow={eyebrow}
             title={title}
             align="center"
-            className="mb-12"
+            className={intro ? "mb-6" : "mb-12"}
           />
+          {intro ? (
+            <p className="mx-auto mb-12 max-w-2xl text-pretty text-center text-lg text-secondary">
+              {intro}
+            </p>
+          ) : null}
         </Reveal>
         <div>
           {phases.map((phase, index) => {
             const isLast = index === phases.length - 1;
             return (
-              <Reveal key={phase.step} delay={index * 60}>
+              <Reveal
+                key={`${phase.step ?? "phase"}-${phase.title}`}
+                delay={index * 60}
+              >
                 <div className="flex gap-6">
                   <div className="flex shrink-0 flex-col items-center">
                     <span className="flex size-8 items-center justify-center rounded-full bg-brand text-sm font-semibold text-brand-fg">
@@ -68,9 +78,11 @@ export default function ClientStorySolutionTimelineSection({
                         : "mb-8 flex-1 rounded-2xl border border-default bg-surface p-7"
                     }
                   >
-                    <div className="font-sans text-sm uppercase tracking-widest text-muted">
-                      {phase.step}
-                    </div>
+                    {phase.step ? (
+                      <div className="font-sans text-sm uppercase tracking-widest text-muted">
+                        {phase.step}
+                      </div>
+                    ) : null}
                     <h3 className="mt-1.5 font-serif text-2xl font-medium tracking-tight text-primary">
                       {phase.title}
                     </h3>

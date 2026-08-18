@@ -23,6 +23,7 @@ interface HubSpotFormsCreateOptions {
   region: string;
   target: string;
   onFormReady?: () => void;
+  onFormSubmitted?: () => void;
 }
 
 interface HubSpotFormsApi {
@@ -65,9 +66,10 @@ type EmbedState = "loading" | "ready" | "error";
 
 export interface HubSpotFormProps {
   form: HubSpotFormName;
+  onSubmitted?: () => void;
 }
 
-export function HubSpotForm({ form }: HubSpotFormProps) {
+export function HubSpotForm({ form, onSubmitted }: HubSpotFormProps) {
   const { formId } = HUBSPOT_FORMS[form];
   // useId emits colons, which are invalid in the CSS selector HubSpot's
   // `target` option expects — strip to a selector-safe id.
@@ -101,6 +103,9 @@ export function HubSpotForm({ form }: HubSpotFormProps) {
             window.clearTimeout(readyTimeout);
             if (!cancelled) setState("ready");
           },
+          onFormSubmitted: () => {
+            if (!cancelled) onSubmitted?.();
+          },
         });
       })
       .catch(() => {
@@ -112,7 +117,7 @@ export function HubSpotForm({ form }: HubSpotFormProps) {
       window.clearTimeout(readyTimeout);
       container.innerHTML = "";
     };
-  }, [formId, domId]);
+  }, [formId, domId, onSubmitted]);
 
   if (state === "error") {
     return (

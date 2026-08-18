@@ -24,6 +24,14 @@ export function findClientStory(id: string): ClientStoryDocument | undefined {
   return clientStories.find((story) => story.id === id);
 }
 
+export function findClientStoryByPath(
+  pathname: string,
+): ClientStoryDocument | undefined {
+  const normalizedPath =
+    pathname === "/" ? pathname : `${pathname.replace(/\/+$/, "")}/`;
+  return clientStories.find((story) => story.path === normalizedPath);
+}
+
 export function requireClientStory(id: string): ClientStoryDocument {
   const story = findClientStory(id);
   if (!story) {

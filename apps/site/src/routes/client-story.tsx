@@ -1,6 +1,9 @@
 import { data } from "react-router";
 import { findClientStory } from "@madison/sandbox/content/client-stories";
-import { ClientStoryPage } from "@madison/sandbox/content/client-stories/page";
+import {
+  ClientStoryPage,
+  clientStoryMetadata,
+} from "@madison/sandbox/content/client-stories/page";
 import { pageMeta } from "../site-meta";
 import { siteOrigin } from "../site-origin.server";
 import type { Route } from "./+types/client-story";
@@ -16,7 +19,7 @@ export function loader({ params }: Route.LoaderArgs) {
 export function meta({ data: loaderData }: Route.MetaArgs) {
   if (!loaderData) return [];
   return pageMeta(
-    loaderData.story.metadata,
+    clientStoryMetadata(loaderData.story, loaderData.origin),
     loaderData.story.path,
     loaderData.origin,
   );
