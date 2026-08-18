@@ -9,6 +9,7 @@ legacy Webflow CDN at runtime.
 | `public-records-crisis-social.jpg` | `https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg` |
 | `erica-olsen.png` | `https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png` |
 | `proof-ai-works-card.avif` | `https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a3ceb00d0a79ff4dcd1a899_Insight-2.avif` |
+| `proof-ai-works-hero.avif` | `https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a3cea3a82378f5d575ca99c_article.avif` |
 | `peter-pirnejad-card.avif` | `https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a3ceb00e1520586f3ee4ecb_New-hire-5.avif` |
 | `welcome-reid-weber-card.avif` | `https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a21ca704f2c164d3ff39d79_New-hire-4.avif` |
 | `tom-spangler-card.avif` | `https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/693034a1b90d2660c8e093da_454454613b134d7a5ecbc39fc2133d38_New-hire-3.avif` |

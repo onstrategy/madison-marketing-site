@@ -7,9 +7,8 @@ import { newsArticles } from "../../content/news/collection";
 import { resolveNewsAsset } from "../../content/news/assets";
 
 // ============================================================================
-// Newsroom — recreated from madisonai.com/updates. 2-column card grid per
-// spec. Proof AI Works remains its established section-based prototype; every
-// other card is driven by the validated News article collection.
+// Newsroom — recreated from madisonai.com/updates. Every card and article route
+// is driven by the validated News article collection.
 // ============================================================================
 
 type Category = "Insights" | "Team" | "Company";
@@ -24,21 +23,8 @@ interface NewsCard {
   imageAlt: string;
 }
 
-const ESTABLISHED_NEWS: NewsCard[] = [
-  {
-    order: 10,
-    title: "1,204 Hours Reclaimed: Proof AI Works in the Public Sector",
-    category: "Insights",
-    description: "Three lessons that separate AI that delivers from AI that disappoints.",
-    href: "/proof-ai-works-in-the-public-sector/",
-    photo: resolveNewsAsset("proof-ai-works-card.avif"),
-    imageAlt: "Public servants collaborating with Madison AI",
-  },
-];
-
-const NEWS: NewsCard[] = [
-  ...ESTABLISHED_NEWS,
-  ...newsArticles.map((article) => ({
+const NEWS: NewsCard[] = newsArticles
+  .map((article) => ({
     order: article.order,
     title: article.card.title,
     category: article.category,
@@ -46,8 +32,8 @@ const NEWS: NewsCard[] = [
     href: article.path,
     photo: resolveNewsAsset(article.card.imageAsset),
     imageAlt: article.card.imageAlt,
-  })),
-].sort((left, right) => left.order - right.order);
+  }))
+  .sort((left, right) => left.order - right.order);
 
 function NewsCardItem({ item }: { item: NewsCard }) {
   return (

@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { z } from "zod";
 import { Reveal } from "../../../prototypes/landing/parts";
 
@@ -23,11 +24,22 @@ const ArticleParagraphSchema = z.union([
     .strict(),
 ]);
 
+const ArticleListItemSchema = z.union([
+  NonEmptyStringSchema,
+  z
+    .object({
+      label: NonEmptyStringSchema,
+      description: NonEmptyStringSchema,
+    })
+    .strict(),
+]);
+
 const ArticleCopyPropsSchema = z
   .object({
     variant: z.enum(["editorial", "announcement"]).default("editorial"),
     heading: NonEmptyStringSchema.optional(),
     paragraphs: z.array(ArticleParagraphSchema).default([]),
+    items: z.array(ArticleListItemSchema).default([]),
     callout: z
       .object({
         title: NonEmptyStringSchema,
@@ -38,12 +50,14 @@ const ArticleCopyPropsSchema = z
   })
   .strict()
   .refine(
-    ({ heading, paragraphs }) => heading !== undefined || paragraphs.length > 0,
-    { message: "article copy needs a heading or at least one paragraph" },
+    ({ heading, paragraphs, items }) =>
+      heading !== undefined || paragraphs.length > 0 || items.length > 0,
+    { message: "article copy needs a heading, paragraph, or list item" },
   );
 
 type ArticleCopyProps = z.infer<typeof ArticleCopyPropsSchema>;
 type ArticleParagraph = z.infer<typeof ArticleParagraphSchema>;
+type ArticleListItem = z.infer<typeof ArticleListItemSchema>;
 
 export function parseProps(input: unknown): ArticleCopyProps {
   return ArticleCopyPropsSchema.parse(input);
@@ -68,9 +82,20 @@ function ArticleParagraphContent({ paragraph }: { paragraph: ArticleParagraph })
   );
 }
 
+function ArticleListItemContent({ item }: { item: ArticleListItem }) {
+  if (typeof item === "string") return item;
+  return (
+    <>
+      <span className="font-semibold text-primary">{item.label}</span>{" "}
+      {item.description}
+    </>
+  );
+}
+
 export default function ArticleCopySection({
   heading,
   paragraphs,
+  items,
   callout,
   variant,
 }: ArticleCopyProps) {
@@ -104,6 +129,26 @@ export default function ArticleCopySection({
                 </p>
               ))}
             </div>
+          ) : null}
+          {items.length > 0 ? (
+            <ul className="mt-8 space-y-3">
+              {items.map((item) => (
+                <li
+                  key={typeof item === "string" ? item : item.label}
+                  className="flex items-start gap-3 leading-relaxed text-secondary"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-brand text-brand-fg"
+                  >
+                    <ArrowRight className="size-4" />
+                  </span>
+                  <span className="pt-0.5">
+                    <ArticleListItemContent item={item} />
+                  </span>
+                </li>
+              ))}
+            </ul>
           ) : null}
           {callout ? (
             <aside className="dark mt-10 rounded-2xl bg-brand-subtle p-6 lg:p-8">
