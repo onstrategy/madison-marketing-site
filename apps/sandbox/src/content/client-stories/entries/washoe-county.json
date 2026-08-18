@@ -16,10 +16,10 @@
     "summary": "Washoe County’s AI Transformation",
     "clientName": "Washoe County",
     "photo": {
-      "asset": "washoe-county-hero.avif",
+      "asset": "washoe-county-intro.avif",
       "alt": "Aerial view of Washoe County, Nevada",
-      "width": 2015,
-      "height": 1200
+      "width": 1411,
+      "height": 840
     }
   },
   "sections": [
