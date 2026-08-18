@@ -101,37 +101,35 @@ function FeaturedHero({ data }: { data: typeof FEATURED }) {
   );
 }
 
-function StoryCard({ story, delay }: { story: ClientStorySummary; delay: number }) {
+function StoryCard({ story }: { story: ClientStorySummary }) {
   const isInternal = story.href.startsWith("/");
   return (
-    <Reveal delay={delay}>
-      <a
-        href={story.href}
-        {...(isInternal ? {} : { target: "_blank", rel: "noopener" })}
-        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-default bg-surface transition-transform hover:-translate-y-1"
-      >
-        <span className="block aspect-[16/10] overflow-hidden border-b border-default bg-plate">
-          <img
-            src={story.photo.url}
-            alt={story.photo.alt}
-            width={story.photo.width}
-            height={story.photo.height}
-            loading="lazy"
-            className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-          />
+    <a
+      href={story.href}
+      {...(isInternal ? {} : { target: "_blank", rel: "noopener" })}
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-default bg-surface transition-transform hover:-translate-y-1"
+    >
+      <span className="block aspect-[16/10] overflow-hidden border-b border-default bg-plate">
+        <img
+          src={story.photo.url}
+          alt={story.photo.alt}
+          width={story.photo.width}
+          height={story.photo.height}
+          loading="lazy"
+          className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+        />
+      </span>
+      <span className="flex flex-1 flex-col p-6">
+        <h3 className="font-sans text-xl font-semibold tracking-tight text-primary">
+          {story.title}
+        </h3>
+        <span className="mt-2 flex-1 text-secondary">{story.oneLiner}</span>
+        <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
+          Read the story{" "}
+          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
         </span>
-        <span className="flex flex-1 flex-col p-6">
-          <h3 className="font-sans text-xl font-semibold tracking-tight text-primary">
-            {story.title}
-          </h3>
-          <span className="mt-2 flex-1 text-secondary">{story.oneLiner}</span>
-          <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
-            Read the story{" "}
-            <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-          </span>
-        </span>
-      </a>
-    </Reveal>
+      </span>
+    </a>
   );
 }
 
@@ -147,8 +145,8 @@ function OtherStories({ data }: { data: ClientStorySummary[] }) {
           />
         </Reveal>
         <div className="grid gap-4 sm:grid-cols-2">
-          {data.map((story, i) => (
-            <StoryCard key={story.title} story={story} delay={i * 60} />
+          {data.map((story) => (
+            <StoryCard key={story.title} story={story} />
           ))}
         </div>
       </div>
