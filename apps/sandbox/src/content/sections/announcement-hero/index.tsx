@@ -28,35 +28,36 @@ export function parseProps(input: unknown): AnnouncementHeroProps {
   return AnnouncementHeroPropsSchema.parse(input);
 }
 
-// The announcement family's hero — a tag ("New Deployment", "Partnership", …)
-// over a full-bleed background photo, no CTA button or meta card. Same
-// background-photo treatment as HeroSection in ../client-story-hero-intro,
-// stripped down to just the tag + title an announcement actually needs.
+// The announcement family's hero — same split layout as HeroSection in
+// ../../../prototypes/about-us/index.tsx (tag + title left, photo card
+// right, dark), but with a landscape photo instead of About Us's portrait
+// one, and no subtitle/CTA button — an announcement's subtitle is its own
+// section (news-intro) right below this one.
 export default function AnnouncementHeroSection({
   kicker,
   title,
   photo,
 }: AnnouncementHeroProps) {
   return (
-    <section className="dark relative border-b border-default bg-app">
-      <div className="absolute inset-0 overflow-hidden">
-        <img
-          src={photo.url}
-          alt={photo.alt}
-          width={photo.width}
-          height={photo.height}
-          loading="lazy"
-          className="size-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-app via-app/70 to-app/30" />
-        <div className="absolute inset-0 bg-app/60" />
-      </div>
-      <div className="relative mx-auto max-w-4xl px-gutter pb-24 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark border-b border-default bg-app px-gutter pb-20 pt-28 lg:px-0 lg:pt-40">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">{kicker}</Eyebrow>
           <h1 className="text-balance font-serif text-4xl font-medium tracking-tight text-primary lg:text-5xl">
             {title}
           </h1>
+        </Reveal>
+        <Reveal delay={100}>
+          <div className="aspect-video overflow-hidden rounded-3xl border-2 border-[hsl(var(--text-primary)/0.15)] shadow-2xl">
+            <img
+              src={photo.url}
+              alt={photo.alt}
+              width={photo.width}
+              height={photo.height}
+              loading="lazy"
+              className="size-full object-cover"
+            />
+          </div>
         </Reveal>
       </div>
     </section>
