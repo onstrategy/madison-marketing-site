@@ -1,0 +1,224 @@
+{
+  "id": "dana-searcy",
+  "order": 80,
+  "category": "Team",
+  "classification": "announcement",
+  "implementationStatus": "pending",
+  "sourceUrl": "https://www.madisonai.com/dana-searcy",
+  "capturedAt": "2026-08-18",
+  "metadata": {
+    "title": "Dana Searcy - Client Success Manager - Madison AI",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/dana-searcy",
+    "openGraph": {
+      "title": "Dana Searcy - Client Success Manager - Madison AI",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "Dana Searcy Joins Madison AI as a Principal Strategist",
+    "description": "Dana brings deep experience in public-sector leadership",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/692ec59e02dae2aee1d3de77_New-hire-2.avif",
+      "alt": null
+    }
+  },
+  "regions": [
+    {
+      "role": "hero",
+      "sourceClasses": [
+        "pricing-v3",
+        "dark"
+      ],
+      "sourceSummary": {
+        "title": "Team Update",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Team Update",
+          "level": 3
+        },
+        {
+          "kind": "heading",
+          "text": "Dana Searcy Joins Madison AI as a Principal Strategist",
+          "level": 2
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "body",
+      "sourceClasses": [
+        "pricing-01",
+        "light-gray",
+        "adjusted-top",
+        "article-top"
+      ],
+      "sourceSummary": {
+        "title": "Dana Searcy joined Team Madison AI in November 2025 as a Principal Strategist. She comes to Madison AI after years of public service with Washoe County in Northern Nevada, where Madison AI was founded.",
+        "description": "Dana Searcy, Principal Strategist"
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Dana Searcy joined Team Madison AI in November 2025 as a Principal Strategist. She comes to Madison AI after years of public service with Washoe County in Northern Nevada, where Madison AI was founded.",
+          "links": [
+            {
+              "text": "Dana Searcy",
+              "href": "https://www.linkedin.com/in/danasearcy/"
+            }
+          ],
+          "level": 2
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/692ef06b3a9cfadffd9b73f1_65249c10e29e067827efb3cc546bc830_2025%20Dana%20Searcy%20square.avif",
+          "alt": null,
+          "sourceClasses": [
+            "quote-photo"
+          ]
+        },
+        {
+          "kind": "heading",
+          "text": "“Madison AI has quickly made a name for itself in the local government space by helping elected officials and staff work more effectively. Their dedication to those who work in public service is inspiring, and I am grateful to be joining their team to foster those relationships built. I look forward to connecting with Madison AI’s clients and helping the company reach new agencies that need assistance.”",
+          "segments": [
+            "“Madison AI has quickly made a name for itself in the local government space by helping elected officials and staff work more effectively.",
+            "Their dedication to those who work in public service is inspiring, and I am grateful to be joining their team to foster those relationships built. I look forward to connecting with Madison AI’s clients and helping the company reach new agencies that need assistance.”"
+          ],
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dana Searcy, Principal Strategist"
+        },
+        {
+          "kind": "link",
+          "text": "Book a Demo Book a Demo",
+          "href": "https://www.madisonai.com/demo"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Searcy recently completed the development of the Nevada Cares Campus project as the Division Director of Housing & Homeless Services. She has deep experience in public-sector leadership and is well-known for her skills in bringing people together, cutting through complexity, and turning ideas into action."
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Dana’s passion for helping local governments work better for their communities fits perfectly with our mission at Madison AI—to make public service more efficient and impactful,” said Erica Olsen, Madison AI Chief Executive Officer. “It brings us all great joy to have her on board, and we can’t wait to see how she continues to help public servants in this role.”",
+          "links": [
+            {
+              "text": "Erica Olsen, Madison AI Chief Executive Officer",
+              "href": "https://www.linkedin.com/in/ericajolsen/"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "As Principal Strategist, Searcy will build long-term relationships with our clients across the country, ensuring that Madison AI’s platform and AI assistants meet each agency's direct needs and improve the quality and efficiency of their work."
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "trust",
+      "sourceClasses": [
+        "partner"
+      ],
+      "sourceSummary": {
+        "title": "Used and trusted by 65+ local governments and counting",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Used and trusted by 65+ local governments and counting",
+          "level": 4
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "demo",
+      "sourceClasses": [
+        "cta"
+      ],
+      "sourceSummary": {
+        "title": "Book a demo today",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Book a demo today",
+          "level": 2
+        }
+      ],
+      "embeddedForms": [
+        {
+          "provider": "hubspot",
+          "portalId": "54493",
+          "formId": "02ee5553-47ab-4482-869f-f9ea20ae5f74",
+          "region": "na1"
+        },
+        {
+          "provider": "calendly-form-builder",
+          "submissionUrl": "https://calendly.com/api/form_builder/forms/0fed8b94-bc40-4f3e-a1c2-e6ee38e217dd/submissions"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/692ef06b3a9cfadffd9b73f1_65249c10e29e067827efb3cc546bc830_2025%20Dana%20Searcy%20square.avif",
+      "bytes": 14194,
+      "sha256": "28194d9030b27ef8c1ab76c33345edba55383e8c6e18e224453a8bee15420347",
+      "extension": "avif",
+      "width": 658,
+      "height": 658,
+      "usages": [
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "quote-photo"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg",
+      "bytes": 371291,
+      "sha256": "040a4c4fb3773fa0ace5b80db11639bd4e17b5b8fb3db86cdeaece9661b23eba",
+      "extension": "jpg",
+      "width": 1200,
+      "height": 630,
+      "usages": [
+        {
+          "region": "metadata",
+          "source": "open-graph",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/692ec59e02dae2aee1d3de77_New-hire-2.avif",
+      "bytes": 18890,
+      "sha256": "55b5bfb75397e6e49a1edf72d5507f441b9b1c80cbb927a5bbff7e09ba7b1c6c",
+      "extension": "avif",
+      "width": 1920,
+      "height": 1080,
+      "usages": [
+        {
+          "region": "collection-card",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    }
+  ]
+}

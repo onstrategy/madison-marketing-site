@@ -1,0 +1,83 @@
+{
+  "id": "peter-pirnejad",
+  "path": "/peter-pirnejad/",
+  "order": 20,
+  "category": "Team",
+  "sourceUrl": "https://www.madisonai.com/peter-pirnejad",
+  "metadata": {
+    "title": "Peter Pirnejad - Strategic Advisor",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "Peter Pirnejad - Strategic Advisor",
+    "ogImageAsset": "public-records-crisis-social.jpg"
+  },
+  "card": {
+    "title": "Peter Pirnejad Joins Madison AI as Strategic Advisor",
+    "description": "Bringing a wealth of municipal leadership experience",
+    "imageAsset": "peter-pirnejad-card.avif",
+    "imageAlt": "Peter Pirnejad joins Madison AI as Strategic Advisor"
+  },
+  "sections": [
+    {
+      "type": "article-hero",
+      "props": {
+        "category": "Team Update",
+        "title": "Peter Pirnejad Joins Madison AI as Strategic Advisor"
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "variant": "announcement",
+        "heading": "Bringing a wealth of municipal leadership experience and a pioneering vision for government technology, Madison AI welcomes Dr. Peter Pirnejad as a Strategic Advisor.",
+        "paragraphs": [
+          "Dr. Pirnejad joins the team while continuing his leadership as Executive Director of the Davenport Institute for Public Engagement and Civic Leadership at Pepperdine University."
+        ]
+      }
+    },
+    {
+      "type": "article-quote",
+      "props": {
+        "quote": "“Peter is a rare leader who understands both the intricate mechanics of local government and the transformative potential of artificial intelligence. His work at the Davenport Institute and his decades of experience in local government, including as a city manager, make him an invaluable asset as we scale our platform to help public servants work more effectively and transparently.”",
+        "attribution": "Erica Olsen, CEO, Madison AI",
+        "portrait": {
+          "asset": "erica-olsen.png",
+          "alt": "Erica Olsen"
+        }
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "variant": "announcement",
+        "paragraphs": [
+          "Dr. Pirnejad recently transitioned to academia after a distinguished 27-year career in public administration. Most recently, he served as the Town of Los Altos Hills city manager, where he gained recognition for implementing one of the first municipal AI use policies in the country. His career also includes city manager of the City of Foster City, assistant city manager of the City of Napa, and development services director of the City of Palo Alto.",
+          "A recognized advocate for GovTech innovation, Dr. Pirnejad previously served as a Senior Director at Oracle, where he focused on global public sector industry strategy. Having recently concluded his term as President of Cal-ICMA, Dr. Pirnejad also served as an Executive Board Member for the non-profit, CivStart, a driven startup dedicated to accelerating early-stage Gov-Tech companies that solve local government challenges."
+        ]
+      }
+    },
+    {
+      "type": "article-quote",
+      "props": {
+        "quote": "“I have spent my career looking for tools that empower local government leaders to better serve their communities,” said Dr. Pirnejad. “Madison AI is at the forefront of this mission, providing practical solutions that solve the ‘institutional memory’ crisis and reduce the administrative burden on staff. I am thrilled to support their efforts to bring responsible, high-impact AI to agencies across the country.”"
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "variant": "announcement",
+        "paragraphs": [
+          "At Madison AI, Dr. Pirnejad will provide strategic guidance, ensuring the company’s solutions remain grounded in the real-world needs of public sector practitioners."
+        ]
+      }
+    },
+    { "type": "client-logos", "props": {} },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form below, and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+{
+  "id": "welcome-reid-weber",
+  "order": 40,
+  "category": "Team",
+  "classification": "announcement",
+  "implementationStatus": "pending",
+  "sourceUrl": "https://www.madisonai.com/welcome-reid-weber",
+  "capturedAt": "2026-08-18",
+  "metadata": {
+    "title": "Reid Weber - Senior Software Engineer",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/welcome-reid-weber",
+    "openGraph": {
+      "title": "Reid Weber - Senior Software Engineer",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "Madison AI Welcomes Senior Software Engineer Reid Weber",
+    "description": "Leading efforts across data systems, data acquisition, and AI initiatives",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a21ca704f2c164d3ff39d79_New-hire-4.avif",
+      "alt": null
+    }
+  },
+  "regions": [
+    {
+      "role": "hero",
+      "sourceClasses": [
+        "pricing-v3",
+        "dark"
+      ],
+      "sourceSummary": {
+        "title": "Team Update",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Team Update",
+          "level": 3
+        },
+        {
+          "kind": "heading",
+          "text": "Madison AI Welcomes Senior Software Engineer Reid Weber",
+          "level": 2
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "body",
+      "sourceClasses": [
+        "pricing-01",
+        "light-gray",
+        "adjusted-top",
+        "article-top"
+      ],
+      "sourceSummary": {
+        "title": "Bringing a unique blend of public-sector technology expertise and entrepreneurial product development experience, Madison AI welcomes Senior Software Engineer Reid Weber to the team.",
+        "description": "Erica Olsen , CEO of Madison AI"
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Bringing a unique blend of public-sector technology expertise and entrepreneurial product development experience, Madison AI welcomes Senior Software Engineer Reid Weber to the team.",
+          "links": [
+            {
+              "text": "Reid Weber",
+              "href": "https://www.linkedin.com/in/reid-weber-94ab491/"
+            }
+          ],
+          "level": 2
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+          "alt": null,
+          "sourceClasses": [
+            "quote-photo"
+          ]
+        },
+        {
+          "kind": "heading",
+          "text": "“Reid has a proven ability to take complex ideas and turn them into scalable, high-performing software. His experience building innovative platforms combined with his firsthand understanding of how government systems operate makes him an incredible addition to Madison AI as we continue to grow and refine our technology.”",
+          "segments": [
+            "“Reid has a proven ability to take complex ideas and turn them into scalable, high-performing software.",
+            "His experience building innovative platforms combined with his firsthand understanding of how government systems operate makes him an incredible addition to Madison AI as we continue to grow and refine our technology.”"
+          ],
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "Erica Olsen, CEO of Madison AI",
+          "links": [
+            {
+              "text": "Erica Olsen",
+              "href": "https://www.linkedin.com/in/ericajolsen/"
+            }
+          ]
+        },
+        {
+          "kind": "link",
+          "text": "Book a Demo Book a Demo",
+          "href": "https://www.madisonai.com/demo"
+        },
+        {
+          "kind": "paragraph",
+          "text": "In 2010, Weber co-founded TrainerRoad, an AI-powered physical training program, growing it into a leading platform in the indoor cycling community. Working across engineering, product strategy, design, and business operations, he played a key role in scaling the company’s technology and customer base."
+        },
+        {
+          "kind": "paragraph",
+          "text": "In 2015, Weber helped build The Sufferfest Training System, which was sold to Wahoo Fitness in 2019. Following the acquisition, Weber led software development for Training Services at Wahoo Fitness. His team launched Wahoo SYSTM in 2021 and continued to deliver ongoing product enhancements. He also contributed to the company’s innovation efforts, exploring new products and growth opportunities.",
+          "links": [
+            {
+              "text": "Wahoo Fitness",
+              "href": "https://www.wahoofitness.com/wahoo-app-subscription"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "He later transitioned into GovTech, serving as a Solution Architect for the Nevada Secretary of State. In that role, he helped build SilverFlume, Nevada’s online business portal that modernized how entrepreneurs register and manage their businesses.",
+          "links": [
+            {
+              "text": "Nevada Secretary of State",
+              "href": "https://www.nvsos.gov/"
+            },
+            {
+              "text": "SilverFlume",
+              "href": "https://www.nvsilverflume.gov/login;jsessionid=FF61FC25BD1870483BCF8F2A12B64280"
+            }
+          ]
+        },
+        {
+          "kind": "heading",
+          "text": "“I’ve always been motivated to build tools that help people do meaningful work more effectively,” Weber said. “Madison AI is approaching GovTech with both urgency and intention, and I’m excited to help create practical, high-impact tools that support public servants in the work they do every day.”",
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "At Madison AI, Weber will lead efforts across data systems, data acquisition, and AI initiatives, helping strengthen the technical foundation that powers the company’s platform."
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "trust",
+      "sourceClasses": [
+        "partner"
+      ],
+      "sourceSummary": {
+        "title": "Used and trusted by 65+ local governments and counting",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Used and trusted by 65+ local governments and counting",
+          "level": 4
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "demo",
+      "sourceClasses": [
+        "cta"
+      ],
+      "sourceSummary": {
+        "title": "Book a demo today",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Book a demo today",
+          "level": 2
+        }
+      ],
+      "embeddedForms": [
+        {
+          "provider": "hubspot",
+          "portalId": "54493",
+          "formId": "02ee5553-47ab-4482-869f-f9ea20ae5f74",
+          "region": "na1"
+        },
+        {
+          "provider": "calendly-form-builder",
+          "submissionUrl": "https://calendly.com/api/form_builder/forms/0fed8b94-bc40-4f3e-a1c2-e6ee38e217dd/submissions"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+      "bytes": 212927,
+      "sha256": "881abaefe0d5f3bd3783d431dc752d29b9d589d252bec26c5ced11abfad7dde3",
+      "extension": "png",
+      "width": 603,
+      "height": 603,
+      "usages": [
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "quote-photo"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg",
+      "bytes": 371291,
+      "sha256": "040a4c4fb3773fa0ace5b80db11639bd4e17b5b8fb3db86cdeaece9661b23eba",
+      "extension": "jpg",
+      "width": 1200,
+      "height": 630,
+      "usages": [
+        {
+          "region": "metadata",
+          "source": "open-graph",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a21ca704f2c164d3ff39d79_New-hire-4.avif",
+      "bytes": 31525,
+      "sha256": "8e6935cced1cc37fa1403473d215fd9739facaa173d82c4b86ec20490ca0f1b6",
+      "extension": "avif",
+      "width": 1920,
+      "height": 1080,
+      "usages": [
+        {
+          "region": "collection-card",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "id": "mark-wheeler",
+  "order": 70,
+  "category": "Team",
+  "classification": "announcement",
+  "implementationStatus": "pending",
+  "sourceUrl": "https://www.madisonai.com/mark-wheeler",
+  "capturedAt": "2026-08-18",
+  "metadata": {
+    "title": "Mark Wheeler - Chief Public Data Officer - Madison AI",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/mark-wheeler",
+    "openGraph": {
+      "title": "Mark Wheeler - Chief Public Data Officer - Madison AI",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "Mark Wheeler Joins Madison AI as Chief Public Data Officer",
+    "description": "We’re honored to have one of the most trusted voices in Government AI join our team",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/692ec368810503c3e5b9e036_2d8bc9832e12000e967eb79f9a2ab933_New-hire-1.avif",
+      "alt": null
+    }
+  },
+  "regions": [
+    {
+      "role": "hero",
+      "sourceClasses": [
+        "pricing-v3",
+        "dark"
+      ],
+      "sourceSummary": {
+        "title": "Team Update",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Team Update",
+          "level": 3
+        },
+        {
+          "kind": "heading",
+          "text": "Mark Wheeler Joins Madison AI as Chief Public Data Officer",
+          "level": 2
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "body",
+      "sourceClasses": [
+        "pricing-01",
+        "light-gray",
+        "adjusted-top",
+        "article-top"
+      ],
+      "sourceSummary": {
+        "title": "Madison AI brought Mark Wheeler onto the team in November 2025 as the Chief Public Data Officer. Wheeler is a respected voice in GovTech, having previously served as the Chief Information Officer (CIO) for the City of Philadelphia and the Director of Data Analytics and AI at the Centers of Excellence within the federal Technology Transformation Services.",
+        "description": "Mark Wheeler, Chief Public Data Officer"
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Madison AI brought Mark Wheeler onto the team in November 2025 as the Chief Public Data Officer. Wheeler is a respected voice in GovTech, having previously served as the Chief Information Officer (CIO) for the City of Philadelphia and the Director of Data Analytics and AI at the Centers of Excellence within the federal Technology Transformation Services.",
+          "links": [
+            {
+              "text": "Mark Wheeler",
+              "href": "https://www.linkedin.com/in/markwheelerphl/"
+            }
+          ],
+          "level": 2
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/692ec4a4015347ec0c2c2e42_mark-w.avif",
+          "alt": null,
+          "sourceClasses": [
+            "quote-photo"
+          ]
+        },
+        {
+          "kind": "heading",
+          "text": "“The MadisonA I team is moving quickly to address one of the most significant opportunities in local government: Using generative AI to transform vast collections of unstructured files such as case records, commission meeting minutes, contract artifacts, GIS layers, and budget books into actionable reports and findings.\" Madison AI is a deeply talented, curious, and thoughtful group of experts, and I am thrilled to contribute to their mission.”",
+          "segments": [
+            "“The MadisonA I team is moving quickly to address one of the most significant opportunities in local government: Using generative AI to transform vast collections of unstructured files such as case records, commission meeting minutes, contract artifacts, GIS layers, and budget books into actionable reports and findings.\"",
+            "Madison AI is a deeply talented, curious, and thoughtful group of experts, and I am thrilled to contribute to their mission.”"
+          ],
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mark Wheeler, Chief Public Data Officer"
+        },
+        {
+          "kind": "link",
+          "text": "Book a Demo Book a Demo",
+          "href": "https://www.madisonai.com/demo"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Wheeler brings years of experience in transforming complex data into tools that enable staff to innovate in the workplace. With his background, he will help the Madison AI team deepen its government data expertise and build AI that delivers excellent results for local government."
+        },
+        {
+          "kind": "heading",
+          "text": "“Mark is the local government data guru that Madison AI needs to support the growth of this company,” said Erica Olsen, Madison AI Chief Executive Officer. “We are proud to have him join the Madison AI team and look forward to using his unique perspective in our continuous efforts to support our clients.”",
+          "links": [
+            {
+              "text": "Erica Olsen, Madison AI Chief Executive Officer",
+              "href": "https://www.linkedin.com/in/ericajolsen/"
+            }
+          ],
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "As the Chief Public Data Officer, Wheeler will oversee Madison AI’s strategic data management, data governance, compliance, performance improvements, and more. His experience will guide him and the team toward several successful roll-outs throughout the country."
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "trust",
+      "sourceClasses": [
+        "partner"
+      ],
+      "sourceSummary": {
+        "title": "Used and trusted by 65+ local governments and counting",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Used and trusted by 65+ local governments and counting",
+          "level": 4
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "demo",
+      "sourceClasses": [
+        "cta"
+      ],
+      "sourceSummary": {
+        "title": "Book a demo today",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Book a demo today",
+          "level": 2
+        }
+      ],
+      "embeddedForms": [
+        {
+          "provider": "hubspot",
+          "portalId": "54493",
+          "formId": "02ee5553-47ab-4482-869f-f9ea20ae5f74",
+          "region": "na1"
+        },
+        {
+          "provider": "calendly-form-builder",
+          "submissionUrl": "https://calendly.com/api/form_builder/forms/0fed8b94-bc40-4f3e-a1c2-e6ee38e217dd/submissions"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/692ec4a4015347ec0c2c2e42_mark-w.avif",
+      "bytes": 11665,
+      "sha256": "5161494449063de8cd3b2c7aa47c5d83c0bfdcff8f7f0cd98a76d7c091eb511c",
+      "extension": "avif",
+      "width": 658,
+      "height": 658,
+      "usages": [
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "quote-photo"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg",
+      "bytes": 371291,
+      "sha256": "040a4c4fb3773fa0ace5b80db11639bd4e17b5b8fb3db86cdeaece9661b23eba",
+      "extension": "jpg",
+      "width": 1200,
+      "height": 630,
+      "usages": [
+        {
+          "region": "metadata",
+          "source": "open-graph",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/692ec368810503c3e5b9e036_2d8bc9832e12000e967eb79f9a2ab933_New-hire-1.avif",
+      "bytes": 19626,
+      "sha256": "41c42eb388d21a706c2249d346e1bb1bc6a18d1fbd507a910759410d522351e7",
+      "extension": "avif",
+      "width": 1920,
+      "height": 1080,
+      "usages": [
+        {
+          "region": "collection-card",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    }
+  ]
+}

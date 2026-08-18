@@ -1,0 +1,242 @@
+{
+  "id": "tom-spangler",
+  "order": 50,
+  "category": "Team",
+  "classification": "announcement",
+  "implementationStatus": "pending",
+  "sourceUrl": "https://www.madisonai.com/tom-spangler",
+  "capturedAt": "2026-08-18",
+  "metadata": {
+    "title": "Tom Spangler - Member and Advisor - Madison AI",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/tom-spangler",
+    "openGraph": {
+      "title": "Tom Spangler - Member and Advisor - Madison AI",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "Tom Spangler Joins Madison AI as Board Member and Advisor",
+    "description": "To advance Madisons AI's growth and impact",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/693034a1b90d2660c8e093da_454454613b134d7a5ecbc39fc2133d38_New-hire-3.avif",
+      "alt": null
+    }
+  },
+  "regions": [
+    {
+      "role": "hero",
+      "sourceClasses": [
+        "pricing-v3",
+        "dark"
+      ],
+      "sourceSummary": {
+        "title": "Team Update",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Team Update",
+          "level": 3
+        },
+        {
+          "kind": "heading",
+          "text": "Tom Spangler Joins Madison AI as Board Member and Advisor",
+          "level": 2
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "body",
+      "sourceClasses": [
+        "pricing-01",
+        "light-gray",
+        "adjusted-top",
+        "article-top"
+      ],
+      "sourceSummary": {
+        "title": "Madison AI welcomed GovTech leader Tom Spengler to the team as a Board Member and Advisor in September 2025. He brings more than 25 years of transformative public-sector technology experience to the team.",
+        "description": "Spengler is widely recognized for shaping the modern GovTech landscape. He is the co-founder and former Chief Executive Officer (CEO) of Granicus , co-founder and CEO of Rock Solid and CEO of SOVRA . Throughout his career, he has helped governments across the country adopt technology that strengthens transparency, public engagement, and operational effectiveness."
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Madison AI welcomed GovTech leader Tom Spengler to the team as a Board Member and Advisor in September 2025. He brings more than 25 years of transformative public-sector technology experience to the team.",
+          "links": [
+            {
+              "text": "Tom Spengler",
+              "href": "https://www.linkedin.com/in/tomspengler/"
+            }
+          ],
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "Spengler is widely recognized for shaping the modern GovTech landscape. He is the co-founder and former Chief Executive Officer (CEO) of Granicus, co-founder and CEO of Rock Solid and CEO of SOVRA. Throughout his career, he has helped governments across the country adopt technology that strengthens transparency, public engagement, and operational effectiveness.",
+          "links": [
+            {
+              "text": "Granicus",
+              "href": "https://granicus.com/"
+            },
+            {
+              "text": "Rock Solid",
+              "href": "https://granicus.com/press-release/granicus-acquires-govtech-innovator-rock-solid/"
+            },
+            {
+              "text": "SOVRA",
+              "href": "https://www.sovra.com/"
+            }
+          ]
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/693034a02cc240f0a0658f1a_63eda1aca18355be4aea9f353684d363_tom.avif",
+          "alt": null,
+          "sourceClasses": [
+            "quote-photo"
+          ]
+        },
+        {
+          "kind": "heading",
+          "text": "“Madison AI has quickly distinguished itself as one of the most exciting and purposeful companies in the space. Their focus on empowering government teams aligns with my belief in people-centered innovation. I’m excited to support a team that is truly committed to improving how government works.”",
+          "segments": [
+            "“Madison AI has quickly distinguished itself as one of the most exciting and purposeful companies in the space.",
+            "Their focus on empowering government teams aligns with my belief in people-centered innovation. I’m excited to support a team that is truly committed to improving how government works.”"
+          ],
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tom Spangler - Board Member and Advisor"
+        },
+        {
+          "kind": "link",
+          "text": "Book a Demo Book a Demo",
+          "href": "https://www.madisonai.com/demo"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Spengler has spent decades partnering closely with cities, counties, and special districts, giving him a nuanced understanding of the challenges these agencies face and the opportunities emerging technologies can unlock."
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Tom embodies the kind of forward-thinking leadership that has propelled the GovTech industry forward,” said Madison AI CEO Erica Olsen. “We’re thrilled to have him join Team Madison AI, and his expertise will guide us as we build tools that truly empower public servants.”",
+          "links": [
+            {
+              "text": "Madison AI CEO Erica Olsen",
+              "href": "https://www.linkedin.com/in/ericajolsen/"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "As a Board Member and Advisor, Spengler will contribute to Madison AI’s strategic direction, expansion efforts, and product vision. His experience building and scaling mission-driven GovTech companies will play a key role in guiding Madison AI through its next phase of growth."
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "trust",
+      "sourceClasses": [
+        "partner"
+      ],
+      "sourceSummary": {
+        "title": "Used and trusted by 65+ local governments and counting",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Used and trusted by 65+ local governments and counting",
+          "level": 4
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "demo",
+      "sourceClasses": [
+        "cta"
+      ],
+      "sourceSummary": {
+        "title": "Book a demo today",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Book a demo today",
+          "level": 2
+        }
+      ],
+      "embeddedForms": [
+        {
+          "provider": "hubspot",
+          "portalId": "54493",
+          "formId": "02ee5553-47ab-4482-869f-f9ea20ae5f74",
+          "region": "na1"
+        },
+        {
+          "provider": "calendly-form-builder",
+          "submissionUrl": "https://calendly.com/api/form_builder/forms/0fed8b94-bc40-4f3e-a1c2-e6ee38e217dd/submissions"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/693034a02cc240f0a0658f1a_63eda1aca18355be4aea9f353684d363_tom.avif",
+      "bytes": 26002,
+      "sha256": "3bdf25112196b29db3ec5c50c532aa1bddf8ee9e55b1b04a8fd95a61a05b969c",
+      "extension": "avif",
+      "width": 658,
+      "height": 658,
+      "usages": [
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "quote-photo"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg",
+      "bytes": 371291,
+      "sha256": "040a4c4fb3773fa0ace5b80db11639bd4e17b5b8fb3db86cdeaece9661b23eba",
+      "extension": "jpg",
+      "width": 1200,
+      "height": 630,
+      "usages": [
+        {
+          "region": "metadata",
+          "source": "open-graph",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/693034a1b90d2660c8e093da_454454613b134d7a5ecbc39fc2133d38_New-hire-3.avif",
+      "bytes": 32574,
+      "sha256": "292e30f586353b7d5cc95bdb0dd246fcea11185b9ecb4d6a32554694b8b8c7ad",
+      "extension": "avif",
+      "width": 1920,
+      "height": 1080,
+      "usages": [
+        {
+          "region": "collection-card",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    }
+  ]
+}

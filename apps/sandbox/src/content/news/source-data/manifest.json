@@ -1,0 +1,170 @@
+{
+  "purpose": "Neutral source capture for Newsroom template and section migration; not imported by the runtime collection.",
+  "sourceUrl": "https://www.madisonai.com/updates",
+  "capturedAt": "2026-08-18",
+  "metadata": {
+    "title": "Newsroom - Madison AI - AI from Your Government’s Institutional Knowledge",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/updates",
+    "openGraph": {
+      "title": "Newsroom - Madison AI - AI from Your Government’s Institutional Knowledge",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "items": [
+    {
+      "id": "proof-ai-works-in-the-public-sector",
+      "path": "/proof-ai-works-in-the-public-sector",
+      "order": 10,
+      "category": "Insights",
+      "classification": "lesson-insight",
+      "implementationStatus": "existing-section-prototype",
+      "sourceUrl": "https://www.madisonai.com/proof-ai-works-in-the-public-sector",
+      "card": {
+        "title": "Proof AI Works in the Public Sector",
+        "description": "Three lessons that separate AI that delivers from AI that disappoints",
+        "image": {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a3ceb00d0a79ff4dcd1a899_Insight-2.avif",
+          "alt": null
+        }
+      }
+    },
+    {
+      "id": "peter-pirnejad",
+      "path": "/peter-pirnejad",
+      "order": 20,
+      "category": "Team",
+      "classification": "announcement",
+      "implementationStatus": "pending",
+      "sourceUrl": "https://www.madisonai.com/peter-pirnejad",
+      "card": {
+        "title": "Peter Pirnejad Joins Madison AI as Strategic Advisor",
+        "description": "Bringing a wealth of municipal leadership experience",
+        "image": {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a3ceb00e1520586f3ee4ecb_New-hire-5.avif",
+          "alt": null
+        }
+      }
+    },
+    {
+      "id": "public-records-crisis",
+      "path": "/public-records-crisis",
+      "order": 30,
+      "category": "Insights",
+      "classification": "long-form-editorial",
+      "implementationStatus": "existing-json-entry",
+      "sourceUrl": "https://www.madisonai.com/public-records-crisis",
+      "card": {
+        "title": "The Public Records Crisis Is Real",
+        "description": "Charging citizens is the wrong way to solve it",
+        "image": {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a3900599d169080ef07b74d_Insight.avif",
+          "alt": null
+        }
+      }
+    },
+    {
+      "id": "welcome-reid-weber",
+      "path": "/welcome-reid-weber",
+      "order": 40,
+      "category": "Team",
+      "classification": "announcement",
+      "implementationStatus": "pending",
+      "sourceUrl": "https://www.madisonai.com/welcome-reid-weber",
+      "card": {
+        "title": "Madison AI Welcomes Senior Software Engineer Reid Weber",
+        "description": "Leading efforts across data systems, data acquisition, and AI initiatives",
+        "image": {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a21ca704f2c164d3ff39d79_New-hire-4.avif",
+          "alt": null
+        }
+      }
+    },
+    {
+      "id": "tom-spangler",
+      "path": "/tom-spangler",
+      "order": 50,
+      "category": "Team",
+      "classification": "announcement",
+      "implementationStatus": "pending",
+      "sourceUrl": "https://www.madisonai.com/tom-spangler",
+      "card": {
+        "title": "Tom Spangler Joins Madison AI as Board Member and Advisor",
+        "description": "To advance Madisons AI's growth and impact",
+        "image": {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/693034a1b90d2660c8e093da_454454613b134d7a5ecbc39fc2133d38_New-hire-3.avif",
+          "alt": null
+        }
+      }
+    },
+    {
+      "id": "madison-ai-growth-momentum",
+      "path": "/madison-ai-growth-momentum",
+      "order": 60,
+      "category": "Company",
+      "classification": "announcement",
+      "implementationStatus": "pending",
+      "sourceUrl": "https://www.madisonai.com/madison-ai-growth-momentum",
+      "card": {
+        "title": "Named GovTech’s Most Innovative Solution, Madison AISecures Funding to Continue Growth Momentum",
+        "description": "Learn how we’re scaling to transform everyday work in local government",
+        "image": {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/692ec238e9cdc99f1a0004c3_a68ee692f2527787a7c4023ede2415bb_Funding.avif",
+          "alt": null
+        }
+      }
+    },
+    {
+      "id": "mark-wheeler",
+      "path": "/mark-wheeler",
+      "order": 70,
+      "category": "Team",
+      "classification": "announcement",
+      "implementationStatus": "pending",
+      "sourceUrl": "https://www.madisonai.com/mark-wheeler",
+      "card": {
+        "title": "Mark Wheeler Joins Madison AI as Chief Public Data Officer",
+        "description": "We’re honored to have one of the most trusted voices in Government AI join our team",
+        "image": {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/692ec368810503c3e5b9e036_2d8bc9832e12000e967eb79f9a2ab933_New-hire-1.avif",
+          "alt": null
+        }
+      }
+    },
+    {
+      "id": "dana-searcy",
+      "path": "/dana-searcy",
+      "order": 80,
+      "category": "Team",
+      "classification": "announcement",
+      "implementationStatus": "pending",
+      "sourceUrl": "https://www.madisonai.com/dana-searcy",
+      "card": {
+        "title": "Dana Searcy Joins Madison AI as a Principal Strategist",
+        "description": "Dana brings deep experience in public-sector leadership",
+        "image": {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/692ec59e02dae2aee1d3de77_New-hire-2.avif",
+          "alt": null
+        }
+      }
+    },
+    {
+      "id": "most-innovative-solution",
+      "path": "/most-innovative-solution",
+      "order": 90,
+      "category": "Company",
+      "classification": "announcement",
+      "implementationStatus": "pending",
+      "sourceUrl": "https://www.madisonai.com/most-innovative-solution",
+      "card": {
+        "title": "Madison AI Awarded Most Innovative Solution at the 2025 State of GovTech PitchFest",
+        "description": "This award is welcomed as we’re working hard on client deployments",
+        "image": {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/693035520a6419e24ee3e565_Award.avif",
+          "alt": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,586 @@
+{
+  "id": "proof-ai-works-in-the-public-sector",
+  "order": 10,
+  "category": "Insights",
+  "classification": "lesson-insight",
+  "implementationStatus": "existing-section-prototype",
+  "sourceUrl": "https://www.madisonai.com/proof-ai-works-in-the-public-sector",
+  "capturedAt": "2026-08-18",
+  "metadata": {
+    "title": "1,204 Hours Reclaimed: Proof AI Works in the Public Sector",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/proof-ai-works-in-the-public-sector",
+    "openGraph": {
+      "title": "1,204 Hours Reclaimed: Proof AI Works in the Public Sector",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "Proof AI Works in the Public Sector",
+    "description": "Three lessons that separate AI that delivers from AI that disappoints",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a3ceb00d0a79ff4dcd1a899_Insight-2.avif",
+      "alt": null
+    }
+  },
+  "regions": [
+    {
+      "role": "hero",
+      "sourceClasses": [
+        "pricing-v3",
+        "dark"
+      ],
+      "sourceSummary": {
+        "title": "1,204 Hours Reclaimed: Proof AI Works in the Public Sector",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "1,204 Hours Reclaimed: Proof AI Works in the Public Sector",
+          "level": 2
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+          "alt": null,
+          "sourceClasses": [
+            "erica-small"
+          ]
+        },
+        {
+          "kind": "heading",
+          "text": "By Erica Olsen, CEO, Madison AI",
+          "level": 3
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a3cea3a82378f5d575ca99c_article.avif",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "body",
+      "sourceClasses": [
+        "pricing-01",
+        "light-gray",
+        "adjusted-top",
+        "article-top"
+      ],
+      "sourceSummary": {
+        "title": "",
+        "description": "Public sector leaders are right to be skeptical. Most of the tools out there are generic or built for the private sector. They can drift, they struggle to keep your data private, and they don't understand how a city or county actually runs. These off-the-shelf products were never built for the work you do. But, that skepticism shouldn't close the door on AI that's built differently."
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "There's a lot of noise around AI right now. Big promises, bigger price tags, and not much proof.",
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "Public sector leaders are right to be skeptical. Most of the tools out there are generic or built for the private sector. They can drift, they struggle to keep your data private, and they don't understand how a city or county actually runs. These off-the-shelf products were never built for the work you do. But, that skepticism shouldn't close the door on AI that's built differently.",
+          "segments": [
+            "Public sector leaders are right to be skeptical. Most of the tools out there are generic or built for the private sector.",
+            "They can drift, they struggle to keep your data private, and they don't understand how a city or county actually runs.",
+            "These off-the-shelf products were never built for the work you do. But, that skepticism shouldn't close the door on AI that's built differently."
+          ]
+        },
+        {
+          "kind": "heading",
+          "text": "We designed Madison AI to be trusted. After deploying across local agencies around the country, we've landed on three lessons that separate AI that delivers from AI that disappoints.",
+          "level": 2
+        },
+        {
+          "kind": "heading",
+          "text": "Lesson 1: AI for Government MUST Be Built for Your Data",
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "To actually change how your agency operates, the tool has to be built around your data, not bolted on after the fact. ‍ We mean all of your data; here are some of the areas where we’re digging deep:"
+        },
+        {
+          "kind": "list-item",
+          "text": "Permitting and planning data, from application records to permit history."
+        },
+        {
+          "kind": "list-item",
+          "text": "GIS layers, the maps and spatial data your agency runs on"
+        },
+        {
+          "kind": "list-item",
+          "text": "Procurement and contracts, from active agreements to historical RFPs"
+        },
+        {
+          "kind": "list-item",
+          "text": "Public records, the documents your community requests every day"
+        },
+        {
+          "kind": "list-item",
+          "text": "Council and board records, including resolutions, minutes, and staff reports"
+        },
+        {
+          "kind": "list-item",
+          "text": "Municipal codes and policies, the rules that govern how the agency operates"
+        },
+        {
+          "kind": "list-item",
+          "text": "ERP and financial data, including budgets, invoices, and payroll (Coming soon!)"
+        },
+        {
+          "kind": "paragraph",
+          "text": "In most agencies, this can lives across five to ten systems that don't talk to each other. You can't make sense of it with an algorithm alone. It takes real forward-deployed engineers pull your information together and build a system tailored to your agency.What we've found is that public servants aren't afraid of new technology. They're looking for a partner who understands their data and how the work gets done."
+        },
+        {
+          "kind": "heading",
+          "text": "Lesson 2: RTAA Proves ROI Is Tangible, But It Takes Commitment.",
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "Take the Reno-Tahoe Airport Authority (RTAA). We didn't hand them a software license and walk away. We built their assistant directly from RTAA's own enterprise data, then tracked it through its first year, from launch to steady daily use:"
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "52 people across the organization used it",
+          "emphasizedText": [
+            "52 people"
+          ]
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "1,119 conversations over the year",
+          "emphasizedText": [
+            "1,119 conversations"
+          ]
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "1,204 hours of staff time reclaimed",
+          "emphasizedText": [
+            "1,204 hours"
+          ]
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "$120,400 in avoided overhead, at $100 per staff hour",
+          "emphasizedText": [
+            "$120,400 in avoided overhead,"
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "That time came out of administrative paper-chasing and went back into serving the community. And because the tool keeps finding new uses beyond its current work, we think these savings are just the start. Those returns didn't happen by accident. Three things made the difference:"
+        },
+        {
+          "kind": "list-item",
+          "text": "We worked hard on the data. The assistant is only as good as the information behind it, so we put in the work to get it right.",
+          "emphasizedText": [
+            "We worked hard on the data."
+          ]
+        },
+        {
+          "kind": "list-item",
+          "text": "‍Their leadership bought in. Executive support from the RTAA team wasn't a nice-to-have. It's what real adoption actually requires.",
+          "emphasizedText": [
+            "Their leadership bought in."
+          ]
+        },
+        {
+          "kind": "list-item",
+          "text": "‍They stayed engaged. RTAA didn't set it and forget it. They worked with us to make the results better over time",
+          "emphasizedText": [
+            "They stayed engaged."
+          ]
+        },
+        {
+          "kind": "heading",
+          "text": "Lesson 3: This Only Happens with Iterative Partnership",
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "Here's the honest part. AI is new. For all of us. Any vendor who tells you they have it 100% figured out isn't being straight with you. ‍ This is an iterative process. That's why we believe in being a partner, not just a solution. We've found we have the most success when our customers work through it with us, learning what works, adjusting as we go, and building toward something that fits the way they actually operate. ‍ That's also why RTAA isn't a one-off. We've worked alongside cities and counties across the country:"
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "Aspen, Colorado",
+          "emphasizedText": [
+            "Aspen, Colorado"
+          ]
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "Culver City, California",
+          "emphasizedText": [
+            "Culver City, California"
+          ]
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "Fort Myers Beach, Florida",
+          "emphasizedText": [
+            "Fort Myers Beach, Florida"
+          ]
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "Herriman, Utah",
+          "emphasizedText": [
+            "Herriman, Utah"
+          ]
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "Grand Prairie, Texas",
+          "emphasizedText": [
+            "Grand Prairie, Texas"
+          ]
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "Carson City, Nevada",
+          "emphasizedText": [
+            "Carson City, Nevada"
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": "The work doesn't stop when the assistant goes live. We take the time to understand your staff's needs, evaluate the right solutions, and build alongside you. Once your assistants are running, our senior consultants stay on to manage the deployment, train your team, and guide the change management that adoption requires."
+        },
+        {
+          "kind": "heading",
+          "text": "AI Really Has Measurable Impact in Government.",
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "You don't have to choose between AI and the real demands of local government. With the right partner, city managers and executive staff can reclaim their time, cut unnecessary costs, and run a more efficient government. I'll keep sharing these results because the team at Madison AI is addicted to delivering impact that changes our communities!"
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "trust",
+      "sourceClasses": [
+        "partner"
+      ],
+      "sourceSummary": {
+        "title": "Used and trusted by 65+ local governments and counting",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Used and trusted by 65+ local governments and counting",
+          "level": 4
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "demo",
+      "sourceClasses": [
+        "cta"
+      ],
+      "sourceSummary": {
+        "title": "Book a demo today",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Book a demo today",
+          "level": 2
+        }
+      ],
+      "embeddedForms": [
+        {
+          "provider": "hubspot",
+          "portalId": "54493",
+          "formId": "02ee5553-47ab-4482-869f-f9ea20ae5f74",
+          "region": "na1"
+        },
+        {
+          "provider": "calendly-form-builder",
+          "submissionUrl": "https://calendly.com/api/form_builder/forms/0fed8b94-bc40-4f3e-a1c2-e6ee38e217dd/submissions"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+      "bytes": 212927,
+      "sha256": "881abaefe0d5f3bd3783d431dc752d29b9d589d252bec26c5ced11abfad7dde3",
+      "extension": "png",
+      "width": 603,
+      "height": 603,
+      "usages": [
+        {
+          "region": "hero",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "erica-small"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a3cea3a82378f5d575ca99c_article.avif",
+      "bytes": 21369,
+      "sha256": "7e94a66d75a44d36f23f5fce2e4f7efd32d11af1ef5420409990be7c2c37cc8c",
+      "extension": "avif",
+      "width": 1008,
+      "height": 600,
+      "usages": [
+        {
+          "region": "hero",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+      "bytes": 1098,
+      "sha256": "1c264a83d394ee9a081e252125ddee3035ba6a52bf0bb98b361fb724cf24e13e",
+      "extension": "svg",
+      "width": 40.0,
+      "height": 40.0,
+      "usages": [
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg",
+      "bytes": 371291,
+      "sha256": "040a4c4fb3773fa0ace5b80db11639bd4e17b5b8fb3db86cdeaece9661b23eba",
+      "extension": "jpg",
+      "width": 1200,
+      "height": 630,
+      "usages": [
+        {
+          "region": "metadata",
+          "source": "open-graph",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a3ceb00d0a79ff4dcd1a899_Insight-2.avif",
+      "bytes": 20299,
+      "sha256": "56fc9749ac049deaf9e7650bd373aabef7592b6629989125fc87c786a4bf05e1",
+      "extension": "avif",
+      "width": 1920,
+      "height": 1080,
+      "usages": [
+        {
+          "region": "collection-card",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    }
+  ]
+}

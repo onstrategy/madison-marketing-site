@@ -1,0 +1,66 @@
+{
+  "id": "mark-wheeler",
+  "path": "/mark-wheeler/",
+  "order": 70,
+  "category": "Team",
+  "sourceUrl": "https://www.madisonai.com/mark-wheeler",
+  "metadata": {
+    "title": "Mark Wheeler - Chief Public Data Officer - Madison AI",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "Mark Wheeler - Chief Public Data Officer - Madison AI",
+    "ogImageAsset": "public-records-crisis-social.jpg"
+  },
+  "card": {
+    "title": "Mark Wheeler Joins Madison AI as Chief Public Data Officer",
+    "description": "We’re honored to have one of the most trusted voices in Government AI join our team",
+    "imageAsset": "mark-wheeler-card.avif",
+    "imageAlt": "Mark Wheeler joins Madison AI as Chief Public Data Officer"
+  },
+  "sections": [
+    {
+      "type": "article-hero",
+      "props": {
+        "category": "Team Update",
+        "title": "Mark Wheeler Joins Madison AI as Chief Public Data Officer"
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "variant": "announcement",
+        "heading": "Madison AI brought Mark Wheeler onto the team in November 2025 as the Chief Public Data Officer. Wheeler is a respected voice in GovTech, having previously served as the Chief Information Officer (CIO) for the City of Philadelphia and the Director of Data Analytics and AI at the Centers of Excellence within the federal Technology Transformation Services."
+      }
+    },
+    {
+      "type": "article-quote",
+      "props": {
+        "quote": "“The Madison AI team is moving quickly to address one of the most significant opportunities in local government: using generative AI to transform vast collections of unstructured files such as case records, commission meeting minutes, contract artifacts, GIS layers, and budget books into actionable reports and findings. Madison AI is a deeply talented, curious, and thoughtful group of experts, and I am thrilled to contribute to their mission.”",
+        "attribution": "Mark Wheeler, Chief Public Data Officer",
+        "portrait": {
+          "asset": "mark-wheeler.avif",
+          "alt": "Mark Wheeler"
+        }
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "variant": "announcement",
+        "paragraphs": [
+          "Wheeler brings years of experience in transforming complex data into tools that enable staff to innovate in the workplace. With his background, he will help the Madison AI team deepen its government data expertise and build AI that delivers excellent results for local government.",
+          "“Mark is the local government data guru that Madison AI needs to support the growth of this company,” said Erica Olsen, Madison AI Chief Executive Officer. “We are proud to have him join the Madison AI team and look forward to using his unique perspective in our continuous efforts to support our clients.”",
+          "As the Chief Public Data Officer, Wheeler will oversee Madison AI’s strategic data management, data governance, compliance, performance improvements, and more. His experience will guide him and the team toward several successful roll-outs throughout the country."
+        ]
+      }
+    },
+    { "type": "client-logos", "props": {} },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form below, and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}
