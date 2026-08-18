@@ -1,30 +1,22 @@
-import { ArrowRight, Landmark } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { clientStories } from "../../content/client-stories/collection";
-import { clientStoryLogo } from "../../content/client-stories/page";
+import {
+  clientStoryCardPhoto,
+  clientStoryLogo,
+} from "../../content/client-stories/page";
 import type { ClientStoryDocument } from "../../content/client-stories/schema";
 import { Nav, Footer } from "../landing/sections";
 import { Reveal, SectionHeading } from "../landing/parts";
-import washoeCountyLogo from "../landing/logos/washoe-county.png";
-import renoLogo from "../landing/logos/reno.png";
-import carsonCityLogo from "../landing/logos/carson-city.png";
-import aspenLogo from "../landing/logos/aspen.png";
-import pasadenaLogo from "../landing/logos/pasadena.png";
 
 // Client Stories — the index page every "Client Stories" nav link points to.
-// A dark hero features the strongest story (currently the only one with a
-// full detail page — City of Corona); the rest are on-token summary cards
-// below, each with the real client logo already used in the homepage's logo
-// marquee (see ../landing/logos.ts) rather than a fabricated mark.
+// A dark hero features the strongest story; every other card is derived from
+// the same validated collection entry as its detail page, so card copy, paths,
+// and publication state cannot drift into a second hard-coded inventory.
 
 interface ClientStorySummary {
-  /** Always the city/agency name (e.g. "Newark, California") — never the story's own headline. */
   title: string;
-  /** What the story is actually about — the specific hook, in a sentence. */
   oneLiner: string;
-  clientName: string;
-  // Absent for entries with no supplied client mark on hand yet (e.g. a
-  // fresh pilot announcement) — LogoBadge renders a generic icon instead.
-  logo?: { src: string; alt: string; width: number; height: number };
+  photo: { url: string; alt: string; width: number; height: number };
   href: string;
 }
 
@@ -40,104 +32,29 @@ function toSummary(story: ClientStoryDocument): ClientStorySummary {
   return {
     title: story.card.title,
     oneLiner: story.card.summary,
-    clientName: story.card.clientName,
-    logo: clientStoryLogo(story),
+    photo: clientStoryCardPhoto(story),
     href: story.path,
   };
 }
 
 const featuredStory = requireFeaturedStory();
+const featuredLogo = clientStoryLogo(featuredStory);
+if (!featuredLogo) {
+  throw new Error("The featured client story must include a card logo");
+}
 
 const FEATURED = {
   clientName: featuredStory.card.clientName,
   title: featuredStory.card.title,
   oneLiner: featuredStory.card.summary,
-  logo: clientStoryLogo(featuredStory),
-  photo: featuredStory.card.photo,
+  logo: featuredLogo,
+  photo: clientStoryCardPhoto(featuredStory),
   href: featuredStory.path,
 };
 
-const LEGACY_EXTERNAL_STORIES: ClientStorySummary[] = [
-  {
-    title: "Washoe County, NV",
-    oneLiner: "Saving $41K+ in staff time every month.",
-    clientName: "Washoe County, NV",
-    logo: { src: washoeCountyLogo, alt: "Washoe County, Nevada", width: 215, height: 252 },
-    href: "https://www.madisonai.com/client-stories/washoe-county",
-  },
-  {
-    title: "City of Reno",
-    oneLiner: "Cut time spent on staff reports by 75%.",
-    clientName: "City of Reno",
-    logo: { src: renoLogo, alt: "City of Reno, Nevada", width: 304, height: 252 },
-    href: "https://www.madisonai.com/client-stories",
-  },
-  {
-    title: "Carson City, NV",
-    oneLiner: "“Exactly what I need, faster.”",
-    clientName: "Carson City, NV",
-    logo: { src: carsonCityLogo, alt: "Carson City, Nevada", width: 541, height: 252 },
-    href: "https://www.madisonai.com/client-stories/carson-city-client-story",
-  },
-  {
-    title: "Aspen, CO",
-    oneLiner: "Reclaiming 140 staff hours every month.",
-    clientName: "Aspen, CO",
-    logo: { src: aspenLogo, alt: "City of Aspen, Colorado", width: 237, height: 252 },
-    href: "https://www.madisonai.com/client-stories",
-  },
-  {
-    title: "Pasadena, CA",
-    oneLiner: "One source of truth for the City Attorney's office.",
-    clientName: "Pasadena, CA",
-    logo: { src: pasadenaLogo, alt: "City of Pasadena, California", width: 273, height: 252 },
-    href: "https://www.madisonai.com/client-stories",
-  },
-];
-
-const OTHER_STORIES: ClientStorySummary[] = [
-  ...clientStories
-    .filter((story) => story.id !== featuredStory.id)
-    .map(toSummary),
-  ...LEGACY_EXTERNAL_STORIES,
-];
-
-/**
- * The client mark, at the size/shape shared by the featured hero and the
- * story cards. Falls back to a generic icon — matching the LogoMark
- * primitive's own fallback convention (../landing/parts.tsx) — for entries
- * with no supplied logo asset yet, e.g. a fresh pilot announcement.
- */
-function LogoBadge({
-  logo,
-  clientName,
-}: {
-  logo: ClientStorySummary["logo"];
-  clientName: string;
-}) {
-  if (logo) {
-    return (
-      <span className="flex size-20 items-center justify-center rounded-full border border-default bg-plate p-4">
-        <img
-          src={logo.src}
-          alt={logo.alt}
-          width={logo.width}
-          height={logo.height}
-          className="size-full object-contain"
-        />
-      </span>
-    );
-  }
-  return (
-    <span
-      title={clientName}
-      className="flex size-20 items-center justify-center rounded-full border border-default bg-surface text-muted"
-    >
-      <Landmark aria-hidden="true" className="size-8" />
-      <span className="sr-only">{clientName}</span>
-    </span>
-  );
-}
+const OTHER_STORIES: ClientStorySummary[] = clientStories
+  .filter((story) => story.id !== featuredStory.id)
+  .map(toSummary);
 
 function FeaturedHero({ data }: { data: typeof FEATURED }) {
   return (
@@ -155,18 +72,23 @@ function FeaturedHero({ data }: { data: typeof FEATURED }) {
       </div>
       <div className="relative mx-auto max-w-6xl px-gutter pt-28 pb-24 lg:px-0 lg:pt-40">
         <Reveal>
-          <div className="mb-6">
-            <LogoBadge logo={data.logo} clientName={data.clientName} />
+          <div className="mb-6 flex items-center gap-3">
+            <span className="flex size-20 items-center justify-center rounded-full border border-default bg-plate p-4">
+              <img
+                src={data.logo.src}
+                alt={data.logo.alt}
+                width={data.logo.width}
+                height={data.logo.height}
+                className="size-full object-contain"
+              />
+            </span>
+            <span className="font-sans text-sm font-semibold text-secondary">
+              {data.clientName}
+            </span>
           </div>
-          {/* The big title is always the city name — the story's specific
-              hook (what actually happened) lives in the description below
-              it, not the title. */}
-          <h1 className="mb-4 max-w-3xl text-balance font-serif text-4xl font-medium tracking-tight text-primary">
+          <h1 className="mb-8 max-w-3xl text-balance font-serif text-4xl font-medium tracking-tight text-primary">
             {data.title}
           </h1>
-          <p className="mb-8 max-w-xl text-pretty text-lg text-secondary">
-            {data.oneLiner}
-          </p>
           <a
             href={data.href}
             className="inline-flex items-center gap-2 rounded-full bg-brand px-6.5 py-3.75 text-base font-medium text-brand-fg transition-colors hover:bg-brand-hover"
@@ -179,26 +101,35 @@ function FeaturedHero({ data }: { data: typeof FEATURED }) {
   );
 }
 
-function StoryCard({ story, delay }: { story: ClientStorySummary; delay: number }) {
+function StoryCard({ story }: { story: ClientStorySummary }) {
   const isInternal = story.href.startsWith("/");
   return (
-    <Reveal delay={delay}>
-      <a
-        href={story.href}
-        {...(isInternal ? {} : { target: "_blank", rel: "noopener" })}
-        className="group flex h-full flex-col rounded-2xl border border-default bg-surface p-6 transition-transform hover:-translate-y-1"
-      >
-        <div className="mb-5">
-          <LogoBadge logo={story.logo} clientName={story.clientName} />
-        </div>
-        <h3 className="font-sans text-xl font-semibold tracking-tight text-primary">{story.title}</h3>
-        <p className="mt-2 flex-1 text-secondary">{story.oneLiner}</p>
+    <a
+      href={story.href}
+      {...(isInternal ? {} : { target: "_blank", rel: "noopener" })}
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-default bg-surface transition-transform hover:-translate-y-1"
+    >
+      <span className="block aspect-[16/10] overflow-hidden border-b border-default bg-plate">
+        <img
+          src={story.photo.url}
+          alt={story.photo.alt}
+          width={story.photo.width}
+          height={story.photo.height}
+          loading="lazy"
+          className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+        />
+      </span>
+      <span className="flex flex-1 flex-col p-6">
+        <h3 className="font-sans text-xl font-semibold tracking-tight text-primary">
+          {story.title}
+        </h3>
+        <span className="mt-2 flex-1 text-secondary">{story.oneLiner}</span>
         <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
           Read the story{" "}
           <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
         </span>
-      </a>
-    </Reveal>
+      </span>
+    </a>
   );
 }
 
@@ -214,8 +145,8 @@ function OtherStories({ data }: { data: ClientStorySummary[] }) {
           />
         </Reveal>
         <div className="grid gap-4 sm:grid-cols-2">
-          {data.map((story, i) => (
-            <StoryCard key={story.title} story={story} delay={i * 60} />
+          {data.map((story) => (
+            <StoryCard key={story.title} story={story} />
           ))}
         </div>
       </div>

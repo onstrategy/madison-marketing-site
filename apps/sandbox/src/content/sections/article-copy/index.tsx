@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { cn } from "@madison/ui/utils";
 import { Reveal } from "../../../prototypes/landing/parts";
 
 const NonEmptyStringSchema = z.string().trim().min(1);
@@ -35,9 +34,6 @@ const ArticleCopyPropsSchema = z
       })
       .strict()
       .optional(),
-    // Defaults to true (the original behavior everywhere this was already
-    // used) — set false to drop the line under this instance.
-    divider: z.boolean().optional(),
   })
   .strict();
 
@@ -71,10 +67,9 @@ export default function ArticleCopySection({
   heading,
   paragraphs,
   callout,
-  divider = true,
 }: ArticleCopyProps) {
   return (
-    <section className={cn("bg-app px-gutter py-20", divider && "border-b border-default")}>
+    <section className="border-b border-default bg-app px-gutter py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <h2 className="mb-8 text-balance font-serif text-3xl font-medium tracking-tight text-primary">

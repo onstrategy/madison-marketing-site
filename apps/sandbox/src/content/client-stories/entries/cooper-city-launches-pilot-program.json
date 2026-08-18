@@ -1,0 +1,98 @@
+{
+  "id": "cooper-city-launches-pilot-program",
+  "path": "/cooper-city-launches-pilot-program/",
+  "sourceUrl": "https://www.madisonai.com/cooper-city-launches-pilot-program",
+  "order": 120,
+  "featured": false,
+  "metadata": {
+    "title": "Cooper City Launches Pilot Program with Madison AI to Streamline Operations",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "Cooper City Launches Pilot Program with Madison AI to Streamline Operations",
+    "ogImageAsset": "madison-client-story-og.jpg"
+  },
+  "card": {
+    "kicker": "New Deployment",
+    "title": "Cooper City Launches Pilot Program with Madison AI to Streamline Operations",
+    "summary": "Focused on enhancing policy research and boosting operational efficiency",
+    "clientName": "Cooper City",
+    "photo": {
+      "asset": "cooper-city-hero.avif",
+      "alt": "Cooper City, Florida municipal landscape",
+      "width": 1612,
+      "height": 960
+    }
+  },
+  "sections": [
+    {
+      "type": "client-story-announcement-hero",
+      "props": {
+        "category": "New Deployment",
+        "title": "Cooper City Launches Pilot Program with Madison AI to Streamline Operations",
+        "photo": {
+          "asset": "cooper-city-hero.avif",
+          "alt": "Cooper City, Florida municipal landscape",
+          "width": 1612,
+          "height": 960
+        }
+      }
+    },
+    {
+      "type": "client-story-announcement-body",
+      "props": {
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "In December of 2025, the City of Cooper City, Florida , partnered with Madison AI to pilot the platform across key departments, including the City Clerk’s Office, Administration, Human Resources, Finance and Procurement, and Community Development."
+          },
+          {
+            "type": "paragraph",
+            "text": "The platform integrates directly with Cooper City’s internal resources, including policies, forms, and procedural documents, and refreshes its database weekly. Built specifically for Cooper City, the AI assistant enables employees to find needed information quickly, summarize reports, draft meeting notes, and generate talking points, streamlining workflows and reducing routine tasks."
+          },
+          {
+            "type": "quote",
+            "text": "We’re excited to launch this pilot program with Cooper City, a community known for its strong family focus and commitment to high-quality services. By working closely with City staff, we aim to provide tools that simplify daily tasks and make important information more easily accessible, helping Cooper City focus on what matters most for their community.",
+            "attribution": "Erica Olsen , CEO of Madison AI",
+            "photo": {
+              "asset": "madison-erica-olsen.png",
+              "alt": "Erica Olsen, CEO of Madison AI",
+              "width": 603,
+              "height": 603
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "The initial rollout will include three modules: internal administration and management, procurement and contracts, and elected officials and boards. The City will review the effectiveness of each module before expanding its use, focusing on enhancing policy research and boosting operational efficiency."
+          },
+          {
+            "type": "heading",
+            "text": "About Cooper City, FL"
+          },
+          {
+            "type": "paragraph",
+            "text": "The City of Cooper City, home to a growing community of families in Broward County, is known for its safe neighborhoods, excellent schools, and family-friendly atmosphere. With a population of about 35,000 residents, the City fosters a strong sense of community through local programs and initiatives. Learn more about Cooper City ."
+          },
+          {
+            "type": "heading",
+            "text": "About Madison AI"
+          },
+          {
+            "type": "paragraph",
+            "text": "Madison AI is the AI engine for local government. Using enterprise data and systems of record, Madison AI’s suite of purpose-built artificial intelligence assistants is designed to support the primary internal functions of local government. These include assistants for the Office of the City Manager, Community Development, Procurement, and related operational areas. Madison AI accelerates administrative tasks, such as preparing staff reports, generating zoning verification letters, and drafting requests for proposals, using the agency’s own enterprise data to ensure accuracy and reliability. Co-founded by Washoe County and trusted by nearly 50 local governments, Madison AI supports public-sector staff by reducing administrative workload and enabling teams to direct more time to serving their communities."
+          }
+        ]
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "client-story-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form below, and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

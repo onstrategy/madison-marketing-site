@@ -1,5 +1,9 @@
 import { z } from "zod";
 import { SectionInputSchema } from "../sections/schema";
+import {
+  ClientStoryAssetNameSchema,
+  ClientStoryImageInputSchema,
+} from "./image";
 
 const PublicPathSchema = z
   .string()
@@ -10,17 +14,6 @@ const PublicPathSchema = z
 
 const NonEmptyStringSchema = z.string().trim().min(1);
 
-const PhotoSchema = z
-  .object({
-    url: z.string().url().refine((url) => url.startsWith("https://"), {
-      message: "must use an https URL",
-    }),
-    alt: NonEmptyStringSchema,
-    width: z.number().int().positive(),
-    height: z.number().int().positive(),
-  })
-  .strict();
-
 const LogoAssetSchema = z
   .string()
   .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*\.(?:png|jpe?g|webp|avif)$/);
@@ -29,6 +22,9 @@ export const ClientStoryDocumentSchema = z
   .object({
     id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
     path: PublicPathSchema,
+    sourceUrl: z.string().url().refine((url) => url.startsWith("https://"), {
+      message: "must use an https URL",
+    }),
     order: z.number().int().nonnegative(),
     featured: z.boolean(),
     metadata: z
@@ -37,6 +33,7 @@ export const ClientStoryDocumentSchema = z
         description: NonEmptyStringSchema,
         seoTitle: NonEmptyStringSchema.optional(),
         ogImage: z.string().url().optional(),
+        ogImageAsset: ClientStoryAssetNameSchema.optional(),
         noindex: z.boolean().optional(),
       })
       .strict(),
@@ -46,42 +43,18 @@ export const ClientStoryDocumentSchema = z
         title: NonEmptyStringSchema,
         summary: NonEmptyStringSchema,
         clientName: NonEmptyStringSchema,
-        photo: PhotoSchema,
-        // Optional together: entries without a supplied client mark (e.g. a
-        // pilot announcement with no logo asset on hand yet) may omit all
-        // four and fall back to a generic icon badge — see clientStoryLogo()
-        // in page.tsx and StoryCard/FeaturedHero in
-        // prototypes/client-stories/index.tsx. The superRefine below still
-        // rejects a partial mix (some logo fields set, others missing).
-        logoAsset: LogoAssetSchema.optional(),
-        logoAlt: NonEmptyStringSchema.optional(),
-        logoWidth: z.number().int().positive().optional(),
-        logoHeight: z.number().int().positive().optional(),
+        photo: ClientStoryImageInputSchema,
+        logo: z
+          .object({
+            asset: LogoAssetSchema,
+            alt: NonEmptyStringSchema,
+            width: z.number().int().positive(),
+            height: z.number().int().positive(),
+          })
+          .strict()
+          .optional(),
       })
-      .strict()
-      .superRefine((card, ctx) => {
-        const logoFields = [
-          "logoAsset",
-          "logoAlt",
-          "logoWidth",
-          "logoHeight",
-        ] as const;
-        const presentCount = logoFields.filter(
-          (field) => card[field] !== undefined,
-        ).length;
-        if (presentCount > 0 && presentCount < logoFields.length) {
-          for (const field of logoFields) {
-            if (card[field] === undefined) {
-              ctx.addIssue({
-                code: "custom",
-                path: [field],
-                message:
-                  "must be set together with the other logo fields, or omitted entirely",
-              });
-            }
-          }
-        }
-      }),
+      .strict(),
     sections: z.array(SectionInputSchema).min(1),
   })
   .strict();

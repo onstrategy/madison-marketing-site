@@ -1,0 +1,113 @@
+{
+  "id": "city-of-dublin-launches-madison-ai",
+  "path": "/city-of-dublin-launches-madison-ai/",
+  "sourceUrl": "https://www.madisonai.com/city-of-dublin-launches-madison-ai",
+  "order": 150,
+  "featured": false,
+  "metadata": {
+    "title": "City of Dublin Launches Madison AI Assistants for Local Operations",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "City of Dublin Launches Madison AI Assistants for Local Operations",
+    "ogImageAsset": "madison-client-story-og.jpg"
+  },
+  "card": {
+    "kicker": "New Deployment",
+    "title": "City of Dublin Launches Madison AI Assistants for Local Operations",
+    "summary": "Improving efficiency across the board",
+    "clientName": "City of Dublin",
+    "photo": {
+      "asset": "dublin-hero.avif",
+      "alt": "Dublin, Ohio municipal landscape",
+      "width": 1008,
+      "height": 600
+    }
+  },
+  "sections": [
+    {
+      "type": "client-story-announcement-hero",
+      "props": {
+        "category": "New Deployment",
+        "title": "City of Dublin Launches Madison AI Assistants for Local Operations",
+        "photo": {
+          "asset": "dublin-hero.avif",
+          "alt": "Dublin, Ohio municipal landscape",
+          "width": 1008,
+          "height": 600
+        }
+      }
+    },
+    {
+      "type": "client-story-announcement-body",
+      "props": {
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "As of February 2026, the City of Dublin, Ohio , has partnered with Madison AI to implement purpose-built artificial intelligence (AI) assistants designed to support citywide operations."
+          },
+          {
+            "type": "paragraph",
+            "text": "As a leading-edge community and the first city in Ohio to adopt Madison AI’s technology, Dublin continues to demonstrate its commitment to thoughtful innovation in local government."
+          },
+          {
+            "type": "quote",
+            "text": "In Dublin, innovation is purposeful. As a global city of choice, we deliver responsive, high-quality services by making smart investments in emerging technology. Deploying Madison AI ensures our team has modern tools to better serve our exceptional community.",
+            "attribution": "Brandon Brown, Chief Innovation and Technology Officer",
+            "photo": {
+              "asset": "city-of-dublin-launches-madison-ai-quote-1.avif",
+              "alt": "Brandon Brown, Chief Innovation and Technology Officer",
+              "width": 799,
+              "height": 799
+            }
+          },
+          {
+            "type": "heading",
+            "text": "The City is deploying two solutions: a citywide AI assistant available to staff across departments and a planning and community development AI assistant designed to support planning-related workflows."
+          },
+          {
+            "type": "paragraph",
+            "text": "These tools will streamline document review, enhance internal research and reduce time spent on repetitive tasks, allowing staff to focus on higher-value work that directly benefits residents and businesses. Madison AI’s platform is built from the City of Dublin’s data, ensuring the City maintains full control and ownership of its information."
+          },
+          {
+            "type": "quote",
+            "text": "Dublin has built a reputation as a city that embraces innovation with purpose. We’re thrilled to work alongside their leadership team as they integrate responsible AI tools that strengthen operations and support their staff.",
+            "attribution": "Erica Olsen, CEO, Madison AI",
+            "photo": {
+              "asset": "madison-erica-olsen.png",
+              "alt": "Erica Olsen, CEO of Madison AI",
+              "width": 603,
+              "height": 603
+            }
+          },
+          {
+            "type": "heading",
+            "text": "About the City of Dublin, Ohio, USA"
+          },
+          {
+            "type": "paragraph",
+            "text": "Dublin is a city of nearly 50,000 residents located just northwest of Columbus, Ohio. It offers residents and corporate citizens responsive services, attractive housing options, superior public education, direct regional highway access, abundant park space, thoughtful and strategic planning, innovative ideas and technology and a dynamic community life. Dublin is ranked the number one small city in Ohio and is consistently named one of the safest cities in the nation. It is home to more than 20 corporate headquarters, an entrepreneurial center, 4,300+ businesses, world-class events and the urban, walkable Bridge Street District. For more information, visit DublinOhioUSA.gov or call 614.410.4400."
+          },
+          {
+            "type": "heading",
+            "text": "About Madison AI"
+          },
+          {
+            "type": "paragraph",
+            "text": "Madison AI is the AI engine for local government. Using enterprise data and systems of record, Madison AI’s suite of purpose-built artificial intelligence assistants is designed to support the primary internal functions of local government. These include assistants for the Office of the City Manager, Community Development, Procurement, and related operational areas. Madison AI accelerates administrative tasks, such as preparing staff reports, generating zoning verification letters, and drafting requests for proposals, using the agency’s own enterprise data to ensure accuracy and reliability. Co-founded by Washoe County and trusted by nearly 50 local governments, Madison AI supports public-sector staff by reducing administrative workload and enabling teams to direct more time to serving their communities."
+          }
+        ]
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "client-story-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form below, and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

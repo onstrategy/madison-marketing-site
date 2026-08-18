@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { resolveClientStoryImage } from "../../client-stories/assets";
+import { ClientStoryImageInputSchema } from "../../client-stories/image";
 import { Reveal, Eyebrow } from "../../../prototypes/landing/parts";
 
 const NonEmptyStringSchema = z.string().trim().min(1);
@@ -9,6 +11,7 @@ const ClientStoryQuoteStatsPropsSchema = z
       .object({
         text: NonEmptyStringSchema,
         attribution: NonEmptyStringSchema,
+        photo: ClientStoryImageInputSchema.optional(),
       })
       .strict(),
     stats: z
@@ -27,7 +30,16 @@ const ClientStoryQuoteStatsPropsSchema = z
       })
       .strict(),
   })
-  .strict();
+  .strict()
+  .transform(({ quote, stats }) => ({
+    quote: {
+      ...quote,
+      photo: quote.photo
+        ? resolveClientStoryImage(quote.photo)
+        : undefined,
+    },
+    stats,
+  }));
 
 type ClientStoryQuoteStatsProps = z.infer<
   typeof ClientStoryQuoteStatsPropsSchema
@@ -45,6 +57,16 @@ export default function ClientStoryQuoteStatsSection({
     <section className="border-b border-default bg-surface px-gutter py-24">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
+          {quote.photo ? (
+            <img
+              src={quote.photo.url}
+              alt={quote.photo.alt}
+              width={quote.photo.width}
+              height={quote.photo.height}
+              loading="lazy"
+              className="mx-auto mb-8 size-28 rounded-full border border-active object-cover shadow-md"
+            />
+          ) : null}
           <p className="text-balance font-serif text-3xl font-medium italic tracking-tight text-primary">
             &ldquo;{quote.text}&rdquo;
           </p>

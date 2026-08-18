@@ -1,0 +1,110 @@
+{
+  "id": "welcoming-the-city-of-grand-prairie-texas",
+  "path": "/welcoming-the-city-of-grand-prairie-texas/",
+  "sourceUrl": "https://www.madisonai.com/welcoming-the-city-of-grand-prairie-texas",
+  "order": 50,
+  "featured": false,
+  "metadata": {
+    "title": "Welcoming the City of Grand Prairie, Texas, to the Madison AI Community",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "Welcoming the City of Grand Prairie, Texas, to the Madison AI Community",
+    "ogImageAsset": "madison-client-story-og.jpg"
+  },
+  "card": {
+    "kicker": "New Deployment",
+    "title": "Welcoming the City of Grand Prairie, Texas, to the Madison AI Community",
+    "summary": "Providing toold that support staff, and free up time for residents",
+    "clientName": "City of Grand Prairie",
+    "photo": {
+      "asset": "grand-prairie-hero.avif",
+      "alt": "Grand Prairie, Texas municipal landscape",
+      "width": 2015,
+      "height": 1200
+    }
+  },
+  "sections": [
+    {
+      "type": "client-story-announcement-hero",
+      "props": {
+        "category": "New Deployment",
+        "title": "Welcoming the City of Grand Prairie, Texas, to the Madison AI Community",
+        "photo": {
+          "asset": "grand-prairie-hero.avif",
+          "alt": "Grand Prairie, Texas municipal landscape",
+          "width": 2015,
+          "height": 1200
+        }
+      }
+    },
+    {
+      "type": "client-story-announcement-body",
+      "props": {
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "The City of Grand Prairie, Texas , joined the Madison AI community as one of its newest customers. As part of this partnership, the City has deployed specialized artificial intelligence (AI) assistants, such as citywide, planning and community development, and procurement."
+          },
+          {
+            "type": "paragraph",
+            "text": "The City of Grand Prairie is deeply committed to enhancing the quality of life for both its residents and diligent staff. By adopting new technologies, the City's goal is to provide tools that support employees, streamline daily processes, and create more time for resident services."
+          },
+          {
+            "type": "paragraph",
+            "text": "The citywide assistant serves as a resource for general employee inquiries and communications, while the planning and community development assistant helps staff navigate complex zoning and permitting guidelines. Additionally, the procurement assistant accelerates the purchasing process by aiding in contract reviews, compliance tracking, and bid management."
+          },
+          {
+            "type": "paragraph",
+            "text": "From the start, Madison AI has served as a resource that can help staff work more efficiently while staying rooted in accuracy and trust, giving them more time to dedicate to residents."
+          },
+          {
+            "type": "quote",
+            "text": "Grand Prairie displays what forward-looking innovation in local government can look like. Their commitment to service and their willingness to embrace new tools have made them an incredible customer. We’re honored to support their work.",
+            "attribution": "Erica Olsen, CEO, Madison AI",
+            "photo": {
+              "asset": "madison-erica-olsen.png",
+              "alt": "Erica Olsen, CEO of Madison AI",
+              "width": 603,
+              "height": 603
+            }
+          },
+          {
+            "type": "heading",
+            "text": "About the City of Grand Prairie, Texas"
+          },
+          {
+            "type": "paragraph",
+            "text": "Grand Prairie, Texas, located between Dallas and Fort Worth, is home to more than 200,000 residents and offers a dynamic mix of residential neighborhoods, retail centers, and entertainment destinations. Known for its family-friendly amenities and economic vitality, the city blends suburban comfort with convenient access to the heart of the Metroplex. Learn more about the City of Grand Prairie, Texas."
+          },
+          {
+            "type": "heading",
+            "text": "About Madison AI"
+          },
+          {
+            "type": "paragraph",
+            "text": "Madison AI is the AI engine for local government. Using enterprise data and systems of record, Madison AI’s suite of purpose-built artificial intelligence assistants is designed to support the primary internal functions of local government."
+          },
+          {
+            "type": "paragraph",
+            "text": "These include assistants for the Office of the City Manager, Community Development, Procurement, and related operational areas. Madison AI accelerates administrative tasks, such as preparing staff reports, generating zoning verification letters, and drafting requests for proposals, using the agency’s own enterprise data to ensure accuracy and reliability."
+          },
+          {
+            "type": "paragraph",
+            "text": "Co-founded by Washoe County and trusted by nearly 50 local governments, Madison AI supports public-sector staff by reducing administrative workload and enabling teams to direct more time to serving their communities."
+          }
+        ]
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "client-story-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form below, and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

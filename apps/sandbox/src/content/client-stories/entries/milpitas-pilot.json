@@ -1,0 +1,107 @@
+{
+  "id": "milpitas-pilot",
+  "path": "/milpitas-pilot/",
+  "sourceUrl": "https://www.madisonai.com/milpitas-pilot",
+  "order": 170,
+  "featured": false,
+  "metadata": {
+    "title": "Milpitas Begins Pilot of Purpose-Built AI Technology for Municipal Operations",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "Milpitas Begins Pilot of Purpose-Built AI Technology for Municipal Operations",
+    "ogImageAsset": "madison-client-story-og.jpg"
+  },
+  "card": {
+    "kicker": "New Deployment",
+    "title": "Milpitas Begins Pilot of Purpose-Built AI Technology for Municipal Operations",
+    "summary": "A significant step to support the city’s day-to-day operations",
+    "clientName": "City of Milpitas",
+    "photo": {
+      "asset": "milpitas-hero.avif",
+      "alt": "Milpitas, California municipal landscape",
+      "width": 2015,
+      "height": 1200
+    }
+  },
+  "sections": [
+    {
+      "type": "client-story-announcement-hero",
+      "props": {
+        "category": "New Deployment",
+        "title": "Milpitas Begins Pilot of Purpose-Built AI Technology for Municipal Operations",
+        "photo": {
+          "asset": "milpitas-hero.avif",
+          "alt": "Milpitas, California municipal landscape",
+          "width": 2015,
+          "height": 1200
+        }
+      }
+    },
+    {
+      "type": "client-story-announcement-body",
+      "props": {
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "January 15, 2025 — The City of Milpitas, California, launched a pilot of Madison AI’s technology in January of 2025, taking a significant step toward exploring how purpose-built generative AI tools can support the city’s day-to-day operations."
+          },
+          {
+            "type": "paragraph",
+            "text": "The collaboration reflects the city’s commitment to evaluating technology that can enhance staff efficiency while meeting Milpitas’ unique operational needs."
+          },
+          {
+            "type": "quote",
+            "text": "Providing fast, reliable service to the residents of Milpitas is always top of mind for our team. Even in this pilot phase, this technology is starting to transform how we work. Their tools take routine tasks off our plates and give our staff more time to focus on projects that truly benefit the community.",
+            "attribution": "Daniel Nam, Milpitas Information Technology Director"
+          },
+          {
+            "type": "paragraph",
+            "text": "Milpitas is exploring how Madison AI’s technology can streamline document-heavy processes, reduce time spent on repetitive administrative tasks and make it easier for staff to navigate information within the City’s internal systems."
+          },
+          {
+            "type": "heading",
+            "text": "Madison AI is built entirely upon Milpitas’ own data, ensuring the City retains full control over how its information is stored and used."
+          },
+          {
+            "type": "quote",
+            "text": "Seeing how committed Milpitas staff are to improving their workflows has been very motivating. We’re excited to support the City as it evaluates the potential of effective, responsible technology.",
+            "attribution": "Erica Olsen, CEO, Madison AI",
+            "photo": {
+              "asset": "madison-erica-olsen.png",
+              "alt": "Erica Olsen, CEO of Madison AI",
+              "width": 603,
+              "height": 603
+            }
+          },
+          {
+            "type": "heading",
+            "text": "About the City of Milpitas"
+          },
+          {
+            "type": "paragraph",
+            "text": "Located at the southern end of San Francisco Bay, Milpitas is a progressive community that is an integral part of Silicon Valley. A full-service city with water utility, sewer utility, police and fire services, Milpitas is a flourishing community with a very diverse and inclusive resident population of nearly 80,000. Often referred to as the Crossroads of Silicon Valley, the City is situated between major thoroughfares in the Bay Area and considered a highly desirable location for world-class technology companies seeking to build a central base of operations. With the addition of the new Milpitas Transit Center offering BART, light rail, and bus service, and multiple new mixed-use development projects, along with a host of new City Plans and Programs in support of an inspiring and sustainable future, the City is at the forefront of building the next-generation economy. For more information, visit: www.milpitas.gov"
+          },
+          {
+            "type": "heading",
+            "text": "About Madison AI"
+          },
+          {
+            "type": "paragraph",
+            "text": "Madison AI is the AI engine for local government. Using enterprise data and systems of record, Madison AI’s suite of purpose-built artificial intelligence assistants is designed to support the primary internal functions of local government. These include assistants for the Office of the City Manager, Community Development, Procurement, and related operational areas. Madison AI accelerates administrative tasks, such as preparing staff reports, generating zoning verification letters, and drafting requests for proposals, using the agency’s own enterprise data to ensure accuracy and reliability. Co-founded by Washoe County and trusted by nearly 50 local governments, Madison AI supports public-sector staff by reducing administrative workload and enabling teams to direct more time to serving their communities."
+          }
+        ]
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "client-story-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form below, and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}
