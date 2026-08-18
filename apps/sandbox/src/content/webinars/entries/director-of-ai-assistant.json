@@ -1,0 +1,207 @@
+{
+  "id": "director-of-ai-assistant",
+  "path": "/director-of-ai-assistant/",
+  "order": 20,
+  "sourceUrl": "https://www.madisonai.com/director-of-ai-assistant",
+  "metadata": {
+    "title": "The Director's Playbook to Put Your AI Assistant to Work",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "The Director's Playbook to Put Your AI Assistant to Work",
+    "ogImageAsset": "madison-webinar-og.jpg"
+  },
+  "card": {
+    "title": "The Director's Playbook to Put Your AI Assistant to Work",
+    "imageAsset": "director-of-ai-assistant-card.avif",
+    "imageAlt": "The Director's Playbook to Put Your AI Assistant to Work"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "The Director's Playbook to Put Your AI Assistant to Work",
+        "subtitle": "Five real work tasks. A new set of downloadable Task Cards you can use to put your AI Assistant to work every day!"
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "paragraphs": [
+          "Yesterday’s AI in Action was all about making Madison your everyday assistant. The room was full of executives, planners, PIOs, and analysts from cities, counties, and special districts all over the country, and the feedback was great. The conversation kept pointing to:",
+          "When you have an AI assistant, you are the director. Not the doer. Directing is a different muscle than doing, and it is the whole game.Instead of a rehearsed pitch, Kristine and Erica walked through five real work tasks end to end. Not demos. The actual work your team already has to get done."
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Legislative history memo",
+        "paragraphs": [
+          "An assistant city manager in Las Vegas needed the full legislative history of Fremont Street for a memo. The answer did not come from hours in SharePoint. It came from asking Madison directly, then pushing back: How confident are you? What are the data gaps? Once the research was solid, the output took seconds. Email straight from the chat, copy-paste with formatting intact, or export to Word or PowerPoint."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"Use this as an assistant, not as a Google search box that we're all so used to. So I ask it, how confident are you in this answer?\"",
+            "attribution": "Erica Olsen, Madison AI",
+            "portrait": {
+              "asset": "erica-olsen-ceo-madison-ai-220d8018.png",
+              "alt": "Erica Olsen, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "019_AI In Action: Legislative history memo",
+            "wistiaId": "qbfgb0jyo9"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Approval process letter for a resident",
+        "paragraphs": [
+          "A planner needs to explain a zoning approval process to a resident. The next step is to ask Madison to ask you clarifying questions first, then step through the answer instead of trying to get everything in one prompt. Ask about the zoning, then the approval process, then a resident-ready letter. It is the same coaching you would give a new hire. And always confirm the citations point to code, not to a council packet or minutes."
+        ],
+        "items": [],
+        "quotes": [],
+        "videos": [
+          {
+            "title": "019_AI In Action: Approval process letter for a resident",
+            "wistiaId": "dil5upc5js"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Council presentation prep",
+        "paragraphs": [
+          "Using Johns Creek, Georgia as the example, we asked Madison to pull the voting history on a contested item (the Metlock Bridge), flag where council was aligned or divided, and build a prep checklist. The result was a clear picture of council sentiment and a list of likely questions, tackled one at a time rather than all at once. This is where Madison moves from research assistant to thinking partner."
+        ],
+        "items": [],
+        "quotes": [],
+        "videos": [
+          {
+            "title": "019_AI In Action: Council presentation prep",
+            "wistiaId": "pbyqpnv2fn"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Site plan compliance review",
+        "paragraphs": [
+          "Using Golden, Colorado's Planning & Zoning model and a 16th Street site plan, we ran the Review Site Plans agent. It read the fine print, checked the plan against code, and produced a checklist of what was missing. In one example, the agent caught that a plan listed zero trees when code required two: ready-made language for a letter back to the developer. Anything geospatial still needs a human eye against the drawing."
+        ],
+        "items": [],
+        "quotes": [],
+        "videos": [
+          {
+            "title": "019_AI In Action: Site plan compliance review",
+            "wistiaId": "d7yq1pi0w3"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "On-Demand Tasks",
+        "paragraphs": [
+          "Free forming a prompt works when you are exploring. When accuracy matters, use a pre-built agent. Code Lookup for code. Anticipated Questions for electeds. Newsletter for transcripts. Each agent has a process built for that task, so you are not fighting the AI to search the right folders.",
+          "And when Madison genuinely does not have the answer in your own index, like details on a neighboring jurisdiction, it says so plainly and offers to search the web instead. That is the boundary: your model knows your city's data. Cross-jurisdiction comparisons pull from an outside layer, clearly labeled."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"Our goal is not to fight with the AI. If you wanna be certain, use one of the pre-built agents.\"",
+            "attribution": "Erica Olsen, Madison AI",
+            "portrait": {
+              "asset": "erica-olsen-ceo-madison-ai-220d8018.png",
+              "alt": "Erica Olsen, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "019_AI In Action: On-Demand Tasks",
+            "wistiaId": "4gciszo0ww"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Best practices that showed up in every task",
+        "paragraphs": [
+          "These are the director skills."
+        ],
+        "items": [
+          {
+            "label": "Ask what data Madison has first.",
+            "description": "Date ranges, most recent transcript, most recent code update. Do not assume."
+          },
+          {
+            "label": "Ask Madison to ask you questions.",
+            "description": "\"Ask me what you need to know before you answer.\" A better first draft every time."
+          },
+          {
+            "label": "Use pre-built agents",
+            "description": "when accuracy matters. Freeform when exploring."
+          },
+          "Step it, do not stack it. One task at a time.",
+          {
+            "label": "Verify the citation, not just the answer.",
+            "description": "If it references a packet when it should reference code, push back."
+          },
+          {
+            "label": "Ask for confidence and gaps.",
+            "description": "\"How confident are you?\" and \"What data gaps should I be aware of?\" work every time."
+          },
+          {
+            "label": "Use it as a thinking partner.",
+            "description": "\"What have I not thought about?\" is a prompt worth memorizing."
+          }
+        ],
+        "quotes": [],
+        "videos": []
+      }
+    },
+    {
+      "type": "webinar-resource-download",
+      "props": {
+        "title": "Take it to your team",
+        "description": "We turned all five workflows into printable Task Cards: setup, the play, confidence checks, watch-outs, and related tasks for each workflow.",
+        "asset": "director-of-ai-assistant-task-cards.pdf",
+        "buttonLabel": "Download the Task Cards"
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Full Session Video",
+        "videoTitle": "019_AI In Action: On Call, On Demand: Making Madison AI Your Everyday Assistant (full session)",
+        "wistiaId": "70j0jpi72x"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

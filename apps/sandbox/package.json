@@ -16,6 +16,16 @@
     "./content/news/page": "./src/content/news/page.tsx",
     "./content/news/schema": "./src/content/news/schema.ts",
     "./content/news/server": "./src/content/news/collection.server.ts",
+    "./content/responsible-ai": "./src/content/responsible-ai/collection.ts",
+    "./content/responsible-ai/assets": "./src/content/responsible-ai/assets.ts",
+    "./content/responsible-ai/page": "./src/content/responsible-ai/page.tsx",
+    "./content/responsible-ai/schema": "./src/content/responsible-ai/schema.ts",
+    "./content/responsible-ai/server": "./src/content/responsible-ai/collection.server.ts",
+    "./content/webinars": "./src/content/webinars/collection.ts",
+    "./content/webinars/assets": "./src/content/webinars/assets.ts",
+    "./content/webinars/page": "./src/content/webinars/page.tsx",
+    "./content/webinars/schema": "./src/content/webinars/schema.ts",
+    "./content/webinars/server": "./src/content/webinars/collection.server.ts",
     "./index.css": "./src/index.css"
   },
   "scripts": {

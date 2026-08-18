@@ -1,0 +1,46 @@
+{
+  "capturedAt": "2026-08-18",
+  "order": 3,
+  "path": "/resources/worksheets-to-develop-your-ai-guiding-principles",
+  "card": {
+    "description": "Use this facilitation exercise with your team to select your Government’s AI Governance Structure.",
+    "imageAlt": "Worksheets to Develop Your AI Guiding Principles",
+    "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/69296a00a92dd5dd5a81821f_Cover-principles-miro.jpg",
+    "path": "/resources/worksheets-to-develop-your-ai-guiding-principles",
+    "title": "Worksheets to Develop Your AI Guiding Principles"
+  },
+  "date": "August 20, 2024",
+  "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+  "documentTitle": "Worksheets to Develop Your AI Guiding Principles - Madison AI",
+  "mediaUrls": [
+    "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/692968efc3ae4758ea646bbd_Cover-governance-miro.jpg",
+    "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b403f101e4ace348387c_Cover-example.jpg",
+    "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b5ecf2d953c339b19306_Cover-blueprint.jpg"
+  ],
+  "related": [
+    {
+      "description": "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive.",
+      "href": "/resources/the-free-miro-template-to-build-your-ai-governance-policy",
+      "imageAlt": "The Free Miro Template to Build Your AI Governance Policy",
+      "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/692968efc3ae4758ea646bbd_Cover-governance-miro.jpg",
+      "title": "The Free Miro Template to Build Your AI Governance Policy"
+    },
+    {
+      "href": "/resources/ai-governance-policy-examples",
+      "imageAlt": "16 AI Governance Policy Examples",
+      "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b403f101e4ace348387c_Cover-example.jpg",
+      "title": "16 AI Governance Policy Examples"
+    },
+    {
+      "description": "See the 4 steps to build your AI governance blueprint to incorporate AI into your government ethically.",
+      "href": "/resources/ai-governance-blueprint",
+      "imageAlt": "AI Governance Blueprint: A Guide to Ethical AI in Local Government",
+      "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b5ecf2d953c339b19306_Cover-blueprint.jpg",
+      "title": "AI Governance Blueprint: A Guide to Ethical AI in Local Government"
+    }
+  ],
+  "sourceUrl": "https://www.madisonai.com/resources/worksheets-to-develop-your-ai-guiding-principles",
+  "title": "Worksheets to Develop Your AI Guiding Principles",
+  "unsupported": [],
+  "blocks": []
+}

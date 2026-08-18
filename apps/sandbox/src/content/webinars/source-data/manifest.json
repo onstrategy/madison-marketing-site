@@ -1,0 +1,99 @@
+{
+  "purpose": "Neutral source capture for AI in Action webinar migration; not imported by the runtime collection.",
+  "sourceUrl": "https://www.madisonai.com/resources",
+  "capturedAt": "2026-08-18",
+  "sha256": "ef9cfc2f31f42898915954a1e3b616cdc4d65d2a4d3977f82bfde57e25598c89",
+  "items": [
+    {
+      "id": "erp-data-thirdline",
+      "path": "/erp-data-thirdline/",
+      "order": 10,
+      "sourceUrl": "https://www.madisonai.com/erp-data-thirdline",
+      "title": "What Becomes Possible Once ERP Data Joins Your Citywide Knowledge Base"
+    },
+    {
+      "id": "director-of-ai-assistant",
+      "path": "/director-of-ai-assistant/",
+      "order": 20,
+      "sourceUrl": "https://www.madisonai.com/director-of-ai-assistant",
+      "title": "The Director's Playbook to Put Your AI Assistant to Work"
+    },
+    {
+      "id": "acfr-and-gfoa",
+      "path": "/acfr-and-gfoa/",
+      "order": 30,
+      "sourceUrl": "https://www.madisonai.com/acfr-and-gfoa",
+      "title": "Turning Your ACFR into Indicators, with GFOA"
+    },
+    {
+      "id": "city-of-corona-procurement",
+      "path": "/city-of-corona-procurement/",
+      "order": 40,
+      "sourceUrl": "https://www.madisonai.com/city-of-corona-procurement",
+      "title": "How the City of Corona Evolved Procurement with AI"
+    },
+    {
+      "id": "ai-everyones-talking-about",
+      "path": "/ai-everyones-talking-about/",
+      "order": 50,
+      "sourceUrl": "https://www.madisonai.com/ai-everyones-talking-about",
+      "title": "The AI Everyone's Talking About Is Already Inside Your Madison Deployment"
+    },
+    {
+      "id": "valley-water-ai-in-action",
+      "path": "/valley-water-ai-in-action/",
+      "order": 60,
+      "sourceUrl": "https://www.madisonai.com/valley-water-ai-in-action",
+      "title": "How Santa Clara Valley Water Turned One AI Assistant into Trusted Infrastructure"
+    },
+    {
+      "id": "chanhassen-ai-in-action",
+      "path": "/chanhassen-ai-in-action/",
+      "order": 70,
+      "sourceUrl": "https://www.madisonai.com/chanhassen-ai-in-action",
+      "title": "How Chanhassen Turned Trusted AI into Institutional Memory and Faster Staff Throughput"
+    },
+    {
+      "id": "rtc-ai-in-action",
+      "path": "/rtc-ai-in-action/",
+      "order": 80,
+      "sourceUrl": "https://www.madisonai.com/rtc-ai-in-action",
+      "title": "RTC Built Workflows Worth Replicating. Here's Why."
+    },
+    {
+      "id": "more-of-the-work-more-accurately",
+      "path": "/more-of-the-work-more-accurately/",
+      "order": 90,
+      "sourceUrl": "https://www.madisonai.com/more-of-the-work-more-accurately",
+      "title": "Madison AI is Superpowered. Faster and Smarter!"
+    },
+    {
+      "id": "planning-work-ai-in-action",
+      "path": "/planning-work-ai-in-action/",
+      "order": 100,
+      "sourceUrl": "https://www.madisonai.com/planning-work-ai-in-action",
+      "title": "Parcel Lookups, Zoning Letters, Site Plan Reviews - Here's How Madison AI Handles Them"
+    },
+    {
+      "id": "washoe-county-ai-in-action",
+      "path": "/washoe-county-ai-in-action/",
+      "order": 110,
+      "sourceUrl": "https://www.madisonai.com/washoe-county-ai-in-action",
+      "title": "Three Tips from Two Years In. Lessons from Washoe County's AI Deployment"
+    },
+    {
+      "id": "flashvote-ai-in-action",
+      "path": "/flashvote-ai-in-action/",
+      "order": 120,
+      "sourceUrl": "https://www.madisonai.com/flashvote-ai-in-action",
+      "title": "How FlashVote Creates Smoother Meetings for Everyone"
+    },
+    {
+      "id": "wrcog-ai-in-action",
+      "path": "/wrcog-ai-in-action/",
+      "order": 130,
+      "sourceUrl": "https://www.madisonai.com/wrcog-ai-in-action",
+      "title": "How WRCOG Applies AI to Real Government Work"
+    }
+  ]
+}

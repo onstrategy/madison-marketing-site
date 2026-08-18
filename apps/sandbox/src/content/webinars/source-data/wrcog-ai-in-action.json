@@ -1,0 +1,331 @@
+{
+  "id": "wrcog-ai-in-action",
+  "path": "/wrcog-ai-in-action/",
+  "order": 130,
+  "sourceUrl": "https://www.madisonai.com/wrcog-ai-in-action",
+  "capturedAt": "2026-08-18",
+  "sha256": "600345fe74ebc0d2d8df969483dd6813941c456a5ff30650a05803f40f8bca64",
+  "metadata": {
+    "title": "How WRCOG Applies AI to Real Government Work - AI In Action Webinar",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/wrcog-ai-in-action",
+    "openGraph": {
+      "title": "How WRCOG Applies AI to Real Government Work - AI In Action Webinar",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "How WRCOG Applies AI to Real Government Work",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6986585fad90d9e0651f0991_0923b4d7aede249d18f181d7dd8616c2_WRCOG.avif",
+      "alt": "How WRCOG Applies AI to Real Government Work"
+    }
+  },
+  "hero": {
+    "headings": [
+      "AI In Action Webinar",
+      "How WRCOG Applies AI to Real Government Work"
+    ],
+    "sourceClasses": [
+      "pricing-v3",
+      "dark"
+    ]
+  },
+  "regions": [
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "AI Gives Superpowers to ‍ Small but Mighty Governments",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "WRCOG is a classic “small but mighty” government team. They support a regional footprint of ~2 million people with 36 full-time staff, and Chris personally wears multiple hats.",
+        "Their reality is what most agencies feel right now. Rising regulatory complexity, limited funding, and constant pressure to do more without adding headcount.",
+        "Chris framed AI as a capacity multiplier that removes “drudgery”, shortens time-to-answer, and frees staff to focus on the work that moves programs forward. The goal isn’t reduction of headcount; it’s avoiding unnecessary hires and protecting bandwidth for higher-value work."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "007_AI in Action: The real impact AI has on lean government teams",
+          "wistiaId": "yxukolr0x2",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fyxukolr0x2&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fyxukolr0x2&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fa9e6448d0685c2685ae921fe14169aa1.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/a9e6448d0685c2685ae921fe14169aa1.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“We’re giving our staff the ability to work on higher-level things, so they’re not doing drudge work. I just thought there had to be a better way than what we were doing.”",
+          "attribution": "Christopher Gray, Deputy Executive Director",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6986506136fb33f5d1962792_fb96d24cda72bf5b3b66be7d4945ca1c_chris-w.png",
+            "alt": "Christopher Gray, Deputy Executive Director"
+          }
+        }
+      ],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Staff Report Tips from a Staff Report Expert",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Chris explained that most staff reports contain repeatable content, and WRCOG has clear rules for each section, so the output stays consistent, tight, and predictable.",
+        "They intentionally reduced report length after learning how elected officials read: Topic → Summary → Discussion.",
+        "Only the first few sentences earn attention. The result is a more standardized product that reduces review churn and helps staff spend time where it matters: the discussion and decision logic.",
+        "Staff Report Pro Tip: If the first four or five sentences don't really capture an elected official, they just don’t read the rest of it."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "WRCOG: Staff Report Best Practices",
+          "wistiaId": "zuwl640nis",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fzuwl640nis&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fzuwl640nis&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fb6d879ff504f901d6fda58e690417c3b.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/b6d879ff504f901d6fda58e690417c3b.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "AI’s Power for Decision Tracing & Fact-Finding",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Authority questions come with real pressure, and the cost of getting them wrong is real.",
+        "Chris described a moment when the Executive Director was out, and the team needed clarity on signing authority. Staff couldn’t recall the exact policy, resolution, and when it passed. Instead of starting a file scavenger hunt, they use Madison AI to find the exact resolution and answer, then update the master document to update their master policy.",
+        "The key point: AI accelerated discovery, but the document itself is what made the decision defensible."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "WRCOG: Decision Tracing",
+          "wistiaId": "yfp4ec64tm",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fyfp4ec64tm%3Futm_campaign%3Danalytics-share%26utm_medium%3Dlink%26utm_source%3Dmedia-embed&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fyfp4ec64tm%2Fanalytics%3Futm_source%3Dmedia-embed%26utm_medium%3Dlink%26utm_campaign%3Danalytics-share&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F1c211c4dc0632f00f0cec70dbf64f360.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/1c211c4dc0632f00f0cec70dbf64f360.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“Nobody remembered we had adopted a resolution. I was at that meeting, and I don’t remember it. We’re able to find this specific resolution very, very quickly. And the actual document… exactly when it was approved.”",
+          "attribution": "Christopher Gray, Deputy Executive Director"
+        }
+      ],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Answers You Can Stake Your Reputation On (With Citations)",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "The real win here is “less file-digging, more certainty.” Chris described how AI helps them answer governance and policy questions using authoritative records, then points directly to the language that supports the conclusion. Cited authoritative sources create confidence in decisions.",
+        "Chris also emphasized the long-term value of institutional knowledge and memory, moving beyond the tenured staff. AI becomes the backstop when those people aren’t available - or eventually leave."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "WRCOG: Answers to Stake Your Reputation On",
+          "wistiaId": "50ar2fgf6k",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F50ar2fgf6k&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F50ar2fgf6k&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F4ff6e1479823cbe0d7de6f13a4ba8827.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/4ff6e1479823cbe0d7de6f13a4ba8827.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“There’s a whole heck of a lot of institutional knowledge… within a very small number of people. It has been very successful for us… and it’s something that we will continue to use.”",
+          "attribution": "Christopher Gray, Deputy Executive Director"
+        }
+      ],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Q/A Discussion: Staff Accountability with Every Output",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "AI doesn’t own the outcome, people do. The safest posture is to treat AI as a finder and a first draft generator, then validate against source documents before anything becomes public-facing or decision-grade.",
+        "Kristine reinforced this with a simple, enforceable message. Users are responsible for what they publish, regardless of how it was produced. That clarity is what makes adoption scalable without creating risk debt."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Watch the full webinar",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "Watch the full webinar",
+          "wistiaId": "oqywrrz8yi",
+          "sourceUrl": "https://fast.wistia.net/embed/iframe/oqywrrz8yi"
+        }
+      ],
+      "callouts": [],
+      "images": []
+    }
+  ],
+  "downloadUrls": []
+}

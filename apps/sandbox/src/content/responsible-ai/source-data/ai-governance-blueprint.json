@@ -1,0 +1,767 @@
+{
+  "capturedAt": "2026-08-18",
+  "order": 0,
+  "path": "/resources/ai-governance-blueprint",
+  "card": {
+    "description": "See the 4 steps to build your AI governance blueprint to incorporate AI into your government ethically.",
+    "imageAlt": "AI Governance Blueprint: A Guide to Ethical AI in Local Government",
+    "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b5ecf2d953c339b19306_Cover-blueprint.jpg",
+    "path": "/resources/ai-governance-blueprint",
+    "title": "AI Governance Blueprint: A Guide to Ethical AI in Local Government"
+  },
+  "author": "Heyden Enochson",
+  "date": "June 5, 2025",
+  "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+  "documentTitle": "AI Governance Blueprint: A Guide to Ethical AI in Local Government - Madison AI",
+  "mediaUrls": [
+    "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/692968efc3ae4758ea646bbd_Cover-governance-miro.jpg",
+    "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b403f101e4ace348387c_Cover-example.jpg",
+    "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b5ecf2d953c339b19306_Cover-blueprint.jpg"
+  ],
+  "related": [
+    {
+      "description": "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive.",
+      "href": "/resources/the-free-miro-template-to-build-your-ai-governance-policy",
+      "imageAlt": "The Free Miro Template to Build Your AI Governance Policy",
+      "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/692968efc3ae4758ea646bbd_Cover-governance-miro.jpg",
+      "title": "The Free Miro Template to Build Your AI Governance Policy"
+    },
+    {
+      "href": "/resources/ai-governance-policy-examples",
+      "imageAlt": "16 AI Governance Policy Examples",
+      "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b403f101e4ace348387c_Cover-example.jpg",
+      "title": "16 AI Governance Policy Examples"
+    },
+    {
+      "description": "See the 4 steps to build your AI governance blueprint to incorporate AI into your government ethically.",
+      "href": "/resources/ai-governance-blueprint",
+      "imageAlt": "AI Governance Blueprint: A Guide to Ethical AI in Local Government",
+      "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b5ecf2d953c339b19306_Cover-blueprint.jpg",
+      "title": "AI Governance Blueprint: A Guide to Ethical AI in Local Government"
+    }
+  ],
+  "sourceUrl": "https://www.madisonai.com/resources/ai-governance-blueprint",
+  "title": "AI Governance Blueprint: A Guide to Ethical AI in Local Government",
+  "unsupported": [],
+  "blocks": [
+    {
+      "content": [
+        "From the Editor: Our parent company, OnStrategy, originally authored this. It has been modified and updated for use at Madison AI."
+      ],
+      "level": 4,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "Why should you have an AI governance policy?"
+      ],
+      "level": 2,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "Having an AI governance policy creates necessary guardrails to ensure your organization uses AI tools safely and responsibly while minimizing the risks associated with AI. An AI governance policy outlines your AI guiding principles, how your organization uses AI ethically, and your data security."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "The “policy” and “governance” might not exactly set your pulse racing, especially given AI is one of today’s most exciting topics. But ",
+        {
+          "text": "trust us",
+          "type": "strong"
+        },
+        " when we say having a transparent AI governance and ethics policy is necessary as you consider how AI will transform your organization."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "The EU’s AI Act: Making Governance Practices Important ",
+        {
+          "text": "Now",
+          "type": "emphasis"
+        }
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "With the addition of the ",
+        {
+          "href": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+          "text": "EU’s AI Act",
+          "type": "link"
+        },
+        ", having an excellent governance policy is critical in both the public sector and the private sector [even if you don’t do business in Europe]. As the world catches up with the breakthroughs in AI technology and AI algorithms, more of this regulatory compliance from our policymakers and human rights advocacy groups will come our way [and probably fast]."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "So, we will break down the basics of AI governance and share why it is important for an organization’s responsible use of AI."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "provider": "youtube",
+      "title": "5 Reasons You Need an AI Governance Policy I AI Governance and Ethics Part I",
+      "type": "video",
+      "videoId": "dL78MNdziXg"
+    },
+    {
+      "content": [
+        "AI Governance Transcript"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "Welcome to the new whiteboard series from the virtual strategists. My name is Erica Olsen. I’m the CEO of OnStrategy. Thanks so much for tuning in. In this series, we are discussing AI strategy, and this topic is responsible AI. Specifically, we will discuss the five reasons that you need an AI governance plan, policy, and structure in place."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Before you quickly pause or click off, don’t go away. It’s fast, painless, and important, particularly if you plan on implementing AI at an enterprise level across your organization. If you still need to check out the first video in this series, do it because it outlines our framework for an AI strategy."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "What are we talking about when we talk about AI strategy today? We’re explicitly digging into AI governance. Every organization needs an AI governance policy and structure. You just do. It doesn’t need to be complicated, but you need something."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "If you don’t have that in place, you won’t realize the benefits AI can bring your organization because you’ll constantly be hitting up against the five bullet points, we’ll walk through."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "The five reasons you need this policy are that it needs to be aligned with your values—straight up. AI is an enabling function, not an end to a mean, so your values are front and center."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "You’ve got to protect your data. This is for the attorneys out there. Data is paramount for all of us. You are at considerable risk if you’re not clear about what data protection means to ensure that no one in your organization steps over the line."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Bias is a big one. You want to prevent bias in your organization. Having a clear governance policy in place to avoid this is super important. We do not want to continue to replicate biases by using biases inherent in some data that AI is leveraging."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "We also want to ensure that organizations, teams, and individuals can experiment to grow. We need to provide the guardrails and the guidelines for what’s acceptable and not sufficient."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Last but certainly not least, your staff must feel safe and secure that they will not lose their jobs to play with AI. The first thing everybody asks themselves as a staff member in organizations today is, will I lose my job? If so, I’m not going to participate in this experiment. We want people to feel safe to experiment because that’s where everything will come from in terms of the real benefits that this technology will yield for you and your team."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        {
+          "text": "So, what is included in a responsible AI policy? Let’s go through the checklist.",
+          "type": "strong"
+        }
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "So first things first, we want a set of guiding principles that support your values."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "That is a set of guiding principles that everybody in your organization can look at and say, and I am adhering to these."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "The next thing is a clear governance structure. How will you ensure that those guiding principles are being adhered to? Does that governance structure include an AI committee?"
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "And if so, who’s on it? Importantly, where, and how are your team going to learn from each other? Setting up a learning hub in your organization is a best practice. So, what does that look like?"
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "And then how will you communicate those learnings more broadly to the organization? So, when you think about having a responsible AI policy in place, those are the pieces that your policy should include, and just to say, it doesn’t need to be a stodgy policy."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "It can be one slide with just some thoughts on these different topics. It can be fun. It can be a video, and make sure there’s documentation wherever that might live for you. So, policy always just seems old school. So, the importance is that you’re setting forth the guidelines and the acceptable use of AI so that everybody in your organization."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Understands what it looks like and what it doesn’t look like for your organization to keep you safe, protected, and quite frankly, thriving."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Three other videos dig deep into each of these topics to really help you build out each section. So, commit to spending one hour with you and your team to build a responsible AI policy for your organization."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "You’ll be better for it, I promise. Please don’t leave without subscribing to the channel. We’re dropping videos on this topic and many others, and you’ll want to be notified when we do. If you want more resources, click on the link."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Thanks again for tuning in. Happy strategizing."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "The 5 Reasons You NEED an AI Governance Framework and Policy."
+      ],
+      "level": 2,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "We will jump into the 5 reasons your leadership team needs an AI governance plan."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "#1: You Need to Align AI with Your Core Values"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "Your AI use cases and approach to artificial intelligence must align with your organization’s overall core values. You should think about these two questions:"
+      ],
+      "type": "paragraph"
+    },
+    {
+      "items": [
+        [
+          "How you will [and will not] use AI in your organization?"
+        ],
+        [
+          "Will AI have a significant role in your organization?"
+        ],
+        [
+          "How do your core values guide your behavior when using AI?"
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    },
+    {
+      "content": [
+        "By anchoring your AI governance and strategy with your values, you can ensure your organization stays aligned with your core values while embarking on this new AI frontier."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "#2: Proactively Protect Your Data and Data Sources"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "Data is the lifeblood of organizations AND AI systems, and protecting it is paramount for success in this new world."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Without robust data protection measures, your organization risks exposing itself to legal, ethical, and reputational damage. A well-defined AI risk management framework should:"
+      ],
+      "type": "paragraph"
+    },
+    {
+      "items": [
+        [
+          "Clear guidelines on data storage and what you will [or will not] expose to AI. It’s all about risk management here!"
+        ],
+        [
+          "How you process data with AI and AI models."
+        ],
+        [
+          "What mechanisms do you have to remain compliant with relevant regulations and standards?"
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    },
+    {
+      "content": [
+        "Proper governance of AI in your organization requires a clear picture about how you’ll avoid unacceptable risk and protect your organization’s most sensitive information."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "#3: Prevent Bias Inherent in AI Technology and AI Algorithms"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "AI systems can perpetuate and even exacerbate existing biases and inequalities. To mitigate this risk, it’s essential to incorporate measures into your AI governance plan to identify and address bias at every stage of the AI lifecycle, from data collection and preprocessing to model training and deployment. Human intervention is important in preventing and perpetuating bias in AI."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "#4: Create Space for Experimentation and Learning"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "Innovation thrives in environments where experimentation is encouraged and supported. Every thoughtful and thorough AI governance plan should include:"
+      ],
+      "type": "paragraph"
+    },
+    {
+      "items": [
+        [
+          "A committee or space for your team to share learnings."
+        ],
+        [
+          "A place for experimentation to see what’s possible in your space."
+        ],
+        [
+          "What does your organizational structure entail for AI governance? What stakeholders do you need to involve?"
+        ],
+        [
+          "How you’ll convene and share insights with your broader organization."
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    },
+    {
+      "content": [
+        "#5: Ensure Job Security"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "AI has the potential to automate tasks currently performed by your workforce, leading to unease and unrest about job displacement and unemployment. As business leaders, it our job to address these concerns and foster a culture of trust and collaboration."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Doing so requires clear provisions in your AI governance ",
+        {
+          "text": "plan to ensure job security for your employees",
+          "type": "strong"
+        },
+        ". This may include reskilling and upskilling programs, redeployment opportunities, and measures to promote workforce diversity and inclusion."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Need help using this AI framework and building your AI roadmap? We’re here to help! AI has changed everything – and there is no strategy without a clear approach for how AI will transform your organization. Not sure where to start?",
+        {
+          "href": "https://madisonai.com/ai-strategy-consulting/",
+          "text": "We can build your AI transformation strategy and governance in 30 days.Book Your AI Roadmap Call",
+          "type": "link"
+        }
+      ],
+      "type": "quote"
+    },
+    {
+      "content": [
+        "The Checklist for a Complete AI Governance Policy and Ethical Standards:"
+      ],
+      "level": 2,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "Now that we’ve covered why having an AI governance plan is essential let’s take a closer look at what should be included in such a plan:"
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "✅ A Clear Set of AI Guiding Principles"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "We recommend developing a set of core AI guiding principles that are aligned with your organization’s overall values and ethics. These principles should serve as a foundation for decision-making and guide your organization’s development, deployment, and use of generative AI, tech, and machine learning."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "✅ Clear AI Governance Systems and Structure"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "A governance structure outlines how your organization will manage, communicate, and corral AI in your organization. We’ll cover the three types of AI governance structures in a different post, but you can select a structure based on your organization size, structure, and needs. It’s also important to be clear about your organization’s approach to data governance and cybersecurity."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "But, at minimum, you need to have a governing group that manages AI and it’s guardrails in your organization."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "✅ An AI “Committee” of Stakeholders for Oversight"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "You’ll establish this as you create your AI governance structure. Still, you should have a committee or group responsible for managing your ethical guidelines and compliance requirements for AI development, deployment, accountability, and privacy. This group helps ensure AI initiatives meet your ethical requirements and help protect core pieces of your organization, like data and intellectual property."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "✅ Identified Potential Risks & Ongoing Monitoring"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "As part of an AI governance framework or policy, your organization should conduct a risk assessment to create a complete list of possible scenarios where AI could negatively impact your organization. It’s important that your AI experts, legal experts, and security team work together to identify all the possible scenarios and data AI could impact, then create a risk mitigation approach to ensure AI has minimal risk in your organization. Your AI risk mitigation will support your legal framework for risk management."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "✅ A “Learning Hub” for AI Transparency"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "We strongly recommend creating an AI learning hub in your organization. Giving your team space to experiment, share learning with each other, and inspire thinking will advance the use of AI in your organization, create visibility into what your team is doing with AI to ensure compliance, and eliminate duplication of efforts across teams."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Your learning hub might also benefit from establishing key performance indicators or metrics to help quantify the positive [and negative] impacts for your team. Before embarking upon bigger AI software development projects or AI automation, it’s helpful to have quantified metrics about the impact AI is having in your organization. A learning hub will help with this."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "✅ A Proactive Communication Approach for Learnings"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "With your established learning hub, how will you communicate with your organization? What mediums, channels, and methods will you use to ensure everyone is current on your team’s AI approach? It’s important to establish this approach as part of your governance efforts."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Bonus: 5 Helpful Questions to Answer with Your AI Governance Framework"
+      ],
+      "level": 2,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "If you’re not sure where to start, here are some key questions and themes to consider in your ethics and governance framework:"
+      ],
+      "type": "paragraph"
+    },
+    {
+      "items": [
+        [
+          {
+            "text": "Data protection:",
+            "type": "strong"
+          },
+          "If you are using AI, ",
+          {
+            "text": "how are you protecting your data?",
+            "type": "strong"
+          },
+          " Your customer’s data? What is your policy on data privacy?"
+        ],
+        [
+          {
+            "text": "Privacy Compliance:",
+            "type": "strong"
+          },
+          "How are you ",
+          {
+            "text": "compliant with GDPR, CCPA, and HIPAA regulations?",
+            "type": "strong"
+          },
+          " How are you preventing legal issues in your organization with this regulation?"
+        ],
+        [
+          {
+            "text": "Security:",
+            "type": "strong"
+          },
+          "How will you ",
+          {
+            "text": "handle incident responses, systems failures, and breaches",
+            "type": "strong"
+          },
+          " when integrating AI into your organization?"
+        ],
+        [
+          {
+            "text": "Bottom-Up Innovation:",
+            "type": "strong"
+          },
+          "How will you ",
+          {
+            "text": "enable bottom-up innovation",
+            "type": "strong"
+          },
+          " and ensure your team ",
+          {
+            "text": "uses AI responsibly?",
+            "type": "strong"
+          }
+        ],
+        [
+          {
+            "text": "Ethical considerations:",
+            "type": "strong"
+          },
+          "How will use AI ethically? How are you preventing bias?"
+        ],
+        [
+          {
+            "text": "Bias:",
+            "type": "strong"
+          },
+          "How do you ensure fairness and mitigation with AI systems to ",
+          {
+            "text": "prevent discriminating",
+            "type": "strong"
+          },
+          " against groups, ethnicities, genders, or demographics?"
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    },
+    {
+      "content": [
+        {
+          "text": "Pro Tip:",
+          "type": "strong"
+        }
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Other common considerations for guiding principles when developing your AI ethics include accountability, data quality and security, equity, and transparency."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "provider": "youtube",
+      "title": "What is AI governance?",
+      "type": "video",
+      "videoId": "f6dx3Yh-Tww"
+    },
+    {
+      "content": [
+        "AI Governance Resources"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "items": [
+        [
+          "IBM – ",
+          {
+            "href": "https://www.youtube.com/watch?v=f6dx3Yh-Tww&pp=ygUNQUkgZ292ZXJuYW5jZQ%3D%3D",
+            "text": "What is AI Governance",
+            "type": "link"
+          }
+        ],
+        [
+          "Microsoft – ",
+          {
+            "href": "https://blogs.microsoft.com/on-the-issues/2023/05/25/how-do-we-best-govern-ai/",
+            "text": "How do we best govern AI?",
+            "type": "link"
+          }
+        ],
+        [
+          "European Union –",
+          {
+            "href": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+            "text": "AI Act",
+            "type": "link"
+          }
+        ],
+        [
+          "World Economic Forum – ",
+          {
+            "href": "https://initiatives.weforum.org/ai-governance-alliance/home",
+            "text": "The Future of AI Governance",
+            "type": "link"
+          }
+        ],
+        [
+          "Google – ",
+          {
+            "href": "https://cloud.google.com/responsible-ai",
+            "text": "Responsible AI",
+            "type": "link"
+          }
+        ],
+        [
+          "OECD – ",
+          {
+            "href": "https://oecd.ai/en/catalogue/metrics",
+            "text": "AI Governance Metrics",
+            "type": "link"
+          }
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    },
+    {
+      "content": [
+        "Alternative Resources:"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "items": [
+        [
+          {
+            "href": "https://podcasts.apple.com/us/podcast/hbr-ideacast/id152022135?i=1000612683458",
+            "text": "How Generative AI Changes Creativity",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://podcasts.apple.com/us/podcast/hbr-ideacast/id152022135?i=1000613581159",
+            "text": "How Generative AI Changes Organizational Culture",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://podcasts.apple.com/us/podcast/hbr-ideacast/id152022135?i=1000611787407",
+            "text": "How Generative AI Changes Productivity",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://podcasts.apple.com/us/podcast/hbr-ideacast/id152022135?i=1000614497589",
+            "text": "How Generative AI Changes Strategy",
+            "type": "link"
+          }
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    },
+    {
+      "content": [
+        "OnStrategy Resources:"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "items": [
+        [
+          {
+            "href": "https://onstrategyhq.com/resources/ai-strategy/?__hstc=255534679.ce1575307ab99d04b6e6af35079f6a4d.1747923823688.1764153751321.1764170877135.40&__hssc=255534679.10.1764170877135&__hsfp=96230312",
+            "text": "Identify Your AI Strategy for 2024",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://onstrategyhq.com/resources/ai-implementation/?__hstc=255534679.ce1575307ab99d04b6e6af35079f6a4d.1747923823688.1764153751321.1764170877135.40&__hssc=255534679.10.1764170877135&__hsfp=96230312",
+            "text": "5 Questions to Kickstart Your AI Implementation",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://onstrategyhq.com/resources/managing-change-during-turbulent-times/?__hstc=255534679.ce1575307ab99d04b6e6af35079f6a4d.1747923823688.1764153751321.1764170877135.40&__hssc=255534679.10.1764170877135&__hsfp=96230312",
+            "text": "Managing Change During Turbulent Times",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://onstrategyhq.com/resources/qa-what-are-the-ethical-and-practical-challenges-of-chatgpt/?__hstc=255534679.ce1575307ab99d04b6e6af35079f6a4d.1747923823688.1764153751321.1764170877135.40&__hssc=255534679.10.1764170877135&__hsfp=96230312",
+            "text": "What are Some Ethical and Practical Challenges of ChatGPT?",
+            "type": "link"
+          }
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    }
+  ]
+}

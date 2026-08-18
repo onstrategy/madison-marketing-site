@@ -1,0 +1,393 @@
+{
+  "id": "rtc-ai-in-action",
+  "path": "/rtc-ai-in-action/",
+  "order": 80,
+  "sourceUrl": "https://www.madisonai.com/rtc-ai-in-action",
+  "capturedAt": "2026-08-18",
+  "sha256": "c1a26efeb55027492d81a74b3948dc1dbd9b135d351beb1d8f39c069b9a94527",
+  "metadata": {
+    "title": "RTC Built Workflows Worth Replicating. Here's Why.",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/rtc-ai-in-action",
+    "openGraph": {
+      "title": "RTC Built Workflows Worth Replicating. Here's Why.",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "RTC Built Workflows Worth Replicating. Here's Why.",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69ea24d44036bdf7be79fd18_0bde58e62bc3e383f55e1efa51a06201_RTC.avif",
+      "alt": "RTC Built Workflows Worth Replicating. Here's Why."
+    }
+  },
+  "hero": {
+    "headings": [
+      "AI In Action Webinar",
+      "RTC Built Workflows Worth Replicating. Here's Why."
+    ],
+    "sourceClasses": [
+      "pricing-v3",
+      "dark"
+    ]
+  },
+  "regions": [
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [
+        "RTC came into this session candidly sharing real workflows and real problems they had to solve. Lee Anne Olivas, Management Analyst at the Regional Transportation Commission of Washoe County, joined Kristine Richter, Head of Client Success, Madison AI, to walk through six areas where Madison AI added efficiencies in how the team works.",
+        "The results are specific, repeatable, and worth your time."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Better Meeting Prep: ‍ Board Meeting Preparation",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "RTC built a prompt inside Madison that reviews the monthly agenda packet and generates anticipated questions based on how board members have previously voted and commented. Directors see what topics are likely to draw scrutiny before any presentation starts and can prepare answers in advance.",
+        "Presentations got cleaner. Staff stopped getting caught off guard. The \"let me get back to you\" moments dropped, which matters when your board only meets once a month."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "012 AI In Action: Better Meeting Prep.",
+          "wistiaId": "r7jlofwfup",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fr7jlofwfup&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fr7jlofwfup&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F8a4143bd9e79af41986388e990844a77.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/8a4143bd9e79af41986388e990844a77.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"I've just noticed that since we've started doing this, our presentations are a lot cleaner, a lot smoother, things just flow a lot better, because they're anticipating those questions.\"",
+          "attribution": "Lee Anne Olivas, Management Analyst, RTC",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69ea23af9258cbedb8c61d8e_anne.avif",
+            "alt": "Lee Anne Olivas, Management Analyst, RTC"
+          }
+        }
+      ],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Getting the Foundation Right: RTC Reduced File Noise",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "RTC started with everything in Madison - all drafts, all versions. The results suffered. Five versions of the same document created conflicting citations and outputs that were hard to trust. So, they started over, rebuilt their folder structure around final authoritative documents only, and re-indexed them from there. ‍ The result: cleaner outputs, more accurate answers, and a team that trusts the tool. RTC now has nearly 61,000 files indexed across four knowledge domains."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"It goes back to that data management and the data cleanliness — providing those final authoritative documents.\"",
+          "attribution": "Kristine Richter, Head of Customer Success, Madison AI",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69c151ac0f31d4619586ead1_kristine.avif",
+            "alt": "Kristine Richter, Head of Customer Success, Madison AI"
+          }
+        },
+        {
+          "text": "\"Be creative, be flexible. Try something. If it works, awesome. If it doesn't, work on it and fine-tune it.\"",
+          "attribution": "Lee Anne Olivas, Management Analyst, RTC",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69ea23af9258cbedb8c61d8e_anne.avif",
+            "alt": "Lee Anne Olivas, Management Analyst, RTC"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "012 AI In Action: Getting the foundation right.​",
+          "wistiaId": "iqi8ldyovk",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fiqi8ldyovk&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fiqi8ldyovk&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fce121a32e872bf3e0cfe6558e2486fd2.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/ce121a32e872bf3e0cfe6558e2486fd2.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Five Reports into One: Engineering Leadership Gets the Full Picture Faster",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "RTC's engineering leadership used to review five separate printed reports every month - cost, schedule, change orders, upcoming bids. Meetings stretched into two hours. Now those reports feed into Madison, and one prompt generates a single consolidated view with risk flags color-coded by severity. Meetings run faster because everyone sees the same picture before the conversation starts."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"It's really made the meetings more productive, because they don't have to shift through five different reports in front of them.\"",
+          "attribution": "Lee Anne Olivas, Management Analyst, RTC"
+        },
+        {
+          "text": "\"If you ever need something like this built, let your account manager know. We're here to make your lives easier.\"",
+          "attribution": "Kristine Richter, Head of Client Success, Madison AI"
+        }
+      ],
+      "videos": [
+        {
+          "title": "012 AI In Action: Five reports into one.",
+          "wistiaId": "joy5tbbp2k",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fjoy5tbbp2k&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fjoy5tbbp2k&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F1149b12122754abd5b591a6329ffb80d.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/1149b12122754abd5b591a6329ffb80d.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "A Scope of Work from a Prompt",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "RTC built a prompt that does the assembly work. Feed it the specifics - contract type, dollar threshold, federal clauses required — and it searches past procurement contracts, matches the right templates, and returns a structured first draft with an executive summary, task breakdown, and list of potential attachments."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"This took minutes versus a few hours.\"",
+          "attribution": "Lee Anne Olivas, Management Analyst, RTC"
+        }
+      ],
+      "videos": [
+        {
+          "title": "012 AI In Action: A Scope of Work from a prompt.",
+          "wistiaId": "jy7imhw33y",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fjy7imhw33y&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fjy7imhw33y&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F685139609706b2dbcbb00c851681ce81.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/685139609706b2dbcbb00c851681ce81.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Institutional Knowledge Without the Folder Hunt",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "RTC’s engineering files used to be organized by project manager. Finding a technical study meant knowing who ran the project, when, and what they named the folder. RTC solved it at the source: project managers now save finalized studies to a designated SharePoint folder, and an automated connection pulls those files into Madison. Staff search by location and get results in minutes."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"Data feeds in automatically. You're not dependent on one person sending files every week.\"",
+          "attribution": "Kristine Richter, Head of Client Success, Madison AI"
+        }
+      ],
+      "videos": [
+        {
+          "title": "012 AI In Action: Institutional knowledge without the folder hunt.",
+          "wistiaId": "0qn41nfygd",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F0qn41nfygd&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F0qn41nfygd&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fa9c8e9a0c5f19118e686e5efe55563bd.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/a9c8e9a0c5f19118e686e5efe55563bd.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Better RFP Prep: Prepare for RFPs and Interview Meetings Efficiently",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Upload a master RFP alongside a working draft and Madison flags missing clauses, identifies inconsistencies across sections, and surfaces recommendations with context. It also generates a pre-proposal meeting agenda and a list of likely proposer questions, so staff can issue addendums before the meeting, not during it."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "012 AI In Action: Better RFP prep.",
+          "wistiaId": "171m9q3a7k",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F171m9q3a7k&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F171m9q3a7k&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fb43dd06807cf231232e30b753fab72f7.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/b43dd06807cf231232e30b753fab72f7.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Watch the full webinar",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "Watch the full webinar",
+          "wistiaId": "oa8g4y86dh",
+          "sourceUrl": "https://fast.wistia.net/embed/iframe/oa8g4y86dh"
+        }
+      ],
+      "callouts": [],
+      "images": []
+    }
+  ],
+  "downloadUrls": []
+}

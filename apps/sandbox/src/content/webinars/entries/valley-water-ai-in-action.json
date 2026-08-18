@@ -1,0 +1,123 @@
+{
+  "id": "valley-water-ai-in-action",
+  "path": "/valley-water-ai-in-action/",
+  "order": 60,
+  "sourceUrl": "https://www.madisonai.com/valley-water-ai-in-action",
+  "metadata": {
+    "title": "How Santa Clara Valley Water Turned One AI Assistant into Trusted Infrastructure",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "How Santa Clara Valley Water Turned One AI Assistant into Trusted Infrastructure",
+    "ogImageAsset": "madison-webinar-og.jpg"
+  },
+  "card": {
+    "title": "How Santa Clara Valley Water Turned One AI Assistant into Trusted Infrastructure",
+    "imageAsset": "valley-water-ai-in-action-card.avif",
+    "imageAlt": "How Santa Clara Valley Water Turned One AI Assistant into Trusted Infrastructure"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "How Santa Clara Valley Water Turned One AI Assistant into Trusted Infrastructure",
+        "subtitle": "Santa Clara Valley Water District serves about 2 million residents in Santa Clara County, delivering clean, reliable water, flood protection, and healthy creeks and ecosystems. The agency has roughly 900 employees, a nearly $1B budget, and manages 10 reservoirs and dams, water treatment plants, and a water quality lab."
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "paragraphs": [
+          "Don Rocha, Assistant Officer Innovation Unit, is a true practitioner and leader in this space. He spoke candidly about hesitation, trust, and what it actually takes to introduce AI inside a large, risk-aware public agency. The insights he shared were practical, grounded, and immediately useful.",
+          "Don shared how AI has evolved from initial hesitation to a trusted, day-to-day infrastructure at Valley Water. Valley Water did not start with a broad rollout. They started by solving a targeted, real problem and let the results determine what came next."
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Lesson 1: Start Small And Prove Value in Real Work",
+        "paragraphs": [
+          "Valley Water introduced AI as a support tool, not a replacement. They began with a single assistant designed to help employees quickly find information about the master institutional knowledge inside Valley Water without disrupting other teams or digging through shared drives.",
+          "As staff used the assistant for everyday questions, confidence grew because the value was clear and immediate."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“There was hesitation at first, especially with AI, but once people saw it was there to support their work, not replace them, engagement increased.”",
+            "attribution": "Don Rocha, Assistant Officer Innovation Unit",
+            "portrait": {
+              "asset": "don-rocha-assistant-officer-innovation-unit-2a7a5328.avif",
+              "alt": "Don Rocha, Assistant Officer Innovation Unit"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "005 AI in Action: AI roadmap and how Valley Water is putting it into action",
+            "wistiaId": "45nrqllq9e"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Lesson 2: Adoption Followed Demand, Not Direction",
+        "paragraphs": [
+          "Once teams experienced the value, they began asking for more. Departments and project teams requested their own domain-specific assistants, built around the documents and workflows they already relied on.",
+          "Project managers explored creating assistants for major efforts like the Anderson Dam Seismic Retrofit Project. Environmental, finance, HR, and communication teams used AI to get answers faster and keep work moving. AI expanded because teams asked for it."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“Once teams saw how it worked, engagement grew.”",
+            "attribution": "Don Rocha, Assistant Officer Innovation Unit"
+          }
+        ],
+        "videos": []
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Lesson 3: Legal Buy-in Confirmed Trust",
+        "paragraphs": [
+          "The clearest signal came from legal. Legal and Treasury, two of the most risk-aware groups in the organization, requested their own secure knowledge domains. That request demonstrated confidence in both the accuracy and security of the system."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“Legal is one of them. Treasury’s another one. These folks are very specific about their domains needing to be secure, and Madison AI can do that.” “Getting buy-in from the project team and from legal were key moments for me. Those moments showed me we are probably heading in the right direction.”",
+            "attribution": "Don Rocha, Assistant Officer Innovation Unit"
+          }
+        ],
+        "videos": [
+          {
+            "title": "005 AI in Action: How the team is leveraging Reservoir AI in everyday work",
+            "wistiaId": "dp9gbkhrrc"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Watch the full webinar",
+        "videoTitle": "Watch the full webinar",
+        "wistiaId": "0ifmie38ey"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

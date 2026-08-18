@@ -1,0 +1,650 @@
+{
+  "id": "how-to-select-your-ai-governance-structure",
+  "path": "/resources/how-to-select-your-ai-governance-structure/",
+  "order": 2,
+  "sourceUrl": "https://www.madisonai.com/resources/how-to-select-your-ai-governance-structure",
+  "metadata": {
+    "title": "How to Select Your AI Governance Structure",
+    "description": "As you work to complete your AI governance plan and begin implementing AI projects, it’s important to establish a clear AI governance structure and team that will be responsible for the ethical use of AI in your organization.",
+    "seoTitle": "How to Select Your AI Governance Structure - Madison AI",
+    "ogImageAsset": "cover-structures.jpg"
+  },
+  "card": {
+    "title": "How to Select Your AI Governance Structure",
+    "description": "As you work to complete your AI governance plan and begin implementing AI projects, it’s important to establish a clear AI governance structure and team that will be responsible for the ethical use of AI in your organization.",
+    "imageAsset": "cover-structures.jpg",
+    "imageAlt": "How to Select Your AI Governance Structure"
+  },
+  "sections": [
+    {
+      "type": "resource-hero",
+      "props": {
+        "category": "Responsible AI",
+        "title": "How to Select Your AI Governance Structure",
+        "author": "Heyden Enochson",
+        "date": "August 20, 2024"
+      }
+    },
+    {
+      "type": "resource-content",
+      "props": {
+        "blocks": [
+          {
+            "content": [
+              "From the Editor: Our parent company, OnStrategy, originally authored this. It has been modified and updated for use at Madison AI."
+            ],
+            "level": 4,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "Why do you need to identify your AI governance structure?"
+            ],
+            "level": 2,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "As you work to complete your AI governance plan and begin implementing AI projects, it’s important to establish a clear AI governance structure and team that will be responsible for the ethical use of AI in your organization."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Establishing this structure and working group is important to mitigate risk, remain compliant with laws in your competitive space, and protect your data and privacy."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "In this post, we’ll walk you through a 3-step process to select your AI governance structure and establish your working team."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "provider": "youtube",
+            "title": "3 Types of AI Governance Structures + How to Select One I AI Governance",
+            "type": "video",
+            "videoId": "s7br6gDydpE"
+          },
+          {
+            "content": [
+              "Video Transcript"
+            ],
+            "level": 2,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "Hey, everybody. Thanks for tuning in. This is the new whiteboard series from the virtual strategist. My name is Erica Olson. I’m the CEO of OnStrategy. We’re so glad you’re here. Building a responsible AI policy for your organization is one of four parts. And I know the word policy just makes us all a little bit."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "I don’t want to do it, but this is easy. It’s important. And, of course, we have a simple white word for you to make it as fast and effective as possible. So, just a quick ground setting. There was an overview of a responsible AI policy video. Check that out. There was another video on AI guiding principles."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "There is also an AI video on communication and learning. This one is on building a governance structure. If you want to use the actual whiteboard instead of just this video, click on the link on the screen. Let’s jump in. Okay, so an important part of AI and AI governance is being transparent about the structure you’re going to use to govern the implementation of responsible AI. Responsible AI is implemented through guiding principles and teams adhering to those guiding principles."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "In addition, it’s implemented through learning, evolution, new tools, failing, succeeding, and all those things. So, make sure that you’re clear about what your oversight structure is going to be to ensure that you’re managing the implementation of AI in a smart and responsible way."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "That’s what governance structures are all about. So, this exercise has three parts: let’s jump in and check it out. The first is to determine your current state and your future state of a governance approach. So we’ve got your little scale over here, a little set of criteria. You can sort of see that over on the side."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "The way it works is that you plot the white star on the various characteristics here, or scales, if you will, about where you are today. Then, you plot the darker star on where you’d like to be, specifically about initiatives and management. So, your current state may be non-existent."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "So I want you to just not worry about that. There might not be a current state, but the idea is to be clear about where you want to be in your future state. What is acceptable to you? So, for example, human involvement in decisions. It’s the first one. Where on the scale do you and your team want to be in terms of human involvement in decisions related to AI and AI initiatives?"
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "We want to be included out of the loop, meaning independent or in the loop. Where do you want to be with that? Privacy and data practices. Open sourcing or highly restrictive. Most people will be over, you know, in the highly restrictive area. So that’s that one design approach, cross-functional or SME leads, etc."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "So you can see how this will help you align on where you, where you, where you and your team fall on this spectrum of Tight or loose, if you will, in the org structure, flat or hierarchical, et cetera, and based on that, so you have dark stars plotted across this, right?"
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Based on that, you will understand part two, choosing your type of governance. There are three types of governance structures. You can use more than one, so note that. If your stars are skewing to the left on your chart, you’re likely in a D. If possible, you should deploy a decentralized governance structure."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "So we see that here skewing to the left. If you’re skewing to the right, you’re likely going to deploy or should consider deploying a centralized Governance structure. And if you’re somewhere in between, you’re probably going to want to deploy a center of excellence, meaning multiple multidimensions that pull together across functions across the entire organization."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "And again, you might end up doing a couple of these. I would keep it simple, of course, but the entire purpose of the scales. And then, of course, picking one of these three is super clear and agreeing with each other. How do we want to govern? So, that’s helpful because sometimes we jump into this conversation, and it’s all over the place."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "We intend to give you a lovely, almost like a little survey, collective survey to tell you what you might be, might consider or should be leaning towards based on your comfort with these various attributes. Okay. Once you have that figured out, you need to move to step three, outlining it and, quite frankly, filling in some names."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "So you will select one of the three. So that’s what you’ll do here. Based on that, you will want to establish names associated with this AI committee. That AI committee would be decentralized in a decentralized capacity. It would be a single owner in a centralized capacity. It would be."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "It would be the AI committee and the center of excellence. These would be participants, plus others. So, having an executive champion, probably an oversight lead, would be best. Again, if it is decentralized, that oversight lead would be a bunch of different people. If it’s centralized, it would be 1."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "A technical lead, same thing. A legal lead. That’s something that was just considered super important. And then, of course, other members, depending upon who might need to be in the conversation and what model you’re picking. But again, you can see that if it’s centralized, you’ll probably have one name in most of these boxes."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "If it’s decentralized, you’ll have multiple boxes. And then, if it’s a center of excellence, you’ll want to round it out even more with cross-functional ownership. So, hopefully, we’ve helped you remove some of the mystique from governance structures and help you quickly and simply understand what your governance structure could be and should be to help you manage, govern, shepherd, and implement AI in your organization."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Thank you so much for tuning in. Check out the rest of our videos on responsible AI. Of course, to cover the rest of the bases, develop your responsible AI policy and subscribe to our channel. We’re constantly dropping videos on this topic and many others if you haven’t already. You want to get notified."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Happy strategizing."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Refresher: What is AI Governance?"
+            ],
+            "level": 2,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "AI governance refers to the framework of systems, policies, and procedures an organization implements to manage and oversee AI initiatives. The primary objective is to ensure that AI technologies are utilized ethically, safely, and effectively within the organization. A well-defined AI governance structure helps mitigate risks and enhances the integrity and value of AI projects."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Understanding the importance of AI governance."
+            ],
+            "level": 3,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "Before diving into the specifics of selecting your governance model, it’s essential to recognize why AI governance matters. As AI technologies become more integral to business operations, the potential for both positive impact and unintended consequences grows. Effective governance helps organizations:"
+            ],
+            "type": "paragraph"
+          },
+          {
+            "items": [
+              [
+                "Ensure compliance with laws and regulations."
+              ],
+              [
+                "Protect and secure data and privacy."
+              ],
+              [
+                "Make ethical decisions in the development and deployment of AI."
+              ],
+              [
+                "Manage and mitigate risks associated with AI technologies."
+              ]
+            ],
+            "style": "unordered",
+            "type": "list"
+          },
+          {
+            "content": [
+              "Step 1: Use this Assessment for Your AI Current and Future State"
+            ],
+            "level": 2,
+            "type": "heading"
+          },
+          {
+            "alt": "AI Governance Structures: Step 1",
+            "type": "image",
+            "asset": "governance-structures-step-1.png"
+          },
+          {
+            "content": [
+              "Using this scale, rate your organization’s current position in relation to AI governance and where it needs to be in the future."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Evaluating current AI governance (white star)."
+            ],
+            "level": 4,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "The first step in establishing a governance framework is to assess where your organization currently stands in its AI governance journey. This involves evaluating existing policies, procedures, and roles related to AI. For many organizations, this may reveal a sparse or non-existent governance structure."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Defining your future state (green star)."
+            ],
+            "level": 4,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "After assessing the current state, the next step is envisioning your desired future state of AI governance. This includes deciding how much human involvement is needed in AI-driven decisions, the privacy and data protection level, and the design approach to AI projects (e.g., cross-functional versus specialized expertise)."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Step 2: Choosing the Right Type of Governance Structure"
+            ],
+            "level": 2,
+            "type": "heading"
+          },
+          {
+            "alt": "AI Governance Structures Step 2",
+            "type": "image",
+            "asset": "governance-structures-step-2.png"
+          },
+          {
+            "content": [
+              "Decentralized governance."
+            ],
+            "level": 2,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "In the exercise, decentralized AI governance might best fit your organization if your ratings skew to the left column."
+            ],
+            "level": 4,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "Decentralized governance is best for organizations that value flexibility and autonomy across different departments or teams. This model manages AI governance across functional teams, allowing each to adapt and respond quickly to their specific needs."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "In this model, each functional organization team reports to your organization’s overall AI governance lead, but each functional team must self-govern and report. A decentralized governance structure distributes decision-making power across various organizational levels, offering numerous advantages, such as increased flexibility and greater responsiveness to local needs."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Decentralized AI Governance is best for teams where…"
+            ],
+            "level": 4,
+            "type": "heading"
+          },
+          {
+            "items": [
+              [
+                "The AI design approach is cross-functional."
+              ],
+              [
+                "Data is easily accessible and available in a data warehouse."
+              ],
+              [
+                "There is a low regulatory intensity."
+              ],
+              [
+                "There is a flat organizational structure."
+              ],
+              [
+                "There is very high overall stakeholder engagement, especially when it comes to AI."
+              ]
+            ],
+            "style": "unordered",
+            "type": "list"
+          },
+          {
+            "content": [
+              "Centralized governance."
+            ],
+            "level": 2,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "In the exercise, centralized AI governance might be the best fit for your organization if your ratings skew to the right column."
+            ],
+            "level": 4,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "In a centralized governance model, a single central body oversees all AI initiatives. This approach ensures consistency and compliance across the entire organization. This AI governance structure best suits organizations with serious data protection needs, those competing in heavily regulated industries, or those with matrixed, hierarchal organizational structures."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "A centralized AI governance structure is particularly effective in organizations where control and uniformity are crucial. It ensures that all AI activities align with the broader business strategy and comply with internal and external standards."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              {
+                "text": "Centralized AI governance is best for teams where…",
+                "type": "emphasis"
+              }
+            ],
+            "level": 4,
+            "type": "heading"
+          },
+          {
+            "items": [
+              [
+                "There is a need for restrictive privacy and data practices."
+              ],
+              [
+                "The AI design approach is created by Subject Matter Experts rather than teams."
+              ],
+              [
+                "Data is restricted, segmented, or in silos."
+              ],
+              [
+                "There is high regulatory intensity."
+              ],
+              [
+                "There are hierarchal organizational structures."
+              ],
+              [
+                "There is low stakeholder engagement, especially when it comes to AI."
+              ]
+            ],
+            "style": "unordered",
+            "type": "list"
+          },
+          {
+            "content": [
+              "Center(s) of Excellence."
+            ],
+            "level": 2,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "A Center of Excellence (CoE) structure for AI governance is a hybrid approach that combines elements of centralized and decentralized governance models. It’s designed to centralize AI expertise and best practices within an organization while allowing individual departments or business units to innovate and apply these insights to suit their unique needs."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Depending on your organization’s size and needs, you might have multiple teams within your Center of Excellence. This model facilitates collaboration, standardization, and the strategic deployment of AI technologies across an organization."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              {
+                "text": "Centralized AI governance is best for teams where…",
+                "type": "emphasis"
+              }
+            ],
+            "level": 4,
+            "type": "heading"
+          },
+          {
+            "items": [
+              [
+                "Significant shifts are desired in more than one dimension."
+              ],
+              [
+                "There is a need to ensure strategic alignment."
+              ],
+              [
+                "There is a desire to integrate systems to speak and share data."
+              ],
+              [
+                "Work needs to occur with cross-functional teams or SMEs."
+              ]
+            ],
+            "style": "unordered",
+            "type": "list"
+          },
+          {
+            "content": [
+              "Step 3: Implementing and Operationalizing the Governance Structure"
+            ],
+            "level": 2,
+            "type": "heading"
+          },
+          {
+            "alt": "Creating AI Guiding Principles: Step 1",
+            "type": "image",
+            "asset": "governance-structures-step-3.png"
+          },
+          {
+            "content": [
+              "Selecting Governance Participants"
+            ],
+            "level": 3,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "Once the type of governance structure is chosen, the next step is to define its roles and responsibilities. This includes appointing an executive champion, an oversight lead, a technical lead, and a legal lead. The specific roles will vary based on the chosen governance model."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "For effective governance, assigning the right individuals to these roles is critical. This may involve selecting leaders from within the organization or recruiting external experts. Each member of the governance structure should understand their responsibilities and the overall goals of the AI governance framework. Here’s who you need to appoint:"
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Executive champion."
+            ],
+            "level": 4,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "As with any strategic initiative or project, you need sponsorship from an executive to help champion this effort. This might vary from organization to organization, but typical roles that would take this on might be a CIO, CTO, or Head of Legal. ",
+              {
+                "text": "This role will be the final approver for your AI governance plan and ongoing management approach.",
+                "type": "strong"
+              }
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Oversight lead."
+            ],
+            "level": 4,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "This role is designed to lead the AI governance process and its ongoing operations, including managing your AI working groups, leading AI oversight, risk management, and internal controls."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "This role needs to be well-versed in managing people and processes, understanding AI, and clarifying the risks you’re trying to mitigate."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Technical lead."
+            ],
+            "level": 4,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "A technical lead is an expert in AI technology and leads your AI projects. This will create and manage your organization’s model-level AI oversight and training oversight."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Legal lead."
+            ],
+            "level": 4,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "This might only be applicable in some organizations. Still, for others, having a legal representative on your team is essential to help manage and mitigate your organization’s legal risks. This is especially important for organizations that operate in environments with heavy legal regulations."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Team members-at-large."
+            ],
+            "level": 4,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "It’s helpful to have different functional team members on this AI oversight committee to add other perspectives. Team members who are passionate about AI or are early adopters of AI are good candidates for this team."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Conclusion: The Path Forward in AI Governance"
+            ],
+            "level": 2,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "Creating an AI governance structure",
+              {
+                "text": "that really works",
+                "type": "strong"
+              },
+              " isn’t a one-time effort. It’s a continuous process that needs to evolve as fast as the technology changes."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Engaging with these governance processes is essential for any organization looking to harness AI’s benefits while managing its complexities and risks. Remember, the goal is to foster an environment where AI contributes positively to the organization’s objectives without compromising ethical standards or regulatory requirements."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Make sure you check out our other AI governance resources:"
+            ],
+            "type": "paragraph"
+          },
+          {
+            "items": [
+              [
+                {
+                  "href": "https://onstrategyhq.com/resources/ai-governance/?__hstc=255534679.ce1575307ab99d04b6e6af35079f6a4d.1747923823688.1764267736135.1764273905410.45&__hssc=255534679.9.1764273905410&__hsfp=96230312",
+                  "text": "AI Governance",
+                  "type": "link"
+                },
+                ": Your Blueprint Guide for Ethical AI"
+              ],
+              [
+                "How to Develop ",
+                {
+                  "href": "https://onstrategyhq.com/resources/ai-guiding-principles/?__hstc=255534679.ce1575307ab99d04b6e6af35079f6a4d.1747923823688.1764267736135.1764273905410.45&__hssc=255534679.9.1764273905410&__hsfp=96230312",
+                  "text": "AI Guiding Principles.",
+                  "type": "link"
+                }
+              ]
+            ],
+            "style": "unordered",
+            "type": "list"
+          }
+        ]
+      }
+    },
+    {
+      "type": "resource-related",
+      "props": {
+        "title": "Similar resources",
+        "cards": [
+          {
+            "title": "The Free Miro Template to Build Your AI Governance Policy",
+            "description": "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive.",
+            "href": "/resources/the-free-miro-template-to-build-your-ai-governance-policy/",
+            "imageAsset": "cover-governance-miro.jpg",
+            "imageAlt": "The Free Miro Template to Build Your AI Governance Policy"
+          },
+          {
+            "title": "16 AI Governance Policy Examples",
+            "href": "/resources/ai-governance-policy-examples/",
+            "imageAsset": "cover-example.jpg",
+            "imageAlt": "16 AI Governance Policy Examples"
+          },
+          {
+            "title": "AI Governance Blueprint: A Guide to Ethical AI in Local Government",
+            "description": "See the 4 steps to build your AI governance blueprint to incorporate AI into your government ethically.",
+            "href": "/resources/ai-governance-blueprint/",
+            "imageAsset": "cover-blueprint.jpg",
+            "imageAlt": "AI Governance Blueprint: A Guide to Ethical AI in Local Government"
+          }
+        ]
+      }
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

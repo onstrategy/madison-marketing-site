@@ -1,0 +1,156 @@
+{
+  "id": "planning-work-ai-in-action",
+  "path": "/planning-work-ai-in-action/",
+  "order": 100,
+  "sourceUrl": "https://www.madisonai.com/planning-work-ai-in-action",
+  "metadata": {
+    "title": "Parcel Lookups, Zoning Letters, Site Plan Reviews - Here's How Madison AI Handles Them",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "Parcel Lookups, Zoning Letters, Site Plan Reviews - Madison AI",
+    "ogImageAsset": "madison-webinar-og.jpg"
+  },
+  "card": {
+    "title": "Parcel Lookups, Zoning Letters, Site Plan Reviews - Here's How Madison AI Handles Them",
+    "imageAsset": "planning-work-ai-in-action-card.avif",
+    "imageAlt": "Parcel Lookups, Zoning Letters, Site Plan Reviews - Here's How Madison AI Handles Them"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "Parcel Lookups, Zoning Letters, Site Plan Reviews - Here's How Madison AI Handles Them",
+        "subtitle": "Planning and zoning are one of the most data-intensive, high-stakes areas of local government work. Yesterday’s AI In Action was built around that reality. Erica Olsen, CEO of Madison AI, and Kristine Richter, Head of Client Success, walked through the planning model, showed real use cases using live data, and shared what six months of work with planning teams has taught us about what it takes to get this right."
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "paragraphs": [
+          "Most AI tools weren't built for planning work. This one was. Share this session with your community development team. It was built with them in mind."
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "How the Planning Model Works",
+        "paragraphs": [
+          "AI for planning and zoning is only as good as the data behind it. The planning model pulls from GIS, permitting systems, case files, master plans, archival documents, and more - some going back 50 years. Unlike other areas of government work, planning requires a complete record. An 80% answer is not acceptable - the stakes are too high.",
+          "This section covers how the model is structured, what data sources it draws from, and why completeness is the standard, not a stretch goal."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"Everything rises and falls on the data - the efficacy of a generative AI tool rises and falls on the data in which it is accessing.\"",
+            "attribution": "Erica Olsen, CEO, Madison AI",
+            "portrait": {
+              "asset": "erica-olsen-ceo-madison-ai-220d8018.png",
+              "alt": "Erica Olsen, CEO, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "010 AI In Action: Overview of the Planning Model (data, agents, use cases)",
+            "wistiaId": "cch537u31n"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Deep Dive: Zoning and Land Use",
+        "paragraphs": [
+          "A parcel lookup sounds simple. What's happening underneath it is not. This use case pulls from GIS, permitting records, zoning case files, and master plans, and surfaces the results in a structured, skimmable format with clearly cited sources. Planners can see exactly where data came from, flag inconsistencies, and assess coverage before acting on the output. The goal is not to replace judgments. It is to give staff the complete picture, so their judgment is grounded in full record.",
+          "This section also covers the GIS summary view - a feature that started as an internal tool and turned out to be especially useful for non-planners like city managers, admins, and council members who need quick property context without navigating ESRI/GIS layers."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"It's not like ‘one and done.’ If there's something here that is inconsistent, ask the AI - it's an assistant to talk to, not just get an answer back and stop.\"",
+            "attribution": "Erica Olsen, CEO, Madison AI"
+          }
+        ],
+        "videos": [
+          {
+            "title": "010 AI In Action: Zoning & Land Use",
+            "wistiaId": "svxzjbf83l"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Deep Dive: Zoning Verification Letters",
+        "paragraphs": [
+          "A zoning verification letter looks like a simple, one-page document. Producing an accurate ZVL requires pulling from every relevant data source in the index. This section walks through how Madison AI takes the same parcel research and structures it into a letter format that meets a department's template requirements - with a human-in-the-loop review step built in.",
+          "The session also introduces a completeness-scoring feature in development. Before a planner finalizes the letter, AI evaluates how complete the output is against the required template - flagging gaps before the document leaves the desk."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"Our goal is to get this to above 90% so the planner can review it, check the sources, and then hit the print button and deliver it.\"",
+            "attribution": "Erica Olsen, CEO, Madison AI"
+          }
+        ],
+        "videos": [
+          {
+            "title": "010 AI In Action: Zoning Verification Letters",
+            "wistiaId": "uh4catld1t"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Site Plan Reviews",
+        "paragraphs": [
+          "In Golden, Colorado, every building project requires a full planning review and a report to the council. Site plan reviews were taking staff several days to complete - and the review itself could stretch to two weeks.",
+          "This section demonstrates how Madison AI processes an uploaded site plan against the development code, produces a structured compliance report, and flags whether each requirement is met or not.",
+          "The AI analysis is constrained; it only draws from the specific code applicable to that development type, not the whole dataset. That constraint is what makes the output defensible. The result is full review in under a day, with the staff member reviewing and confirming rather than building from scratch."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"We discovered it just through talking with our partners. I always encourage you to provide feedback - say, I wonder if we could do this or that, and let's try it. This is one of those things.\"",
+            "attribution": "Kristine Richter, Head of Customer Success, Madison AI",
+            "portrait": {
+              "asset": "kristine-richter-head-of-client-success-madison-92a43d8d.avif",
+              "alt": "Kristine Richter, Head of Customer Success, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "010 AI In Action: Zoning Verification Letters",
+            "wistiaId": "uh4catld1t"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Watch the full webinar",
+        "videoTitle": "Watch the full webinar",
+        "wistiaId": "34uew5wi37"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

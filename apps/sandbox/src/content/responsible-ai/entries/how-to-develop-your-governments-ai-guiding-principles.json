@@ -1,0 +1,749 @@
+{
+  "id": "how-to-develop-your-governments-ai-guiding-principles",
+  "path": "/resources/how-to-develop-your-governments-ai-guiding-principles/",
+  "order": 1,
+  "sourceUrl": "https://www.madisonai.com/resources/how-to-develop-your-governments-ai-guiding-principles",
+  "metadata": {
+    "title": "How to Develop Your Government’s AI Guiding Principles",
+    "description": "See the 4 steps to build your AI governance blueprint to incorporate AI into your government ethically.",
+    "seoTitle": "How to Develop Your Government’s AI Guiding Principles - Madison AI",
+    "ogImageAsset": "cover-principles.jpg"
+  },
+  "card": {
+    "title": "How to Develop Your Government’s AI Guiding Principles",
+    "description": "See the 4 steps to build your AI governance blueprint to incorporate AI into your government ethically.",
+    "imageAsset": "cover-principles.jpg",
+    "imageAlt": "How to Develop Your Government’s AI Guiding Principles"
+  },
+  "sections": [
+    {
+      "type": "resource-hero",
+      "props": {
+        "category": "Responsible AI",
+        "title": "How to Develop Your Government’s AI Guiding Principles",
+        "author": "Heyden Enochson",
+        "date": "August 20, 2024"
+      }
+    },
+    {
+      "type": "resource-content",
+      "props": {
+        "blocks": [
+          {
+            "content": [
+              "From the Editor: Our parent company, OnStrategy, originally authored this. It has been modified and updated for use at Madison AI."
+            ],
+            "level": 4,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "Introduction to AI guiding principles and responsible AI."
+            ],
+            "level": 2,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "Welcome to the journey of defining responsible AI within your organization! AI is crucial for driving innovation and improving operational efficiency in today’s business environment. However, as we harness Artificial Intelligence’s potential, we must do so ",
+              {
+                "text": "responsibly",
+                "type": "strong"
+              },
+              "."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "This post is part of a series that will help you articulate distinct and actionable guiding principles for responsible AI in your organization."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "The Importance of AI Guiding Principles"
+            ],
+            "level": 3,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "AI guiding principles provide a compass for organizations navigating the complex terrain of using AI ",
+              {
+                "text": "ethically",
+                "type": "emphasis"
+              },
+              "and ",
+              {
+                "text": "responsibly",
+                "type": "emphasis"
+              },
+              ". Using AI without guiding principles or guardrails exposes your organization, data privacy, and security risks. ",
+              {
+                "text": "So, responsible development of your AI projects, machine learning, or any other AI projects you have identified and articulated with AI guiding principles matters.",
+                "type": "strong"
+              }
+            ],
+            "type": "paragraph"
+          },
+          {
+            "provider": "youtube",
+            "title": "How to Develop AI Guiding Principles I AI Governance and Ethics Part II",
+            "type": "video",
+            "videoId": "v7ZMAaed2Ao"
+          },
+          {
+            "content": [
+              "AI Guiding Principles Transcript"
+            ],
+            "level": 3,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "“Hey, everybody, thanks for tuning in. This is the new whiteboard series from the virtual strategist. My name is Erica Olsen. Today, we’re talking about AI strategy, specifically about responsible AI. This is one part of a four-part series related to developing a responsible AI policy for your organization."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "There was an overview video, so check it out if you didn’t check it out first. But today, we’re talking about one part of your AI, your responsible AI policy, which is guiding principles. Let’s jump into the whiteboard. All right. So here is our handy, dandy little whiteboard."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "As always, we’re giving you a way to guide a conversation with you and your organization to create clarity, direction, and, in this case, AI guiding principles. So, having a responsible AI policy in place for your organization is critical to thriving and yielding the benefits that AI can have for you and your team."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Guiding principles are one piece of several pieces of a Governance Policy. I kind of like these the most, and I just want to say that the importance of these is that they’re articulated in a manner that everybody can look at and say, yep, I know that I am acting and behaving in a manner that complies with and adheres to these guiding principles."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "After all, what we’re doing individually as individual contributors in organizations today is ungovernable, so people can do anything with AI in your organization. These guiding principles are intended to say, as a team showing up under your brand, direction, and values, this is what’s expected."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "It’s so important to be clear. The first section is that everything rises and falls with the current values you have in place. These guiding principles should be an extension of your core values, so it’s always nice to list those you might have memorized."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "The next thing that you want to do is to Identify the different themes or areas around which you would like to develop guiding principles. So we’ve got a whole list here for you. One thing you can do is, by the way, if you want to use our mural board, check out the link and click on it."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "It’ll take you to the mural board. You can use them a voting piece in in Miro to vote and ask your team which ones you want to have A guiding principle around. That’s one way to do it. Another thought, by the way, is to prepopulate some topics you want to ensure you have guiding principles around it."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "I might just make a couple of recommendations. You should have a guiding principle around data, how data is used, and where data can be used. Using open source AI or not as the case may be very important"
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Another one you should have a guiding principle around is authentic content creation. So, and what I meant, what I mean by that is if your team is using your content and maybe other content that is created from an LLM, how much of it needs to be original to be acceptable use?"
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "So there are a lot of different thoughts on that, and indeed, if you are in the advertising space or the marketing space, you probably have attorneys that are helping guide that. So, just the point is perhaps a guiding principle around what constitutes original content and what constitutes it."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "plagiarism. Another guiding principle topic that you might want to make sure that you have clearly articulated is your stance on jobs and how you view AI in the context of job, job replacement, or job. Superpowers, right? So, what is it? And so that it’s clear. And that’s a pretty important thing to align with as an executive team."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "So you don’t have a different thought six months from now about AI use, the last thing that you probably want a guiding principle around will be bias. Just as a suggestion, often, what is a concern right now is that we’re forwarding inherent and implicit bias in large data sets."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "We’re forwarding that using AI, and that’s certainly different from what anybody wants to do, so how are you going to prevent that? Again, you can easily upload ChatGPT’s or Microsoft’s AI guiding principles, but there are other options. The point is to have a conversation with you and your team."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Part three here is to identify a theme, synthesize it, and build your guidelines for your organization. Once you have those, you’ll want to build them out in detail below. So that’s, again, just ideating on what they might be and then actually developing them. You don’t need to wordsmith together, of course, but the intention of what you want them to do should be done together."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Now. You can see it over here. I’ve just added our guiding principles. If you can see those over off to the right-hand side, those are the guiding principles that we wrote. The OnStrategy team wrote for our team. And you can kind of see what we put together is we’ll learn from one another."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "We’ll protect our customers and proprietary data. No loading up people’s strategic plans into open AI. We will not be replacing anyone’s work with AI. We will. We will value experimentation and understand that, you know, we are going to learn, fail, and learn again. And we are going to avoid reinforcing unfair bias."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "And we’re going to make sure we don’t use biased data sets. Bias that we know have bias built into them. So anyways, you can kind of see how we built them. It was good to see an example. And again, the, the, the tip on this is they’re written in a manner that someone can read them and say, I am complying with these guidelines."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "They are written in the positive, not the negative, but you know, depending upon how firm you want to be with that pick your poison. So, with that simple, easy, doable approach to develop AI guiding principles as part of your responsible AI policy for your organization. Thank you so much for tuning in."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Please subscribe to the channel because we’re dropping videos on this topic and many others, and you’ll get notified if you do happy strategizing. We’ll see you next time."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Why do you need AI Guiding Principles?"
+            ],
+            "level": 2,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "Guiding principles create a framework for AI technology that aligns with your company’s values and ethical standards. They also help define the behavior you expect to see in your team when using AI."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Here are three key reasons to establish AI guiding principles in your organization."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "items": [
+              [
+                {
+                  "text": "Align the Use of AI with Your Core Values:",
+                  "type": "strong"
+                },
+                "Creating AI guiding principles ensures that your team has your core values and expected behaviors front-of-mind as they use AI."
+              ],
+              [
+                {
+                  "text": "Create Guardrails Around the Use of AI:",
+                  "type": "strong"
+                },
+                " Without guiding principles or an ethical AI policy, the “ungoverned” use of AI in your organization exposes your organization to AI’s risks. This includes [really] serious topics like data exposure, intellectual property exposure, and unmitigated bias."
+              ],
+              [
+                {
+                  "text": "Create Direction and Clarity While Providing Space for Experimentation:",
+                  "type": "strong"
+                },
+                " Guiding principles provide clarity and direction, setting clear expectations for team members when interacting with AI technologies. Plus, it gives your team the permission and space to experiment with AI in a safe environment!"
+              ]
+            ],
+            "style": "unordered",
+            "type": "list"
+          },
+          {
+            "content": [
+              {
+                "text": "The Process of Developing AI Guiding Principles",
+                "type": "strong"
+              }
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Developing AI guiding principles is a structured process that requires input and consensus from various organizational stakeholders. But before you create your guiding principles, you must clearly articulate your organization’s core values and expected behaviors. Your AI guiding principles should be guided and supported by your overall core values as an organization."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              {
+                "text": "Pro Tip:",
+                "type": "strong"
+              }
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "The best practice for developing AI guiding principles is to have your core values completed first! Need help with your core values? Check out this helpful guide on ",
+              {
+                "href": "https://onstrategyhq.com/resources/how-to-write-core-values/?__hstc=255534679.ce1575307ab99d04b6e6af35079f6a4d.1747923823688.1764267736135.1764273905410.45&__hssc=255534679.6.1764273905410&__hsfp=96230312",
+                "text": "how to write core values",
+                "type": "link"
+              },
+              " and a post of 40 examples of our favorite ",
+              {
+                "href": "https://onstrategyhq.com/resources/core-values/?__hstc=255534679.ce1575307ab99d04b6e6af35079f6a4d.1747923823688.1764267736135.1764273905410.45&__hssc=255534679.6.1764273905410&__hsfp=96230312",
+                "text": "core values.",
+                "type": "link"
+              }
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Step 1: Anchor to Current Values"
+            ],
+            "level": 3,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "The development of AI guiding principles should start with your existing core values. List these values, as they will serve as the basis for your AI principles."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "alt": "Creating AI Guiding Principles: Step 1",
+            "type": "image",
+            "asset": "guiding-principles-step-1.png"
+          },
+          {
+            "content": [
+              "Step 2: Identify Themes for Guiding Principles"
+            ],
+            "level": 3,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "Next, identify key themes around which to structure your guiding principles. As you work through the guiding principles, here are common questions you need to consider:"
+            ],
+            "type": "paragraph"
+          },
+          {
+            "items": [
+              [
+                {
+                  "text": "How do we approach data governance?",
+                  "type": "strong"
+                },
+                "A principle related to data governance should address how data is acquired, used, and shared. This is crucial for maintaining the trust of your team and customers. We are in a world of big data, and you must ensure you’re meeting all of your legal requirements for data and cybersecurity."
+              ],
+              [
+                {
+                  "text": "What’s our policy on the use of open-source AI:",
+                  "type": "strong"
+                },
+                "Decide on your stance regarding the use of open-source AI. Will your organization engage with it, and under what conditions? How are you going to mitigate vulnerabilities?"
+              ],
+              [
+                {
+                  "text": "How do we ensure we’re creating original content?",
+                  "type": "strong"
+                },
+                "Develop a principle that outlines what constitutes acceptable content creation, especially when using AI tools that can generate text, images, or other forms of content. AI has accelerated the creation of content, but it must not have a negative impact on creating your original content."
+              ],
+              [
+                {
+                  "text": "How are we protecting our team’s jobs?",
+                  "type": "strong"
+                },
+                "Clarify your position on AI and employment, whether AI will be used to replace jobs or enhance your employees’ capabilities. You must have transparency about how the deployment of AI will impact your organization’s staffing and job security."
+              ],
+              [
+                {
+                  "text": "How do we prevent bias?",
+                  "type": "strong"
+                },
+                "Given the risks of perpetuating biases, a guiding principle should be in place to address the steps your organization will take to avoid and rectify bias in AI algorithms and data sets. Human oversight to stop the spread of bias and misinformation with generative AI is important in any organization."
+              ]
+            ],
+            "style": "unordered",
+            "type": "list"
+          },
+          {
+            "alt": "Creating AI Guiding Principles: Step 2",
+            "type": "image",
+            "asset": "guiding-principles-step-2.png"
+          },
+          {
+            "content": [
+              "Step 3: Synthesize and Develop Guidelines"
+            ],
+            "level": 3,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "Once themes are identified, it’s time to synthesize discussions and draft the guiding principles. As you draft each guiding principle, they should be:"
+            ],
+            "type": "paragraph"
+          },
+          {
+            "items": [
+              [
+                {
+                  "text": "Clearly Articulated:",
+                  "type": "strong"
+                },
+                " Written straightforwardly so that it can be easily understood and acted upon."
+              ],
+              [
+                {
+                  "text": "Positive and Actionable:",
+                  "type": "strong"
+                },
+                " Crafted positively, AI guiding principles state what ",
+                {
+                  "text": "should",
+                  "type": "strong"
+                },
+                "be done rather than ",
+                {
+                  "text": "not",
+                  "type": "emphasis"
+                },
+                " be done",
+                {
+                  "text": ".",
+                  "type": "strong"
+                },
+                " Stated differently, they need to express what positive behaviors you want to see rather than what behaviors shouldn’t occur."
+              ],
+              [
+                {
+                  "text": "Reflective of Collective Intentions:",
+                  "type": "strong"
+                },
+                " Your AI guiding principles need to reflect your values and team’s collective intentions."
+              ]
+            ],
+            "style": "unordered",
+            "type": "list"
+          },
+          {
+            "alt": "Creating AI Guiding Principles: Step 3",
+            "type": "image",
+            "asset": "guiding-principles-step-3.png"
+          },
+          {
+            "content": [
+              "Examples of AI Guiding Principles"
+            ],
+            "level": 2,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "OnStrategy’s Example of AI Guiding Principles"
+            ],
+            "level": 3,
+            "type": "heading"
+          },
+          {
+            "items": [
+              [
+                {
+                  "text": "Learn from Each Other:",
+                  "type": "strong"
+                },
+                "We will foster a culture of continuous learning and collaboration in the realm of AI."
+              ],
+              [
+                {
+                  "text": "Protect Data:",
+                  "type": "strong"
+                },
+                "Our commitment to protecting customer and proprietary data is unwavering; we will not compromise it by uploading sensitive information into AI systems."
+              ],
+              [
+                {
+                  "text": "Value Human Work:",
+                  "type": "strong"
+                },
+                "We affirm that AI will not replace human jobs within our organization; rather, it will serve as a tool for enhancement."
+              ],
+              [
+                {
+                  "text": "Encourage Experimentation:",
+                  "type": "strong"
+                },
+                "Experimentation is key to innovation. We will embrace trial and error in our AI endeavors, learning and adapting as we go."
+              ],
+              [
+                {
+                  "text": "Avoid Unfair Bias:",
+                  "type": "strong"
+                },
+                "We pledge to meticulously examine data sets for bias and take steps to prevent the reinforcement of such biases through our AI applications."
+              ]
+            ],
+            "style": "unordered",
+            "type": "list"
+          },
+          {
+            "content": [
+              {
+                "href": "https://ai.google/responsibility/principles/",
+                "text": "Google’s Example of AI Guiding Principles",
+                "type": "link"
+              }
+            ],
+            "level": 3,
+            "type": "heading"
+          },
+          {
+            "items": [
+              [
+                {
+                  "text": "Be socially beneficial.",
+                  "type": "strong"
+                }
+              ],
+              [
+                "The expanded reach of new technologies increasingly touches society as a whole. Advances in AI will have transformative impacts in a wide range of fields, including healthcare, security, energy, transportation, manufacturing, and entertainment. As we consider potential development and uses of AI technologies, we will take into account a broad range of social and economic factors, and will proceed where we believe that the overall likely benefits substantially exceed the foreseeable risks and downsides."
+              ],
+              [
+                {
+                  "text": "Avoid creating or reinforcing unfair bias.",
+                  "type": "strong"
+                }
+              ],
+              [
+                "AI algorithms and datasets can reflect, reinforce, or reduce unfair biases. We recognize that distinguishing fair from unfair biases is not always simple, and differs across cultures and societies. We will seek to avoid unjust impacts on people, particularly those related to sensitive characteristics such as race, ethnicity, gender, nationality, income, sexual orientation, ability, and political or religious belief."
+              ],
+              [
+                {
+                  "text": "Be built and tested for safety.",
+                  "type": "strong"
+                }
+              ],
+              [
+                "We will continue to develop and apply strong safety and security practices to avoid unintended results that create risks of harm. We will design our AI systems to be appropriately cautious, and seek to develop them in accordance with best practices in AI safety research. In appropriate cases, we will test AI technologies in constrained environments and monitor their operation after deployment."
+              ],
+              [
+                {
+                  "text": "Be accountable to people.",
+                  "type": "strong"
+                }
+              ],
+              [
+                "We will design AI systems that provide appropriate opportunities for feedback, relevant explanations, and appeal. Our AI technologies will be subject to appropriate human direction and control."
+              ],
+              [
+                {
+                  "text": "Incorporate privacy design principles.",
+                  "type": "strong"
+                }
+              ],
+              [
+                "We will incorporate our privacy principles in the development and use of our AI technologies. We will give opportunity for notice and consent, encourage architectures with privacy safeguards, and provide appropriate transparency and control over the use of data."
+              ],
+              [
+                {
+                  "text": "Uphold high standards of scientific excellence.",
+                  "type": "strong"
+                }
+              ],
+              [
+                "Technological innovation is rooted in the scientific method and a commitment to open inquiry, intellectual rigor, integrity, and collaboration. AI tools have the potential to unlock new realms of scientific research and knowledge in critical domains like biology, chemistry, medicine, and environmental sciences. We aspire to high standards of scientific excellence as we work to progress AI development."
+              ],
+              [
+                {
+                  "text": "Be made available for uses that accord with these principles.",
+                  "type": "strong"
+                }
+              ],
+              [
+                "Many technologies have multiple uses. We will work to limit potentially harmful or abusive applications. As we develop and deploy AI technologies, we will evaluate likely uses in light of the following factors:"
+              ]
+            ],
+            "style": "ordered",
+            "type": "list"
+          },
+          {
+            "provider": "youtube",
+            "title": "Introduction to Responsible AI",
+            "type": "video",
+            "videoId": "3-xhMXeYIcg"
+          },
+          {
+            "content": [
+              {
+                "href": "https://www.salesforce.com/eu/blog/meet-salesforces-trusted-ai-principles/",
+                "text": "SalesForce’s Example of AI Guiding Principles",
+                "type": "link"
+              }
+            ],
+            "level": 3,
+            "type": "heading"
+          },
+          {
+            "items": [
+              [
+                {
+                  "text": "Responsible:",
+                  "type": "strong"
+                },
+                "We strive to safeguard human rights, protect the data we are trusted with, observe scientific standards and enforce policies against abuse. We expect our customers to use our AI responsibly and in compliance with their agreements with us, including our ",
+                {
+                  "href": "https://www.salesforce.com/content/dam/web/en_us/www/documents/legal/Agreements/policies/ExternalFacing_Services_Policy.pdf?ref=blog.salesforceairesearch.com",
+                  "text": "Acceptable Use Policy",
+                  "type": "link"
+                },
+                "."
+              ],
+              [
+                {
+                  "text": "Accountable:",
+                  "type": "strong"
+                },
+                "We believe in holding ourselves accountable to our customers, partners, and society. We will seek independent feedback for continuous improvement of our practice and policies and work to mitigate harm to customers and consumers."
+              ],
+              [
+                {
+                  "text": "Transparent:",
+                  "type": "strong"
+                },
+                "We strive to ensure our customers understand the “why” behind each AI-driven recommendation and prediction so they can make informed decisions, identify unintended outcomes and mitigate harm."
+              ],
+              [
+                {
+                  "text": "Empowering:",
+                  "type": "strong"
+                },
+                " We believe AI is best utilized when paired with human ability, augmenting people, and enabling them to make better decisions. We aspire to create technology that empowers everyone to be more productive and drive greater impact within their organizations."
+              ],
+              [
+                {
+                  "text": "Inclusive:",
+                  "type": "strong"
+                },
+                " AI should improve the human condition and represent the values of all those impacted, not just the creators. We will advance diversity, promote equality, and foster equity through AI."
+              ]
+            ],
+            "style": "unordered",
+            "type": "list"
+          },
+          {
+            "content": [
+              "Closing Thoughts: Create AI Guiding Principles as Part of Your Governance Process"
+            ],
+            "level": 3,
+            "type": "heading"
+          },
+          {
+            "content": [
+              "Developing and implementing AI guiding principles is more than a strategic exercise—it’s a commitment to responsible innovation and ethical leadership. Establishing these guidelines safeguards your organization’s values and protects your core principles."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Remember to engage your team, leverage your existing values, and create a space for meaningful discussion. This collaborative approach will ensure that your AI guiding principles are not just a set of rules but a living document that guides your organization’s AI development and projects. Artificial intelligence is already being used, so get your guiding principles in place today!"
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "As you integrate these principles into your organization, continue to refine and adapt them. AI is rapidly evolving, and staying responsive to its changes is critical to maintaining responsible practices."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "Other helpful links on AI:"
+            ],
+            "level": 3,
+            "type": "heading"
+          },
+          {
+            "items": [
+              [
+                {
+                  "href": "https://ai.meta.com/blog/facebooks-five-pillars-of-responsible-ai/#:~:text=Collaborating%20on%20the%20future%20of%20Responsible%20AI&text=We%20must%20similarly%20collaborate%20on,research%20around%20AI%20best%20practices.",
+                  "text": "Facebook’s",
+                  "type": "link"
+                },
+                " AI guiding principles for AI."
+              ],
+              [
+                "The United State’s draft ",
+                {
+                  "href": "https://www.whitehouse.gov/ostp/ai-bill-of-rights/",
+                  "text": "AI Bill of Rights.",
+                  "type": "link"
+                }
+              ],
+              [
+                "Guidance from the ",
+                {
+                  "href": "https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-software-medical-device",
+                  "text": "FDA",
+                  "type": "link"
+                },
+                " on the ethical use of AI in healthcare."
+              ]
+            ],
+            "style": "unordered",
+            "type": "list"
+          }
+        ]
+      }
+    },
+    {
+      "type": "resource-related",
+      "props": {
+        "title": "Similar resources",
+        "cards": [
+          {
+            "title": "The Free Miro Template to Build Your AI Governance Policy",
+            "description": "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive.",
+            "href": "/resources/the-free-miro-template-to-build-your-ai-governance-policy/",
+            "imageAsset": "cover-governance-miro.jpg",
+            "imageAlt": "The Free Miro Template to Build Your AI Governance Policy"
+          },
+          {
+            "title": "16 AI Governance Policy Examples",
+            "href": "/resources/ai-governance-policy-examples/",
+            "imageAsset": "cover-example.jpg",
+            "imageAlt": "16 AI Governance Policy Examples"
+          },
+          {
+            "title": "AI Governance Blueprint: A Guide to Ethical AI in Local Government",
+            "description": "See the 4 steps to build your AI governance blueprint to incorporate AI into your government ethically.",
+            "href": "/resources/ai-governance-blueprint/",
+            "imageAsset": "cover-blueprint.jpg",
+            "imageAlt": "AI Governance Blueprint: A Guide to Ethical AI in Local Government"
+          }
+        ]
+      }
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "id": "more-of-the-work-more-accurately",
+  "path": "/more-of-the-work-more-accurately/",
+  "order": 90,
+  "sourceUrl": "https://www.madisonai.com/more-of-the-work-more-accurately",
+  "metadata": {
+    "title": "Madison AI is Superpowered. Faster and Smarter!",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "Madison AI is Superpowered - Faster and Smarter!",
+    "ogImageAsset": "madison-webinar-og.jpg"
+  },
+  "card": {
+    "title": "Madison AI is Superpowered. Faster and Smarter!",
+    "imageAsset": "more-of-the-work-more-accurately-card.avif",
+    "imageAlt": "Madison AI is Superpowered. Faster and Smarter!"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "Madison AI is Superpowered. Faster and Smarter!",
+        "subtitle": "In this week's AI In Action, we showcased FOUR exciting feature upgrades. The tool you use every day just got meaningfully better! Smarter routing, cleaner file handling, Spanish support, and PowerPoint export are all live."
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Madison AI Handles More of the Work More Accurately",
+        "paragraphs": [
+          "Madison AI just graduated with an \"MBA\"! What that means in practice is that the tool is smarter at handling interactions and inference. You no longer have to pick the right agent or remember which workflow to use.",
+          "Type what you need into the prompt box, and the assistant figures out the rest. It reads your intent, selects the right workflow, and builds the output. Faster starts. Fewer steps. The same quality as you expect. Give it a try with a citizen newsletter, a voting history, or a code lookup."
+        ],
+        "items": [],
+        "quotes": [],
+        "videos": [
+          {
+            "title": "011 AI In Action: Madison AI Handles More of the Work - More Accurately",
+            "wistiaId": "gh9gli0b94"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Spanish Support Is Live. Other Languages Coming Soon.",
+        "paragraphs": [
+          "Staff can now use Madison AI in Spanish. To switch, go to your name in the bottom left corner, select your preferred language, and refresh. Source files stay in their original language. The AI translates the output. More languages are coming soon."
+        ],
+        "items": [],
+        "quotes": [],
+        "videos": [
+          {
+            "title": "011 AI In Action: Spanish Support Is Live. Other Languages Coming Soon.",
+            "wistiaId": "kyzv039bo0"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Less Friction in the Day-to-Day Flow",
+        "paragraphs": [
+          "Uploaded files now convert more accurately, so the AI reads and uses them with higher reliability. Tables, images, and complex document formats all work better. You can also drag and drop screenshots directly into the chat.",
+          "For planning staff working with site plans, permit documents, or mixed-format files, this removes a real daily friction point and produces more accurate outputs."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"It is like a quantum leap forward in how we can interact with data that we upload.\"",
+            "attribution": "Heyden Enochson, Head of GTM, Madison AI",
+            "portrait": {
+              "asset": "heyden-enochson-head-of-gtm-madison-ai-01a3cb30.avif",
+              "alt": "Heyden Enochson, Head of GTM, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "011 AI In Action: Less Friction in the Day-to-Day Flow",
+            "wistiaId": "71bcpgqg97"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Turn Research Output into a Presentation-Ready File.",
+        "paragraphs": [
+          "When your research or draft is ready, ask Madison AI to generate a slide deck from your last chat. It builds the slides, writes speaker notes, and organizes the content. What used to take hours now takes one prompt. Please note - this feature is still in beta. Primary brand colors can be applied, but branded templates are not yet supported."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"It would've taken a couple of hours to put into an actual PowerPoint coming from somebody who spent a lot of my early career doing that. It now takes minutes.\"",
+            "attribution": "Kristine Richter, Head of Customer Success, Madison AI",
+            "portrait": {
+              "asset": "kristine-richter-head-of-client-success-madison-92a43d8d.avif",
+              "alt": "Kristine Richter, Head of Customer Success, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "011 AI In Action: Turn Research Output into a Presentation-Ready File",
+            "wistiaId": "vb23g27nlq"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Watch the full webinar",
+        "videoTitle": "Watch the full webinar",
+        "wistiaId": "pvksfvngcy"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

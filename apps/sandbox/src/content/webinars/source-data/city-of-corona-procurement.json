@@ -1,0 +1,485 @@
+{
+  "id": "city-of-corona-procurement",
+  "path": "/city-of-corona-procurement/",
+  "order": 40,
+  "sourceUrl": "https://www.madisonai.com/city-of-corona-procurement",
+  "capturedAt": "2026-08-18",
+  "sha256": "cf051ec78f0eefca61174747405c0fe98d6060720451c93215614eef95034c70",
+  "metadata": {
+    "title": "How the City of Corona Evolved Procurement with AI",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/city-of-corona-procurement",
+    "openGraph": {
+      "title": "How the City of Corona Evolved Procurement with AI",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "How the City of Corona Evolved Procurement with AI",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a255123226293d1ea0df40f_June%2010%20-%20cover.avif",
+      "alt": "How the City of Corona Evolved Procurement with AI"
+    }
+  },
+  "hero": {
+    "headings": [
+      "AI In Action Webinar",
+      "Corona Took on the Headache Nobody Wanted to Touch: Procurement"
+    ],
+    "sourceClasses": [
+      "pricing-v3",
+      "dark"
+    ]
+  },
+  "regions": [
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [
+        "Ask anyone in local government what their least favorite process is, and procurement is going to be near the top of the list. It is slow, it is rules-heavy, and a single misstep can create real legal exposure. As Chris McMasters, CIO for the City of Corona, put it on this week’s AI in Action: “I don’t think anyone has enjoyable experiences with procurement in government.”",
+        "So that is exactly where Corona decided to point AI.",
+        "This week’s session Chris and by Dana Searcy, Principal Strategist at Madison, walked through the procurement assistant we have been building together over the last 18 months. We covered the good, the hard, and a few cans of worms we opened along the way. Here is the recap."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "The problem",
+          "level": 2,
+          "sourceClasses": [
+            "h2",
+            "blog-h2",
+            "red"
+          ]
+        },
+        {
+          "text": "A Lot of Rules, a Lot of Judgment, and Not a Lot of Consistency",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "red-subtitle"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Corona is a full-service city of about 160,000 people with roughly 1,200 employees. The procurement team is eight to ten people, and they process several thousand requests a year. That is more than 200 requests per person.",
+        "The pain was not just volume. It was consistency. Depending on which staff member you talked to, you could get different answers to the same question. And every time someone new joined the purchasing team, the whole organization hit the reset button on understanding the process again.",
+        "Procurement has guidelines, policies, templates, and expected outputs. There is a lot of judgment involved, yes, but a great deal of it is more objective than subjective. That makes it a strong candidate for AI-assisted workflows: high-volume, required, administrative work, with real rules behind it."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "015 AI In Action: Procurement - Procurement Is a Great Place for AI",
+          "wistiaId": "2euswv3rhz",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F2euswv3rhz&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F2euswv3rhz&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fec76ab3d48e42dade133a00952ffc9a2.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/ec76ab3d48e42dade133a00952ffc9a2.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "How It Started",
+          "level": 2,
+          "sourceClasses": [
+            "h2",
+            "blog-h2",
+            "blue-text"
+          ]
+        },
+        {
+          "text": "A Challenge and Staff Recommendations",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "red-subtitle"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "This project did not start with a roadmap. It started with Chris handing Erica a challenge.",
+        "After Corona had success with AI-drafted staff reports, Chris said, in his words, “I want to give you a challenge.” The challenge was procurement. That one conversation is what led to everything we demoed this week.",
+        "Corona’s first move was smart and very human. They ran a workshop with directors and the people closest to purchasing, then surveyed a wide group of employees to map the real pros and cons. They used AI to analyze all of that input and propose short- and long-term action plans. Then, for fun, they compared the AI’s recommendations to what the human group came up with on their own.",
+        "With this input, we landed where to start, where to use AI and where not to."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "015 AI In Action: Procurement - Built for Staff, Easier on Procurement",
+          "wistiaId": "sowtwsldeu",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fsowtwsldeu&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fsowtwsldeu&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F1c25d0039283a502774baa6e7e4fdca6.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/1c25d0039283a502774baa6e7e4fdca6.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "What We Built",
+          "level": 2,
+          "sourceClasses": [
+            "h2",
+            "blog-h2",
+            "blue-text"
+          ]
+        },
+        {
+          "text": "A Guided Workflow, not an AI Black Box",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "red-subtitle"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "There is a misconception out there that you just drop documents into an AI tool and magic comes out the other side. For procurement, that is exactly what you do not want. You do not want the AI inventing language. You want it producing the right templates, the right pathways, and the legally vetted text, every single time. ‍ So, we started by unpacking what was really happening behind the scenes. On the surface, Corona’s procurement policy looked simple. The team had a clean one-pager, a polished deck, the whole thing. Once we started feeding it into the model, the questions began: what about this exception, and what about that one? ‍ By the time we were done, we had mapped 34 distinct procurement pathways. That is not a Corona problem. Across the seven other jurisdictions Dana has built these for, the same thing happens every time. The real process is always bigger than the one-pager. That is the norm, not the exception.",
+        "The goal is to hand the procurement team a request that is more than 80 percent complete and fully compliant, so the rework lands on the AI instead of on people."
+      ],
+      "listItems": [
+        {
+          "text": "Process determination and scope of work. The assistant walks a staff member through what they are actually buying, how it is being paid for, and what needs to be considered. Getting the scope right up front is what makes everything downstream work.",
+          "label": "Process determination and scope of work."
+        },
+        {
+          "text": "The solicitation. Based on the answers, the assistant selects the correct one of the 34 pathways and drafts the procurement request in Corona’s own templates.",
+          "label": "The solicitation."
+        },
+        {
+          "text": "The contract. The assistant generates the contract document, again from Corona’s preloaded templates, ready to attach to the solicitation or finalize once a bidder is selected.",
+          "label": "The contract."
+        }
+      ],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "015 AI In Action: Procurement - Mapping Procurement Processes Is Where the Value Starts",
+          "wistiaId": "tm62xo5962",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Ftm62xo5962&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Ftm62xo5962&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F5749fdda0584ef40d17a77c80735f1e9.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/5749fdda0584ef40d17a77c80735f1e9.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Seeing It Live",
+          "level": 2,
+          "sourceClasses": [
+            "h2",
+            "blog-h2",
+            "blue-text"
+          ]
+        },
+        {
+          "text": "Landscaping for Seven Fire Stations",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "red-subtitle"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Using a real example brings the whole idea to life. We used a real-world example of procuring maintenance landscaping solicitation for Corona’s fire stations. Here are a few key observations:",
+        "Then there is the part the procurement teams care about most: compliance. We built an AI evaluator that checks the output and flags anything that is off, with a big red banner and a cover sheet that lists exactly what is out of compliance and why. In the demo it caught an unfilled placeholder, flagged insurance language that did not actually belong, and on the contract step it even noticed there was no proof of a required bidding process.",
+        "And because everyone asks: every output exports to Word, PDF, and now PowerPoint, which teams are using for pre-bid meetings and board presentations.",
+        "For Chris, this is the part that changes the math for his whole organization."
+      ],
+      "listItems": [
+        {
+          "text": "The assistant flagged ambiguity on its own. When Dana said “landscaping,” it asked whether that meant maintenance landscaping or new construction, because those are two very different pathways.",
+          "label": null
+        },
+        {
+          "text": "It pulled from Corona’s own indexed data, found there are seven fire stations, and even surfaced a pre-existing landscaping contract to build from. Because this is a closed system, it draws from your documents plus preloaded government procurement standards.",
+          "label": null
+        },
+        {
+          "text": "The whole thing, scope of work to solicitation to contract, took Dana about an hour. All of it in Corona’s specific templates.",
+          "label": null
+        }
+      ],
+      "quotes": [
+        {
+          "text": "“You can take someone completely unfamiliar with our purchasing process and say, ‘Hey, I need you to go buy this thing,’ and it will literally lead them through and populate everything. That used to be a very manual process.”",
+          "attribution": "Chris McMasters, CIO, City of Corona",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69c78997ffa979f207d227cd_Chris.avif",
+            "alt": "Chris McMasters, CIO, City of Corona"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "015 AI In Action: Procurement Walkthrough - How a Solicitation Comes Together",
+          "wistiaId": "mg4ywnia1c",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fmg4ywnia1c&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fmg4ywnia1c&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F29f038bd82b99f8b11688d1ec72e5886.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/29f038bd82b99f8b11688d1ec72e5886.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Change Management",
+          "level": 2,
+          "sourceClasses": [
+            "h2",
+            "blog-h2",
+            "blue-text"
+          ]
+        },
+        {
+          "text": "The Lesson That Is Not About Technology",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "red-subtitle"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Chris was candid about the hardest part, and it was not the tech. ‍ Government culture is built around controlling risk. The instinct is to gate things, to make sure nothing ends up on the news. That instinct exists for good reasons, but it can also slow everything down, and there is not always a built-in motivation to change how things are done.",
+        "What moved the needle at Corona was showing staff how the tool helps them personally and getting them out of the mundane work so they can use their judgment on the parts that actually require it. Once the AI is making sure the rules are followed, the conversation shifts from “did we get this right” to “how fast can we get this done.” ‍ One more thing Chris named that is worth repeating: AI is not a one-and-done purchase. It is more like software development. What you get at the start can look very different a month later as you keep engaging with it. When we began this build, Claude Opus 4.6 was not even out yet, and the reasoning we needed was a stretch. We are constantly iterating, and the assistant keeps getting faster, more accurate, and more complete."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"Risk is predominantly what we’re worried about in government. It’s not even about return on investment. The nature of government is about gating things. Once the AI is making sure we’re following the rules, it’s more about how fast can we get it done.”",
+          "attribution": "Chris McMasters, CIO, City of Corona"
+        }
+      ],
+      "videos": [
+        {
+          "title": "015 AI In Action: Procurement - Grounded in Your Data, Checked for Compliance",
+          "wistiaId": "tkvfchl3nc",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Ftkvfchl3nc&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Ftkvfchl3nc&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F53c92d5d14805ca510e1dee8ce333051.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/53c92d5d14805ca510e1dee8ce333051.jpg?image_crop_resized=960x540"
+        },
+        {
+          "title": "015 AI In Action: Procurement - Adoption and Iteration Make It Work",
+          "wistiaId": "n31uxa8hmq",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fn31uxa8hmq&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fn31uxa8hmq&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F547682ebe08e23874bd4c72bed5f0f96.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/547682ebe08e23874bd4c72bed5f0f96.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Why This Matters Beyond Corona",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "red-subtitle"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "When Chris brought us this challenge, he was not trying to solve it only for Corona. As he said, “Everyone has this problem. Everyone feels pain here.” The goal was to build something that could be reused across the country, with the specifics tuned to each agency. ‍ That is the spirit of AI in Action. We share what is working, what is hard, and what we are all learning together. Corona did the hard part of leaning in. We get to help everyone else start from a better place.",
+        "Chris’s advice for anyone thinking about taking on procurement with AI was short: “Do it.” ‍ Dana’s was just as direct: “Don’t be afraid to get started.” It is a discovery process, it takes commitment, and it is absolutely worth it when you can save thousands of staff hours and finally trust that the process is consistent. AI drafts. You decide. Procurement turns out to be a near-perfect place for that to be true."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [
+        {
+          "text": "Want to take on procurement at your agency? We would welcome the conversation. Book a demo Book a demo And join us June 18th , same time same place, when we build an AI model with GFOA around ACFRs to take on financial benchmarking once and for all.",
+          "links": [
+            {
+              "text": "Book a demo Book a demo",
+              "href": "https://www.madisonai.com/demo"
+            },
+            {
+              "text": "join us June 18th",
+              "href": "https://www.madisonai.com/peer-share-invite"
+            }
+          ]
+        }
+      ],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Watch the full webinar",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "015 AI In Action: Procurement - Search Contracts, Draft Solicitations, 100% compliant every time (full session)",
+          "wistiaId": "y12x7kmwhy",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fy12x7kmwhy&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fy12x7kmwhy&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fdb00da9f8894be5580d29afd13e46af4.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/db00da9f8894be5580d29afd13e46af4.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": []
+    }
+  ],
+  "downloadUrls": []
+}

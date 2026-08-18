@@ -6,6 +6,10 @@ import {
 } from "@madison/sandbox/content/client-stories/page";
 import { NewsArticlePage } from "@madison/sandbox/content/news/page";
 import { newsArticleRouteData } from "@madison/sandbox/content/news/server";
+import { WebinarPage } from "@madison/sandbox/content/webinars/page";
+import { webinarRouteData } from "@madison/sandbox/content/webinars/server";
+import { ResponsibleAiPage } from "@madison/sandbox/content/responsible-ai/page";
+import { responsibleAiRouteData } from "@madison/sandbox/content/responsible-ai/server";
 import { AppRoutes } from "./App";
 import { notFoundMeta, pageMeta } from "./site-meta";
 import { siteOrigin } from "./site-origin.server";
@@ -29,12 +33,18 @@ export function loader({ request }: Route.LoaderArgs) {
   const origin = siteOrigin();
   const story = findClientStoryByPath(pathname);
   const articleData = newsArticleRouteData(pathname, origin);
+  const webinarData = webinarRouteData(pathname, origin);
+  const responsibleAiData = responsibleAiRouteData(pathname, origin);
   return {
     page: page ?? null,
     story: story ?? null,
     storyMetadata: story ? clientStoryMetadata(story, origin) : null,
     article: articleData?.article ?? null,
     articleOgImage: articleData?.ogImage,
+    webinar: webinarData?.webinar ?? null,
+    webinarOgImage: webinarData?.ogImage,
+    responsibleAiResource: responsibleAiData?.resource ?? null,
+    responsibleAiOgImage: responsibleAiData?.ogImage,
     origin,
   };
 }
@@ -63,6 +73,10 @@ export async function clientLoader({
       storyMetadata: null,
       article: null,
       articleOgImage: undefined,
+      webinar: null,
+      webinarOgImage: undefined,
+      responsibleAiResource: null,
+      responsibleAiOgImage: undefined,
       origin: new URL(request.url).origin,
     };
   }
@@ -85,6 +99,22 @@ export function meta({ data: loaderData }: Route.MetaArgs) {
       loaderData.origin,
     );
   }
+  if (loaderData?.webinar) {
+    const { metadata, path } = loaderData.webinar;
+    return pageMeta(
+      { ...metadata, ogImage: loaderData.webinarOgImage },
+      path,
+      loaderData.origin,
+    );
+  }
+  if (loaderData?.responsibleAiResource) {
+    const { metadata, path } = loaderData.responsibleAiResource;
+    return pageMeta(
+      { ...metadata, ogImage: loaderData.responsibleAiOgImage },
+      path,
+      loaderData.origin,
+    );
+  }
   if (!loaderData?.page) return notFoundMeta();
   const canonicalPath =
     loaderData.page.slug === "landing"
@@ -99,6 +129,12 @@ export default function FrameworkRoute({ loaderData }: Route.ComponentProps) {
   }
   if (loaderData.article) {
     return <NewsArticlePage article={loaderData.article} />;
+  }
+  if (loaderData.webinar) {
+    return <WebinarPage webinar={loaderData.webinar} />;
+  }
+  if (loaderData.responsibleAiResource) {
+    return <ResponsibleAiPage resource={loaderData.responsibleAiResource} />;
   }
   return <AppRoutes pages={sitePrototypes} />;
 }

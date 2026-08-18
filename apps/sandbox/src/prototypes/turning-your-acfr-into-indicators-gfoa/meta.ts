@@ -1,6 +1,7 @@
 const meta = {
   title: "Turning Your ACFR into Indicators, with GFOA",
   description: "AI In Action webinar recap: GFOA's Shayne Kavanagh and Madison AI on turning ACFR data into decision-ready indicators.",
+  publish: false,
 
   // The published site builds this page's <head> from this file — the title and
   // description above are what search results and link previews actually show.

@@ -1,0 +1,430 @@
+{
+  "id": "acfr-and-gfoa",
+  "path": "/acfr-and-gfoa/",
+  "order": 30,
+  "sourceUrl": "https://www.madisonai.com/acfr-and-gfoa",
+  "capturedAt": "2026-08-18",
+  "sha256": "f2e430582617c7b81439e27492680dd03309cfe18585b178ecc2fc9055c7ba59",
+  "metadata": {
+    "title": "Turning Your ACFR into Indicators, with GFOA",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/acfr-and-gfoa",
+    "openGraph": {
+      "title": "Turning Your ACFR into Indicators, with GFOA",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "Turning Your ACFR into Indicators, with GFOA",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a399bfb836542601e9dc3e3_June%2018-%20cover.avif",
+      "alt": "Turning Your ACFR into Indicators, with GFOA"
+    }
+  },
+  "hero": {
+    "headings": [
+      "AI In Action Webinar",
+      "Turning Your ACFR into Indicators, with GFOA"
+    ],
+    "sourceClasses": [
+      "pricing-v3",
+      "dark"
+    ]
+  },
+  "regions": [
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [
+        "Most annual financial reports take months to build, then sit. Nearly half of GFOA members rate the value of that report as neutral or negative. This week on AI In Action, Shayne Kavanagh of GFOA joined Erica Olsen of Madison AI to ask a better question: what if the data inside your ACFR helped your leaders make decisions all year, in language your council already understands?",
+        "Here's what we covered, including what's working and what's still hard:"
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Three frictions every finance leader knows",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Public finance carries the same three tensions year after year. Long-term planning is valuable, but a heavy analytical lift, and still, four in ten governments do it with no mandate to. Reserves raise the same question every cycle with no single right answer. And the annual financial report consumes months, then too often goes unread.",
+        "Each one follows the same pattern: a core idea that clearly matters, a real-world constraint that gets in the way, and a gap between. That gap is where the right AI can help."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "016 AI In Action: Three frictions every finance leader knows",
+          "wistiaId": "a1ze6ong91",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fa1ze6ong91&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fa1ze6ong91&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fbf2c5a2c360f437fc76517d1c34eddbe.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/bf2c5a2c360f437fc76517d1c34eddbe.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Change the conversation, not just the number",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Take reserves. When you defend a reserve level as an industry norm, the explanation runs out fast. Reframe it as self-insurance and the whole conversation changes. You're no longer arguing over a percentage. You're weighing real risks and real trade-offs.",
+        "Boards engage differently when the question is \"what are we protecting against?\" instead of \"why that number?\""
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"In GFOA's 125-year history, the most popular question every year is what is the right amount of reserves we should have. And the challenge is, it's not one size fits all.\"",
+          "attribution": "Shayne Kavanagh, GFOA",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a399ba80338e07dcf4a5ef0_shayne.avif",
+            "alt": "Shayne Kavanagh, GFOA"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "016 AI In Action: Change the conversation, not just the number",
+          "wistiaId": "8p5wmvmkxz",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F8p5wmvmkxz&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F8p5wmvmkxz&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fc61a3a1792c9f8ef7fc5b7f7ec008806.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/c61a3a1792c9f8ef7fc5b7f7ec008806.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "The Three Clocks",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "GFOA built its financial health framework by asking elected officials what they actually want to know about their finances. The answers sorted into three time horizons:",
+        "Each clock carries a few plain questions, and each question maps to the indicators that answer it. Pull that expertise into a model trained on years of ACFR data from thousands of agencies, and any executive gets an on-demand read on financial health."
+      ],
+      "listItems": [
+        {
+          "text": "Annual Clock: Will we end the year in balance?",
+          "label": "Annual Clock:"
+        },
+        {
+          "text": "Trajectory Clock: Are we headed in the right direction during my term?",
+          "label": "Trajectory Clock:"
+        },
+        {
+          "text": "Generational Clock: What are we handing to the next generation?",
+          "label": "Generational Clock:"
+        }
+      ],
+      "quotes": [
+        {
+          "text": "\"These are all temporal questions. They're not money questions, they're time questions.\"",
+          "attribution": "Shayne Kavanagh, GFOA"
+        }
+      ],
+      "videos": [
+        {
+          "title": "016 AI In Action: The Three Clocks",
+          "wistiaId": "ptmsteaoq3",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fptmsteaoq3&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fptmsteaoq3&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fc93b714ce8a2863ca7d196e6dabacf8a.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/c93b714ce8a2863ca7d196e6dabacf8a.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "From raw reports to council-ready decisions",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "At the AI In Action, we demonstrated this model, which is really an on-demand financial advisor. Here's what makes it work:"
+      ],
+      "listItems": [
+        {
+          "text": "Accurate extraction first. Madison pulls the figures from the ACFR, then checks its own work by extracting the numbers around each one and confirming they add up. Reading an ACFR is hard. Getting the data right is the whole game.",
+          "label": "Accurate extraction first."
+        },
+        {
+          "text": "GFOA expertise on top. The exact meaning behind every indicator and guidance where it helps.",
+          "label": "GFOA expertise on top."
+        },
+        {
+          "text": "Comparison that actually fits. Build a peer group that holds up, tuned by population, growth, region, even by indicator, so you compare what's truly comparable.",
+          "label": "Comparison that actually fits."
+        },
+        {
+          "text": "Outputs you can hand off. A scorecard across the Three Clocks and a memo for your manager or council, in minutes.",
+          "label": "Outputs you can hand off."
+        }
+      ],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "016 AI In Action: From raw reports to council-ready decisions",
+          "wistiaId": "o76pxo9vi6",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fo76pxo9vi6&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fo76pxo9vi6&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F2a608b72fb9af31aff4f175b807fad42.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/2a608b72fb9af31aff4f175b807fad42.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Why it matters",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "This is still a proof of concept, and that's the point of the AI In Action. We show what's working and what's hard while it's being built, so you start from a better place.",
+        "The bigger opportunity is connecting the reporting process to budgeting and planning. The data is already in your ACFR. The question is whether your leaders can use it. When the Three Clocks open your budget season, a year-end obligation becomes the first question of next year's decisions.",
+        "What's next:"
+      ],
+      "listItems": [
+        {
+          "text": "Want to see your agency's numbers in it? Madison customers get first access, and we're lining up beta testers now.",
+          "label": null
+        },
+        {
+          "text": "GFOA's Three Clocks paper is coming this summer, with a companion piece on folding it into budgeting and planning.",
+          "label": null
+        },
+        {
+          "text": "Next AI In Action: Thursday, July 16 (we are taking 7/2 off due to the holiday)",
+          "label": null
+        }
+      ],
+      "quotes": [],
+      "videos": [],
+      "callouts": [
+        {
+          "text": "Email us at hello@madisonai.com and we'll send you the session materials.",
+          "links": [
+            {
+              "text": "hello@madisonai.com",
+              "href": "mailto:hello@madisonai.com?subject=General%20Inquiry"
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Full Session Video",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "016 AI In Action: Madison AI Turns Your ACFR into Indicators, with GFOA (full session)",
+          "wistiaId": "5nc930m8n9",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F5nc930m8n9&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F5nc930m8n9&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fb2295783a034572acd04f7e3771303f0.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/b2295783a034572acd04f7e3771303f0.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": []
+    }
+  ],
+  "downloadUrls": []
+}

@@ -1,0 +1,114 @@
+{
+  "id": "the-free-miro-template-to-build-your-ai-governance-policy",
+  "path": "/resources/the-free-miro-template-to-build-your-ai-governance-policy/",
+  "order": 5,
+  "sourceUrl": "https://www.madisonai.com/resources/the-free-miro-template-to-build-your-ai-governance-policy",
+  "metadata": {
+    "title": "The Free Miro Template to Build Your AI Governance Policy",
+    "description": "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive.",
+    "seoTitle": "The Free Miro Template to Build Your AI Governance Policy - Madison AI",
+    "ogImageAsset": "cover-governance-miro.jpg"
+  },
+  "card": {
+    "title": "The Free Miro Template to Build Your AI Governance Policy",
+    "description": "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive.",
+    "imageAsset": "cover-governance-miro.jpg",
+    "imageAlt": "The Free Miro Template to Build Your AI Governance Policy"
+  },
+  "sections": [
+    {
+      "type": "resource-hero",
+      "props": {
+        "category": "Responsible AI",
+        "title": "The Free Miro Template to Build Your AI Governance Policy",
+        "author": "Heyden Enochson",
+        "date": "August 20, 2024"
+      }
+    },
+    {
+      "type": "resource-content",
+      "props": {
+        "blocks": [
+          {
+            "content": [
+              "Welcome! This is a two-hour workshop to use with your Government Executive/IT team to calm the AI chaos by building an AI Governance Policy with Guiding Principles."
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              "You'll walk away with:"
+            ],
+            "level": 3,
+            "type": "heading"
+          },
+          {
+            "items": [
+              [
+                "How to structure your AI Policy."
+              ],
+              [
+                "How to select your AI Governance Structure."
+              ],
+              [
+                "How to develop AI Guiding Principles."
+              ],
+              [
+                "Why you should consider an AI committee."
+              ]
+            ],
+            "style": "unordered",
+            "type": "list"
+          }
+        ]
+      }
+    },
+    {
+      "type": "resource-action",
+      "props": {
+        "title": "Get the free template here",
+        "description": "Open the collaborative workshop board and adapt it with your government team.",
+        "cta": {
+          "label": "Open in Miro",
+          "href": "https://miro.com/templates/ai-governance-policy-guiding-principles/"
+        }
+      }
+    },
+    {
+      "type": "resource-related",
+      "props": {
+        "title": "Similar resources",
+        "cards": [
+          {
+            "title": "The Free Miro Template to Build Your AI Governance Policy",
+            "description": "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive.",
+            "href": "/resources/the-free-miro-template-to-build-your-ai-governance-policy/",
+            "imageAsset": "cover-governance-miro.jpg",
+            "imageAlt": "The Free Miro Template to Build Your AI Governance Policy"
+          },
+          {
+            "title": "16 AI Governance Policy Examples",
+            "href": "/resources/ai-governance-policy-examples/",
+            "imageAsset": "cover-example.jpg",
+            "imageAlt": "16 AI Governance Policy Examples"
+          },
+          {
+            "title": "AI Governance Blueprint: A Guide to Ethical AI in Local Government",
+            "description": "See the 4 steps to build your AI governance blueprint to incorporate AI into your government ethically.",
+            "href": "/resources/ai-governance-blueprint/",
+            "imageAsset": "cover-blueprint.jpg",
+            "imageAlt": "AI Governance Blueprint: A Guide to Ethical AI in Local Government"
+          }
+        ]
+      }
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

@@ -1,122 +1,52 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@madison/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@madison/ui/tabs";
+import { webinars } from "../../content/webinars/collection";
+import { resolveWebinarAsset } from "../../content/webinars/assets";
+import { responsibleAiResources } from "../../content/responsible-ai/collection";
+import { resolveResponsibleAiAsset } from "../../content/responsible-ai/assets";
 import { Nav, Footer } from "../landing/sections";
 import { Reveal, Eyebrow } from "../landing/parts";
-import { PHOTOS } from "../landing/photos";
-
-// Cards don't have real per-post photography — cycling through the shared
-// generic civic/at-work stock set (see landing/photos.ts) gives each card a
-// distinct 16:9 image without inventing per-title art direction.
-const CARD_PHOTOS = Object.values(PHOTOS);
 
 // ============================================================================
 // Resources — recreated from madisonai.com/resources. Two tabs, per spec:
 // "AI in Action Webinar" (2-column cards) and "Responsible AI" (3-column
-// cards). One card per tab links to a real detail page built this session
-// (the Director's Playbook webinar, and the AI Guiding Principles guide);
-// the rest render as non-interactive "Coming soon" cards.
+// cards). Both tabs now come from validated local content collections.
 // ============================================================================
 
 interface ResourceCard {
   title: string;
   description: string;
-  href?: string;
+  imageUrl: string;
+  imageAlt: string;
+  href: string;
 }
 
-const WEBINAR_RESOURCES: ResourceCard[] = [
-  {
-    title: "The Director's Playbook to Put Your AI Assistant to Work",
-    description: "Five real work tasks, with downloadable Task Cards for daily use.",
-    href: "/director-of-ai-assistant/",
-  },
-  {
-    title: "Turning Your ACFR into Indicators, with GFOA",
-    description: "A GFOA partnership piece on turning annual financial reports into usable indicators.",
-    href: "/turning-your-acfr-into-indicators-gfoa/",
-  },
-  {
-    title: "How the City of Corona Evolved Its Procurement Process",
-    description: "A look at how Corona's procurement team put Madison to work.",
-  },
-  {
-    title: "The AI Everyone's Talking About Is Already Inside Your Deployment",
-    description: "What the latest AI headlines describe is already part of your Madison rollout.",
-  },
-  {
-    title: "Santa Clara Valley Water's Infrastructure Deployment",
-    description: "Rolling out Madison across a complex water infrastructure agency.",
-  },
-  {
-    title: "How Chanhassen Preserved Institutional Memory",
-    description: "Keeping decades of city knowledge searchable and current.",
-  },
-  {
-    title: "RTC's Workflow, Replicated Across Departments",
-    description: "Taking one team's Madison workflow citywide.",
-  },
-  {
-    title: "Madison AI Gets Faster and Smarter",
-    description: "A rundown of the latest speed and capability upgrades across the platform.",
-  },
-  {
-    title: "Planning Work Made Simple: Parcel Lookups & Zoning",
-    description: "How planning teams use Madison for day-to-day zoning questions.",
-  },
-  {
-    title: "Two Years of Lessons from Washoe County",
-    description: "What two years of daily use taught Madison's founding partner.",
-  },
-  {
-    title: "How FlashVote Optimizes Public Meetings",
-    description: "Faster meeting prep, powered by Madison.",
-  },
-  {
-    title: "WRCOG's Real-World Applications",
-    description: "A regional council of governments puts Madison into daily practice.",
-  },
-];
+const WEBINAR_RESOURCES: ResourceCard[] = webinars.map((webinar) => ({
+  title: webinar.card.title,
+  description: webinar.card.description ?? webinar.metadata.description,
+  imageUrl: resolveWebinarAsset(webinar.card.imageAsset),
+  imageAlt: webinar.card.imageAlt,
+  href: webinar.path,
+}));
 
-const RESPONSIBLE_AI_RESOURCES: ResourceCard[] = [
-  {
-    title: "AI Governance Blueprint: A Guide to Ethical AI in Local Government",
-    description: "A 4-step blueprint for bringing AI into your government ethically.",
-  },
-  {
-    title: "How to Develop Your Government's AI Guiding Principles",
-    description: "A framework for articulating responsible AI principles.",
-    href: "/resources/how-to-develop-your-governments-ai-guiding-principles/",
-  },
-  {
-    title: "How to Select Your AI Governance Structure",
-    description: "A practical framework for structuring AI oversight and ownership.",
-  },
-  {
-    title: "Worksheets to Develop Your AI Guiding Principles",
-    description: "A facilitation exercise your team can run together.",
-  },
-  {
-    title: "Choose Your AI Governance Structure (Miro Template)",
-    description: "A ready-made template for mapping governance options.",
-  },
-  {
-    title: "Build Your AI Governance Policy (Free Miro Template)",
-    description: "A starting point for drafting your own policy.",
-  },
-  {
-    title: "16 AI Governance Policy Examples",
-    description: "Real policies from governments already doing this work.",
-  },
-];
+const RESPONSIBLE_AI_RESOURCES: ResourceCard[] = responsibleAiResources.map(
+  (resource) => ({
+    title: resource.card.title,
+    description: resource.card.description ?? resource.metadata.description,
+    imageUrl: resolveResponsibleAiAsset(resource.card.imageAsset),
+    imageAlt: resource.card.imageAlt,
+    href: resource.path,
+  }),
+);
 
-function ResourceCardItem({ resource, index }: { resource: ResourceCard; index: number }) {
-  const photo = CARD_PHOTOS[index % CARD_PHOTOS.length];
+function ResourceCardItem({ resource }: { resource: ResourceCard }) {
   const content = (
     <>
       <div className="aspect-video w-full overflow-hidden">
         <img
-          src={photo.url}
-          alt=""
+          src={resource.imageUrl}
+          alt={resource.imageAlt}
           loading="lazy"
           className="size-full object-cover"
         />
@@ -125,28 +55,16 @@ function ResourceCardItem({ resource, index }: { resource: ResourceCard; index: 
         <h2 className="font-sans text-lg font-semibold tracking-tight text-primary">
           {resource.title}
         </h2>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-secondary">{resource.description}</p>
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-secondary">
+          {resource.description}
+        </p>
         <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
-          {resource.href ? (
-            <>
-              Read more
-              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-            </>
-          ) : (
-            "Coming soon"
-          )}
+          Read more
+          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
         </span>
       </div>
     </>
   );
-
-  if (!resource.href) {
-    return (
-      <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-default bg-surface">
-        {content}
-      </article>
-    );
-  }
 
   const isInternal = resource.href.startsWith("/");
   return (
@@ -209,15 +127,15 @@ function TabsSection() {
       <div className="mx-auto max-w-6xl">
         <TabsContent value="webinar">
           <div className="grid gap-4 sm:grid-cols-2">
-            {WEBINAR_RESOURCES.map((resource, i) => (
-              <ResourceCardItem key={resource.title} resource={resource} index={i} />
+            {WEBINAR_RESOURCES.map((resource) => (
+              <ResourceCardItem key={resource.href} resource={resource} />
             ))}
           </div>
         </TabsContent>
         <TabsContent value="responsible">
           <div className="grid gap-4 sm:grid-cols-3">
-            {RESPONSIBLE_AI_RESOURCES.map((resource, i) => (
-              <ResourceCardItem key={resource.title} resource={resource} index={i} />
+            {RESPONSIBLE_AI_RESOURCES.map((resource) => (
+              <ResourceCardItem key={resource.href} resource={resource} />
             ))}
           </div>
         </TabsContent>
