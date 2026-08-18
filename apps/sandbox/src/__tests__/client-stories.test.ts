@@ -1,12 +1,11 @@
 import { describe, expect, it } from "vitest";
-import carsonCity from "../content/client-stories/entries/carson-city-client-story.json";
 import cityOfCorona from "../content/client-stories/entries/city-of-corona.json";
 import grandPrairie from "../content/client-stories/entries/welcoming-the-city-of-grand-prairie-texas.json";
 import indianWells from "../content/client-stories/entries/indian-wells-implements-madison-ai.json";
 import losAltosHills from "../content/client-stories/entries/los-altos-hills.json";
-import lvmwd from "../content/client-stories/entries/lvmwd.json";
-import washoeCounty from "../content/client-stories/entries/washoe-county.json";
+import { clientStories } from "../content/client-stories/collection";
 import { buildClientStoryCollection } from "../content/client-stories/schema";
+import { parseProps as parseClientStoryAnnouncementBodyProps } from "../content/sections/client-story-announcement-body";
 import { parseProps as parseClientStoryChallengeProps } from "../content/sections/client-story-challenge";
 import { parseProps as parseClientStoryImpactDownloadProps } from "../content/sections/client-story-impact-download";
 import { parseProps as parseClientStoryNarrativeProps } from "../content/sections/client-story-narrative";
@@ -55,56 +54,95 @@ describe("client story collection", () => {
     });
 
     it("publishes every captured story at its exact source pathname", () => {
-      const result = buildClientStoryCollection([
-        { source: "city-of-corona.json", value: cityOfCorona },
-        { source: "los-altos-hills.json", value: losAltosHills },
-        { source: "indian-wells.json", value: indianWells },
-        { source: "grand-prairie.json", value: grandPrairie },
-        { source: "carson-city.json", value: carsonCity },
-        { source: "washoe-county.json", value: washoeCounty },
-        { source: "lvmwd.json", value: lvmwd },
+      expect(clientStories.map(({ id, path }) => ({ id, path }))).toEqual([
+        {
+          id: "city-of-corona",
+          path: "/client-stories/city-of-corona/",
+        },
+        {
+          id: "newark-california-kicks-off-madison-ai",
+          path: "/newark-california-kicks-off-madison-ai/",
+        },
+        {
+          id: "los-altos-hills",
+          path: "/client-stories/los-altos-hills/",
+        },
+        {
+          id: "wrcog-client-story",
+          path: "/client-stories/wrcog-client-story/",
+        },
+        {
+          id: "indian-wells-implements-madison-ai",
+          path: "/indian-wells-implements-madison-ai/",
+        },
+        {
+          id: "welcoming-the-city-of-grand-prairie-texas",
+          path: "/welcoming-the-city-of-grand-prairie-texas/",
+        },
+        {
+          id: "carson-city-client-story",
+          path: "/client-stories/carson-city-client-story/",
+        },
+        {
+          id: "washoe-county",
+          path: "/client-stories/washoe-county/",
+        },
+        {
+          id: "lvmwd",
+          path: "/client-stories/lvmwd/",
+        },
+        {
+          id: "madison-ai-for-the-city-of-castle-pines",
+          path: "/madison-ai-for-the-city-of-castle-pines/",
+        },
+        {
+          id: "herriman-city-implements-madison-ai",
+          path: "/herriman-city-implements-madison-ai/",
+        },
+        {
+          id: "town-of-fort-myers-beach-taps-madison-ai",
+          path: "/town-of-fort-myers-beach-taps-madison-ai/",
+        },
+        {
+          id: "cooper-city-launches-pilot-program",
+          path: "/cooper-city-launches-pilot-program/",
+        },
+        {
+          id: "culver-city-partners-with-madison-ai",
+          path: "/culver-city-partners-with-madison-ai/",
+        },
+        {
+          id: "newport-beach-pilots-ai-assistant",
+          path: "/newport-beach-pilots-ai-assistant/",
+        },
+        {
+          id: "city-of-dublin-launches-madison-ai",
+          path: "/city-of-dublin-launches-madison-ai/",
+        },
+        {
+          id: "the-city-of-aspen-co-taps-madison-ai",
+          path: "/the-city-of-aspen-co-taps-madison-ai/",
+        },
+        {
+          id: "milpitas-pilot",
+          path: "/milpitas-pilot/",
+        },
+        {
+          id: "chanhassen-success-story",
+          path: "/chanhassen-success-story/",
+        },
+        {
+          id: "addison-success-story",
+          path: "/addison-success-story/",
+        },
       ]);
 
-      expect(result.ok).toBe(true);
-      if (result.ok) {
-        expect(result.value.map(({ id, path }) => ({ id, path }))).toEqual([
-          {
-            id: "city-of-corona",
-            path: "/client-stories/city-of-corona/",
-          },
-          {
-            id: "los-altos-hills",
-            path: "/client-stories/los-altos-hills/",
-          },
-          {
-            id: "indian-wells-implements-madison-ai",
-            path: "/indian-wells-implements-madison-ai/",
-          },
-          {
-            id: "welcoming-the-city-of-grand-prairie-texas",
-            path: "/welcoming-the-city-of-grand-prairie-texas/",
-          },
-          {
-            id: "carson-city-client-story",
-            path: "/client-stories/carson-city-client-story/",
-          },
-          {
-            id: "washoe-county",
-            path: "/client-stories/washoe-county/",
-          },
-          {
-            id: "lvmwd",
-            path: "/client-stories/lvmwd/",
-          },
-        ]);
-
-        for (const story of result.value) {
-          const sourcePath = new URL(story.sourceUrl).pathname.replace(
-            /\/?$/,
-            "/",
-          );
-          expect(story.path).toBe(sourcePath);
-        }
+      for (const story of clientStories) {
+        const sourcePath = new URL(story.sourceUrl).pathname.replace(
+          /\/?$/,
+          "/",
+        );
+        expect(story.path).toBe(sourcePath);
       }
     });
 
@@ -236,6 +274,34 @@ describe("client story collection", () => {
   });
 
   describe("section prop validation", () => {
+    it("accepts rich success-story body blocks", () => {
+      expect(() =>
+        parseClientStoryAnnouncementBodyProps({
+          blocks: [
+            {
+              type: "image",
+              photo: {
+                asset: "chanhassen-workflows.jpg",
+                alt: "Workflow diagram",
+                width: 1920,
+                height: 955,
+              },
+            },
+            {
+              type: "bullets",
+              title: "The old way",
+              items: ["Search files manually"],
+            },
+            {
+              type: "stats",
+              title: "Results",
+              items: [{ value: "158+", label: "Hours saved" }],
+            },
+          ],
+        }),
+      ).not.toThrow();
+    });
+
     it("accepts a local PDF asset for a client-story download", () => {
       expect(() =>
         parseClientStoryImpactDownloadProps({

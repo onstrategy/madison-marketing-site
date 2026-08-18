@@ -1,0 +1,126 @@
+{
+  "id": "addison-success-story",
+  "path": "/addison-success-story/",
+  "sourceUrl": "https://www.madisonai.com/addison-success-story",
+  "order": 190,
+  "featured": false,
+  "metadata": {
+    "title": "Addison, TX - Success Story - Madison AI",
+    "description": "Addison, TX is leveraging decades of documents to create AI that works for their team.",
+    "seoTitle": "Addison, TX - Success Story - Madison AI",
+    "ogImageAsset": "madison-client-story-og.jpg"
+  },
+  "card": {
+    "kicker": "Success Story",
+    "title": "Addison, TX: Unlocking Decades of Knowledge with Madison AI's Capabilities",
+    "summary": "Addison, TX, is leveraging decades of documents to create AI that works for their team",
+    "clientName": "Town of Addison",
+    "photo": {
+      "asset": "addison-hero.avif",
+      "alt": "Addison, Texas municipal landscape",
+      "width": 1920,
+      "height": 1080
+    },
+    "logo": {
+      "asset": "addison.webp",
+      "alt": "Town of Addison, Texas",
+      "width": 116,
+      "height": 140
+    }
+  },
+  "sections": [
+    {
+      "type": "client-story-announcement-hero",
+      "props": {
+        "category": "Success Story",
+        "title": "Addison, TX: Unlocking Decades of Knowledge with Madison AI",
+        "photo": {
+          "asset": "addison-hero.avif",
+          "alt": "Addison, Texas municipal landscape",
+          "width": 1920,
+          "height": 1080
+        }
+      }
+    },
+    {
+      "type": "client-story-announcement-body",
+      "props": {
+        "blocks": [
+          {
+            "type": "heading",
+            "text": "From Buried Files to Better Prepared: Addison’s AI Transformation"
+          },
+          {
+            "type": "paragraph",
+            "text": "When Addison’s Director of IT, Hamid, looked at the city’s buried institutional knowledge, he saw an opportunity to make staff work smarter, not harder. By implementing Madison AI, he gave Addison a secure way to access decades of decisions in seconds — and the results have been immediate."
+          },
+          {
+            "type": "quote",
+            "text": "We’ve had so many positive remarks with Madison AI helping staff anticipate questions they may receive from Council. In one case, 5 of the 7 questions were identical to what was asked of staff!",
+            "attribution": "Executive Director of Internal Services, Addison, TX",
+            "photo": {
+              "asset": "addison-hamid.avif",
+              "alt": "Hamid, Addison Director of IT",
+              "width": 325,
+              "height": 325
+            }
+          },
+          {
+            "type": "heading",
+            "text": "The Challenge"
+          },
+          {
+            "type": "paragraph",
+            "text": "Across local government, one challenge shows up again and again: decades of decisions, reports, and meeting records exist — but the knowledge is often trapped. It lives in the memories of the people who were in the room when the decisions were made, or it sits locked away in files and PDFs that are difficult to search. Staff spend hours digging, researching, and piecing together the information they need to prepare reports or answer council questions. It’s important work, but it takes valuable time away from other priorities. Addison, TX was no exception. That’s when Hamid, the city’s Director of IT, stepped in. He saw this challenge not just as a technical problem, but as an opportunity to unlock Addison’s institutional knowledge in a way that would serve staff, council, and the community for years to come."
+          },
+          {
+            "type": "heading",
+            "text": "The Solution"
+          },
+          {
+            "type": "paragraph",
+            "text": "Hamid knew AI could change the way staff worked. But he also knew it had to be done carefully. His priority was clear: protect Addison’s data while building staff trust. He wasn’t chasing hype or experimenting with something half-baked. He wanted a secure, practical solution that made staff’s day-to-day work easier. With that vision, Addison partnered with Madison AI. By uniting decades of files and systems of record, Madison became the city’s knowledge assistant — helping staff instantly find past actions, anticipate council questions, and draft reports in less time. Because of Hamid’s leadership, Madison AI wasn’t just a new tool. It was a thoughtful shift in how Addison preserved its institutional knowledge and prepared for the future."
+          },
+          {
+            "type": "stats",
+            "title": "Under Hamid’s guidance, Addison has already seen measurable results",
+            "items": [
+              {
+                "value": "Faster",
+                "label": "And more confident preparation for council meetings"
+              },
+              {
+                "value": "274+",
+                "label": "Staff hours saved since June"
+              },
+              {
+                "value": "Decades",
+                "label": "Of knowledge that once felt buried now available in seconds"
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Why It Matters"
+          },
+          {
+            "type": "paragraph",
+            "text": "Addison’s story shows what happens when strong IT leadership and purpose-built AI come together. Hamid didn’t just bring in a new technology. He built a secure, measured path that gave staff back valuable time while protecting Addison’s institutional knowledge. The result: a government that shows up better prepared, more efficient, and more focused on serving its community. Hamid’s approach offers a model for other cities — thoughtful, staff-centered, and rooted in trust."
+          }
+        ]
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "client-story-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form below, and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

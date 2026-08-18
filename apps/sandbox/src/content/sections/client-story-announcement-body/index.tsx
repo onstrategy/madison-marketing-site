@@ -29,6 +29,39 @@ const QuoteBlockSchema = z
   })
   .strict();
 
+const ImageBlockSchema = z
+  .object({
+    type: z.literal("image"),
+    photo: ClientStoryImageInputSchema,
+    caption: NonEmptyStringSchema.optional(),
+  })
+  .strict();
+
+const BulletsBlockSchema = z
+  .object({
+    type: z.literal("bullets"),
+    title: NonEmptyStringSchema.optional(),
+    items: z.array(NonEmptyStringSchema).min(1),
+  })
+  .strict();
+
+const StatsBlockSchema = z
+  .object({
+    type: z.literal("stats"),
+    title: NonEmptyStringSchema.optional(),
+    items: z
+      .array(
+        z
+          .object({
+            value: NonEmptyStringSchema,
+            label: NonEmptyStringSchema,
+          })
+          .strict(),
+      )
+      .min(1),
+  })
+  .strict();
+
 const ListBlockSchema = z
   .object({
     type: z.literal("list"),
@@ -50,6 +83,9 @@ const AnnouncementBlockSchema = z.discriminatedUnion("type", [
   ParagraphBlockSchema,
   HeadingBlockSchema,
   QuoteBlockSchema,
+  ImageBlockSchema,
+  BulletsBlockSchema,
+  StatsBlockSchema,
   ListBlockSchema,
 ]);
 
@@ -91,6 +127,71 @@ function AnnouncementBlockContent({ block }: { block: AnnouncementBlock }) {
       >
         {block.text}
       </p>
+    );
+  }
+
+  if (block.type === "image") {
+    const photo = resolveClientStoryImage(block.photo);
+    return (
+      <figure>
+        <img
+          src={photo.url}
+          alt={photo.alt}
+          width={photo.width}
+          height={photo.height}
+          loading="lazy"
+          className="w-full rounded-2xl border border-default object-cover"
+        />
+        {block.caption ? (
+          <figcaption className="mt-3 text-sm text-muted">
+            {block.caption}
+          </figcaption>
+        ) : null}
+      </figure>
+    );
+  }
+
+  if (block.type === "bullets") {
+    return (
+      <div className="rounded-2xl border border-default bg-panel p-6">
+        {block.title ? (
+          <h3 className="font-sans text-lg font-semibold text-primary">
+            {block.title}
+          </h3>
+        ) : null}
+        <ul className={block.title ? "mt-4 space-y-3" : "space-y-3"}>
+          {block.items.map((item) => (
+            <li key={item} className="flex gap-3 text-secondary">
+              <span className="mt-2 size-1.5 shrink-0 rounded-full bg-brand" />
+              <span className="leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
+  if (block.type === "stats") {
+    return (
+      <div className="dark overflow-hidden rounded-2xl border border-default bg-app">
+        {block.title ? (
+          <h2 className="px-8 pt-8 text-balance font-serif text-2xl font-medium tracking-tight text-primary">
+            {block.title}
+          </h2>
+        ) : null}
+        <div className="grid gap-px bg-panel p-px sm:grid-cols-2 lg:grid-cols-3">
+          {block.items.map((item) => (
+            <div key={item.label} className="bg-app p-6">
+              <div className="font-serif text-3xl font-medium tracking-tight text-primary">
+                {item.value}
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-secondary">
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
     );
   }
 
@@ -154,7 +255,7 @@ export default function ClientStoryAnnouncementBodySection({
     <section className="border-b border-default bg-app px-gutter py-24">
       <div className="mx-auto max-w-3xl space-y-8">
         {blocks.map((block, index) => (
-          <Reveal key={`${block.type}-${index}`} delay={index * 30}>
+          <Reveal key={JSON.stringify(block)} delay={index * 30}>
             <AnnouncementBlockContent block={block} />
           </Reveal>
         ))}
