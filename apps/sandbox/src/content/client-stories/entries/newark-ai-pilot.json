@@ -34,9 +34,9 @@
       }
     },
     {
-      "type": "news-intro",
+      "type": "announcement-subtitle",
       "props": {
-        "intro": "The City of Newark, California, has tapped Madison AI to pilot a Citywide artificial intelligence (AI) assistant designed to streamline local government operations and provide support to employees."
+        "text": "The City of Newark, California, has tapped Madison AI to pilot a Citywide artificial intelligence (AI) assistant designed to streamline local government operations and provide support to employees."
       }
     },
     {

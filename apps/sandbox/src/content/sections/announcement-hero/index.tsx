@@ -43,7 +43,7 @@ export default function AnnouncementHeroSection({
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">{kicker}</Eyebrow>
-          <h1 className="text-balance font-serif text-2xl font-medium tracking-tight text-primary lg:text-3xl">
+          <h1 className="text-balance font-serif text-3xl font-medium tracking-tight text-primary lg:text-4xl">
             {title}
           </h1>
         </Reveal>
