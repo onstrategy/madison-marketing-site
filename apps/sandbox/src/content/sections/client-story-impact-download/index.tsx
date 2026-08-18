@@ -1,8 +1,11 @@
-import { Download } from "lucide-react";
+import { useCallback } from "react";
 import { z } from "zod";
-import { Button } from "@madison/ui/button";
-import { Input } from "@madison/ui/input";
-import { Label } from "@madison/ui/label";
+import { resolveClientStoryAsset } from "../../client-stories/assets";
+import { HubSpotForm } from "../../forms/HubSpotForm";
+import {
+  HUBSPOT_FORM_NAMES,
+  isHubSpotFormName,
+} from "../../forms/hubspot";
 import { Reveal, Eyebrow } from "../../../prototypes/landing/parts";
 
 const NonEmptyStringSchema = z.string().trim().min(1);
@@ -20,7 +23,12 @@ const ClientStoryImpactDownloadPropsSchema = z
       .object({
         title: NonEmptyStringSchema,
         description: NonEmptyStringSchema.optional(),
-        submitLabel: NonEmptyStringSchema,
+        asset: z
+          .string()
+          .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*\.pdf$/),
+        form: NonEmptyStringSchema.refine(isHubSpotFormName, {
+          message: `must be a registered HubSpot form name (available: ${HUBSPOT_FORM_NAMES.join(", ")})`,
+        }),
       })
       .strict(),
   })
@@ -40,6 +48,16 @@ export default function ClientStoryImpactDownloadSection({
   impact,
   download,
 }: ClientStoryImpactDownloadProps) {
+  const downloadUrl = resolveClientStoryAsset(download.asset);
+  const handleSubmitted = useCallback(() => {
+    const link = document.createElement("a");
+    link.href = downloadUrl;
+    link.download = download.asset;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }, [download.asset, downloadUrl]);
+
   return (
     <section
       id="download"
@@ -69,26 +87,12 @@ export default function ClientStoryImpactDownloadSection({
                 {download.description}
               </p>
             ) : null}
-            <form className="mt-6 grid gap-4">
-              <div className="space-y-1.5">
-                <Label htmlFor="story-name">Full Name</Label>
-                <Input id="story-name" name="name" />
-              </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="story-email">
-                  Organization e-mail address*
-                </Label>
-                <Input
-                  id="story-email"
-                  name="email"
-                  type="email"
-                  required
-                />
-              </div>
-              <Button type="submit" size="lg">
-                {download.submitLabel} <Download className="size-4" />
-              </Button>
-            </form>
+            <div className="mt-6">
+              <HubSpotForm
+                form={download.form}
+                onSubmitted={handleSubmitted}
+              />
+            </div>
           </div>
         </Reveal>
       </div>

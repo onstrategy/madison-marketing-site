@@ -1,7 +1,16 @@
 import { describe, expect, it } from "vitest";
+import carsonCity from "../content/client-stories/entries/carson-city-client-story.json";
 import cityOfCorona from "../content/client-stories/entries/city-of-corona.json";
+import grandPrairie from "../content/client-stories/entries/welcoming-the-city-of-grand-prairie-texas.json";
+import indianWells from "../content/client-stories/entries/indian-wells-implements-madison-ai.json";
+import losAltosHills from "../content/client-stories/entries/los-altos-hills.json";
+import lvmwd from "../content/client-stories/entries/lvmwd.json";
+import washoeCounty from "../content/client-stories/entries/washoe-county.json";
 import { buildClientStoryCollection } from "../content/client-stories/schema";
 import { parseProps as parseClientStoryChallengeProps } from "../content/sections/client-story-challenge";
+import { parseProps as parseClientStoryImpactDownloadProps } from "../content/sections/client-story-impact-download";
+import { parseProps as parseClientStoryNarrativeProps } from "../content/sections/client-story-narrative";
+import { parseProps as parseClientStorySolutionProps } from "../content/sections/client-story-solution-timeline";
 
 function withOverride(
   override: Record<string, unknown>,
@@ -21,6 +30,81 @@ describe("client story collection", () => {
         expect(result.value[0]?.path).toBe(
           "/client-stories/city-of-corona/",
         );
+      }
+    });
+
+    it("publishes Los Altos Hills at the source site's canonical path", () => {
+      const result = buildClientStoryCollection([
+        { source: "city-of-corona.json", value: cityOfCorona },
+        { source: "los-altos-hills.json", value: losAltosHills },
+      ]);
+
+      expect(result.ok).toBe(true);
+      if (result.ok) {
+        expect(result.value.map(({ id, path }) => ({ id, path }))).toEqual([
+          {
+            id: "city-of-corona",
+            path: "/client-stories/city-of-corona/",
+          },
+          {
+            id: "los-altos-hills",
+            path: "/client-stories/los-altos-hills/",
+          },
+        ]);
+      }
+    });
+
+    it("publishes every captured story at its exact source pathname", () => {
+      const result = buildClientStoryCollection([
+        { source: "city-of-corona.json", value: cityOfCorona },
+        { source: "los-altos-hills.json", value: losAltosHills },
+        { source: "indian-wells.json", value: indianWells },
+        { source: "grand-prairie.json", value: grandPrairie },
+        { source: "carson-city.json", value: carsonCity },
+        { source: "washoe-county.json", value: washoeCounty },
+        { source: "lvmwd.json", value: lvmwd },
+      ]);
+
+      expect(result.ok).toBe(true);
+      if (result.ok) {
+        expect(result.value.map(({ id, path }) => ({ id, path }))).toEqual([
+          {
+            id: "city-of-corona",
+            path: "/client-stories/city-of-corona/",
+          },
+          {
+            id: "los-altos-hills",
+            path: "/client-stories/los-altos-hills/",
+          },
+          {
+            id: "indian-wells-implements-madison-ai",
+            path: "/indian-wells-implements-madison-ai/",
+          },
+          {
+            id: "welcoming-the-city-of-grand-prairie-texas",
+            path: "/welcoming-the-city-of-grand-prairie-texas/",
+          },
+          {
+            id: "carson-city-client-story",
+            path: "/client-stories/carson-city-client-story/",
+          },
+          {
+            id: "washoe-county",
+            path: "/client-stories/washoe-county/",
+          },
+          {
+            id: "lvmwd",
+            path: "/client-stories/lvmwd/",
+          },
+        ]);
+
+        for (const story of result.value) {
+          const sourcePath = new URL(story.sourceUrl).pathname.replace(
+            /\/?$/,
+            "/",
+          );
+          expect(story.path).toBe(sourcePath);
+        }
       }
     });
 
@@ -91,12 +175,52 @@ describe("client story collection", () => {
       }
     });
 
+    it("preserves the Los Altos Hills narrative in its authored position", () => {
+      const result = buildClientStoryCollection([
+        { source: "los-altos-hills.json", value: losAltosHills },
+      ]);
+
+      expect(result.ok).toBe(true);
+      if (result.ok) {
+        expect(result.value[0]?.sections.map(({ type }) => type)).toEqual([
+          "client-story-hero-intro",
+          "client-story-narrative",
+          "client-story-quote-stats",
+          "client-story-challenge",
+          "client-story-solution-timeline",
+          "client-story-impact-download",
+          "client-logos",
+          "client-story-cta",
+        ]);
+      }
+    });
+
+    it("keeps deployment announcements on the shorter article-shaped template", () => {
+      const result = buildClientStoryCollection([
+        { source: "indian-wells.json", value: indianWells },
+        { source: "grand-prairie.json", value: grandPrairie },
+      ]);
+
+      expect(result.ok).toBe(true);
+      if (result.ok) {
+        for (const story of result.value) {
+          expect(story.sections.map(({ type }) => type)).toEqual([
+            "client-story-announcement-hero",
+            "client-story-announcement-body",
+            "client-logos",
+            "client-story-cta",
+          ]);
+        }
+      }
+    });
+
     it("requires intrinsic logo dimensions", () => {
-      const card = Object.fromEntries(
-        Object.entries(cityOfCorona.card).filter(
-          ([key]) => key !== "logoWidth",
+      const logo = Object.fromEntries(
+        Object.entries(cityOfCorona.card.logo).filter(
+          ([key]) => key !== "width",
         ),
       );
+      const card = { ...cityOfCorona.card, logo };
       const result = buildClientStoryCollection([
         {
           source: "missing-logo-width.json",
@@ -106,12 +230,63 @@ describe("client story collection", () => {
 
       expect(result.ok).toBe(false);
       if (!result.ok) {
-        expect(result.errors.join("\n")).toContain("card.logoWidth");
+        expect(result.errors.join("\n")).toContain("card.logo.width");
       }
     });
   });
 
   describe("section prop validation", () => {
+    it("accepts a local PDF asset for a client-story download", () => {
+      expect(() =>
+        parseClientStoryImpactDownloadProps({
+          impact: {
+            eyebrow: "The impact",
+            title: "Measurable results",
+            paragraphs: ["The story's outcome."],
+          },
+          download: {
+            title: "Download the case study",
+            asset: "city-of-corona-one-page.pdf",
+            form: "book-a-demo",
+          },
+        }),
+      ).not.toThrow();
+    });
+
+    it("rejects a remote or non-PDF client-story download", () => {
+      expect(() =>
+        parseClientStoryImpactDownloadProps({
+          impact: {
+            eyebrow: "The impact",
+            title: "Measurable results",
+            paragraphs: ["The story's outcome."],
+          },
+          download: {
+            title: "Download the case study",
+            asset: "https://example.com/case-study.pdf",
+            form: "book-a-demo",
+          },
+        }),
+      ).toThrow();
+    });
+
+    it("rejects an unregistered HubSpot form for a client-story download", () => {
+      expect(() =>
+        parseClientStoryImpactDownloadProps({
+          impact: {
+            eyebrow: "The impact",
+            title: "Measurable results",
+            paragraphs: ["The story's outcome."],
+          },
+          download: {
+            title: "Download the case study",
+            asset: "city-of-corona-one-page.pdf",
+            form: "unregistered-form",
+          },
+        }),
+      ).toThrow(/registered HubSpot form name.*book-a-demo/);
+    });
+
     it("rejects unsupported challenge icon names", () => {
       expect(() =>
         parseClientStoryChallengeProps({
@@ -127,6 +302,30 @@ describe("client story collection", () => {
           ],
         }),
       ).toThrow();
+    });
+
+    it("rejects an empty client-story narrative", () => {
+      expect(() =>
+        parseClientStoryNarrativeProps({
+          title: "Search for a solution",
+          paragraphs: [],
+        }),
+      ).toThrow();
+    });
+
+    it("accepts solution phases without invented timeline labels", () => {
+      expect(() =>
+        parseClientStorySolutionProps({
+          eyebrow: "The solution",
+          title: "A solution",
+          phases: [
+            {
+              title: "Implementation",
+              description: "Implementation details",
+            },
+          ],
+        }),
+      ).not.toThrow();
     });
   });
 });

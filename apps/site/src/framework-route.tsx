@@ -1,4 +1,9 @@
 import { sitePrototypes, siteSummaries } from "@madison/sandbox/prototypes";
+import { findClientStoryByPath } from "@madison/sandbox/content/client-stories";
+import {
+  ClientStoryPage,
+  clientStoryMetadata,
+} from "@madison/sandbox/content/client-stories/page";
 import { NewsArticlePage } from "@madison/sandbox/content/news/page";
 import { newsArticleRouteData } from "@madison/sandbox/content/news/server";
 import { AppRoutes } from "./App";
@@ -22,9 +27,12 @@ export function loader({ request }: Route.LoaderArgs) {
   const pathname = new URL(request.url).pathname;
   const page = findPage(pathname);
   const origin = siteOrigin();
+  const story = findClientStoryByPath(pathname);
   const articleData = newsArticleRouteData(pathname, origin);
   return {
     page: page ?? null,
+    story: story ?? null,
+    storyMetadata: story ? clientStoryMetadata(story, origin) : null,
     article: articleData?.article ?? null,
     articleOgImage: articleData?.ogImage,
     origin,
@@ -51,6 +59,8 @@ export async function clientLoader({
   } catch {
     return {
       page: null,
+      story: null,
+      storyMetadata: null,
       article: null,
       articleOgImage: undefined,
       origin: new URL(request.url).origin,
@@ -60,6 +70,13 @@ export async function clientLoader({
 clientLoader.hydrate = true as const;
 
 export function meta({ data: loaderData }: Route.MetaArgs) {
+  if (loaderData?.story) {
+    return pageMeta(
+      loaderData.storyMetadata ?? loaderData.story.metadata,
+      loaderData.story.path,
+      loaderData.origin,
+    );
+  }
   if (loaderData?.article) {
     const { metadata, path } = loaderData.article;
     return pageMeta(
@@ -77,6 +94,9 @@ export function meta({ data: loaderData }: Route.MetaArgs) {
 }
 
 export default function FrameworkRoute({ loaderData }: Route.ComponentProps) {
+  if (loaderData.story) {
+    return <ClientStoryPage story={loaderData.story} />;
+  }
   if (loaderData.article) {
     return <NewsArticlePage article={loaderData.article} />;
   }

@@ -1,4 +1,9 @@
 import { ContentPage } from "../sections/renderer";
+import {
+  resolveClientStoryAsset,
+  resolveClientStoryImage,
+} from "./assets";
+import type { ClientStoryImage } from "./image";
 import type { ClientStoryDocument } from "./schema";
 
 const logoAssets = import.meta.glob<string>(
@@ -31,11 +36,32 @@ export function ClientStoryPage({ story }: { story: ClientStoryDocument }) {
 
 export function clientStoryLogo(
   story: ClientStoryDocument,
-): { src: string; alt: string; width: number; height: number } {
+): { src: string; alt: string; width: number; height: number } | undefined {
+  if (!story.card.logo) return undefined;
+
   return {
-    src: resolveLogo(story.card.logoAsset),
-    alt: story.card.logoAlt,
-    width: story.card.logoWidth,
-    height: story.card.logoHeight,
+    src: resolveLogo(story.card.logo.asset),
+    alt: story.card.logo.alt,
+    width: story.card.logo.width,
+    height: story.card.logo.height,
+  };
+}
+
+export function clientStoryCardPhoto(
+  story: ClientStoryDocument,
+): ClientStoryImage {
+  return resolveClientStoryImage(story.card.photo);
+}
+
+export function clientStoryMetadata(
+  story: ClientStoryDocument,
+  origin: string,
+) {
+  const { ogImageAsset, ...metadata } = story.metadata;
+  if (!ogImageAsset) return metadata;
+
+  return {
+    ...metadata,
+    ogImage: new URL(resolveClientStoryAsset(ogImageAsset), origin).toString(),
   };
 }
