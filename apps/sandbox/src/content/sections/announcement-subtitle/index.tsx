@@ -28,7 +28,7 @@ export default function AnnouncementSubtitleSection({
     <section className="bg-app px-gutter py-8">
       <div className="mx-auto max-w-3xl">
         <Reveal>
-          <p className="text-balance font-sans text-xl font-medium tracking-tight text-primary lg:text-2xl">
+          <p className="text-balance font-sans text-base font-medium tracking-tight text-primary lg:text-xl">
             {text}
           </p>
         </Reveal>

@@ -39,7 +39,7 @@ export default function AnnouncementHeroSection({
   photo,
 }: AnnouncementHeroProps) {
   return (
-    <section className="dark bg-app px-gutter pb-20 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark bg-app px-gutter pb-28 pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">{kicker}</Eyebrow>
