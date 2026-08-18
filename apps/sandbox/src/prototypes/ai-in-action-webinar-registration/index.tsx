@@ -1,13 +1,14 @@
-import { CalendarDays, CheckCircle2, Download } from "lucide-react";
-import { Button } from "@madison/ui/button";
-import { Input } from "@madison/ui/input";
-import { Label } from "@madison/ui/label";
+import { CheckCircle2, Download } from "lucide-react";
 import { Nav, Footer, ClientLogos } from "../landing/sections";
 import { Reveal, Eyebrow } from "../landing/parts";
+import { HubSpotForm } from "../../content/forms/HubSpotForm";
 
 // ============================================================================
-// AI in Action Webinar — Registration. Structured after
-// madisonai.com/peer-share-invite: a light hero pairing the invite copy with
+// AI in Action Webinar — Registration, published at /peer-share-invite (see
+// meta.ts). The form is the real HubSpot "webinar-registration" form (see
+// content/forms/hubspot.ts), embedded client-side inside the card shell.
+//
+// Structured after madisonai.com/peer-share-invite: a light hero pairing the invite copy with
 // a dark registration form card — the inverse of ../book-a-demo/index.tsx's
 // hero+form coloring, by explicit request for this page — then a "next
 // session" agenda card, the standard client-logo strip, and footer. Copy
@@ -58,27 +59,7 @@ function HeroAndFormSection() {
             <p className="mb-6 text-sm text-secondary">
               Fill in the form below and we'll send a standing calendar invite to every session.
             </p>
-            <form className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-1.5">
-                <Label htmlFor="webinar-first-name">First name*</Label>
-                <Input id="webinar-first-name" name="firstName" required />
-              </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="webinar-last-name">Last name*</Label>
-                <Input id="webinar-last-name" name="lastName" required />
-              </div>
-              <div className="space-y-1.5 sm:col-span-2">
-                <Label htmlFor="webinar-email">Organization email address*</Label>
-                <Input id="webinar-email" name="email" type="email" required />
-              </div>
-              <div className="space-y-1.5 sm:col-span-2">
-                <Label htmlFor="webinar-org">Government name and department*</Label>
-                <Input id="webinar-org" name="organization" required />
-              </div>
-              <Button type="submit" size="lg" className="sm:col-span-2">
-                Get My Invite <CalendarDays className="size-4" />
-              </Button>
-            </form>
+            <HubSpotForm form="webinar-registration" />
           </div>
         </Reveal>
       </div>

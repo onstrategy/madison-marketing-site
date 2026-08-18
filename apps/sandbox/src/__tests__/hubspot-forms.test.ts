@@ -26,7 +26,16 @@ describe("hubspot forms", () => {
 
     it("narrows registered names and rejects unknown ones", () => {
       expect(isHubSpotFormName("book-a-demo")).toBe(true);
+      expect(isHubSpotFormName("webinar-registration")).toBe(true);
       expect(isHubSpotFormName("not-a-registered-form")).toBe(false);
+    });
+
+    // Two entries pointing at the same HubSpot form would split its reporting
+    // and let the two drift apart; pages that share a form share its name.
+    it("registers each formId exactly once", () => {
+      const formIds = Object.values(HUBSPOT_FORMS).map((entry) => entry.formId);
+
+      expect(new Set(formIds).size).toBe(formIds.length);
     });
   });
 
