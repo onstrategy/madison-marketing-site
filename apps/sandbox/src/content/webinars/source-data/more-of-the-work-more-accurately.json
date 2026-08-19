@@ -1,0 +1,329 @@
+{
+  "id": "more-of-the-work-more-accurately",
+  "path": "/more-of-the-work-more-accurately/",
+  "order": 90,
+  "sourceUrl": "https://www.madisonai.com/more-of-the-work-more-accurately",
+  "capturedAt": "2026-08-18",
+  "sha256": "4edaeeef2d438d097bc3f060e1608be591366ebb5f404473026eb1af9a151668",
+  "metadata": {
+    "title": "Madison AI is Superpowered - Faster and Smarter!",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/more-of-the-work-more-accurately",
+    "openGraph": {
+      "title": "Madison AI is Superpowered - Faster and Smarter!",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "Madison AI is Superpowered. Faster and Smarter!",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69d20caae02f5c5fe5a3c60b_Smarter.avif",
+      "alt": "Madison AI is Superpowered. Faster and Smarter!"
+    }
+  },
+  "hero": {
+    "headings": [
+      "AI In Action Webinar",
+      "Madison AI is Superpowered. Faster and Smarter!"
+    ],
+    "sourceClasses": [
+      "pricing-v3",
+      "dark"
+    ]
+  },
+  "regions": [
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [
+        "In this week's AI In Action, we showcased FOUR exciting feature upgrades. The tool you use every day just got meaningfully better! Smarter routing, cleaner file handling, Spanish support, and PowerPoint export are all live."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Madison AI Handles More of the Work More Accurately",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Madison AI just graduated with an \"MBA\"! What that means in practice is that the tool is smarter at handling interactions and inference. You no longer have to pick the right agent or remember which workflow to use.",
+        "Type what you need into the prompt box, and the assistant figures out the rest. It reads your intent, selects the right workflow, and builds the output. Faster starts. Fewer steps. The same quality as you expect. Give it a try with a citizen newsletter, a voting history, or a code lookup."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "011 AI In Action: Madison AI Handles More of the Work - More Accurately",
+          "wistiaId": "gh9gli0b94",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fgh9gli0b94&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fgh9gli0b94&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F50d43afab73e4e3466a96bc61af0cf4f.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/50d43afab73e4e3466a96bc61af0cf4f.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Spanish Support Is Live. Other Languages Coming Soon.",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Staff can now use Madison AI in Spanish. To switch, go to your name in the bottom left corner, select your preferred language, and refresh. Source files stay in their original language. The AI translates the output. More languages are coming soon."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "011 AI In Action: Spanish Support Is Live. Other Languages Coming Soon.",
+          "wistiaId": "kyzv039bo0",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fkyzv039bo0&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fkyzv039bo0&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F69e73aa308d5f18281976a7eb79bbf36.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/69e73aa308d5f18281976a7eb79bbf36.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Less Friction in the Day-to-Day Flow",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Uploaded files now convert more accurately, so the AI reads and uses them with higher reliability. Tables, images, and complex document formats all work better. You can also drag and drop screenshots directly into the chat.",
+        "For planning staff working with site plans, permit documents, or mixed-format files, this removes a real daily friction point and produces more accurate outputs."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"It is like a quantum leap forward in how we can interact with data that we upload.\"",
+          "attribution": "Heyden Enochson, Head of GTM, Madison AI",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69d20bf82699aad3185c30ac_heyden.avif",
+            "alt": "Heyden Enochson, Head of GTM, Madison AI"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "011 AI In Action: Less Friction in the Day-to-Day Flow",
+          "wistiaId": "71bcpgqg97",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F71bcpgqg97&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F71bcpgqg97&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fdb7047681b4a661f5a03fe25a83b17d4.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/db7047681b4a661f5a03fe25a83b17d4.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Turn Research Output into a Presentation-Ready File.",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "When your research or draft is ready, ask Madison AI to generate a slide deck from your last chat. It builds the slides, writes speaker notes, and organizes the content. What used to take hours now takes one prompt. Please note - this feature is still in beta. Primary brand colors can be applied, but branded templates are not yet supported."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"It would've taken a couple of hours to put into an actual PowerPoint coming from somebody who spent a lot of my early career doing that. It now takes minutes.\"",
+          "attribution": "Kristine Richter, Head of Customer Success, Madison AI",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69c151ac0f31d4619586ead1_kristine.avif",
+            "alt": "Kristine Richter, Head of Customer Success, Madison AI"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "011 AI In Action: Turn Research Output into a Presentation-Ready File",
+          "wistiaId": "vb23g27nlq",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fvb23g27nlq&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fvb23g27nlq&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fe7e48438c56ed9582ff742c5c8702fc2.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/e7e48438c56ed9582ff742c5c8702fc2.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Watch the full webinar",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "Watch the full webinar",
+          "wistiaId": "pvksfvngcy",
+          "sourceUrl": "https://fast.wistia.net/embed/iframe/pvksfvngcy"
+        }
+      ],
+      "callouts": [],
+      "images": []
+    }
+  ],
+  "downloadUrls": []
+}

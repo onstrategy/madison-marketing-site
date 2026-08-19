@@ -1,0 +1,123 @@
+{
+  "id": "madison-ai-growth-momentum",
+  "path": "/madison-ai-growth-momentum/",
+  "order": 60,
+  "category": "Company",
+  "sourceUrl": "https://www.madisonai.com/madison-ai-growth-momentum",
+  "metadata": {
+    "title": "Named GovTech’s Most Innovative Solution, Madison AI Secures Funding to Continue Growth Momentum",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "Named GovTech’s Most Innovative Solution, Madison AI Secures Funding to Continue Growth Momentum",
+    "ogImageAsset": "public-records-crisis-social.jpg"
+  },
+  "card": {
+    "title": "Named GovTech’s Most Innovative Solution, Madison AI Secures Funding to Continue Growth Momentum",
+    "description": "Learn how we’re scaling to transform everyday work in local government",
+    "imageAsset": "madison-ai-growth-momentum-card.avif",
+    "imageAlt": "Madison AI growth and funding announcement"
+  },
+  "sections": [
+    {
+      "type": "article-hero",
+      "props": {
+        "category": "Company Update",
+        "title": "Named GovTech’s Most Innovative Solution, Madison AI Secures Funding to Continue Growth Momentum",
+        "image": {
+          "asset": "madison-ai-growth-momentum-hero.avif",
+          "alt": "Madison AI company growth announcement"
+        }
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "variant": "announcement",
+        "paragraphs": [
+          {
+            "content": [
+              {
+                "type": "link",
+                "text": "Read the Press Release here",
+                "href": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6931d559f51f24794760db62_e317d1df569798cf82ee3d80d7be0746_Madison%20AI_December%204%202025%20Release.pdf"
+              }
+            ],
+            "emphasis": true
+          },
+          "Local governments are increasing their use of purpose-built AI assistants that learn directly from their internal records and official enterprise data. In the last 18 months, nearly 50 agencies have enlisted Madison AI to support their daily administrative tasks, research, and report writing."
+        ]
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "variant": "announcement",
+        "heading": "This 700% increase in the adoption of Madison AI solutions reflects the deep interest in AI models that provide solutions specifically built for government data and use.",
+        "paragraphs": [
+          {
+            "content": [
+              "Madison AI, recently recognized with the “Most Innovative Solution” award at the 2025 State of GovTech PitchFest, is the local government-sector leader in AI solutions."
+            ],
+            "emphasis": true
+          },
+          "The Madison AI platform connects a government’s enterprise systems and internal documents into purpose-built AI assistants for the major internal administrative functions in local government. These assistants assist staff and elected officials in completing repetitive, document-heavy tasks with accuracy and consistency. Work tasks include preparing staff reports, completing zoning verification letters, drafting RFPs, and supporting a board or council’s decision-making process."
+        ]
+      }
+    },
+    {
+      "type": "article-quote",
+      "props": {
+        "quote": "“Governments want AI that reflects how their organizations actually work. Off-the-shelf tools have value, but only purpose-built AI from their data and records can actually tackle the specialized and nuanced work governments complete every day. Madison AI is taking the theory out of AI and delivering valuable results.”",
+        "attribution": "Erica Olsen, CEO of Madison AI",
+        "portrait": {
+          "asset": "erica-olsen-headshot.jpg",
+          "alt": "Erica Olsen"
+        }
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "variant": "announcement",
+        "paragraphs": [
+          "The demand for integrated AI has contributed to Madison AI’s rapid growth. Recent customer additions include Addison, TX, Santa Clara Valley Water Authority, CA, City of Fresno, CA, Washoe County, NV, City of Las Vegas, NV, and City of Aspen, CO. Two-thirds of Madison AI’s customers expanded their work to create additional assistants as they experienced the results of initial deployments of the technology."
+        ]
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "variant": "announcement",
+        "heading": "To support continued deployments and product development, Madison AI recently secured a seed funding round and new investments from CreativeCo Capital, BarronKent Ventures, GovTech Ventures, and other leading GovTech veterans like Tom Spengler, Javier Muniz and Rachel Stern."
+      }
+    },
+    {
+      "type": "article-quote",
+      "props": {
+        "quote": "“Madison AI is redefining how local governments operate by providing skilled AI agents that reflect the Madison team's deep understanding of public sector workflows. Their platform doesn’t just automate work; it greatly empowers staff and puts public service at the forefront of every decision. We’re excited to support their mission to modernize government operations nationwide.”",
+        "attribution": "Travis Parsons, managing partner of CreativeCo Ventures",
+        "portrait": {
+          "asset": "travis-parsons.avif",
+          "alt": "Travis Parsons"
+        }
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "variant": "announcement",
+        "paragraphs": [
+          "Washoe County, NV, co-created Madison AI to bring tailored AI solutions to local government. Madison AI’s assistants and agents are purpose-built for the major internal operating functions of local governments. Madison AI's platform builds a government’s AI solely from its data, uniting decades of records from enterprise systems and internal documents into assistants that augment staff and elected officials in completing complex, document-heavy work with accuracy and consistency. AI agents generate staff reports, zoning verification letters, and RFPs."
+        ]
+      }
+    },
+    { "type": "client-logos", "props": {} },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form below, and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

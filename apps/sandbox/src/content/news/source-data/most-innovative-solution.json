@@ -1,0 +1,241 @@
+{
+  "id": "most-innovative-solution",
+  "order": 90,
+  "category": "Company",
+  "classification": "announcement",
+  "implementationStatus": "pending",
+  "sourceUrl": "https://www.madisonai.com/most-innovative-solution",
+  "capturedAt": "2026-08-18",
+  "metadata": {
+    "title": "Madison AI Awarded Most Innovative Solution at the 2025 State of GovTech PitchFest - Madison AI",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/most-innovative-solution",
+    "openGraph": {
+      "title": "Madison AI Awarded Most Innovative Solution at the 2025 State of GovTech PitchFest - Madison AI",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "Madison AI Awarded Most Innovative Solution at the 2025 State of GovTech PitchFest",
+    "description": "This award is welcomed as we’re working hard on client deployments",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/693035520a6419e24ee3e565_Award.avif",
+      "alt": null
+    }
+  },
+  "regions": [
+    {
+      "role": "hero",
+      "sourceClasses": [
+        "pricing-v3",
+        "dark"
+      ],
+      "sourceSummary": {
+        "title": "Award",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Award",
+          "level": 3
+        },
+        {
+          "kind": "heading",
+          "text": "Madison AI Awarded Most Innovative Solution at the 2025 State of GovTech PitchFest",
+          "level": 2
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6931cfb3dde4c63aef84935b_CivStart.avif",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "body",
+      "sourceClasses": [
+        "pricing-01",
+        "light-gray",
+        "adjusted-top",
+        "article-top"
+      ],
+      "sourceSummary": {
+        "title": "Congratulations to Madison AI for being awarded Most Innovative Solution at the 2025 State of GovTech PitchFest, an annual competition hosted by Government Technology and CivStart ! Held in Arlington County, Virginia, the event brought together public-sector leaders, investors, and startup founders committed to shaping the future of government.",
+        "description": "Each year, promising GovTech startups present their solutions to a panel of judges made up of government employees, industry experts, and investors. In 2025, 24 companies were evaluated, and Madison AI was selected as one of three winners recognized for advancing meaningful innovation in the public sector."
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Congratulations to Madison AI for being awarded Most Innovative Solution at the 2025 State of GovTech PitchFest, an annual competition hosted by Government Technology and CivStart! Held in Arlington County, Virginia, the event brought together public-sector leaders, investors, and startup founders committed to shaping the future of government.",
+          "links": [
+            {
+              "text": "Government Technology",
+              "href": "https://www.govtech.com/"
+            },
+            {
+              "text": "CivStart",
+              "href": "https://www.civstart.org/"
+            }
+          ],
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "Each year, promising GovTech startups present their solutions to a panel of judges made up of government employees, industry experts, and investors. In 2025, 24 companies were evaluated, and Madison AI was selected as one of three winners recognized for advancing meaningful innovation in the public sector."
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+          "alt": null,
+          "sourceClasses": [
+            "quote-photo"
+          ]
+        },
+        {
+          "kind": "heading",
+          "text": "“This recognition is an immense honor for our team. The competition highlighted the creativity and dedication driving the GovTech community. We appreciate being acknowledged among such thoughtful innovators, and we’re energized to keep building tools that help government teams work smarter.”",
+          "segments": [
+            "“This recognition is an immense honor for our team. The competition highlighted the creativity and dedication driving the GovTech community.",
+            "We appreciate being acknowledged among such thoughtful innovators, and we’re energized to keep building tools that help government teams work smarter.”"
+          ],
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "Erica Olsen, CEO of Madison AI"
+        },
+        {
+          "kind": "link",
+          "text": "Book a Demo Book a Demo",
+          "href": "https://www.madisonai.com/demo"
+        },
+        {
+          "kind": "paragraph",
+          "text": "The State of GovTech Conference celebrates the innovators reimagining the possibilities of government. Madison AI’s recognition as Most Innovative Solution reflects the company’s commitment to building AI that empowers public servants in their daily work."
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "trust",
+      "sourceClasses": [
+        "partner"
+      ],
+      "sourceSummary": {
+        "title": "Used and trusted by 65+ local governments and counting",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Used and trusted by 65+ local governments and counting",
+          "level": 4
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "demo",
+      "sourceClasses": [
+        "cta"
+      ],
+      "sourceSummary": {
+        "title": "Book a demo today",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Book a demo today",
+          "level": 2
+        }
+      ],
+      "embeddedForms": [
+        {
+          "provider": "hubspot",
+          "portalId": "54493",
+          "formId": "02ee5553-47ab-4482-869f-f9ea20ae5f74",
+          "region": "na1"
+        },
+        {
+          "provider": "calendly-form-builder",
+          "submissionUrl": "https://calendly.com/api/form_builder/forms/0fed8b94-bc40-4f3e-a1c2-e6ee38e217dd/submissions"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6931cfb3dde4c63aef84935b_CivStart.avif",
+      "bytes": 70502,
+      "sha256": "4a1d0192edf8e40cfed2264ff22c41daaa4f72166c058b03703a1a499cf7e8e7",
+      "extension": "avif",
+      "width": 1200,
+      "height": 816,
+      "usages": [
+        {
+          "region": "hero",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+      "bytes": 212927,
+      "sha256": "881abaefe0d5f3bd3783d431dc752d29b9d589d252bec26c5ced11abfad7dde3",
+      "extension": "png",
+      "width": 603,
+      "height": 603,
+      "usages": [
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "quote-photo"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg",
+      "bytes": 371291,
+      "sha256": "040a4c4fb3773fa0ace5b80db11639bd4e17b5b8fb3db86cdeaece9661b23eba",
+      "extension": "jpg",
+      "width": 1200,
+      "height": 630,
+      "usages": [
+        {
+          "region": "metadata",
+          "source": "open-graph",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/693035520a6419e24ee3e565_Award.avif",
+      "bytes": 19798,
+      "sha256": "bc2a26601abcfff6c00c69e8d4f6af142e3555e51f5cbff6a1e205a977ee7314",
+      "extension": "avif",
+      "width": 1920,
+      "height": 1080,
+      "usages": [
+        {
+          "region": "collection-card",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    }
+  ]
+}

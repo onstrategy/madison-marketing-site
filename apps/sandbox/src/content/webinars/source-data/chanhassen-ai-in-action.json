@@ -1,0 +1,385 @@
+{
+  "id": "chanhassen-ai-in-action",
+  "path": "/chanhassen-ai-in-action/",
+  "order": 70,
+  "sourceUrl": "https://www.madisonai.com/chanhassen-ai-in-action",
+  "capturedAt": "2026-08-18",
+  "sha256": "cc03d159c0cb8ba60a0ffda2d59d5ca9ff399991653ea99f1d563971714f2aaf",
+  "metadata": {
+    "title": "How Chanhassen Turned Trusted AI into Institutional Memory and Faster Staff Throughput",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/chanhassen-ai-in-action",
+    "openGraph": {
+      "title": "How Chanhassen Turned Trusted AI into Institutional Memory and Faster Staff Throughput",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "How Chanhassen Turned Trusted AI into Institutional Memory and Faster Staff Throughput",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69ea2fb95358d37a80988955_chanhassen.avif",
+      "alt": "How Chanhassen Turned Trusted AI into Institutional Memory and Faster Staff Throughput"
+    }
+  },
+  "hero": {
+    "headings": [
+      "AI In Action Webinar",
+      "How Chanhassen Turned Trusted AI into Institutional Memory and Faster Staff Throughput"
+    ],
+    "sourceClasses": [
+      "pricing-v3",
+      "dark"
+    ]
+  },
+  "regions": [
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Preserving Institutional Knowledge",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "The City of Chanhassen used Madison AI to prevent institutional knowledge from walking out the door during major staff transitions—especially in Community Development. Instead of relying on paper files, shared drives, or “who remembers what,” staff can search project history and instantly pull the trail of decisions, approvals, and supporting documents.",
+        "That compresses onboarding time for new staff, reduces dependency on a few long-tenured employees, and keeps projects moving even when timelines stall and restart."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“We had three staff members who had 30 years of experience retire within two or three months. That is a… context history that we were losing walking out the door.”",
+          "attribution": "Matt Unmacht, Assistant City Manager",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303823ee8cbf73e2d0a136_a4ec4337fc64f43a9df54ef801baa60f_Matt.png",
+            "alt": "Matt Unmacht, Assistant City Manager"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "002 AI In Action w/Chanhassen: Preserving institutional knowledge",
+          "wistiaId": "cfjdm6fce8",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fcfjdm6fce8&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fcfjdm6fce8&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F41f0e49074b46ff50f33d70e06238303.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/41f0e49074b46ff50f33d70e06238303.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Outside-In Learning for Chanhassen: A Madison AI Scan of Peer Communities",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Benchmarking shouldn’t run on inbox timelines. Matt showed how Chanhassen uses Madison’s web browsing capability to benchmark peer communities faster—without waiting weeks for email replies and follow-ups.",
+        "This is especially useful for time-sensitive policy work like new ordinances, compensation benchmarking, and regulatory comparisons. The result is quicker drafting, better-informed recommendations, and less stalling while staff “gather inputs.”"
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“I can’t tell you how often in the past I’ve crafted emails… and then you wait two weeks, three weeks to get any responses.”",
+          "attribution": "Matt Unmacht, Assistant City Manager"
+        }
+      ],
+      "videos": [
+        {
+          "title": "002 AI In Action w/Chanhassen: Scan of peer communities",
+          "wistiaId": "d3p1vkcyhr",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fd3p1vkcyhr&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fd3p1vkcyhr&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F073e3e0a2316c9bba1f85a104593f0e2.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/073e3e0a2316c9bba1f85a104593f0e2.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Staff Report Writing",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "The fastest way to improve staff reports is to remove the repetitive work. Chanhassen uses Madison AI to draft staff reports in their standard council-ready format (Summary, Background, Discussion, Budget, Recommendation).",
+        "This turns recurring agenda prep from hours into minutes—while still keeping staff accountable to review and finalize details. The net impact is faster packet production, more consistent quality, and more staff time spent on judgment and recommendations."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“You can say shorten this by one paragraph… and it can just quickly update just that section.”",
+          "attribution": "Matt Unmacht, Assistant City Manager"
+        }
+      ],
+      "videos": [
+        {
+          "title": "002 AI In Action w/Chanhassen: Staff report writing",
+          "wistiaId": "nv6c02usoq",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fnv6c02usoq&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fnv6c02usoq&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F040e6c355c050aa55285a36e07d14dc2.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/040e6c355c050aa55285a36e07d14dc2.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "No Information Found",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Kristine shared a best practice for when Madison returns “no information found.” The takeaway is that this often reflects how the search is being run (agent scope), not necessarily that the data is missing. Customers should thumbs-down the result to flag it for the Madison team, then use the Deep Research agent to scan the full index. This reduces dead ends, increases citation coverage, and helps teams retrieve the right source material—especially in large indexes with tens of thousands of files."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“With deep research, it’s actually looking at every single file in your data index.”",
+          "attribution": "Kristine Richter, Head of Client Success, Madison AI",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69c151ac0f31d4619586ead1_kristine.avif",
+            "alt": "Kristine Richter, Head of Client Success, Madison AI"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "002 AI In Action: No information found",
+          "wistiaId": "89cxczxrfl",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F89cxczxrfl&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F89cxczxrfl&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F976ccd35e911d9ddca156df4933a0e11.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/976ccd35e911d9ddca156df4933a0e11.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Adding Madison to Your Phone",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "The team closed with a practical adoption play: install Madison AI as a home-screen app for on-the-go access. This matters for fieldwork, quick pre-meeting refreshers, and answering questions while moving between sites and sessions.",
+        "Download Instructions"
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“With deep research, it’s actually looking at every single file in your data index.”",
+          "attribution": "Kristine Richter, Head of Client Success, Madison AI"
+        }
+      ],
+      "videos": [
+        {
+          "title": "002 AI In Action: Adding Madison to your Phone",
+          "wistiaId": "4xvpasfpq8",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F4xvpasfpq8&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F4xvpasfpq8&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fb200f4c650306198325532b1d4e91ec9.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/b200f4c650306198325532b1d4e91ec9.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Watch the full webinar",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "Watch the full webinar",
+          "wistiaId": "dymldf6yge",
+          "sourceUrl": "https://fast.wistia.net/embed/iframe/dymldf6yge"
+        }
+      ],
+      "callouts": [],
+      "images": []
+    }
+  ],
+  "downloadUrls": []
+}

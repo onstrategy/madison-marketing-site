@@ -1,6 +1,8 @@
 import { siteSummaries } from "@madison/sandbox/prototypes";
 import { clientStories } from "@madison/sandbox/content/client-stories";
 import { newsArticles } from "@madison/sandbox/content/news";
+import { webinars } from "@madison/sandbox/content/webinars";
+import { responsibleAiResources } from "@madison/sandbox/content/responsible-ai";
 import { siteOrigin } from "../site-origin.server";
 
 function trailingSlash(path: string): string {
@@ -28,8 +30,20 @@ export function loader() {
   const newsPaths = newsArticles
     .filter((article) => !article.metadata.noindex)
     .map((article) => article.path);
+  const webinarPaths = webinars
+    .filter((webinar) => !webinar.metadata.noindex)
+    .map((webinar) => webinar.path);
+  const responsibleAiPaths = responsibleAiResources
+    .filter((resource) => !resource.metadata.noindex)
+    .map((resource) => resource.path);
   const paths = [
-    ...new Set([...prototypePaths, ...storyPaths, ...newsPaths]),
+    ...new Set([
+      ...prototypePaths,
+      ...storyPaths,
+      ...newsPaths,
+      ...webinarPaths,
+      ...responsibleAiPaths,
+    ]),
   ].sort();
   const urls = paths
     .map((path) => {

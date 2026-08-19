@@ -1,0 +1,173 @@
+{
+  "id": "flashvote-ai-in-action",
+  "path": "/flashvote-ai-in-action/",
+  "order": 120,
+  "sourceUrl": "https://www.madisonai.com/flashvote-ai-in-action",
+  "metadata": {
+    "title": "How FlashVote Creates Smoother Meetings for Everyone",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "Smoother Meetings for Everyone - AI In Action Webinar",
+    "ogImageAsset": "madison-webinar-og.jpg"
+  },
+  "card": {
+    "title": "How FlashVote Creates Smoother Meetings for Everyone",
+    "imageAsset": "flashvote-ai-in-action-card.avif",
+    "imageAlt": "How FlashVote Creates Smoother Meetings for Everyone"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "Fewer Surprises at the Dais. Smoother Meetings for Everyone."
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Public Decision-Making Process",
+        "paragraphs": [
+          "Better decisions come from better structure—not louder debate. The session opened with a practical reset: public decision-making works best when it’s treated as a repeatable process, not a personality contest.",
+          "The core move is breaking big, politicized questions into smaller ones that are easier to answer cleanly and publicly. Create clarity before solutions, tradeoffs, or votes."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"What’s the problem we’re trying to solve? If you start there, that’s literally 60–70% of the work.\"",
+            "attribution": "Kevin Lyons, CEO, FlashVote",
+            "portrait": {
+              "asset": "kevin-lyons-ceo-flashvote-2e91f2a6.avif",
+              "alt": "Kevin Lyons, CEO, FlashVote"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "008 AI In Action: FlashVote - Public Decision-Making Process",
+            "wistiaId": "71seorw4ty"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Overview of the Public Meeting Assistant",
+        "paragraphs": [
+          "A meeting-specific notebook that reduces chaos before and after the dais. We introduced the Public Meeting Assistant, co-created with FlashVote, as a purpose-built module designed to support staff and meeting workflows with meeting-specific context—not generic chat.",
+          "Think one “notebook” per meeting, with pre-meeting and post-meeting materials built around the official record. The intent is simple: align staff and officials on the same baseline so the meeting runs cleaner and the follow-up is faster."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“AI generates a lot of content. Generating good content is what we’re really all about, and this is really about making good decisions.\"",
+            "attribution": "Erica Olsen, CEO, Madison AI",
+            "portrait": {
+              "asset": "erica-olsen-ceo-madison-ai-220d8018.png",
+              "alt": "Erica Olsen, CEO, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "008 AI In Action: FlashVote - Overview of the Public Meeting Assistant",
+            "wistiaId": "jv0gccg3wr"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Pre-Meeting Agents",
+        "paragraphs": [
+          "Everyone walks in prepared—because the packet gets translated into decision-ready signals. Pre-meeting agents pull from the agenda management system—official agenda plus attachments—and convert the packet into usable preparation.",
+          "The output is a cheat sheet: highlights, items of consequence, and quick context so officials aren’t cold-starting at the dais. That matters because preparation reduces repeat questions, sidetracks, and last-minute surprises."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“Literally, when you’re driving to the meeting… this is what they would pull up to refresh if they’re not fully up to speed.”",
+            "attribution": "Kevin Lyons, CEO, FlashVote"
+          }
+        ],
+        "videos": [
+          {
+            "title": "008 AI In Action: FlashVote - Pre-Meeting Agents",
+            "wistiaId": "abreuv5xfr"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Post-Meeting Agents",
+        "paragraphs": [
+          "Turn hours of follow-up into a fast, usable review built from the transcript. Post-meeting outputs are then cleaned for accuracy so staff aren’t fighting misspellings, acronyms, and noise. Agents generate what people actually need right after the meeting: voting summaries, meeting detail, internal recap formats, citizen-facing highlights, and follow-up tasks.",
+          "The guardrail stays firm: AI helps draft, but humans approve—especially where “minutes” are a legal term."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“Everyone cares. They’re just really busy. What could you give them in a couple minutes as a highlight?”",
+            "attribution": "Kevin Lyons, CEO, FlashVote"
+          }
+        ],
+        "videos": [
+          {
+            "title": "008 AI In Action: FlashVote - Post-Meeting Agents",
+            "wistiaId": "mvxmx2pqi9"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Fact Checking Agents",
+        "paragraphs": [
+          "Replay and search meeting conversations fast—so “Did I say that?” becomes answerable. We highlighted fact checking as a practical tool for high-scrutiny environments, especially when staff are asked to verify what was discussed, decided, or claimed across meetings. Instead of rewatching hours of video, you can search and pull the relevant passages quickly, then validate with a human in the loop. This is where institutional memory stops living only in a few people’s heads.",
+          "Get cited answers in seconds—because trust requires receipts. The session closed on what really builds confidence with residents and stakeholders: defensible answers grounded in the source record. When pressure hits, speed helps, but citations are what protect credibility. The point isn’t just finding an answer—it’s producing the receipts that show how the decision was made and why it holds up."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“We have your institutional knowledge… and what’s so cool is there’s a lot we can do with that—particularly with what’s happening in council chambers today.”",
+            "attribution": "Erica Olsen, CEO, Madison AI"
+          },
+          {
+            "quote": "“That's what the residents want to see. That's like the trust bomb.”",
+            "attribution": "Kevin Lyons, CEO, FlashVote"
+          }
+        ],
+        "videos": [
+          {
+            "title": "008 AI In Action: FlashVote - Fact Checking Agents",
+            "wistiaId": "qivuafz5ju"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Watch the full webinar",
+        "videoTitle": "Watch the full webinar",
+        "wistiaId": "054fpe7uw7"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

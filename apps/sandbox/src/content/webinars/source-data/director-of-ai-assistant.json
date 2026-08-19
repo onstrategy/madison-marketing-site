@@ -1,0 +1,439 @@
+{
+  "id": "director-of-ai-assistant",
+  "path": "/director-of-ai-assistant/",
+  "order": 20,
+  "sourceUrl": "https://www.madisonai.com/director-of-ai-assistant",
+  "capturedAt": "2026-08-18",
+  "sha256": "576eca05d5a9587c75ed9d5def83ce5015f97062cda4bd98d97d8a309b382a32",
+  "metadata": {
+    "title": "The Director's Playbook to Put Your AI Assistant to Work",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/director-of-ai-assistant",
+    "openGraph": {
+      "title": "The Director's Playbook to Put Your AI Assistant to Work",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "The Director's Playbook to Put Your AI Assistant to Work",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a5e47c89431f47c8ce666a9_c269200460d1f2bb7110910c1271c202_July%2016%20-%20Cover.avif",
+      "alt": "The Director's Playbook to Put Your AI Assistant to Work"
+    }
+  },
+  "hero": {
+    "headings": [
+      "AI In Action Webinar",
+      "The Director's Playbook to Put Your AI Assistant to Work"
+    ],
+    "sourceClasses": [
+      "pricing-v3",
+      "dark"
+    ]
+  },
+  "regions": [
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [
+        "Five real work tasks. A new set of downloadable Task Cards you can use to put your AI Assistant to work every day!",
+        "Yesterday’s AI in Action was all about making Madison your everyday assistant. The room was full of executives, planners, PIOs, and analysts from cities, counties, and special districts all over the country, and the feedback was great. The conversation kept pointing to:",
+        "‍When you have an AI assistant, you are the director. Not the doer. ‍ Directing is a different muscle than doing, and it is the whole game.Instead of a rehearsed pitch, Kristine and Erica walked through five real work tasks end to end. Not demos. The actual work your team already has to get done."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Legislative history memo",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "An assistant city manager in Las Vegas needed the full legislative history of Fremont Street for a memo. The answer did not come from hours in SharePoint. It came from asking Madison directly, then pushing back: How confident are you? What are the data gaps? Once the research was solid, the output took seconds. Email straight from the chat, copy-paste with formatting intact, or export to Word or PowerPoint."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"Use this as an assistant, not as a Google search box that we're all so used to. So I ask it, how confident are you in this answer?\"",
+          "attribution": "Erica Olsen, Madison AI",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+            "alt": "Erica Olsen, Madison AI"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "019_AI In Action: Legislative history memo",
+          "wistiaId": "qbfgb0jyo9",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fqbfgb0jyo9&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fqbfgb0jyo9&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F15d2ec4df25e24fc3a3eb5a2be1342c4.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/15d2ec4df25e24fc3a3eb5a2be1342c4.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Approval process letter for a resident",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "A planner needs to explain a zoning approval process to a resident. The next step is to ask Madison to ask you clarifying questions first, then step through the answer instead of trying to get everything in one prompt. Ask about the zoning, then the approval process, then a resident-ready letter. It is the same coaching you would give a new hire. And always confirm the citations point to code, not to a council packet or minutes."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "019_AI In Action: Approval process letter for a resident",
+          "wistiaId": "dil5upc5js",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fdil5upc5js&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fdil5upc5js&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F5e1db5c42002525a3bc1f92611765d70.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/5e1db5c42002525a3bc1f92611765d70.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Council presentation prep",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Using Johns Creek, Georgia as the example, we asked Madison to pull the voting history on a contested item (the Metlock Bridge), flag where council was aligned or divided, and build a prep checklist. The result was a clear picture of council sentiment and a list of likely questions, tackled one at a time rather than all at once. This is where Madison moves from research assistant to thinking partner."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "019_AI In Action: Council presentation prep",
+          "wistiaId": "pbyqpnv2fn",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fpbyqpnv2fn&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fpbyqpnv2fn&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F979b98f31f496e8e649b140b46e8c9fa.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/979b98f31f496e8e649b140b46e8c9fa.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Site plan compliance review",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Using Golden, Colorado's Planning & Zoning model and a 16th Street site plan, we ran the Review Site Plans agent. It read the fine print, checked the plan against code, and produced a checklist of what was missing. In one example, the agent caught that a plan listed zero trees when code required two: ready-made language for a letter back to the developer. Anything geospatial still needs a human eye against the drawing."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "019_AI In Action: Site plan compliance review",
+          "wistiaId": "d7yq1pi0w3",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fd7yq1pi0w3&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fd7yq1pi0w3&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fd9dc6dadfd9963c530d1cbe7bc057430.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/d9dc6dadfd9963c530d1cbe7bc057430.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "On-Demand Tasks",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Free forming a prompt works when you are exploring. When accuracy matters, use a pre-built agent. Code Lookup for code. Anticipated Questions for electeds. Newsletter for transcripts. Each agent has a process built for that task, so you are not fighting the AI to search the right folders.",
+        "And when Madison genuinely does not have the answer in your own index, like details on a neighboring jurisdiction, it says so plainly and offers to search the web instead. That is the boundary: your model knows your city's data. Cross-jurisdiction comparisons pull from an outside layer, clearly labeled."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"Our goal is not to fight with the AI. If you wanna be certain, use one of the pre-built agents.\"",
+          "attribution": "Erica Olsen, Madison AI",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+            "alt": "Erica Olsen, Madison AI"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "019_AI In Action: On-Demand Tasks",
+          "wistiaId": "4gciszo0ww",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F4gciszo0ww&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F4gciszo0ww&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Ff213d36aec763f983204b83632d3d627.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/f213d36aec763f983204b83632d3d627.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Best practices that showed up in every task",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "These are the director skills."
+      ],
+      "listItems": [
+        {
+          "text": "Ask what data Madison has first. Date ranges, most recent transcript, most recent code update. Do not assume.",
+          "label": "Ask what data Madison has first."
+        },
+        {
+          "text": "Ask Madison to ask you questions. \"Ask me what you need to know before you answer.\" A better first draft every time.",
+          "label": "Ask Madison to ask you questions."
+        },
+        {
+          "text": "Use pre-built agents when accuracy matters. Freeform when exploring.",
+          "label": "Use pre-built agents"
+        },
+        {
+          "text": "Step it, do not stack it. One task at a time.",
+          "label": null
+        },
+        {
+          "text": "Verify the citation, not just the answer. If it references a packet when it should reference code, push back.",
+          "label": "Verify the citation, not just the answer."
+        },
+        {
+          "text": "Ask for confidence and gaps. \"How confident are you?\" and \"What data gaps should I be aware of?\" work every time.",
+          "label": "Ask for confidence and gaps."
+        },
+        {
+          "text": "Use it as a thinking partner. \"What have I not thought about?\" is a prompt worth memorizing.",
+          "label": "Use it as a thinking partner."
+        }
+      ],
+      "quotes": [],
+      "videos": [],
+      "callouts": [
+        {
+          "text": "Take it to your team We turned all five workflows into printable Task Cards. Setup, the play, confidence checks, watch-outs, and other tasks the same play adapts to. One card per workflow. Full Name Organization e-mail address* Thank you! Your submission has been received! Oops! Something went wrong while submitting the form.",
+          "links": []
+        }
+      ],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69f1a69cfba2df87987053e4_arrow-blue.svg",
+          "alt": null,
+          "sourceClasses": [
+            "bullet-icon",
+            "blue"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Full Session Video",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "019_AI In Action: On Call, On Demand: Making Madison AI Your Everyday Assistant (full session)",
+          "wistiaId": "70j0jpi72x",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F70j0jpi72x&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F70j0jpi72x&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fa225989c8855ccd6dfc2c984d779fe71.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/a225989c8855ccd6dfc2c984d779fe71.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    }
+  ],
+  "downloadUrls": [
+    "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a5e4665496cc7bd60512484_Madison%20AI_Task%20Cards_Vol.1.pdf"
+  ]
+}

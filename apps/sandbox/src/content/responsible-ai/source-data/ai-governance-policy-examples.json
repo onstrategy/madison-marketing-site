@@ -1,0 +1,577 @@
+{
+  "capturedAt": "2026-08-18",
+  "order": 6,
+  "path": "/resources/ai-governance-policy-examples",
+  "card": {
+    "imageAlt": "16 AI Governance Policy Examples",
+    "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b403f101e4ace348387c_Cover-example.jpg",
+    "path": "/resources/ai-governance-policy-examples",
+    "title": "16 AI Governance Policy Examples"
+  },
+  "author": "Heyden Enochson",
+  "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+  "documentTitle": "16 AI Governance Policy Examples - Madison AI",
+  "mediaUrls": [
+    "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/692968efc3ae4758ea646bbd_Cover-governance-miro.jpg",
+    "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b403f101e4ace348387c_Cover-example.jpg",
+    "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b5ecf2d953c339b19306_Cover-blueprint.jpg"
+  ],
+  "related": [
+    {
+      "description": "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive.",
+      "href": "/resources/the-free-miro-template-to-build-your-ai-governance-policy",
+      "imageAlt": "The Free Miro Template to Build Your AI Governance Policy",
+      "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/692968efc3ae4758ea646bbd_Cover-governance-miro.jpg",
+      "title": "The Free Miro Template to Build Your AI Governance Policy"
+    },
+    {
+      "href": "/resources/ai-governance-policy-examples",
+      "imageAlt": "16 AI Governance Policy Examples",
+      "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b403f101e4ace348387c_Cover-example.jpg",
+      "title": "16 AI Governance Policy Examples"
+    },
+    {
+      "description": "See the 4 steps to build your AI governance blueprint to incorporate AI into your government ethically.",
+      "href": "/resources/ai-governance-blueprint",
+      "imageAlt": "AI Governance Blueprint: A Guide to Ethical AI in Local Government",
+      "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b5ecf2d953c339b19306_Cover-blueprint.jpg",
+      "title": "AI Governance Blueprint: A Guide to Ethical AI in Local Government"
+    }
+  ],
+  "sourceUrl": "https://www.madisonai.com/resources/ai-governance-policy-examples",
+  "title": "16 AI Governance Policy Examples",
+  "unsupported": [],
+  "blocks": [
+    {
+      "content": [
+        "Welcome to our post on examples of AI Policies. In this post, we will give a quick refresher on what should be in a complete AI Governance Policy and provide you with x real-world examples from other regional governments."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Let’s jump in."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Refresher: What Should be Included in Your AI Governance Policy?"
+      ],
+      "level": 2,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "We covered this in detail in our overview post on building your AI Governance Policy, but here is a quick refresher on what should be included in your government’s AI Policy:"
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "1. Define AI Guiding Principles"
+      ],
+      "level": 4,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "You must identify core AI guiding principles that align with your government’s values and ethics. These principles will guide decision-making and AI technologies’ development, deployment, and use."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "2. Establish AI Governance Structure"
+      ],
+      "level": 4,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "Set up a governance structure tailored to your organization’s size and needs. This includes a governing group to manage AI and its guardrails, addressing data governance and cybersecurity."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "3. Form an AI Oversight Committee"
+      ],
+      "level": 4,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "Create a committee responsible for overseeing ethical guidelines and compliance for AI initiatives. This group ensures AI projects align with ethical standards and protect organizational assets like data and intellectual property."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "4. Identify Risks and Implement Ongoing Monitoring"
+      ],
+      "level": 4,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "Conduct a risk assessment to identify potential negative impacts of AI. Collaborate with AI experts, legal advisors, and security teams to develop risk mitigation strategies, supporting your legal framework for risk management."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "5. Create an AI Learning Hub"
+      ],
+      "level": 4,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "Establish a space for your team to experiment and share AI learnings. This hub promotes transparency, ensures compliance, and prevents duplication of efforts. Include key performance indicators to measure the impact of AI initiatives."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "6. Develop a Communication Strategy."
+      ],
+      "level": 4,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "Determine the mediums and methods to inform your government team about AI developments and practices. Effective communication is vital for maintaining transparency and ensuring everyone is aligned with your AI strategy."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Examples of Great AI Policies"
+      ],
+      "level": 2,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "The City of San Jose, CA"
+      ],
+      "level": 2,
+      "type": "heading"
+    },
+    {
+      "content": [
+        {
+          "href": "https://www.sanjoseca.gov/home/showpublisheddocument/100095/638314083307070000",
+          "text": "See Their Generative AI Policy",
+          "type": "link"
+        }
+      ],
+      "level": 4,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "The City of San Jose has outlined their policies and procedures in a document called Generative AI Guidelines. Make sure you check out the full document, but we really appreciated these call-outs and rules that need to be followed as their government uses AI:"
+      ],
+      "type": "paragraph"
+    },
+    {
+      "items": [
+        [
+          "Information you enter into Generative AI systems could be subject to a Public Records Act (PRA) request, may be viewable and usable by the company, and may be leaked unencrypted in a data breach."
+        ],
+        [
+          "Review, revise, and fact check via multiple sources any output from a Generative AI. Users are responsible for any material created with AI support."
+        ],
+        [
+          "Cite and record your usage of Generative AI. See how and when to cite in the “Citing Generative AI” section. Record when you use Generative AI through this form."
+        ],
+        [
+          "Create an account just for City use to ensure public records are kept separate from personal records."
+        ],
+        [
+          "Departments may provide additional rules around Generative AI."
+        ],
+        [
+          "Refer to this document quarterly, as guidance will change with the technology, laws, and industry best practices."
+        ],
+        [
+          "Users are encouraged to participate in the City’s established workgroups to help advance AI usage best practice in the City and enhance the Guidelines."
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    },
+    {
+      "content": [
+        "The State of Ohio"
+      ],
+      "level": 2,
+      "type": "heading"
+    },
+    {
+      "content": [
+        {
+          "href": "https://dam.assets.ohio.gov/image/upload/das.ohio.gov/technology-strategy/policy/Use_of_AI_FAQs.pdf",
+          "text": "See Their Generative AI Policy",
+          "type": "link"
+        }
+      ],
+      "level": 4,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "The State of Ohio realizes that only responsible implementation of AI benefits the state’s citizens while not creating unintended consequences."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "Their document is thorough, but we especially liked how they outlined different use cases and functional areas where AI might impact their government:"
+      ],
+      "type": "paragraph"
+    },
+    {
+      "items": [
+        [
+          {
+            "text": "AI Solutions Development:",
+            "type": "strong"
+          },
+          "This section covers broad concepts that will help a user develop a use case, get it approved by the AI council, and then use newly created content."
+        ],
+        [
+          {
+            "text": "Workforce Requirements:",
+            "type": "strong"
+          },
+          "The training required for using these tools is laid out and clearly articulates the users’ responsibilities for the materials they produce."
+        ],
+        [
+          {
+            "text": "AI Procurement:",
+            "type": "strong"
+          },
+          "Like other software, the State must vet any new programs before they can be used. The process for gaining access to new AI tools is spelled out."
+        ],
+        [
+          {
+            "text": "Security and Privacy:",
+            "type": "strong"
+          },
+          "The State of Ohio has strict privacy laws with policies and standards to support the laws. This section outlines basic steps to protect the privacy of the data."
+        ],
+        [
+          {
+            "text": "Data Governance:",
+            "type": "strong"
+          },
+          "The Chief Data Officer Council will be responsible for all data governance requirements, not just for AI. Guidelines are set forth to help guide the CDO Council on their role."
+        ],
+        [
+          {
+            "text": "AI Council:",
+            "type": "strong"
+          },
+          " A multi-agency AI council will be created to monitor the use of AI and make recommendations as these tools rapidly evolve. New procedures and documentation will come from the council for the State to use."
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    },
+    {
+      "content": [
+        "Taliaferro County Schools, Georgia"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "With AI permeating education, any educational institution must clearly outline what teachers and students can and cannot do with AI. The Taliaferro County Schools in Georgia have outlined two broad areas, one for educators and one for students, to highlight what it perceives as inappropriate uses of AI. The educator’s policy and AI guiding principles are highlighted below:"
+      ],
+      "type": "paragraph"
+    },
+    {
+      "items": [
+        [
+          {
+            "text": "Violating Privacy and Data Security:",
+            "type": "strong"
+          },
+          "AI must not be used to collect, store, or analyze student data without explicit consent and a clear educational purpose. It is inappropriate to use AI tools that infringe on students’ privacy rights or fail to comply with data protection laws (e.g., FERPA, COPPA)."
+        ],
+        [
+          {
+            "text": "Bias and Discrimination:",
+            "type": "strong"
+          },
+          "Implementing AI systems that perpetuate biases or discrimination is prohibited. AI tools should be scrutinized for fairness and bias, ensuring they do not disadvantage any student group based on race, gender, socio-economic status, or ability."
+        ],
+        [
+          {
+            "text": "Replacing Human Interaction:",
+            "type": "strong"
+          },
+          "AI should not replace essential human elements of teaching and mentoring. While AI can augment teaching, it must not substitute for the personalized and empathetic interaction between teachers and students."
+        ],
+        [
+          {
+            "text": "High-Stakes Decision Making:",
+            "type": "strong"
+          },
+          "Using AI for high-stakes decisions, such as determining a student’s academic progression, grading, or disciplinary actions, without human oversight is inappropriate. AI should support, not replace, the professional judgment of educators."
+        ],
+        [
+          {
+            "text": "Unvetted Educational Content:",
+            "type": "strong"
+          },
+          "AI-generated educational content must be thoroughly vetted by educational professionals to ensure accuracy, relevance, and appropriateness. Relying solely on AI to generate and deliver instructional material is not acceptable."
+        ],
+        [
+          {
+            "text": "Unsupervised Use by Students:",
+            "type": "strong"
+          },
+          "Allowing unsupervised use of AI tools by students, especially younger children, can lead to misuse, exposure to inappropriate content, or misinterpretation of information. Educators must guide and supervise AI interactions within the educational framework."
+        ],
+        [
+          {
+            "text": "Implementation and Monitoring:",
+            "type": "strong"
+          },
+          "Educators will receive training on the ethical use of AI and its integration into the curriculum. AI tools must undergo a rigorous evaluation process before being approved for classroom use. Regular audits will be conducted to ensure compliance with this policy and to assess the effectiveness and impact of AI in the learning environment."
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    },
+    {
+      "content": [
+        "21 Other AI Governance Policy Examples"
+      ],
+      "level": 2,
+      "type": "heading"
+    },
+    {
+      "content": [
+        "We hope the above three examples have helped you understand what other governmental organizations in the US have been doing to shape the use of AI within their systems. There are no black-and-white rules that can be applied without modification to ensure that your needs are met. For more examples to help guide you, please see more policies listed below:"
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        {
+          "text": "Large Metros",
+          "type": "strong"
+        }
+      ],
+      "level": 4,
+      "type": "heading"
+    },
+    {
+      "items": [
+        [
+          {
+            "href": "https://www.sandiegocounty.gov/content/sdc/cto/artificial-intelligence.html",
+            "text": "The County of San Diego, CA",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://file.lacounty.gov/SDSInter/bos/supdocs/191149.pdf",
+            "text": "Los Angeles County, CA",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://www.nyc.gov/assets/oti/downloads/pdf/reports/artificial-intelligence-action-plan.pdf",
+            "text": "New York City",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://media.api.sf.gov/documents/Generative_AI_Guidelines_-_CCSF.pdf",
+            "text": "The City and County of San Francisco, CA",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://seattle.gov/documents/Departments/SeattleIT/City-of-Seattle-Generative-Artificial-Intelligence-Policy.pdf",
+            "text": "The City of Seattle, WA",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://www.boston.gov/sites/default/files/file/2023/05/Guidelines-for-Using-Generative-AI-2023.pdf",
+            "text": "The City of Boston, MA",
+            "type": "link"
+          }
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    },
+    {
+      "content": [
+        {
+          "text": "Mid-Size Cities & Counties",
+          "type": "strong"
+        }
+      ],
+      "level": 4,
+      "type": "heading"
+    },
+    {
+      "items": [
+        [
+          {
+            "href": "https://www2.santacruzcountyca.gov/personnel/vpolandproc/ProceduresManual/PM6476.pdf",
+            "text": "The County of Santa Cruz, CA",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://itd.alamedacountyca.gov/generative-ai-policy/",
+            "text": "Alameda County, CA",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://sonomacounty.gov/sonoma-county-adopts-artificial-intelligence-policy",
+            "text": "Sonoma County, CA",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://www.nashville.gov/sites/default/files/2024-04/ISM-20-Artificial-Intelligence-and-Generative-Artificial-Intelligence-Use.pdf",
+            "text": "The City of Nashville and Davidson County, TN",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://www.fortworthtexas.gov/files/assets/public/v/1/hr/documents/employees/2024-docs/generative-artificial-intelligence-ai-policy_approved-12.18.23.pdf",
+            "text": "The City of Fort Worth, TX",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://documents.miamidade.gov/mayor/memos/03.22.24-Report-on-Miami-Dade-Countys-Policy-on-Artificial-Intelligence-Directive-No-231203.pdf",
+            "text": "Miami-Dade County, FL",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://www.baltimorecity.gov/sites/default/files/Generative%20AI%20Executive%20Order%20-%20Signed.pdf",
+            "text": "The City of Baltimore, MD",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://www.cityofboise.org/departments/human-resources/employee-policy-handbook/section-400-general-provisions/430q-city-use-of-artificial-intelligence-ai-regulation/",
+            "text": "The City of Boise, ID",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://tempe.gitbook.io/data-policy-and-governance/data-policy/ethical-artificial-intelligence-ai-policy",
+            "text": "The City of Tempe, AZ",
+            "type": "link"
+          }
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    },
+    {
+      "content": [
+        {
+          "text": "Small Cities & Special Districts",
+          "type": "strong"
+        }
+      ],
+      "level": 4,
+      "type": "heading"
+    },
+    {
+      "items": [
+        [
+          {
+            "href": "https://lebanonnh.gov/1736/AI-Initiative",
+            "text": "The City of Lebanon, NH",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://webgen1files1.revize.com/houstonlibraryga/Document%20Center/Policies/HOUPL%20-%20AI%20Policy%20-%20Final.pdf",
+            "text": "Houston County Public Library System, GA",
+            "type": "link"
+          }
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    },
+    {
+      "content": [
+        {
+          "text": "State & National Governments",
+          "type": "strong"
+        }
+      ],
+      "level": 4,
+      "type": "heading"
+    },
+    {
+      "items": [
+        [
+          {
+            "href": "https://dam.assets.ohio.gov/image/upload/das.ohio.gov/technology-strategy/policy/Use_of_AI_FAQs.pdf",
+            "text": "The State of Ohio",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://www.mass.gov/policy-advisory/enterprise-use-and-development-of-generative-ai-policy",
+            "text": "Commonwealth of Massachusetts",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://www.pa.gov/content/dam/copapwp-pagov/en/oa/documents/policies/it-policies/artificial%20intelligence%20policy.pdf",
+            "text": "Commonwealth of Pennsylvania",
+            "type": "link"
+          }
+        ],
+        [
+          {
+            "href": "https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/guide-use-generative-ai.html",
+            "text": "Government of Canada",
+            "type": "link"
+          }
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "id": "washoe-county-ai-in-action",
+  "path": "/washoe-county-ai-in-action/",
+  "order": 110,
+  "sourceUrl": "https://www.madisonai.com/washoe-county-ai-in-action",
+  "metadata": {
+    "title": "Three Tips from Two Years In. Lessons from Washoe County's AI Deployment",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "Three Tips from Two Years In - Lessons from Washoe County's AI Deployment - AI in Action",
+    "ogImageAsset": "madison-webinar-og.jpg"
+  },
+  "card": {
+    "title": "Three Tips from Two Years In. Lessons from Washoe County's AI Deployment",
+    "imageAsset": "washoe-county-ai-in-action-card.avif",
+    "imageAlt": "Three Tips from Two Years In. Lessons from Washoe County's AI Deployment"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "Three Tips from Two Years In. Lessons from Washoe County's AI Deployment",
+        "subtitle": "Two years in, the lessons are clear. The best AI is built from your agency's own data - and that distinction is everything."
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "paragraphs": [
+          "Washoe County's Dave Solaro, Assistant County Manager, shared three practical lessons for executives deploying purpose-built AI in local government:",
+          "1. Start with the historical record - not a general search engine. 2. Deploy deliberately, starting with the people closest to governance. 3. Use AI to compress the prep work on complex public issues.",
+          "Here are the three tips in detail:"
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Build from your institutional record - not the internet",
+        "paragraphs": [
+          "The clearest discipline Washoe County developed was simple: Ask Madison AI first. For county leadership, that means no longer relying on memory, digging through old packets, or pulling staff into repeated history searches. Board actions, staff reports, transcripts, permits, and related records are available in a single thread - sourced from the county's own data, not a general model trained on the web.",
+          "That shift moves institutional knowledge from something held by a few people to something management can use every day. It reduces interruptions, frees staff for higher-value work, and gives leaders more confidence in the answers they're working from.",
+          "The real gain is not just speed. It's better context, stronger follow-through, and answers you can actually defend."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"I always say start with Madison AI.\"",
+            "attribution": "Dave Solaro, Assistant County Manager",
+            "portrait": {
+              "asset": "dave-solaro-assistant-county-manager-ea2a694f.avif",
+              "alt": "Dave Solaro, Assistant County Manager"
+            }
+          },
+          {
+            "quote": "\"Madison AI's goal is to be the institutional memory for your organization.\"",
+            "attribution": "Erica Olsen, CEO, Madison AI",
+            "portrait": {
+              "asset": "erica-olsen-ceo-madison-ai-220d8018.png",
+              "alt": "Erica Olsen, CEO, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "009 AI In Action:",
+            "wistiaId": "pzzgj8ozl6"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Deploy deliberately - start where governance decisions get made",
+        "paragraphs": [
+          "Washoe County did not roll this out to everyone, on purpose. The focus was on the people who prepare information for decision-makers and carry the county's narrative across leadership and governance - executives, department heads, planners, engineers, and staff who regularly support board-facing work.",
+          "That approach keeps the data foundation tighter, the onboarding more useful, and the results more defensible. It also reinforces something important for elected officials and senior leaders - AI works best when people understand what's in the system, what isn't, and where human judgment still owns the call.",
+          "A deliberate rollout is not a limitation. It's what makes the tool credible."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"Anybody that has to interact with the governing body, has to provide information to them… that's really who this tool is for.\"",
+            "attribution": "Dave Solaro, Assistant County Manager"
+          }
+        ],
+        "videos": [
+          {
+            "title": "009 AI In Action: Elected Officials and Governance - reinforce a shared narrative.",
+            "wistiaId": "8w3twxox5d"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Use AI to get past the blank page on high-stakes topics",
+        "paragraphs": [
+          "When Washoe County was preparing for a local fire regionalization discussion, Dave faced a familiar gap - a technical consultant process on one side, and a public information session that still needed to be built from scratch on the other.",
+          "He started with Madison - a broad prompt to build a working outline for a 90- to 120-minute public meeting tied to the regional fire study. The result was structure, sequencing, and a first draft the communications team could actually work from.",
+          "Madison did not replace the judgment or the craft. It eliminated the assembly work - the research, the framing, the blank page - so the real work could start sooner and go deeper.For executives managing complex, politically sensitive topics, that's the return: fewer cold starts, faster prep, and more time improving the work instead of building the scaffolding."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"It saved me probably half a day's work of going to research all of these things.\"",
+            "attribution": "Dave Solaro, Assistant County Manager"
+          }
+        ],
+        "videos": [
+          {
+            "title": "009 AI In Action:",
+            "wistiaId": "ymiffl8ao3"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Watch the full webinar",
+        "videoTitle": "Watch the full webinar",
+        "wistiaId": "2eled5bcgz"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

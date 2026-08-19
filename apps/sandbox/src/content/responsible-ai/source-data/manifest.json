@@ -1,0 +1,63 @@
+{
+  "capturedAt": "2026-08-18",
+  "sourceIndexUrl": "https://www.madisonai.com/resources",
+  "count": 7,
+  "entries": [
+    {
+      "id": "ai-governance-blueprint",
+      "path": "/resources/ai-governance-blueprint/",
+      "sourceUrl": "https://www.madisonai.com/resources/ai-governance-blueprint",
+      "title": "AI Governance Blueprint: A Guide to Ethical AI in Local Government",
+      "blockCount": 77,
+      "cardImageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b5ecf2d953c339b19306_Cover-blueprint.jpg"
+    },
+    {
+      "id": "how-to-develop-your-governments-ai-guiding-principles",
+      "path": "/resources/how-to-develop-your-governments-ai-guiding-principles/",
+      "sourceUrl": "https://www.madisonai.com/resources/how-to-develop-your-governments-ai-guiding-principles",
+      "title": "How to Develop Your Government’s AI Guiding Principles",
+      "blockCount": 61,
+      "cardImageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b5cbbf8f94268556d892_Cover-principles.jpg"
+    },
+    {
+      "id": "how-to-select-your-ai-governance-structure",
+      "path": "/resources/how-to-select-your-ai-governance-structure/",
+      "sourceUrl": "https://www.madisonai.com/resources/how-to-select-your-ai-governance-structure",
+      "title": "How to Select Your AI Governance Structure",
+      "blockCount": 78,
+      "cardImageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b5db451b6de0691e24e3_Cover-structures.jpg"
+    },
+    {
+      "id": "worksheets-to-develop-your-ai-guiding-principles",
+      "path": "/resources/worksheets-to-develop-your-ai-guiding-principles/",
+      "sourceUrl": "https://www.madisonai.com/resources/worksheets-to-develop-your-ai-guiding-principles",
+      "title": "Worksheets to Develop Your AI Guiding Principles",
+      "blockCount": 0,
+      "cardImageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/69296a00a92dd5dd5a81821f_Cover-principles-miro.jpg"
+    },
+    {
+      "id": "use-this-miro-template-to-choose-ai-governance-structures-in-your-government",
+      "path": "/resources/use-this-miro-template-to-choose-ai-governance-structures-in-your-government/",
+      "sourceUrl": "https://www.madisonai.com/resources/use-this-miro-template-to-choose-ai-governance-structures-in-your-government",
+      "title": "Use This Miro Template to Choose AI Governance Structures in Your Government",
+      "blockCount": 4,
+      "cardImageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/692969a6b2610394973e6897_Cover-structure-miro.jpg"
+    },
+    {
+      "id": "the-free-miro-template-to-build-your-ai-governance-policy",
+      "path": "/resources/the-free-miro-template-to-build-your-ai-governance-policy/",
+      "sourceUrl": "https://www.madisonai.com/resources/the-free-miro-template-to-build-your-ai-governance-policy",
+      "title": "The Free Miro Template to Build Your AI Governance Policy",
+      "blockCount": 4,
+      "cardImageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/692968efc3ae4758ea646bbd_Cover-governance-miro.jpg"
+    },
+    {
+      "id": "ai-governance-policy-examples",
+      "path": "/resources/ai-governance-policy-examples/",
+      "sourceUrl": "https://www.madisonai.com/resources/ai-governance-policy-examples",
+      "title": "16 AI Governance Policy Examples",
+      "blockCount": 39,
+      "cardImageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b403f101e4ace348387c_Cover-example.jpg"
+    }
+  ]
+}

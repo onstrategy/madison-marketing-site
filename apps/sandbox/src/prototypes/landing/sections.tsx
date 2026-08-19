@@ -100,7 +100,7 @@ const RESOURCES_PATHS = [
 ];
 const NEWSROOM_PATHS = ["/updates", "/proof-ai-works-in-the-public-sector"];
 
-export type ActiveNavItem = "client-stories" | "newsroom";
+export type ActiveNavItem = "client-stories" | "newsroom" | "resources";
 
 /** One row in the mobile menu — same active/icon shape as NavbarLink and NavDropdown's items, just stacked instead of inline. */
 function MobileNavLink({
@@ -178,7 +178,12 @@ export function Nav({
           Security
         </NavbarLink>
         <NavDropdown label="Company" items={companyLinks} active={companyLinks.some((item) => item.active)} />
-        <NavbarLink href="/resources/" active={RESOURCES_PATHS.includes(activePath)}>
+        <NavbarLink
+          href="/resources/"
+          active={
+            activeNavItem === "resources" || RESOURCES_PATHS.includes(activePath)
+          }
+        >
           Resources
         </NavbarLink>
       </NavbarLinks>
@@ -231,7 +236,12 @@ export function Nav({
         <MobileNavLink href="/security/" active={activePath === "/security"}>
           Security
         </MobileNavLink>
-        <MobileNavLink href="/resources/" active={RESOURCES_PATHS.includes(activePath)}>
+        <MobileNavLink
+          href="/resources/"
+          active={
+            activeNavItem === "resources" || RESOURCES_PATHS.includes(activePath)
+          }
+        >
           Resources
         </MobileNavLink>
         <Accordion type="single" collapsible>

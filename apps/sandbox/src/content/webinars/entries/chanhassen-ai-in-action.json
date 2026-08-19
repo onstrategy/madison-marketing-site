@@ -1,0 +1,168 @@
+{
+  "id": "chanhassen-ai-in-action",
+  "path": "/chanhassen-ai-in-action/",
+  "order": 70,
+  "sourceUrl": "https://www.madisonai.com/chanhassen-ai-in-action",
+  "metadata": {
+    "title": "How Chanhassen Turned Trusted AI into Institutional Memory and Faster Staff Throughput",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "How Chanhassen Turned Trusted AI into Institutional Memory and Faster Staff Throughput",
+    "ogImageAsset": "madison-webinar-og.jpg"
+  },
+  "card": {
+    "title": "How Chanhassen Turned Trusted AI into Institutional Memory and Faster Staff Throughput",
+    "imageAsset": "chanhassen-ai-in-action-card.avif",
+    "imageAlt": "How Chanhassen Turned Trusted AI into Institutional Memory and Faster Staff Throughput"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "How Chanhassen Turned Trusted AI into Institutional Memory and Faster Staff Throughput"
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Preserving Institutional Knowledge",
+        "paragraphs": [
+          "The City of Chanhassen used Madison AI to prevent institutional knowledge from walking out the door during major staff transitions—especially in Community Development. Instead of relying on paper files, shared drives, or “who remembers what,” staff can search project history and instantly pull the trail of decisions, approvals, and supporting documents.",
+          "That compresses onboarding time for new staff, reduces dependency on a few long-tenured employees, and keeps projects moving even when timelines stall and restart."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“We had three staff members who had 30 years of experience retire within two or three months. That is a… context history that we were losing walking out the door.”",
+            "attribution": "Matt Unmacht, Assistant City Manager",
+            "portrait": {
+              "asset": "matt-unmacht-assistant-city-manager-e47ca191.png",
+              "alt": "Matt Unmacht, Assistant City Manager"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "002 AI In Action w/Chanhassen: Preserving institutional knowledge",
+            "wistiaId": "cfjdm6fce8"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Outside-In Learning for Chanhassen: A Madison AI Scan of Peer Communities",
+        "paragraphs": [
+          "Benchmarking shouldn’t run on inbox timelines. Matt showed how Chanhassen uses Madison’s web browsing capability to benchmark peer communities faster—without waiting weeks for email replies and follow-ups.",
+          "This is especially useful for time-sensitive policy work like new ordinances, compensation benchmarking, and regulatory comparisons. The result is quicker drafting, better-informed recommendations, and less stalling while staff “gather inputs.”"
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“I can’t tell you how often in the past I’ve crafted emails… and then you wait two weeks, three weeks to get any responses.”",
+            "attribution": "Matt Unmacht, Assistant City Manager"
+          }
+        ],
+        "videos": [
+          {
+            "title": "002 AI In Action w/Chanhassen: Scan of peer communities",
+            "wistiaId": "d3p1vkcyhr"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Staff Report Writing",
+        "paragraphs": [
+          "The fastest way to improve staff reports is to remove the repetitive work. Chanhassen uses Madison AI to draft staff reports in their standard council-ready format (Summary, Background, Discussion, Budget, Recommendation).",
+          "This turns recurring agenda prep from hours into minutes—while still keeping staff accountable to review and finalize details. The net impact is faster packet production, more consistent quality, and more staff time spent on judgment and recommendations."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“You can say shorten this by one paragraph… and it can just quickly update just that section.”",
+            "attribution": "Matt Unmacht, Assistant City Manager"
+          }
+        ],
+        "videos": [
+          {
+            "title": "002 AI In Action w/Chanhassen: Staff report writing",
+            "wistiaId": "nv6c02usoq"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "No Information Found",
+        "paragraphs": [
+          "Kristine shared a best practice for when Madison returns “no information found.” The takeaway is that this often reflects how the search is being run (agent scope), not necessarily that the data is missing. Customers should thumbs-down the result to flag it for the Madison team, then use the Deep Research agent to scan the full index. This reduces dead ends, increases citation coverage, and helps teams retrieve the right source material—especially in large indexes with tens of thousands of files."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“With deep research, it’s actually looking at every single file in your data index.”",
+            "attribution": "Kristine Richter, Head of Client Success, Madison AI",
+            "portrait": {
+              "asset": "kristine-richter-head-of-client-success-madison-92a43d8d.avif",
+              "alt": "Kristine Richter, Head of Client Success, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "002 AI In Action: No information found",
+            "wistiaId": "89cxczxrfl"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Adding Madison to Your Phone",
+        "paragraphs": [
+          "The team closed with a practical adoption play: install Madison AI as a home-screen app for on-the-go access. This matters for fieldwork, quick pre-meeting refreshers, and answering questions while moving between sites and sessions.",
+          "Download Instructions"
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“With deep research, it’s actually looking at every single file in your data index.”",
+            "attribution": "Kristine Richter, Head of Client Success, Madison AI"
+          }
+        ],
+        "videos": [
+          {
+            "title": "002 AI In Action: Adding Madison to your Phone",
+            "wistiaId": "4xvpasfpq8"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Watch the full webinar",
+        "videoTitle": "Watch the full webinar",
+        "wistiaId": "dymldf6yge"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

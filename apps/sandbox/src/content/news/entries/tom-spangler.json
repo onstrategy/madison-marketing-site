@@ -1,0 +1,91 @@
+{
+  "id": "tom-spangler",
+  "path": "/tom-spangler/",
+  "order": 50,
+  "category": "Team",
+  "sourceUrl": "https://www.madisonai.com/tom-spangler",
+  "metadata": {
+    "title": "Tom Spangler - Member and Advisor - Madison AI",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "Tom Spangler - Member and Advisor - Madison AI",
+    "ogImageAsset": "public-records-crisis-social.jpg"
+  },
+  "card": {
+    "title": "Tom Spangler Joins Madison AI as Board Member and Advisor",
+    "description": "To advance Madison AI's growth and impact",
+    "imageAsset": "tom-spangler-card.avif",
+    "imageAlt": "Tom Spangler joins Madison AI as Board Member and Advisor"
+  },
+  "sections": [
+    {
+      "type": "article-hero",
+      "props": {
+        "category": "Team Update",
+        "title": "Tom Spangler Joins Madison AI as Board Member and Advisor"
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "variant": "announcement",
+        "heading": "Madison AI welcomed GovTech leader Tom Spengler to the team as a Board Member and Advisor in September 2025. He brings more than 25 years of transformative public-sector technology experience to the team.",
+        "paragraphs": [
+          {
+            "content": [
+              "Spengler is widely recognized for shaping the modern GovTech landscape. He is the co-founder and former Chief Executive Officer (CEO) of ",
+              {
+                "type": "link",
+                "text": "Granicus",
+                "href": "https://granicus.com/"
+              },
+              ", co-founder and CEO of ",
+              {
+                "type": "link",
+                "text": "Rock Solid",
+                "href": "https://granicus.com/press-release/granicus-acquires-govtech-innovator-rock-solid/"
+              },
+              " and CEO of ",
+              {
+                "type": "link",
+                "text": "SOVRA",
+                "href": "https://www.sovra.com/"
+              },
+              ". Throughout his career, he has helped governments across the country adopt technology that strengthens transparency, public engagement, and operational effectiveness."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "article-quote",
+      "props": {
+        "quote": "“Madison AI has quickly distinguished itself as one of the most exciting and purposeful companies in the space. Their focus on empowering government teams aligns with my belief in people-centered innovation. I’m excited to support a team that is truly committed to improving how government works.”",
+        "attribution": "Tom Spangler - Board Member and Advisor",
+        "portrait": {
+          "asset": "tom-spangler.avif",
+          "alt": "Tom Spangler"
+        }
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "variant": "announcement",
+        "paragraphs": [
+          "Spengler has spent decades partnering closely with cities, counties, and special districts, giving him a nuanced understanding of the challenges these agencies face and the opportunities emerging technologies can unlock.",
+          "“Tom embodies the kind of forward-thinking leadership that has propelled the GovTech industry forward,” said Madison AI CEO Erica Olsen. “We’re thrilled to have him join Team Madison AI, and his expertise will guide us as we build tools that truly empower public servants.”",
+          "As a Board Member and Advisor, Spengler will contribute to Madison AI’s strategic direction, expansion efforts, and product vision. His experience building and scaling mission-driven GovTech companies will play a key role in guiding Madison AI through its next phase of growth."
+        ]
+      }
+    },
+    { "type": "client-logos", "props": {} },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form below, and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

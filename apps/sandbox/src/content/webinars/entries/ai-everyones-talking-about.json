@@ -1,0 +1,163 @@
+{
+  "id": "ai-everyones-talking-about",
+  "path": "/ai-everyones-talking-about/",
+  "order": 50,
+  "sourceUrl": "https://www.madisonai.com/ai-everyones-talking-about",
+  "metadata": {
+    "title": "The AI Everyone's Talking About Is Already Inside Your Madison Deployment",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "The AI Everyone's Talking About Is Already Inside Your Madison Deployment",
+    "ogImageAsset": "madison-webinar-og.jpg"
+  },
+  "card": {
+    "title": "The AI Everyone's Talking About Is Already Inside Your Madison Deployment",
+    "imageAsset": "ai-everyones-talking-about-card.avif",
+    "imageAlt": "The AI Everyone's Talking About Is Already Inside Your Madison Deployment"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "The AI Everyone's Talking About Is Already Inside Your Madison Deployment",
+        "subtitle": "The question isn't whether to use AI. It's whether the AI you're using was built for your work. This AI In Action session made that distinction impossible to ignore, and made the case that for local government staff, Madison AI is the right tool for the job."
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "paragraphs": [
+          "Erica Olsen and Heyden Enochson walked through the architecture, the data work, the benchmarks, and the features you should be using right now."
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "The Models We Use and Why",
+        "paragraphs": [
+          "Madison AI doesn't run on a single model. It uses the best available model for each job. Claude handles reasoning and generation. Separate models convert your data into something AI can read with precision. Custom-built agents handle tasks your staff performs daily: pulling code, reading minutes, cross-referencing ordinances, and generating staff reports.",
+          "General-purpose tools don't always return the same answer twice. That's fine for general queries. It's a problem when you need a complete vote history or every entitlement on a parcel.",
+          "Madison AI is built for consistency. Same answer every time, with citations back to the source."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"Your organization invested in the idea of having a dedicated city or county AI that is based on your data, that is delivering against your workflows and your work tasks to help you all do your jobs better, faster, higher quality.\"",
+            "attribution": "Erica Olsen, CEO, Madison AI",
+            "portrait": {
+              "asset": "erica-olsen-ceo-madison-ai-220d8018.png",
+              "alt": "Erica Olsen, CEO, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "013 AI In Action: The Models We Use - and Why",
+            "wistiaId": "mczoyl9yun"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "How We Handle Your Data",
+        "paragraphs": [
+          "Madison AI keeps your jurisdiction's data inside its own contained virtual machine within the Azure tenant, separated from every other jurisdiction, with no data commingling. Every interaction generates an audit trail. Your data does not train any external model.",
+          "The heavier lift happens before you ever type a question. Madison AI ingests your data, converts it, and keeps it current on a weekly basis. Documents that contain tables, charts, and multi-page attachments require a very specific conversion process to be AI-readable with high fidelity. That work is what separates a tool that finds the right answer from one that confidently returns the wrong one."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"Without that really quite intense data work that we do to ingest, convert, extract, and then keep that process up to date on a weekly basis, without that, we lose the context to get the correct answer.\"",
+            "attribution": "Heyden Enochson, Head of GTM, Madison AI",
+            "portrait": {
+              "asset": "heyden-enochson-head-of-gtm-madison-ai-01a3cb30.avif",
+              "alt": "Heyden Enochson, Head of GTM, Madison AI"
+            }
+          },
+          {
+            "quote": "\"It rises and falls on that. Just because you have the data, you have to be able to get it out.\"",
+            "attribution": "Lee Anne Olivas, Management Analyst, RTC",
+            "portrait": {
+              "asset": "erica-olsen-ceo-madison-ai-220d8018.png",
+              "alt": "Lee Anne Olivas, Management Analyst, RTC"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "013 AI In Action: How We Handle Your Data",
+            "wistiaId": "nj4knm41l0"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Claude vs. Copilot vs. Madison",
+        "paragraphs": [
+          "Madison AI ran a benchmarking exercise using 12 months of City of Corona council minutes. The question: what was the final approved unit count for the North Mall redevelopment project, and how did the council get there? Four meetings. Six documents. Eight months of deliberation. ChatGPT and Copilot could not complete the task. Claude reached the correct answer, 300 units, but required three attempts and returned no citations. Madison AI completed it in a single query, with a full decision trace and every source cited.",
+          "The scoring framework evaluates five dimensions: completeness, correctness, faithfulness, retrieval, and authority. The last two are the ones that protect you at the dais."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"We place a disproportionate amount of time and effort making sure that when we're building these applications, we are using a master authoritative comprehensive data set.\"",
+            "attribution": "Heyden Enochson, Head of GTM, Madison AI"
+          }
+        ],
+        "videos": [
+          {
+            "title": "013 AI In Action: Claude vs. Copilot vs. Madison",
+            "wistiaId": "oztdy6zrbi"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Power Moves You Might Not Know About",
+        "paragraphs": [
+          "Staff Report Writer. Find it in the left-hand panel under Workflows. Select your knowledge domain, choose your template, attach any supporting documents, and generate a first draft. Revise sections, check citations, and export to Word, PDF, or PowerPoint. Work iteratively. Ask for a voting record, then the decision trace, then an executive summary. Each follow-up builds on the last. Treat it like a coworker, not a search bar. PowerPoint export. Once you've finished workshopping a staff report or research output, export a first-draft PowerPoint from the same session. Not your jurisdiction's template yet, but a real starting point."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"This is really an assistant that knows everything that's happened in your jurisdiction for about at least the last 15 years.\"",
+            "attribution": "Heyden Enochson, Head of GTM, Madison AI"
+          }
+        ],
+        "videos": [
+          {
+            "title": "013 AI In Action: Power Moves You Might Not Know About",
+            "wistiaId": "1p1kq464dm"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Watch the full webinar",
+        "videoTitle": "Watch the full webinar",
+        "wistiaId": "hueyvcz79k"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}
