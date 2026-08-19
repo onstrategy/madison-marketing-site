@@ -77,7 +77,7 @@ const PLATFORM_LINKS = [
 // Lighter-weight, cross-cutting properties of the platform rather than
 // departmental modules — the mega menu's secondary link row.
 const PLATFORM_SECONDARY_LINKS = [
-  { label: "Integrations", href: "#top", icon: Plug },
+  { label: "Integrations", href: "/integrations/", icon: Plug },
   { label: "Accuracy", href: "#top", icon: Target },
 ];
 
@@ -183,17 +183,6 @@ export function Nav({
         </NavbarLink>
       </NavbarLinks>
       <NavbarActions>
-        {/*
-          The one intentional placeholder left in the site: there is no sign-in
-          prototype to point at, and the marketing pages don't own the app's
-          auth route. Every other `#top` has been resolved to a real page.
-        */}
-        <a
-          href="#top"
-          className="hidden text-sm font-medium text-primary transition-colors hover:text-brand-accent sm:block"
-        >
-          Sign in
-        </a>
         <Button size="sm" asChild>
           <a href="/demo/">Book a demo</a>
         </Button>
@@ -264,15 +253,6 @@ export function Nav({
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-        {/* Below `sm` (640px), NavbarActions' own "Sign in" link is `hidden`
-            with nothing standing in for it — the same gap NavbarMobileTrigger
-            fixed for NavbarLinks. `sm:hidden` here is the exact mirror of that
-            link's `sm:block`: this row only exists in the width range where
-            the standalone one has already disappeared, so there's never a
-            duplicate. */}
-        <MobileNavLink href="#top" className="sm:hidden">
-          Sign in
-        </MobileNavLink>
       </NavbarMobileMenu>
     </Navbar>
   );
@@ -376,7 +356,7 @@ const CAPABILITIES = [
 // Accuracy are cross-cutting properties of the platform rather than
 // departmental modules, so they read as a lighter-weight link row.
 const CAPABILITIES_LINKS = [
-  { label: "Integrations", href: "#top", icon: Plug },
+  { label: "Integrations", href: "/integrations/", icon: Plug },
   { label: "Accuracy", href: "#top", icon: Target },
 ];
 

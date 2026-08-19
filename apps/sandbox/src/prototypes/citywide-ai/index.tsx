@@ -172,26 +172,26 @@ const DATA: PlatformPageData = {
       "Citywide AI runs on the same grounded record as the rest of the platform. Explore the other models built for your teams.",
     items: [
       {
-        title: "Core platform",
+        title: "Citywide AI",
         description: "Staff, electeds, and citizens on one grounded record.",
         icon: LayoutGrid,
         href: "/citywide-ai/",
         current: true,
       },
       {
-        title: "FOIA / Public Records Fulfillment",
+        title: "AI for Public Records Requests",
         description: "Scope, redact, and release requests defensibly.",
         icon: FileSearch,
         href: "/public-records-requests-ai/",
       },
       {
-        title: "Community Development AI",
+        title: "AI for Community Development",
         description: "Permitting, zoning, and planning, grounded in code.",
         icon: Building2,
         href: "/community-development-ai/",
       },
       {
-        title: "Contracts & Procurement AI",
+        title: "AI for Procurement & Contracts",
         description: "Draft, compare, and track solicitations and awards.",
         icon: FileSignature,
         href: "/procurement-contracts-ai/",

@@ -63,6 +63,10 @@ const SECTIONS = [
     },
   },
   {
+    type: "client-logos",
+    props: {},
+  },
+  {
     type: "news-cta",
     props: {
       title: "See it on your own files.",
@@ -70,10 +74,6 @@ const SECTIONS = [
         "We'll load Madison with a sample of your records and walk through it live.",
       primaryCta: "Book a demo",
     },
-  },
-  {
-    type: "client-logos",
-    props: {},
   },
 ] satisfies SectionInput[];
 

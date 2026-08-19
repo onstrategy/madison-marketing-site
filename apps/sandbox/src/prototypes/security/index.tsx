@@ -28,6 +28,7 @@ import {
 } from "@madison/ui/accordion";
 import { Nav, Footer, ClientLogos } from "../landing/sections";
 import { Reveal, Eyebrow, SectionHeading } from "../landing/parts";
+import vendorFactSheetPdf from "./madison-ai-factsheet-govai-coalition-2026.pdf?url";
 
 // ============================================================================
 // Security — recreated from madisonai.com/security. Structure and section
@@ -377,10 +378,14 @@ function FaqSection() {
           />
         </Reveal>
         <Reveal delay={60}>
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full overflow-hidden rounded-2xl border border-default"
+          >
             {FAQS.map((faq) => (
               <AccordionItem key={faq.id} value={faq.id}>
-                <AccordionTrigger className="text-left text-base font-semibold text-primary">
+                <AccordionTrigger className="text-left font-sans text-lg font-semibold text-primary hover:bg-hover">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-secondary">{faq.answer}</AccordionContent>
@@ -413,8 +418,7 @@ function FinalCtaSection() {
               </a>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              {/* No hosted asset yet — route the request through contact. */}
-              <a href="/contact/">
+              <a href={vendorFactSheetPdf} download="Madison-AI-Factsheet-GovAI-Coalition-2026.pdf">
                 Vendor fact sheet <Download className="size-4" />
               </a>
             </Button>
@@ -439,8 +443,8 @@ export default function SecurityPrototype() {
         <ComplianceSection />
         <ResourcesSection />
         <FaqSection />
-        <FinalCtaSection />
         <ClientLogos />
+        <FinalCtaSection />
       </main>
       <Footer />
     </div>

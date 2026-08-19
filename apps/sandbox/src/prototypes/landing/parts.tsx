@@ -376,13 +376,16 @@ function iconForSource(name: string): LucideIcon {
  * the name is still available as a tooltip and to screen readers, whether or
  * not it's rendered as text.
  */
-export function LogoMark({ name }: { name: string }) {
+export function LogoMark({ name, className }: { name: string; className?: string }) {
   const logoSrc = logoForSource(name);
   if (logoSrc) {
     return (
       <span
         title={name}
-        className="light flex h-16 w-32 items-center justify-center rounded-lg border border-default bg-plate p-3"
+        className={cn(
+          "light flex h-16 w-32 items-center justify-center rounded-lg border border-default bg-plate p-3",
+          className,
+        )}
       >
         <img src={logoSrc} alt={name} loading="lazy" className="max-h-full max-w-full object-contain" />
       </span>
@@ -392,7 +395,10 @@ export function LogoMark({ name }: { name: string }) {
   return (
     <span
       title={name}
-      className="flex h-16 w-32 items-center justify-center rounded-lg border border-default bg-surface text-muted"
+      className={cn(
+        "flex h-16 w-32 items-center justify-center rounded-lg border border-default bg-surface text-muted",
+        className,
+      )}
     >
       <Icon className="size-6" aria-hidden="true" />
       <span className="sr-only">{name}</span>

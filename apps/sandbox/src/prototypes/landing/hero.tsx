@@ -86,7 +86,7 @@ export function Hero() {
               className="inline-flex items-center gap-2.5 rounded-full border border-default bg-surface px-3.5 py-1.5 text-sm text-secondary shadow-xs transition-colors hover:border-active"
             >
               <span className="size-1.5 rounded-full bg-info" />
-              AI in Action webinar · June 6
+              Join our AI in Action Webinar
               <span className="font-medium text-brand-accent">Register →</span>
             </a>
           </Reveal>
