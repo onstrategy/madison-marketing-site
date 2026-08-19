@@ -77,15 +77,7 @@ function FeaturedHero({ data }: { data: typeof FEATURED }) {
       <div className="relative mx-auto max-w-6xl px-gutter pt-28 pb-24 lg:px-0 lg:pt-40">
         <Reveal>
           <div className="mb-6 flex items-center gap-3">
-            <span className="flex size-20 items-center justify-center rounded-full border border-default bg-plate p-4">
-              <img
-                src={data.logo.src}
-                alt={data.logo.alt}
-                width={data.logo.width}
-                height={data.logo.height}
-                className="size-full object-contain"
-              />
-            </span>
+            <LogoGlassBadge logo={data.logo} />
             <span className="font-sans text-sm font-semibold text-secondary">
               {data.clientName}
             </span>
@@ -106,31 +98,46 @@ function FeaturedHero({ data }: { data: typeof FEATURED }) {
 }
 
 /**
- * The client mark, centered over a card's photo — a white ("plate") disc for
- * the mark itself (client logos are authored on white, and the warm/photo
- * background underneath would tint or wash them out — same reasoning as the
- * homepage's logo marquee), floating inside a larger frosted "glass" ring: a
- * translucent white disc with `backdrop-blur` so the photo softens through
- * it, same glass idiom as the platform pages' hero panel
- * (../platform-page/template.tsx). Renders nothing when a story has no
- * supplied mark yet, rather than a generic stand-in — a missing city seal
- * isn't the same kind of "no logo" as an integration tile's.
+ * The client mark — a white ("plate") disc for the mark itself (client
+ * logos are authored on white, and a warm/photo background underneath
+ * would tint or wash them out — same reasoning as the homepage's logo
+ * marquee), floating inside a frosted "glass" ring: a translucent white
+ * disc with `backdrop-blur` so whatever's behind it (a card's photo, or
+ * the featured hero's own dimmed background photo) softens through it —
+ * same glass idiom as the platform pages' hero panel
+ * (../platform-page/template.tsx). The ring sits close around the
+ * circle (a ~14px gap) rather than a wide halo, so it reads as a rim on
+ * the mark itself, not a separate shape. Unpositioned — CardLogoBadge
+ * below adds the absolute-overlay placement for the grid; the featured
+ * hero renders this directly inline instead.
+ */
+function LogoGlassBadge({ logo }: { logo: NonNullable<ClientStorySummary["logo"]> }) {
+  return (
+    <span className="flex size-32 items-center justify-center rounded-full border border-plate/40 bg-plate/15 shadow-lg backdrop-blur-md">
+      <span className="flex size-25 items-center justify-center rounded-full bg-plate p-5 shadow-md">
+        <img
+          src={logo.src}
+          alt={logo.alt}
+          width={logo.width}
+          height={logo.height}
+          loading="lazy"
+          className="size-full object-contain"
+        />
+      </span>
+    </span>
+  );
+}
+
+/**
+ * LogoGlassBadge, centered over a card's photo. Renders nothing when a
+ * story has no supplied mark yet, rather than a generic stand-in — a
+ * missing city seal isn't the same kind of "no logo" as an integration
+ * tile's.
  */
 function CardLogoBadge({ logo }: { logo: NonNullable<ClientStorySummary["logo"]> }) {
   return (
     <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-      <span className="flex size-31 items-center justify-center rounded-full border border-plate/40 bg-plate/15 shadow-lg backdrop-blur-md">
-        <span className="flex size-21 items-center justify-center rounded-full bg-plate p-4 shadow-md">
-          <img
-            src={logo.src}
-            alt={logo.alt}
-            width={logo.width}
-            height={logo.height}
-            loading="lazy"
-            className="size-full object-contain"
-          />
-        </span>
-      </span>
+      <LogoGlassBadge logo={logo} />
     </span>
   );
 }
