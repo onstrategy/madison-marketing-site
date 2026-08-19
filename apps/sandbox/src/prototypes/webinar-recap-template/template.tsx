@@ -335,8 +335,8 @@ export function WebinarRecapTemplate({ data }: { data: WebinarRecapData }) {
           <SegmentSection key={segment.title} segment={segment} alt={i % 2 === 1} />
         ))}
         <WhyItMattersSection data={data.whyItMatters} alt={data.segments.length % 2 === 1} />
-        <WhatsNextAndCtaSection whatsNext={data.whatsNext} cta={data.cta} />
         <ClientLogos />
+        <WhatsNextAndCtaSection whatsNext={data.whatsNext} cta={data.cta} />
       </main>
       <Footer />
     </div>

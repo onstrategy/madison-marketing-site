@@ -1,9 +1,7 @@
 import { ShieldCheck, FileCheck2, ScrollText, ArrowRight } from "lucide-react";
-import { Button } from "@madison/ui/button";
-import { Input } from "@madison/ui/input";
-import { Label } from "@madison/ui/label";
 import { Nav, Footer, ClientLogos } from "../landing/sections";
 import { Reveal, Eyebrow } from "../landing/parts";
+import { HubSpotForm } from "../../content/forms/HubSpotForm";
 
 // ============================================================================
 // Book a Security Review. Same shape as
@@ -13,6 +11,11 @@ import { Reveal, Eyebrow } from "../landing/parts";
 // Linked to from the Security page's final CTA ("Schedule a security
 // review" — see ../security/index.tsx's FinalCtaSection). Copy is adapted
 // from madisonai.com/book-a-security-review.
+//
+// The form is the same real HubSpot form ../book-a-demo uses (one form, two
+// pages — see content/forms/hubspot.ts), with one difference: here it carries
+// the "security-review-routing" Calendly routing form, so submitting it opens
+// Calendly's scheduling modal instead of ending at HubSpot's thank-you.
 // ============================================================================
 
 const VALUE_PROPS = [
@@ -56,30 +59,13 @@ function HeroAndFormSection() {
               Request your review
             </h2>
             <p className="mb-6 text-sm text-secondary">
-              Fill in the form below and our team will reach out to schedule your security
-              review.
+              Fill in the form below and you&rsquo;ll be able to pick a time that suits
+              you right away.
             </p>
-            <form className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-1.5">
-                <Label htmlFor="security-first-name">First name*</Label>
-                <Input id="security-first-name" name="firstName" required />
-              </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="security-last-name">Last name*</Label>
-                <Input id="security-last-name" name="lastName" required />
-              </div>
-              <div className="space-y-1.5 sm:col-span-2">
-                <Label htmlFor="security-email">Organization email address*</Label>
-                <Input id="security-email" name="email" type="email" required />
-              </div>
-              <div className="space-y-1.5 sm:col-span-2">
-                <Label htmlFor="security-org">Government name and department*</Label>
-                <Input id="security-org" name="organization" required />
-              </div>
-              <Button type="submit" size="lg" className="sm:col-span-2">
-                Request Security Review <ArrowRight className="size-4" />
-              </Button>
-            </form>
+            <HubSpotForm
+              form="book-a-demo"
+              calendlyRouting="security-review-routing"
+            />
           </div>
         </Reveal>
       </div>

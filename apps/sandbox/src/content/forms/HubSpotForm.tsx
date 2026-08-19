@@ -5,6 +5,8 @@ import {
   HUBSPOT_REGION,
   type HubSpotFormName,
 } from "./hubspot";
+import { type CalendlyRoutingName } from "./calendly";
+import { attachCalendlyRouting } from "./calendly-routing";
 import "./hubspot-form.css";
 
 // The one place the HubSpot embed script exists. Everything else in the repo
@@ -66,10 +68,20 @@ type EmbedState = "loading" | "ready" | "error";
 
 export interface HubSpotFormProps {
   form: HubSpotFormName;
+  /**
+   * Optional Calendly routing form (see ./calendly.ts). When set, submitting
+   * this form opens Calendly's scheduling modal instead of ending at HubSpot's
+   * thank-you message.
+   */
+  calendlyRouting?: CalendlyRoutingName;
   onSubmitted?: () => void;
 }
 
-export function HubSpotForm({ form, onSubmitted }: HubSpotFormProps) {
+export function HubSpotForm({
+  form,
+  calendlyRouting,
+  onSubmitted,
+}: HubSpotFormProps) {
   const { formId } = HUBSPOT_FORMS[form];
   // useId emits colons, which are invalid in the CSS selector HubSpot's
   // `target` option expects — strip to a selector-safe id.
@@ -118,6 +130,25 @@ export function HubSpotForm({ form, onSubmitted }: HubSpotFormProps) {
       container.innerHTML = "";
     };
   }, [formId, domId, onSubmitted]);
+
+  // Kept separate from the embed effect, and deliberately not awaited by it:
+  // Calendly only needs its listener in place before a human finishes typing,
+  // and if its script never loads the HubSpot form must still submit normally
+  // (lead captured, no modal) rather than fail with it.
+  useEffect(() => {
+    if (!calendlyRouting) return;
+    let cancelled = false;
+    attachCalendlyRouting(calendlyRouting, formId).catch(() => {
+      if (!cancelled) {
+        console.warn(
+          `Calendly routing "${calendlyRouting}" failed to load; the form will submit to HubSpot only.`,
+        );
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [calendlyRouting, formId]);
 
   if (state === "error") {
     return (
