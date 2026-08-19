@@ -19,8 +19,14 @@ export interface HubSpotFormEntry {
 
 export const HUBSPOT_FORMS = {
   "book-a-demo": {
+    formId: "02ee5553-47ab-4482-869f-f9ea20ae5f74",
+    description:
+      "Demo request form used across madisonai.com — also the form on /book-a-security-review, where it carries Calendly routing (see ./calendly.ts)",
+  },
+  "webinar-registration": {
     formId: "0e857ad0-092f-40e8-9baf-14d2aba69006",
-    description: "Demo request form used across madisonai.com",
+    description:
+      "Standing-invite signup for the AI in Action webinar series, on /peer-share-invite",
   },
 } as const satisfies Record<string, HubSpotFormEntry>;
 
