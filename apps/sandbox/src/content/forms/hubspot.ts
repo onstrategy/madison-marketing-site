@@ -29,7 +29,7 @@ export const HUBSPOT_FORMS = {
       "Standing-invite signup for the AI in Action webinar series, on /peer-share-invite",
   },
   "case-study-download": {
-    formId: "cd31443a-0522-4f58-8bc8-03cd2301f23c",
+    formId: "01c50003-efce-47dd-b185-7576c2f9a22a",
     description:
       "Gated download form on the client-story pages — submitting it releases that story's one-page PDF",
   },
