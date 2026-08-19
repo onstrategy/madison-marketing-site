@@ -28,6 +28,11 @@ export const HUBSPOT_FORMS = {
     description:
       "Standing-invite signup for the AI in Action webinar series, on /peer-share-invite",
   },
+  "case-study-download": {
+    formId: "cd31443a-0522-4f58-8bc8-03cd2301f23c",
+    description:
+      "Gated download form on the client-story pages — submitting it releases that story's one-page PDF",
+  },
 } as const satisfies Record<string, HubSpotFormEntry>;
 
 export type HubSpotFormName = keyof typeof HUBSPOT_FORMS;
