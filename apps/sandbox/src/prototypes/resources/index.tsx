@@ -52,7 +52,7 @@ function ResourceCardItem({ resource }: { resource: ResourceCard }) {
         />
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <h2 className="font-sans text-lg font-semibold tracking-tight text-primary">
+        <h2 className="font-sans text-xl font-semibold leading-normal tracking-tight text-primary">
           {resource.title}
         </h2>
         <p className="mt-2 flex-1 text-sm leading-relaxed text-secondary">
