@@ -1,0 +1,90 @@
+{
+  "capturedAt": "2026-08-18",
+  "order": 4,
+  "path": "/resources/use-this-miro-template-to-choose-ai-governance-structures-in-your-government",
+  "card": {
+    "description": "Use this facilitation exercise with your team to select your Government’s AI Governance Structure.",
+    "imageAlt": "Use This Miro Template to Choose AI Governance Structures in Your Government",
+    "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/692969a6b2610394973e6897_Cover-structure-miro.jpg",
+    "path": "/resources/use-this-miro-template-to-choose-ai-governance-structures-in-your-government",
+    "title": "Use This Miro Template to Choose AI Governance Structures in Your Government"
+  },
+  "author": "Heyden Enochson",
+  "date": "August 20, 2024",
+  "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+  "documentTitle": "Use This Miro Template to Choose AI Governance Structures in Your Government - Madison AI",
+  "mediaUrls": [
+    "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/692968efc3ae4758ea646bbd_Cover-governance-miro.jpg",
+    "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b403f101e4ace348387c_Cover-example.jpg",
+    "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b5ecf2d953c339b19306_Cover-blueprint.jpg"
+  ],
+  "related": [
+    {
+      "description": "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive.",
+      "href": "/resources/the-free-miro-template-to-build-your-ai-governance-policy",
+      "imageAlt": "The Free Miro Template to Build Your AI Governance Policy",
+      "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/692968efc3ae4758ea646bbd_Cover-governance-miro.jpg",
+      "title": "The Free Miro Template to Build Your AI Governance Policy"
+    },
+    {
+      "href": "/resources/ai-governance-policy-examples",
+      "imageAlt": "16 AI Governance Policy Examples",
+      "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b403f101e4ace348387c_Cover-example.jpg",
+      "title": "16 AI Governance Policy Examples"
+    },
+    {
+      "description": "See the 4 steps to build your AI governance blueprint to incorporate AI into your government ethically.",
+      "href": "/resources/ai-governance-blueprint",
+      "imageAlt": "AI Governance Blueprint: A Guide to Ethical AI in Local Government",
+      "imageUrl": "https://cdn.prod.website-files.com/691d978aeade11d4963fe2a7/6928b5ecf2d953c339b19306_Cover-blueprint.jpg",
+      "title": "AI Governance Blueprint: A Guide to Ethical AI in Local Government"
+    }
+  ],
+  "sourceUrl": "https://www.madisonai.com/resources/use-this-miro-template-to-choose-ai-governance-structures-in-your-government",
+  "title": "Use This Miro Template to Choose AI Governance Structures in Your Government",
+  "unsupported": [],
+  "blocks": [
+    {
+      "content": [
+        "Welcome! This is a two-hour workshop to use with your Government Executive/IT team to calm the AI chaos by building an AI Governance Policy with Guiding Principles."
+      ],
+      "type": "paragraph"
+    },
+    {
+      "content": [
+        "You'll walk away with:"
+      ],
+      "level": 3,
+      "type": "heading"
+    },
+    {
+      "items": [
+        [
+          "How to structure your AI Policy."
+        ],
+        [
+          "How to select your AI Governance Structure."
+        ],
+        [
+          "How to develop AI Guiding Principles."
+        ],
+        [
+          "Why you should consider an AI committee."
+        ]
+      ],
+      "style": "unordered",
+      "type": "list"
+    },
+    {
+      "content": [
+        {
+          "href": "https://miro.com/templates/ai-governance-policy-guiding-principles/",
+          "text": "Get the free Miro board",
+          "type": "link"
+        }
+      ],
+      "level": 4,
+      "type": "heading"
+    }
+  ]
+}

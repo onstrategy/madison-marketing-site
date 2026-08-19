@@ -1,0 +1,195 @@
+{
+  "id": "acfr-and-gfoa",
+  "path": "/acfr-and-gfoa/",
+  "order": 30,
+  "sourceUrl": "https://www.madisonai.com/acfr-and-gfoa",
+  "metadata": {
+    "title": "Turning Your ACFR into Indicators, with GFOA",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "Turning Your ACFR into Indicators, with GFOA",
+    "ogImageAsset": "madison-webinar-og.jpg"
+  },
+  "card": {
+    "title": "Turning Your ACFR into Indicators, with GFOA",
+    "imageAsset": "acfr-and-gfoa-card.avif",
+    "imageAlt": "Turning Your ACFR into Indicators, with GFOA"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "Turning Your ACFR into Indicators, with GFOA",
+        "subtitle": "Most annual financial reports take months to build, then sit. Nearly half of GFOA members rate the value of that report as neutral or negative. This week on AI In Action, Shayne Kavanagh of GFOA joined Erica Olsen of Madison AI to ask a better question: what if the data inside your ACFR helped your leaders make decisions all year, in language your council already understands?"
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "paragraphs": [
+          "Here's what we covered, including what's working and what's still hard:"
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Three frictions every finance leader knows",
+        "paragraphs": [
+          "Public finance carries the same three tensions year after year. Long-term planning is valuable, but a heavy analytical lift, and still, four in ten governments do it with no mandate to. Reserves raise the same question every cycle with no single right answer. And the annual financial report consumes months, then too often goes unread.",
+          "Each one follows the same pattern: a core idea that clearly matters, a real-world constraint that gets in the way, and a gap between. That gap is where the right AI can help."
+        ],
+        "items": [],
+        "quotes": [],
+        "videos": [
+          {
+            "title": "016 AI In Action: Three frictions every finance leader knows",
+            "wistiaId": "a1ze6ong91"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Change the conversation, not just the number",
+        "paragraphs": [
+          "Take reserves. When you defend a reserve level as an industry norm, the explanation runs out fast. Reframe it as self-insurance and the whole conversation changes. You're no longer arguing over a percentage. You're weighing real risks and real trade-offs.",
+          "Boards engage differently when the question is \"what are we protecting against?\" instead of \"why that number?\""
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"In GFOA's 125-year history, the most popular question every year is what is the right amount of reserves we should have. And the challenge is, it's not one size fits all.\"",
+            "attribution": "Shayne Kavanagh, GFOA",
+            "portrait": {
+              "asset": "shayne-kavanagh-gfoa-ce90f11a.avif",
+              "alt": "Shayne Kavanagh, GFOA"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "016 AI In Action: Change the conversation, not just the number",
+            "wistiaId": "8p5wmvmkxz"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "The Three Clocks",
+        "paragraphs": [
+          "GFOA built its financial health framework by asking elected officials what they actually want to know about their finances. The answers sorted into three time horizons:",
+          "Each clock carries a few plain questions, and each question maps to the indicators that answer it. Pull that expertise into a model trained on years of ACFR data from thousands of agencies, and any executive gets an on-demand read on financial health."
+        ],
+        "items": [
+          {
+            "label": "Annual Clock:",
+            "description": "Will we end the year in balance?"
+          },
+          {
+            "label": "Trajectory Clock:",
+            "description": "Are we headed in the right direction during my term?"
+          },
+          {
+            "label": "Generational Clock:",
+            "description": "What are we handing to the next generation?"
+          }
+        ],
+        "quotes": [
+          {
+            "quote": "\"These are all temporal questions. They're not money questions, they're time questions.\"",
+            "attribution": "Shayne Kavanagh, GFOA"
+          }
+        ],
+        "videos": [
+          {
+            "title": "016 AI In Action: The Three Clocks",
+            "wistiaId": "ptmsteaoq3"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "From raw reports to council-ready decisions",
+        "paragraphs": [
+          "At the AI In Action, we demonstrated this model, which is really an on-demand financial advisor. Here's what makes it work:"
+        ],
+        "items": [
+          {
+            "label": "Accurate extraction first.",
+            "description": "Madison pulls the figures from the ACFR, then checks its own work by extracting the numbers around each one and confirming they add up. Reading an ACFR is hard. Getting the data right is the whole game."
+          },
+          {
+            "label": "GFOA expertise on top.",
+            "description": "The exact meaning behind every indicator and guidance where it helps."
+          },
+          {
+            "label": "Comparison that actually fits.",
+            "description": "Build a peer group that holds up, tuned by population, growth, region, even by indicator, so you compare what's truly comparable."
+          },
+          {
+            "label": "Outputs you can hand off.",
+            "description": "A scorecard across the Three Clocks and a memo for your manager or council, in minutes."
+          }
+        ],
+        "quotes": [],
+        "videos": [
+          {
+            "title": "016 AI In Action: From raw reports to council-ready decisions",
+            "wistiaId": "o76pxo9vi6"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Why it matters",
+        "paragraphs": [
+          "This is still a proof of concept, and that's the point of the AI In Action. We show what's working and what's hard while it's being built, so you start from a better place.",
+          "The bigger opportunity is connecting the reporting process to budgeting and planning. The data is already in your ACFR. The question is whether your leaders can use it. When the Three Clocks open your budget season, a year-end obligation becomes the first question of next year's decisions.",
+          "What's next:"
+        ],
+        "items": [
+          "Want to see your agency's numbers in it? Madison customers get first access, and we're lining up beta testers now.",
+          "GFOA's Three Clocks paper is coming this summer, with a companion piece on folding it into budgeting and planning.",
+          "Next AI In Action: Thursday, July 16 (we are taking 7/2 off due to the holiday)"
+        ],
+        "quotes": [],
+        "videos": [],
+        "callout": {
+          "title": "Email us at hello@madisonai.com and we'll send you the session materials.",
+          "link": {
+            "label": "hello@madisonai.com",
+            "href": "mailto:hello@madisonai.com?subject=General%20Inquiry"
+          }
+        }
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Full Session Video",
+        "videoTitle": "016 AI In Action: Madison AI Turns Your ACFR into Indicators, with GFOA (full session)",
+        "wistiaId": "5nc930m8n9"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

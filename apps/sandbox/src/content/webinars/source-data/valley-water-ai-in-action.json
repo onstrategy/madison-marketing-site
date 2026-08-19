@@ -1,0 +1,261 @@
+{
+  "id": "valley-water-ai-in-action",
+  "path": "/valley-water-ai-in-action/",
+  "order": 60,
+  "sourceUrl": "https://www.madisonai.com/valley-water-ai-in-action",
+  "capturedAt": "2026-08-18",
+  "sha256": "a541148a15df51189cc5103103bc8740581bda70adbf18b0505054366a97d924",
+  "metadata": {
+    "title": "How Santa Clara Valley Water Turned One AI Assistant into Trusted Infrastructure",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/valley-water-ai-in-action",
+    "openGraph": {
+      "title": "How Santa Clara Valley Water Turned One AI Assistant into Trusted Infrastructure",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "How Santa Clara Valley Water Turned One AI Assistant into Trusted Infrastructure",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69ea2fb904a0326b5aba3f57_scvw.avif",
+      "alt": "How Santa Clara Valley Water Turned One AI Assistant into Trusted Infrastructure"
+    }
+  },
+  "hero": {
+    "headings": [
+      "AI In Action Webinar",
+      "How Santa Clara Valley Water Turned One AI Assistant into Trusted Infrastructure"
+    ],
+    "sourceClasses": [
+      "pricing-v3",
+      "dark"
+    ]
+  },
+  "regions": [
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [
+        "Santa Clara Valley Water District serves about 2 million residents in Santa Clara County, delivering clean, reliable water, flood protection, and healthy creeks and ecosystems. The agency has roughly 900 employees, a nearly $1B budget, and manages 10 reservoirs and dams, water treatment plants, and a water quality lab.",
+        "Don Rocha, Assistant Officer Innovation Unit, is a true practitioner and leader in this space. He spoke candidly about hesitation, trust, and what it actually takes to introduce AI inside a large, risk-aware public agency. The insights he shared were practical, grounded, and immediately useful.",
+        "Don shared how AI has evolved from initial hesitation to a trusted, day-to-day infrastructure at Valley Water. Valley Water did not start with a broad rollout. They started by solving a targeted, real problem and let the results determine what came next."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Lesson 1: Start Small And Prove Value in Real Work",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Valley Water introduced AI as a support tool, not a replacement. They began with a single assistant designed to help employees quickly find information about the master institutional knowledge inside Valley Water without disrupting other teams or digging through shared drives.",
+        "As staff used the assistant for everyday questions, confidence grew because the value was clear and immediate."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“There was hesitation at first, especially with AI, but once people saw it was there to support their work, not replace them, engagement increased.”",
+          "attribution": "Don Rocha, Assistant Officer Innovation Unit",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69ea2f2023a77bc646f42979_don.avif",
+            "alt": "Don Rocha, Assistant Officer Innovation Unit"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "005 AI in Action: AI roadmap and how Valley Water is putting it into action",
+          "wistiaId": "45nrqllq9e",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F45nrqllq9e&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F45nrqllq9e&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F22cf8fe845db9cfc5500b1f3c11d31e7.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/22cf8fe845db9cfc5500b1f3c11d31e7.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Lesson 2: Adoption Followed Demand, Not Direction",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Once teams experienced the value, they began asking for more. Departments and project teams requested their own domain-specific assistants, built around the documents and workflows they already relied on.",
+        "Project managers explored creating assistants for major efforts like the Anderson Dam Seismic Retrofit Project. Environmental, finance, HR, and communication teams used AI to get answers faster and keep work moving. AI expanded because teams asked for it."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“Once teams saw how it worked, engagement grew.”",
+          "attribution": "Don Rocha, Assistant Officer Innovation Unit"
+        }
+      ],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Lesson 3: Legal Buy-in Confirmed Trust",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "The clearest signal came from legal. ‍ Legal and Treasury, two of the most risk-aware groups in the organization, requested their own secure knowledge domains. That request demonstrated confidence in both the accuracy and security of the system."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“Legal is one of them. Treasury’s another one. These folks are very specific about their domains needing to be secure, and Madison AI can do that.” “Getting buy-in from the project team and from legal were key moments for me. Those moments showed me we are probably heading in the right direction.”",
+          "attribution": "Don Rocha, Assistant Officer Innovation Unit"
+        }
+      ],
+      "videos": [
+        {
+          "title": "005 AI in Action: How the team is leveraging Reservoir AI in everyday work​",
+          "wistiaId": "dp9gbkhrrc",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fdp9gbkhrrc&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fdp9gbkhrrc&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fe05b0811df62d69e84db489c92726567.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/e05b0811df62d69e84db489c92726567.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Watch the full webinar",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "Watch the full webinar",
+          "wistiaId": "0ifmie38ey",
+          "sourceUrl": "https://fast.wistia.net/embed/iframe/0ifmie38ey"
+        }
+      ],
+      "callouts": [],
+      "images": []
+    }
+  ],
+  "downloadUrls": []
+}

@@ -1,0 +1,343 @@
+{
+  "id": "planning-work-ai-in-action",
+  "path": "/planning-work-ai-in-action/",
+  "order": 100,
+  "sourceUrl": "https://www.madisonai.com/planning-work-ai-in-action",
+  "capturedAt": "2026-08-18",
+  "sha256": "6812c280b30d99f8daa31a1f3ad324cf00a54f8b41579f8ecbf9f0e65b3174e3",
+  "metadata": {
+    "title": "Parcel Lookups, Zoning Letters, Site Plan Reviews - Madison AI",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/planning-work-ai-in-action",
+    "openGraph": {
+      "title": "Parcel Lookups, Zoning Letters, Site Plan Reviews - Madison AI",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "Parcel Lookups, Zoning Letters, Site Plan Reviews - Here's How Madison AI Handles Them",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69c153b2d45757da34e471ca_1383c6ce6ff3b1f25489d86ba456ca4f_Parcels.avif",
+      "alt": "Parcel Lookups, Zoning Letters, Site Plan Reviews - Here's How Madison AI Handles Them"
+    }
+  },
+  "hero": {
+    "headings": [
+      "AI In Action Webinar",
+      "Parcel Lookups, Zoning Letters, Site Plan Reviews - Here's How Madison AI Handles Them"
+    ],
+    "sourceClasses": [
+      "pricing-v3",
+      "dark"
+    ]
+  },
+  "regions": [
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [
+        "Planning and zoning are one of the most data-intensive, high-stakes areas of local government work. Yesterday’s AI In Action was built around that reality. Erica Olsen, CEO of Madison AI, and Kristine Richter, Head of Client Success, walked through the planning model, showed real use cases using live data, and shared what six months of work with planning teams has taught us about what it takes to get this right.",
+        "Most AI tools weren't built for planning work. This one was. Share this session with your community development team. It was built with them in mind."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "How the Planning Model Works",
+          "level": 2,
+          "sourceClasses": [
+            "h3-2",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "AI for planning and zoning is only as good as the data behind it. The planning model pulls from GIS, permitting systems, case files, master plans, archival documents, and more - some going back 50 years. Unlike other areas of government work, planning requires a complete record. An 80% answer is not acceptable - the stakes are too high.",
+        "This section covers how the model is structured, what data sources it draws from, and why completeness is the standard, not a stretch goal."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"Everything rises and falls on the data - the efficacy of a generative AI tool rises and falls on the data in which it is accessing.\"",
+          "attribution": "Erica Olsen, CEO, Madison AI",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+            "alt": "Erica Olsen, CEO, Madison AI"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "010 AI In Action: Overview of the Planning Model (data, agents, use cases)​",
+          "wistiaId": "cch537u31n",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fcch537u31n&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fcch537u31n&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F21aab449b90014ec2ce9488531161db4.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/21aab449b90014ec2ce9488531161db4.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Deep Dive: Zoning and Land Use",
+          "level": 2,
+          "sourceClasses": [
+            "h3-2",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "A parcel lookup sounds simple. What's happening underneath it is not. This use case pulls from GIS, permitting records, zoning case files, and master plans, and surfaces the results in a structured, skimmable format with clearly cited sources. Planners can see exactly where data came from, flag inconsistencies, and assess coverage before acting on the output. The goal is not to replace judgments. It is to give staff the complete picture, so their judgment is grounded in full record.",
+        "This section also covers the GIS summary view - a feature that started as an internal tool and turned out to be especially useful for non-planners like city managers, admins, and council members who need quick property context without navigating ESRI/GIS layers."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"It's not like ‘one and done.’ If there's something here that is inconsistent, ask the AI - it's an assistant to talk to, not just get an answer back and stop.\"",
+          "attribution": "Erica Olsen, CEO, Madison AI"
+        }
+      ],
+      "videos": [
+        {
+          "title": "010 AI In Action: Zoning & Land Use​",
+          "wistiaId": "svxzjbf83l",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fsvxzjbf83l&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fsvxzjbf83l&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fb4c1c1ecd4f08daee9d1fe766ffe1240.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/b4c1c1ecd4f08daee9d1fe766ffe1240.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Deep Dive: Zoning Verification Letters",
+          "level": 2,
+          "sourceClasses": [
+            "h3-2",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "A zoning verification letter looks like a simple, one-page document. Producing an accurate ZVL requires pulling from every relevant data source in the index. This section walks through how Madison AI takes the same parcel research and structures it into a letter format that meets a department's template requirements - with a human-in-the-loop review step built in.",
+        "The session also introduces a completeness-scoring feature in development. Before a planner finalizes the letter, AI evaluates how complete the output is against the required template - flagging gaps before the document leaves the desk."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"Our goal is to get this to above 90% so the planner can review it, check the sources, and then hit the print button and deliver it.\"",
+          "attribution": "Erica Olsen, CEO, Madison AI"
+        }
+      ],
+      "videos": [
+        {
+          "title": "010 AI In Action: Zoning Verification Letters​",
+          "wistiaId": "uh4catld1t",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fuh4catld1t&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fuh4catld1t&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fc4cbeec6cd44636fe85d2db3e3240d52.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/c4cbeec6cd44636fe85d2db3e3240d52.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Site Plan Reviews",
+          "level": 2,
+          "sourceClasses": [
+            "h3-2",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "In Golden, Colorado, every building project requires a full planning review and a report to the council. Site plan reviews were taking staff several days to complete - and the review itself could stretch to two weeks.",
+        "This section demonstrates how Madison AI processes an uploaded site plan against the development code, produces a structured compliance report, and flags whether each requirement is met or not.",
+        "The AI analysis is constrained; it only draws from the specific code applicable to that development type, not the whole dataset. That constraint is what makes the output defensible. The result is full review in under a day, with the staff member reviewing and confirming rather than building from scratch."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"We discovered it just through talking with our partners. I always encourage you to provide feedback - say, I wonder if we could do this or that, and let's try it. This is one of those things.\"",
+          "attribution": "Kristine Richter, Head of Customer Success, Madison AI",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69c151ac0f31d4619586ead1_kristine.avif",
+            "alt": "Kristine Richter, Head of Customer Success, Madison AI"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "010 AI In Action: Zoning Verification Letters​",
+          "wistiaId": "uh4catld1t",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fuh4catld1t&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fuh4catld1t&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fc4cbeec6cd44636fe85d2db3e3240d52.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/c4cbeec6cd44636fe85d2db3e3240d52.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Watch the full webinar",
+          "level": 2,
+          "sourceClasses": [
+            "h3-2",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "Watch the full webinar",
+          "wistiaId": "34uew5wi37",
+          "sourceUrl": "https://fast.wistia.net/embed/iframe/34uew5wi37"
+        }
+      ],
+      "callouts": [],
+      "images": []
+    }
+  ],
+  "downloadUrls": []
+}

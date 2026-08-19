@@ -3,22 +3,12 @@ import { Button } from "@madison/ui/button";
 import { Badge } from "@madison/ui/badge";
 import { Nav, Footer } from "../landing/sections";
 import { Reveal, Eyebrow } from "../landing/parts";
-import { PHOTOS } from "../landing/photos";
 import { newsArticles } from "../../content/news/collection";
 import { resolveNewsAsset } from "../../content/news/assets";
 
-// Cards don't have real per-post photography — cycling through the shared
-// generic civic/at-work stock set (see landing/photos.ts) gives each card a
-// distinct 16:9 image without inventing per-title art direction.
-const CARD_PHOTOS = Object.values(PHOTOS);
-
 // ============================================================================
-// Newsroom — recreated from madisonai.com/updates. 2-column card grid per
-// spec (the source itself lays these out as a single stacked column, but the
-// request called for 2 columns, so that's what's built here). Cards with a
-// real article page (Proof AI Works, plus the JSON-driven News entries) link
-// to it; the rest render as non-interactive "Coming soon" cards until their
-// pages exist.
+// Newsroom — recreated from madisonai.com/updates. Every card and article route
+// is driven by the validated News article collection.
 // ============================================================================
 
 type Category = "Insights" | "Team" | "Company";
@@ -28,66 +18,13 @@ interface NewsCard {
   title: string;
   category: Category;
   description: string;
-  href?: string;
-  photo?: string;
-  imageAlt?: string;
+  href: string;
+  photo: string;
+  imageAlt: string;
 }
 
-const LEGACY_NEWS: NewsCard[] = [
-  {
-    order: 10,
-    title: "1,204 Hours Reclaimed: Proof AI Works in the Public Sector",
-    category: "Insights",
-    description: "Three lessons that separate AI that delivers from AI that disappoints.",
-    href: "/proof-ai-works-in-the-public-sector/",
-  },
-  {
-    order: 20,
-    title: "Peter Pirnejad Joins Madison AI as Strategic Advisor",
-    category: "Team",
-    description: "Bringing municipal leadership experience to the organization.",
-  },
-  {
-    order: 40,
-    title: "Madison AI Welcomes Senior Software Engineer Reid Weber",
-    category: "Team",
-    description: "Leading data systems, acquisition, and AI initiatives.",
-  },
-  {
-    order: 50,
-    title: "Tom Spangler Joins Madison AI as Board Member and Advisor",
-    category: "Team",
-    description: "Advancing company growth and impact efforts.",
-  },
-  {
-    order: 60,
-    title: "Named GovTech's Most Innovative Solution, Madison AI Secures Funding",
-    category: "Company",
-    description: "Scaling to transform local government operations.",
-  },
-  {
-    order: 70,
-    title: "Mark Wheeler Joins Madison AI as Chief Public Data Officer",
-    category: "Team",
-    description: "Adds trusted government AI expertise.",
-  },
-  {
-    order: 80,
-    title: "Dana Searcy Joins Madison AI as a Principal Strategist",
-    category: "Team",
-    description: "Brings public-sector leadership background.",
-  },
-  {
-    order: 90,
-    title: "Madison AI Awarded Most Innovative Solution at 2025 State of GovTech PitchFest",
-    category: "Company",
-    description: "Recognition during an active client deployment phase.",
-  },
-];
-
-const NEWS: NewsCard[] = [
-  ...LEGACY_NEWS,
-  ...newsArticles.map((article) => ({
+const NEWS: NewsCard[] = newsArticles
+  .map((article) => ({
     order: article.order,
     title: article.card.title,
     category: article.category,
@@ -95,18 +32,19 @@ const NEWS: NewsCard[] = [
     href: article.path,
     photo: resolveNewsAsset(article.card.imageAsset),
     imageAlt: article.card.imageAlt,
-  })),
-].sort((left, right) => left.order - right.order);
+  }))
+  .sort((left, right) => left.order - right.order);
 
-function NewsCardItem({ item, index }: { item: NewsCard; index: number }) {
-  const fallbackPhoto = CARD_PHOTOS[index % CARD_PHOTOS.length];
-  const photo = item.photo ?? fallbackPhoto.url;
-  const content = (
-    <>
+function NewsCardItem({ item }: { item: NewsCard }) {
+  return (
+    <a
+      href={item.href}
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-default bg-surface transition-transform hover:-translate-y-1"
+    >
       <div className="aspect-video w-full overflow-hidden">
         <img
-          src={photo}
-          alt={item.imageAlt ?? ""}
+          src={item.photo}
+          alt={item.imageAlt}
           loading="lazy"
           className="size-full object-cover"
         />
@@ -118,35 +56,10 @@ function NewsCardItem({ item, index }: { item: NewsCard; index: number }) {
         <h2 className="font-sans text-lg font-semibold tracking-tight text-primary">{item.title}</h2>
         <p className="mt-2 flex-1 text-sm leading-relaxed text-secondary">{item.description}</p>
         <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
-          {item.href ? (
-            <>
-              Read more
-              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-            </>
-          ) : (
-            "Coming soon"
-          )}
+          Read more
+          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
         </span>
       </div>
-    </>
-  );
-
-  if (!item.href) {
-    return (
-      <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-default bg-surface">
-        {content}
-      </article>
-    );
-  }
-
-  const isInternal = item.href.startsWith("/");
-  return (
-    <a
-      href={item.href}
-      {...(isInternal ? {} : { target: "_blank", rel: "noopener" })}
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-default bg-surface transition-transform hover:-translate-y-1"
-    >
-      {content}
     </a>
   );
 }
@@ -176,7 +89,7 @@ function NewsGridSection() {
         <div className="grid gap-4 sm:grid-cols-2">
           {NEWS.map((item, i) => (
             <Reveal key={item.title} delay={i * 40}>
-              <NewsCardItem item={item} index={i} />
+              <NewsCardItem item={item} />
             </Reveal>
           ))}
         </div>

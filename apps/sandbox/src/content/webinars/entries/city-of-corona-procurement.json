@@ -1,0 +1,211 @@
+{
+  "id": "city-of-corona-procurement",
+  "path": "/city-of-corona-procurement/",
+  "order": 40,
+  "sourceUrl": "https://www.madisonai.com/city-of-corona-procurement",
+  "metadata": {
+    "title": "How the City of Corona Evolved Procurement with AI",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "How the City of Corona Evolved Procurement with AI",
+    "ogImageAsset": "madison-webinar-og.jpg"
+  },
+  "card": {
+    "title": "How the City of Corona Evolved Procurement with AI",
+    "imageAsset": "city-of-corona-procurement-card.avif",
+    "imageAlt": "How the City of Corona Evolved Procurement with AI"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "Corona Took on the Headache Nobody Wanted to Touch: Procurement",
+        "subtitle": "Ask anyone in local government what their least favorite process is, and procurement is going to be near the top of the list. It is slow, it is rules-heavy, and a single misstep can create real legal exposure. As Chris McMasters, CIO for the City of Corona, put it on this week’s AI in Action: “I don’t think anyone has enjoyable experiences with procurement in government.”"
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "paragraphs": [
+          "So that is exactly where Corona decided to point AI.",
+          "This week’s session Chris and by Dana Searcy, Principal Strategist at Madison, walked through the procurement assistant we have been building together over the last 18 months. We covered the good, the hard, and a few cans of worms we opened along the way. Here is the recap."
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "A Lot of Rules, a Lot of Judgment, and Not a Lot of Consistency",
+        "paragraphs": [
+          "Corona is a full-service city of about 160,000 people with roughly 1,200 employees. The procurement team is eight to ten people, and they process several thousand requests a year. That is more than 200 requests per person.",
+          "The pain was not just volume. It was consistency. Depending on which staff member you talked to, you could get different answers to the same question. And every time someone new joined the purchasing team, the whole organization hit the reset button on understanding the process again.",
+          "Procurement has guidelines, policies, templates, and expected outputs. There is a lot of judgment involved, yes, but a great deal of it is more objective than subjective. That makes it a strong candidate for AI-assisted workflows: high-volume, required, administrative work, with real rules behind it."
+        ],
+        "items": [],
+        "quotes": [],
+        "videos": [
+          {
+            "title": "015 AI In Action: Procurement - Procurement Is a Great Place for AI",
+            "wistiaId": "2euswv3rhz"
+          }
+        ],
+        "eyebrow": "The problem"
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "A Challenge and Staff Recommendations",
+        "paragraphs": [
+          "This project did not start with a roadmap. It started with Chris handing Erica a challenge.",
+          "After Corona had success with AI-drafted staff reports, Chris said, in his words, “I want to give you a challenge.” The challenge was procurement. That one conversation is what led to everything we demoed this week.",
+          "Corona’s first move was smart and very human. They ran a workshop with directors and the people closest to purchasing, then surveyed a wide group of employees to map the real pros and cons. They used AI to analyze all of that input and propose short- and long-term action plans. Then, for fun, they compared the AI’s recommendations to what the human group came up with on their own.",
+          "With this input, we landed where to start, where to use AI and where not to."
+        ],
+        "items": [],
+        "quotes": [],
+        "videos": [
+          {
+            "title": "015 AI In Action: Procurement - Built for Staff, Easier on Procurement",
+            "wistiaId": "sowtwsldeu"
+          }
+        ],
+        "eyebrow": "How It Started"
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "A Guided Workflow, not an AI Black Box",
+        "paragraphs": [
+          "There is a misconception out there that you just drop documents into an AI tool and magic comes out the other side. For procurement, that is exactly what you do not want. You do not want the AI inventing language. You want it producing the right templates, the right pathways, and the legally vetted text, every single time. So, we started by unpacking what was really happening behind the scenes. On the surface, Corona’s procurement policy looked simple. The team had a clean one-pager, a polished deck, the whole thing. Once we started feeding it into the model, the questions began: what about this exception, and what about that one? By the time we were done, we had mapped 34 distinct procurement pathways. That is not a Corona problem. Across the seven other jurisdictions Dana has built these for, the same thing happens every time. The real process is always bigger than the one-pager. That is the norm, not the exception.",
+          "The goal is to hand the procurement team a request that is more than 80 percent complete and fully compliant, so the rework lands on the AI instead of on people."
+        ],
+        "items": [
+          {
+            "label": "Process determination and scope of work.",
+            "description": "The assistant walks a staff member through what they are actually buying, how it is being paid for, and what needs to be considered. Getting the scope right up front is what makes everything downstream work."
+          },
+          {
+            "label": "The solicitation.",
+            "description": "Based on the answers, the assistant selects the correct one of the 34 pathways and drafts the procurement request in Corona’s own templates."
+          },
+          {
+            "label": "The contract.",
+            "description": "The assistant generates the contract document, again from Corona’s preloaded templates, ready to attach to the solicitation or finalize once a bidder is selected."
+          }
+        ],
+        "quotes": [],
+        "videos": [
+          {
+            "title": "015 AI In Action: Procurement - Mapping Procurement Processes Is Where the Value Starts",
+            "wistiaId": "tm62xo5962"
+          }
+        ],
+        "eyebrow": "What We Built"
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Landscaping for Seven Fire Stations",
+        "paragraphs": [
+          "Using a real example brings the whole idea to life. We used a real-world example of procuring maintenance landscaping solicitation for Corona’s fire stations. Here are a few key observations:",
+          "Then there is the part the procurement teams care about most: compliance. We built an AI evaluator that checks the output and flags anything that is off, with a big red banner and a cover sheet that lists exactly what is out of compliance and why. In the demo it caught an unfilled placeholder, flagged insurance language that did not actually belong, and on the contract step it even noticed there was no proof of a required bidding process.",
+          "And because everyone asks: every output exports to Word, PDF, and now PowerPoint, which teams are using for pre-bid meetings and board presentations.",
+          "For Chris, this is the part that changes the math for his whole organization."
+        ],
+        "items": [
+          "The assistant flagged ambiguity on its own. When Dana said “landscaping,” it asked whether that meant maintenance landscaping or new construction, because those are two very different pathways.",
+          "It pulled from Corona’s own indexed data, found there are seven fire stations, and even surfaced a pre-existing landscaping contract to build from. Because this is a closed system, it draws from your documents plus preloaded government procurement standards.",
+          "The whole thing, scope of work to solicitation to contract, took Dana about an hour. All of it in Corona’s specific templates."
+        ],
+        "quotes": [
+          {
+            "quote": "“You can take someone completely unfamiliar with our purchasing process and say, ‘Hey, I need you to go buy this thing,’ and it will literally lead them through and populate everything. That used to be a very manual process.”",
+            "attribution": "Chris McMasters, CIO, City of Corona",
+            "portrait": {
+              "asset": "chris-mcmasters-cio-city-of-corona-282b56dc.avif",
+              "alt": "Chris McMasters, CIO, City of Corona"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "015 AI In Action: Procurement Walkthrough - How a Solicitation Comes Together",
+            "wistiaId": "mg4ywnia1c"
+          }
+        ],
+        "eyebrow": "Seeing It Live"
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "The Lesson That Is Not About Technology",
+        "paragraphs": [
+          "Chris was candid about the hardest part, and it was not the tech. Government culture is built around controlling risk. The instinct is to gate things, to make sure nothing ends up on the news. That instinct exists for good reasons, but it can also slow everything down, and there is not always a built-in motivation to change how things are done.",
+          "What moved the needle at Corona was showing staff how the tool helps them personally and getting them out of the mundane work so they can use their judgment on the parts that actually require it. Once the AI is making sure the rules are followed, the conversation shifts from “did we get this right” to “how fast can we get this done.” One more thing Chris named that is worth repeating: AI is not a one-and-done purchase. It is more like software development. What you get at the start can look very different a month later as you keep engaging with it. When we began this build, Claude Opus 4.6 was not even out yet, and the reasoning we needed was a stretch. We are constantly iterating, and the assistant keeps getting faster, more accurate, and more complete."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"Risk is predominantly what we’re worried about in government. It’s not even about return on investment. The nature of government is about gating things. Once the AI is making sure we’re following the rules, it’s more about how fast can we get it done.”",
+            "attribution": "Chris McMasters, CIO, City of Corona"
+          }
+        ],
+        "videos": [
+          {
+            "title": "015 AI In Action: Procurement - Grounded in Your Data, Checked for Compliance",
+            "wistiaId": "tkvfchl3nc"
+          },
+          {
+            "title": "015 AI In Action: Procurement - Adoption and Iteration Make It Work",
+            "wistiaId": "n31uxa8hmq"
+          }
+        ],
+        "eyebrow": "Change Management"
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Why This Matters Beyond Corona",
+        "paragraphs": [
+          "When Chris brought us this challenge, he was not trying to solve it only for Corona. As he said, “Everyone has this problem. Everyone feels pain here.” The goal was to build something that could be reused across the country, with the specifics tuned to each agency. That is the spirit of AI in Action. We share what is working, what is hard, and what we are all learning together. Corona did the hard part of leaning in. We get to help everyone else start from a better place.",
+          "Chris’s advice for anyone thinking about taking on procurement with AI was short: “Do it.” Dana’s was just as direct: “Don’t be afraid to get started.” It is a discovery process, it takes commitment, and it is absolutely worth it when you can save thousands of staff hours and finally trust that the process is consistent. AI drafts. You decide. Procurement turns out to be a near-perfect place for that to be true."
+        ],
+        "items": [],
+        "quotes": [],
+        "videos": [],
+        "callout": {
+          "title": "Want to take on procurement at your agency? We would welcome the conversation. Book a demo Book a demo And join us June 18th , same time same place, when we build an AI model with GFOA around ACFRs to take on financial benchmarking once and for all.",
+          "link": {
+            "label": "Book a demo Book a demo",
+            "href": "https://www.madisonai.com/demo"
+          }
+        }
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Watch the full webinar",
+        "videoTitle": "015 AI In Action: Procurement - Search Contracts, Draft Solicitations, 100% compliant every time (full session)",
+        "wistiaId": "y12x7kmwhy"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

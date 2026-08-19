@@ -1,0 +1,343 @@
+{
+  "id": "erp-data-thirdline",
+  "path": "/erp-data-thirdline/",
+  "order": 10,
+  "sourceUrl": "https://www.madisonai.com/erp-data-thirdline",
+  "capturedAt": "2026-08-18",
+  "sha256": "b199273293c86357e04a4397f7bfedab54998d22a179e8325d54235689aa2846",
+  "metadata": {
+    "title": "What Becomes Possible Once ERP Data Joins Your Citywide Knowledge Base",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/erp-data-thirdline",
+    "openGraph": {
+      "title": "What Becomes Possible Once ERP Data Joins Your Citywide Knowledge Base",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "What Becomes Possible Once ERP Data Joins Your Citywide Knowledge Base",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a7a2a31701b897bef683a09_bfff0b311323fe13ceb5bd246781a78a_aug%206%20-%20Cover.avif",
+      "alt": "What Becomes Possible Once ERP Data Joins Your Citywide Knowledge Base"
+    }
+  },
+  "hero": {
+    "headings": [
+      "AI In Action Webinar",
+      "What Becomes Possible Once ERP Data Joins Your Citywide Knowledge Base"
+    ],
+    "sourceClasses": [
+      "pricing-v3",
+      "dark"
+    ]
+  },
+  "regions": [
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [
+        "Your ERP system holds years of budget, contract, and spending data. Most of it never makes it into a staff report, a council packet, or an answer at the podium. This AI In Action session showed why that gap exists, and what closes it.",
+        "Erica, of Madison AI, was joined by Brian Powell and Dr. Samuel Gallagher, both from ThirdLine, to tackle a common assumption: that AI is magic, that you can dump data in and get a perfect answer back. The test said otherwise. The same P-card compliance check ran twice, once through general AI, once through data cleaned, classified, and mapped to policy first. Only the second version caught the real violation.",
+        "From there, the conversation moved into work government finance teams handle every week: budget pacing by department, tracking down a three-year-old budget amendment, drafting the fiscal impact section of a staff report, and knowing whether you have the data to answer a resident's question before you promise one.",
+        "Five takeaways came out of it."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [
+        {
+          "text": "If you are a Madison AI customer and want to explore getting ERP data in your citywide knowledge, drop us a line !",
+          "links": [
+            {
+              "text": "drop us a line",
+              "href": "mailto:kristine@madisonai.com?subject=ERP%20Request"
+            }
+          ]
+        }
+      ],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Why Clean Data Changes the AI's Answer",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Clean data doesn't just make AI faster. It makes AI right. Madison AI and Thirdline ran the same P-card compliance check two ways: once through general AI, once through data cleaned, classified, and mapped to policy first.",
+        "The clean version caught a violation the other missed, a charge that broke a threshold buried in policy language nobody had turned into a rule yet. Reliability comes down to three checks: is the data complete, is it accurate, and is it consistent over time? Once your policies become rules Madison AI can apply directly, the tool tells you not just that a transaction failed, but exactly why. That's the answer you can defend in a meeting."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"If you have unreliable data, you get unreliable answers, right?\"",
+          "attribution": "Dr. Samuel Gallaher",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a7a28a1fdfbfb5d1b5b10ec_samuel.avif",
+            "alt": "Dr. Samuel Gallaher"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "020 AI In Action: Why Clean Data Changes the AI's Answer",
+          "wistiaId": "vbzd0parx7",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fvbzd0parx7&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fvbzd0parx7&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F2499a87f4fe51929c983ebdf3c2aa1ad.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/2499a87f4fe51929c983ebdf3c2aa1ad.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "See Your Budget Pacing, By Department, Without the Wait",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Budget pacing shouldn't require a request to finance. Once ERP data connects to Madison AI, department heads can see it themselves. Brian Powell walked through a police budget example: pulling data by fund, department, and division, then color-coding it so overtime spikes show up before they become a budget problem.",
+        "Law enforcement alone typically runs 50 to 60 percent of a general fund budget, which makes it the line-item worth watching closest. The goal isn't a prettier chart. It's catching a pacing issue while there's still time to reallocate resources and giving staff a visual they can hand off without a 10-minute explanation."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"To be able to grab that data and be able to look at it by fund, look at it by department, look at it by division, and identify areas real fast on where we may need to pivot and reallocate different resources is very beneficial.\"",
+          "attribution": "Brian Powell",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a7a28a1f8c58b0aa0cab3a8_brian.avif",
+            "alt": "Brian Powell"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "020 AI In Action: See Your Budget Pacing, By Department, In Real Time",
+          "wistiaId": "1zu1aw1gpl",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F1zu1aw1gpl&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F1zu1aw1gpl&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F85439176e9cd4df427922601e08e968f.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/85439176e9cd4df427922601e08e968f.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Stop Scrambling for Budget History Mid-Meeting",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "When a resident asks for a number at a public hearing, staff need an answer, not a promise to follow up. Brian Powell shared a case from the county level: ARPA funds arrived, the county reopened the budget for a jail expansion amendment, and construction dragged on for three years. When staff needed to reconstruct what happened, who won the bid, and how the money moved between funds, it took real digging. An AI system with ERP access can shortcut that research. Connect the ERP data and the legislative record in one place, and staff walk into every meeting already prepared, no scrambling required."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“You never wanna get into a public hearing, and you have the public all there, and you start saying information that is not correct, or you have these awkward moments of silence where you kinda look to staff and say, 'Do you have that number?'\"",
+          "attribution": "Brian Powell"
+        }
+      ],
+      "videos": [
+        {
+          "title": "020 AI In Action: Stop Scrambling for Budget History Mid-Meeting",
+          "wistiaId": "17orqg8gww",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F17orqg8gww&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F17orqg8gww&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fd2401d670cfa8c40468529e810e0581b.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/d2401d670cfa8c40468529e810e0581b.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Let AI Draft the Fiscal Impact Section for You",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Every staff report needs a fiscal impact section, and finance teams spend real time writing it by hand. Erica Olsen demoed the shortcut live: asking Madison AI to draft that section for a staff augmentation request, pulling the current budget position, the funding source, and the ongoing versus one-time cost. Brian Powell pointed out the bigger win: the same process flagged expenses the ERP system had miscategorized as capital. Left alone, that kind of error sits quietly for years. Caught early, it's a five-minute fix instead of a retroactive journal entry. Staff still review and tighten the draft. They just don't start from a blank page."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"We also get really excited about the fact that it's one section in a staff report in this particular example, but it's a pretty, pretty darn important one.\"",
+          "attribution": "Erica Olsen, CEO of Madison AI",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+            "alt": "Erica Olsen, CEO of Madison AI"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "020 AI In Action: Let AI Draft the Fiscal Impact Section for You",
+          "wistiaId": "gwsxv7c5x9",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fgwsxv7c5x9&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fgwsxv7c5x9&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fe1d151c618f7bd0f2255e3704ddca71b.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/e1d151c618f7bd0f2255e3704ddca71b.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Know What You Have Before You Ask AI to Use It",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Before you ask AI a question, ask what it needs to answer it well. Brian Powell described a growth prediction model: combine ERP expense and revenue data with parcel and zoning data so a new development's real cost to the city shows up before council approves it, not five years later. The same logic applies to calls-for-service analysis. Erica Olsen asked Madison AI directly whether their ERP and knowledge-base data was enough to do it well. The honest answer was “yes and no.” Missing CAD data, including badge numbers and location details, would need to come first. Knowing the gap is half the job."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"The very first thing you need to answer is, do we have the data to do that?\"",
+          "attribution": "Dr. Samuel Gallaher"
+        }
+      ],
+      "videos": [
+        {
+          "title": "020 AI In Action: Know What You Have Before You Ask AI to Use It",
+          "wistiaId": "tsfq8pcrn4",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Ftsfq8pcrn4&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Ftsfq8pcrn4&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F2911b1d9fa18c045ba6d31e5e7ec4bc9.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/2911b1d9fa18c045ba6d31e5e7ec4bc9.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Data Layer, Part 1: Foundations + ERP w/ThirdLine",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "020 AI In Action - Data Layer, Part 1: Foundations + ERP w/ThirdLine (full session)",
+          "wistiaId": "dytywr23m0",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fdytywr23m0&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fdytywr23m0&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F0089824ea8c38cc9c688c8a60526bc19.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/0089824ea8c38cc9c688c8a60526bc19.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": []
+    }
+  ],
+  "downloadUrls": []
+}

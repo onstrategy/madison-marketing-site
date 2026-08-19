@@ -1,0 +1,290 @@
+{
+  "id": "ai-everyones-talking-about",
+  "path": "/ai-everyones-talking-about/",
+  "order": 50,
+  "sourceUrl": "https://www.madisonai.com/ai-everyones-talking-about",
+  "capturedAt": "2026-08-18",
+  "sha256": "6620e120c43fc1c4e46eb19572cd5574bf6ea8f8e44ae18acc832e7d4829679c",
+  "metadata": {
+    "title": "The AI Everyone's Talking About Is Already Inside Your Madison Deployment",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/ai-everyones-talking-about",
+    "openGraph": {
+      "title": "The AI Everyone's Talking About Is Already Inside Your Madison Deployment",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "The AI Everyone's Talking About Is Already Inside Your Madison Deployment",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a0301d98959385986fc1cde_already.avif",
+      "alt": "The AI Everyone's Talking About Is Already Inside Your Madison Deployment"
+    }
+  },
+  "hero": {
+    "headings": [
+      "AI In Action Webinar",
+      "The AI Everyone's Talking About Is Already Inside Your Madison Deployment"
+    ],
+    "sourceClasses": [
+      "pricing-v3",
+      "dark"
+    ]
+  },
+  "regions": [
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [
+        "The question isn't whether to use AI. It's whether the AI you're using was built for your work. This AI In Action session made that distinction impossible to ignore, and made the case that for local government staff, Madison AI is the right tool for the job.",
+        "Erica Olsen and Heyden Enochson walked through the architecture, the data work, the benchmarks, and the features you should be using right now."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "The Models We Use and Why",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Madison AI doesn't run on a single model. It uses the best available model for each job. Claude handles reasoning and generation. Separate models convert your data into something AI can read with precision. Custom-built agents handle tasks your staff performs daily: pulling code, reading minutes, cross-referencing ordinances, and generating staff reports.",
+        "General-purpose tools don't always return the same answer twice. That's fine for general queries. It's a problem when you need a complete vote history or every entitlement on a parcel.",
+        "Madison AI is built for consistency. Same answer every time, with citations back to the source."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"Your organization invested in the idea of having a dedicated city or county AI that is based on your data, that is delivering against your workflows and your work tasks to help you all do your jobs better, faster, higher quality.\"",
+          "attribution": "Erica Olsen, CEO, Madison AI",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+            "alt": "Erica Olsen, CEO, Madison AI"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "013 AI In Action: The Models We Use - and Why",
+          "wistiaId": "mczoyl9yun",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fmczoyl9yun&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fmczoyl9yun&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F7ffa482c6f37824d5698083befaae0b7.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/7ffa482c6f37824d5698083befaae0b7.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "How We Handle Your Data",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Madison AI keeps your jurisdiction's data inside its own contained virtual machine within the Azure tenant, separated from every other jurisdiction, with no data commingling. Every interaction generates an audit trail. Your data does not train any external model.",
+        "The heavier lift happens before you ever type a question. Madison AI ingests your data, converts it, and keeps it current on a weekly basis. Documents that contain tables, charts, and multi-page attachments require a very specific conversion process to be AI-readable with high fidelity. That work is what separates a tool that finds the right answer from one that confidently returns the wrong one."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"Without that really quite intense data work that we do to ingest, convert, extract, and then keep that process up to date on a weekly basis, without that, we lose the context to get the correct answer.\"",
+          "attribution": "Heyden Enochson, Head of GTM, Madison AI",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69d20bf82699aad3185c30ac_heyden.avif",
+            "alt": "Heyden Enochson, Head of GTM, Madison AI"
+          }
+        },
+        {
+          "text": "\"It rises and falls on that. Just because you have the data, you have to be able to get it out.\"",
+          "attribution": "Lee Anne Olivas, Management Analyst, RTC",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+            "alt": "Lee Anne Olivas, Management Analyst, RTC"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "013 AI In Action: How We Handle Your Data",
+          "wistiaId": "nj4knm41l0",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fnj4knm41l0&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fnj4knm41l0&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Ff15d176c431d4ca1514ff2b26db676d1.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/f15d176c431d4ca1514ff2b26db676d1.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Claude vs. Copilot vs. Madison",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Madison AI ran a benchmarking exercise using 12 months of City of Corona council minutes. The question: what was the final approved unit count for the North Mall redevelopment project, and how did the council get there? Four meetings. Six documents. Eight months of deliberation. ‍ ChatGPT and Copilot could not complete the task. Claude reached the correct answer, 300 units, but required three attempts and returned no citations. Madison AI completed it in a single query, with a full decision trace and every source cited.",
+        "The scoring framework evaluates five dimensions: completeness, correctness, faithfulness, retrieval, and authority. The last two are the ones that protect you at the dais."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"We place a disproportionate amount of time and effort making sure that when we're building these applications, we are using a master authoritative comprehensive data set.\"",
+          "attribution": "Heyden Enochson, Head of GTM, Madison AI"
+        }
+      ],
+      "videos": [
+        {
+          "title": "013 AI In Action: Claude vs. Copilot vs. Madison",
+          "wistiaId": "oztdy6zrbi",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Foztdy6zrbi&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Foztdy6zrbi&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F96fbf84398ce508fd53200d188828f41.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/96fbf84398ce508fd53200d188828f41.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Power Moves You Might Not Know About",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Staff Report Writer. Find it in the left-hand panel under Workflows. Select your knowledge domain, choose your template, attach any supporting documents, and generate a first draft. Revise sections, check citations, and export to Word, PDF, or PowerPoint. ‍ Work iteratively. Ask for a voting record, then the decision trace, then an executive summary. Each follow-up builds on the last. Treat it like a coworker, not a search bar. ‍ PowerPoint export. Once you've finished workshopping a staff report or research output, export a first-draft PowerPoint from the same session. Not your jurisdiction's template yet, but a real starting point."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"This is really an assistant that knows everything that's happened in your jurisdiction for about at least the last 15 years.\"",
+          "attribution": "Heyden Enochson, Head of GTM, Madison AI"
+        }
+      ],
+      "videos": [
+        {
+          "title": "013 AI In Action: Power Moves You Might Not Know About",
+          "wistiaId": "1p1kq464dm",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F1p1kq464dm&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F1p1kq464dm&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Ff6ce3bae555edcf4622c092a4cb2ea45.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/f6ce3bae555edcf4622c092a4cb2ea45.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Watch the full webinar",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "Watch the full webinar",
+          "wistiaId": "hueyvcz79k",
+          "sourceUrl": "https://fast.wistia.net/embed/iframe/hueyvcz79k"
+        }
+      ],
+      "callouts": [],
+      "images": []
+    }
+  ],
+  "downloadUrls": []
+}

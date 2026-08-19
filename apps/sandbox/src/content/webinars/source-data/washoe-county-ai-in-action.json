@@ -1,0 +1,289 @@
+{
+  "id": "washoe-county-ai-in-action",
+  "path": "/washoe-county-ai-in-action/",
+  "order": 110,
+  "sourceUrl": "https://www.madisonai.com/washoe-county-ai-in-action",
+  "capturedAt": "2026-08-18",
+  "sha256": "84fe653f238d2f4d501065b9a6a3e3d2a34fd5e84436109ba9c7ce780d4a259f",
+  "metadata": {
+    "title": "Three Tips from Two Years In - Lessons from Washoe County's AI Deployment - AI in Action",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/washoe-county-ai-in-action",
+    "openGraph": {
+      "title": "Three Tips from Two Years In - Lessons from Washoe County's AI Deployment - AI in Action",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "Three Tips from Two Years In. Lessons from Washoe County's AI Deployment",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69aefa8ac913e95ccb952a3a_Wahoe.avif",
+      "alt": "Three Tips from Two Years In. Lessons from Washoe County's AI Deployment"
+    }
+  },
+  "hero": {
+    "headings": [
+      "AI In Action Webinar",
+      "Three Tips from Two Years In. Lessons from Washoe County's AI Deployment"
+    ],
+    "sourceClasses": [
+      "pricing-v3",
+      "dark"
+    ]
+  },
+  "regions": [
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [
+        "Two years in, the lessons are clear. The best AI is built from your agency's own data - and that distinction is everything.",
+        "Washoe County's Dave Solaro, Assistant County Manager, shared three practical lessons for executives deploying purpose-built AI in local government:",
+        "1. Start with the historical record - not a general search engine. 2. Deploy deliberately, starting with the people closest to governance. 3. Use AI to compress the prep work on complex public issues.",
+        "Here are the three tips in detail:"
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Build from your institutional record - not the internet",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "The clearest discipline Washoe County developed was simple: Ask Madison AI first. For county leadership, that means no longer relying on memory, digging through old packets, or pulling staff into repeated history searches. Board actions, staff reports, transcripts, permits, and related records are available in a single thread - sourced from the county's own data, not a general model trained on the web.",
+        "That shift moves institutional knowledge from something held by a few people to something management can use every day. It reduces interruptions, frees staff for higher-value work, and gives leaders more confidence in the answers they're working from.",
+        "The real gain is not just speed. It's better context, stronger follow-through, and answers you can actually defend."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"I always say start with Madison AI.\"",
+          "attribution": "Dave Solaro, Assistant County Manager",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69aef3a4faba51afea632750_dave.avif",
+            "alt": "Dave Solaro, Assistant County Manager"
+          }
+        },
+        {
+          "text": "\"Madison AI's goal is to be the institutional memory for your organization.\"",
+          "attribution": "Erica Olsen, CEO, Madison AI",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+            "alt": "Erica Olsen, CEO, Madison AI"
+          }
+        }
+      ],
+      "videos": [
+        {
+          "title": "009 AI In Action: ",
+          "wistiaId": "pzzgj8ozl6",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fpzzgj8ozl6&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fpzzgj8ozl6&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Fca3a5733ab4419a89bcf143862284e5e.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/ca3a5733ab4419a89bcf143862284e5e.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Deploy deliberately - start where governance decisions get made",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Washoe County did not roll this out to everyone, on purpose. The focus was on the people who prepare information for decision-makers and carry the county's narrative across leadership and governance - executives, department heads, planners, engineers, and staff who regularly support board-facing work.",
+        "That approach keeps the data foundation tighter, the onboarding more useful, and the results more defensible. It also reinforces something important for elected officials and senior leaders - AI works best when people understand what's in the system, what isn't, and where human judgment still owns the call.",
+        "A deliberate rollout is not a limitation. It's what makes the tool credible."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"Anybody that has to interact with the governing body, has to provide information to them… that's really who this tool is for.\"",
+          "attribution": "Dave Solaro, Assistant County Manager"
+        }
+      ],
+      "videos": [
+        {
+          "title": "009 AI In Action: Elected Officials and Governance - reinforce a shared narrative.",
+          "wistiaId": "8w3twxox5d",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F8w3twxox5d&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F8w3twxox5d&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F7f3163fa81a37405bfe190f818c9c447.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/7f3163fa81a37405bfe190f818c9c447.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Use AI to get past the blank page on high-stakes topics",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "When Washoe County was preparing for a local fire regionalization discussion, Dave faced a familiar gap - a technical consultant process on one side, and a public information session that still needed to be built from scratch on the other.",
+        "He started with Madison - a broad prompt to build a working outline for a 90- to 120-minute public meeting tied to the regional fire study. The result was structure, sequencing, and a first draft the communications team could actually work from.",
+        "Madison did not replace the judgment or the craft. It eliminated the assembly work - the research, the framing, the blank page - so the real work could start sooner and go deeper.For executives managing complex, politically sensitive topics, that's the return: fewer cold starts, faster prep, and more time improving the work instead of building the scaffolding."
+      ],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"It saved me probably half a day's work of going to research all of these things.\"",
+          "attribution": "Dave Solaro, Assistant County Manager"
+        }
+      ],
+      "videos": [
+        {
+          "title": "009 AI In Action: ",
+          "wistiaId": "ymiffl8ao3",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fymiffl8ao3&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fymiffl8ao3&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F89f66f60d3d6cfc3a7bdca2b16f62a23.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/89f66f60d3d6cfc3a7bdca2b16f62a23.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Watch the full webinar",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "Watch the full webinar",
+          "wistiaId": "2eled5bcgz",
+          "sourceUrl": "https://fast.wistia.net/embed/iframe/2eled5bcgz"
+        }
+      ],
+      "callouts": [],
+      "images": []
+    }
+  ],
+  "downloadUrls": []
+}

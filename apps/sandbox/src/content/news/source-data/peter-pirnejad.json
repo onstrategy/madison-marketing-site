@@ -1,0 +1,221 @@
+{
+  "id": "peter-pirnejad",
+  "order": 20,
+  "category": "Team",
+  "classification": "announcement",
+  "implementationStatus": "pending",
+  "sourceUrl": "https://www.madisonai.com/peter-pirnejad",
+  "capturedAt": "2026-08-18",
+  "metadata": {
+    "title": "Peter Pirnejad - Strategic Advisor",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/peter-pirnejad",
+    "openGraph": {
+      "title": "Peter Pirnejad - Strategic Advisor",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "Peter Pirnejad Joins Madison AI as Strategic Advisor",
+    "description": "Bringing a wealth of municipal leadership experience",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a3ceb00e1520586f3ee4ecb_New-hire-5.avif",
+      "alt": null
+    }
+  },
+  "regions": [
+    {
+      "role": "hero",
+      "sourceClasses": [
+        "pricing-v3",
+        "dark"
+      ],
+      "sourceSummary": {
+        "title": "Team Update",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Team Update",
+          "level": 3
+        },
+        {
+          "kind": "heading",
+          "text": "Peter Pirnejad Joins Madison AI as Strategic Advisor",
+          "level": 2
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "body",
+      "sourceClasses": [
+        "pricing-01",
+        "light-gray",
+        "adjusted-top",
+        "article-top"
+      ],
+      "sourceSummary": {
+        "title": "Bringing a wealth of municipal leadership experience and a pioneering vision for government technology, Madison AI welcomes Dr. Peter Pirnejad as a Strategic Advisor.",
+        "description": "Dr. Pirnejad joins the team while continuing his leadership as Executive Director of the Davenport Institute for Public Engagement and Civic Leadership at Pepperdine University."
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Bringing a wealth of municipal leadership experience and a pioneering vision for government technology, Madison AI welcomes Dr. Peter Pirnejad as a Strategic Advisor.",
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dr. Pirnejad joins the team while continuing his leadership as Executive Director of the Davenport Institute for Public Engagement and Civic Leadership at Pepperdine University."
+        },
+        {
+          "kind": "image",
+          "source": "img",
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+          "alt": null,
+          "sourceClasses": [
+            "quote-photo",
+            "light"
+          ]
+        },
+        {
+          "kind": "heading",
+          "text": "“Peter is a rare leader who understands both the intricate mechanics of local government and the transformative potential of artificial intelligence. His work at the Davenport Institute and his decades of experience in local government, including as a city manager, make him an invaluable asset as we scale our platform to help public servants work more effectively and transparently.”",
+          "segments": [
+            "“Peter is a rare leader who understands both the intricate mechanics of local government and the transformative potential of artificial intelligence.",
+            "His work at the Davenport Institute and his decades of experience in local government, including as a city manager, make him an invaluable asset as we scale our platform to help public servants work more effectively and transparently.”"
+          ],
+          "emphasizedText": [
+            "“Peter is a rare leader who understands both the intricate mechanics of local government and the transformative potential of artificial intelligence. His work at the Davenport Institute and his decades of experience in local government, including as a city manager, make him an invaluable asset as we scale our platform to help public servants work more effectively and transparently.”"
+          ],
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "Erica Olsen, CEO, Madison AI"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dr. Pirnejad recently transitioned to academia after a distinguished 27-year career in public administration. Most recently, he served as the Town of Los Altos Hills city manager, where he gained recognition for implementing one of the first municipal AI use policies in the country. His career also includes city manager of the City of Foster City, assistant city manager of the City of Napa, and development services director of the City of Palo Alto."
+        },
+        {
+          "kind": "paragraph",
+          "text": "A recognized advocate for GovTech innovation, Dr. Pirnejad previously served as a Senior Director at Oracle, where he focused on global public sector industry strategy. Having recently concluded his term as President of Cal-ICMA, Dr. Pirnejad also served as an Executive Board Member for the non-profit, CivStart, a driven startup dedicated to accelerating early-stage Gov-Tech companies that solve local government challenges."
+        },
+        {
+          "kind": "heading",
+          "text": "“I have spent my career looking for tools that empower local government leaders to better serve their communities,” said Dr. Pirnejad. “Madison AI is at the forefront of this mission, providing practical solutions that solve the ‘institutional memory’ crisis and reduce the administrative burden on staff. I am thrilled to support their efforts to bring responsible, high-impact AI to agencies across the country.”",
+          "level": 2
+        },
+        {
+          "kind": "paragraph",
+          "text": "At Madison AI, Dr. Pirnejad will provide strategic guidance, ensuring the company’s solutions remain grounded in the real-world needs of public sector practitioners."
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "trust",
+      "sourceClasses": [
+        "partner"
+      ],
+      "sourceSummary": {
+        "title": "Used and trusted by 65+ local governments and counting",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Used and trusted by 65+ local governments and counting",
+          "level": 4
+        }
+      ],
+      "embeddedForms": []
+    },
+    {
+      "role": "demo",
+      "sourceClasses": [
+        "cta"
+      ],
+      "sourceSummary": {
+        "title": "Book a demo today",
+        "description": null
+      },
+      "blocks": [
+        {
+          "kind": "heading",
+          "text": "Book a demo today",
+          "level": 2
+        }
+      ],
+      "embeddedForms": [
+        {
+          "provider": "hubspot",
+          "portalId": "54493",
+          "formId": "02ee5553-47ab-4482-869f-f9ea20ae5f74",
+          "region": "na1"
+        },
+        {
+          "provider": "calendly-form-builder",
+          "submissionUrl": "https://calendly.com/api/form_builder/forms/0fed8b94-bc40-4f3e-a1c2-e6ee38e217dd/submissions"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+      "bytes": 212927,
+      "sha256": "881abaefe0d5f3bd3783d431dc752d29b9d589d252bec26c5ced11abfad7dde3",
+      "extension": "png",
+      "width": 603,
+      "height": 603,
+      "usages": [
+        {
+          "region": "body",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": [
+            "quote-photo",
+            "light"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg",
+      "bytes": 371291,
+      "sha256": "040a4c4fb3773fa0ace5b80db11639bd4e17b5b8fb3db86cdeaece9661b23eba",
+      "extension": "jpg",
+      "width": 1200,
+      "height": 630,
+      "usages": [
+        {
+          "region": "metadata",
+          "source": "open-graph",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6a3ceb00e1520586f3ee4ecb_New-hire-5.avif",
+      "bytes": 27597,
+      "sha256": "3c8de969e07390f8aa24a61de0cbcd00b0ed6c65394bf882ad11c0f093bae79f",
+      "extension": "avif",
+      "width": 1920,
+      "height": 1080,
+      "usages": [
+        {
+          "region": "collection-card",
+          "source": "img",
+          "alt": null,
+          "sourceClasses": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "wrcog-ai-in-action",
+  "path": "/wrcog-ai-in-action/",
+  "order": 130,
+  "sourceUrl": "https://www.madisonai.com/wrcog-ai-in-action",
+  "metadata": {
+    "title": "How WRCOG Applies AI to Real Government Work",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "How WRCOG Applies AI to Real Government Work - AI In Action Webinar",
+    "ogImageAsset": "madison-webinar-og.jpg"
+  },
+  "card": {
+    "title": "How WRCOG Applies AI to Real Government Work",
+    "imageAsset": "wrcog-ai-in-action-card.avif",
+    "imageAlt": "How WRCOG Applies AI to Real Government Work"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "How WRCOG Applies AI to Real Government Work"
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "AI Gives Superpowers to Small but Mighty Governments",
+        "paragraphs": [
+          "WRCOG is a classic “small but mighty” government team. They support a regional footprint of ~2 million people with 36 full-time staff, and Chris personally wears multiple hats.",
+          "Their reality is what most agencies feel right now. Rising regulatory complexity, limited funding, and constant pressure to do more without adding headcount.",
+          "Chris framed AI as a capacity multiplier that removes “drudgery”, shortens time-to-answer, and frees staff to focus on the work that moves programs forward. The goal isn’t reduction of headcount; it’s avoiding unnecessary hires and protecting bandwidth for higher-value work."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“We’re giving our staff the ability to work on higher-level things, so they’re not doing drudge work. I just thought there had to be a better way than what we were doing.”",
+            "attribution": "Christopher Gray, Deputy Executive Director",
+            "portrait": {
+              "asset": "christopher-gray-deputy-executive-director-cda429dc.png",
+              "alt": "Christopher Gray, Deputy Executive Director"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "007_AI in Action: The real impact AI has on lean government teams",
+            "wistiaId": "yxukolr0x2"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Staff Report Tips from a Staff Report Expert",
+        "paragraphs": [
+          "Chris explained that most staff reports contain repeatable content, and WRCOG has clear rules for each section, so the output stays consistent, tight, and predictable.",
+          "They intentionally reduced report length after learning how elected officials read: Topic → Summary → Discussion.",
+          "Only the first few sentences earn attention. The result is a more standardized product that reduces review churn and helps staff spend time where it matters: the discussion and decision logic.",
+          "Staff Report Pro Tip: If the first four or five sentences don't really capture an elected official, they just don’t read the rest of it."
+        ],
+        "items": [],
+        "quotes": [],
+        "videos": [
+          {
+            "title": "WRCOG: Staff Report Best Practices",
+            "wistiaId": "zuwl640nis"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "AI’s Power for Decision Tracing & Fact-Finding",
+        "paragraphs": [
+          "Authority questions come with real pressure, and the cost of getting them wrong is real.",
+          "Chris described a moment when the Executive Director was out, and the team needed clarity on signing authority. Staff couldn’t recall the exact policy, resolution, and when it passed. Instead of starting a file scavenger hunt, they use Madison AI to find the exact resolution and answer, then update the master document to update their master policy.",
+          "The key point: AI accelerated discovery, but the document itself is what made the decision defensible."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“Nobody remembered we had adopted a resolution. I was at that meeting, and I don’t remember it. We’re able to find this specific resolution very, very quickly. And the actual document… exactly when it was approved.”",
+            "attribution": "Christopher Gray, Deputy Executive Director"
+          }
+        ],
+        "videos": [
+          {
+            "title": "WRCOG: Decision Tracing",
+            "wistiaId": "yfp4ec64tm"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Answers You Can Stake Your Reputation On (With Citations)",
+        "paragraphs": [
+          "The real win here is “less file-digging, more certainty.” Chris described how AI helps them answer governance and policy questions using authoritative records, then points directly to the language that supports the conclusion. Cited authoritative sources create confidence in decisions.",
+          "Chris also emphasized the long-term value of institutional knowledge and memory, moving beyond the tenured staff. AI becomes the backstop when those people aren’t available - or eventually leave."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "“There’s a whole heck of a lot of institutional knowledge… within a very small number of people. It has been very successful for us… and it’s something that we will continue to use.”",
+            "attribution": "Christopher Gray, Deputy Executive Director"
+          }
+        ],
+        "videos": [
+          {
+            "title": "WRCOG: Answers to Stake Your Reputation On",
+            "wistiaId": "50ar2fgf6k"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Q/A Discussion: Staff Accountability with Every Output",
+        "paragraphs": [
+          "AI doesn’t own the outcome, people do. The safest posture is to treat AI as a finder and a first draft generator, then validate against source documents before anything becomes public-facing or decision-grade.",
+          "Kristine reinforced this with a simple, enforceable message. Users are responsible for what they publish, regardless of how it was produced. That clarity is what makes adoption scalable without creating risk debt."
+        ],
+        "items": [],
+        "quotes": [],
+        "videos": []
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Watch the full webinar",
+        "videoTitle": "Watch the full webinar",
+        "wistiaId": "oqywrrz8yi"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

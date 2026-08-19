@@ -1,0 +1,422 @@
+{
+  "id": "flashvote-ai-in-action",
+  "path": "/flashvote-ai-in-action/",
+  "order": 120,
+  "sourceUrl": "https://www.madisonai.com/flashvote-ai-in-action",
+  "capturedAt": "2026-08-18",
+  "sha256": "5e36b8633118a551a3705bce7f83c8ce594e8a93cbba03493fe2fb2575675ed3",
+  "metadata": {
+    "title": "Smoother Meetings for Everyone - AI In Action Webinar",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "canonical": "https://www.madisonai.com/flashvote-ai-in-action",
+    "openGraph": {
+      "title": "Smoother Meetings for Everyone - AI In Action Webinar",
+      "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+      "image": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69b27bb24706f8322db78517_Meta%20Image.jpg"
+    }
+  },
+  "collectionCard": {
+    "title": "How FlashVote Creates Smoother Meetings for Everyone",
+    "image": {
+      "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/699ee341862d91007f66b0d6_2b09632977d1d1866142a634610d0ab9_FlashVote.avif",
+      "alt": "How FlashVote Creates Smoother Meetings for Everyone"
+    }
+  },
+  "hero": {
+    "headings": [
+      "AI In Action Webinar",
+      "Fewer Surprises at the Dais. Smoother Meetings for Everyone."
+    ],
+    "sourceClasses": [
+      "pricing-v3",
+      "dark"
+    ]
+  },
+  "regions": [
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Public Decision-Making Process",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Better decisions come from better structure—not louder debate. The session opened with a practical reset: public decision-making works best when it’s treated as a repeatable process, not a personality contest.",
+        "The core move is breaking big, politicized questions into smaller ones that are easier to answer cleanly and publicly. Create clarity before solutions, tradeoffs, or votes."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "008 AI In Action: FlashVote - Public Decision-Making Process",
+          "wistiaId": "71seorw4ty",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2F71seorw4ty&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2F71seorw4ty&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F96c64f0b7e931305a832f8b9a7f8b4af.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/96c64f0b7e931305a832f8b9a7f8b4af.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "\"What’s the problem we’re trying to solve? If you start there, that’s literally 60–70% of the work.\"",
+          "attribution": "Kevin Lyons, CEO, FlashVote",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/699c651bddc7a5c01b899bbc_kevin.avif",
+            "alt": "Kevin Lyons, CEO, FlashVote"
+          }
+        }
+      ],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Overview of the Public Meeting Assistant",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "A meeting-specific notebook that reduces chaos before and after the dais. We introduced the Public Meeting Assistant, co-created with FlashVote, as a purpose-built module designed to support staff and meeting workflows with meeting-specific context—not generic chat.",
+        "Think one “notebook” per meeting, with pre-meeting and post-meeting materials built around the official record. The intent is simple: align staff and officials on the same baseline so the meeting runs cleaner and the follow-up is faster."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "008 AI In Action: FlashVote - Overview of the Public Meeting Assistant",
+          "wistiaId": "jv0gccg3wr",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fjv0gccg3wr&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fjv0gccg3wr&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F680c72af8afba1016d326ff98ae83e26.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/680c72af8afba1016d326ff98ae83e26.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“AI generates a lot of content. Generating good content is what we’re really all about, and this is really about making good decisions.\"",
+          "attribution": "Erica Olsen, CEO, Madison AI",
+          "portrait": {
+            "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69303622e9c2d6fdb0bf4b54_05e4c8f29fbea5d7ab5bfe8d2bd0596d_Erica.png",
+            "alt": "Erica Olsen, CEO, Madison AI"
+          }
+        }
+      ],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Pre-Meeting Agents",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Everyone walks in prepared—because the packet gets translated into decision-ready signals. Pre-meeting agents pull from the agenda management system—official agenda plus attachments—and convert the packet into usable preparation.",
+        "The output is a cheat sheet: highlights, items of consequence, and quick context so officials aren’t cold-starting at the dais. That matters because preparation reduces repeat questions, sidetracks, and last-minute surprises."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "008 AI In Action: FlashVote - Pre-Meeting Agents​",
+          "wistiaId": "abreuv5xfr",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fabreuv5xfr&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fabreuv5xfr&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F4a910a4128f890f7fac822330a4cd399.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/4a910a4128f890f7fac822330a4cd399.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“Literally, when you’re driving to the meeting… this is what they would pull up to refresh if they’re not fully up to speed.”",
+          "attribution": "Kevin Lyons, CEO, FlashVote"
+        }
+      ],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Post-Meeting Agents",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Turn hours of follow-up into a fast, usable review built from the transcript. Post-meeting outputs are then cleaned for accuracy so staff aren’t fighting misspellings, acronyms, and noise. Agents generate what people actually need right after the meeting: voting summaries, meeting detail, internal recap formats, citizen-facing highlights, and follow-up tasks.",
+        "The guardrail stays firm: AI helps draft, but humans approve—especially where “minutes” are a legal term."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "008 AI In Action: FlashVote - Post-Meeting Agents",
+          "wistiaId": "mvxmx2pqi9",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fmvxmx2pqi9&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fmvxmx2pqi9&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F9236553491395861a89c20b81dc24c45.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/9236553491395861a89c20b81dc24c45.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“Everyone cares. They’re just really busy. What could you give them in a couple minutes as a highlight?”",
+          "attribution": "Kevin Lyons, CEO, FlashVote"
+        }
+      ],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Fact Checking Agents",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [
+        "Replay and search meeting conversations fast—so “Did I say that?” becomes answerable. We highlighted fact checking as a practical tool for high-scrutiny environments, especially when staff are asked to verify what was discussed, decided, or claimed across meetings. Instead of rewatching hours of video, you can search and pull the relevant passages quickly, then validate with a human in the loop. This is where institutional memory stops living only in a few people’s heads."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "008 AI In Action: FlashVote - Fact Checking Agents​",
+          "wistiaId": "qivuafz5ju",
+          "sourceUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fqivuafz5ju&display_name=Wistia%2C+Inc.&url=https%3A%2F%2Fonstrategyhq.wistia.com%2Fmedias%2Fqivuafz5ju%3F&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2Ff5f9b77ff116780627a8433ab69aa8fc.jpg%3Fimage_crop_resized%3D960x540&type=text%2Fhtml&schema=wistia",
+          "thumbnailUrl": "https://embed-ssl.wistia.com/deliveries/f5f9b77ff116780627a8433ab69aa8fc.jpg?image_crop_resized=960x540"
+        }
+      ],
+      "callouts": [],
+      "images": [
+        {
+          "url": "https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69956996e75d5853f333a1e5_play.svg",
+          "alt": null,
+          "sourceClasses": [
+            "play-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“We have your institutional knowledge… and what’s so cool is there’s a lot we can do with that—particularly with what’s happening in council chambers today.”",
+          "attribution": "Erica Olsen, CEO, Madison AI"
+        }
+      ],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [
+        "Get cited answers in seconds—because trust requires receipts. The session closed on what really builds confidence with residents and stakeholders: defensible answers grounded in the source record. When pressure hits, speed helps, but citations are what protect credibility. The point isn’t just finding an answer—it’s producing the receipts that show how the decision was made and why it holds up."
+      ],
+      "listItems": [],
+      "quotes": [],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [
+        {
+          "text": "“That's what the residents want to see. That's like the trust bomb.”",
+          "attribution": "Kevin Lyons, CEO, FlashVote"
+        }
+      ],
+      "videos": [],
+      "callouts": [],
+      "images": []
+    },
+    {
+      "sourceClasses": [
+        "pricing-01-wrap",
+        "flex-middle",
+        "no-space-mobile",
+        "case-study-section"
+      ],
+      "headings": [
+        {
+          "text": "Watch the full webinar",
+          "level": 2,
+          "sourceClasses": [
+            "h3",
+            "bigger"
+          ]
+        }
+      ],
+      "paragraphs": [],
+      "listItems": [],
+      "quotes": [],
+      "videos": [
+        {
+          "title": "Watch the full webinar",
+          "wistiaId": "054fpe7uw7",
+          "sourceUrl": "https://fast.wistia.net/embed/iframe/054fpe7uw7"
+        }
+      ],
+      "callouts": [],
+      "images": []
+    }
+  ],
+  "downloadUrls": []
+}

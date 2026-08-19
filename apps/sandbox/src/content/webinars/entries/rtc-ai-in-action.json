@@ -1,0 +1,203 @@
+{
+  "id": "rtc-ai-in-action",
+  "path": "/rtc-ai-in-action/",
+  "order": 80,
+  "sourceUrl": "https://www.madisonai.com/rtc-ai-in-action",
+  "metadata": {
+    "title": "RTC Built Workflows Worth Replicating. Here's Why.",
+    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "seoTitle": "RTC Built Workflows Worth Replicating. Here's Why.",
+    "ogImageAsset": "madison-webinar-og.jpg"
+  },
+  "card": {
+    "title": "RTC Built Workflows Worth Replicating. Here's Why.",
+    "imageAsset": "rtc-ai-in-action-card.avif",
+    "imageAlt": "RTC Built Workflows Worth Replicating. Here's Why."
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "RTC Built Workflows Worth Replicating. Here's Why.",
+        "subtitle": "RTC came into this session candidly sharing real workflows and real problems they had to solve. Lee Anne Olivas, Management Analyst at the Regional Transportation Commission of Washoe County, joined Kristine Richter, Head of Client Success, Madison AI, to walk through six areas where Madison AI added efficiencies in how the team works."
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "paragraphs": [
+          "The results are specific, repeatable, and worth your time."
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Better Meeting Prep: Board Meeting Preparation",
+        "paragraphs": [
+          "RTC built a prompt inside Madison that reviews the monthly agenda packet and generates anticipated questions based on how board members have previously voted and commented. Directors see what topics are likely to draw scrutiny before any presentation starts and can prepare answers in advance.",
+          "Presentations got cleaner. Staff stopped getting caught off guard. The \"let me get back to you\" moments dropped, which matters when your board only meets once a month."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"I've just noticed that since we've started doing this, our presentations are a lot cleaner, a lot smoother, things just flow a lot better, because they're anticipating those questions.\"",
+            "attribution": "Lee Anne Olivas, Management Analyst, RTC",
+            "portrait": {
+              "asset": "lee-anne-olivas-management-analyst-rtc-ce078fec.avif",
+              "alt": "Lee Anne Olivas, Management Analyst, RTC"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "012 AI In Action: Better Meeting Prep.",
+            "wistiaId": "r7jlofwfup"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Getting the Foundation Right: RTC Reduced File Noise",
+        "paragraphs": [
+          "RTC started with everything in Madison - all drafts, all versions. The results suffered. Five versions of the same document created conflicting citations and outputs that were hard to trust. So, they started over, rebuilt their folder structure around final authoritative documents only, and re-indexed them from there. The result: cleaner outputs, more accurate answers, and a team that trusts the tool. RTC now has nearly 61,000 files indexed across four knowledge domains."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"It goes back to that data management and the data cleanliness — providing those final authoritative documents.\"",
+            "attribution": "Kristine Richter, Head of Customer Success, Madison AI",
+            "portrait": {
+              "asset": "kristine-richter-head-of-client-success-madison-92a43d8d.avif",
+              "alt": "Kristine Richter, Head of Customer Success, Madison AI"
+            }
+          },
+          {
+            "quote": "\"Be creative, be flexible. Try something. If it works, awesome. If it doesn't, work on it and fine-tune it.\"",
+            "attribution": "Lee Anne Olivas, Management Analyst, RTC",
+            "portrait": {
+              "asset": "lee-anne-olivas-management-analyst-rtc-ce078fec.avif",
+              "alt": "Lee Anne Olivas, Management Analyst, RTC"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "012 AI In Action: Getting the foundation right.",
+            "wistiaId": "iqi8ldyovk"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Five Reports into One: Engineering Leadership Gets the Full Picture Faster",
+        "paragraphs": [
+          "RTC's engineering leadership used to review five separate printed reports every month - cost, schedule, change orders, upcoming bids. Meetings stretched into two hours. Now those reports feed into Madison, and one prompt generates a single consolidated view with risk flags color-coded by severity. Meetings run faster because everyone sees the same picture before the conversation starts."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"It's really made the meetings more productive, because they don't have to shift through five different reports in front of them.\"",
+            "attribution": "Lee Anne Olivas, Management Analyst, RTC"
+          },
+          {
+            "quote": "\"If you ever need something like this built, let your account manager know. We're here to make your lives easier.\"",
+            "attribution": "Kristine Richter, Head of Client Success, Madison AI"
+          }
+        ],
+        "videos": [
+          {
+            "title": "012 AI In Action: Five reports into one.",
+            "wistiaId": "joy5tbbp2k"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "A Scope of Work from a Prompt",
+        "paragraphs": [
+          "RTC built a prompt that does the assembly work. Feed it the specifics - contract type, dollar threshold, federal clauses required — and it searches past procurement contracts, matches the right templates, and returns a structured first draft with an executive summary, task breakdown, and list of potential attachments."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"This took minutes versus a few hours.\"",
+            "attribution": "Lee Anne Olivas, Management Analyst, RTC"
+          }
+        ],
+        "videos": [
+          {
+            "title": "012 AI In Action: A Scope of Work from a prompt.",
+            "wistiaId": "jy7imhw33y"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Institutional Knowledge Without the Folder Hunt",
+        "paragraphs": [
+          "RTC’s engineering files used to be organized by project manager. Finding a technical study meant knowing who ran the project, when, and what they named the folder. RTC solved it at the source: project managers now save finalized studies to a designated SharePoint folder, and an automated connection pulls those files into Madison. Staff search by location and get results in minutes."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"Data feeds in automatically. You're not dependent on one person sending files every week.\"",
+            "attribution": "Kristine Richter, Head of Client Success, Madison AI"
+          }
+        ],
+        "videos": [
+          {
+            "title": "012 AI In Action: Institutional knowledge without the folder hunt.",
+            "wistiaId": "0qn41nfygd"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Better RFP Prep: Prepare for RFPs and Interview Meetings Efficiently",
+        "paragraphs": [
+          "Upload a master RFP alongside a working draft and Madison flags missing clauses, identifies inconsistencies across sections, and surfaces recommendations with context. It also generates a pre-proposal meeting agenda and a list of likely proposer questions, so staff can issue addendums before the meeting, not during it."
+        ],
+        "items": [],
+        "quotes": [],
+        "videos": [
+          {
+            "title": "012 AI In Action: Better RFP prep.",
+            "wistiaId": "171m9q3a7k"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Watch the full webinar",
+        "videoTitle": "Watch the full webinar",
+        "wistiaId": "oa8g4y86dh"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}
