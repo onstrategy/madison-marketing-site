@@ -421,7 +421,7 @@ function FaqSection() {
           >
             {FAQS.map((faq) => (
               <AccordionItem key={faq.id} value={faq.id}>
-                <AccordionTrigger className="text-left font-sans text-lg font-semibold text-primary hover:bg-hover">
+                <AccordionTrigger className="text-left font-sans text-lg font-semibold text-primary hover:bg-app">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-secondary">{faq.answer}</AccordionContent>
