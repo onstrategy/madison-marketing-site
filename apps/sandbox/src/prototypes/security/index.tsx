@@ -15,7 +15,6 @@ import {
   UserCheck,
   HeartPulse,
   FileCheck,
-  GraduationCap,
   ArrowRight,
   Download,
 } from "lucide-react";
@@ -29,6 +28,7 @@ import {
 import { Nav, Footer, ClientLogos } from "../landing/sections";
 import { Reveal, Eyebrow, SectionHeading } from "../landing/parts";
 import { responsibleAiResources } from "../../content/responsible-ai/collection";
+import { resolveResponsibleAiAsset } from "../../content/responsible-ai/assets";
 import vendorFactSheetPdf from "./madison-ai-factsheet-govai-coalition-2026.pdf?url";
 
 // ============================================================================
@@ -140,6 +140,8 @@ const RESOURCES = RESOURCE_IDS.map((id) => {
   return {
     title: resource.card.title,
     description: resource.card.description ?? resource.metadata.description,
+    imageUrl: resolveResponsibleAiAsset(resource.card.imageAsset),
+    imageAlt: resource.card.imageAlt,
     href: resource.path,
   };
 });
@@ -347,6 +349,40 @@ function ComplianceSection() {
   );
 }
 
+// Same card design as ResourceCardItem on ../resources/index.tsx (image
+// on top, then title/description/"Read more" in a padded body) — these
+// 3 cards link into that exact page's Responsible AI collection, so
+// they read as the same kind of card, not a locally-styled lookalike.
+function ResourceCardItem({ resource }: { resource: (typeof RESOURCES)[number] }) {
+  return (
+    <a
+      href={resource.href}
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-default bg-surface transition-transform hover:-translate-y-1"
+    >
+      <div className="aspect-video w-full overflow-hidden">
+        <img
+          src={resource.imageUrl}
+          alt={resource.imageAlt}
+          loading="lazy"
+          className="size-full object-cover"
+        />
+      </div>
+      <div className="flex flex-1 flex-col p-6">
+        <h2 className="font-sans text-xl font-semibold leading-normal tracking-tight text-primary">
+          {resource.title}
+        </h2>
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-secondary">
+          {resource.description}
+        </p>
+        <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
+          Read more
+          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+        </span>
+      </div>
+    </a>
+  );
+}
+
 function ResourcesSection() {
   return (
     <section className="border-b border-default bg-app px-gutter py-30">
@@ -357,24 +393,7 @@ function ResourcesSection() {
         <div className="grid gap-4 sm:grid-cols-3">
           {RESOURCES.map((resource, i) => (
             <Reveal key={resource.title} delay={i * 60}>
-              <a
-                href={resource.href}
-                className="group flex h-full flex-col rounded-2xl border border-default bg-surface p-6 transition-transform hover:-translate-y-1"
-              >
-                <span className="flex size-9 items-center justify-center rounded-full bg-brand-subtle text-brand-accent">
-                  <GraduationCap className="size-4" />
-                </span>
-                <h3 className="mt-4 text-lg font-semibold tracking-tight text-primary">
-                  {resource.title}
-                </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-secondary">
-                  {resource.description}
-                </p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
-                  Read more{" "}
-                  <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-                </span>
-              </a>
+              <ResourceCardItem resource={resource} />
             </Reveal>
           ))}
         </div>
