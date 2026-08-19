@@ -1,4 +1,3 @@
-import { CheckCircle2, Download } from "lucide-react";
 import { Nav, Footer, ClientLogos } from "../landing/sections";
 import { Reveal, Eyebrow } from "../landing/parts";
 import { HubSpotForm } from "../../content/forms/HubSpotForm";
@@ -10,16 +9,12 @@ import { HubSpotForm } from "../../content/forms/HubSpotForm";
 //
 // Structured after madisonai.com/peer-share-invite: a light hero pairing the invite copy with
 // a dark registration form card — the inverse of ../book-a-demo/index.tsx's
-// hero+form coloring, by explicit request for this page — then a "next
-// session" agenda card, the standard client-logo strip, and footer. Copy
-// here is written fresh for this build, not copied from the live page.
+// hero+form coloring, by explicit request for this page — then the
+// standard client-logo strip and footer. Copy here is written fresh for
+// this build, not copied from the live page. (Used to also carry a "next
+// session" agenda card naming a specific upcoming date/topic; removed by
+// request.)
 // ============================================================================
-
-const VALUE_PROPS = [
-  "Peer-led walkthroughs from local government leaders and staff.",
-  "Step-by-step training on real workflows, not just features.",
-  "AI upskilling — prompting, patterns, and power tips.",
-];
 
 function HeroAndFormSection() {
   return (
@@ -67,47 +62,6 @@ function HeroAndFormSection() {
   );
 }
 
-function NextSessionSection() {
-  return (
-    <section className="border-b border-default bg-surface px-gutter py-20">
-      <div className="mx-auto max-w-3xl">
-        <Reveal>
-          <div className="rounded-2xl border border-default bg-panel p-8 lg:p-10">
-            <Eyebrow className="mb-4">AI in Action — Our Next Agenda</Eyebrow>
-            <p className="mb-1 text-sm font-semibold text-secondary">
-              Next session: August 20, 2026 — 10:00 a.m. PT
-            </p>
-            <h2 className="mb-6 text-balance font-serif text-2xl font-medium tracking-tight text-primary">
-              Data Layer, Part 2: Records &amp; Document Search
-            </h2>
-            <ul className="space-y-3.5">
-              {VALUE_PROPS.map((text) => (
-                <li key={text} className="flex items-start gap-3">
-                  <CheckCircle2
-                    className="mt-0.5 size-5 shrink-0 text-brand-accent"
-                    aria-hidden="true"
-                  />
-                  <span className="text-pretty text-secondary">{text}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
-        <Reveal delay={60}>
-          <p className="mt-6 text-center">
-            <a
-              href="/resources"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent"
-            >
-              Missed a session? Browse past recaps <Download className="size-3.5" />
-            </a>
-          </p>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
 // This prototype self-registers via import.meta.glob in apps/sandbox/src/App.tsx —
 // meta.ts powers the gallery; this file is the lazy-loaded page. No edits to App.tsx.
 export default function AiInActionWebinarRegistrationPrototype() {
@@ -116,7 +70,6 @@ export default function AiInActionWebinarRegistrationPrototype() {
       <Nav sectionAware />
       <main>
         <HeroAndFormSection />
-        <NextSessionSection />
       </main>
       <ClientLogos />
       <Footer />
