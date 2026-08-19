@@ -162,7 +162,7 @@ function StoryCard({ story }: { story: ClientStorySummary }) {
         {story.logo ? <CardLogoBadge logo={story.logo} /> : null}
       </span>
       <span className="flex flex-1 flex-col p-6">
-        <h3 className="font-sans text-xl font-semibold tracking-tight text-primary">
+        <h3 className="font-sans text-xl font-semibold leading-normal tracking-tight text-primary">
           {story.title}
         </h3>
         <span className="mt-2 flex-1 text-secondary">{story.oneLiner}</span>
