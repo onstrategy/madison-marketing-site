@@ -119,8 +119,8 @@ function FeaturedHero({ data }: { data: typeof FEATURED }) {
 function CardLogoBadge({ logo }: { logo: NonNullable<ClientStorySummary["logo"]> }) {
   return (
     <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-      <span className="flex size-24 items-center justify-center rounded-full border border-plate/40 bg-plate/15 shadow-lg backdrop-blur-md">
-        <span className="flex size-16 items-center justify-center rounded-full bg-plate p-3 shadow-md">
+      <span className="flex size-31 items-center justify-center rounded-full border border-plate/40 bg-plate/15 shadow-lg backdrop-blur-md">
+        <span className="flex size-21 items-center justify-center rounded-full bg-plate p-4 shadow-md">
           <img
             src={logo.src}
             alt={logo.alt}
