@@ -164,6 +164,7 @@
         },
         "download": {
           "title": "Download this case study as a one-page PDF",
+          "clientName": "Las Virgenes Municipal Water District",
           "asset": "lvmwd-one-page.pdf",
           "form": "case-study-download"
         }

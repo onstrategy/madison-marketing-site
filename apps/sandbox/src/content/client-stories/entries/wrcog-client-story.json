@@ -186,6 +186,7 @@
         "download": {
           "title": "Download this case study as a one-page PDF",
           "description": "Submit the form to download the WRCOG client story.",
+          "clientName": "Western Riverside Council of Governments",
           "asset": "wrcog-one-page.pdf",
           "form": "case-study-download"
         }

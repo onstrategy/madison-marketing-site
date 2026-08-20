@@ -2,10 +2,9 @@ import { type ReactNode } from "react";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 import { cn } from "@madison/ui/utils";
 import { Button } from "@madison/ui/button";
-import { Input } from "@madison/ui/input";
-import { Label } from "@madison/ui/label";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@madison/ui/tabs";
 import { LogoMark as MadisonMark } from "@madison/ui/logo";
+import { HubSpotForm } from "../../content/forms/HubSpotForm";
 import { Nav, Footer } from "../landing/sections";
 import { Reveal, Eyebrow, SectionHeading, BrowserFrame, LogoMark } from "../landing/parts";
 
@@ -105,7 +104,6 @@ export interface PlatformPageData {
     title: string;
     description: string;
     bullets: string[];
-    submitLabel: string;
   };
 }
 
@@ -415,34 +413,18 @@ function CtaSection({ data }: { data: PlatformPageData["cta"] }) {
           </div>
         </Reveal>
         <Reveal delay={100}>
-          <form className="light rounded-2xl border border-default bg-surface p-8">
-            <Eyebrow className="mb-6">Schedule a call</Eyebrow>
-            <div className="mb-5 grid gap-4 sm:grid-cols-2">
-              <div className="space-y-1.5">
-                <Label htmlFor="cd-first-name">First name</Label>
-                <Input id="cd-first-name" name="firstName" />
-              </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="cd-last-name">Last name</Label>
-                <Input id="cd-last-name" name="lastName" />
-              </div>
-              <div className="space-y-1.5 sm:col-span-2">
-                <Label htmlFor="cd-email">Organization email address*</Label>
-                <Input id="cd-email" name="email" type="email" required />
-              </div>
-              <div className="space-y-1.5 sm:col-span-2">
-                <Label htmlFor="cd-phone">Phone number</Label>
-                <Input id="cd-phone" name="phone" type="tel" />
-              </div>
-              <div className="space-y-1.5 sm:col-span-2">
-                <Label htmlFor="cd-org">Government name and department*</Label>
-                <Input id="cd-org" name="organization" required />
-              </div>
-            </div>
-            <Button type="submit" size="lg" className="w-full sm:w-auto">
-              {data.submitLabel}
-            </Button>
-          </form>
+          {/* The real HubSpot demo form — the same one /demo uses, referenced by
+              registry name. Every platform page shares this card. */}
+          <div className="light rounded-2xl border border-default bg-surface p-8">
+            <h2 className="mb-1 text-2xl font-medium tracking-tight text-primary">
+              Schedule a call
+            </h2>
+            <p className="mb-6 text-sm text-secondary">
+              Fill in the form below, and our team will get back to you within
+              one business day.
+            </p>
+            <HubSpotForm form="book-a-demo" calendlyRouting="demo-routing" />
+          </div>
         </Reveal>
       </div>
     </section>

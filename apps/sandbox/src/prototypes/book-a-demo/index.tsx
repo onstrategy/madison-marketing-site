@@ -64,7 +64,7 @@ function HeroAndFormSection() {
             <p className="mb-6 text-sm text-secondary">
               Fill in the form below, and our team will get back to you within one business day.
             </p>
-            <HubSpotForm form="book-a-demo" />
+            <HubSpotForm form="book-a-demo" calendlyRouting="demo-routing" />
           </div>
         </Reveal>
       </div>

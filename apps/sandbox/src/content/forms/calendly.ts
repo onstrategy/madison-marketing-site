@@ -20,11 +20,11 @@ export interface CalendlyRoutingEntry {
 }
 
 export const CALENDLY_ROUTING_FORMS = {
-  "security-review-routing": {
+  "demo-routing": {
     submissionsUrl:
       "https://calendly.com/api/form_builder/forms/0fed8b94-bc40-4f3e-a1c2-e6ee38e217dd/submissions",
     description:
-      "Opens Calendly's scheduling modal when the security-review request form is submitted",
+      "Opens Calendly's scheduling modal on every submission of the book-a-demo form — /demo, the four platform pages, and /book-a-security-review",
   },
 } as const satisfies Record<string, CalendlyRoutingEntry>;
 
