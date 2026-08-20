@@ -187,7 +187,7 @@
           "title": "Download this case study as a one-page PDF",
           "description": "Submit the form to download the WRCOG client story.",
           "asset": "wrcog-one-page.pdf",
-          "form": "book-a-demo"
+          "form": "case-study-download"
         }
       }
     },
