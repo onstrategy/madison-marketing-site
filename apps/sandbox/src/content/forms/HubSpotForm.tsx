@@ -74,12 +74,20 @@ export interface HubSpotFormProps {
    * thank-you message.
    */
   calendlyRouting?: CalendlyRoutingName;
+  /**
+   * Defaults to "transparent" (fields blend into whatever card they sit in,
+   * light or dark). "white" opts a form on a dark/tinted card into solid
+   * white field wells — see the .hubspot-form--white-fields rule in
+   * ./hubspot-form.css.
+   */
+  fieldBackground?: "transparent" | "white";
   onSubmitted?: () => void;
 }
 
 export function HubSpotForm({
   form,
   calendlyRouting,
+  fieldBackground = "transparent",
   onSubmitted,
 }: HubSpotFormProps) {
   const { formId } = HUBSPOT_FORMS[form];
@@ -173,7 +181,13 @@ export function HubSpotForm({
     // form is ready its own height takes over. `hubspot-form` scopes the
     // on-token adapter stylesheet (hubspot-form.css) for HubSpot's markup.
     <div
-      className={`hubspot-form relative ${state === "loading" ? "min-h-96" : ""}`}
+      className={[
+        "hubspot-form relative",
+        fieldBackground === "white" ? "hubspot-form--white-fields" : "",
+        state === "loading" ? "min-h-96" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
       <div id={domId} ref={containerRef} />
       {state === "loading" ? (

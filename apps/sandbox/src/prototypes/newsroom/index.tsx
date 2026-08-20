@@ -53,7 +53,7 @@ function NewsCardItem({ item }: { item: NewsCard }) {
         <div className="mb-4">
           <Badge variant="secondary">{item.category}</Badge>
         </div>
-        <h2 className="font-sans text-lg font-semibold tracking-tight text-primary">{item.title}</h2>
+        <h2 className="font-sans text-lg font-semibold leading-normal tracking-tight text-primary">{item.title}</h2>
         <p className="mt-2 flex-1 text-sm leading-relaxed text-secondary">{item.description}</p>
         <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
           Read more

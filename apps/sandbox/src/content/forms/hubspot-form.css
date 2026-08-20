@@ -94,6 +94,17 @@
     box-shadow 200ms;
 }
 
+/*
+ * Opt-in variant (HubSpotForm's `fieldBackground="white"` prop) for a form
+ * sitting on a dark/tinted card that wants its fields to read as distinct
+ * white wells rather than blending transparently into the card — bg-plate,
+ * not bg-surface, since this needs to stay white in both themes the same
+ * way a third-party mark on `bg-plate` does.
+ */
+.hubspot-form.hubspot-form--white-fields .hs-input {
+  background: hsl(var(--bg-plate));
+}
+
 .hubspot-form textarea.hs-input {
   height: auto;
   min-height: 6rem; /* ~rows={4}, matches the old mock's textarea */

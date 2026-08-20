@@ -173,8 +173,10 @@ function HeroSection() {
             overflowing, rounded, `overflow-hidden` child paint above a later
             sibling instead of behind it — Reveal goes on the image only, so
             the negative-margin box itself stays plain and stacks in normal
-            DOM order. */}
-        <div className="relative -mb-16 aspect-[4/5] overflow-hidden rounded-3xl border-2 border-[hsl(var(--text-primary)/0.15)] shadow-2xl lg:-mb-40">
+            DOM order. Square, not the taller 4/5 this used to be, and the
+            overlap is half of what it was (-mb-8/-mb-20, was -mb-16/-mb-40)
+            to match. */}
+        <div className="relative -mb-8 aspect-square overflow-hidden rounded-3xl border-2 border-[hsl(var(--text-primary)/0.15)] shadow-2xl lg:-mb-20">
           <Reveal delay={100} className="size-full">
             <img
               src={PHOTOS.groupDiscussion.url}

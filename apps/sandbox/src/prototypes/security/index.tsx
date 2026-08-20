@@ -15,7 +15,6 @@ import {
   UserCheck,
   HeartPulse,
   FileCheck,
-  GraduationCap,
   ArrowRight,
   Download,
 } from "lucide-react";
@@ -28,6 +27,8 @@ import {
 } from "@madison/ui/accordion";
 import { Nav, Footer, ClientLogos } from "../landing/sections";
 import { Reveal, Eyebrow, SectionHeading } from "../landing/parts";
+import { responsibleAiResources } from "../../content/responsible-ai/collection";
+import { resolveResponsibleAiAsset } from "../../content/responsible-ai/assets";
 import vendorFactSheetPdf from "./madison-ai-factsheet-govai-coalition-2026.pdf?url";
 
 // ============================================================================
@@ -121,20 +122,29 @@ const COMPLIANCE_CERTS = [
   { icon: Landmark, title: "FedRAMP Moderate", status: "Inherited via Microsoft Azure" },
 ];
 
-const RESOURCES = [
-  {
-    title: "How to Develop Your Government's AI Guiding Principles",
-    description: "A 4-step blueprint for bringing AI into your government ethically.",
-  },
-  {
-    title: "How to Select Your AI Governance Structure",
-    description: "A practical framework for structuring AI oversight and ownership.",
-  },
-  {
-    title: "AI Governance Blueprint: A Guide to Ethical AI in Local Government",
-    description: "A 4-step blueprint for bringing AI into your government ethically.",
-  },
+// The 3 Responsible AI resources that correspond to this page's own
+// training pitch — same source collection the Resources page's
+// "Responsible AI" tab reads from (../resources/index.tsx), so these
+// stay one real, linkable article each rather than decorative copies.
+const RESOURCE_IDS = [
+  "how-to-develop-your-governments-ai-guiding-principles",
+  "how-to-select-your-ai-governance-structure",
+  "ai-governance-blueprint",
 ];
+
+const RESOURCES = RESOURCE_IDS.map((id) => {
+  const resource = responsibleAiResources.find((entry) => entry.id === id);
+  if (!resource) {
+    throw new Error(`Missing Responsible AI resource: ${id}`);
+  }
+  return {
+    title: resource.card.title,
+    description: resource.card.description ?? resource.metadata.description,
+    imageUrl: resolveResponsibleAiAsset(resource.card.imageAsset),
+    imageAlt: resource.card.imageAlt,
+    href: resource.path,
+  };
+});
 
 const FAQS = [
   {
@@ -339,6 +349,40 @@ function ComplianceSection() {
   );
 }
 
+// Same card design as ResourceCardItem on ../resources/index.tsx (image
+// on top, then title/description/"Read more" in a padded body) — these
+// 3 cards link into that exact page's Responsible AI collection, so
+// they read as the same kind of card, not a locally-styled lookalike.
+function ResourceCardItem({ resource }: { resource: (typeof RESOURCES)[number] }) {
+  return (
+    <a
+      href={resource.href}
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-default bg-surface transition-transform hover:-translate-y-1"
+    >
+      <div className="aspect-video w-full overflow-hidden">
+        <img
+          src={resource.imageUrl}
+          alt={resource.imageAlt}
+          loading="lazy"
+          className="size-full object-cover"
+        />
+      </div>
+      <div className="flex flex-1 flex-col p-6">
+        <h2 className="font-sans text-xl font-semibold leading-normal tracking-tight text-primary">
+          {resource.title}
+        </h2>
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-secondary">
+          {resource.description}
+        </p>
+        <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
+          Read more
+          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+        </span>
+      </div>
+    </a>
+  );
+}
+
 function ResourcesSection() {
   return (
     <section className="border-b border-default bg-app px-gutter py-30">
@@ -349,15 +393,7 @@ function ResourcesSection() {
         <div className="grid gap-4 sm:grid-cols-3">
           {RESOURCES.map((resource, i) => (
             <Reveal key={resource.title} delay={i * 60}>
-              <div className="h-full rounded-2xl border border-default bg-surface p-6">
-                <span className="flex size-9 items-center justify-center rounded-full bg-brand-subtle text-brand-accent">
-                  <GraduationCap className="size-4" />
-                </span>
-                <h3 className="mt-4 text-lg font-semibold tracking-tight text-primary">
-                  {resource.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-secondary">{resource.description}</p>
-              </div>
+              <ResourceCardItem resource={resource} />
             </Reveal>
           ))}
         </div>
@@ -385,7 +421,7 @@ function FaqSection() {
           >
             {FAQS.map((faq) => (
               <AccordionItem key={faq.id} value={faq.id}>
-                <AccordionTrigger className="text-left font-sans text-lg font-semibold text-primary hover:bg-hover">
+                <AccordionTrigger className="text-left font-sans text-lg font-semibold text-primary hover:bg-app">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-secondary">{faq.answer}</AccordionContent>
