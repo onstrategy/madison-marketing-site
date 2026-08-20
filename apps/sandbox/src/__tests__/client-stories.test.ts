@@ -1,3 +1,5 @@
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import cityOfCorona from "../content/client-stories/entries/city-of-corona.json";
 import grandPrairie from "../content/client-stories/entries/welcoming-the-city-of-grand-prairie-texas.json";
@@ -10,6 +12,7 @@ import { parseProps as parseClientStoryChallengeProps } from "../content/section
 import { parseProps as parseClientStoryImpactDownloadProps } from "../content/sections/client-story-impact-download";
 import { parseProps as parseClientStoryNarrativeProps } from "../content/sections/client-story-narrative";
 import { parseProps as parseClientStorySolutionProps } from "../content/sections/client-story-solution-timeline";
+import { ClientStories as HomepageClientStories } from "../prototypes/landing/sections";
 
 function withOverride(
   override: Record<string, unknown>,
@@ -18,6 +21,23 @@ function withOverride(
 }
 
 describe("client story collection", () => {
+  describe("homepage links", () => {
+    it("links every available story tile to the local collection", () => {
+      const html = renderToStaticMarkup(
+        createElement(HomepageClientStories),
+      );
+
+      expect(html).toContain('href="/client-stories/washoe-county/"');
+      expect(html).toContain(
+        'href="/client-stories/carson-city-client-story/"',
+      );
+      expect(html).toContain(
+        'href="/the-city-of-aspen-co-taps-madison-ai/"',
+      );
+      expect(html).not.toContain("https://www.madisonai.com/client-stories");
+    });
+  });
+
   describe("buildClientStoryCollection", () => {
     it("preserves the explicit public path from a valid document", () => {
       const result = buildClientStoryCollection([

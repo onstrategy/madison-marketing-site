@@ -475,7 +475,7 @@ const STORY_TILES: StoryTile[] = [
     line: "$41K+ saved every month",
     photo: PHOTOS.govBuildingFlag,
     tall: true,
-    href: "https://www.madisonai.com/client-stories/washoe-county",
+    href: "/client-stories/washoe-county/",
   },
   {
     name: "City of Reno",
@@ -483,14 +483,14 @@ const STORY_TILES: StoryTile[] = [
     line: "75% less time on staff reports",
     photo: PHOTOS.meetingPens,
     tall: true,
-    href: "https://www.madisonai.com/client-stories",
+    href: "/client-stories/",
   },
   {
     name: "Carson City, NV",
     kind: "quote",
     line: "Exactly what I need, faster.",
     photo: PHOTOS.govBuildingWhite,
-    href: "https://www.madisonai.com/client-stories/carson-city-client-story",
+    href: "/client-stories/carson-city-client-story/",
   },
   {
     name: "City of Corona, CA",
@@ -504,7 +504,7 @@ const STORY_TILES: StoryTile[] = [
     kind: "roi",
     line: "140 hrs reclaimed / month",
     photo: PHOTOS.govBuildingColumns,
-    href: "https://www.madisonai.com/client-stories",
+    href: "/the-city-of-aspen-co-taps-madison-ai/",
   },
   // Pasadena previously filled the grid's last slot; that slot is now the
   // "Read more client stories" CTA card (see ClientStories below), which
@@ -628,7 +628,7 @@ export function ClientStories() {
                   above the grid — now the grid's own last card instead of a
                   separate header link. */}
               <a
-                href="/client-stories"
+                href="/client-stories/"
                 className="flex h-55 flex-col items-center justify-center rounded-2xl bg-brand-shade p-4.5 text-center transition-transform hover:-translate-y-1"
               >
                 {/* A fixed width, not max-width — as a centered flex-column
