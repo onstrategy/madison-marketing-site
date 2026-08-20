@@ -46,7 +46,7 @@ export default function ArticleHeroSplitSection({
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">{category}</Eyebrow>
-          <h1 className="text-balance font-serif text-4xl font-medium tracking-tight text-primary lg:text-5xl">
+          <h1 className="text-balance font-serif text-3xl font-medium tracking-tight text-primary lg:text-4xl">
             {title}
           </h1>
           <div className="mt-8 flex items-center gap-3">

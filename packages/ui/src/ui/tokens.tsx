@@ -241,12 +241,16 @@ export const TOKENS: TokenDictionary = {
   // Madison type scale (exact px from Figma Dev Mode, expressed in rem). The large
   // steps (2xl–display, 24–72px) are the Lora heading ramp — pair them with
   // `font-serif`; their -1% tracking (-0.01em) is baked in. h5/h6 and everything
-  // below (text-xl and down) are Inter (font-sans).
+  // below (text-xl and down) are Inter (font-sans). The two body copy steps —
+  // text-sm and text-base ("Body 2"/"Body 1") — carry a fixed -0.2px tracking
+  // (not em-relative like the heading ramp, since the spec is a flat px value
+  // that shouldn't scale with size). Captions/labels (text-xs, text-2xs) and
+  // the Inter headings (text-lg, text-xl) are left at normal tracking.
   fontSizes: [
     { name: "--text-2xs", label: "2X Small", value: "0.625rem", lineHeight: "0.875rem", desc: "Micro labels (10px) — overlines, swatch captions, dense mono tags. Below text-xs." },
     { name: "--text-xs", label: "Caption", value: "0.75rem", lineHeight: "1rem", desc: "Madison CAPTION (12px) — captions, overlines, dense metadata." },
-    { name: "--text-sm", label: "Body 2 / Subtitle 2", value: "0.875rem", lineHeight: "1.25rem", desc: "Madison body2 / subtitle2 (14px) — secondary text, labels, table cells." },
-    { name: "--text-base", label: "Body 1 / Subtitle 1", value: "1rem", lineHeight: "1.5rem", desc: "Madison body1 / subtitle1 (16px) — default body copy." },
+    { name: "--text-sm", label: "Body 2 / Subtitle 2", value: "0.875rem", lineHeight: "1.25rem", tracking: "-0.2px", desc: "Madison body2 / subtitle2 (14px) — secondary text, labels, table cells." },
+    { name: "--text-base", label: "Body 1 / Subtitle 1", value: "1rem", lineHeight: "1.5rem", tracking: "-0.2px", desc: "Madison body1 / subtitle1 (16px) — default body copy." },
     { name: "--text-lg", label: "h6", value: "1.125rem", lineHeight: "1.75rem", desc: "Madison h6 (18px, Inter 600) — small headings, lead paragraphs." },
     { name: "--text-xl", label: "h5", value: "1.25rem", lineHeight: "1.875rem", desc: "Madison h5 (20px, Inter 600) — subheadings." },
     { name: "--text-2xl", label: "h4", value: "1.5rem", lineHeight: "2.25rem", tracking: "-0.01em", desc: "Madison h4 (24px, Lora 500) — use with font-serif." },

@@ -6,7 +6,7 @@ import {
 } from "../../content/client-stories/page";
 import type { ClientStoryDocument } from "../../content/client-stories/schema";
 import { Nav, Footer } from "../landing/sections";
-import { Reveal, SectionHeading } from "../landing/parts";
+import { Reveal, SectionHeading, useParallax } from "../landing/parts";
 
 // Client Stories — the index page every "Client Stories" nav link points to.
 // A dark hero features the strongest story; every other card is derived from
@@ -61,16 +61,26 @@ const OTHER_STORIES: ClientStorySummary[] = clientStories
   .map(toSummary);
 
 function FeaturedHero({ data }: { data: typeof FEATURED }) {
+  // Parallax: the photo drifts slower than the page scrolls. `sectionRef`
+  // measures the (untransformed) section; `imageRef`'s img is rendered 15%
+  // taller than its frame so the drift never exposes an edge — see
+  // `useParallax`'s doc comment in ../landing/parts.tsx.
+  const { sectionRef, imageRef } = useParallax<HTMLElement, HTMLImageElement>();
+
   return (
-    <section className="dark relative overflow-hidden border-b border-default bg-app">
+    <section
+      ref={sectionRef}
+      className="dark relative overflow-hidden border-b border-default bg-app"
+    >
       <div className="absolute inset-0 overflow-hidden">
         <img
+          ref={imageRef}
           src={data.photo.url}
           alt={data.photo.alt}
           width={data.photo.width}
           height={data.photo.height}
           loading="lazy"
-          className="size-full object-cover"
+          className="absolute inset-x-0 -top-[15%] h-[130%] w-full object-cover will-change-transform"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-app via-app/70 to-app/30" />
       </div>

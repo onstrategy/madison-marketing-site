@@ -1,7 +1,15 @@
 import { z } from "zod";
+import { Separator } from "@madison/ui/separator";
 import { resolveClientStoryImage } from "../../client-stories/assets";
 import { ClientStoryImageInputSchema } from "../../client-stories/image";
 import { Reveal } from "../../../prototypes/landing/parts";
+
+// Every "New Deployment" entry closes its narrative with a boilerplate
+// "About Madison AI" heading block (see the design-system content
+// convention in the client-stories entries) — a horizontal rule goes right
+// before it to separate the deployment-specific story from the standing
+// company boilerplate.
+const ABOUT_MADISON_AI_HEADING = "About Madison AI";
 
 const NonEmptyStringSchema = z.string().trim().min(1);
 
@@ -107,12 +115,34 @@ export function parseProps(input: unknown): ClientStoryAnnouncementBodyProps {
   return ClientStoryAnnouncementBodyPropsSchema.parse(input);
 }
 
-function AnnouncementBlockContent({ block }: { block: AnnouncementBlock }) {
+function AnnouncementBlockContent({
+  block,
+  isLede,
+}: {
+  block: AnnouncementBlock;
+  /** True for the first block — the sentence right after the hero. It's
+   * authored as a "heading" block (there's no dedicated lede type in the
+   * schema), but it reads as intro copy, not a section title: smaller and
+   * in the body typeface (font-sans) rather than the heading treatment. */
+  isLede: boolean;
+}) {
   if (block.type === "heading") {
+    if (isLede) {
+      return (
+        <p className="text-pretty text-lg font-semibold leading-relaxed text-primary">
+          {block.text}
+        </p>
+      );
+    }
     return (
-      <h2 className="pt-4 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
-        {block.text}
-      </h2>
+      <>
+        {block.text === ABOUT_MADISON_AI_HEADING ? (
+          <Separator className="mb-4" />
+        ) : null}
+        <h2 className="pt-4 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
+          {block.text}
+        </h2>
+      </>
     );
   }
 
@@ -256,7 +286,7 @@ export default function ClientStoryAnnouncementBodySection({
       <div className="mx-auto max-w-3xl space-y-8">
         {blocks.map((block, index) => (
           <Reveal key={JSON.stringify(block)} delay={index * 30}>
-            <AnnouncementBlockContent block={block} />
+            <AnnouncementBlockContent block={block} isLede={index === 0} />
           </Reveal>
         ))}
       </div>

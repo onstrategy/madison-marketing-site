@@ -168,6 +168,78 @@ export function useInView<T extends HTMLElement>() {
   return { ref, inView };
 }
 
+/**
+ * Scroll-driven parallax for a hero image: the element under `imageRef`
+ * drifts vertically at a fraction of scroll speed, relative to `sectionRef`'s
+ * own position in the viewport — the classic "background lags behind the
+ * foreground" hero effect. Position is read only from `sectionRef` (an
+ * untransformed ancestor), never from the image itself, so the measurement
+ * can't feed back into its own output. The scroll listener is only live
+ * while the section is near the viewport (same rootMargin idiom as
+ * `Reveal`/`useInView`), and the offset is clamped so the image — rendered
+ * oversized by the caller — never translates far enough to expose a gap at
+ * its edge. Reduced-motion users get a static image: the effect never
+ * attaches at all.
+ *
+ * Usage: put `sectionRef` on the (positioned, overflow-hidden) section and
+ * `imageRef` on an `<img>` rendered larger than its container, e.g.
+ * `absolute inset-x-0 -top-[15%] h-[130%] w-full object-cover`.
+ */
+export function useParallax<
+  Section extends HTMLElement,
+  Image extends HTMLElement,
+>(strength = 0.12) {
+  const sectionRef = useRef<Section>(null);
+  const imageRef = useRef<Image>(null);
+  const reduced = useReducedMotion();
+
+  useEffect(() => {
+    if (reduced) return;
+    const section = sectionRef.current;
+    const image = imageRef.current;
+    if (!section || !image) return;
+
+    let raf = 0;
+    const MAX_OFFSET_PX = 60; // stays inside the caller's ~15%-oversized image
+
+    const update = () => {
+      raf = 0;
+      const top = section.getBoundingClientRect().top;
+      const offset = Math.max(-MAX_OFFSET_PX, Math.min(MAX_OFFSET_PX, -top * strength));
+      image.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
+    };
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(update);
+    };
+
+    // Only pay for scroll math while the hero is in or near view.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          onScroll();
+          window.addEventListener("scroll", onScroll, { passive: true });
+          window.addEventListener("resize", onScroll);
+        } else {
+          window.removeEventListener("scroll", onScroll);
+          window.removeEventListener("resize", onScroll);
+        }
+      },
+      { rootMargin: "20% 0px 20% 0px" },
+    );
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [reduced, strength]);
+
+  return { sectionRef, imageRef };
+}
+
 /** A monospace, uppercase overline — the "developer tool" credibility cue. */
 export function Eyebrow({
   children,

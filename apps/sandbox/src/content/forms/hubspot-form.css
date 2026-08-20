@@ -95,14 +95,28 @@
 }
 
 /*
- * Opt-in variant (HubSpotForm's `fieldBackground="white"` prop) for a form
- * sitting on a dark/tinted card that wants its fields to read as distinct
- * white wells rather than blending transparently into the card — bg-plate,
- * not bg-surface, since this needs to stay white in both themes the same
- * way a third-party mark on `bg-plate` does.
+ * Default field treatment (HubSpotForm's `fieldBackground` prop defaults to
+ * "white") — every field reads as a solid white well regardless of what's
+ * behind it. bg-plate, not bg-surface, since this needs to stay white in
+ * both themes the same way a third-party mark on `bg-plate` does. Opting a
+ * form back to `fieldBackground="transparent"` drops this class and lets
+ * fields blend into their card instead.
  */
 .hubspot-form.hubspot-form--white-fields .hs-input {
   background: hsl(var(--bg-plate));
+  /*
+   * Lock the ink to the light-mode values too, not just the well behind it.
+   * `.hs-input` only inherits --text-primary/--text-muted from whatever
+   * theme scope the section around the form happens to be in — on a
+   * `dark`-scoped hero/CTA (see contact/platform-page templates), that's
+   * near-white, which on a forced-white well is invisible text. Same raw
+   * channels as the `.light` utility class in packages/ui/dist/theme.css
+   * (generated from tokens.tsx) — redefined here, not by adding `.light` to
+   * the whole form, so labels outside `.hs-input` keep following the
+   * section's actual theme.
+   */
+  --text-primary: 34 9% 16%;
+  --text-muted: 35 10% 37%;
 }
 
 .hubspot-form textarea.hs-input {

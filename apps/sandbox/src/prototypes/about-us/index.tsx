@@ -175,8 +175,10 @@ function HeroSection() {
             the negative-margin box itself stays plain and stacks in normal
             DOM order. Square, not the taller 4/5 this used to be, and the
             overlap is half of what it was (-mb-8/-mb-20, was -mb-16/-mb-40)
-            to match. */}
-        <div className="relative -mb-8 aspect-square overflow-hidden rounded-3xl border-2 border-[hsl(var(--text-primary)/0.15)] shadow-2xl lg:-mb-20">
+            to match. Bumped down another ~40px on each breakpoint
+            (-mb-8→-mb-18, -mb-20→-mb-30) for a more pronounced overlay
+            into OriginSection. */}
+        <div className="relative -mb-18 aspect-square overflow-hidden rounded-3xl border-2 border-[hsl(var(--text-primary)/0.15)] shadow-2xl lg:-mb-30">
           <Reveal delay={100} className="size-full">
             <img
               src={PHOTOS.groupDiscussion.url}

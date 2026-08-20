@@ -35,7 +35,12 @@ export default function ClientStoryAnnouncementHeroSection({
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">{category}</Eyebrow>
-          <h1 className="text-balance font-serif text-4xl font-medium tracking-tight text-primary lg:text-5xl">
+          {/* text-4xl flat, no lg bump — one step down from the previous
+              lg:text-5xl, and matches the "Client Story" template's h1
+              (client-story-hero-intro) exactly, so a New Deployment
+              announcement and a full case study read at the same title
+              size. */}
+          <h1 className="text-balance font-serif text-4xl font-medium tracking-tight text-primary">
             {title}
           </h1>
         </Reveal>
