@@ -62,7 +62,7 @@ function HeroSection({ data }: { data: ResponsibleAiData["hero"] }) {
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">{data.kicker}</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-4xl font-medium tracking-tight text-primary">
+          <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
             {data.title}
           </h1>
           <p className="font-sans text-sm text-secondary">
