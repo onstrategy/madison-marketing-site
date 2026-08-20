@@ -9,7 +9,10 @@ import { clientStories } from "../content/client-stories/collection";
 import { buildClientStoryCollection } from "../content/client-stories/schema";
 import { parseProps as parseClientStoryAnnouncementBodyProps } from "../content/sections/client-story-announcement-body";
 import { parseProps as parseClientStoryChallengeProps } from "../content/sections/client-story-challenge";
-import { parseProps as parseClientStoryImpactDownloadProps } from "../content/sections/client-story-impact-download";
+import {
+  downloadConfirmation,
+  parseProps as parseClientStoryImpactDownloadProps,
+} from "../content/sections/client-story-impact-download";
 import { parseProps as parseClientStoryNarrativeProps } from "../content/sections/client-story-narrative";
 import { parseProps as parseClientStorySolutionProps } from "../content/sections/client-story-solution-timeline";
 import { ClientStories as HomepageClientStories } from "../prototypes/landing/sections";
@@ -337,6 +340,32 @@ describe("client story collection", () => {
           },
         }),
       ).not.toThrow();
+    });
+
+    it("names the client in the post-submit confirmation", () => {
+      const props = parseClientStoryImpactDownloadProps({
+        impact: {
+          eyebrow: "The impact",
+          title: "Measurable results",
+          paragraphs: ["The story's outcome."],
+        },
+        download: {
+          title: "Download the case study",
+          clientName: "City of Corona",
+          asset: "city-of-corona-one-page.pdf",
+          form: "case-study-download",
+        },
+      });
+
+      expect(downloadConfirmation(props.download.clientName)).toBe(
+        "Your copy of the City of Corona case study is ready.",
+      );
+    });
+
+    it("falls back to a generic confirmation when no client is named", () => {
+      expect(downloadConfirmation(undefined)).toBe(
+        "Your copy of the case study is ready.",
+      );
     });
 
     it("rejects a remote or non-PDF client-story download", () => {

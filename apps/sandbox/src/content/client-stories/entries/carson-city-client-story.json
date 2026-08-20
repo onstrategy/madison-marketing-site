@@ -169,6 +169,7 @@
         },
         "download": {
           "title": "Download this case study as a one-page PDF",
+          "clientName": "Carson City",
           "asset": "carson-city-one-page.pdf",
           "form": "case-study-download"
         }
