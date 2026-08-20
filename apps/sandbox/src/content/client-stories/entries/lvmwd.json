@@ -165,7 +165,7 @@
         "download": {
           "title": "Download this case study as a one-page PDF",
           "asset": "lvmwd-one-page.pdf",
-          "form": "book-a-demo"
+          "form": "case-study-download"
         }
       }
     },
