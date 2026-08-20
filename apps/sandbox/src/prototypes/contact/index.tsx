@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@madison/ui/button";
 import { Input } from "@madison/ui/input";
+import { Textarea } from "@madison/ui/textarea";
 import { Label } from "@madison/ui/label";
 import { Nav, Footer } from "../landing/sections";
 import { Reveal, Eyebrow } from "../landing/parts";
@@ -47,12 +48,7 @@ function HeroAndFormSection() {
               </div>
               <div className="space-y-1.5 sm:col-span-2">
                 <Label htmlFor="contact-message">Message</Label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  rows={4}
-                  className="w-full rounded-md border border-default bg-transparent px-3 py-2 text-sm text-primary outline-none focus-visible:border-brand focus-visible:ring-[length:var(--ring-width)] focus-visible:ring-brand/50"
-                />
+                <Textarea id="contact-message" name="message" rows={4} />
               </div>
             </div>
             <Button type="submit" size="lg" className="mt-6 w-full sm:w-auto">

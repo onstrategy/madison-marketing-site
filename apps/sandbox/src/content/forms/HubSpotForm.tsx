@@ -75,10 +75,12 @@ export interface HubSpotFormProps {
    */
   calendlyRouting?: CalendlyRoutingName;
   /**
-   * Defaults to "transparent" (fields blend into whatever card they sit in,
-   * light or dark). "white" opts a form on a dark/tinted card into solid
-   * white field wells — see the .hubspot-form--white-fields rule in
-   * ./hubspot-form.css.
+   * Defaults to "white" — fields are always a solid white/light well (see
+   * the .hubspot-form--white-fields rule in ./hubspot-form.css), regardless
+   * of the card or section color behind them. Only the field wells are
+   * forced; the surrounding form container keeps whatever background the
+   * page gives it. "transparent" opts back into the old behavior (fields
+   * blend into whatever card they sit in) for a page that wants that look.
    */
   fieldBackground?: "transparent" | "white";
   onSubmitted?: () => void;
@@ -87,7 +89,7 @@ export interface HubSpotFormProps {
 export function HubSpotForm({
   form,
   calendlyRouting,
-  fieldBackground = "transparent",
+  fieldBackground = "white",
   onSubmitted,
 }: HubSpotFormProps) {
   const { formId } = HUBSPOT_FORMS[form];

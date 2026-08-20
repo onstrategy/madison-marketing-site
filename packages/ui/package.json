@@ -23,6 +23,7 @@
     "./primitives": "./src/primitives/index.ts",
     "./button": "./src/primitives/button.tsx",
     "./input": "./src/primitives/input.tsx",
+    "./textarea": "./src/primitives/textarea.tsx",
     "./label": "./src/primitives/label.tsx",
     "./checkbox": "./src/primitives/checkbox.tsx",
     "./select": "./src/primitives/select.tsx",
