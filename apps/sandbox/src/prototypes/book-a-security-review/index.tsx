@@ -12,10 +12,10 @@ import { HubSpotForm } from "../../content/forms/HubSpotForm";
 // review" — see ../security/index.tsx's FinalCtaSection). Copy is adapted
 // from madisonai.com/book-a-security-review.
 //
-// The form is the same real HubSpot form ../book-a-demo uses (one form, two
-// pages — see content/forms/hubspot.ts), with one difference: here it carries
-// the "security-review-routing" Calendly routing form, so submitting it opens
-// Calendly's scheduling modal instead of ending at HubSpot's thank-you.
+// The form is the same real HubSpot form ../book-a-demo and the platform pages
+// use (one form, many pages — see content/forms/hubspot.ts), carrying the
+// "demo-routing" Calendly routing form, so submitting it opens Calendly's
+// scheduling modal instead of ending at HubSpot's thank-you.
 // ============================================================================
 
 const VALUE_PROPS = [
@@ -64,7 +64,7 @@ function HeroAndFormSection() {
             </p>
             <HubSpotForm
               form="book-a-demo"
-              calendlyRouting="security-review-routing"
+              calendlyRouting="demo-routing"
               fieldBackground="white"
             />
           </div>

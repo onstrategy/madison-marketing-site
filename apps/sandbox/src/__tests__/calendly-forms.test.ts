@@ -23,7 +23,7 @@ describe("calendly routing forms", () => {
     });
 
     it("narrows registered names and rejects unknown ones", () => {
-      expect(isCalendlyRoutingName("security-review-routing")).toBe(true);
+      expect(isCalendlyRoutingName("demo-routing")).toBe(true);
       expect(isCalendlyRoutingName("not-a-routing-form")).toBe(false);
     });
   });
