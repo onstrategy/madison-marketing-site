@@ -310,7 +310,6 @@ const DATA: PlatformPageData = {
       "How we're protecting your data and privacy",
       "See how we can start saving real time in weeks",
     ],
-    submitLabel: "Book Your Demo",
   },
 };
 
