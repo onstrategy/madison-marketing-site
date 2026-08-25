@@ -191,7 +191,19 @@ export function HubSpotForm({
         .filter(Boolean)
         .join(" ")}
     >
-      <div id={domId} ref={containerRef} />
+      {/*
+        * `light` scopes the embedded fields to the light theme so a forced-
+        * white well gets light ink, borders, elevation and focus ring — the
+        * same treatment the Input and Textarea primitives get from their own
+        * `light` class. Labels, consent copy and the submit button sit
+        * outside the wells and keep the section's theme via the
+        * --form-scope-* aliases in ./hubspot-form.css.
+        */}
+      <div
+        id={domId}
+        ref={containerRef}
+        className={fieldBackground === "white" ? "light" : undefined}
+      />
       {state === "loading" ? (
         <div
           aria-hidden

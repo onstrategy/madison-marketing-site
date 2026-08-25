@@ -176,19 +176,22 @@ export function useInView<T extends HTMLElement>() {
  * untransformed ancestor), never from the image itself, so the measurement
  * can't feed back into its own output. The scroll listener is only live
  * while the section is near the viewport (same rootMargin idiom as
- * `Reveal`/`useInView`), and the offset is clamped so the image — rendered
- * oversized by the caller — never translates far enough to expose a gap at
- * its edge. Reduced-motion users get a static image: the effect never
+ * `Reveal`/`useInView`), and the offset is clamped to the caller's own
+ * oversize margin so the image never translates far enough to expose a gap
+ * at its edge. Reduced-motion users get a static image: the effect never
  * attaches at all.
  *
  * Usage: put `sectionRef` on the (positioned, overflow-hidden) section and
  * `imageRef` on an `<img>` rendered larger than its container, e.g.
- * `absolute inset-x-0 -top-[15%] h-[130%] w-full object-cover`.
+ * `absolute inset-x-0 -top-[15%] h-[130%] w-full object-cover` — 15% of the
+ * section's height spare on each edge, which is `oversizeRatio`'s default.
+ * A caller that oversizes by a different amount must pass the matching
+ * ratio, or the clamp stops guaranteeing anything.
  */
 export function useParallax<
   Section extends HTMLElement,
   Image extends HTMLElement,
->(strength = 0.12) {
+>(strength = 0.12, oversizeRatio = 0.15) {
   const sectionRef = useRef<Section>(null);
   const imageRef = useRef<Image>(null);
   const reduced = useReducedMotion();
@@ -200,12 +203,16 @@ export function useParallax<
     if (!section || !image) return;
 
     let raf = 0;
-    const MAX_OFFSET_PX = 60; // stays inside the caller's ~15%-oversized image
 
     const update = () => {
       raf = 0;
-      const top = section.getBoundingClientRect().top;
-      const offset = Math.max(-MAX_OFFSET_PX, Math.min(MAX_OFFSET_PX, -top * strength));
+      // Measured per frame, not captured once: the spare margin is a
+      // fraction of the section's height, so the clamp has to follow it
+      // across breakpoints and resizes. A fixed pixel cap only held the
+      // no-gap guarantee for sections taller than cap / oversizeRatio.
+      const { top, height } = section.getBoundingClientRect();
+      const maxOffset = height * oversizeRatio;
+      const offset = Math.max(-maxOffset, Math.min(maxOffset, -top * strength));
       image.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
     };
     const onScroll = () => {
@@ -235,7 +242,7 @@ export function useParallax<
       window.removeEventListener("resize", onScroll);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, [reduced, strength]);
+  }, [reduced, strength, oversizeRatio]);
 
   return { sectionRef, imageRef };
 }

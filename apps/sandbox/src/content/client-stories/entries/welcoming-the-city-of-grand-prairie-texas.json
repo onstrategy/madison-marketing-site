@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "The City of Grand Prairie, Texas , joined the Madison AI community as one of its newest customers. As part of this partnership, the City has deployed specialized artificial intelligence (AI) assistants, such as citywide, planning and community development, and procurement."
           },
           {

@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "The City of Castle Pines, Colorado , has initiated a strategic rollout of Madison AI’s custom artificial intelligence (AI) assistants to optimize citywide access to information and technical workflows."
           },
           {

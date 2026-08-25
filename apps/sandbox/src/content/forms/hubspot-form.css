@@ -15,7 +15,32 @@
  * Scope: everything is nested under .hubspot-form, the wrapper rendered by
  * HubSpotForm.tsx. New HubSpot field types get their rule added here — never
  * inline styles in page code.
+ *
+ * Two theme scopes are in play. When `fieldBackground="white"` (the default)
+ * HubSpotForm puts the generated `light` class on the container holding the
+ * embed, so the field wells get the whole coherent light treatment — ink,
+ * border, elevation, focus ring — exactly like the `light`-scoped Input and
+ * Textarea primitives. Everything that sits OUTSIDE a well (labels, consent
+ * copy, error text, the submit button) still belongs to the section around
+ * the form, so it reads the --form-scope-* aliases below instead.
  */
+
+/*
+ * The section's own theme values, captured on the wrapper — which sits above
+ * the `light` container. `var()` inside a custom property is substituted at
+ * computed-value time on the declaring element, so these are frozen here to
+ * whatever theme the page put around the form and inherit down through the
+ * light scope unchanged.
+ */
+.hubspot-form {
+  --form-scope-text-primary: var(--text-primary);
+  --form-scope-text-secondary: var(--text-secondary);
+  --form-scope-brand-primary: var(--brand-primary);
+  --form-scope-brand-primary-hover: var(--brand-primary-hover);
+  --form-scope-brand-foreground: var(--brand-foreground);
+  --form-scope-brand-accent: var(--brand-accent);
+  --form-scope-semantic-error: var(--semantic-error);
+}
 
 .hubspot-form fieldset {
   border: 0;
@@ -74,7 +99,7 @@
   font-size: 0.875rem;
   line-height: 1.3; /* leading-snug */
   font-weight: 500;
-  color: hsl(var(--text-primary));
+  color: hsl(var(--form-scope-text-primary));
 }
 
 /* Text-like inputs — mirrors the Input primitive (h-9, rounded-md, border-default) */
@@ -101,22 +126,15 @@
  * both themes the same way a third-party mark on `bg-plate` does. Opting a
  * form back to `fieldBackground="transparent"` drops this class and lets
  * fields blend into their card instead.
+ *
+ * The ink on that well comes from the `light` class HubSpotForm puts on the
+ * container, not from values restated here: on a `dark`-scoped hero or CTA
+ * (see the contact / platform-page templates) the section's own --text-* is
+ * near-white, which on a forced-white well is invisible. Sourcing it from
+ * the generated `light` scope keeps it following tokens.tsx.
  */
 .hubspot-form.hubspot-form--white-fields .hs-input {
   background: hsl(var(--bg-plate));
-  /*
-   * Lock the ink to the light-mode values too, not just the well behind it.
-   * `.hs-input` only inherits --text-primary/--text-muted from whatever
-   * theme scope the section around the form happens to be in — on a
-   * `dark`-scoped hero/CTA (see contact/platform-page templates), that's
-   * near-white, which on a forced-white well is invisible text. Same raw
-   * channels as the `.light` utility class in packages/ui/dist/theme.css
-   * (generated from tokens.tsx) — redefined here, not by adding `.light` to
-   * the whole form, so labels outside `.hs-input` keep following the
-   * section's actual theme.
-   */
-  --text-primary: 34 9% 16%;
-  --text-muted: 35 10% 37%;
 }
 
 .hubspot-form textarea.hs-input {
@@ -153,7 +171,15 @@
   height: 1rem;
   padding: 0;
   box-shadow: none;
-  accent-color: hsl(var(--brand-primary));
+  /*
+   * Back to the UA background. Both the base .hs-input rule (transparent)
+   * and the white-well rule above match these too, and in engines where a
+   * background does paint a native checkbox (Firefox) either one flattens
+   * the accent-color control into a plain square. These sit on the card,
+   * not in a well, so the accent follows the section's theme.
+   */
+  background: revert;
+  accent-color: hsl(var(--form-scope-brand-primary));
 }
 
 .hubspot-form ul.inputs-list {
@@ -186,18 +212,18 @@
   margin: 0;
   font-size: 0.75rem; /* text-xs */
   font-weight: 400;
-  color: hsl(var(--semantic-error));
+  color: hsl(var(--form-scope-semantic-error));
 }
 
 /* Legal consent / rich text blocks */
 .hubspot-form .hs-richtext,
 .hubspot-form .legal-consent-container {
   font-size: 0.75rem;
-  color: hsl(var(--text-secondary));
+  color: hsl(var(--form-scope-text-secondary));
 }
 
 .hubspot-form .hs-richtext a {
-  color: hsl(var(--brand-accent));
+  color: hsl(var(--form-scope-brand-accent));
   font-weight: 600;
 }
 
@@ -214,8 +240,8 @@
   padding: 0.9375rem 1.625rem; /* py-3.75 px-6.5, the Button lg size */
   border: 0;
   border-radius: 9999px; /* rounded-full */
-  background: hsl(var(--brand-primary));
-  color: hsl(var(--brand-foreground));
+  background: hsl(var(--form-scope-brand-primary));
+  color: hsl(var(--form-scope-brand-foreground));
   font: inherit;
   font-size: 1rem;
   font-weight: 500;
@@ -226,12 +252,13 @@
 }
 
 .hubspot-form .hs-button:hover {
-  background: hsl(var(--brand-primary-hover));
+  background: hsl(var(--form-scope-brand-primary-hover));
 }
 
 .hubspot-form .hs-button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 var(--ring-width) hsl(var(--brand-primary) / 0.5);
+  box-shadow: 0 0 0 var(--ring-width)
+    hsl(var(--form-scope-brand-primary) / 0.5);
 }
 
 .hubspot-form .hs-button:disabled {
@@ -242,5 +269,5 @@
 /* Post-submit confirmation */
 .hubspot-form .submitted-message {
   font-size: 1rem;
-  color: hsl(var(--text-primary));
+  color: hsl(var(--form-scope-text-primary));
 }
