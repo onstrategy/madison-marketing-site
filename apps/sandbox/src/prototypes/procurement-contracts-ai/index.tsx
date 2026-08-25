@@ -1,111 +1,193 @@
 import {
-  FileSignature,
-  FileCheck,
-  History,
-  Search,
-  ClipboardList,
-  Mail,
+  Building2,
   CheckCircle2,
-  ShieldCheck,
+  FileCheck,
+  FileSearch,
+  FileSignature,
+  FileText,
+  History,
   Layers,
   LayoutGrid,
-  Building2,
-  FileSearch,
+  ShieldCheck,
 } from "lucide-react";
 import { PlatformPageTemplate, type PlatformPageData } from "../platform-page/template";
 
 // Contracts & Procurement AI — built on the same PlatformPageTemplate as
 // Community Development AI; see that prototype's index.tsx for the pattern.
+// The hero's animated demo is the solicitation builder in
+// ../platform-page/demos/.
 const DATA: PlatformPageData = {
   hero: {
     kicker: "The Madison AI platform",
     title: "AI for Procurement & Contracts",
     description:
-      "Madison brings your solicitations, contracts, and vendor history into one AI, so procurement staff and department requesters get grounded, cited answers in seconds.",
+      "Madison brings your contracts, awards, and procurement policy into one AI, so procurement staff, electeds, and the public can get grounded, cited answers in seconds.",
     primaryCta: "Book a demo",
     secondaryCta: "How it works",
     card: {
-      eyebrow: "Procurement staff, requesters, and leadership.",
-      statement: "One AI, grounded in your solicitations and contracts.",
+      eyebrow: "Procurement staff, department leaders, and the public.",
+      statement: "One AI, grounded in your contracts, bids, and policy.",
       description:
-        "RFPs, RFQs, contracts, amendments, and vendor performance — unified and cited, inside your own tenant.",
+        "Past contracts, RFPs/RFQs, your procurement manual, budgets, and grants — unified and cited, inside your own tenant.",
     },
   },
   media: {
     title: "Madison AI — Procurement & Contracts",
+    demo: "solicitation",
   },
   howItWorks: {
     eyebrow: "How it works",
     title:
-      "Built from your solicitations and contracts to support procurement staff and requesters.",
+      "Built from your procurement standards, contract data, and awards to support procurement staff, electeds, and the public.",
     description:
-      "Procurement staff and department requesters draw on the same grounded contract record. Pick an audience to see the workflows built for each.",
+      "Procurement staff, elected officials, and the public all draw on the same grounded contract record. Pick an audience to see the workflows built for each.",
     roles: [
       {
         id: "staff",
         label: "For procurement staff",
         steps: [
           {
-            title: "RFP & RFQ drafting",
+            title: "Contract & award research",
             description:
-              "Draft a solicitation from your own templates and past awards, with the right scope language and evaluation criteria.",
-            icon: FileSignature,
-            rows: [{ label: "RFP-2025-014 · Fleet maintenance", meta: "Draft" }],
-            footnote: "Drafted from 3 prior solicitations",
+              "Ask across every past contract, bid, and award and get a cited answer in seconds — no digging through file shares.",
+            preview: {
+              kind: "ask",
+              question: "Which janitorial vendors have we contracted since 2019?",
+              answer:
+                "Three awards — ProClean (2019, $412K), Sparkle Co. (2021, $498K), and MetroFacility (2023, current, $610K).",
+              cite: "1",
+            },
           },
           {
-            title: "Contract & amendment review",
+            title: "Draft solicitations in your format",
             description:
-              "Ask Madison to flag risk clauses, missing terms, or deviations from your standard contract language.",
-            icon: FileCheck,
-            rows: [
-              { label: "Indemnification clause", meta: "Non-standard" },
-              { label: "Insurance minimums", meta: "Met" },
-            ],
-            footnote: "3 flags reviewed",
+              "A first draft RFP, RFQ, or IFB in your template, cross-checked against your manual and prior solicitations.",
+            preview: {
+              kind: "doc",
+              tabs: ["RFP", "RFQ", "IFB"],
+              title: "RFP 25-118 · Facility Maintenance",
+              bars: ["100%", "90%", "82%", "94%"],
+              chips: ["Manual §7.2", "Prior: RFP 21-044"],
+            },
           },
           {
-            title: "Vendor performance lookup",
+            title: "Create clear scopes of work",
             description:
-              "See a vendor's full history — awards, change orders, and performance notes — before you award again.",
-            icon: History,
-            rows: [
-              { label: "Acme Paving Co.", meta: "4 prior awards" },
-              { label: "Change orders", meta: "2" },
-            ],
-            footnote: "Full vendor timeline",
+              "A complete, well-structured SOW — deliverables, service levels, and acceptance criteria — from the project record.",
+            preview: {
+              kind: "checklist",
+              title: "Scope of Work",
+              subtitle: "RFP 25-118 · Section 3",
+              items: [
+                "Deliverables & schedule",
+                "Service-level requirements",
+                "Acceptance criteria",
+                "Reporting cadence",
+              ],
+            },
+          },
+          {
+            title: "Bring your procurement manual to life",
+            description:
+              "Ask a policy question and get the answer with the exact manual section behind it — thresholds, methods, and rules.",
+            preview: {
+              kind: "ask",
+              question: "What's the threshold for a formal sealed bid?",
+              answer: (
+                <>
+                  Purchases over <b>$50,000</b> require a formal sealed-bid process per your procurement manual.
+                </>
+              ),
+              cite: "§4.1",
+            },
           },
         ],
       },
       {
-        id: "requesters",
-        label: "For department requesters",
+        id: "electeds",
+        label: "For electeds",
         steps: [
           {
-            title: "Find the right contract, fast",
+            title: "Research awards & contracts",
             description:
-              "Ask which contract covers a purchase and Madison points you to the vehicle, terms, and expiration.",
-            icon: Search,
-            rows: [{ label: "IT hardware purchase", meta: "Covered by MC-2024-08" }],
-            footnote: "Cited to the master contract",
+              "Ask what the city has awarded, to whom, and for how much — answered from the contract record and cited.",
+            preview: {
+              kind: "rows",
+              rows: [
+                { icon: FileCheck, tone: "brand", label: "MetroFacility · janitorial", meta: "$610K · 2023" },
+                { icon: FileCheck, tone: "brand", label: "Pavement Pros · streets", meta: "$1.2M · 2024" },
+                { icon: FileCheck, tone: "brand", label: "DataNet · IT services", meta: "$340K · 2024" },
+              ],
+              banner: "28 active contracts · $14.6M total",
+            },
           },
           {
-            title: "Threshold & policy lookup",
-            description:
-              "Check purchasing thresholds and required approvals before you start a request.",
-            icon: ClipboardList,
-            rows: [
-              { label: "Purchases under $50,000", meta: "Dept. head approval" },
-              { label: "Sole source", meta: "Requires justification" },
-            ],
+            title: "Find the voting record for contracts",
+            description: "Every prior award vote and motion surfaced, with the source one click away.",
+            preview: {
+              kind: "rows",
+              rows: [
+                { icon: History, tone: "brand", label: "MetroFacility award (5/6)", meta: "passed 6–1" },
+                { icon: History, tone: "brand", label: "Pavement Pros (3/4)", meta: "passed 7–0" },
+                { icon: History, tone: "brand", label: "DataNet award (2/6)", meta: "passed 5–2" },
+              ],
+            },
           },
           {
-            title: "Requisition status tracking",
+            title: "Understand the tradeoffs on approval",
+            description: "The staff recommendation and the alternatives laid out plainly before you vote.",
+            preview: {
+              kind: "recommendation",
+              eyebrow: "Recommendation",
+              callout: (
+                <>
+                  Staff recommends <b>MetroFacility</b> — highest score on quality; not the lowest bid.
+                </>
+              ),
+              pro: "Pro: service",
+              con: "Con: +8% cost",
+            },
+          },
+        ],
+      },
+      {
+        id: "citizens",
+        label: "For citizens",
+        steps: [
+          {
+            title: "Find the voting record for awards",
+            description: "Residents see how the body voted on each contract award, grounded in the public record.",
+            preview: {
+              kind: "rows",
+              rows: [
+                { icon: History, tone: "brand", label: "MetroFacility award (5/6)", meta: "passed 6–1" },
+                { icon: History, tone: "brand", label: "Pavement Pros (3/4)", meta: "passed 7–0" },
+                { icon: History, tone: "brand", label: "DataNet award (2/6)", meta: "passed 5–2" },
+              ],
+            },
+          },
+          {
+            title: "Research previous contracts",
             description:
-              "Ask where a requisition stands without emailing procurement.",
-            icon: Mail,
-            rows: [{ label: "REQ-88214", meta: "Pending PO" }],
-            footnote: "Updated in real time",
+              "Past and active contracts surfaced in plain language — no request or counter visit needed.",
+            preview: {
+              kind: "rows",
+              rows: [
+                { icon: FileText, tone: "brand", label: "ProClean (expired)", meta: "2019 · $412K" },
+                { icon: FileText, tone: "brand", label: "Sparkle Co. (expired)", meta: "2021 · $498K" },
+                { icon: FileCheck, tone: "brand", label: "MetroFacility (active)", meta: "2023 · $610K" },
+              ],
+            },
+          },
+          {
+            title: "Submit FOIA requests for POs & contracts",
+            description:
+              "When a formal request is needed, it's scoped precisely and routed the moment it's submitted.",
+            preview: {
+              kind: "request",
+              body: "All purchase orders and contracts with MetroFacility, 2023 to present.",
+              meta: "Records request · scoped · POs + contracts",
+            },
           },
         ],
       },
@@ -114,14 +196,8 @@ const DATA: PlatformPageData = {
   connectors: {
     eyebrow: "Built from data across your gov.",
     title: "Instantly search across every procurement system your city runs.",
-    // Title container widened ~33% (max-w-2xl → max-w-4xl, the nearest token
-    // step to the requested 30%) at the contributor's request — the outer
-    // wrapper widens to match so the title isn't clipped, but the logo grid
-    // below is intrinsically sized and stays exactly as it was.
-    titleClassName: "mx-auto mb-8 max-w-4xl",
-    containerClassName: "mx-auto max-w-4xl",
     description:
-      "Solicitations, contracts, and vendor records — plus Bonfire, OpenGov, Workday, and dozens more.",
+      "Contracts, bids, budgets, and grants — plus your ERP, SharePoint, and dozens more systems of record.",
     items: [
       "Outlook",
       "Exchange",
@@ -135,38 +211,38 @@ const DATA: PlatformPageData = {
       "Granicus",
       "Municode",
       "OnBase",
-      "Other e-procurement systems",
     ],
+    note: "Other e-procurement systems",
   },
   whatYouGet: {
     eyebrow: "What you get",
-    title: "Procurement answers, grounded in your contract record.",
+    title: "Procurement answers, grounded in source record.",
     description:
-      "From RFP drafts to vendor histories, every output is grounded in your solicitations, contracts, and awards.",
+      "From contract analysis to draft RFPs, every output is grounded in your bids, your policy, and your record.",
     benefits: [
       {
         icon: CheckCircle2,
         title: "Every answer cited",
         description:
-          "Each answer links to the solicitation, contract, or amendment behind it — clickable and exportable to PDF.",
+          "Each answer links to the contract, bid, PO, or council vote behind it — clickable and exportable to PDF.",
       },
       {
         icon: ShieldCheck,
         title: "Your AI, never sharing your data",
         description:
-          "Your own tenant, your own keys. Your contracts and vendor data never train outside models.",
+          "Your own tenant, your own keys. Your contracts, bids, and policy never train outside models and never leave your environment.",
       },
       {
         icon: FileSignature,
-        title: "Grounded in your contract record",
+        title: "Grounded in your procurement record",
         description:
-          "Every RFP, contract, and amendment your government has ever filed — no drift, no outside content.",
+          "From past contracts and RFPs to your procurement manual and budgets, Madison answers from your corpus only — no drift, no outside content.",
       },
       {
         icon: Layers,
         title: "One platform, every procurement job",
         description:
-          "Procurement staff and requesters work from the same source of truth — no siloed systems to reconcile.",
+          "Procurement staff, department leaders, and the public work from the same source of truth — no siloed systems to reconcile.",
       },
     ],
   },
@@ -206,9 +282,9 @@ const DATA: PlatformPageData = {
   cta: {
     title: "Get a custom demonstration.",
     description:
-      "Book a 60-minute call. We'll walk procurement and contract workflows live, and answer the security questions your IT and legal teams will ask.",
+      "Book a 60-minute call. We'll walk procurement, elected, and public workflows live, and answer the security questions your IT and legal teams will ask.",
     bullets: [
-      "A live walkthrough across procurement and requesters",
+      "A live walkthrough across all three audiences",
       "How we're protecting your data and privacy",
       "See how we can start saving real time in weeks",
     ],
