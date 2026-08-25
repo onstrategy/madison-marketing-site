@@ -19,6 +19,7 @@ import civicplus from "./source-logos/civicplus.png";
 import escribe from "./source-logos/escribe.png";
 import govinity from "./source-logos/govinity.png";
 import onbase from "./source-logos/onbase.png";
+import youtube from "./source-logos/youtube.png";
 
 export const SOURCE_LOGOS: [string, string][] = [
   ["municode", municode],
@@ -33,6 +34,7 @@ export const SOURCE_LOGOS: [string, string][] = [
   ["escribe", escribe],
   ["govinity", govinity],
   ["onbase", onbase],
+  ["youtube", youtube],
 ];
 
 export function logoForSource(name: string): string | undefined {

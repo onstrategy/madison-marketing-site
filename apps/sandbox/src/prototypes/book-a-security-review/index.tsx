@@ -65,7 +65,6 @@ function HeroAndFormSection() {
             <HubSpotForm
               form="book-a-demo"
               calendlyRouting="demo-routing"
-              fieldBackground="white"
             />
           </div>
         </Reveal>
