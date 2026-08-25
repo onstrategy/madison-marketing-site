@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "Herriman City, Utah, has become the first municipality in the state to partner with Madison AI, implementing specialized artificial intelligence (AI) assistants to enhance its public service capabilities."
           },
           {

@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "As of February 2026, the City of Dublin, Ohio , has partnered with Madison AI to implement purpose-built artificial intelligence (AI) assistants designed to support citywide operations."
           },
           {

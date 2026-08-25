@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "The City of Newport Beach, California , has enlisted Madison AI to pilot an artificial intelligence (AI) assistant specifically designed to refine local government operations."
           },
           {

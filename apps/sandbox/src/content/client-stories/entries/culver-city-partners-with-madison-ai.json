@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "The City of Culver City has partnered with Madison AI to implement a suite of purpose-built artificial intelligence (AI) assistants. Their pilot deployment includes a citywide assistant, a community development assistant, and a public records fulfillment assistant, all designed to support staff and streamline municipal operations."
           },
           {

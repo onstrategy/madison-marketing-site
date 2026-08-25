@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "January 15, 2025 — The City of Milpitas, California, launched a pilot of Madison AI’s technology in January of 2025, taking a significant step toward exploring how purpose-built generative AI tools can support the city’s day-to-day operations."
           },
           {

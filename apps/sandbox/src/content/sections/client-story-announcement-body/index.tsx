@@ -9,7 +9,21 @@ import { Reveal } from "../../../prototypes/landing/parts";
 // convention in the client-stories entries) — a horizontal rule goes right
 // before it to separate the deployment-specific story from the standing
 // company boilerplate.
-const ABOUT_MADISON_AI_HEADING = "About Madison AI";
+const ABOUT_MADISON_AI_HEADING = "about madison ai";
+
+// Matched on a normalized form (case-folded, trailing punctuation and
+// whitespace stripped) rather than an exact string: an entry authored as
+// "About Madison AI." or "about Madison AI" would otherwise drop the rule
+// silently, with no error and nothing in the schema signalling the
+// requirement.
+function isAboutMadisonAiHeading(text: string): boolean {
+  return (
+    text
+      .trim()
+      .toLowerCase()
+      .replace(/[.:!?\s]+$/u, "") === ABOUT_MADISON_AI_HEADING
+  );
+}
 
 const NonEmptyStringSchema = z.string().trim().min(1);
 
@@ -24,6 +38,18 @@ const ParagraphBlockSchema = z
 const HeadingBlockSchema = z
   .object({
     type: z.literal("heading"),
+    text: NonEmptyStringSchema,
+  })
+  .strict();
+
+// The intro sentence that follows the hero. Authored explicitly instead of
+// inferred from position: the two long-form case studies that share this
+// section (addison-, chanhassen-success-story) open with a real section
+// title, so keying the lede treatment off `index === 0` silently demoted
+// their first <h2> to a paragraph — visually and in the heading outline.
+const LedeBlockSchema = z
+  .object({
+    type: z.literal("lede"),
     text: NonEmptyStringSchema,
   })
   .strict();
@@ -90,6 +116,7 @@ const ListBlockSchema = z
 const AnnouncementBlockSchema = z.discriminatedUnion("type", [
   ParagraphBlockSchema,
   HeadingBlockSchema,
+  LedeBlockSchema,
   QuoteBlockSchema,
   ImageBlockSchema,
   BulletsBlockSchema,
@@ -115,28 +142,21 @@ export function parseProps(input: unknown): ClientStoryAnnouncementBodyProps {
   return ClientStoryAnnouncementBodyPropsSchema.parse(input);
 }
 
-function AnnouncementBlockContent({
-  block,
-  isLede,
-}: {
-  block: AnnouncementBlock;
-  /** True for the first block — the sentence right after the hero. It's
-   * authored as a "heading" block (there's no dedicated lede type in the
-   * schema), but it reads as intro copy, not a section title: smaller and
-   * in the body typeface (font-sans) rather than the heading treatment. */
-  isLede: boolean;
-}) {
+function AnnouncementBlockContent({ block }: { block: AnnouncementBlock }) {
+  // Intro copy, not a section title: body typeface, one step down from the
+  // heading treatment.
+  if (block.type === "lede") {
+    return (
+      <p className="text-pretty text-lg font-semibold leading-relaxed text-primary">
+        {block.text}
+      </p>
+    );
+  }
+
   if (block.type === "heading") {
-    if (isLede) {
-      return (
-        <p className="text-pretty text-lg font-semibold leading-relaxed text-primary">
-          {block.text}
-        </p>
-      );
-    }
     return (
       <>
-        {block.text === ABOUT_MADISON_AI_HEADING ? (
+        {isAboutMadisonAiHeading(block.text) ? (
           <Separator className="mb-4" />
         ) : null}
         <h2 className="pt-4 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
@@ -286,7 +306,7 @@ export default function ClientStoryAnnouncementBodySection({
       <div className="mx-auto max-w-3xl space-y-8">
         {blocks.map((block, index) => (
           <Reveal key={JSON.stringify(block)} delay={index * 30}>
-            <AnnouncementBlockContent block={block} isLede={index === 0} />
+            <AnnouncementBlockContent block={block} />
           </Reveal>
         ))}
       </div>

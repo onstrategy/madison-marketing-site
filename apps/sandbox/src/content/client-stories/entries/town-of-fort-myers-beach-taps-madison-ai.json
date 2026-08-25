@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "The Town of Fort Myers Beach, Florida , has partnered with Madison AI to begin implementation of specialized artificial intelligence (AI) assistants for its municipal operations."
           },
           {

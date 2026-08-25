@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "February 6, 2026 — The City of Aspen, Colorado, is bringing artificial intelligence into its municipal operations, partnering with Madison AI to help staff work more efficiently, consolidate information spread across multiple systems, and free up time for the work that matters most, serving the community."
           },
           {
