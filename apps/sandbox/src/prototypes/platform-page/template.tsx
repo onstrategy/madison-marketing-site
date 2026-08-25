@@ -8,6 +8,10 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@madison/ui/tabs";
 import { LogoMark as MadisonMark } from "@madison/ui/logo";
 import { Nav, Footer } from "../landing/sections";
 import { Reveal, Eyebrow, SectionHeading, BrowserFrame, LogoMark } from "../landing/parts";
+import { StaffReportDemo } from "./demos/staff-report-demo";
+import { SolicitationDemo } from "./demos/solicitation-demo";
+import { PraDemo } from "./demos/pra-demo";
+import { StepPreview, type StepPreviewSpec } from "./previews";
 
 // ============================================================================
 // PlatformPageTemplate — the reusable structure for every page that hangs off
@@ -19,18 +23,11 @@ import { Reveal, Eyebrow, SectionHeading, BrowserFrame, LogoMark } from "../land
 // `BrowserFrame`/`LogoMark` from the landing prototype's shared parts.
 // ============================================================================
 
-export interface PlatformPageStepRow {
-  label: string;
-  meta?: string;
-}
-
 export interface PlatformPageStep {
   title: string;
   description: string;
-  icon: LucideIcon;
-  rows: PlatformPageStepRow[];
-  /** A short highlighted line under the rows, e.g. "Full parcel timeline · 14 records". */
-  footnote?: string;
+  /** The product mock shown beside the step — see ./previews.tsx. */
+  preview: StepPreviewSpec;
 }
 
 export interface PlatformPageRole {
@@ -70,6 +67,12 @@ export interface PlatformPageData {
   };
   media?: {
     title: string;
+    /**
+     * Which animated product demo runs in the frame under the hero. Each is a
+     * fixed-timeline loop of one real workflow — see ./demos/. Pages without
+     * an approved demo yet fall back to the static placeholder frame.
+     */
+    demo?: "staff-report" | "solicitation" | "public-records";
   };
   howItWorks: {
     eyebrow: string;
@@ -109,37 +112,6 @@ export interface PlatformPageData {
   };
 }
 
-/** One role's illustrative step — title/description left, a small mock panel right. */
-function StepPreview({ step }: { step: PlatformPageStep }) {
-  return (
-    <div className="rounded-xl border border-default bg-surface p-4">
-      <div className="mb-3 flex items-center gap-2">
-        <span className="flex size-7 items-center justify-center rounded-md bg-brand-subtle text-brand">
-          <step.icon className="size-4" />
-        </span>
-      </div>
-      <div className="space-y-2">
-        {step.rows.map((row) => (
-          <div
-            key={row.label}
-            className="flex items-center justify-between gap-3 rounded-md border border-default bg-app px-3 py-2 text-sm"
-          >
-            <span className="truncate text-primary">{row.label}</span>
-            {row.meta ? (
-              <span className="shrink-0 text-xs text-muted">{row.meta}</span>
-            ) : null}
-          </div>
-        ))}
-      </div>
-      {step.footnote ? (
-        <div className="mt-2 rounded-md bg-brand-subtle px-3 py-2 text-center text-xs font-semibold text-brand-accent">
-          {step.footnote}
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
 function HowItWorksSection({ data }: { data: PlatformPageData["howItWorks"] }) {
   return (
     <section className="border-t border-default bg-surface px-gutter py-30">
@@ -154,15 +126,25 @@ function HowItWorksSection({ data }: { data: PlatformPageData["howItWorks"] }) {
         </Reveal>
         <Reveal delay={80}>
           <Tabs defaultValue={data.roles[0]?.id}>
-            <TabsList className="light h-auto flex-wrap gap-1 rounded-full border border-default bg-hover p-1.5">
-              {data.roles.map((role) => (
-                <TabsTrigger key={role.id} value={role.id} className="rounded-full px-5 py-2">
-                  {role.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+            {/* A page whose steps run in sequence rather than splitting by
+                audience supplies a single role — a lone tab pill would be a
+                control with nothing to switch to, so the bar is dropped and
+                the steps just render. */}
+            {data.roles.length > 1 ? (
+              <TabsList className="light h-auto flex-wrap gap-1 rounded-full border border-default bg-hover p-1.5">
+                {data.roles.map((role) => (
+                  <TabsTrigger key={role.id} value={role.id} className="rounded-full px-5 py-2">
+                    {role.label}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            ) : null}
             {data.roles.map((role) => (
-              <TabsContent key={role.id} value={role.id} className="mt-8 space-y-4">
+              <TabsContent
+                key={role.id}
+                value={role.id}
+                className={cn("space-y-4", data.roles.length > 1 && "mt-8")}
+              >
                 {role.steps.map((step) => (
                   <div
                     key={step.title}
@@ -174,7 +156,7 @@ function HowItWorksSection({ data }: { data: PlatformPageData["howItWorks"] }) {
                       </h3>
                       <p className="mt-3 text-secondary">{step.description}</p>
                     </div>
-                    <StepPreview step={step} />
+                    <StepPreview spec={step.preview} />
                   </div>
                 ))}
               </TabsContent>
@@ -521,9 +503,17 @@ export function PlatformPageTemplate({ data }: { data: PlatformPageData }) {
               />
               <Reveal>
                 <BrowserFrame title={data.media.title}>
-                  <div className="flex h-80 items-center justify-center bg-app text-sm text-muted">
-                    Product walkthrough
-                  </div>
+                  {data.media.demo === "solicitation" ? (
+                    <SolicitationDemo />
+                  ) : data.media.demo === "staff-report" ? (
+                    <StaffReportDemo />
+                  ) : data.media.demo === "public-records" ? (
+                    <PraDemo />
+                  ) : (
+                    <div className="flex h-80 items-center justify-center bg-app text-sm text-muted">
+                      Product walkthrough
+                    </div>
+                  )}
                 </BrowserFrame>
               </Reveal>
             </div>
