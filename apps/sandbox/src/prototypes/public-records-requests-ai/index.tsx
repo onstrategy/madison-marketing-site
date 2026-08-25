@@ -203,7 +203,6 @@ const DATA: PlatformPageData = {
       "Straight answers on security, CJIS, and data residency",
       "No pressure, no commitment, just a real look",
     ],
-    submitLabel: "Request my call",
   },
 };
 

@@ -197,6 +197,7 @@
         },
         "download": {
           "title": "Download this case study as a one-page PDF",
+          "clientName": "Washoe County",
           "asset": "washoe-county-one-page.pdf",
           "form": "case-study-download"
         }

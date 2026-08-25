@@ -183,6 +183,7 @@
         },
         "download": {
           "title": "Download this case study as a one-page PDF",
+          "clientName": "Town of Los Altos Hills",
           "asset": "los-altos-hills-one-page.pdf",
           "form": "case-study-download"
         }
