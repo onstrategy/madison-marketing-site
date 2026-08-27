@@ -13,7 +13,7 @@
     "test": "vitest run",
     "lint": "eslint .",
     "preview": "vite preview --outDir dist/client",
-    "preview:seo-audit": "vite preview --outDir dist-seo-audit/client --host 127.0.0.1 --port 4174",
+    "preview:seo-audit": "SEO_AUDIT=true vite preview --host 127.0.0.1 --port 4174",
     "clean": "rm -rf dist dist-seo-audit .react-router"
   },
   "dependencies": {
