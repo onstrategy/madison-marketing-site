@@ -6,7 +6,7 @@
   "featured": false,
   "metadata": {
     "title": "Madison AI Deploys Operational Assistance for the City of Castle Pines",
-    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "description": "Castle Pines is deploying Madison AI assistants to unify departmental knowledge and support citywide, planning, zoning, and technical workflows.",
     "seoTitle": "Madison AI Deploys Operational Assistance for the City of Castle Pines",
     "ogImageAsset": "madison-client-story-og.jpg"
   },
@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "The City of Castle Pines, Colorado , has initiated a strategic rollout of Madison AI’s custom artificial intelligence (AI) assistants to optimize citywide access to information and technical workflows."
           },
           {

@@ -6,7 +6,7 @@
   "featured": false,
   "metadata": {
     "title": "Newport Beach Pilots AI Assistant Built for Local Government with Madison AI",
-    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "description": "Newport Beach is piloting Madison AI to help departments analyze municipal documents, search decades of records, and create custom staff reports.",
     "seoTitle": "Newport Beach Pilots AI Assistant Built for Local Government with Madison AI",
     "ogImageAsset": "madison-client-story-og.jpg"
   },
@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "The City of Newport Beach, California , has enlisted Madison AI to pilot an artificial intelligence (AI) assistant specifically designed to refine local government operations."
           },
           {

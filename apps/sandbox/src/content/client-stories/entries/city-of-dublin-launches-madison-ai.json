@@ -6,7 +6,7 @@
   "featured": false,
   "metadata": {
     "title": "City of Dublin Launches Madison AI Assistants for Local Operations",
-    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "description": "The City of Dublin, Ohio, is deploying Madison AI assistants for citywide operations and planning to streamline document review, research, and repetitive work.",
     "seoTitle": "City of Dublin Launches Madison AI Assistants for Local Operations",
     "ogImageAsset": "madison-client-story-og.jpg"
   },
@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "As of February 2026, the City of Dublin, Ohio , has partnered with Madison AI to implement purpose-built artificial intelligence (AI) assistants designed to support citywide operations."
           },
           {

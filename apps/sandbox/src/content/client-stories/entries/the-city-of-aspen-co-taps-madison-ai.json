@@ -6,7 +6,7 @@
   "featured": false,
   "metadata": {
     "title": "The City of Aspen, CO, Taps Madison AI to Reduce Administrative Workload and Improve City Services",
-    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "description": "Aspen is deploying Madison AI assistants to consolidate municipal information and bring internal, GIS, and permitting data into planning workflows.",
     "seoTitle": "The City of Aspen, CO, Taps Madison AI to Reduce Administrative Workload and Improve City Services",
     "ogImageAsset": "madison-client-story-og.jpg"
   },
@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "February 6, 2026 — The City of Aspen, Colorado, is bringing artificial intelligence into its municipal operations, partnering with Madison AI to help staff work more efficiently, consolidate information spread across multiple systems, and free up time for the work that matters most, serving the community."
           },
           {

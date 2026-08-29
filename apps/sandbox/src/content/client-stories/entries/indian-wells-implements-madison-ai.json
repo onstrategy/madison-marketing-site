@@ -6,7 +6,7 @@
   "featured": false,
   "metadata": {
     "title": "Indian Wells Implements Two Madison AI Assistants to Streamline Operations",
-    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "description": "Indian Wells is deploying Madison AI assistants for citywide administration and public records to help staff search archives and process inquiries faster.",
     "seoTitle": "Indian Wells Implements Two Madison AI Assistants to Streamline Operations",
     "ogImageAsset": "madison-client-story-og.jpg"
   },
@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "The City of Indian Wells, California , has partnered with Madison AI to launch two artificial intelligence (AI) assistants to support municipal functions: citywide administration and Public Records Act (PRA) requests."
           },
           {

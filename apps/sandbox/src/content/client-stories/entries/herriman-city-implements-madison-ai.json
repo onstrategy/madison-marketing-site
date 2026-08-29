@@ -6,7 +6,7 @@
   "featured": false,
   "metadata": {
     "title": "Herriman City Becomes First in Utah to Implement Municipal Solutions with Madison AI",
-    "description": "The Madison AI™ platform unites your agency’s scattered data and systems into knowledge AI to research anything and draft staff reports/memos in minutes.",
+    "description": "Herriman City becomes the first Utah municipality to deploy Madison AI assistants for citywide knowledge and community development workflows.",
     "seoTitle": "Herriman City Becomes First in Utah to Implement Municipal Solutions with Madison AI",
     "ogImageAsset": "madison-client-story-og.jpg"
   },
@@ -41,7 +41,7 @@
       "props": {
         "blocks": [
           {
-            "type": "heading",
+            "type": "lede",
             "text": "Herriman City, Utah, has become the first municipality in the state to partner with Madison AI, implementing specialized artificial intelligence (AI) assistants to enhance its public service capabilities."
           },
           {
