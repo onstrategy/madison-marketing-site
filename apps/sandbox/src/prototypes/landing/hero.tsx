@@ -20,7 +20,8 @@ const AUDIENCES: PromptDemoItem[] = [
   {
     id: "staff",
     label: "For staff",
-    prompt: "Draft a staff report on the STR permit cap.",
+    prompt:
+      "Draft a staff report to approve a new resolution and agreement between the transportation commission and City for flood equipment storage",
     reply:
       "Pulling your report template, five prior reports, and Ordinance 24-07 — a first draft is ready to edit.",
   },
@@ -32,9 +33,10 @@ const AUDIENCES: PromptDemoItem[] = [
       "Summarizing all twelve items, the packet, and prior votes — your briefing is ready before the meeting.",
   },
   {
-    id: "foia",
-    label: "For FOIA Requests",
-    prompt: "Process this public records request.",
+    id: "records",
+    label: "For Public Records Requests",
+    prompt:
+      "Find me all documents, records, and emails about any action related to the Senior Center in 2025",
     reply:
       "Scoping the request, flagging exemptions, and drafting the response letter — ready for your review.",
   },
@@ -109,8 +111,10 @@ export function Hero() {
                   Book a demo <ArrowRight className="size-4" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="bg-surface/70">
-                Why we&rsquo;re 95% accurate <ArrowRight className="size-4" />
+              <Button size="lg" variant="outline" className="bg-surface/70" asChild>
+                <a href="/accuracy/">
+                  Why we&rsquo;re 97% accurate <ArrowRight className="size-4" />
+                </a>
               </Button>
             </div>
           </Reveal>

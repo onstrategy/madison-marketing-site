@@ -1,11 +1,8 @@
-import type { CSSProperties, ReactNode } from "react";
+import { Fragment, type CSSProperties, type ReactNode } from "react";
 import { useLocation } from "react-router";
 import {
   ArrowRight,
-  ArrowUpRight,
   Landmark,
-  Gavel,
-  Users,
   ShieldCheck,
   Map as MapIcon,
   Lock,
@@ -35,7 +32,11 @@ import { Reveal, Marquee, useInView } from "./parts";
 import { CLIENT_LOGOS } from "./logos";
 import { IntelDiagram } from "./intel";
 import { PHOTOS, type StockPhoto } from "./photos";
-import visionCollab from "./vision-collab.jpg";
+import ericaOlsen from "./erica-olsen.jpg";
+import washoeCountyIntro from "../../content/client-stories/assets/washoe-county-intro.avif";
+import carsonCityIntro from "../../content/client-stories/assets/carson-city-intro.avif";
+import cityOfCoronaHero from "../../content/client-stories/assets/city-of-corona-hero.avif";
+import aspenHero from "../../content/client-stories/assets/aspen-hero.avif";
 
 // ============================================================================
 // Madison landing — sections, rebuilt to the "Platform Home 2a" design file.
@@ -78,7 +79,7 @@ const PLATFORM_LINKS = [
 // departmental modules — the mega menu's secondary link row.
 const PLATFORM_SECONDARY_LINKS = [
   { label: "Integrations", href: "/integrations/", icon: Plug },
-  { label: "Accuracy", href: "#top", icon: Target },
+  { label: "Accuracy", href: "/accuracy/", icon: Target },
 ];
 
 const COMPANY_LINKS = [
@@ -268,15 +269,6 @@ export function Nav({
   );
 }
 
-/** Lowercase micro-label in brand blue — the design's `.ey` treatment. */
-function Kicker({ children }: { children: string }) {
-  return (
-    <span className="font-sans text-sm uppercase tracking-widest text-brand-accent">
-      {children}
-    </span>
-  );
-}
-
 // ---------------------------------------------------------------------------
 // LOGO WALL — "Live in 65+ local governments"
 // ---------------------------------------------------------------------------
@@ -367,7 +359,7 @@ const CAPABILITIES = [
 // departmental modules, so they read as a lighter-weight link row.
 const CAPABILITIES_LINKS = [
   { label: "Integrations", href: "/integrations/", icon: Plug },
-  { label: "Accuracy", href: "#top", icon: Target },
+  { label: "Accuracy", href: "/accuracy/", icon: Target },
 ];
 
 export function Capabilities() {
@@ -386,7 +378,7 @@ export function Capabilities() {
               Give an assistant to everyone on your staff.
             </h2>
           </div>
-          <p className="mb-10 max-w-2xl text-lg text-secondary">
+          <p className="mb-10 text-lg text-secondary">
             One platform, four modules — powered by department-specific
             models trained on your government&rsquo;s record.
           </p>
@@ -473,7 +465,8 @@ const STORY_TILES: StoryTile[] = [
     name: "Washoe County, NV",
     kind: "roi",
     line: "$41K+ saved every month",
-    photo: PHOTOS.govBuildingFlag,
+    // Same photo as this story's own page (see client-stories/entries/washoe-county.json).
+    photo: { url: washoeCountyIntro, alt: "Aerial view of Washoe County, Nevada", width: 1411, height: 840 },
     tall: true,
     href: "/client-stories/washoe-county/",
   },
@@ -481,6 +474,7 @@ const STORY_TILES: StoryTile[] = [
     name: "City of Reno",
     kind: "roi",
     line: "75% less time on staff reports",
+    // No individual client-story page for Reno yet, so this stays a stock stand-in.
     photo: PHOTOS.meetingPens,
     tall: true,
     href: "/client-stories/",
@@ -489,21 +483,24 @@ const STORY_TILES: StoryTile[] = [
     name: "Carson City, NV",
     kind: "quote",
     line: "Exactly what I need, faster.",
-    photo: PHOTOS.govBuildingWhite,
+    // Same photo as this story's own page (see client-stories/entries/carson-city-client-story.json).
+    photo: { url: carsonCityIntro, alt: "Aerial view of Carson City, Nevada", width: 2015, height: 1200 },
     href: "/client-stories/carson-city-client-story/",
   },
   {
     name: "City of Corona, CA",
     kind: "quote",
     line: "Every decision at our fingertips.",
-    photo: PHOTOS.laptopsTable,
+    // Same photo as this story's own page (see client-stories/entries/city-of-corona.json).
+    photo: { url: cityOfCoronaHero, alt: "Aerial view of the City of Corona, California", width: 2015, height: 1200 },
     href: "/client-stories/city-of-corona/",
   },
   {
     name: "Aspen, CO",
     kind: "roi",
     line: "140 hrs reclaimed / month",
-    photo: PHOTOS.govBuildingColumns,
+    // Same photo as this story's own page (see client-stories/entries/the-city-of-aspen-co-taps-madison-ai.json).
+    photo: { url: aspenHero, alt: "Aspen, Colorado municipal landscape", width: 2015, height: 1200 },
     href: "/the-city-of-aspen-co-taps-madison-ai/",
   },
   // Pasadena previously filled the grid's last slot; that slot is now the
@@ -651,104 +648,6 @@ export function ClientStories() {
 }
 
 // ---------------------------------------------------------------------------
-// WHO & HOW — three audiences
-// ---------------------------------------------------------------------------
-
-const ROLES = [
-  {
-    icon: Landmark,
-    photo: PHOTOS.seatedMeeting,
-    cap: "Public records office · Washoe County, NV",
-    tag: "for staff",
-    title: "Built for the people who run the building.",
-    desc: "Clerks, planners, finance directors, and records officers — Madison was co-designed with the staff who use it daily.",
-    stat: "5 hrs",
-    statLabel: "back to each staff member, weekly",
-  },
-  {
-    icon: Gavel,
-    photo: PHOTOS.presenting,
-    cap: "Council district overview · Reno, NV",
-    tag: "for electeds",
-    title: "Five-minute briefings before five-hour meetings.",
-    desc: "Hand Madison the agenda packet. Get back a per-item summary with cited history, prior votes, and staff position.",
-    stat: "120+",
-    statLabel: "council & board members briefed weekly",
-  },
-  {
-    icon: Users,
-    photo: PHOTOS.govBuildingWhite,
-    cap: "Resident self-service portal",
-    tag: "for citizens",
-    title: "Answers without the wait.",
-    desc: "Public records handled from intake to response letter — and self-service answers that resolve routine questions instantly.",
-    stat: "90%",
-    statLabel: "faster records fulfillment",
-  },
-];
-
-export function Roles() {
-  return (
-    <section className="border-t border-default bg-app px-gutter py-30">
-      <div className="mx-auto max-w-6xl">
-        <Reveal>
-          <h3 className="mx-auto mb-10 max-w-3xl text-balance text-center text-3xl font-medium tracking-tight text-primary">
-            One platform, three audiences. And the people they&rsquo;re for.
-          </h3>
-        </Reveal>
-        <div className="grid gap-5 md:grid-cols-3">
-          {ROLES.map((role, i) => (
-            <Reveal key={role.tag} delay={i * 80}>
-              {/* The card itself is inert — no lift, no pointer. The only
-                  interactive affordance is the caption pill over the photo. */}
-              <div className="h-full overflow-hidden rounded-2xl border border-default bg-surface">
-                <div className="relative h-52">
-                  <img
-                    src={role.photo.url}
-                    alt={role.photo.alt}
-                    width={role.photo.width}
-                    height={role.photo.height}
-                    loading="lazy"
-                    className="absolute inset-0 size-full object-cover"
-                  />
-                  {/* Caption pill is an always-dark region — `dark` scope keeps
-                      it on-token. Named group (`group/cap`) so its own hover
-                      drives the arrow nudge without the card reacting too. */}
-                  <div className="group/cap dark absolute inset-x-3 bottom-3 flex cursor-pointer items-center justify-between gap-2 rounded-lg bg-app/75 px-3 py-2 text-xs text-primary backdrop-blur-sm transition-colors hover:bg-app/90">
-                    <span>{role.cap}</span>
-                    <ArrowUpRight className="size-3.5 transition-transform group-hover/cap:translate-x-0.5 group-hover/cap:-translate-y-0.5" />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="mb-2.5 flex items-center gap-2">
-                    <span className="flex size-6.5 items-center justify-center rounded-md bg-brand-subtle text-brand-accent">
-                      <role.icon className="size-4" />
-                    </span>
-                    <Kicker>{role.tag}</Kicker>
-                  </div>
-                  <h3 className="mb-2.5 font-sans text-xl font-bold leading-snug tracking-tight text-primary">
-                    {role.title}
-                  </h3>
-                  <p className="mb-4.5 text-sm leading-relaxed text-secondary">
-                    {role.desc}
-                  </p>
-                  <div className="flex items-baseline gap-2 border-t border-default pt-3.5">
-                    <span className="text-2xl font-bold text-primary">
-                      {role.stat}
-                    </span>
-                    <span className="text-xs text-muted">{role.statLabel}</span>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ---------------------------------------------------------------------------
 // THE MOMENT — big-number proof
 // ---------------------------------------------------------------------------
 
@@ -760,14 +659,14 @@ const MOMENT_STATS = [
 
 export function TheMoment() {
   return (
-    <section className="border-t border-default bg-surface px-gutter py-30">
+    <section className="border-t border-default bg-app px-gutter py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <h2 className="mb-14 max-w-3xl text-balance text-4xl font-medium tracking-tight text-primary">
             AI is changing local government.
           </h2>
         </Reveal>
-        <div className="grid items-start gap-8 lg:grid-cols-[2fr_3fr] lg:gap-16">
+        <div className="grid items-start gap-8 lg:grid-cols-[2fr_3fr] lg:gap-24">
           <Reveal>
             <p className="max-w-md text-pretty leading-relaxed text-secondary">
               The municipal sector is undergoing its most significant
@@ -780,23 +679,33 @@ export function TheMoment() {
             </p>
           </Reveal>
           <div className="flex flex-col">
+            {/* Dividers are drawn as their own gradient bars (not `border-*`)
+                so each line can fade from the border color on the left to
+                the section's own background on the right — a plain border
+                can't carry a gradient. One line above every stat, plus a
+                closing line under the last. */}
             {MOMENT_STATS.map((stat, i) => (
-              <Reveal key={stat.value} delay={i * 80}>
+              <Fragment key={stat.value}>
                 <div
-                  className={cn(
-                    "grid items-baseline gap-4 border-t border-default py-7 sm:grid-cols-[280px_1fr] sm:gap-8",
-                    i === MOMENT_STATS.length - 1 && "border-b",
-                  )}
-                >
-                  <div className="font-sans text-5xl font-bold tracking-tight text-primary md:text-6xl">
-                    {stat.value}
+                  aria-hidden
+                  className="h-px w-full bg-gradient-to-r from-border-default to-app"
+                />
+                <Reveal delay={i * 80}>
+                  <div className="py-5 text-left">
+                    <div className="font-sans text-5xl font-bold tracking-tight text-primary md:text-6xl">
+                      {stat.value}
+                    </div>
+                    <p className="mt-1.5 w-full text-sm leading-normal text-secondary">
+                      {stat.label}
+                    </p>
                   </div>
-                  <p className="text-sm leading-normal text-secondary">
-                    {stat.label}
-                  </p>
-                </div>
-              </Reveal>
+                </Reveal>
+              </Fragment>
             ))}
+            <div
+              aria-hidden
+              className="h-px w-full bg-gradient-to-r from-border-default to-app"
+            />
           </div>
         </div>
       </div>
@@ -810,7 +719,7 @@ export function TheMoment() {
 
 export function Vision() {
   return (
-    <section className="border-t border-default bg-app px-gutter py-30">
+    <section className="border-t border-default bg-surface px-gutter py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-14 grid gap-10 lg:grid-cols-[260px_1fr_1fr] lg:gap-16">
@@ -849,10 +758,10 @@ export function Vision() {
           <div className="grid items-end gap-10 lg:grid-cols-[260px_1fr] lg:gap-16">
             <figure className="m-0 aspect-[4/5] overflow-hidden rounded-2xl border border-default">
               <img
-                src={visionCollab}
-                alt="The people who run the building"
-                width={1200}
-                height={800}
+                src={ericaOlsen}
+                alt="Erica Olsen, co-founder and CEO of Madison AI"
+                width={700}
+                height={934}
                 loading="lazy"
                 className="size-full object-cover"
               />
@@ -952,8 +861,9 @@ export function FinalCta() {
   return (
     <section className="border-t border-default bg-gradient-to-b from-brand-subtle to-app px-gutter py-38 text-center">
       <Reveal>
-        <h2 className="mb-4.5 text-balance text-4xl font-medium tracking-tight text-primary md:text-5xl">
-          See it on your own files.
+        <h2 className="mb-4.5 text-balance text-3xl font-medium tracking-tight text-primary md:text-4xl">
+          From records requests to staff reports, let&rsquo;s transform your
+          everyday work.
         </h2>
         <p className="mx-auto mb-8.5 max-w-lg text-lg leading-relaxed text-secondary">
           We&rsquo;ll load Madison with a sample of your records and walk
