@@ -177,7 +177,7 @@ function BenefitsRow({ benefits }: Pick<LeadMagnetData, "benefits">) {
     <div className="mt-24 rounded-xl border border-active bg-surface">
       <ul
         className={cn(
-          "grid divide-y divide-default sm:grid-cols-2 sm:divide-x sm:divide-y-0",
+          "grid divide-y divide-border-default sm:grid-cols-2 sm:divide-x sm:divide-y-0",
           benefits.length > 2 && "lg:grid-cols-3",
         )}
       >

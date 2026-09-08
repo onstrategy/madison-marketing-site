@@ -81,9 +81,13 @@ export function parseProps(input: unknown): ClientStoryQuoteStatsProps {
  * count instead puts verticals only between real neighbours, and the
  * horizontal rule only under a genuine row break.
  *
- * Mobile is deliberately untouched: one continuous two-up grid at every count,
- * because a row of three would either orphan an item or squeeze the large
- * serif figures past their column.
+ * Mobile stays one two-up grid at every count, because a row of three would
+ * either orphan an item or squeeze the large serif figures past their column —
+ * but its row rule is a selector for the same reason (see the grid below).
+ *
+ * Every one of these borders takes its COLOR from the tile, not from here:
+ * `border-default` is a static utility that sets `border-color` only on the
+ * element carrying it, and border-color does not inherit.
  */
 const STAT_LAYOUTS = [
   { upTo: 2, cols: "lg:grid-cols-2", between: "lg:[&>*:not(:nth-child(2n+1))]:border-l", rowRule: "" },
@@ -149,7 +153,12 @@ export default function ClientStoryQuoteStatsSection({
             <div className="mt-8 border-t border-default" aria-hidden />
             <div
               className={cn(
-                "grid grid-cols-2 divide-y divide-default border-default lg:divide-y-0",
+                /* Mobile is a fixed two-up grid, so the row rule is the same
+                   kind of selector as the `lg` ones below — `divide-y` would
+                   put a border on every child but the first, which in a 2-col
+                   grid means a stray rule above the SECOND tile, in row one.
+                   That went unnoticed while these borders were colorless. */
+                "grid grid-cols-2 max-lg:[&>*:nth-child(n+3)]:border-t",
                 statLayout(stats.items.length).cols,
                 statLayout(stats.items.length).between,
                 statLayout(stats.items.length).rowRule,
@@ -158,7 +167,15 @@ export default function ClientStoryQuoteStatsSection({
               {stats.items.map((stat) => (
                 <div
                   key={stat.label}
-                  className="px-2 pt-8 pb-10 text-center lg:px-8"
+                  /* `border-default` sits on the TILE, not the grid: it is a
+                     static utility that only sets `border-color` on the element
+                     carrying it, and border-color does not inherit. On the
+                     container it would leave every divider — the `divide-y`
+                     rule and the `border-l`/`border-t` above — painting in
+                     `currentColor`, which here is the light-theme ink inherited
+                     from the page root, on a forced-dark panel. Same reason the
+                     `border-t border-default` rule above pairs them together. */
+                  className="border-default px-2 pt-8 pb-10 text-center lg:px-8"
                 >
                   <div className="font-serif text-5xl font-medium tracking-tight text-primary">
                     {stat.value}
