@@ -1,7 +1,9 @@
 import { z } from "zod";
 import { Separator } from "@madison/ui/separator";
+import { cn } from "@madison/ui/utils";
 import { resolveClientStoryImage } from "../../client-stories/assets";
 import { ClientStoryImageInputSchema } from "../../client-stories/image";
+import { clientStoryQuoteSize } from "../../client-stories/quote-scale";
 import { Reveal } from "../../../prototypes/landing/parts";
 
 // Every "New Deployment" entry closes its narrative with a boilerplate
@@ -288,7 +290,13 @@ function AnnouncementBlockContent({ block }: { block: AnnouncementBlock }) {
           className="mb-6 size-24 rounded-full border border-active object-cover shadow-md"
         />
       ) : null}
-      <blockquote className="text-balance font-serif text-2xl font-medium italic tracking-tight text-primary">
+      {/* Size steps down as the quote gets longer — see quote-scale.ts. */}
+      <blockquote
+        className={cn(
+          "text-balance font-serif font-medium italic tracking-tight text-primary",
+          clientStoryQuoteSize(block.text, "2xl"),
+        )}
+      >
         &ldquo;{block.text}&rdquo;
       </blockquote>
       <p className="mt-4 text-sm font-semibold text-brand-accent">

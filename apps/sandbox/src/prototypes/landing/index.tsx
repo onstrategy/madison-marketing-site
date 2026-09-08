@@ -4,7 +4,6 @@ import {
   IntelligenceLayer,
   Capabilities,
   ClientStories,
-  Roles,
   TheMoment,
   Vision,
   Security,
@@ -25,7 +24,6 @@ export default function LandingPrototype() {
         <IntelligenceLayer />
         <Capabilities />
         <ClientStories />
-        <Roles />
         <TheMoment />
         <Vision />
         <Security />

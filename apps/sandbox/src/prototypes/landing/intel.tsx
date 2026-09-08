@@ -25,7 +25,6 @@ const SYSTEMS = [
   "OnBase",
   "CivicPlus",
   "ClearGov",
-  "Outlook",
   "eScribe",
   "Workday",
   "State law",
@@ -230,8 +229,13 @@ export function IntelDiagram() {
                     className={cn(
                       "inline-flex h-11 items-center gap-2 rounded-lg border px-3 text-sm font-semibold transition-all",
                       checked
-                        ? "border-brand/30 bg-surface text-primary opacity-100"
-                        : "border-default bg-panel text-secondary",
+                        ? "border-brand/30 text-primary opacity-100"
+                        : "border-default text-secondary",
+                      // Logo tiles get a pure-white box (bg-plate) in both
+                      // checked states — the vendor marks are authored on
+                      // white, so the chip housing them stays white rather
+                      // than the warm surface/panel tint the text-only tiles use.
+                      logoSrc ? "bg-plate" : checked ? "bg-surface" : "bg-panel",
                       searching || answered ? "opacity-100" : "opacity-40",
                     )}
                   >

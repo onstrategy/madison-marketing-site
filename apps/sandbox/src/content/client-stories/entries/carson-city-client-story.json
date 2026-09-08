@@ -20,6 +20,12 @@
       "alt": "Aerial view of Carson City, Nevada",
       "width": 2015,
       "height": 1200
+    },
+    "logo": {
+      "asset": "carson-city.webp",
+      "alt": "Carson City, Nevada",
+      "width": 301,
+      "height": 140
     }
   },
   "sections": [

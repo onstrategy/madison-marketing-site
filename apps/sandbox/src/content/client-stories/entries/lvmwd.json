@@ -20,6 +20,12 @@
       "alt": "Las Virgenes Municipal Water District service area",
       "width": 2015,
       "height": 1200
+    },
+    "logo": {
+      "asset": "las-virgenes.webp",
+      "alt": "Las Virgenes Municipal Water District",
+      "width": 177,
+      "height": 140
     }
   },
   "sections": [
@@ -86,11 +92,11 @@
               "label": "reports produced in 12 months"
             },
             {
-              "value": "1,075 Hours",
-              "label": "saved on administrative tasks"
+              "value": "1,075",
+              "label": "Hours saved on administrative tasks"
             },
             {
-              "value": "$108,000",
+              "value": "$108K",
               "label": "avoided in administrative overhead"
             }
           ]

@@ -88,7 +88,7 @@ function HeroMetaCard({
   data: ClientStoryHeroIntroProps["hero"];
 }) {
   return (
-    <div className="light grid grid-cols-1 divide-y divide-default rounded-2xl border border-default bg-surface shadow-xl sm:grid-cols-[auto_1fr_1fr_1.6fr] sm:divide-x sm:divide-y-0">
+    <div className="light grid grid-cols-1 divide-y divide-border-default rounded-2xl border border-default bg-surface shadow-xl sm:grid-cols-[auto_1fr_1fr_1.6fr] sm:divide-x sm:divide-y-0">
       <div className="flex items-center justify-center p-6 sm:px-10">
         <span className="flex size-20 items-center justify-center rounded-full border border-default bg-plate p-4">
           <img

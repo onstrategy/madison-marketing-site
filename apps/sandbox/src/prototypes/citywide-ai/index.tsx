@@ -7,7 +7,7 @@ import {
   FileSignature,
   History,
   Layers,
-  LayoutGrid,
+  LandPlot,
   ShieldCheck,
 } from "lucide-react";
 import { PlatformPageTemplate, type PlatformPageData } from "../platform-page/template";
@@ -266,7 +266,7 @@ const DATA: PlatformPageData = {
       {
         title: "Citywide AI",
         description: "Staff, electeds, and citizens on one grounded record.",
-        icon: LayoutGrid,
+        icon: Building2,
         href: "/citywide-ai/",
         current: true,
       },
@@ -279,7 +279,7 @@ const DATA: PlatformPageData = {
       {
         title: "AI for Community Development",
         description: "Permitting, zoning, and planning, grounded in code.",
-        icon: Building2,
+        icon: LandPlot,
         href: "/community-development-ai/",
       },
       {

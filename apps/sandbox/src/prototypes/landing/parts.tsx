@@ -391,7 +391,7 @@ export function Marquee<T>({
           <div
             key={copy}
             aria-hidden={copy === 1}
-            className="flex shrink-0 items-center gap-8 pr-8"
+            className="flex shrink-0 items-center gap-16 pr-16"
           >
             {track.map((item, i) => (
               <div key={i} className="shrink-0">
