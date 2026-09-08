@@ -12,7 +12,6 @@ import {
   Hammer,
   History,
   Layers,
-  LayoutGrid,
   ShieldCheck,
   Users,
   Zap,
@@ -294,7 +293,7 @@ const DATA: PlatformPageData = {
       {
         title: "Citywide AI",
         description: "Staff, electeds, and citizens on one grounded record.",
-        icon: LayoutGrid,
+        icon: Building2,
         href: "/citywide-ai/",
       },
       {
@@ -306,7 +305,7 @@ const DATA: PlatformPageData = {
       {
         title: "AI for Community Development",
         description: "Permitting, zoning, and planning, grounded in code.",
-        icon: Building2,
+        icon: LandPlot,
         href: "/community-development-ai/",
         current: true,
       },
