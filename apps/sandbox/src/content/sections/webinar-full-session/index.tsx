@@ -35,7 +35,11 @@ export default function WebinarFullSessionSection({
               {heading}
             </h2>
           </div>
-          <div className="light relative aspect-video overflow-hidden rounded-2xl border border-active bg-surface shadow-xl">
+          {/* Same framed treatment as the About Us hero photo — a soft 2px
+              border derived from the text token rather than a hard structural
+              one, a deeper radius, and a heavier lift. `overflow-hidden` keeps
+              the embedded player clipped to that radius. */}
+          <div className="light relative aspect-video overflow-hidden rounded-3xl border-2 border-[hsl(var(--text-primary)/0.15)] bg-surface shadow-2xl">
             <iframe
               src={`https://fast.wistia.net/embed/iframe/${wistiaId}?web_component=true&seo=true`}
               title={videoTitle}

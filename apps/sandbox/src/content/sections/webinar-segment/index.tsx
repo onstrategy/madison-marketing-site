@@ -106,7 +106,11 @@ function SegmentVideo({ video }: { video: WebinarVideo }) {
           <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand text-brand-fg transition-transform group-hover:scale-110">
             <Play className="size-4 fill-current" aria-hidden="true" />
           </span>
-          {video.title}
+          {/* The clip's real title still labels the iframe below (for
+              assistive tech and the browser tab), but the visible row next to
+              the play button is this fixed string on every webinar page —
+              consistent across all segments, not a per-clip headline. */}
+          Watch the webinar segment
         </span>
         <ChevronDown
           aria-hidden="true"
