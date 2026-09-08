@@ -20,6 +20,12 @@
       "alt": "Grand Prairie, Texas municipal landscape",
       "width": 2015,
       "height": 1200
+    },
+    "logo": {
+      "asset": "prairie.webp",
+      "alt": "Grand Prairie, Texas",
+      "width": 288,
+      "height": 140
     }
   },
   "sections": [
