@@ -222,3 +222,48 @@
     line-height: round(down, calc(1em * 1.2), 1px);
   }
 }
+
+/* Below md (768px, matching --breakpoint-md — the raw value is hardcoded
+   because custom properties aren't reliably supported inside an @media
+   condition), cap the oversized end of each heading level down one step:
+   h1 text-5xl → text-4xl, h2 text-4xl → text-3xl, h3 text-3xl → text-2xl.
+   line-height isn't set here — the heading-leading rule above reads each
+   heading's OWN rendered font-size via `1em`, so it recomputes correctly for
+   free once this rule changes that size. Letter-spacing needs no adjustment
+   either: all three steps involved already share the same -0.01em tracking.
+
+   WHY A TAG+CLASS SELECTOR, NOT A TOKEN EDIT. Retuning --text-4xl itself
+   would fix every h2 built with it but ALSO shrink every non-heading use of
+   text-4xl (stat callouts, hero numerals) that has no business changing — the
+   same reasoning the heading-leading comment above gives for line-height.
+   Keyed to the LITERAL class an author wrote (not a computed "how big does
+   this currently render" value, which CSS has no way to read back), because
+   that class is the actual signal of "how big did the author want this" —
+   unlike the line-height case, we WANT that signal here, not the rendered size.
+
+   WHY ONLY THESE THREE STEPS, NOT EVERY HEADING. A repo-wide survey of every
+   h1/h2/h3 class in the kit found most headings already reasonable at their
+   base (mobile) size — h2 at text-3xl (32px) or smaller, h3 at text-2xl (24px)
+   or smaller. Only h1.text-5xl (64px), h2.text-4xl (48px), and h3.text-3xl
+   (32px) render flat at that size on every viewport with no smaller mobile
+   step, which is what actually broke on narrow screens: a 48px h2 wrapping to
+   3–4 lines at literally the same size as the page's own h1. Capping those
+   three, rather than forcing every heading level to one fixed size, leaves
+   an author's intentionally-smaller h2 or h3 alone.
+
+   A `md:text-*` pair some of these SAME classes carry (`text-3xl md:text-4xl`,
+   etc.) is unaffected: that variant class only activates at md+, so below md
+   only the base class here is live, and this rule overrides just that. */
+@layer heading-mobile-scale {
+  @media (max-width: 767px) {
+    h1.text-5xl {
+      font-size: var(--text-4xl);
+    }
+    h2.text-4xl {
+      font-size: var(--text-3xl);
+    }
+    h3.text-3xl {
+      font-size: var(--text-2xl);
+    }
+  }
+}

@@ -12,6 +12,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { PlatformPageTemplate, type PlatformPageData } from "../platform-page/template";
+import { INTEGRATION_LOGOS } from "../integrations/logos";
 
 // AI for Public Records Requests — built on the same PlatformPageTemplate as
 // Community Development AI; see that prototype's index.tsx for the pattern.
@@ -115,18 +116,11 @@ const DATA: PlatformPageData = {
     title: "Instantly search and retrieve across your government's systems.",
     description:
       "No migration project, no “first get your data in order.” Madison AI connects to the systems your agency runs today and searches across all of them in one pass.",
-    items: [
-      "Outlook & Exchange",
-      "SharePoint",
-      "Laserfiche",
-      "Granicus",
-      "Barracuda",
-      "Google Workspace",
-      "Network file shares",
-      "OnBase",
-      "Municode",
-      "CivicPlus",
-    ],
+    // Same registry, same 15-mark set the Integrations page's own
+    // "Public Records / FOIA" tab shows — see ../integrations/logos.ts.
+    items: INTEGRATION_LOGOS.filter((logo) =>
+      logo.categories.includes("public-records-foia"),
+    ),
     note: "Don't see yours? Most line-of-business systems can be connected during onboarding.",
   },
   whatYouGet: {

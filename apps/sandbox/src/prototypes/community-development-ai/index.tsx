@@ -17,6 +17,7 @@ import {
   Zap,
 } from "lucide-react";
 import { PlatformPageTemplate, type PlatformPageData } from "../platform-page/template";
+import { INTEGRATION_LOGOS } from "../integrations/logos";
 
 // Community Development AI — the first page built on the shared
 // PlatformPageTemplate. A future Platform-dropdown page (Contracts &
@@ -234,22 +235,11 @@ const DATA: PlatformPageData = {
     title: "Instantly search across every planning system your city runs.",
     description:
       "Parcel data, GIS, permit history, and code — plus Tyler, Accela, ArcGIS, SharePoint, Granicus and dozens more.",
-    items: [
-      "Outlook",
-      "Exchange",
-      "Teams",
-      "Esri / ArcGIS",
-      "Accela",
-      "SharePoint",
-      "CivicPlus",
-      "ClearGov",
-      "Laserfiche",
-      "Granicus",
-      "Municode",
-      "OnBase",
-      "YouTube",
-      "eScribe",
-    ],
+    // Same registry, same 17-mark set the Integrations page's own
+    // "Community Development" tab shows — see ../integrations/logos.ts.
+    items: INTEGRATION_LOGOS.filter((logo) =>
+      logo.categories.includes("community-development"),
+    ),
     note: "Other permitting systems",
   },
   whatYouGet: {

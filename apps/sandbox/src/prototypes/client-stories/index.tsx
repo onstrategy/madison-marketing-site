@@ -92,7 +92,12 @@ function FeaturedHero({ data }: { data: typeof FEATURED }) {
               {data.clientName}
             </span>
           </div>
-          <h1 className="mb-8 max-w-3xl text-balance font-serif text-4xl font-medium tracking-tight text-primary">
+          {/* Featured-story titles run just as long as individual client-story
+              pages' own (this pulls the same `card.title` copy) — same
+              mobile step-down as client-story-hero-intro's h1, for the same
+              reason: flat text-4xl wraps a long benefit-driven title to 5-6
+              lines on a phone. */}
+          <h1 className="mb-8 max-w-3xl text-balance font-serif text-3xl font-medium tracking-tight text-primary md:text-4xl">
             {data.title}
           </h1>
           <a

@@ -6,11 +6,12 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@madison/ui/tabs";
 import { LogoMark as MadisonMark } from "@madison/ui/logo";
 import { HubSpotForm } from "../../content/forms/HubSpotForm";
 import { Nav, Footer } from "../landing/sections";
-import { Reveal, Eyebrow, SectionHeading, BrowserFrame, LogoMark } from "../landing/parts";
+import { Reveal, Eyebrow, SectionHeading, BrowserFrame } from "../landing/parts";
 import { StaffReportDemo } from "./demos/staff-report-demo";
 import { SolicitationDemo } from "./demos/solicitation-demo";
 import { PraDemo } from "./demos/pra-demo";
 import { StepPreview, type StepPreviewSpec } from "./previews";
+import { type IntegrationLogo } from "../integrations/logos";
 
 // ============================================================================
 // PlatformPageTemplate — the reusable structure for every page that hangs off
@@ -19,7 +20,7 @@ import { StepPreview, type StepPreviewSpec } from "./previews";
 // (`PlatformPageData`) — a new vertical is a new data object, not new layout
 // code. Built entirely from existing primitives: the site's own `Nav`/`Footer`,
 // `@madison/ui/tabs` for the role switcher, `Reveal`/`Eyebrow`/`SectionHeading`/
-// `BrowserFrame`/`LogoMark` from the landing prototype's shared parts.
+// `BrowserFrame` from the landing prototype's shared parts.
 // ============================================================================
 
 export interface PlatformPageStep {
@@ -83,7 +84,14 @@ export interface PlatformPageData {
     eyebrow: string;
     title: string;
     description: string;
-    items: string[];
+    /**
+     * Real vendor marks, not names — pulled from ../integrations/logos.ts
+     * (the same registry and the same SVG assets the Integrations page
+     * itself renders) and filtered to this page's own platform-area
+     * category, so a tool showing here is guaranteed to be the same logo
+     * and the same tab split as Integrations shows it under.
+     */
+    items: IntegrationLogo[];
     /** A trailing catch-all ("Other permitting systems") that doesn't earn a grid card — rendered as plain text under the grid instead. */
     note?: string;
     /** Overrides the title/eyebrow block's width (default `max-w-2xl`). Widening this alone would clip against the section's own wrapper, so it also needs `containerClassName` widened to match. The logo grid is unaffected either way — it's intrinsically sized, not stretched by this container. */
@@ -253,8 +261,27 @@ function ConnectorsSection({ data }: { data: PlatformPageData["connectors"] }) {
                 N+1th) — it has to be explicit since flex-wrap has no
                 `grid-cols` equivalent to size off of. */}
             <div className="-mt-1 flex w-67 flex-wrap justify-center gap-3 sm:w-102 lg:w-176 lg:gap-4">
-              {data.items.map((name) => (
-                <LogoMark key={name} name={name} />
+              {/* Same fixed box LogoMark used (h-16 w-32 — that exact size is
+                  what the wrap width above was tuned against), rendering the
+                  logo directly rather than through LogoMark's name-matching:
+                  these are already resolved IntegrationLogo objects, not
+                  bare strings to look up. `light` + `bg-plate` for the same
+                  reason it mattered on the Integrations grid — third-party
+                  marks authored on white need a true white plate under them
+                  in both themes, not the warm canvas. */}
+              {data.items.map((logo) => (
+                <span
+                  key={logo.name}
+                  title={logo.name}
+                  className="light flex h-16 w-32 items-center justify-center rounded-lg border border-default bg-plate p-0.5"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    loading="lazy"
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </span>
               ))}
             </div>
             {data.note ? (
