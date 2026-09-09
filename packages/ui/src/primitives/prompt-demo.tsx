@@ -128,8 +128,13 @@ function PromptDemo({ items, avatar, className, ...props }: PromptDemoProps) {
       )}
       {...props}
     >
-      {/* Persona tabs — the active one carries the brand accent */}
-      <div className="flex gap-1.5 p-2.5">
+      {/* Persona tabs — the active one carries the brand accent. Stacked
+          below sm: 3 equal-width flex-1 tabs on a phone squeeze a
+          multi-word label ("For Public Records Requests") into a sliver
+          each tab can't fit on one line, wrapping unevenly against its
+          single-line siblings. Full-width stacked rows give every label the
+          same room regardless of length. */}
+      <div className="flex flex-col gap-1.5 p-2.5 sm:flex-row">
         {items.map((item) => {
           const on = item.id === active.id;
           return (

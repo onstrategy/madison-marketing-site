@@ -151,10 +151,26 @@ function HeroSection({
         <div className="absolute inset-0 bg-gradient-to-b from-app via-app/70 to-app/30" />
         <div className="absolute inset-0 bg-app/60" />
       </div>
-      <div className="relative mx-auto max-w-6xl px-gutter pt-28 pb-40 lg:px-0 lg:pt-40">
+      {/* Extra bottom clearance below `sm` isn't decorative: HeroMetaCard
+          stacks to 4 rows there (see its own `sm:grid-cols-...`), so the
+          overhanging card below is roughly twice as tall as it is from `sm`
+          up, where it collapses to one row. Reserving only the desktop
+          amount let the tall mobile card's top edge climb into the title —
+          this keeps the same straddle-the-boundary card treatment, just with
+          enough room for the shape that treatment actually takes on a
+          phone. */}
+      <div className="relative mx-auto max-w-6xl px-gutter pt-28 pb-80 sm:pb-40 lg:px-0 lg:pt-40">
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">{data.kicker}</Eyebrow>
-          <h1 className="mb-8 max-w-4xl text-balance font-serif text-4xl font-medium tracking-tight text-primary">
+          {/* Long, benefit-driven titles ("Reclaiming $11,000 in Staff Time
+              Monthly with...") run 60-80 characters — at a flat text-4xl
+              that's 5-6 wrapped lines on a phone, same failure shape as the
+              H2 bug fixed sitewide. Client-story titles are long enough
+              often enough that this gets its own step-down rather than
+              relying on the global heading rule (which only catches
+              text-5xl h1s — this is text-4xl, and most OTHER text-4xl h1s in
+              the kit are short taglines that read fine at that size). */}
+          <h1 className="mb-8 max-w-4xl text-balance font-serif text-3xl font-medium tracking-tight text-primary md:text-4xl">
             {data.title}
           </h1>
           <Button size="lg" asChild>
