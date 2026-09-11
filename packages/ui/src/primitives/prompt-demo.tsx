@@ -82,6 +82,13 @@ function PromptDemo({ items, avatar, title, className, ...props }: PromptDemoPro
   const [activeId, setActiveId] = React.useState(items[0]?.id);
   const active = items.find((item) => item.id === activeId) ?? items[0];
   const prompt = active?.prompt ?? "";
+  // The tallest of every item's prompt, not just the active one — reserves
+  // room for whichever tab (and however many wrapped lines its full text
+  // needs) could ever be shown, so switching tabs never resizes the box either.
+  const longestPrompt = React.useMemo(
+    () => items.reduce((longest, item) => (item.prompt.length > longest.length ? item.prompt : longest), ""),
+    [items],
+  );
 
   const [typed, setTyped] = React.useState(reduced ? prompt : "");
   const [answered, setAnswered] = React.useState(reduced);
@@ -184,10 +191,21 @@ function PromptDemo({ items, avatar, title, className, ...props }: PromptDemoPro
             genuinely light input against the dark glass, rather than just a
             lighter shade of the same dark tone. */}
         <div className="light flex items-center justify-between gap-3 rounded-2xl border border-[hsl(var(--bg-surface)/0.6)] bg-surface px-4 py-4">
-          <p className="min-w-0 text-base font-medium text-primary">
-            {typed}
-            <Caret blink={!reduced} />
-          </p>
+          {/* Grid-stacked ghost: the invisible copy of the longest prompt
+              claims the row's final width/height (including however many
+              lines it wraps to) on first render, and the two layers share
+              that one reserved box — so the visible layer can grow from 0
+              characters to a full sentence without ever resizing the card,
+              the hero above it, or anything the hero pushes down. */}
+          <div className="grid min-w-0">
+            <p aria-hidden="true" className="invisible col-start-1 row-start-1 text-base font-medium">
+              {longestPrompt}
+            </p>
+            <p className="col-start-1 row-start-1 text-base font-medium text-primary">
+              {typed}
+              <Caret blink={!reduced} />
+            </p>
+          </div>
           <span
             aria-hidden
             className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-brand text-brand-fg"

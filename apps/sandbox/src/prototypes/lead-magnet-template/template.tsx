@@ -198,14 +198,14 @@ function BenefitsRow({ benefits }: Pick<LeadMagnetData, "benefits">) {
 
 function HeroSection({ hero, benefits }: Pick<LeadMagnetData, "hero" | "benefits">) {
   return (
-    <section className="dark relative bg-app px-gutter pb-24 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark relative bg-app px-gutter pb-17 sm:pb-24 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <DotGrid className="opacity-60" />
       <div className="relative mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-[2fr_3fr] lg:items-center">
           <Reveal>
             <div>
               <Eyebrow className="mb-6 text-brand-accent">{hero.kicker}</Eyebrow>
-              <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary md:text-4xl">
+              <h1 className="mb-6 text-balance font-serif text-2xl font-medium tracking-tight text-primary md:text-3xl">
                 {hero.title}
               </h1>
               {hero.intro.map((paragraph) => (
@@ -234,7 +234,7 @@ function InsightSection({
   ctaLabel: string;
 }) {
   return (
-    <section className="light bg-plate px-gutter py-24 lg:px-0">
+    <section className="light bg-plate px-gutter py-17 sm:py-24 lg:px-0">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <h2 className="text-balance font-serif text-3xl font-medium tracking-tight text-primary md:text-4xl">
@@ -254,7 +254,7 @@ function InsightSection({
 
 function ContentsSection({ contents }: Pick<LeadMagnetData, "contents">) {
   return (
-    <section className="bg-app px-gutter py-24 lg:px-0">
+    <section className="bg-app px-gutter py-17 sm:py-24 lg:px-0">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading eyebrow={contents.eyebrow} title="What's inside." align="center" />
@@ -281,7 +281,7 @@ function ContentsSection({ contents }: Pick<LeadMagnetData, "contents">) {
 
 function FormSection({ form }: Pick<LeadMagnetData, "form">) {
   return (
-    <section id={FORM_ANCHOR} className="dark scroll-mt-24 bg-app px-gutter py-24 lg:px-0">
+    <section id={FORM_ANCHOR} className="dark scroll-mt-24 bg-app px-gutter py-17 sm:py-24 lg:px-0">
       <div className="mx-auto max-w-xl">
         <Reveal>
           <div className="light rounded-2xl border border-default bg-surface p-8">
@@ -368,7 +368,7 @@ function TestimonialsSection({
   testimonialsLayout = "grid",
 }: Pick<LeadMagnetData, "testimonialsTitle" | "testimonials" | "testimonialsLayout">) {
   return (
-    <section className="bg-app px-gutter py-24 lg:px-0">
+    <section className="bg-app px-gutter py-17 sm:py-24 lg:px-0">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading title={testimonialsTitle} align="center" />

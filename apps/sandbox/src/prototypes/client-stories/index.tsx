@@ -108,7 +108,7 @@ function FeaturedHero({ data }: { data: typeof FEATURED }) {
               mobile step-down as client-story-hero-intro's h1, for the same
               reason: flat text-4xl wraps a long benefit-driven title to 5-6
               lines on a phone. */}
-          <h1 className="mb-8 max-w-3xl text-balance font-serif text-3xl font-medium tracking-tight text-primary md:text-4xl">
+          <h1 className="mb-8 max-w-3xl text-balance font-serif text-2xl font-medium tracking-tight text-primary md:text-3xl">
             {data.title}
           </h1>
           <a
@@ -220,7 +220,7 @@ function StoryCard({ story }: { story: ClientStorySummary }) {
 
 function OtherStories({ data }: { data: ClientStorySummary[] }) {
   return (
-    <section className="bg-app px-gutter py-30">
+    <section className="bg-app px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading

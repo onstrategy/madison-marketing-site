@@ -69,11 +69,11 @@ export interface WebinarRecapData {
 
 function HeroSection({ data }: { data: WebinarRecapData["hero"] }) {
   return (
-    <section className="dark border-b border-default bg-app px-gutter pb-20 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark border-b border-default bg-app px-gutter pb-14 sm:pb-20 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <Eyebrow className="mb-6 justify-center text-brand-accent">{data.kicker}</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-4xl font-medium tracking-tight text-primary lg:text-5xl">
+          <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary lg:text-4xl">
             {data.title}
           </h1>
           <p className="mx-auto max-w-2xl text-pretty text-lg text-secondary">{data.subtitle}</p>
@@ -85,7 +85,7 @@ function HeroSection({ data }: { data: WebinarRecapData["hero"] }) {
 
 function IntroSection({ intro }: { intro: string }) {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-16">
+    <section className="border-b border-default bg-surface px-gutter py-11 sm:py-16">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <p className="text-pretty text-center text-lg leading-relaxed text-secondary">
@@ -277,7 +277,7 @@ function WhatsNextAndCtaSection({
   cta: WebinarRecapData["cta"];
 }) {
   return (
-    <section className="dark bg-app px-gutter py-30">
+    <section className="dark bg-app px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <h2 className="mb-6 text-balance text-3xl font-medium tracking-tight text-primary">

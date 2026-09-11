@@ -26,12 +26,12 @@ const VALUE_PROPS = [
 
 function HeroAndFormSection() {
   return (
-    <section className="bg-app px-gutter pb-24 pt-28 lg:px-0 lg:pt-40">
+    <section className="bg-app px-gutter pb-17 sm:pb-24 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
         <Reveal>
           <div>
             <Eyebrow className="mb-6 text-brand-accent">Book a Security Review</Eyebrow>
-            <h1 className="mb-6 text-balance font-serif text-4xl font-medium tracking-tight text-primary">
+            <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
               Speak to our team about your security needs.
             </h1>
             <p className="mb-8 text-pretty text-lg text-secondary">
@@ -75,7 +75,7 @@ function HeroAndFormSection() {
 
 function ResponsibleByDesignSection() {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-20">
+    <section className="border-b border-default bg-surface px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <div className="rounded-2xl border border-default bg-panel p-8 lg:p-10">

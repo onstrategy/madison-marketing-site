@@ -206,12 +206,12 @@ function ScoreComparison() {
 
 function HeroSection() {
   return (
-    <section className="dark relative border-b border-default bg-app px-gutter pb-0 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark relative border-b border-default bg-app px-gutter pb-0 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <DotGrid className="opacity-60" />
       <div className="relative mx-auto max-w-3xl text-center">
         <Reveal>
           <Eyebrow className="mb-6 justify-center text-brand-accent">Accuracy</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-4xl font-medium tracking-tight text-primary">
+          <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
             The proof is in the Accuracy Score.
           </h1>
           <p className="mx-auto max-w-2xl text-pretty text-lg text-secondary">
@@ -252,7 +252,7 @@ function BenchmarkSection() {
     // being painted OVER by the hero's overhanging score card instead of
     // covering it. Positioning this section puts both in the same paint bucket,
     // where the later sibling wins and the card tucks behind as intended.
-    <section className="relative bg-app px-gutter py-30 lg:px-0">
+    <section className="relative bg-app px-gutter py-21 sm:py-30 lg:px-0">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
@@ -339,7 +339,7 @@ function BenchmarkSection() {
 /** Slide 1's left column: the rubric the scores above are produced by. */
 function RubricSection() {
   return (
-    <section className="border-t border-default bg-surface px-gutter py-30 lg:px-0">
+    <section className="border-t border-default bg-surface px-gutter py-21 sm:py-30 lg:px-0">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
@@ -420,7 +420,7 @@ function RubricSection() {
 /** Slide 2: why a pile of files in a chat window can't close the gap. */
 function ArchitectureSection() {
   return (
-    <section className="border-t border-default bg-app px-gutter py-30 lg:px-0">
+    <section className="border-t border-default bg-app px-gutter py-21 sm:py-30 lg:px-0">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
@@ -528,7 +528,7 @@ function ArchitectureSection() {
 
 function CtaSection() {
   return (
-    <section className="border-t border-default bg-gradient-to-b from-brand-subtle to-app px-gutter py-38 text-center">
+    <section className="border-t border-default bg-gradient-to-b from-brand-subtle to-app px-gutter py-27 sm:py-38 text-center">
       <Reveal>
         <h2 className="mb-4.5 text-balance text-3xl font-medium tracking-tight text-primary md:text-4xl">
           Run the same question against your own record.

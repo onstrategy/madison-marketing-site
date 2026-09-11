@@ -37,7 +37,7 @@ export function parseProps(input: unknown): NewsLessonsProps {
 
 export default function NewsLessonsSection({ lessons }: NewsLessonsProps) {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-20">
+    <section className="border-b border-default bg-surface px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl space-y-16">
         {lessons.map((lesson, index) => (
           <Reveal key={lesson.title} delay={index * 60}>

@@ -83,11 +83,11 @@ function HeroSection() {
     // `relative` gives the floating tab switcher below a positioning
     // context — same straddle-the-boundary technique as the client story
     // client story hero section's metadata card.
-    <section className="dark relative border-b border-default bg-app px-gutter pb-20 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark relative border-b border-default bg-app px-gutter pb-14 sm:pb-20 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <Eyebrow className="mb-6 justify-center text-brand-accent">Resources</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-4xl font-medium tracking-tight text-primary">
+          <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
             AI Governance Resources for Local Government
           </h1>
           <p className="text-pretty text-lg text-secondary">
@@ -123,7 +123,7 @@ function TabsSection() {
     // already lands in this section's top padding via the translate above,
     // and the light section was carrying more air than the switcher + cards
     // need — tightened top AND bottom.
-    <section className="bg-app px-gutter pb-16 pt-24">
+    <section className="bg-app px-gutter pb-11 sm:pb-16 pt-17 sm:pt-24">
       <div className="mx-auto max-w-6xl">
         <TabsContent value="webinar">
           <div className="grid gap-4 sm:grid-cols-2">
@@ -146,7 +146,7 @@ function TabsSection() {
 
 function CtaSection() {
   return (
-    <section className="dark border-t border-default bg-app px-gutter py-30 text-center">
+    <section className="dark border-t border-default bg-app px-gutter py-21 sm:py-30 text-center">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <h2 className="mb-4 text-balance text-4xl font-medium tracking-tight text-primary">

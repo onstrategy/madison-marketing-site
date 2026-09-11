@@ -39,7 +39,7 @@ export default function ArticleQuoteSection({
   portrait,
 }: ArticleQuoteProps) {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-20">
+    <section className="border-b border-default bg-surface px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <figure className="flex flex-col items-center gap-8 rounded-2xl border border-default bg-panel p-8 text-center sm:flex-row sm:text-left lg:p-10">

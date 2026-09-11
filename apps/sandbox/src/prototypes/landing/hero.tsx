@@ -79,7 +79,9 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-app to-transparent"
       />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-gutter pb-22 pt-38 lg:grid-cols-2 lg:gap-8 lg:px-0 lg:pb-38 lg:pt-54">
+      {/* pb-15/pt-27 (down from 22/38, ~30% less): mobile-only — sm and up
+          restore the original values, lg still overrides on top of those. */}
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-gutter pb-15 pt-27 sm:pb-22 sm:pt-38 lg:grid-cols-2 lg:gap-8 lg:px-0 lg:pb-38 lg:pt-54">
         {/* Left — the message */}
         <div>
           <Reveal>

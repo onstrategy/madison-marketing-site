@@ -100,7 +100,7 @@ export default function ArticleCopySection({
   variant,
 }: ArticleCopyProps) {
   return (
-    <section className="border-b border-default bg-app px-gutter py-20">
+    <section className="border-b border-default bg-app px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           {heading ? (

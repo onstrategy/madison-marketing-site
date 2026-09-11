@@ -38,7 +38,7 @@ export default function WebinarResourceDownloadSection({
   buttonLabel,
 }: WebinarResourceDownloadProps) {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-20">
+    <section className="border-b border-default bg-surface px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <div className="rounded-2xl border border-default bg-panel p-8 text-center lg:p-10">

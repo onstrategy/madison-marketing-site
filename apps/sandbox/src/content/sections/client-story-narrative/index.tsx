@@ -23,7 +23,7 @@ export default function ClientStoryNarrativeSection({
   paragraphs,
 }: ClientStoryNarrativeProps) {
   return (
-    <section className="border-b border-default bg-app px-gutter py-24">
+    <section className="border-b border-default bg-app px-gutter py-17 sm:py-24">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <h2 className="text-balance font-serif text-4xl font-medium tracking-tight text-primary">

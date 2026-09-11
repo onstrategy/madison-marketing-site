@@ -69,7 +69,7 @@ export default function ClientStoryImpactDownloadSection({
   return (
     <section
       id="download"
-      className="border-b border-default bg-surface px-gutter py-30"
+      className="border-b border-default bg-surface px-gutter py-21 sm:py-30"
     >
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
         <Reveal>

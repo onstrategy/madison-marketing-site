@@ -280,7 +280,8 @@ export function Nav({
 
 export function ClientLogos() {
   return (
-    <section className="light bg-plate px-gutter pb-14 pt-18">
+    // pb-10/pt-13 (down from 14/18, ~30% less), mobile-only.
+    <section className="light bg-plate px-gutter pb-10 pt-13 sm:pb-14 sm:pt-18">
       <div className="mx-auto max-w-6xl">
         <p className="mb-8 text-center font-sans text-sm uppercase tracking-widest text-secondary">
           Live in 65+ local governments
@@ -312,7 +313,8 @@ export function ClientLogos() {
 
 export function IntelligenceLayer() {
   return (
-    <section className="border-t border-default bg-app px-gutter py-26">
+    // py-18 (down from 26, ~30% less), mobile-only.
+    <section className="border-t border-default bg-app px-gutter py-18 sm:py-26">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <h2 className="mx-auto mb-11 max-w-4xl text-balance text-center text-4xl font-medium tracking-tight text-primary">
@@ -372,7 +374,7 @@ export function Capabilities() {
   // grid reaches the viewport, staggered per card.
   const { ref: gridRef, inView } = useInView<HTMLDivElement>();
   return (
-    <section className="dark border-t border-default bg-app px-gutter py-30">
+    <section className="dark border-t border-default bg-app px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-6">
@@ -642,7 +644,8 @@ function StoryTileCard({ tile }: { tile: StoryTile }) {
 
 export function ClientStories() {
   return (
-    <section className="border-t border-default bg-surface px-gutter py-27">
+    // py-19 (down from 27, ~30% less), mobile-only.
+    <section className="border-t border-default bg-surface px-gutter py-19 sm:py-27">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           {/* No "See all 60+ customers" link here: it moved into the grid's
@@ -697,7 +700,7 @@ const MOMENT_STATS = [
 
 export function TheMoment() {
   return (
-    <section className="border-t border-default bg-app px-gutter py-30">
+    <section className="border-t border-default bg-app px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <h2 className="mb-14 max-w-3xl text-balance text-4xl font-medium tracking-tight text-primary">
@@ -757,7 +760,7 @@ export function TheMoment() {
 
 export function Vision() {
   return (
-    <section className="border-t border-default bg-surface px-gutter py-30">
+    <section className="border-t border-default bg-surface px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-14 grid gap-10 lg:grid-cols-[260px_1fr_1fr] lg:gap-16">
@@ -794,7 +797,10 @@ export function Vision() {
         </Reveal>
         <Reveal delay={80}>
           <div className="grid items-end gap-10 lg:grid-cols-[260px_1fr] lg:gap-16">
-            <figure className="m-0 aspect-[4/5] overflow-hidden rounded-2xl border border-default">
+            {/* w-1/2: on mobile the figure otherwise fills the single
+                stacked column at full width — half that width, only below
+                sm (the lg track sizes it to a fixed 260px regardless). */}
+            <figure className="m-0 aspect-[4/5] w-1/2 overflow-hidden rounded-2xl border border-default sm:w-auto">
               <img
                 src={ericaOlsen}
                 alt="Erica Olsen, co-founder and CEO of Madison AI"
@@ -848,7 +854,7 @@ const STANDARDS = [
 
 export function Security() {
   return (
-    <section className="border-t border-default bg-brand-subtle px-gutter py-30">
+    <section className="border-t border-default bg-brand-subtle px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-11 grid gap-8 lg:grid-cols-2 lg:gap-14">
@@ -903,7 +909,8 @@ export function FinalCta() {
     // `mx-auto max-w-2xl`, and the title carries the same max-width, so the
     // headline wraps to match the paragraph/buttons below it instead of
     // stretching edge-to-edge on a wide viewport.
-    <section className="dark border-t border-default bg-gradient-to-b from-brand-subtle to-app px-gutter py-38 text-center">
+    // py-27 (down from 38, ~30% less), mobile-only.
+    <section className="dark border-t border-default bg-gradient-to-b from-brand-subtle to-app px-gutter py-27 sm:py-38 text-center">
       <Reveal>
         <div className="mx-auto max-w-2xl">
           <h2 className="mb-4.5 text-balance text-3xl font-medium tracking-tight text-primary md:text-4xl">

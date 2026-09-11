@@ -32,7 +32,7 @@ export default function ResourceActionSection({
   cta,
 }: ResourceActionProps) {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-20">
+    <section className="border-b border-default bg-surface px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl rounded-2xl border border-default bg-panel p-card text-center shadow-sm lg:p-10">
         <Reveal>
           <h2 className="text-balance font-serif text-3xl font-medium tracking-tight text-primary">

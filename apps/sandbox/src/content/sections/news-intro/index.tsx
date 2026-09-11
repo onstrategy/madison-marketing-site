@@ -15,7 +15,7 @@ export function parseProps(input: unknown): NewsIntroProps {
 
 export default function NewsIntroSection({ intro }: NewsIntroProps) {
   return (
-    <section className="border-b border-default bg-app px-gutter py-16">
+    <section className="border-b border-default bg-app px-gutter py-11 sm:py-16">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <p className="text-pretty leading-relaxed text-secondary">{intro}</p>

@@ -25,7 +25,7 @@ export default function ClientStoryCtaSection({
   primaryCta,
 }: ClientStoryCtaProps) {
   return (
-    <section className="dark bg-app px-gutter py-24 text-center">
+    <section className="dark bg-app px-gutter py-17 sm:py-24 text-center">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <h2 className="text-balance text-4xl font-medium tracking-tight text-primary">

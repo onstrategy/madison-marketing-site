@@ -25,7 +25,7 @@ export default function NewsCtaSection({
   primaryCta,
 }: NewsCtaProps) {
   return (
-    <section className="dark bg-app px-gutter py-30 text-center">
+    <section className="dark bg-app px-gutter py-21 sm:py-30 text-center">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <h2 className="mb-4 text-balance text-4xl font-medium tracking-tight text-primary">

@@ -48,7 +48,7 @@ export function formatSectionFailure({
 
 function UnsupportedSection({ context }: { context: SectionFailureContext }) {
   return (
-    <section className="border-y border-error bg-error-subtle px-gutter py-12 text-error">
+    <section className="border-y border-error bg-error-subtle px-gutter py-8 sm:py-12 text-error">
       <div className="mx-auto max-w-6xl font-sans">
         <p className="text-lg font-semibold">Unsupported content section</p>
         <p className="mt-2 text-sm">{formatSectionFailure(context)}</p>
