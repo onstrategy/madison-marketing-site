@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Badge } from "@madison/ui/badge";
 import { clientStories } from "../../content/client-stories/collection";
 import {
   clientStoryCardPhoto,
@@ -21,6 +22,15 @@ interface ClientStorySummary {
   // simply doesn't render for those, rather than a placeholder guess.
   logo?: { src: string; alt: string; width: number; height: number };
   href: string;
+  /** Derived from the entry's own `card.kicker` — "New Deployment" is an
+   *  announcement (a partnership just kicked off, no results yet); every
+   *  other kicker ("Client Story", "Success Story") is a real, narrated
+   *  success story. Drives the CardKindTag badge. */
+  kind: "success" | "announcement";
+}
+
+function kindFromKicker(kicker: string): ClientStorySummary["kind"] {
+  return kicker === "New Deployment" ? "announcement" : "success";
 }
 
 function requireFeaturedStory(): ClientStoryDocument {
@@ -38,6 +48,7 @@ function toSummary(story: ClientStoryDocument): ClientStorySummary {
     photo: clientStoryCardPhoto(story),
     logo: clientStoryLogo(story),
     href: story.path,
+    kind: kindFromKicker(story.card.kicker),
   };
 }
 
@@ -157,6 +168,20 @@ function CardLogoBadge({ logo }: { logo: NonNullable<ClientStorySummary["logo"]>
   );
 }
 
+/**
+ * "Success Story" vs "Announcement" — same Badge treatment (secondary
+ * variant: brand-subtle fill, brand-accent ink) the Newsroom page uses for
+ * its own category tags, so both read as one consistent tagging system
+ * site-wide rather than a card-specific color. Only the label differs, not
+ * the color — a status-color split (green/success vs. info) would imply one
+ * kind is "better," which isn't the point of the tag.
+ */
+function CardKindTag({ kind }: { kind: ClientStorySummary["kind"] }) {
+  return (
+    <Badge variant="secondary">{kind === "success" ? "Success Story" : "Announcement"}</Badge>
+  );
+}
+
 function StoryCard({ story }: { story: ClientStorySummary }) {
   const isInternal = story.href.startsWith("/");
   return (
@@ -177,12 +202,15 @@ function StoryCard({ story }: { story: ClientStorySummary }) {
         {story.logo ? <CardLogoBadge logo={story.logo} /> : null}
       </span>
       <span className="flex flex-1 flex-col p-6">
+        <span className="mb-3">
+          <CardKindTag kind={story.kind} />
+        </span>
         <h3 className="font-sans text-xl font-semibold leading-normal tracking-tight text-primary">
           {story.title}
         </h3>
         <span className="mt-2 flex-1 text-secondary">{story.oneLiner}</span>
         <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-accent">
-          Read the story{" "}
+          {story.kind === "announcement" ? "Read" : "Read the story"}{" "}
           <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
         </span>
       </span>

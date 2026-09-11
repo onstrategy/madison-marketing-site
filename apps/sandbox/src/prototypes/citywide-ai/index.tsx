@@ -11,7 +11,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { PlatformPageTemplate, type PlatformPageData } from "../platform-page/template";
-import { INTEGRATION_LOGOS } from "../integrations/logos";
+import { logosForCategory } from "../integrations/logos";
 
 // Citywide AI — the core platform page: one Madison AI grounded in the city's
 // whole public record, serving staff, elected officials, and residents from
@@ -207,11 +207,9 @@ const DATA: PlatformPageData = {
     title: "Instantly search across every system your city runs.",
     description:
       "Don't see yours? We connect with dozens of other systems across permitting, GIS, procurement, and more.",
-    // Same registry, same 16-mark set the Integrations page's own
-    // "Citywide & Procurement" tab shows — see ../integrations/logos.ts.
-    items: INTEGRATION_LOGOS.filter((logo) =>
-      logo.categories.includes("citywide-procurement"),
-    ),
+    // Same registry, same order the Integrations page's own "Citywide &
+    // Procurement" tab shows — see ../integrations/logos.ts.
+    items: logosForCategory("citywide-procurement"),
     note: "Other permitting systems",
   },
   whatYouGet: {

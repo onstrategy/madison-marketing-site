@@ -20,6 +20,12 @@
       "alt": "Castle Pines, Colorado municipal landscape",
       "width": 1612,
       "height": 960
+    },
+    "logo": {
+      "asset": "castle-pines.png",
+      "alt": "City of Castle Pines, Colorado",
+      "width": 250,
+      "height": 250
     }
   },
   "sections": [

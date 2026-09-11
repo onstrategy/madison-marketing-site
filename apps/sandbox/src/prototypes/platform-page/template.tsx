@@ -401,7 +401,7 @@ function SuiteSection({ data }: { data: PlatformPageData["suite"] }) {
 
 function CtaSection({ data }: { data: PlatformPageData["cta"] }) {
   return (
-    <section className="dark border-t border-default bg-app px-gutter py-30">
+    <section id="book-a-demo" className="dark border-t border-default bg-app px-gutter py-30">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
         <Reveal>
           <h2 className="text-balance text-4xl font-medium tracking-tight text-primary">
@@ -460,8 +460,14 @@ export function PlatformPageTemplate({ data }: { data: PlatformPageData }) {
                 {data.hero.description}
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-6">
-                <Button size="lg">
-                  {data.hero.primaryCta} <ArrowRight className="size-4" />
+                {/* Scrolls to the real HubSpot demo form embedded in
+                    CtaSection at the bottom of this same page — this button
+                    previously had no href/onClick at all and did nothing
+                    when clicked. */}
+                <Button size="lg" asChild>
+                  <a href="#book-a-demo">
+                    {data.hero.primaryCta} <ArrowRight className="size-4" />
+                  </a>
                 </Button>
                 <a
                   href="#how-it-works"

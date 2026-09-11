@@ -20,6 +20,12 @@
       "alt": "Fort Myers Beach, Florida municipal landscape",
       "width": 1612,
       "height": 960
+    },
+    "logo": {
+      "asset": "fort-myers-beach.png",
+      "alt": "Town of Fort Myers Beach, Florida",
+      "width": 250,
+      "height": 250
     }
   },
   "sections": [

@@ -1,6 +1,7 @@
 import { type ReactNode } from "react";
 import { ArrowRight, ArrowUp, Check, FileArchive, type LucideIcon } from "lucide-react";
 import { cn } from "@madison/ui/utils";
+import { LogoMark } from "@madison/ui/logo";
 
 // ============================================================================
 // The small product mocks that sit beside each "How it works" step.
@@ -96,11 +97,16 @@ function Shell({ children, className }: { children: ReactNode; className?: strin
   );
 }
 
-/** Madison's mark, as it appears beside an answer in-product. */
+/** Madison's mark, beside an answer in-product — exactly the hero's own
+ *  avatar treatment (see ../landing/hero.tsx's PromptDemo `avatar` prop):
+ *  a size-8 rounded-lg bg-brand square with the logo symbol at 20×12,
+ *  text-brand-fg on the mark itself. Only shown where there's actually a
+ *  prompt-and-answer to sit beside (the "ask"/"chat" kinds below) — not
+ *  pinned to every card as a decorative badge. */
 function Mark() {
   return (
-    <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-brand font-serif text-xs font-semibold text-brand-fg">
-      M
+    <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand">
+      <LogoMark width={20} height={12} className="text-brand-fg" />
     </span>
   );
 }
@@ -129,12 +135,17 @@ function Chip({ children }: { children: ReactNode }) {
   );
 }
 
-/** A citation marker, matching the superscript Madison renders inline. */
+/** A citation marker, matching the superscript Madison renders inline.
+ *  A plain `<span>` with `align-middle`, not `<sup>`/`align-super` — this is
+ *  a bordered badge, not literal superscript text, and `<sup>`'s own
+ *  default `vertical-align: super` (which `align-super` only restates)
+ *  floats a padded, bordered chip well above the surrounding line instead
+ *  of sitting level with it. */
 function Cite({ children }: { children: ReactNode }) {
   return (
-    <sup className="ml-1 rounded-sm border border-[hsl(var(--brand-accent)/0.25)] bg-brand-subtle px-1 py-px align-super text-2xs font-bold text-brand-accent">
+    <span className="ml-1 inline-block rounded-sm border border-[hsl(var(--brand-accent)/0.25)] bg-brand-subtle px-1 py-px align-middle text-2xs font-bold text-brand-accent">
       {children}
-    </sup>
+    </span>
   );
 }
 

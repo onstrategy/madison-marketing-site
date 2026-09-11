@@ -6,7 +6,7 @@ import { Nav, Footer } from "../landing/sections";
 import { Reveal, Eyebrow } from "../landing/parts";
 import {
   INTEGRATION_CATEGORIES,
-  INTEGRATION_LOGOS,
+  logosForCategory,
   type IntegrationCategory,
 } from "./logos";
 
@@ -80,7 +80,7 @@ function HeroSection() {
 }
 
 function ToolGridSection({ filter }: { filter: IntegrationCategory }) {
-  const filtered = INTEGRATION_LOGOS.filter((logo) => logo.categories.includes(filter));
+  const filtered = logosForCategory(filter);
   return (
     // pt-24/pb-16, same tightened rhythm as ../resources/index.tsx's
     // TabsSection: half the switcher's height already lands in this

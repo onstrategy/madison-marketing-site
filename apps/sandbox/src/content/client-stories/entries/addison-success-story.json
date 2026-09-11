@@ -5,15 +5,15 @@
   "order": 190,
   "featured": false,
   "metadata": {
-    "title": "Addison, TX - Success Story - Madison AI",
-    "description": "Addison, TX is leveraging decades of documents to create AI that works for their team.",
-    "seoTitle": "Addison, TX - Success Story - Madison AI",
+    "title": "Unlocking Decades of Data: Addison's AI Breakthrough",
+    "description": "See how the Town of Addison reclaimed 867 staff hours, drafted 44 reports and documents, and built a blueprint for 5:1 ROI with Madison AI.",
+    "seoTitle": "Town of Addison - Client Story",
     "ogImageAsset": "madison-client-story-og.jpg"
   },
   "card": {
-    "kicker": "Success Story",
-    "title": "Addison, TX: Unlocking Decades of Knowledge with Madison AI's Capabilities",
-    "summary": "Addison, TX, is leveraging decades of documents to create AI that works for their team",
+    "kicker": "Client Story",
+    "title": "Unlocking Decades of Data: Addison's AI Breakthrough",
+    "summary": "How the Town of Addison reclaimed 800+ staff hours and built a blueprint for 5x ROI",
     "clientName": "Town of Addison",
     "photo": {
       "asset": "addison-hero.avif",
@@ -30,83 +30,162 @@
   },
   "sections": [
     {
-      "type": "client-story-announcement-hero",
+      "type": "client-story-hero-intro",
       "props": {
-        "category": "Success Story",
-        "title": "Addison, TX: Unlocking Decades of Knowledge with Madison AI",
-        "photo": {
-          "asset": "addison-hero.avif",
-          "alt": "Addison, Texas municipal landscape",
-          "width": 1920,
-          "height": 1080
+        "hero": {
+          "kicker": "Client Story",
+          "title": "Unlocking Decades of Data: Addison's AI Breakthrough",
+          "clientName": "Town of Addison",
+          "agencyType": "Town",
+          "modelsUsed": [
+            "Administration and Governance Model",
+            "Financial Analysis Model",
+            "Planning Research Model",
+            "Human Resources Model",
+            "Addison Airport Model"
+          ],
+          "photo": {
+            "asset": "addison-hero.avif",
+            "alt": "Addison, Texas municipal landscape",
+            "width": 1920,
+            "height": 1080
+          },
+          "logoAsset": "addison.webp",
+          "logoAlt": "Town of Addison, Texas",
+          "logoWidth": 116,
+          "logoHeight": 140
+        },
+        "intro": {
+          "headline": "How the Town of Addison reclaimed 800+ staff hours, drafted dozens of reports, and built a blueprint for 5x ROI.",
+          "paragraphs": [
+            "Addison's Executive Director of Internal Services, Hamid Khaleghipour, oversees key administrative operations, working to make Town services faster, simpler, and more efficient for residents and staff.",
+            "Hamid recognized that valuable staff capacity was being drained by manual document retrieval and research. Driven by a vision to empower municipal employees with modern, high-precision tools, he sought out Madison AI's partnership to centralize institutional knowledge across Town departments."
+          ],
+          "photo": {
+            "asset": "addison-hamid.avif",
+            "alt": "Hamid Khaleghipour, Addison's Executive Director of Internal Services",
+            "width": 325,
+            "height": 325
+          }
         }
       }
     },
     {
-      "type": "client-story-announcement-body",
+      "type": "client-story-narrative",
       "props": {
-        "blocks": [
-          {
-            "type": "heading",
-            "text": "From Buried Files to Better Prepared: Addison’s AI Transformation"
-          },
-          {
-            "type": "paragraph",
-            "text": "When Addison’s Director of IT, Hamid, looked at the city’s buried institutional knowledge, he saw an opportunity to make staff work smarter, not harder. By implementing Madison AI, he gave Addison a secure way to access decades of decisions in seconds — and the results have been immediate."
-          },
-          {
-            "type": "quote",
-            "text": "We’ve had so many positive remarks with Madison AI helping staff anticipate questions they may receive from Council. In one case, 5 of the 7 questions were identical to what was asked of staff!",
-            "attribution": "Executive Director of Internal Services, Addison, TX",
-            "photo": {
-              "asset": "addison-hamid.avif",
-              "alt": "Hamid, Addison Director of IT",
-              "width": 325,
-              "height": 325
-            }
-          },
-          {
-            "type": "heading",
-            "text": "The Challenge"
-          },
-          {
-            "type": "paragraph",
-            "text": "Across local government, one challenge shows up again and again: decades of decisions, reports, and meeting records exist — but the knowledge is often trapped. It lives in the memories of the people who were in the room when the decisions were made, or it sits locked away in files and PDFs that are difficult to search. Staff spend hours digging, researching, and piecing together the information they need to prepare reports or answer council questions. It’s important work, but it takes valuable time away from other priorities. Addison, TX was no exception. That’s when Hamid, the city’s Director of IT, stepped in. He saw this challenge not just as a technical problem, but as an opportunity to unlock Addison’s institutional knowledge in a way that would serve staff, council, and the community for years to come."
-          },
-          {
-            "type": "heading",
-            "text": "The Solution"
-          },
-          {
-            "type": "paragraph",
-            "text": "Hamid knew AI could change the way staff worked. But he also knew it had to be done carefully. His priority was clear: protect Addison’s data while building staff trust. He wasn’t chasing hype or experimenting with something half-baked. He wanted a secure, practical solution that made staff’s day-to-day work easier. With that vision, Addison partnered with Madison AI. By uniting decades of files and systems of record, Madison became the city’s knowledge assistant — helping staff instantly find past actions, anticipate council questions, and draft reports in less time. Because of Hamid’s leadership, Madison AI wasn’t just a new tool. It was a thoughtful shift in how Addison preserved its institutional knowledge and prepared for the future."
-          },
-          {
-            "type": "stats",
-            "title": "Under Hamid’s guidance, Addison has already seen measurable results",
-            "items": [
-              {
-                "value": "Faster",
-                "label": "And more confident preparation for council meetings"
-              },
-              {
-                "value": "274+",
-                "label": "Staff hours saved since June"
-              },
-              {
-                "value": "Decades",
-                "label": "Of knowledge that once felt buried now available in seconds"
-              }
-            ]
-          },
-          {
-            "type": "heading",
-            "text": "Why It Matters"
-          },
-          {
-            "type": "paragraph",
-            "text": "Addison’s story shows what happens when strong IT leadership and purpose-built AI come together. Hamid didn’t just bring in a new technology. He built a secure, measured path that gave staff back valuable time while protecting Addison’s institutional knowledge. The result: a government that shows up better prepared, more efficient, and more focused on serving its community. Hamid’s approach offers a model for other cities — thoughtful, staff-centered, and rooted in trust."
+        "title": "Addison's Search for a Solution",
+        "paragraphs": [
+          "Serving a residential population of approximately 16,000 people, the Town of Addison relies on a dedicated staff of roughly 350 employees. Decades of municipal governance, council records, financial audits, zoning codes, and contracts had become scattered across legacy file systems and PDF archives. Before turning to Madison AI, researching council actions or verifying municipal codes required hours of sifting through databases.",
+          "Hamid was in search of an AI ecosystem that would operate securely within the bounds of Addison's approved, official public records. By selecting Madison AI, Addison secured a purpose-built platform trained exclusively on its own verified data, ensuring outputs are accurate and fully cited."
+        ]
+      }
+    },
+    {
+      "type": "client-story-narrative",
+      "props": {
+        "title": "Hands-On Training, Instant Results",
+        "paragraphs": [
+          "Addison employees learned to leverage Madison AI agents for a range of tasks in interactive, on-site trainings hosted by Madison AI. From pulling precise contract terms to drafting council-ready staff reports, staff can now execute research tasks in seconds, gaining valuable time back in their day."
+        ]
+      }
+    },
+    {
+      "type": "client-story-quote-stats",
+      "props": {
+        "quote": {
+          "text": "By providing access to prior discussions and projects, Madison AI helps staff quickly gather background information and executive policies on the items they're working on. This has resulted in significant time savings and lots of positive feedback.",
+          "attribution": "Hamid Khaleghipour, Executive Director of Internal Services, Town of Addison",
+          "photo": {
+            "asset": "addison-hamid.avif",
+            "alt": "Hamid Khaleghipour, Addison Director of IT",
+            "width": 325,
+            "height": 325
           }
+        },
+        "stats": {
+          "eyebrow": "Results",
+          "items": [
+            {
+              "value": "867",
+              "label": "Staff hours saved"
+            },
+            {
+              "value": "44",
+              "label": "Staff reports and documents drafted"
+            },
+            {
+              "value": "5:1",
+              "label": "Return on investment"
+            },
+            {
+              "value": "37%+",
+              "label": "Staff adoption rate (outside Public Safety)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "client-story-challenge",
+      "props": {
+        "eyebrow": "The challenge",
+        "title": "Scattered municipal records",
+        "intro": "Navigating decades of scattered data led to daily operational delays, diverting staff from direct community engagement. Some of the Town's most pressing challenges were:",
+        "items": [
+          {
+            "icon": "database",
+            "title": "Hidden Records",
+            "description": "Decades of council decisions, policy histories, and municipal agreements were often difficult to locate in databases."
+          },
+          {
+            "icon": "file-search",
+            "title": "Manual Research Delays",
+            "description": "Preparing council packets, researching permit histories, and verifying municipal codes required hours of tedious document hunting."
+          },
+          {
+            "icon": "clock",
+            "title": "Strain on Staff",
+            "description": "Department heads and staff spent a large portion of their workweek on manual research rather than strategic community initiatives."
+          }
+        ]
+      }
+    },
+    {
+      "type": "client-story-solution-timeline",
+      "props": {
+        "eyebrow": "The solution",
+        "title": "Integrating purpose-built assistants",
+        "phases": [
+          {
+            "title": "Identifying Operational Friction",
+            "description": "Leadership identified numerous high-friction tasks, including council packet preparation, contract analysis, and historical ordinance lookups, as the primary activities for AI automation."
+          },
+          {
+            "title": "Model Deployment",
+            "description": "Madison AI implemented several assistants tailored to Addison's organizational structure, equipping employees with specialized agents capable of handling administration, financial analysis, and planning research."
+          },
+          {
+            "title": "Data Integrity and Security",
+            "description": "The platform was built strictly around Addison's database of council records, municipal codes, budgets, and administrative policies."
+          },
+          {
+            "title": "Collaboration and Staff Adoption",
+            "description": "Through on-site training sessions with Madison AI team members, the Town of Addison achieved a 37%+ adoption rate among non-public-safety staff."
+          },
+          {
+            "title": "Expanding Workflow",
+            "description": "As staff gained confidence in the system, Addison adopted additional agents, including a Human Resources model and a custom assistant for Addison Airport."
+          }
+        ]
+      }
+    },
+    {
+      "type": "client-story-narrative",
+      "props": {
+        "title": "The Impact: Reclaiming 867 Staff Hours",
+        "paragraphs": [
+          "The Town of Addison's partnership with Madison AI has transformed how municipal staff access institutional knowledge and perform daily tasks. Staff can now instantly access accurate historical data, contract terms, and code citations, resulting in operational efficiency that allows them to better serve their community.",
+          "Addison has demonstrated that with the right tools, public agencies can harness artificial intelligence to empower staff and maximize public value, further increasing the quality of life for all residents, businesses, and visitors in Addison."
         ]
       }
     },

@@ -49,7 +49,7 @@ const SCORES: Score[] = [
   { name: "Copilot", score: 8 },
   { name: "ChatGPT", score: 54 },
   { name: "Claude", score: 80 },
-  { name: "Madison AI", score: 97, us: true },
+  { name: "Madison AI", score: 95, us: true },
 ];
 
 // The hero's headline comparison is DERIVED from the table above rather than
@@ -113,7 +113,7 @@ function CountUp({ value, run }: { value: number; run: boolean }) {
   const reduced = useReducedMotion();
   // Starts at the REAL number, not zero. This renders into the prerendered
   // HTML, so what a crawler (or anyone whose frames never run — rAF is
-  // suspended in a background tab) reads is "97%", not "0%". The effect below
+  // suspended in a background tab) reads is "95%", not "0%". The effect below
   // rewinds to zero and counts up only once we know we can actually animate.
   const [shown, setShown] = useState(value);
 
@@ -179,7 +179,7 @@ function ScoreComparison() {
           to land inside this padding — never above the last bar, never past
           the rounded bottom corners. */}
       <div className="rounded-2xl border border-default bg-surface p-8 pb-32 lg:pb-40">
-        <Eyebrow className="mb-6 text-primary">Quality Score</Eyebrow>
+        <Eyebrow className="mb-6 text-primary">Accuracy Score</Eyebrow>
         {/* Madison */}
         <div className="mb-2 flex items-end justify-between gap-4">
           <Logo className="[&_svg]:h-5 [&_svg]:w-auto" />
@@ -212,7 +212,7 @@ function HeroSection() {
         <Reveal>
           <Eyebrow className="mb-6 justify-center text-brand-accent">Accuracy</Eyebrow>
           <h1 className="mb-6 text-balance font-serif text-4xl font-medium tracking-tight text-primary">
-            The proof is in the accuracy score.
+            The proof is in the Accuracy Score.
           </h1>
           <p className="mx-auto max-w-2xl text-pretty text-lg text-secondary">
             Anyone can claim their AI is accurate. We publish the rubric, ask a real
@@ -288,7 +288,7 @@ function BenchmarkSection() {
 
           <Reveal delay={100}>
             <div className="h-full rounded-2xl border border-default bg-surface p-8">
-              <Eyebrow className="mb-6 text-brand-accent">Quality Score</Eyebrow>
+              <Eyebrow className="mb-6 text-brand-accent">Accuracy Score</Eyebrow>
               <ul className="space-y-5">
                 {SCORES.map((row) => (
                   <li key={row.name}>
@@ -312,7 +312,7 @@ function BenchmarkSection() {
                       </span>
                     </div>
                     {/* Track + fill. The width is the datum, so it rides an inline
-                        style rather than a class — there is no utility for "97%". */}
+                        style rather than a class — there is no utility for "95%". */}
                     <div className="h-2 w-full overflow-hidden rounded-full bg-panel">
                       <div
                         className={cn(
@@ -344,7 +344,7 @@ function RubricSection() {
         <Reveal>
           <SectionHeading
             eyebrow="The rubric"
-            title="The 5 dimensions of a Quality Score."
+            title="The 5 dimensions of an Accuracy Score."
             blurb="Every answer is graded on the same five dimensions, weighted to what a government actually needs to defend a decision."
           />
         </Reveal>
@@ -384,7 +384,7 @@ function RubricSection() {
               <h3 className="mb-6 text-2xl font-semibold text-primary">How the score works</h3>
               <dl className="space-y-6">
                 <div>
-                  <dt className="mb-1 font-semibold text-primary">Quality Score</dt>
+                  <dt className="mb-1 font-semibold text-primary">Accuracy Score</dt>
                   <dd className="text-pretty text-secondary">
                     A weighted sum of all five dimensions.
                   </dd>

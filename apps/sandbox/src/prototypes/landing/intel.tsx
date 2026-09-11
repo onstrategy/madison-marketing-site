@@ -61,8 +61,8 @@ const SOURCES: SourceRef[] = [
 const STATS = [
   { value: "16,408", label: "files indexed across your systems", countUp: true },
   { value: "100%", label: "of answers cited to ground-truth documents" },
-  { value: "92%+", label: "accuracy on grounded answers" },
-  { value: "0", label: "data ever leaves your environment" },
+  { value: "95%", label: "accuracy on grounded answers" },
+  { value: "Zero", label: "data leaves your environment" },
 ];
 
 // Loop phases, in order. Timings (ms from loop start) tuned to read calmly.
@@ -218,7 +218,12 @@ export function IntelDiagram() {
               <span className="size-1.5 animate-pulse rounded-full bg-brand" />
               Searching your enterprise data
             </div>
-            <div className="flex flex-wrap content-start gap-2.5">
+            {/* Grid, not flex-wrap: 11 sources at 4 columns lands as a clean
+                4+4+3 — the last row reads as a deliberate short row rather
+                than wherever flex-wrap happened to break. Fewer rows than
+                the previous 3-column layout, so each tile is taller
+                (h-16, up from h-11) without growing the diagram overall. */}
+            <div className="grid grid-cols-4 gap-2.5">
               {SYSTEMS.map((name, i) => {
                 const checked = i < checkedCount;
                 const logoSrc = logoForSource(name);
@@ -227,7 +232,7 @@ export function IntelDiagram() {
                     key={name}
                     title={name}
                     className={cn(
-                      "inline-flex h-11 items-center gap-2 rounded-lg border px-3 text-sm font-semibold transition-all",
+                      "relative inline-flex h-16 items-center justify-center rounded-lg border px-1 text-sm font-semibold transition-all",
                       checked
                         ? "border-brand/30 text-primary opacity-100"
                         : "border-default text-secondary",
@@ -239,25 +244,34 @@ export function IntelDiagram() {
                       searching || answered ? "opacity-100" : "opacity-40",
                     )}
                   >
-                    {/* Real vendor logos where we have one (see ./source-logos.ts),
+                    {/* Real vendor logos where we have one (see ./source-logos.ts,
+                        the same final marks supplied for the Integrations page),
                         on their own white plate — these marks carry their own ink
                         and would be tinted by the warm canvas or lost against a
-                        dark chip. Sources with no logo keep their plain name. */}
+                        dark chip. Sources with no logo (State law) keep their
+                        plain name. Each source SVG is a pre-composed 192×108
+                        card (full-bleed white, mark inset), so it needs no
+                        separate plate of its own here — just enough box height
+                        for the inset mark to read at this chip's scale. Tight
+                        px-1.5 (down from px-3) leaves the mark more room, and
+                        it's centered alone now that the checkmark has moved
+                        off to its own corner instead of sharing the flex row. */}
                     {logoSrc ? (
-                      <span className="light flex h-7 items-center rounded-sm bg-plate px-1.5">
-                        <img
-                          src={logoSrc}
-                          alt={name}
-                          loading="lazy"
-                          className="h-4.5 w-auto max-w-24 object-contain"
-                        />
-                      </span>
+                      <img
+                        src={logoSrc}
+                        alt={name}
+                        loading="lazy"
+                        className="light h-14 w-full max-w-32 object-contain"
+                      />
                     ) : (
                       name
                     )}
+                    {/* Absolutely positioned in the corner rather than inline
+                        in the flex row — keeps the logo/name truly centered
+                        in the card instead of the pair reading as centered. */}
                     <span
                       className={cn(
-                        "flex size-4 items-center justify-center rounded-full bg-success-subtle text-success transition-opacity",
+                        "absolute right-1.5 top-1.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-success-subtle text-success transition-opacity",
                         checked ? "opacity-100" : "opacity-0",
                       )}
                     >

@@ -31,11 +31,13 @@ describe("client story collection", () => {
       );
 
       expect(html).toContain('href="/client-stories/washoe-county/"');
-      expect(html).toContain(
-        'href="/client-stories/carson-city-client-story/"',
-      );
+      expect(html).toContain('href="/client-stories/city-of-corona/"');
+      expect(html).toContain('href="/addison-success-story/"');
       expect(html).toContain(
         'href="/the-city-of-aspen-co-taps-madison-ai/"',
+      );
+      expect(html).toContain(
+        'href="/city-of-dublin-launches-madison-ai/"',
       );
       expect(html).not.toContain("https://www.madisonai.com/client-stories");
     });

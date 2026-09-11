@@ -20,6 +20,12 @@
       "alt": "Culver City, California municipal landscape",
       "width": 1067,
       "height": 800
+    },
+    "logo": {
+      "asset": "culver-city.png",
+      "alt": "Culver City, California",
+      "width": 250,
+      "height": 250
     }
   },
   "sections": [
