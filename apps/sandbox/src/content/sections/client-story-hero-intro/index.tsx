@@ -170,7 +170,7 @@ function HeroSection({
               relying on the global heading rule (which only catches
               text-5xl h1s — this is text-4xl, and most OTHER text-4xl h1s in
               the kit are short taglines that read fine at that size). */}
-          <h1 className="mb-8 max-w-4xl text-balance font-serif text-3xl font-medium tracking-tight text-primary md:text-4xl">
+          <h1 className="mb-8 max-w-4xl text-balance font-serif text-2xl font-medium tracking-tight text-primary md:text-3xl">
             {data.title}
           </h1>
           <Button size="lg" asChild>
@@ -197,7 +197,7 @@ function IntroSection({
   data: ClientStoryHeroIntroProps["intro"];
 }) {
   return (
-    <section className="border-b border-default bg-app px-gutter pb-26 pt-44">
+    <section className="border-b border-default bg-app px-gutter pb-18 sm:pb-26 pt-31 sm:pt-44">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-stretch">
         <Reveal>
           <h2 className="mb-6 text-balance text-3xl font-medium tracking-tight text-primary">

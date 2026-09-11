@@ -35,7 +35,7 @@ export default function ResourceRelatedSection({
   cards,
 }: ResourceRelatedProps) {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-20">
+    <section className="border-b border-default bg-surface px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <h2 className="mb-8 text-balance font-serif text-3xl font-medium tracking-tight text-primary">

@@ -27,11 +27,11 @@ export default function NewsHeroSection({
   opener,
 }: NewsHeroProps) {
   return (
-    <section className="dark border-b border-default bg-app px-gutter pb-20 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark border-b border-default bg-app px-gutter pb-14 sm:pb-20 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">{kicker}</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-4xl font-medium tracking-tight text-primary">
+          <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
             {title}
           </h1>
           <p className="mb-6 font-sans text-sm text-secondary">

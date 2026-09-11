@@ -117,7 +117,7 @@ export default function ClientStoryQuoteStatsSection({
   stats,
 }: ClientStoryQuoteStatsProps) {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-24">
+    <section className="border-b border-default bg-surface px-gutter py-17 sm:py-24">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           {quote.photo ? (

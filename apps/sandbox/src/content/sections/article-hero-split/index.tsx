@@ -42,11 +42,11 @@ export default function ArticleHeroSplitSection({
   heroAlt,
 }: ArticleHeroSplitProps) {
   return (
-    <section className="dark border-b border-default bg-app px-gutter pb-20 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark border-b border-default bg-app px-gutter pb-14 sm:pb-20 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">{category}</Eyebrow>
-          <h1 className="text-balance font-serif text-3xl font-medium tracking-tight text-primary lg:text-4xl">
+          <h1 className="text-balance font-serif text-2xl font-medium tracking-tight text-primary lg:text-3xl">
             {title}
           </h1>
           <div className="mt-8 flex items-center gap-3">

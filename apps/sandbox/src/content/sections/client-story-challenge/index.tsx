@@ -52,7 +52,7 @@ export default function ClientStoryChallengeSection({
   items,
 }: ClientStoryChallengeProps) {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-30">
+    <section className="border-b border-default bg-surface px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading

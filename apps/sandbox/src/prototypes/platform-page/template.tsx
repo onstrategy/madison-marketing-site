@@ -120,7 +120,7 @@ export interface PlatformPageData {
 
 function HowItWorksSection({ data }: { data: PlatformPageData["howItWorks"] }) {
   return (
-    <section className="border-t border-default bg-surface px-gutter py-30">
+    <section className="border-t border-default bg-surface px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
@@ -137,9 +137,22 @@ function HowItWorksSection({ data }: { data: PlatformPageData["howItWorks"] }) {
                 control with nothing to switch to, so the bar is dropped and
                 the steps just render. */}
             {data.roles.length > 1 ? (
-              <TabsList className="light h-auto flex-wrap gap-1 rounded-full border border-default bg-hover p-1.5">
+              // Stacked, not a horizontal segmented row: each tab is its own
+              // full-width bar, one per line, so a longer label never has to
+              // share a row's width or wrap mid-word. The track keeps a
+              // small padding (p-1.5) so the bars sit inset from the track's
+              // own border rather than touching it, with a nested radius —
+              // rounded-lg on the track, rounded-md (one step down, same
+              // on-token pairing cards/inputs use) on each tab — so the two
+              // read as consistently, deliberately rounded rather than
+              // mismatched (the old rounded-full pill vs. this track).
+              <TabsList className="light flex h-auto w-full flex-col gap-1 rounded-lg border border-default bg-hover p-1.5">
                 {data.roles.map((role) => (
-                  <TabsTrigger key={role.id} value={role.id} className="rounded-full px-5 py-2">
+                  <TabsTrigger
+                    key={role.id}
+                    value={role.id}
+                    className="h-auto w-full rounded-md px-4 py-2.5 text-center"
+                  >
                     {role.label}
                   </TabsTrigger>
                 ))}
@@ -174,53 +187,72 @@ function HowItWorksSection({ data }: { data: PlatformPageData["howItWorks"] }) {
   );
 }
 
-// One cable per card in the logo grid's first row — at the `lg` breakpoint
-// the grid is exactly 704px wide (5 tiles × 128px + 4 gaps × 16px, see the
-// connector grid's `lg:w-176` below), so these x-positions are those 5
-// tiles' literal horizontal centers (card i center = i×144 + 64) in a
-// viewBox scaled 1:1 to that same 704 width. The SVG's rendered width tracks
-// the grid's own responsive steps (`w-67 sm:w-102 lg:w-176`), so the two
-// stay in lockstep at every breakpoint; below `lg` there's no 5-card row to
-// line up with, so the fan just scales proportionally instead.
-const CABLE_XS = [64, 208, 352, 496, 640];
-const HUB_X = 352; // the grid's horizontal center at 704px — also card 3 of 5's own center, since 5 is odd.
+// One cable per card in the logo grid's first row — matched at every
+// breakpoint, not just `lg`. The grid below reproduces a 2/3/5-per-row
+// density (tile 128×64, gap-3 below `lg`, gap-4 at `lg`) via its own explicit
+// widths (`w-67 sm:w-102 lg:w-176`); a card i's center in a row of `count`
+// is i×(128+gap) + 64, and the row's own width is count×128 + (count−1)×gap
+// — so `cableFan` below derives both directly from the same two numbers the
+// grid uses, rather than three separately hand-tuned coordinate lists that
+// could drift out of sync with it.
+const TILE_W = 128; // matches the logo tiles' own w-32
 
-/** The converging "cables" between the Madison hub and the source chips below it. */
-function ConnectorCables() {
+function cableFan(count: number, gap: number) {
+  const pitch = TILE_W + gap;
+  const width = count * TILE_W + (count - 1) * gap;
+  const xs = Array.from({ length: count }, (_, i) => i * pitch + TILE_W / 2);
+  return { xs, width, hubX: width / 2 };
+}
+
+const MOBILE_FAN = cableFan(2, 12); // base: 2-per-row, gap-3 — mirrors w-67
+const SM_FAN = cableFan(3, 12); // sm–lg: 3-per-row, gap-3 — mirrors w-102
+const LG_FAN = cableFan(5, 16); // lg+: 5-per-row, gap-4 — mirrors w-176
+
+/** One breakpoint's fan of cables between the hub and that row's source chips. */
+function CableFan({
+  xs,
+  width,
+  hubX,
+  className,
+}: {
+  xs: number[];
+  width: number;
+  hubX: number;
+  className: string;
+}) {
   return (
-    <svg
-      viewBox="0 0 704 56"
-      className="h-14 w-67 text-brand/25 sm:w-102 lg:w-176"
-      aria-hidden="true"
-    >
-      {CABLE_XS.map((x, i) => (
+    <svg viewBox={`0 0 ${width} 56`} className={cn("h-14 text-brand/25", className)} aria-hidden="true">
+      {xs.map((x, i) => (
         <path
           key={x}
-          id={`cable-${i}`}
+          id={`cable-${width}-${i}`}
           // Cubic, not quadratic: both control points sit directly under
           // their own endpoint (same x, at the vertical midpoint), so the
           // curve leaves the hub going straight down before rounding out
           // toward the card — a curly-bracket hook right at the M, instead
           // of one flat arc leaning the same way its whole length.
-          d={`M${HUB_X} 0 C ${HUB_X} 28 ${x} 28 ${x} 56`}
+          d={`M${hubX} 0 C ${hubX} 28 ${x} 28 ${x} 56`}
           stroke="currentColor"
           strokeWidth="1.5"
           fill="none"
         />
       ))}
-      {/* A few traveling pulses along a subset of the cables — data flowing
-          up into the hub, not just static wires. Hidden under reduced motion. */}
+      {/* A traveling pulse on every cable — data flowing up into the hub
+          from every source, not just wires with nothing moving on them.
+          Staggered starts (not all at once) so the fan reads as continuous
+          traffic rather than one synchronized blink. Hidden under reduced
+          motion. */}
       <g className="motion-reduce:hidden">
-        {[0, 2, 4].map((i, dotIndex) => (
-          <circle key={i} r="2.5" className="text-brand">
+        {xs.map((x, i) => (
+          <circle key={x} r="2.5" className="text-brand">
             <animateMotion
               dur="2.4s"
-              begin={`${dotIndex * 0.8}s`}
+              begin={`${i * 0.4}s`}
               repeatCount="indefinite"
               keyPoints="1;0"
               keyTimes="0;1"
             >
-              <mpath xlinkHref={`#cable-${i}`} />
+              <mpath xlinkHref={`#cable-${width}-${i}`} />
             </animateMotion>
           </circle>
         ))}
@@ -229,9 +261,23 @@ function ConnectorCables() {
   );
 }
 
+/** The converging "cables" between the Madison hub and the source chips below
+    it — one fan per breakpoint, so the cable count always matches however
+    many source chips are actually in that row (2/3/5), not a number that
+    only happens to line up at one width. */
+function ConnectorCables() {
+  return (
+    <>
+      <CableFan {...MOBILE_FAN} className="w-67 sm:hidden" />
+      <CableFan {...SM_FAN} className="hidden w-102 sm:block lg:hidden" />
+      <CableFan {...LG_FAN} className="hidden w-176 lg:block" />
+    </>
+  );
+}
+
 function ConnectorsSection({ data }: { data: PlatformPageData["connectors"] }) {
   return (
-    <section className="border-t border-default bg-app px-gutter py-30 text-center">
+    <section className="border-t border-default bg-app px-gutter py-21 sm:py-30 text-center">
       <div className={cn("mx-auto max-w-3xl", data.containerClassName)}>
         <Reveal>
           <SectionHeading
@@ -301,7 +347,7 @@ function ConnectorsSection({ data }: { data: PlatformPageData["connectors"] }) {
 
 function WhatYouGetSection({ data }: { data: PlatformPageData["whatYouGet"] }) {
   return (
-    <section className="border-t border-default bg-surface px-gutter py-30">
+    <section className="border-t border-default bg-surface px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
@@ -337,7 +383,7 @@ function WhatYouGetSection({ data }: { data: PlatformPageData["whatYouGet"] }) {
 
 function SuiteSection({ data }: { data: PlatformPageData["suite"] }) {
   return (
-    <section className="border-t border-default bg-app px-gutter py-30">
+    <section className="border-t border-default bg-app px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
@@ -401,7 +447,7 @@ function SuiteSection({ data }: { data: PlatformPageData["suite"] }) {
 
 function CtaSection({ data }: { data: PlatformPageData["cta"] }) {
   return (
-    <section id="book-a-demo" className="dark border-t border-default bg-app px-gutter py-30">
+    <section id="book-a-demo" className="dark border-t border-default bg-app px-gutter py-21 sm:py-30">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
         <Reveal>
           <h2 className="text-balance text-4xl font-medium tracking-tight text-primary">
@@ -453,7 +499,7 @@ export function PlatformPageTemplate({ data }: { data: PlatformPageData }) {
               <Eyebrow className="text-brand-accent">
                 {data.hero.kicker}
               </Eyebrow>
-              <h1 className="mt-6 text-balance font-serif text-5xl font-medium tracking-tight text-primary">
+              <h1 className="mt-6 text-balance font-serif text-4xl font-medium tracking-tight text-primary">
                 {data.hero.title}
               </h1>
               <p className="mt-7 max-w-lg text-pretty text-lg text-secondary">
@@ -504,7 +550,7 @@ export function PlatformPageTemplate({ data }: { data: PlatformPageData }) {
             The frame straddles the hero boundary: its top fifth sits on the
             hero's dark field, the rest on the cream page below. */}
         {data.media ? (
-          <section className="relative overflow-hidden bg-app px-gutter pb-30 pt-20">
+          <section className="relative overflow-hidden bg-app px-gutter pb-21 sm:pb-30 pt-14 sm:pt-20">
             <div className="relative mx-auto max-w-6xl">
               {/* The dark field, carried down behind the frame's top 20%.
                   Anchored to this wrapper — which is exactly the frame's box —

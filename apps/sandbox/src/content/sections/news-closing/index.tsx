@@ -15,7 +15,7 @@ export function parseProps(input: unknown): NewsClosingProps {
 
 export default function NewsClosingSection({ closing }: NewsClosingProps) {
   return (
-    <section className="border-b border-default bg-app px-gutter py-20 text-center">
+    <section className="border-b border-default bg-app px-gutter py-14 sm:py-20 text-center">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <p className="text-balance font-serif text-2xl font-medium tracking-tight text-primary">

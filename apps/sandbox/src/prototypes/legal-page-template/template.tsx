@@ -68,11 +68,11 @@ export function LegalLabel({
 
 function HeroSection({ data }: { data: LegalPageData }) {
   return (
-    <section className="border-b border-default bg-app px-gutter pb-16 pt-28 lg:pt-40">
+    <section className="border-b border-default bg-app px-gutter pb-11 sm:pb-16 pt-20 sm:pt-28 lg:pt-40">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <Eyebrow className="mb-6">{data.kicker}</Eyebrow>
-          <h1 className="mb-4 text-balance font-serif text-4xl font-medium tracking-tight text-primary">
+          <h1 className="mb-4 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
             {data.title}
           </h1>
           {data.updated ? <p className="text-sm text-muted">{data.updated}</p> : null}
@@ -84,7 +84,7 @@ function HeroSection({ data }: { data: LegalPageData }) {
 
 function IntroSection({ intro }: { intro: ReactNode[] }) {
   return (
-    <section className="border-b border-default bg-app px-gutter pb-16">
+    <section className="border-b border-default bg-app px-gutter pb-11 sm:pb-16">
       <div className="mx-auto max-w-3xl space-y-4">
         <Reveal>
           {intro.map((paragraph, i) => (
@@ -129,7 +129,7 @@ function SectionBlock({ section }: { section: LegalSection }) {
 
 function SectionsSection({ sections }: { sections: LegalSection[] }) {
   return (
-    <section className="bg-app px-gutter py-4">
+    <section className="bg-app px-gutter py-3 sm:py-4">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <div className="[&>div:last-child]:border-b-0">

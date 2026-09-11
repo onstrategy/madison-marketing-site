@@ -12,7 +12,7 @@ export function NotFound() {
       <p className="text-sm font-medium tracking-widest text-secondary uppercase">
         404
       </p>
-      <h1 className="font-serif text-4xl font-medium text-primary">
+      <h1 className="font-serif text-3xl font-medium text-primary">
         We couldn&rsquo;t find that page
       </h1>
       <p className="max-w-md text-base text-secondary">

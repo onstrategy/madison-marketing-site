@@ -31,7 +31,7 @@ export default function ClientStoryAnnouncementHeroSection({
   photo,
 }: ClientStoryAnnouncementHeroProps) {
   return (
-    <section className="dark border-b border-default bg-app px-gutter pb-20 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark border-b border-default bg-app px-gutter pb-14 sm:pb-20 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">{category}</Eyebrow>
@@ -39,7 +39,7 @@ export default function ClientStoryAnnouncementHeroSection({
               exactly — including its mobile step-down — so a New Deployment
               announcement and a full case study read at the same title size
               at every viewport, not just at lg. */}
-          <h1 className="text-balance font-serif text-3xl font-medium tracking-tight text-primary md:text-4xl">
+          <h1 className="text-balance font-serif text-2xl font-medium tracking-tight text-primary md:text-3xl">
             {title}
           </h1>
         </Reveal>

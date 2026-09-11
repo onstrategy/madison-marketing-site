@@ -58,11 +58,11 @@ export interface ResponsibleAiData {
 
 function HeroSection({ data }: { data: ResponsibleAiData["hero"] }) {
   return (
-    <section className="dark border-b border-default bg-app px-gutter pb-20 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark border-b border-default bg-app px-gutter pb-14 sm:pb-20 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">{data.kicker}</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
+          <h1 className="mb-6 text-balance font-serif text-2xl font-medium tracking-tight text-primary">
             {data.title}
           </h1>
           <p className="font-sans text-sm text-secondary">
@@ -76,7 +76,7 @@ function HeroSection({ data }: { data: ResponsibleAiData["hero"] }) {
 
 function IntroSection({ data }: { data: ResponsibleAiData["intro"] }) {
   return (
-    <section className="border-b border-default bg-app px-gutter py-20">
+    <section className="border-b border-default bg-app px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <h2 className="mb-6 text-balance text-3xl font-medium tracking-tight text-primary">
@@ -97,7 +97,7 @@ function IntroSection({ data }: { data: ResponsibleAiData["intro"] }) {
 
 function ReasonsSection({ data }: { data: ResponsibleAiData }) {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-20">
+    <section className="border-b border-default bg-surface px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <Eyebrow className="mb-4">{data.reasonsEyebrow}</Eyebrow>
@@ -131,7 +131,7 @@ function ReasonsSection({ data }: { data: ResponsibleAiData }) {
 
 function StepsSection({ data }: { data: ResponsibleAiData }) {
   return (
-    <section className="border-b border-default bg-app px-gutter py-20">
+    <section className="border-b border-default bg-app px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <h2 className="mb-10 text-balance text-3xl font-medium tracking-tight text-primary">
@@ -170,7 +170,7 @@ function StepsSection({ data }: { data: ResponsibleAiData }) {
 
 function ExamplesSection({ data }: { data: ResponsibleAiData }) {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-20">
+    <section className="border-b border-default bg-surface px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <h2 className="mb-10 text-balance text-3xl font-medium tracking-tight text-primary">
@@ -202,7 +202,7 @@ function ExamplesSection({ data }: { data: ResponsibleAiData }) {
 
 function ClosingSection({ data }: { data: ResponsibleAiData["closing"] }) {
   return (
-    <section className="border-b border-default bg-app px-gutter py-20">
+    <section className="border-b border-default bg-app px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <h2 className="mb-6 text-balance text-3xl font-medium tracking-tight text-primary">
@@ -223,7 +223,7 @@ function ClosingSection({ data }: { data: ResponsibleAiData["closing"] }) {
 
 function RelatedSection({ data }: { data: RelatedResource[] }) {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-20">
+    <section className="border-b border-default bg-surface px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <h2 className="mb-8 text-balance text-2xl font-medium tracking-tight text-primary">
@@ -256,7 +256,7 @@ function RelatedSection({ data }: { data: RelatedResource[] }) {
 
 function CtaSection({ data }: { data: ResponsibleAiData["cta"] }) {
   return (
-    <section className="dark bg-app px-gutter py-30 text-center">
+    <section className="dark bg-app px-gutter py-21 sm:py-30 text-center">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <h2 className="mb-4 text-balance text-4xl font-medium tracking-tight text-primary">

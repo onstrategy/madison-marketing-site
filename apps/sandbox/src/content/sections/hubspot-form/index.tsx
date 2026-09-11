@@ -33,7 +33,7 @@ export default function HubSpotFormSection({
   description,
 }: HubSpotFormSectionProps) {
   return (
-    <section className="bg-app px-gutter py-24">
+    <section className="bg-app px-gutter py-17 sm:py-24">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           {title ? (

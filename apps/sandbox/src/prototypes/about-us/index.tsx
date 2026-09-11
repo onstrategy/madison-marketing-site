@@ -146,11 +146,11 @@ const COUNTY_PARTNERS: Person[] = [
 
 function HeroSection() {
   return (
-    <section className="dark border-b border-default bg-app px-gutter pb-20 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark border-b border-default bg-app px-gutter pb-14 sm:pb-20 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">About Us</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary lg:text-4xl">
+          <h1 className="mb-6 text-balance font-serif text-2xl font-medium tracking-tight text-primary lg:text-3xl">
             Shaping the Future of Our Communities, Together
           </h1>
           <p className="mb-8 max-w-lg text-pretty text-lg text-secondary">
@@ -200,7 +200,7 @@ function HeroSection() {
 
 function OriginSection() {
   return (
-    <section className="border-b border-default bg-app px-gutter py-20">
+    <section className="border-b border-default bg-app px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <Eyebrow className="mb-6 text-secondary">How it started</Eyebrow>
@@ -228,7 +228,7 @@ function OriginSection() {
 
 function LeadershipSection() {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-20">
+    <section className="border-b border-default bg-surface px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <h2 className="mb-12 max-w-2xl text-balance text-3xl font-medium tracking-tight text-primary">
@@ -277,7 +277,7 @@ function LeadershipSection() {
 
 function CountyPartnersSection() {
   return (
-    <section className="border-b border-default bg-app px-gutter py-20">
+    <section className="border-b border-default bg-app px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <Eyebrow className="mb-6">Our county partners</Eyebrow>
@@ -309,7 +309,7 @@ function CountyPartnersSection() {
 
 function CtaSection() {
   return (
-    <section className="dark bg-app px-gutter py-30 text-center">
+    <section className="dark bg-app px-gutter py-21 sm:py-30 text-center">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <h2 className="mb-4 text-balance text-4xl font-medium tracking-tight text-primary">

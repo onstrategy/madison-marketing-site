@@ -24,7 +24,7 @@ export default function WebinarFullSessionSection({
   wistiaId,
 }: WebinarFullSessionProps) {
   return (
-    <section className="dark border-b border-default bg-app px-gutter py-24">
+    <section className="dark border-b border-default bg-app px-gutter py-17 sm:py-24">
       <div className="mx-auto max-w-4xl">
         <Reveal>
           <div className="mb-8 flex items-center gap-3.5">

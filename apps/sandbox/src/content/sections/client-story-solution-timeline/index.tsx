@@ -39,7 +39,7 @@ export default function ClientStorySolutionTimelineSection({
   phases,
 }: ClientStorySolutionTimelineProps) {
   return (
-    <section className="border-b border-default bg-app px-gutter py-30">
+    <section className="border-b border-default bg-app px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <SectionHeading

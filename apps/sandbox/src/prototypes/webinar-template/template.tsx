@@ -39,11 +39,11 @@ export interface WebinarData {
 
 function HeroSection({ data }: { data: WebinarData["hero"] }) {
   return (
-    <section className="dark border-b border-default bg-app px-gutter pb-24 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark border-b border-default bg-app px-gutter pb-17 sm:pb-24 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <Eyebrow className="mb-6 justify-center text-brand-accent">{data.kicker}</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
+          <h1 className="mb-6 text-balance font-serif text-2xl font-medium tracking-tight text-primary">
             {data.title}
           </h1>
           <p className="text-pretty text-lg text-secondary">{data.subtitle}</p>
@@ -55,7 +55,7 @@ function HeroSection({ data }: { data: WebinarData["hero"] }) {
 
 function IntroSection({ intro }: { intro: string }) {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-20">
+    <section className="border-b border-default bg-surface px-gutter py-14 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <p className="text-pretty text-center text-lg text-secondary">{intro}</p>
@@ -67,7 +67,7 @@ function IntroSection({ intro }: { intro: string }) {
 
 function TasksSection({ data }: { data: WebinarData }) {
   return (
-    <section className="border-b border-default bg-app px-gutter py-30">
+    <section className="border-b border-default bg-app px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <Eyebrow className="mb-6">{data.tasksEyebrow}</Eyebrow>
@@ -109,7 +109,7 @@ function TasksSection({ data }: { data: WebinarData }) {
 
 function BestPracticesSection({ data }: { data: WebinarData }) {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-30">
+    <section className="border-b border-default bg-surface px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <h2 className="mb-8 text-balance text-4xl font-medium tracking-tight text-primary">
@@ -135,7 +135,7 @@ function BestPracticesSection({ data }: { data: WebinarData }) {
 
 function CtaSection({ data }: { data: WebinarData["cta"] }) {
   return (
-    <section className="dark bg-app px-gutter py-30 text-center">
+    <section className="dark bg-app px-gutter py-21 sm:py-30 text-center">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <h2 className="mb-4 text-balance text-4xl font-medium tracking-tight text-primary">

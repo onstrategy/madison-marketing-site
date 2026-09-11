@@ -310,7 +310,7 @@ export default function ClientStoryAnnouncementBodySection({
   blocks,
 }: ClientStoryAnnouncementBodyProps) {
   return (
-    <section className="border-b border-default bg-app px-gutter py-24">
+    <section className="border-b border-default bg-app px-gutter py-17 sm:py-24">
       <div className="mx-auto max-w-3xl space-y-8">
         {blocks.map((block, index) => (
           <Reveal key={JSON.stringify(block)} delay={index * 30}>

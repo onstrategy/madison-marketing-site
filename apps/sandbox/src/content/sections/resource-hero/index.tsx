@@ -25,13 +25,13 @@ export default function ResourceHeroSection({
   date,
 }: ResourceHeroProps) {
   return (
-    <section className="dark border-b border-default bg-app px-gutter pb-20 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark border-b border-default bg-app px-gutter pb-14 sm:pb-20 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto max-w-4xl text-center">
         <Reveal>
           <Eyebrow className="mb-6 justify-center text-brand-accent">
             {category}
           </Eyebrow>
-          <h1 className="text-balance font-serif text-3xl font-medium tracking-tight text-primary">
+          <h1 className="text-balance font-serif text-2xl font-medium tracking-tight text-primary">
             {title}
           </h1>
           {author || date ? (

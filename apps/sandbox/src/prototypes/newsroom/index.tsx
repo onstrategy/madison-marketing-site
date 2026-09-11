@@ -66,11 +66,11 @@ function NewsCardItem({ item }: { item: NewsCard }) {
 
 function HeroSection() {
   return (
-    <section className="dark border-b border-default bg-app px-gutter pb-20 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark border-b border-default bg-app px-gutter pb-14 sm:pb-20 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <Eyebrow className="mb-6 justify-center text-brand-accent">Newsroom</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-4xl font-medium tracking-tight text-primary">
+          <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
             Newsroom
           </h1>
           <p className="text-pretty text-lg text-secondary">
@@ -84,7 +84,7 @@ function HeroSection() {
 
 function NewsGridSection() {
   return (
-    <section className="bg-app px-gutter py-30">
+    <section className="bg-app px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-4 sm:grid-cols-2">
           {NEWS.map((item, i) => (
@@ -100,7 +100,7 @@ function NewsGridSection() {
 
 function CtaSection() {
   return (
-    <section className="dark border-t border-default bg-app px-gutter py-30 text-center">
+    <section className="dark border-t border-default bg-app px-gutter py-21 sm:py-30 text-center">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <h2 className="mb-4 text-balance text-4xl font-medium tracking-tight text-primary">

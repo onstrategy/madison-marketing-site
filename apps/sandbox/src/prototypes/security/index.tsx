@@ -175,11 +175,11 @@ const FAQS = [
 
 function HeroSection() {
   return (
-    <section className="dark border-b border-default bg-app px-gutter pb-24 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark border-b border-default bg-app px-gutter pb-17 sm:pb-24 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <Eyebrow className="mb-6 justify-center text-brand-accent">Security &amp; Trust</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-4xl font-medium tracking-tight text-primary">
+          <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
             Responsible by design.
           </h1>
           <p className="text-pretty text-lg text-secondary">
@@ -212,7 +212,7 @@ function HeroSection() {
 
 function InfrastructureSection() {
   return (
-    <section className="border-b border-default bg-app px-gutter py-30">
+    <section className="border-b border-default bg-app px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
@@ -243,7 +243,7 @@ function InfrastructureSection() {
 
 function DataProtectionSection() {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-30">
+    <section className="border-b border-default bg-surface px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <Eyebrow className="mb-6">Our promise</Eyebrow>
@@ -277,7 +277,7 @@ function DataProtectionSection() {
 
 function ObservabilitySection() {
   return (
-    <section className="border-b border-default bg-app px-gutter py-30">
+    <section className="border-b border-default bg-app px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
@@ -320,7 +320,7 @@ function ObservabilitySection() {
 
 function ComplianceSection() {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-30">
+    <section className="border-b border-default bg-surface px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
@@ -385,7 +385,7 @@ function ResourceCardItem({ resource }: { resource: (typeof RESOURCES)[number] }
 
 function ResourcesSection() {
   return (
-    <section className="border-b border-default bg-app px-gutter py-30">
+    <section className="border-b border-default bg-app px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading title="Watch our training on responsible AI" className="mb-12 max-w-2xl" />
@@ -404,7 +404,7 @@ function ResourcesSection() {
 
 function FaqSection() {
   return (
-    <section className="border-b border-default bg-surface px-gutter py-30">
+    <section className="border-b border-default bg-surface px-gutter py-21 sm:py-30">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <SectionHeading
@@ -436,7 +436,7 @@ function FaqSection() {
 
 function FinalCtaSection() {
   return (
-    <section className="dark bg-app px-gutter py-30 text-center">
+    <section className="dark bg-app px-gutter py-21 sm:py-30 text-center">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <h2 className="mb-4 text-balance text-4xl font-medium tracking-tight text-primary">

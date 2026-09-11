@@ -189,9 +189,25 @@ export function IntelDiagram() {
           <Lock className="size-4" />
         </span>
 
-        <div className="grid gap-8 lg:grid-cols-2">
+        {/* grid-cols-1 (not just bare `grid`, relying on the implicit
+            single track before `lg:grid-cols-2` kicks in): an implicit
+            track defaults to `auto` sizing, which grows to the max-content
+            of its item — here, the SYSTEMS grid's own intrinsic width —
+            instead of respecting this container's actual available space.
+            An explicit minmax(0,1fr) track (what grid-cols-1 generates)
+            fixes that, and is what actually let the min-w-0s below do
+            anything: without a definite track to shrink into, they had
+            nothing to shrink to. */}
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           {/* Left — query + systems */}
-          <div className="flex flex-col gap-4">
+          {/* min-w-0: without it, this grid item's default min-width:auto
+              picks up the nested 4-column SYSTEMS grid's max-content width
+              (each tile's intrinsic size, summed) as a floor — even though
+              that grid's own tracks are minmax(0,1fr) and would happily
+              shrink to fit. The floor pushes this column (and the whole
+              diagram card) wider than its 1-col mobile track, clipping the
+              last column and the answer panel off the right edge. */}
+          <div className="min-w-0 flex flex-col gap-4">
             <div className="rounded-xl border border-default bg-app p-4">
               <div className="min-h-14 text-base text-primary">
                 {typed}
@@ -218,12 +234,18 @@ export function IntelDiagram() {
               <span className="size-1.5 animate-pulse rounded-full bg-brand" />
               Searching your enterprise data
             </div>
-            {/* Grid, not flex-wrap: 11 sources at 4 columns lands as a clean
-                4+4+3 — the last row reads as a deliberate short row rather
-                than wherever flex-wrap happened to break. Fewer rows than
-                the previous 3-column layout, so each tile is taller
-                (h-16, up from h-11) without growing the diagram overall. */}
-            <div className="grid grid-cols-4 gap-2.5">
+            {/* Grid, not flex-wrap: 11 sources lands as a clean 4+4+3 at
+                sm+, and 3+3+3+2 on mobile — the last row reads as a
+                deliberate short row rather than wherever flex-wrap happened
+                to break. 3 columns below sm: at 4, each tile got too narrow
+                for its logo once the diagram is squeezed into a phone's
+                single-column width. */}
+            {/* min-w-0: a grid container's own automatic minimum width is
+                its tracks' min-content sum, not 0 — even though the tracks
+                themselves are minmax(0,1fr). Without this the grid refuses
+                to shrink below that sum and overflows its column on mobile
+                (see the min-w-0 note on the wrapping flex column above). */}
+            <div className="min-w-0 grid grid-cols-3 gap-2.5 sm:grid-cols-4">
               {SYSTEMS.map((name, i) => {
                 const checked = i < checkedCount;
                 const logoSrc = logoForSource(name);
@@ -318,7 +340,11 @@ export function IntelDiagram() {
                 sourcesShown ? "opacity-100" : "opacity-0",
               )}
             >
-              <div className="mb-2.5 flex items-center gap-2">
+              {/* Stacked below sm: the label plus 3 tabs squeezed onto one
+                  row got tight and crowded once the diagram card itself
+                  narrows to a phone's width — the tabs get their own row
+                  underneath instead of fighting the label for space. */}
+              <div className="mb-2.5 flex flex-col items-start gap-1.5 sm:flex-row sm:items-center sm:gap-2">
                 <span className="font-sans text-sm uppercase tracking-widest text-muted">
                   Sources
                 </span>

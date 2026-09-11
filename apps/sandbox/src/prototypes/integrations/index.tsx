@@ -23,11 +23,11 @@ function HeroSection() {
     // `relative` gives the floating tab switcher below a positioning
     // context — same straddle-the-boundary technique as
     // ../resources/index.tsx's HeroSection.
-    <section className="dark relative border-b border-default bg-app px-gutter pb-20 pt-28 lg:px-0 lg:pt-40">
+    <section className="dark relative border-b border-default bg-app px-gutter pb-14 sm:pb-20 pt-20 sm:pt-28 lg:px-0 lg:pt-40">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <Eyebrow className="mb-6 justify-center text-brand-accent">Integrations</Eyebrow>
-          <h1 className="text-balance font-serif text-4xl font-medium tracking-tight text-primary">
+          <h1 className="text-balance font-serif text-3xl font-medium tracking-tight text-primary">
             Every system your government already runs.
           </h1>
         </Reveal>
@@ -85,7 +85,7 @@ function ToolGridSection({ filter }: { filter: IntegrationCategory }) {
     // pt-24/pb-16, same tightened rhythm as ../resources/index.tsx's
     // TabsSection: half the switcher's height already lands in this
     // section's top padding via the translate above.
-    <section className="bg-app px-gutter pb-16 pt-24">
+    <section className="bg-app px-gutter pb-11 sm:pb-16 pt-17 sm:pt-24">
       <div className="mx-auto max-w-6xl">
         {/* Keyed by filter so the whole grid remounts on every tab change —
             each tile then plays its own staggered entrance (tw-animate-css's
@@ -153,7 +153,7 @@ function ToolGridSection({ filter }: { filter: IntegrationCategory }) {
 
 function CtaSection() {
   return (
-    <section className="dark border-t border-default bg-app px-gutter py-30 text-center">
+    <section className="dark border-t border-default bg-app px-gutter py-21 sm:py-30 text-center">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <h2 className="mb-4 text-balance text-4xl font-medium tracking-tight text-primary">
