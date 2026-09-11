@@ -24,8 +24,19 @@ interface CalendlyInitHubspotFormOptions {
   };
 }
 
-interface CalendlyApi {
+interface CalendlyInitInlineWidgetOptions {
+  url: string;
+  parentElement: HTMLElement;
+}
+
+// One global `Window.Calendly` shape shared by both embed styles Calendly
+// ships — the routing-form listener this file sets up, and the plain
+// scheduling-page widget CalendlyInlineWidget.tsx embeds. Both load the same
+// external script, so they share the one ambient declaration rather than
+// each declaring (and conflicting on) their own.
+export interface CalendlyApi {
   initHubspotForm: (options: CalendlyInitHubspotFormOptions) => void;
+  initInlineWidget: (options: CalendlyInitInlineWidgetOptions) => void;
 }
 
 declare global {

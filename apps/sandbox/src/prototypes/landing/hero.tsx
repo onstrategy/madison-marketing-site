@@ -19,7 +19,7 @@ import heroIllustration from "./hero-illustration.jpg";
 const AUDIENCES: PromptDemoItem[] = [
   {
     id: "staff",
-    label: "For staff",
+    label: "For Staff",
     prompt:
       "Draft a staff report to approve a new resolution and agreement between the transportation commission and City for flood equipment storage",
     reply:
@@ -107,13 +107,13 @@ export function Hero() {
           <Reveal delay={180}>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <Button size="lg" asChild>
-                <a href="/demo">
+                <a href="/demo/">
                   Book a demo <ArrowRight className="size-4" />
                 </a>
               </Button>
               <Button size="lg" variant="outline" className="bg-surface/70" asChild>
                 <a href="/accuracy/">
-                  Why we&rsquo;re 97% accurate <ArrowRight className="size-4" />
+                  Why we&rsquo;re 95% accurate <ArrowRight className="size-4" />
                 </a>
               </Button>
             </div>
@@ -124,7 +124,8 @@ export function Hero() {
         <Reveal delay={150} className="w-full max-w-lg lg:justify-self-end">
           <PromptDemo
             items={AUDIENCES}
-            className="shadow-2xl"
+            title="Madison AI saved 4,700 staff hours last month."
+            className="dark shadow-2xl"
             avatar={
               <span className="flex size-8 items-center justify-center rounded-lg bg-brand">
                 <LogoMark width={20} height={12} className="text-brand-fg" />

@@ -20,6 +20,12 @@
       "alt": "Cooper City, Florida municipal landscape",
       "width": 1612,
       "height": 960
+    },
+    "logo": {
+      "asset": "cooper-city.png",
+      "alt": "Cooper City, Florida",
+      "width": 250,
+      "height": 250
     }
   },
   "sections": [

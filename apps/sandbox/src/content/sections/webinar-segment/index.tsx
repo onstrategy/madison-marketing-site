@@ -49,9 +49,17 @@ const WebinarCalloutSchema = z
     link: z
       .object({
         label: NonEmptyStringSchema,
+        // Relative in-site paths (e.g. "/demo/") alongside absolute
+        // https/mailto — this callout mostly points at Madison's own
+        // pages ("Book a demo"), not just external destinations, and a
+        // hardcoded absolute URL to the real madisonai.com would carry a
+        // visitor off this site entirely instead of routing internally.
         href: z.string().refine(
-          (href) => href.startsWith("https://") || href.startsWith("mailto:"),
-          { message: "must use an https or mailto URL" },
+          (href) =>
+            href.startsWith("https://") ||
+            href.startsWith("mailto:") ||
+            href.startsWith("/"),
+          { message: "must use an https URL, a mailto URL, or a relative in-site path" },
         ),
       })
       .strict()

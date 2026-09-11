@@ -31,12 +31,17 @@ import { Logo } from "@madison/ui/logo";
 import { Reveal, Marquee, useInView } from "./parts";
 import { CLIENT_LOGOS } from "./logos";
 import { IntelDiagram } from "./intel";
-import { PHOTOS, type StockPhoto } from "./photos";
+import { type StockPhoto } from "./photos";
 import ericaOlsen from "./erica-olsen.jpg";
 import washoeCountyIntro from "../../content/client-stories/assets/washoe-county-intro.avif";
-import carsonCityIntro from "../../content/client-stories/assets/carson-city-intro.avif";
 import cityOfCoronaHero from "../../content/client-stories/assets/city-of-corona-hero.avif";
 import aspenHero from "../../content/client-stories/assets/aspen-hero.avif";
+import addisonHero from "../../content/client-stories/assets/addison-hero.avif";
+import dublinHero from "../../content/client-stories/assets/dublin-hero.avif";
+import washoeCountyLogo from "./logos/washoe-county.webp";
+import coronaLogo from "./logos/corona.webp";
+import aspenLogo from "./logos/aspen.webp";
+import addisonLogo from "./logos/addison.webp";
 
 // ============================================================================
 // Madison landing — sections, rebuilt to the "Platform Home 2a" design file.
@@ -458,6 +463,11 @@ interface StoryTile {
   photo: StockPhoto;
   tall?: boolean;
   href: string;
+  /** The city seal/mark, badged onto the tile — same source as the Client
+   *  Stories grid's own cards (see CardLogoBadge in ../client-stories/index.tsx).
+   *  Absent for entries with no supplied mark yet (Dublin) — the badge simply
+   *  doesn't render for those, same "no placeholder guess" rule that page uses. */
+  logo?: { src: string; alt: string };
 }
 
 const STORY_TILES: StoryTile[] = [
@@ -469,23 +479,7 @@ const STORY_TILES: StoryTile[] = [
     photo: { url: washoeCountyIntro, alt: "Aerial view of Washoe County, Nevada", width: 1411, height: 840 },
     tall: true,
     href: "/client-stories/washoe-county/",
-  },
-  {
-    name: "City of Reno",
-    kind: "roi",
-    line: "75% less time on staff reports",
-    // No individual client-story page for Reno yet, so this stays a stock stand-in.
-    photo: PHOTOS.meetingPens,
-    tall: true,
-    href: "/client-stories/",
-  },
-  {
-    name: "Carson City, NV",
-    kind: "quote",
-    line: "Exactly what I need, faster.",
-    // Same photo as this story's own page (see client-stories/entries/carson-city-client-story.json).
-    photo: { url: carsonCityIntro, alt: "Aerial view of Carson City, Nevada", width: 2015, height: 1200 },
-    href: "/client-stories/carson-city-client-story/",
+    logo: { src: washoeCountyLogo, alt: "Washoe County, Nevada" },
   },
   {
     name: "City of Corona, CA",
@@ -493,7 +487,18 @@ const STORY_TILES: StoryTile[] = [
     line: "Every decision at our fingertips.",
     // Same photo as this story's own page (see client-stories/entries/city-of-corona.json).
     photo: { url: cityOfCoronaHero, alt: "Aerial view of the City of Corona, California", width: 2015, height: 1200 },
+    tall: true,
     href: "/client-stories/city-of-corona/",
+    logo: { src: coronaLogo, alt: "City of Corona, California" },
+  },
+  {
+    name: "Town of Addison, TX",
+    kind: "roi",
+    line: "274+ staff hours saved",
+    // Same photo as this story's own page (see client-stories/entries/addison-success-story.json).
+    photo: { url: addisonHero, alt: "Addison, Texas municipal landscape", width: 1920, height: 1080 },
+    href: "/addison-success-story/",
+    logo: { src: addisonLogo, alt: "Town of Addison, Texas" },
   },
   {
     name: "Aspen, CO",
@@ -502,6 +507,16 @@ const STORY_TILES: StoryTile[] = [
     // Same photo as this story's own page (see client-stories/entries/the-city-of-aspen-co-taps-madison-ai.json).
     photo: { url: aspenHero, alt: "Aspen, Colorado municipal landscape", width: 2015, height: 1200 },
     href: "/the-city-of-aspen-co-taps-madison-ai/",
+    logo: { src: aspenLogo, alt: "City of Aspen, Colorado" },
+  },
+  {
+    name: "City of Dublin, OH",
+    kind: "quote",
+    line: "Modern tools to better serve our exceptional community.",
+    // Same photo as this story's own page (see client-stories/entries/city-of-dublin-launches-madison-ai.json).
+    photo: { url: dublinHero, alt: "Dublin, Ohio municipal landscape", width: 1008, height: 600 },
+    href: "/city-of-dublin-launches-madison-ai/",
+    // No supplied city seal for Dublin yet — omitted, not stand-in.
   },
   // Pasadena previously filled the grid's last slot; that slot is now the
   // "Read more client stories" CTA card (see ClientStories below), which
@@ -555,6 +570,29 @@ function StoryTileCard({ tile }: { tile: StoryTile }) {
             partial opacity, so the photo briefly showed through brighter than
             either end state. */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-0% to-app opacity-0 transition-opacity group-hover:opacity-100" />
+        {/* The city seal — same frosted-glass-ring-on-a-white-plate treatment
+            as the Client Stories grid's own cards (CardLogoBadge/LogoGlassBadge
+            in ../client-stories/index.tsx), scaled down for this card's much
+            smaller footprint and pinned to the top corner rather than centered,
+            since the bottom half is already claimed by the caption + hover
+            button. Omitted entirely when a tile has no supplied mark (Dublin). */}
+        {tile.logo ? (
+          <span
+            className={cn(
+              "absolute flex items-center justify-center rounded-full border border-plate/40 bg-plate/15 shadow-lg backdrop-blur-md",
+              tile.tall ? "left-6 top-6 size-16" : "left-4.5 top-4.5 size-12",
+            )}
+          >
+            <span className="flex size-full items-center justify-center rounded-full bg-plate p-2.5 shadow-md">
+              <img
+                src={tile.logo.src}
+                alt={tile.logo.alt}
+                loading="lazy"
+                className="size-full object-contain"
+              />
+            </span>
+          </span>
+        ) : null}
         {/* The button is absolutely positioned (not in normal flow) so it
             reserves no space at rest — the text sits flush at the true
             bottom of the card. On hover it rises + fades in from below,
@@ -859,25 +897,33 @@ export function Security() {
 
 export function FinalCta() {
   return (
-    <section className="border-t border-default bg-gradient-to-b from-brand-subtle to-app px-gutter py-38 text-center">
+    // `dark` re-scopes every token inside to the Dark Navy foundation — the
+    // same gradient/text/button classes below resolve to their dark values
+    // automatically, no raw colors needed. Content is wrapped in its own
+    // `mx-auto max-w-2xl`, and the title carries the same max-width, so the
+    // headline wraps to match the paragraph/buttons below it instead of
+    // stretching edge-to-edge on a wide viewport.
+    <section className="dark border-t border-default bg-gradient-to-b from-brand-subtle to-app px-gutter py-38 text-center">
       <Reveal>
-        <h2 className="mb-4.5 text-balance text-3xl font-medium tracking-tight text-primary md:text-4xl">
-          From records requests to staff reports, let&rsquo;s transform your
-          everyday work.
-        </h2>
-        <p className="mx-auto mb-8.5 max-w-lg text-lg leading-relaxed text-secondary">
-          We&rsquo;ll load Madison with a sample of your records and walk
-          through it live. Live deployment in four weeks.
-        </p>
-        <div className="flex flex-wrap justify-center gap-3.5">
-          <Button size="lg" asChild>
-            <a href="/demo/">
-              Book a demo <ArrowRight className="size-4" />
-            </a>
-          </Button>
-          <Button size="lg" variant="outline" className="bg-surface" asChild>
-            <a href="/contact/">Talk to sales</a>
-          </Button>
+        <div className="mx-auto max-w-2xl">
+          <h2 className="mb-4.5 text-balance text-3xl font-medium tracking-tight text-primary md:text-4xl">
+            From records requests to staff reports, let&rsquo;s transform your
+            everyday work.
+          </h2>
+          <p className="mx-auto mb-8.5 max-w-lg text-lg leading-relaxed text-secondary">
+            We&rsquo;ll load Madison with a sample of your records and walk
+            through it live. Live deployment in four weeks.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3.5">
+            <Button size="lg" asChild>
+              <a href="/demo/">
+                Book a demo <ArrowRight className="size-4" />
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" className="bg-surface" asChild>
+              <a href="/contact/">Talk to sales</a>
+            </Button>
+          </div>
         </div>
       </Reveal>
     </section>

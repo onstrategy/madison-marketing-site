@@ -20,6 +20,12 @@
       "alt": "Herriman City, Utah municipal landscape",
       "width": 1612,
       "height": 960
+    },
+    "logo": {
+      "asset": "herriman.png",
+      "alt": "Herriman City, Utah",
+      "width": 250,
+      "height": 250
     }
   },
   "sections": [

@@ -20,6 +20,12 @@
       "alt": "Indian Wells, California municipal landscape",
       "width": 1612,
       "height": 960
+    },
+    "logo": {
+      "asset": "indian-wells.png",
+      "alt": "City of Indian Wells, California",
+      "width": 250,
+      "height": 250
     }
   },
   "sections": [

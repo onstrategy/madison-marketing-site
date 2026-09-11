@@ -179,10 +179,10 @@
         "quotes": [],
         "videos": [],
         "callout": {
-          "title": "Want to take on procurement at your agency? We would welcome the conversation. Book a demo Book a demo And join us June 18th , same time same place, when we build an AI model with GFOA around ACFRs to take on financial benchmarking once and for all.",
+          "title": "Want to take on procurement at your agency? We would welcome the conversation, and join us June 18th, same time same place, when we build an AI model with GFOA around ACFRs to take on financial benchmarking once and for all.",
           "link": {
-            "label": "Book a demo Book a demo",
-            "href": "https://www.madisonai.com/demo"
+            "label": "Book a demo",
+            "href": "/demo/"
           }
         }
       }

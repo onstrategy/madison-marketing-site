@@ -28,10 +28,12 @@ export interface PromptDemoItem {
   reply: string;
 }
 
-interface PromptDemoProps extends Omit<React.ComponentProps<"div">, "children"> {
+interface PromptDemoProps extends Omit<React.ComponentProps<"div">, "children" | "title"> {
   items: PromptDemoItem[];
   /** Optional node shown beside the reply — e.g. a brand avatar. */
   avatar?: React.ReactNode;
+  /** Optional proof-point banner rendered above the persona tabs, inside the card. */
+  title?: React.ReactNode;
 }
 
 /** Synchronously-initialized reduced-motion preference (kept local so the primitive is self-contained). */
@@ -75,7 +77,7 @@ function Caret({ blink }: { blink: boolean }) {
   );
 }
 
-function PromptDemo({ items, avatar, className, ...props }: PromptDemoProps) {
+function PromptDemo({ items, avatar, title, className, ...props }: PromptDemoProps) {
   const reduced = usePrefersReducedMotion();
   const [activeId, setActiveId] = React.useState(items[0]?.id);
   const active = items.find((item) => item.id === activeId) ?? items[0];
@@ -123,18 +125,27 @@ function PromptDemo({ items, avatar, className, ...props }: PromptDemoProps) {
   return (
     <div
       className={cn(
-        "rounded-2xl border border-[hsl(var(--bg-surface)/0.55)] bg-surface/30 shadow-xl backdrop-blur-xl backdrop-saturate-150",
+        // --brand-shade: a dark SHADE of Neon Blue — a fixed hex in both
+        // themes, reads distinctly blue (bluer than --brand-shade-deep,
+        // which trends toward near-black navy). Higher opacity (75%) so the
+        // card reads darker/more solid, while staying just short of opaque.
+        "rounded-2xl border border-[hsl(var(--brand-shade)/0.7)] bg-brand-shade/75 shadow-xl backdrop-blur-xl backdrop-saturate-150",
         className,
       )}
       {...props}
     >
+      {title ? (
+        <p className="border-b border-[hsl(var(--brand-shade)/0.55)] px-4 pb-4 pt-5 text-center font-serif text-xl font-medium tracking-tight text-brand-fg">
+          {title}
+        </p>
+      ) : null}
       {/* Persona tabs — the active one carries the brand accent. Stacked
           below sm: 3 equal-width flex-1 tabs on a phone squeeze a
           multi-word label ("For Public Records Requests") into a sliver
           each tab can't fit on one line, wrapping unevenly against its
           single-line siblings. Full-width stacked rows give every label the
           same room regardless of length. */}
-      <div className="flex flex-col gap-1.5 p-2.5 sm:flex-row">
+      <div className="flex flex-col gap-1.5 px-4 py-2.5 sm:flex-row">
         {items.map((item) => {
           const on = item.id === active.id;
           return (
@@ -145,9 +156,20 @@ function PromptDemo({ items, avatar, className, ...props }: PromptDemoProps) {
               aria-pressed={on}
               className={cn(
                 "flex-1 rounded-xl border px-2 py-2.5 text-xs font-semibold transition-colors",
+                // Selected tab: a transparent light-blue glass — brand-subtle
+                // is Madison's pale-cyan token; `light` punches back out of
+                // the card's dark scope so it resolves to its light-theme
+                // value (dark mode's brand-subtle is a dark navy, the
+                // opposite of what we want here). Low opacity keeps it
+                // genuinely see-through rather than a solid pale chip.
+                // text-brand-fg (white, fixed in both themes) for the label.
+                // Inactive tabs: outline only, no fill — the outline is the
+                // label's own color (text-secondary) at 50% opacity, so the
+                // border always matches the text instead of an unrelated
+                // neutral token.
                 on
-                  ? "border-brand bg-brand text-brand-fg"
-                  : "border-[hsl(var(--bg-surface)/0.6)] bg-surface/40 text-secondary hover:bg-surface/70",
+                  ? "light border-[hsl(var(--brand-subtle)/0.7)] bg-brand-subtle/40 text-brand-fg shadow-sm backdrop-blur-md"
+                  : "border-[hsl(var(--text-secondary)/0.3)] bg-transparent text-secondary hover:bg-surface/20",
               )}
             >
               {item.label}
@@ -157,8 +179,11 @@ function PromptDemo({ items, avatar, className, ...props }: PromptDemoProps) {
       </div>
 
       <div className="px-4 pb-5 pt-1">
-        {/* The plain-language request, typed out live */}
-        <div className="flex items-center justify-between gap-3 rounded-2xl border border-[hsl(var(--bg-surface)/0.6)] bg-surface/50 px-4 py-4">
+        {/* The plain-language request, typed out live. `light` punches this
+            one box back out of the card's Dark Navy scope — it reads as a
+            genuinely light input against the dark glass, rather than just a
+            lighter shade of the same dark tone. */}
+        <div className="light flex items-center justify-between gap-3 rounded-2xl border border-[hsl(var(--bg-surface)/0.6)] bg-surface px-4 py-4">
           <p className="min-w-0 text-base font-medium text-primary">
             {typed}
             <Caret blink={!reduced} />
@@ -171,7 +196,9 @@ function PromptDemo({ items, avatar, className, ...props }: PromptDemoProps) {
           </span>
         </div>
 
-        {/* The answer — fades in once the prompt finishes typing */}
+        {/* The answer — fades in once the prompt finishes typing. text-primary
+            (not text-secondary) so it reads as white against the card's dark
+            scope — the reply is the payoff, not a muted caption. */}
         <div
           className={cn(
             "mt-4 flex items-start gap-3 transition-all duration-[var(--duration-slow)] ease-[var(--ease-standard)] motion-reduce:transition-none",
@@ -179,7 +206,7 @@ function PromptDemo({ items, avatar, className, ...props }: PromptDemoProps) {
           )}
         >
           {avatar ? <div className="shrink-0">{avatar}</div> : null}
-          <p className="text-sm leading-relaxed text-secondary">
+          <p className="text-sm leading-relaxed text-primary">
             {active.reply}
           </p>
         </div>

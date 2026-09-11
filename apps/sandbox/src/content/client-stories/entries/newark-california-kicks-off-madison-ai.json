@@ -20,6 +20,12 @@
       "alt": "Newark, California municipal landscape",
       "width": 2015,
       "height": 1200
+    },
+    "logo": {
+      "asset": "newark.png",
+      "alt": "City of Newark, California",
+      "width": 250,
+      "height": 250
     }
   },
   "sections": [

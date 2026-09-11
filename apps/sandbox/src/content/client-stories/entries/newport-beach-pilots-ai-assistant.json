@@ -20,6 +20,12 @@
       "alt": "Newport Beach, California municipal landscape",
       "width": 1008,
       "height": 600
+    },
+    "logo": {
+      "asset": "newport-beach.png",
+      "alt": "City of Newport Beach, California",
+      "width": 250,
+      "height": 250
     }
   },
   "sections": [

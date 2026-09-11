@@ -20,6 +20,12 @@
       "alt": "Dublin, Ohio municipal landscape",
       "width": 1008,
       "height": 600
+    },
+    "logo": {
+      "asset": "dublin.png",
+      "alt": "City of Dublin",
+      "width": 250,
+      "height": 251
     }
   },
   "sections": [
