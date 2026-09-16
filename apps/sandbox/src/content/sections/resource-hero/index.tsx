@@ -31,7 +31,7 @@ export default function ResourceHeroSection({
           <Eyebrow className="mb-6 justify-center text-brand-accent">
             {category}
           </Eyebrow>
-          <h1 className="text-balance font-serif text-2xl sm:text-3xl font-medium tracking-tight text-primary">
+          <h1 className="text-balance font-serif text-2xl sm:text-3xl font-medium tracking-tight text-primary lg:text-4xl">
             {title}
           </h1>
           {author || date ? (
