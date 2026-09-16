@@ -87,7 +87,7 @@ function HeroSection() {
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <Eyebrow className="mb-6 justify-center text-brand-accent">Resources</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
+          <h1 className="mb-6 text-balance font-serif text-3xl sm:text-4xl font-medium tracking-tight text-primary">
             AI Governance Resources for Local Government
           </h1>
           <p className="text-pretty text-lg text-secondary">

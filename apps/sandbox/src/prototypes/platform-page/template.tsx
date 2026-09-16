@@ -137,21 +137,21 @@ function HowItWorksSection({ data }: { data: PlatformPageData["howItWorks"] }) {
                 control with nothing to switch to, so the bar is dropped and
                 the steps just render. */}
             {data.roles.length > 1 ? (
-              // Stacked, not a horizontal segmented row: each tab is its own
-              // full-width bar, one per line, so a longer label never has to
-              // share a row's width or wrap mid-word. The track keeps a
-              // small padding (p-1.5) so the bars sit inset from the track's
-              // own border rather than touching it, with a nested radius —
-              // rounded-lg on the track, rounded-md (one step down, same
-              // on-token pairing cards/inputs use) on each tab — so the two
-              // read as consistently, deliberately rounded rather than
-              // mismatched (the old rounded-full pill vs. this track).
-              <TabsList className="light flex h-auto w-full flex-col gap-1 rounded-lg border border-default bg-hover p-1.5">
+              // Mobile-only (below sm): stacked, full-width bars, one per
+              // line, so a longer label never has to share a row's width.
+              // The track keeps a small padding (p-1.5) so the bars sit
+              // inset from the track's own border, with a nested radius —
+              // rounded-lg on the track, rounded-md on each tab. At sm and
+              // up this reverts to the original horizontal pill switcher
+              // (inline-flex, flex-wrap, rounded-full) — the stacked
+              // treatment was a mobile fix, not a redesign of the desktop
+              // control.
+              <TabsList className="light flex h-auto w-full flex-col gap-1 rounded-lg border border-default bg-hover p-1.5 sm:inline-flex sm:w-auto sm:flex-row sm:flex-wrap sm:rounded-full">
                 {data.roles.map((role) => (
                   <TabsTrigger
                     key={role.id}
                     value={role.id}
-                    className="h-auto w-full rounded-md px-4 py-2.5 text-center"
+                    className="h-auto w-full rounded-md px-4 py-2.5 text-center sm:w-auto sm:rounded-full sm:px-5 sm:py-2"
                   >
                     {role.label}
                   </TabsTrigger>
@@ -499,7 +499,7 @@ export function PlatformPageTemplate({ data }: { data: PlatformPageData }) {
               <Eyebrow className="text-brand-accent">
                 {data.hero.kicker}
               </Eyebrow>
-              <h1 className="mt-6 text-balance font-serif text-4xl font-medium tracking-tight text-primary">
+              <h1 className="mt-6 text-balance font-serif text-4xl sm:text-5xl font-medium tracking-tight text-primary">
                 {data.hero.title}
               </h1>
               <p className="mt-7 max-w-lg text-pretty text-lg text-secondary">
