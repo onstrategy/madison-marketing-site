@@ -23,7 +23,7 @@ function HeroAndFormSection() {
         <Reveal>
           <div>
             <Eyebrow className="mb-6 text-brand-accent">AI in Action Webinar</Eyebrow>
-            <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
+            <h1 className="mb-6 text-balance font-serif text-3xl sm:text-4xl font-medium tracking-tight text-primary">
               Get your calendar invitation to the AI in Action series.
             </h1>
             <p className="mb-8 text-pretty text-lg text-secondary">

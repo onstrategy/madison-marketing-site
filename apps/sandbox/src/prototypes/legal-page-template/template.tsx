@@ -72,7 +72,7 @@ function HeroSection({ data }: { data: LegalPageData }) {
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <Eyebrow className="mb-6">{data.kicker}</Eyebrow>
-          <h1 className="mb-4 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
+          <h1 className="mb-4 text-balance font-serif text-3xl sm:text-4xl font-medium tracking-tight text-primary">
             {data.title}
           </h1>
           {data.updated ? <p className="text-sm text-muted">{data.updated}</p> : null}

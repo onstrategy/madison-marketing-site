@@ -211,7 +211,7 @@ function HeroSection() {
       <div className="relative mx-auto max-w-3xl text-center">
         <Reveal>
           <Eyebrow className="mb-6 justify-center text-brand-accent">Accuracy</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
+          <h1 className="mb-6 text-balance font-serif text-3xl sm:text-4xl font-medium tracking-tight text-primary">
             The proof is in the Accuracy Score.
           </h1>
           <p className="mx-auto max-w-2xl text-pretty text-lg text-secondary">

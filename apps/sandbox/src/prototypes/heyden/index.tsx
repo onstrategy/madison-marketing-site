@@ -40,7 +40,7 @@ function HeroAndScheduleSection() {
         <Reveal>
           <div>
             <Eyebrow className="mb-6 text-brand-accent">Book a Demo</Eyebrow>
-            <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
+            <h1 className="mb-6 text-balance font-serif text-3xl sm:text-4xl font-medium tracking-tight text-primary">
               See a knowledge assistant built from your government's data.
             </h1>
             <p className="mb-10 text-pretty text-lg text-secondary">

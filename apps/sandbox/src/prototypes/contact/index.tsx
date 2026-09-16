@@ -16,7 +16,7 @@ function HeroAndFormSection() {
       <div className="mx-auto max-w-2xl text-center">
         <Reveal>
           <Eyebrow className="mb-6 justify-center text-brand-accent">Contact</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
+          <h1 className="mb-6 text-balance font-serif text-3xl sm:text-4xl font-medium tracking-tight text-primary">
             Let&rsquo;s get in touch.
           </h1>
           <p className="mb-10 text-pretty text-lg text-secondary">
