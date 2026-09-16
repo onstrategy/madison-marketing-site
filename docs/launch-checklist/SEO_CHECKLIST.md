@@ -73,11 +73,11 @@ The index-blocking controls stay active throughout design, copy, metadata, and
 URL work. Removing them is the final repository change before associating the
 official domains.
 
-- [ ] Remove the top-level `X-Robots-Tag: noindex, nofollow` header from
+- [x] Remove the top-level `X-Robots-Tag: noindex, nofollow` header from
       [`netlify.toml`](../../netlify.toml).
-- [ ] Change [`apps/site/public/robots.txt`](../../apps/site/public/robots.txt)
+- [x] Change [`apps/site/public/robots.txt`](../../apps/site/public/robots.txt)
       from `Disallow: /` to `Allow: /` and include the official sitemap URL.
-- [ ] Set `SITE_WIDE_NOINDEX` to `false` in
+- [x] Set `SITE_WIDE_NOINDEX` to `false` in
       [`apps/site/src/site-meta.ts`](../../apps/site/src/site-meta.ts).
 - [ ] Keep the interval between removing those controls and associating the
       official domains as short as practical.

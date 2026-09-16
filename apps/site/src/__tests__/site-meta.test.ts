@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { notFoundMeta, pageMeta } from "../site-meta";
+import { SITE_WIDE_NOINDEX, notFoundMeta, pageMeta } from "../site-meta";
 
 describe("site metadata", () => {
+  it("keeps the global search-indexing block disabled", () => {
+    expect(SITE_WIDE_NOINDEX).toBe(false);
+  });
+
   it("supplies complete default social metadata", () => {
     const metadata = pageMeta(
       { title: "Resources", description: "Madison resources." },
