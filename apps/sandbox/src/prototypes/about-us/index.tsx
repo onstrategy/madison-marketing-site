@@ -2,7 +2,7 @@ import { ArrowRight, Linkedin } from "lucide-react";
 import { Button } from "@madison/ui/button";
 import { Nav, Footer } from "../landing/sections";
 import { Reveal, Eyebrow } from "../landing/parts";
-import { PHOTOS } from "../landing/photos";
+import heroTeam from "./hero-team.avif";
 import erica from "./team/erica.webp";
 import todd from "./team/todd.webp";
 import tom from "./team/tom.webp";
@@ -181,8 +181,8 @@ function HeroSection() {
         <div className="relative -mb-18 aspect-square overflow-hidden rounded-3xl border-2 border-[hsl(var(--text-primary)/0.15)] shadow-2xl lg:-mb-30">
           <Reveal delay={100} className="size-full">
             <img
-              src={PHOTOS.groupDiscussion.url}
-              alt={PHOTOS.groupDiscussion.alt}
+              src={heroTeam}
+              alt="The Madison AI team at their conference exhibitor booth"
               loading="lazy"
               className="size-full object-cover"
             />
