@@ -140,18 +140,26 @@ function HowItWorksSection({ data }: { data: PlatformPageData["howItWorks"] }) {
               // Mobile-only (below sm): stacked, full-width bars, one per
               // line, so a longer label never has to share a row's width.
               // The track keeps a small padding (p-1.5) so the bars sit
-              // inset from the track's own border, with a nested radius —
-              // rounded-lg on the track, rounded-md on each tab. At sm and
-              // up this reverts to the original horizontal pill switcher
-              // (inline-flex, flex-wrap, rounded-full) — the stacked
-              // treatment was a mobile fix, not a redesign of the desktop
-              // control.
+              // inset from the track's own border, with matching radii on
+              // both. At sm and up this reverts to the original horizontal
+              // pill switcher (inline-flex, flex-wrap, rounded-full) — the
+              // stacked treatment was a mobile fix, not a redesign of the
+              // desktop control.
               <TabsList className="light flex h-auto w-full flex-col gap-1 rounded-lg border border-default bg-hover p-1.5 sm:inline-flex sm:w-auto sm:flex-row sm:flex-wrap sm:rounded-full">
                 {data.roles.map((role) => (
                   <TabsTrigger
                     key={role.id}
                     value={role.id}
-                    className="h-auto w-full rounded-md px-4 py-2.5 text-center sm:w-auto sm:rounded-full sm:px-5 sm:py-2"
+                    // rounded-lg, not rounded-md: packages/ui/dist/theme.css
+                    // carries a stray static `.rounded-md { border-radius:
+                    // var(--radius) }` rule that loads after Tailwind's own
+                    // generated utilities and wins any tie on specificity —
+                    // it silently defeats every responsive override of
+                    // rounded-md specifically (confirmed rounded-lg has no
+                    // such collision, and the TabsList above already relies
+                    // on that). Until that generated rule is cleaned up,
+                    // rounded-md is not safe to override responsively here.
+                    className="h-auto w-full rounded-lg px-4 py-2.5 text-center sm:w-auto sm:rounded-full sm:px-5 sm:py-2"
                   >
                     {role.label}
                   </TabsTrigger>
