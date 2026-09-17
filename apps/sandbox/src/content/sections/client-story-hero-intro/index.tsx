@@ -151,15 +151,7 @@ function HeroSection({
         <div className="absolute inset-0 bg-gradient-to-b from-app via-app/70 to-app/30" />
         <div className="absolute inset-0 bg-app/60" />
       </div>
-      {/* Extra bottom clearance below `sm` isn't decorative: HeroMetaCard
-          stacks to 4 rows there (see its own `sm:grid-cols-...`), so the
-          overhanging card below is roughly twice as tall as it is from `sm`
-          up, where it collapses to one row. Reserving only the desktop
-          amount let the tall mobile card's top edge climb into the title —
-          this keeps the same straddle-the-boundary card treatment, just with
-          enough room for the shape that treatment actually takes on a
-          phone. */}
-      <div className="relative mx-auto max-w-6xl px-gutter pt-28 pb-80 sm:pb-40 lg:px-0 lg:pt-40">
+      <div className="relative mx-auto max-w-6xl px-gutter pt-28 pb-16 sm:pb-40 lg:px-0 lg:pt-40">
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">{data.kicker}</Eyebrow>
           {/* Long, benefit-driven titles ("Reclaiming $11,000 in Staff Time
@@ -180,7 +172,26 @@ function HeroSection({
           </Button>
         </Reveal>
       </div>
-      <div className="absolute inset-x-0 bottom-0 translate-y-1/2 px-gutter lg:px-0">
+      {/* Below `sm`, HeroMetaCard stacks to 4 rows (see its own
+          `sm:grid-cols-...`) and its total height then depends on this
+          story's own content — how many AI models are listed, whether
+          agency type wraps a line, etc. — so it varies story to story. A
+          `translate-y-1/2` overhang (half of the card's own, variable
+          height) paired with a fixed reserved padding on this section
+          can never clear every story's card at once: tuning the padding
+          for one story's height leaves a taller card from another story
+          overlapping the intro text below, which is exactly the bug this
+          replaced. Below `sm`, the card is back in normal flow instead —
+          `-mt-12` pulls it up into this section's own pb-16 for the same
+          straddle-the-boundary look, but however tall the card actually
+          renders, the browser pushes IntroSection down by that exact
+          amount, so overlap is now structurally impossible regardless of
+          content. `relative` (all sizes) keeps the card painting above
+          the absolutely-positioned photo behind it — see the equivalent
+          `relative` on the text block above. At `sm` and up the card is a
+          single row (predictable height), so the original straddle
+          mechanics (`absolute` + `translate-y-1/2`) are unchanged there. */}
+      <div className="relative -mt-12 px-gutter sm:absolute sm:inset-x-0 sm:bottom-0 sm:mt-0 sm:translate-y-1/2 lg:px-0">
         <div className="mx-auto max-w-6xl">
           <Reveal delay={100}>
             <HeroMetaCard data={data} />
