@@ -73,12 +73,17 @@ The index-blocking controls stay active throughout design, copy, metadata, and
 URL work. Removing them is the final repository change before associating the
 official domains.
 
-- [ ] Remove the top-level `X-Robots-Tag: noindex, nofollow` header from
+- [x] Remove the top-level `X-Robots-Tag: noindex, nofollow` header from
       [`netlify.toml`](../../netlify.toml).
-- [ ] Change [`apps/site/public/robots.txt`](../../apps/site/public/robots.txt)
+- [x] Change [`apps/site/public/robots.txt`](../../apps/site/public/robots.txt)
       from `Disallow: /` to `Allow: /` and include the official sitemap URL.
-- [ ] Set `SITE_WIDE_NOINDEX` to `false` in
+- [x] Set `SITE_WIDE_NOINDEX` to `false` in
       [`apps/site/src/site-meta.ts`](../../apps/site/src/site-meta.ts).
+- [x] Configure forced HTTP/HTTPS `301` redirects from
+      `madison-marketing-site.netlify.app` to `https://www.madisonai.com`,
+      preserving paths and leaving preview hostnames unaffected.
+- [ ] Before merging the indexing/redirect PR, confirm the official domain
+      serves this Netlify site with working HTTPS.
 - [ ] Keep the interval between removing those controls and associating the
       official domains as short as practical.
 - [ ] Associate `www.madisonai.com` with the Netlify site and make it the primary
@@ -94,9 +99,8 @@ official domains.
 
 - [ ] Confirm representative official-domain pages return HTTP `200`.
 - [ ] Confirm an unknown official-domain URL returns HTTP `404`.
-- [ ] Confirm the Netlify hostname does not compete with the official hostname:
-      prefer a permanent redirect, and at minimum verify official-domain
-      canonicals on every page.
+- [ ] Confirm the Netlify hostname permanently redirects to the same path on
+      the official hostname, including nested pages and query strings.
 - [ ] Confirm no public page emits a site-wide `noindex` directive or header.
 - [ ] Confirm `robots.txt` allows crawling and references the official sitemap.
 - [ ] Confirm every sitemap and canonical URL uses `https://www.madisonai.com`.

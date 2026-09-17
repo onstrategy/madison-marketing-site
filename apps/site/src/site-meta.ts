@@ -5,11 +5,10 @@ export const SITE_NAME = "Madison AI";
 export const DEFAULT_DESCRIPTION =
   "Madison Ai — the AI platform built for local government.";
 /**
- * The demo deployment is intentionally hidden from search engines. At client
- * handover, flip this one switch after removing the matching Netlify header and
- * robots.txt rule. Route-specific noindex metadata then continues to work.
+ * The global launch block is disabled. Route-specific noindex metadata still
+ * excludes internal prototypes and error pages from search engines.
  */
-export const SITE_WIDE_NOINDEX = true;
+export const SITE_WIDE_NOINDEX = false;
 export const SITE_WIDE_NOINDEX_ACTIVE =
   SITE_WIDE_NOINDEX && !import.meta.env.VITE_SEO_AUDIT;
 

@@ -27,7 +27,21 @@
 
 # ─── Redirects ────────────────────────────────────────────────────────────────
 # Order matters: Netlify applies the first matching rule. Real files on disk are
-# always served before any rule here, so /assets/* and /favicon.svg are safe.
+# served before unforced rules; forced redirects also apply to existing files.
+
+# Consolidate the default production hostname onto the official domain at launch.
+# Match only this hostname so Deploy Previews and branch deploys remain usable.
+[[redirects]]
+  from = "https://madison-marketing-site.netlify.app/*"
+  to = "https://www.madisonai.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://madison-marketing-site.netlify.app/*"
+  to = "https://www.madisonai.com/:splat"
+  status = 301
+  force = true
 
 # Keep legacy inbound `/landing` links pointed at the canonical homepage.
 # apps/site/src/App.tsx has the matching client-side redirect so dev and
@@ -61,18 +75,3 @@
   for = "/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
-
-# ─── DEMO DEPLOY: not indexable ───────────────────────────────────────────────
-# This runs on a DEMO Netlify account, so it is kept out of search engines in
-# every context — production, branch deploys and deploy previews alike. That's
-# why this block is top-level rather than per-context: nothing to miss.
-#
-# When the client deploys from their own account:
-#   1. delete this block,
-#   2. flip apps/site/public/robots.txt to `Allow: /`,
-#   3. set SITE_WIDE_NOINDEX to false in apps/site/src/site-meta.ts.
-# See docs/publishing.md § "Handover: going live on the client's account".
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"

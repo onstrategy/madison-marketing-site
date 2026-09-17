@@ -51,9 +51,8 @@ export function Layout({ children }: { children: ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
-        {/* The demo deployment is intentionally non-indexable. Leaf route meta
-            replaces root route meta in React Router, so this invariant lives
-            directly in the document rather than relying on meta composition. */}
+        {/* Keep the optional site-wide guard in the document because leaf route
+            metadata replaces root metadata in React Router. */}
         {SITE_WIDE_NOINDEX_ACTIVE ? (
           <meta name="robots" content="noindex, nofollow" />
         ) : null}
