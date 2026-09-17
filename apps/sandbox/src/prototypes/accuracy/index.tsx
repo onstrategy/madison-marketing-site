@@ -11,7 +11,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Button } from "@madison/ui/button";
-import { Logo } from "@madison/ui/logo";
+import { NavFooterLogo } from "../landing/nav-footer-logo";
 import { cn } from "@madison/ui/utils";
 import { Nav, Footer, ClientLogos } from "../landing/sections";
 import {
@@ -182,7 +182,7 @@ function ScoreComparison() {
         <Eyebrow className="mb-6 text-primary">Accuracy Score</Eyebrow>
         {/* Madison */}
         <div className="mb-2 flex items-end justify-between gap-4">
-          <Logo className="[&_svg]:h-5 [&_svg]:w-auto" />
+          <NavFooterLogo className="[&_svg]:h-5 [&_svg]:w-auto" />
           <span className="font-sans text-5xl font-bold leading-none tracking-tight text-brand-accent">
             <CountUp value={US.score} run />%
           </span>
@@ -294,11 +294,11 @@ function BenchmarkSection() {
                   <li key={row.name}>
                     <div className="mb-2 flex items-center justify-between gap-4">
                       {/* Our own row is the brand lockup rather than a text label —
-                          Logo carries an sr-only "Madison Ai", so the row keeps its
-                          accessible name. Competitors stay as plain text: the kit
-                          doesn't ship marks it has no rights to. */}
+                          NavFooterLogo carries an sr-only "Madison Ai", so the row
+                          keeps its accessible name. Competitors stay as plain text:
+                          the kit doesn't ship marks it has no rights to. */}
                       {row.us ? (
-                        <Logo className="[&_svg]:h-5 [&_svg]:w-auto" />
+                        <NavFooterLogo className="[&_svg]:h-5 [&_svg]:w-auto" />
                       ) : (
                         <span className="text-sm text-secondary">{row.name}</span>
                       )}

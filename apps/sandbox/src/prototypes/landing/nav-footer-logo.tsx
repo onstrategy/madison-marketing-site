@@ -11,8 +11,9 @@ import { cn } from "@madison/ui/utils";
 // consumers, not a replacement for that shared primitive.
 //
 // Colors are fixed brand values here, not tokens (also an explicit choice,
-// not an oversight) — #00B4FF for the mark, #202E3B / white for the
-// wordmark, none of which match --brand-primary (#147AC2) or --text-primary.
+// not an oversight) — #147AC2 for the mark (same value as --brand-primary,
+// just not routed through the token), #202E3B / white for the wordmark,
+// which don't match --text-primary.
 // The wordmark still auto-adapts to whichever background it's on: no prop
 // needed, it just inherits whatever `.dark`/`.light` scope Nav's dynamic
 // theme (or Footer's permanent `dark` class) puts it inside, via the same
@@ -37,19 +38,19 @@ function WordmarkPaths() {
   );
 }
 
-/** The mark — fixed #00B4FF in both light and dark contexts (matches the source art). */
+/** The mark — fixed #147AC2 in both light and dark contexts (matches the source art). */
 function MarkPaths() {
   return (
     <>
       <path
         d="M28.8613 115.347C44.801 115.347 57.7225 102.442 57.7225 86.5218C57.7225 70.6018 44.801 57.6963 28.8613 57.6963C12.9216 57.6963 0 70.6018 0 86.5218C0 102.442 12.9216 115.347 28.8613 115.347Z"
-        fill="#00B4FF"
+        fill="#147AC2"
       />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
         d="M190.995 100.58C190.995 100.58 144.051 9.841 144.01 9.7668C140.805 3.76131 134.532 0 127.705 0H96.3926C88.7976 0 83.8991 8.0271 87.3826 14.767L101.942 42.9509C79.3901 16.006 46.0684 3.04911 11.2238 0.051931C5.27402 -0.459964 0.00390625 2.89332 0.00390625 11.7217V38.2994C0.00390625 39.657 0.171036 41.0184 0.575857 42.3166C1.97231 46.7827 5.35572 48.9119 10.6482 50.1655C35.9329 56.1565 52.4971 59.758 62.1201 87.9235C62.1201 87.9235 64.6531 95.7615 65.0431 96.785C65.0581 96.826 65.0691 96.848 65.0801 96.874C66.0976 99.5265 67.5016 101.986 69.2176 104.193C74.4581 110.929 82.6211 115.28 91.8096 115.343H92.2366C108.073 115.232 120.879 102.372 120.879 86.5215C120.879 85.824 120.853 85.1155 120.801 84.429C120.556 80.9905 119.705 77.719 118.354 74.722C118.354 74.722 134.465 105.88 134.469 105.884C137.744 111.708 143.917 115.343 150.635 115.354H181.985C189.58 115.354 194.479 107.32 190.995 100.58Z"
-        fill="#00B4FF"
+        fill="#147AC2"
       />
     </>
   );
