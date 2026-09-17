@@ -49,6 +49,14 @@ export function Layout({ children }: { children: ReactNode }) {
     <html lang="en" data-prerendered>
       <head>
         <meta charSet="utf-8" />
+        {/* Automatic consent blocking must run before any other scripts. */}
+        <script
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="f2ae8219-32b0-435b-b6a5-37a28e686a4d"
+          data-blockingmode="auto"
+          type="text/javascript"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         {/* Keep the optional site-wide guard in the document because leaf route
