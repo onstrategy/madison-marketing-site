@@ -43,7 +43,7 @@ function HeroSection({ data }: { data: WebinarData["hero"] }) {
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <Eyebrow className="mb-6 justify-center text-brand-accent">{data.kicker}</Eyebrow>
-          <h1 className="mb-6 text-balance font-serif text-2xl font-medium tracking-tight text-primary">
+          <h1 className="mb-6 text-balance font-serif text-2xl sm:text-3xl font-medium tracking-tight text-primary">
             {data.title}
           </h1>
           <p className="text-pretty text-lg text-secondary">{data.subtitle}</p>

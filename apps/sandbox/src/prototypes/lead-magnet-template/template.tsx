@@ -205,7 +205,7 @@ function HeroSection({ hero, benefits }: Pick<LeadMagnetData, "hero" | "benefits
           <Reveal>
             <div>
               <Eyebrow className="mb-6 text-brand-accent">{hero.kicker}</Eyebrow>
-              <h1 className="mb-6 text-balance font-serif text-2xl font-medium tracking-tight text-primary md:text-3xl">
+              <h1 className="mb-6 text-balance font-serif text-2xl sm:text-3xl font-medium tracking-tight text-primary md:text-4xl">
                 {hero.title}
               </h1>
               {hero.intro.map((paragraph) => (

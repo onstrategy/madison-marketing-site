@@ -31,7 +31,7 @@ function HeroAndFormSection() {
         <Reveal>
           <div>
             <Eyebrow className="mb-6 text-brand-accent">Book a Security Review</Eyebrow>
-            <h1 className="mb-6 text-balance font-serif text-3xl font-medium tracking-tight text-primary">
+            <h1 className="mb-6 text-balance font-serif text-3xl sm:text-4xl font-medium tracking-tight text-primary">
               Speak to our team about your security needs.
             </h1>
             <p className="mb-8 text-pretty text-lg text-secondary">

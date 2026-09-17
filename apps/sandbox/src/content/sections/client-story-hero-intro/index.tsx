@@ -170,7 +170,7 @@ function HeroSection({
               relying on the global heading rule (which only catches
               text-5xl h1s — this is text-4xl, and most OTHER text-4xl h1s in
               the kit are short taglines that read fine at that size). */}
-          <h1 className="mb-8 max-w-4xl text-balance font-serif text-2xl font-medium tracking-tight text-primary md:text-3xl">
+          <h1 className="mb-8 max-w-4xl text-balance font-serif text-2xl sm:text-3xl font-medium tracking-tight text-primary md:text-4xl">
             {data.title}
           </h1>
           <Button size="lg" asChild>

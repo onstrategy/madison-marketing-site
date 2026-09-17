@@ -44,7 +44,7 @@ export default function ArticleHeroSection({
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
           <Reveal>
             <Eyebrow className="mb-6 text-brand-accent">{category}</Eyebrow>
-            <h1 className="text-balance font-serif text-2xl font-medium tracking-tight text-primary lg:text-3xl">
+            <h1 className="text-balance font-serif text-2xl sm:text-3xl font-medium tracking-tight text-primary lg:text-4xl">
               {title}
             </h1>
           </Reveal>
@@ -67,7 +67,7 @@ export default function ArticleHeroSection({
           <Eyebrow className="mb-6 justify-center text-brand-accent">
             {category}
           </Eyebrow>
-          <h1 className="text-balance font-serif text-3xl font-medium tracking-tight text-primary">
+          <h1 className="text-balance font-serif text-3xl sm:text-4xl font-medium tracking-tight text-primary">
             {title}
           </h1>
         </Reveal>

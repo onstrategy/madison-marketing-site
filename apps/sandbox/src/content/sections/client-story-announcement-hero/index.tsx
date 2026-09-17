@@ -39,7 +39,7 @@ export default function ClientStoryAnnouncementHeroSection({
               exactly — including its mobile step-down — so a New Deployment
               announcement and a full case study read at the same title size
               at every viewport, not just at lg. */}
-          <h1 className="text-balance font-serif text-2xl font-medium tracking-tight text-primary md:text-3xl">
+          <h1 className="text-balance font-serif text-2xl sm:text-3xl font-medium tracking-tight text-primary md:text-4xl">
             {title}
           </h1>
         </Reveal>
