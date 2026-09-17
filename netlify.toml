@@ -27,7 +27,21 @@
 
 # ─── Redirects ────────────────────────────────────────────────────────────────
 # Order matters: Netlify applies the first matching rule. Real files on disk are
-# always served before any rule here, so /assets/* and /favicon.svg are safe.
+# served before unforced rules; forced redirects also apply to existing files.
+
+# Consolidate the default production hostname onto the official domain at launch.
+# Match only this hostname so Deploy Previews and branch deploys remain usable.
+[[redirects]]
+  from = "https://madison-marketing-site.netlify.app/*"
+  to = "https://www.madisonai.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://madison-marketing-site.netlify.app/*"
+  to = "https://www.madisonai.com/:splat"
+  status = 301
+  force = true
 
 # Keep legacy inbound `/landing` links pointed at the canonical homepage.
 # apps/site/src/App.tsx has the matching client-side redirect so dev and
