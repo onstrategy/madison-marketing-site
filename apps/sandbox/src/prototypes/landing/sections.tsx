@@ -838,7 +838,7 @@ const STANDARDS = [
   {
     icon: Landmark,
     title: "FedRAMP",
-    desc: "Authorized for encryption, audit, and residency requirements.",
+    desc: "Inherited from Microsoft Azure. Authorized for encryption, audit, and residency requirements.",
   },
   {
     icon: MapIcon,
@@ -847,7 +847,7 @@ const STANDARDS = [
   },
   {
     icon: Lock,
-    title: "ISO 27001",
+    title: "ISO 27001 aligned",
     desc: "Information security management to the international standard.",
   },
 ];
@@ -864,9 +864,9 @@ export function Security() {
             </h3>
             <div className="self-end">
               <p className="mb-4 leading-relaxed text-secondary">
-                SOC 2 Type II. FedRAMP-authorized. Hosted on Microsoft Azure
-                Government. Madison never trains on your data and never shares
-                records across tenants.
+                SOC 2 Type II. FedRAMP-authorized. Hosted on Microsoft Azure.
+                Madison never trains on your data and never shares records
+                across tenants.
               </p>
               <a
                 href="/security/"
