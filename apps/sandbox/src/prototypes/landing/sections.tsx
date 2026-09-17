@@ -27,7 +27,7 @@ import {
 } from "@madison/ui/navbar";
 import { NavDropdown } from "@madison/ui/nav-dropdown";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@madison/ui/accordion";
-import { Logo } from "@madison/ui/logo";
+import { NavFooterLogo } from "./nav-footer-logo";
 import { Reveal, Marquee, useInView } from "./parts";
 import { CLIENT_LOGOS } from "./logos";
 import { IntelDiagram } from "./intel";
@@ -161,7 +161,7 @@ export function Nav({
   return (
     <Navbar contentClassName="mx-auto max-w-6xl" sectionAware={sectionAware} overDarkHero={overDarkHero}>
       <NavbarBrand href="/">
-        <Logo />
+        <NavFooterLogo />
       </NavbarBrand>
       <NavbarLinks>
         <NavDropdown
@@ -979,7 +979,7 @@ export function Footer() {
     <footer className="dark bg-app px-gutter pb-10 pt-14">
       <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <Logo className="mb-3.5" />
+          <NavFooterLogo className="mb-3.5" />
 
           <p className="max-w-70 text-sm leading-relaxed text-secondary">
             The vertical AI platform for cities and counties — grounded in
