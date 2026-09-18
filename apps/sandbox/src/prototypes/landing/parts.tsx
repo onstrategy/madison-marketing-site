@@ -273,6 +273,10 @@ interface SectionHeadingProps {
   blurb?: ReactNode;
   align?: "left" | "center";
   className?: string;
+  /** Overrides the h2's size classes for one call site (e.g. a mobile-only
+   *  step-down) without touching every other section that renders through
+   *  this shared component. Defaults to the standard responsive sizing. */
+  titleClassName?: string;
 }
 
 export function SectionHeading({
@@ -281,6 +285,7 @@ export function SectionHeading({
   blurb,
   align = "left",
   className,
+  titleClassName = "text-3xl md:text-4xl",
 }: SectionHeadingProps) {
   return (
     <div
@@ -291,7 +296,12 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? <Eyebrow className="mb-4">{eyebrow}</Eyebrow> : null}
-      <h2 className="text-balance text-3xl font-medium tracking-tight text-primary md:text-4xl">
+      <h2
+        className={cn(
+          "text-balance font-medium tracking-tight text-primary",
+          titleClassName,
+        )}
+      >
         {title}
       </h2>
       {blurb ? (

@@ -105,10 +105,11 @@ function FeaturedHero({ data }: { data: typeof FEATURED }) {
           </div>
           {/* Featured-story titles run just as long as individual client-story
               pages' own (this pulls the same `card.title` copy) — same
-              mobile step-down as client-story-hero-intro's h1, for the same
-              reason: flat text-4xl wraps a long benefit-driven title to 5-6
-              lines on a phone. */}
-          <h1 className="mb-8 max-w-3xl text-balance font-serif text-2xl sm:text-3xl font-medium tracking-tight text-primary md:text-4xl">
+              mobile sizing as client-story-hero-intro's h1: text-3xl on
+              phones (one step up from the old text-2xl, to read as the
+              page's primary headline against the now-smaller "Every
+              customer..." heading below), unchanged from md up. */}
+          <h1 className="mb-8 max-w-3xl text-balance font-serif text-3xl font-medium tracking-tight text-primary md:text-4xl">
             {data.title}
           </h1>
           <a
@@ -227,6 +228,10 @@ function OtherStories({ data }: { data: ClientStorySummary[] }) {
             eyebrow="More client stories"
             title="Every customer is a community we serve."
             className="mb-12 max-w-2xl"
+            // One step down from the shared default on phones only, so the
+            // featured hero title above reads as the page's primary
+            // headline; unchanged from sm up.
+            titleClassName="text-2xl sm:text-3xl md:text-4xl"
           />
         </Reveal>
         <div className="grid gap-4 sm:grid-cols-2">
