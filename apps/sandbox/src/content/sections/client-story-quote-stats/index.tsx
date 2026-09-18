@@ -40,6 +40,13 @@ const ClientStoryQuoteStatsPropsSchema = z
                  *    "%" or "+" is part of the figure, not a unit, and stays.
                  */
                 value: NonEmptyStringSchema,
+                /**
+                 * Sentence case — capitalize only the first letter ("Active
+                 * users", not "Active Users" or "ACTIVE USERS"), even where
+                 * the source copy shouts for emphasis. Proper nouns (product
+                 * names like "Madison AI", place names) keep their own
+                 * capitalization mid-label.
+                 */
                 label: NonEmptyStringSchema,
               })
               .strict(),
@@ -177,7 +184,11 @@ export default function ClientStoryQuoteStatsSection({
                      `border-t border-default` rule above pairs them together. */
                   className="border-default px-2 pt-8 pb-10 text-center lg:px-8"
                 >
-                  <div className="font-serif text-5xl font-medium tracking-tight text-primary">
+                  {/* text-4xl, not text-5xl — a handful of stories' figures
+                      run long ("118 hours", "$10,107", "2,857") and were
+                      clipping/overflowing their tile at the larger size,
+                      especially in the mobile 2-up grid. */}
+                  <div className="font-serif text-4xl font-medium tracking-tight text-primary">
                     {stat.value}
                   </div>
                   <p className="mt-2 font-sans text-sm text-secondary">
