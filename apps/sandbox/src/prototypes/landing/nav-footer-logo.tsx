@@ -56,11 +56,28 @@ function MarkPaths() {
   );
 }
 
+interface NavFooterLogoProps extends React.ComponentProps<"span"> {
+  /** Overrides the svg's size classes for one call site (e.g. a
+   *  mobile-only shrink in the nav) without affecting the other consumer.
+   *  Defaults to the lockup's standard fixed size (188x24 at the
+   *  viewBox's native aspect ratio). */
+  svgClassName?: string;
+}
+
 /** The updated Madison lockup for the nav and footer — see file header for scope. */
-function NavFooterLogo({ className, ...props }: React.ComponentProps<"span">) {
+function NavFooterLogo({
+  className,
+  svgClassName = "w-47 h-auto",
+  ...props
+}: NavFooterLogoProps) {
   return (
     <span className={cn("inline-flex items-center", className)} {...props}>
-      <svg width="188" height="24" viewBox="0 0 909 116" fill="none" aria-hidden>
+      <svg
+        className={cn("shrink-0", svgClassName)}
+        viewBox="0 0 909 116"
+        fill="none"
+        aria-hidden
+      >
         {/* Two copies of the wordmark, toggled by the ambient .dark/.light
             scope — same mechanism text-primary uses elsewhere, just with
             this logo's own fixed colors instead of a token. */}

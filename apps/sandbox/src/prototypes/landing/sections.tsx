@@ -161,7 +161,10 @@ export function Nav({
   return (
     <Navbar contentClassName="mx-auto max-w-6xl" sectionAware={sectionAware} overDarkHero={overDarkHero}>
       <NavbarBrand href="/">
-        <NavFooterLogo />
+        {/* ~13% smaller on phones only (w-41 vs. the default w-47) so the
+            lockup doesn't crowd the "Book a demo" button in the same bar;
+            unchanged from sm up. */}
+        <NavFooterLogo svgClassName="w-41 h-auto sm:w-47" />
       </NavbarBrand>
       <NavbarLinks>
         <NavDropdown
