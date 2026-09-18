@@ -31,7 +31,7 @@ export default function ClientStoryCtaSection({
           <h2 className="text-balance text-4xl font-medium tracking-tight text-primary">
             {title}
           </h2>
-          <p className="mt-4 text-pretty text-lg text-secondary">
+          <p className="mt-4 text-pretty text-base sm:text-lg text-secondary">
             {description}
           </p>
           <Button size="lg" className="mt-8" asChild>

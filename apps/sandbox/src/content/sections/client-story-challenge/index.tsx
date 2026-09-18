@@ -62,7 +62,7 @@ export default function ClientStoryChallengeSection({
           />
         </Reveal>
         <Reveal delay={40}>
-          <p className="mb-12 max-w-3xl text-pretty text-lg text-secondary">
+          <p className="mb-12 max-w-3xl text-pretty text-base sm:text-lg text-secondary">
             {intro}
           </p>
         </Reveal>

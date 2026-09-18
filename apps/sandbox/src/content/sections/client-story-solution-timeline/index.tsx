@@ -49,7 +49,7 @@ export default function ClientStorySolutionTimelineSection({
             className={intro ? "mb-6" : "mb-12"}
           />
           {intro ? (
-            <p className="mx-auto mb-12 max-w-2xl text-pretty text-center text-lg text-secondary">
+            <p className="mx-auto mb-12 max-w-2xl text-pretty text-center text-base sm:text-lg text-secondary">
               {intro}
             </p>
           ) : null}

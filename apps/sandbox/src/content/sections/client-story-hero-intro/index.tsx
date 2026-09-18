@@ -226,7 +226,7 @@ function IntroSection({
           </h2>
           <div className="space-y-5">
             {data.paragraphs.map((paragraph) => (
-              <p key={paragraph} className="text-pretty text-lg text-secondary">
+              <p key={paragraph} className="text-pretty text-base sm:text-lg text-secondary">
                 {paragraph}
               </p>
             ))}
