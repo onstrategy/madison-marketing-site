@@ -149,7 +149,7 @@ function AnnouncementBlockContent({ block }: { block: AnnouncementBlock }) {
   // heading treatment.
   if (block.type === "lede") {
     return (
-      <p className="text-pretty text-lg font-semibold leading-relaxed text-primary">
+      <p className="text-pretty text-base sm:text-lg font-semibold leading-relaxed text-primary">
         {block.text}
       </p>
     );
@@ -173,8 +173,8 @@ function AnnouncementBlockContent({ block }: { block: AnnouncementBlock }) {
       <p
         className={
           block.emphasis
-            ? "text-pretty text-lg font-semibold leading-relaxed text-primary"
-            : "text-pretty text-lg leading-relaxed text-secondary"
+            ? "text-pretty text-base sm:text-lg font-semibold leading-relaxed text-primary"
+            : "text-pretty text-base sm:text-lg leading-relaxed text-secondary"
         }
       >
         {block.text}
