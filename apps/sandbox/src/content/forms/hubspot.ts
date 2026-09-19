@@ -33,6 +33,21 @@ export const HUBSPOT_FORMS = {
     description:
       "Gated download form on the client-story pages — submitting it releases that story's one-page PDF",
   },
+  "foia-peer-share-1": {
+    formId: "b49bccc7-8b9c-4298-a24d-fa36af8a1a76",
+    description:
+      "FOIA Peer Share registration for the October 15, 2026 session, on /foia-peer-share-invite_1",
+  },
+  "foia-peer-share-2": {
+    formId: "a8d9480f-9e1e-4680-8275-35c6259abf89",
+    description:
+      "FOIA Peer Share registration for the November 19, 2026 session, on /foia-peer-share-invite_2",
+  },
+  "foia-peer-share-3": {
+    formId: "0a8686c2-1c2d-4fe6-a9da-25d385854bc9",
+    description:
+      "FOIA Peer Share registration for the December 17, 2026 session, on /foia-peer-share-invite_3",
+  },
 } as const satisfies Record<string, HubSpotFormEntry>;
 
 export type HubSpotFormName = keyof typeof HUBSPOT_FORMS;
