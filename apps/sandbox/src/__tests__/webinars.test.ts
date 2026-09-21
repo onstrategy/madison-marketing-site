@@ -12,10 +12,16 @@ import { sectionRegistry } from "../content/sections/registry";
 
 // Webinars authored after the 2026-08-18 source capture (source-data/manifest.json
 // is a frozen snapshot of the live site, so these have no manifest entry).
-const POST_CAPTURE_WEBINAR_IDS = ["how-to-build-dais-ready-reports"];
+const POST_CAPTURE_WEBINAR_IDS = [
+  "how-to-build-dais-ready-reports",
+  "two-paths-to-prr",
+  "four-ways-to-get-more",
+];
 
 const EXPECTED_WEBINAR_PATHS = [
   "/how-to-build-dais-ready-reports/",
+  "/two-paths-to-prr/",
+  "/four-ways-to-get-more/",
   "/erp-data-thirdline/",
   "/director-of-ai-assistant/",
   "/acfr-and-gfoa/",

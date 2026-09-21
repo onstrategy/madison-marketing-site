@@ -1,0 +1,95 @@
+{
+  "id": "two-paths-to-prr",
+  "path": "/two-paths-to-prr/",
+  "order": 2,
+  "sourceUrl": "https://www.madisonai.com/two-paths-to-prr",
+  "metadata": {
+    "title": "Public Records Requests: Two Paths to Getting Ahead of the Flood",
+    "description": "Public records requests are up roughly 30% year over year. See two ways Madison AI helps agencies get ahead of the flood: a resident self-service portal and AI-assisted review of what remains.",
+    "seoTitle": "Public Records Requests: Two Paths to Getting Ahead of the Flood"
+  },
+  "card": {
+    "title": "Public Records Requests: Two Paths to Getting Ahead of the Flood",
+    "imageAsset": "director-of-ai-assistant-card.avif",
+    "imageAlt": "Public Records Requests: Two Paths to Getting Ahead of the Flood"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "Public Records Requests: Two Paths to Getting Ahead of the Flood",
+        "subtitle": "Public records requests are piling up faster than most teams can process them, up roughly 30% year over year, with AI now generating longer and more detailed asks. In Session 23 of AI In Action, Erica Olsen, Heyden Enochson, and Leigh Abbott walked through two ways Madison AI is helping agencies get ahead of the flood: a public-facing portal that lets residents find answers themselves, and an AI-assisted fulfillment process that cuts review time on what's left. Here's what leaders should take away."
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "heading": "Divert: Let Residents Help Themselves",
+        "paragraphs": [
+          "The same data set your staff already searches for answers can extend to a resident-facing portal for common questions, like a short-term rental fee or the permit history on a parcel. A five-year review of one mid-sized city's requests found that community development and parcel questions made up 40% to 60% of total volume, with contracts and purchase orders close behind. Not every data set belongs in a public portal. Each agency decides what's exposed and what stays behind a formal request."
+        ],
+        "callout": {
+          "title": "50%+ of public records requests could be diverted to self-service once the underlying data is unified, based on Madison AI's analysis of one agency's five-year request history. That's more than a person and a half of staff time returned every month."
+        }
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "heading": "Review: Let AI Handle the Heavy Lifting on What Remains",
+        "paragraphs": [
+          "For requests that do need a full review, the AI assistant searches Outlook, SharePoint, Laserfiche, Granicus, permitting systems, and your ERP in one pass. It pre-reviews records for responsiveness, threads and dedupes email so staff see conversations instead of repeated fragments, and flags PII, PHI, and privileged content for redaction. Records move through a clear pipeline: non-responsive, withheld, needs review, cleared by AI, and ready for release. A staff member always makes the final call to release a record. Permissions scale with your team, so a subject matter expert can review a record without seeing every file, and the system routes and tracks each step for audit purposes."
+        ]
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "heading": "What This Looked Like for the City of Clovis",
+        "paragraphs": [
+          "Clovis received a six-part request spanning multiple departments and projects. Scoping it the traditional way would have taken weeks of huddles to figure out who to search and what timeline to cover. Using Clovis's citywide Madison index, staff configured the search and had records ready for review in four and a half hours. Deduping and threading also brought the initial 7,600 records down to about 1,800 that were genuinely responsive, so the team reviewed a fraction of what the search first surfaced."
+        ],
+        "callout": {
+          "title": "“Just do it.” That's the advice Michaela, from the City of Clovis, gave a colleague weighing whether to move forward."
+        }
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "heading": "Lead: Three Things to Act On",
+        "items": [
+          {
+            "label": "Share your history:",
+            "description": "Send your last two or three years of public records requests to your Madison team and see how Madison can help with the heavy lifting. We'll run them through your model and show you what could realistically be diverted."
+          },
+          {
+            "label": "Audit your review bottleneck:",
+            "description": "Look at how much staff time goes to search and redaction today versus actually responding. That gap is where AI review pays off first."
+          },
+          {
+            "label": "Book a demo:",
+            "description": "See what it would look like to run your public records requests through Madison AI.",
+            "link": {
+              "text": "Grab a slot for a demo.",
+              "href": "https://www.madisonai.com/ai-assisted-public-records-fulfillment#call"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

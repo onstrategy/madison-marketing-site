@@ -30,6 +30,8 @@ const ArticleListItemSchema = z.union([
     .object({
       label: NonEmptyStringSchema,
       description: NonEmptyStringSchema,
+      // Optional trailing link, e.g. a "book a demo" call to action.
+      link: ArticleLinkSchema.omit({ type: true }).optional(),
     })
     .strict(),
 ]);
@@ -88,6 +90,19 @@ function ArticleListItemContent({ item }: { item: ArticleListItem }) {
     <>
       <span className="font-semibold text-primary">{item.label}</span>{" "}
       {item.description}
+      {item.link ? (
+        <>
+          {" "}
+          <a
+            href={item.link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-brand-accent underline-offset-4 hover:underline"
+          >
+            {item.link.text}
+          </a>
+        </>
+      ) : null}
     </>
   );
 }

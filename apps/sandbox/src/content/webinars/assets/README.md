@@ -36,4 +36,4 @@ Added after the capture (not from the live site):
 
 - `how-to-build-dais-ready-reports-task-cards.pdf` — supplied directly ("Task Card Volume 3.pdf", Task Cards Vol. 3)
 - `dana-searcy-principal-strategist-madison-ai.avif` — copy of `../../news/assets/dana-searcy.avif`
-
+- `kamryn-onorato.jpeg` — supplied directly ("kamryn.jpeg"), headshot for the AI in Action 024 quote
