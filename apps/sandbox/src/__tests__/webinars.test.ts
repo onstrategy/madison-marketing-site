@@ -10,7 +10,12 @@ import { parseProps as parseWebinarFullSessionProps } from "../content/sections/
 import { parseProps as parseWebinarSegmentProps } from "../content/sections/webinar-segment";
 import { sectionRegistry } from "../content/sections/registry";
 
+// Webinars authored after the 2026-08-18 source capture (source-data/manifest.json
+// is a frozen snapshot of the live site, so these have no manifest entry).
+const POST_CAPTURE_WEBINAR_IDS = ["how-to-build-dais-ready-reports"];
+
 const EXPECTED_WEBINAR_PATHS = [
+  "/how-to-build-dais-ready-reports/",
   "/erp-data-thirdline/",
   "/director-of-ai-assistant/",
   "/acfr-and-gfoa/",
@@ -64,7 +69,9 @@ describe("webinar collection", () => {
 
   it("keeps the runtime collection aligned with the neutral source capture", () => {
     expect(
-      webinars.map(({ id, path, sourceUrl }) => ({ id, path, sourceUrl })),
+      webinars
+        .filter(({ id }) => !POST_CAPTURE_WEBINAR_IDS.includes(id))
+        .map(({ id, path, sourceUrl }) => ({ id, path, sourceUrl })),
     ).toEqual(
       sourceManifest.items.map(({ id, path, sourceUrl }) => ({
         id,

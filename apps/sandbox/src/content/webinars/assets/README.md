@@ -31,3 +31,9 @@ The runtime imports these local files; the URLs below preserve provenance.
 - `valley-water-ai-in-action-card.avif` — https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69ea2fb904a0326b5aba3f57_scvw.avif
 - `washoe-county-ai-in-action-card.avif` — https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/69aefa8ac913e95ccb952a3a_Wahoe.avif
 - `wrcog-ai-in-action-card.avif` — https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6986585fad90d9e0651f0991_0923b4d7aede249d18f181d7dd8616c2_WRCOG.avif
+
+Added after the capture (not from the live site):
+
+- `how-to-build-dais-ready-reports-task-cards.pdf` — supplied directly ("Task Card Volume 3.pdf", Task Cards Vol. 3)
+- `dana-searcy-principal-strategist-madison-ai.avif` — copy of `../../news/assets/dana-searcy.avif`
+

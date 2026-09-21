@@ -1,0 +1,190 @@
+{
+  "id": "how-to-build-dais-ready-reports",
+  "path": "/how-to-build-dais-ready-reports/",
+  "order": 5,
+  "sourceUrl": "https://www.madisonai.com/how-to-build-dais-ready-reports",
+  "metadata": {
+    "title": "How to Build Dais-Ready Reports",
+    "description": "Edit live in the canvas, turn a research thread into a report, check how far to trust an answer, and catch compliance gaps in solicitations before they reach council.",
+    "seoTitle": "How to Build Dais-Ready Reports"
+  },
+  "card": {
+    "title": "How to Build Dais-Ready Reports",
+    "imageAsset": "director-of-ai-assistant-card.avif",
+    "imageAlt": "How to Build Dais-Ready Reports"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "How to Build Dais-Ready Reports",
+        "subtitle": "Researching, drafting, editing and auditing your deliverables are all ai-assisted features built into your Madison AI app. Whether you know your recommendation already or you're still working it out, this session showed how to generate a deliverable you can take to your boss, with confidence."
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "paragraphs": [
+          "Our session walked through three areas 1) Editing live in the canvas; 2) Turning a research thread into a report; and 3) A first look at a new quality evaluator that scores the output. We also showed how Madison pulls out a city contract history to build an RFP, and how a new compliance report catches inconsistencies that are easy to miss and costly to leave in.",
+          "Here's what we covered.",
+          {
+            "content": [
+              "If you handle staff reports, solicitations, or anything that must hold up in front of a council, there's something below for you."
+            ],
+            "emphasis": true
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Two Paths to Every Deliverable",
+        "paragraphs": [
+          "Every staff report, ordinance, or council memo starts one of two ways in Madison. Know your topic already? Start in the workflow, let Madison pull your sources and draft, then refine in the canvas.",
+          "Still working out your recommendation? Start in a research thread, talk it through with Madison, then turn that thread into a report. Either path lands in the same place: an editable draft in the canvas, built from your data and ready for your final touches before council. Less time assembling. More time on the judgment calls only you can make."
+        ],
+        "items": [],
+        "quotes": [],
+        "videos": [
+          {
+            "title": "024_Two Paths to Every Deliverable",
+            "wistiaId": "r4nov1z0oa"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Edit Live in the Canvas",
+        "paragraphs": [
+          "The canvas isn't a static export. Highlight any line and type your edit, or use built-in AI commands to shorten, elaborate, formalize, or turn text into bullets, without leaving the document. Madison gets you to roughly 80% of a finished draft. The other 20%, your judgment and the details only your team knows, stays yours. Bonus: Exporting PowerPoint doesn't just make slides. It hands you a full talk track, so even prepping an internal presentation gets faster."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"At the push of a button, shorten, elaborate, make more formal or research, and then of course, you can type in some just ad hoc instructions.\"",
+            "attribution": "Kamryn Onorato"
+          }
+        ],
+        "videos": []
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Turn a Research Conversation into a Report",
+        "paragraphs": [
+          "Sometimes you don't start with a topic, you start with a question, like what your community thinks about a contentious project. Work it out in a research thread: ask for follow-ups, test a shorter timeline, pull in past board action. When you're ready, hit \"make a report\" and choose which responses to include. Madison turns that back-and-forth into a polished recommendation for council, citations and all. The thinking you already did doesn't get redone, but rather it is used in your template for a final product."
+        ],
+        "items": [],
+        "quotes": [],
+        "videos": []
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Know What to Trust: The New Quality Evaluator",
+        "paragraphs": [
+          "Citations tell you where an answer came from. The new quality evaluator tells you how much to trust it. Madison checks every response on three fronts: 1) How relevant the sources are; 2) How thoroughly the topic is covered, and 3) How internally consistent the information is. A yellow or red flag isn't a failure; it's a prompt to ask Madison for more, the same way you'd double-check a colleague's work."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"At the end of the day, what is published under our respective names is our credibility, and we're responsible for that.\"",
+            "attribution": "Erica Olsen, Madison AI",
+            "portrait": {
+              "asset": "erica-olsen-ceo-madison-ai-220d8018.png",
+              "alt": "Erica Olsen, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "024_Know What to Trust: The New Quality Evaluator",
+            "wistiaId": "q2g1lfa5qr"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Procurement That Remembers Your History",
+        "paragraphs": [
+          "Every RFP doesn't have to start from a blank page. Madison pulled a city's last landscaping contracts, flagged that a request for bid fit their policy better than an RFP, and suggested a spending threshold based on real numbers. It even surfaced the staff who worked the last contract and caught a required prevailing-wage note, no digging through a shared drive required. Your institutional history becomes a running head start on every new solicitation."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"I don't have to go look up all this information and pull it together. It's just assembling it as we're going.\"",
+            "attribution": "Dana Searcy",
+            "portrait": {
+              "asset": "dana-searcy-principal-strategist-madison-ai.avif",
+              "alt": "Dana Searcy"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "024_Procurement That Remembers Your History",
+            "wistiaId": "r1xjhwjmxd"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "The Compliance Report: Catching What Slips Through",
+        "paragraphs": [
+          "A fifty-page solicitation has a lot of places for something to slip: a missing RFB number, language that drifted from your approved template, a mismatched email domain. Madison's compliance report checks completeness, policy thresholds, and template adherence, then hands you a clear pass or fail on each. It's another set of eyes on the document before it goes out, catching inconsistencies that are easy to miss but costly if they reach council or a bidder."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"This is going to help make your procurements more compliant and less risky as they go out into the world.\"",
+            "attribution": "Dana Searcy",
+            "portrait": {
+              "asset": "dana-searcy-principal-strategist-madison-ai.avif",
+              "alt": "Dana Searcy"
+            }
+          }
+        ],
+        "videos": []
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Full Session Video",
+        "videoTitle": "024_Build Your Report Two Ways. Know You Can Trust It. (full session)",
+        "wistiaId": "wnhpl67o0p"
+      }
+    },
+    {
+      "type": "webinar-resource-download",
+      "props": {
+        "title": "Take it to your team",
+        "description": "We turned all five workflows into printable Task Cards: setup, the play, confidence checks, watch-outs, and related tasks for each workflow.",
+        "asset": "how-to-build-dais-ready-reports-task-cards.pdf",
+        "buttonLabel": "Download the Task Cards"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}
