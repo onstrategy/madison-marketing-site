@@ -27,14 +27,11 @@
       "props": {
         "paragraphs": [
           "Our session walked through three areas 1) Editing live in the canvas; 2) Turning a research thread into a report; and 3) A first look at a new quality evaluator that scores the output. We also showed how Madison pulls out a city contract history to build an RFP, and how a new compliance report catches inconsistencies that are easy to miss and costly to leave in.",
-          "Here's what we covered.",
-          {
-            "content": [
-              "If you handle staff reports, solicitations, or anything that must hold up in front of a council, there's something below for you."
-            ],
-            "emphasis": true
-          }
-        ]
+          "Here's what we covered."
+        ],
+        "callout": {
+          "title": "If you handle staff reports, solicitations, or anything that must hold up in front of a council, there's something below for you."
+        }
       }
     },
     {

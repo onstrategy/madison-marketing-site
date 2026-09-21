@@ -43,7 +43,7 @@ const ArticleCopyPropsSchema = z
     callout: z
       .object({
         title: NonEmptyStringSchema,
-        body: NonEmptyStringSchema,
+        body: NonEmptyStringSchema.optional(),
       })
       .strict()
       .optional(),
@@ -155,7 +155,9 @@ export default function ArticleCopySection({
               <h3 className="font-serif text-2xl font-medium tracking-tight text-primary">
                 {callout.title}
               </h3>
-              <p className="mt-3 leading-relaxed text-secondary">{callout.body}</p>
+              {callout.body ? (
+                <p className="mt-3 leading-relaxed text-secondary">{callout.body}</p>
+              ) : null}
             </aside>
           ) : null}
         </Reveal>
