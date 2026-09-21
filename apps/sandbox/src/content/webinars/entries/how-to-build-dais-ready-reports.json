@@ -159,20 +159,20 @@
       }
     },
     {
-      "type": "webinar-full-session",
-      "props": {
-        "heading": "Full Session Video",
-        "videoTitle": "024_Build Your Report Two Ways. Know You Can Trust It. (full session)",
-        "wistiaId": "wnhpl67o0p"
-      }
-    },
-    {
       "type": "webinar-resource-download",
       "props": {
         "title": "Take it to your team",
         "description": "We turned all five workflows into printable Task Cards: setup, the play, confidence checks, watch-outs, and related tasks for each workflow.",
         "asset": "how-to-build-dais-ready-reports-task-cards.pdf",
         "buttonLabel": "Download the Task Cards"
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Full Session Video",
+        "videoTitle": "024_Build Your Report Two Ways. Know You Can Trust It. (full session)",
+        "wistiaId": "wnhpl67o0p"
       }
     },
     {

@@ -30,8 +30,18 @@ const ArticleListItemSchema = z.union([
     .object({
       label: NonEmptyStringSchema,
       description: NonEmptyStringSchema,
-      // Optional trailing link, e.g. a "book a demo" call to action.
-      link: ArticleLinkSchema.omit({ type: true }).optional(),
+      // Optional trailing link, e.g. a "book a demo" call to action. Unlike
+      // inline paragraph links, this may be an in-site path ("/demo/").
+      link: z
+        .object({
+          text: NonEmptyStringSchema,
+          href: z.string().refine(
+            (href) => href.startsWith("https://") || href.startsWith("/"),
+            { message: "must use an https URL or a relative in-site path" },
+          ),
+        })
+        .strict()
+        .optional(),
     })
     .strict(),
 ]);
@@ -95,8 +105,9 @@ function ArticleListItemContent({ item }: { item: ArticleListItem }) {
           {" "}
           <a
             href={item.link.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            {...(item.link.href.startsWith("https://")
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
             className="font-semibold text-brand-accent underline-offset-4 hover:underline"
           >
             {item.link.text}
