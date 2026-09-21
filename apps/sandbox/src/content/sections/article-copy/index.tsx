@@ -152,7 +152,15 @@ export default function ArticleCopySection({
           ) : null}
           {callout ? (
             <aside className="dark mt-10 rounded-2xl bg-brand-subtle p-6 lg:p-8">
-              <h3 className="font-serif text-2xl font-medium tracking-tight text-primary">
+              {/* A title-only callout is a full sentence, not a heading — one
+                  step smaller than a callout that has body copy under it. */}
+              <h3
+                className={
+                  callout.body
+                    ? "font-serif text-2xl font-medium tracking-tight text-primary"
+                    : "font-serif text-xl font-medium tracking-tight text-primary"
+                }
+              >
                 {callout.title}
               </h3>
               {callout.body ? (
