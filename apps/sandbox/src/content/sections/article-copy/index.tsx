@@ -173,7 +173,7 @@ export default function ArticleCopySection({
                 className={
                   callout.body
                     ? "font-serif text-2xl font-medium tracking-tight text-primary"
-                    : "font-serif text-xl font-medium tracking-tight text-primary"
+                    : "font-serif text-xl font-medium leading-snug tracking-tight text-primary"
                 }
               >
                 {callout.title}
