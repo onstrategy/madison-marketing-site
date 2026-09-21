@@ -1,7 +1,7 @@
 {
   "id": "how-to-build-dais-ready-reports",
   "path": "/how-to-build-dais-ready-reports/",
-  "order": 5,
+  "order": 1,
   "sourceUrl": "https://www.madisonai.com/how-to-build-dais-ready-reports",
   "metadata": {
     "title": "How to Build Dais-Ready Reports",
@@ -63,7 +63,11 @@
         "quotes": [
           {
             "quote": "\"At the push of a button, shorten, elaborate, make more formal or research, and then of course, you can type in some just ad hoc instructions.\"",
-            "attribution": "Kamryn Onorato"
+            "attribution": "Kamryn Onorato",
+            "portrait": {
+              "asset": "kamryn-onorato.jpeg",
+              "alt": "Kamryn Onorato"
+            }
           }
         ],
         "videos": []
