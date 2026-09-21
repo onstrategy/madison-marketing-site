@@ -39,3 +39,4 @@ Added after the capture (not from the live site):
 - `kamryn-onorato.jpeg` — supplied directly ("kamryn.jpeg"), headshot for the AI in Action 024 quote
 - `four-ways-to-get-more-card.avif` — supplied directly ("web-cover-four-ways.jpg"), converted to AVIF
 - `two-paths-to-prr-card.avif` — supplied directly ("two-paths.jpg"), converted to AVIF
+- `how-to-build-dais-ready-reports-card.avif` — supplied directly ("Dana-Kamryn.jpg"), converted to AVIF
