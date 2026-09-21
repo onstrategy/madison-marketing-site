@@ -30,6 +30,18 @@ const ArticleListItemSchema = z.union([
     .object({
       label: NonEmptyStringSchema,
       description: NonEmptyStringSchema,
+      // Optional trailing link, e.g. a "book a demo" call to action. Unlike
+      // inline paragraph links, this may be an in-site path ("/demo/").
+      link: z
+        .object({
+          text: NonEmptyStringSchema,
+          href: z.string().refine(
+            (href) => href.startsWith("https://") || href.startsWith("/"),
+            { message: "must use an https URL or a relative in-site path" },
+          ),
+        })
+        .strict()
+        .optional(),
     })
     .strict(),
 ]);
@@ -43,7 +55,7 @@ const ArticleCopyPropsSchema = z
     callout: z
       .object({
         title: NonEmptyStringSchema,
-        body: NonEmptyStringSchema,
+        body: NonEmptyStringSchema.optional(),
       })
       .strict()
       .optional(),
@@ -88,6 +100,20 @@ function ArticleListItemContent({ item }: { item: ArticleListItem }) {
     <>
       <span className="font-semibold text-primary">{item.label}</span>{" "}
       {item.description}
+      {item.link ? (
+        <>
+          {" "}
+          <a
+            href={item.link.href}
+            {...(item.link.href.startsWith("https://")
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+            className="font-semibold text-brand-accent underline-offset-4 hover:underline"
+          >
+            {item.link.text}
+          </a>
+        </>
+      ) : null}
     </>
   );
 }
@@ -152,10 +178,20 @@ export default function ArticleCopySection({
           ) : null}
           {callout ? (
             <aside className="dark mt-10 rounded-2xl bg-brand-subtle p-6 lg:p-8">
-              <h3 className="font-serif text-2xl font-medium tracking-tight text-primary">
+              {/* A title-only callout is a full sentence, not a heading — one
+                  step smaller than a callout that has body copy under it. */}
+              <h3
+                className={
+                  callout.body
+                    ? "font-serif text-2xl font-medium tracking-tight text-primary"
+                    : "font-serif text-xl font-medium leading-normal tracking-tight text-primary"
+                }
+              >
                 {callout.title}
               </h3>
-              <p className="mt-3 leading-relaxed text-secondary">{callout.body}</p>
+              {callout.body ? (
+                <p className="mt-3 leading-relaxed text-secondary">{callout.body}</p>
+              ) : null}
             </aside>
           ) : null}
         </Reveal>

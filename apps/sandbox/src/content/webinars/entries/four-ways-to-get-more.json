@@ -1,0 +1,161 @@
+{
+  "id": "four-ways-to-get-more",
+  "path": "/four-ways-to-get-more/",
+  "order": 3,
+  "sourceUrl": "https://www.madisonai.com/four-ways-to-get-more",
+  "metadata": {
+    "title": "Four Ways to Get More Out of Your AI This Month",
+    "description": "Four takeaways from AI in Action 021: treat your AI like a new hire, find the data it missed, fact-check before you send, and run a procurement from a two-line prompt to a council-ready report.",
+    "seoTitle": "Four Ways to Get More Out of Your AI This Month"
+  },
+  "card": {
+    "title": "Four Ways to Get More Out of Your AI This Month",
+    "imageAsset": "four-ways-to-get-more-card.avif",
+    "imageAlt": "Four Ways to Get More Out of Your AI This Month"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "Four Ways to Get More Out of Your AI This Month",
+        "subtitle": "This session went deep on a problem a lot of you will recognize: your AI missed something you knew was there. Kristine traced a city manager's thumbs down back to a single word in a file name, and showed the prompt fix that surfaced everything. Erica walked through drafting a citizen newsletter from a transcript, then asked the AI to fact-check its own work before it went out. Heyden ran an entire procurement process in real time, from a two-line prompt to a council-ready staff report."
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "paragraphs": [
+          "Four takeaways below, each with a video clip if you want the full walkthrough."
+        ],
+        "callout": {
+          "title": "This recap is worth forwarding to anyone that writes staff reports, drafts newsletters or is involved in procurement."
+        }
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Treat Your AI Like a New Team Member, Not a Search Bar",
+        "paragraphs": [
+          "Treating your AI like a new hire is what works best here. Ask what data it has access to before you trust a five-paragraph answer. Ask where the gaps are. Break big requests into smaller steps instead of asking for a finished product in one shot. When something comes back wrong, use the thumbs down. That feedback shapes what gets fixed next. The teams getting the most out of Madison AI are the ones treating every session like an ongoing conversation with a colleague, not a vending machine."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"Ask Madison, what do you need to know from me before you give me a five-paragraph answer?\"",
+            "attribution": "Erica Olsen, Madison AI",
+            "portrait": {
+              "asset": "erica-olsen-ceo-madison-ai-220d8018.png",
+              "alt": "Erica Olsen, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "021_AI In Action: Best practices for using your custom-built Madison AI implementation",
+            "wistiaId": "zsjvefoibp"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Why Your AI Missed a Meeting You Know Happened",
+        "paragraphs": [
+          "A city manager flagged a missing meeting with a thumbs down, and Kristine traced it back to a single naming convention. The AI treats “strategic planning retreat” differently from official council or board meetings, so it skipped a relevant file entirely. The fix: tell your AI to explicitly include retreats, work sessions, and transcripts, and add the phrase “leave nothing out” when you need full coverage. Kristine also showed a confidence assessment feature that flags source gaps in green, yellow, or red, so you know when to trust an answer and when to dig further."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"It’s just the AI fact-checking itself.\"",
+            "attribution": "Kristine Richter, Head of Client Success, Madison AI",
+            "portrait": {
+              "asset": "kristine-richter-head-of-client-success-madison-92a43d8d.avif",
+              "alt": "Kristine Richter, Head of Client Success, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "021_AI In Action: How to find data",
+            "wistiaId": "y5jnlwiony"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Before You Hit Send, Ask Your AI to Check Itself",
+        "paragraphs": [
+          "Erica walked through drafting a citizen newsletter straight from a meeting transcript, then showed the step that matters most: asking the AI to fact-check its own recap. It flagged details it couldn’t verify, including which council members attended, since transcripts aren’t official records. It caught a mixed-up abbreviation and a misstated vote. The lesson applies anywhere you’re turning a transcript into something public. Confirm you have the right file before you start, then run a fact-check pass before it goes out. One extra prompt can save you from publishing something wrong."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"This is exactly when we talk about pushing back and asking for fact-checking, this is how this goes down.\"",
+            "attribution": "Erica Olsen, Madison AI",
+            "portrait": {
+              "asset": "erica-olsen-ceo-madison-ai-220d8018.png",
+              "alt": "Erica Olsen, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "021_AI In Action: Draft a citizen newsletter from a transcript",
+            "wistiaId": "gia6x8vio3"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "From First Draft to Council Day, One Continuous Workflow",
+        "paragraphs": [
+          "Heyden ran an entire procurement process in one pass. He built a solicitation from a short prompt, and the AI suggested a step he hadn’t considered: a mandatory pre-bid job walk. It checked the draft against procurement standards and flagged a contract term that didn’t match template language. Once he selected a vendor, he pulled the full voting history for context before writing the council presentation, including a past objection worth knowing about ahead of time. From there, the staff report drew on the same source material. Every step stayed grounded in your jurisdiction’s own templates and records."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"What we’re trying to do is get to an 80% or 90% complete output that you can take with your compliance report, to your procurement officer.\"",
+            "attribution": "Heyden Enochson, Head of GTM, Madison AI",
+            "portrait": {
+              "asset": "heyden-enochson-head-of-gtm-madison-ai-01a3cb30.avif",
+              "alt": "Heyden Enochson, Head of GTM, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "021_AI In Action: Draft an RFP from start to finish",
+            "wistiaId": "mclvz8hy5n"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Full Session Video",
+        "videoTitle": "021_AI In Action: Start to Finish - Running a Real Task with Your AI Assistant (full session)",
+        "wistiaId": "n5n7yka1hs"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}
