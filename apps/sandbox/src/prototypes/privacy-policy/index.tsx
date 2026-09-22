@@ -91,8 +91,8 @@ const DATA: LegalPageData = {
       heading: "Contact Us",
       paragraphs: [
         <>
-          If you have any questions or concerns about our Privacy Policy, please contact us at{" "}
-          <LegalLink href="mailto:Justine Sincra@email.com">Justine Sincra@email.com</LegalLink>.
+          If you have any questions or concerns about our Privacy Policy, please{" "}
+          <LegalLink href="/contact/">contact us</LegalLink>.
         </>,
       ],
     },
