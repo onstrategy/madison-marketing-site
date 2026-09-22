@@ -138,6 +138,15 @@
       }
     },
     {
+      "type": "webinar-resource-download",
+      "props": {
+        "title": "Take it to your team",
+        "description": "We turned this session's workflows into printable Task Cards. Setup, the play, confidence checks, watch-outs, and other tasks the same play adapts to. One card per workflow.",
+        "asset": "how-to-build-dais-ready-reports-task-cards.pdf",
+        "buttonLabel": "Download the Task Cards"
+      }
+    },
+    {
       "type": "webinar-full-session",
       "props": {
         "heading": "Full Session Video",
