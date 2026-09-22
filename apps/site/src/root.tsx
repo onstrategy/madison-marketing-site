@@ -13,8 +13,6 @@ import { SITE_WIDE_NOINDEX_ACTIVE } from "./site-meta";
 import "./fonts.css";
 import "./index.css";
 
-const GA_MEASUREMENT_ID = "G-6TDEGBL90T";
-
 export const meta: MetaFunction = () => [
   { title: "Madison Ai" },
   {
@@ -59,23 +57,12 @@ export function Layout({ children }: { children: ReactNode }) {
           data-blockingmode="auto"
           type="text/javascript"
         />
-        {/* Google tag (gtag.js) — Cookiebot's auto blocking mode recognizes
-            this domain and holds it until the visitor consents to
-            Statistics cookies, so it stays after Cookiebot but doesn't
-            need a manual data-cookieconsent attribute like an unrecognized
-            script would. */}
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${GA_MEASUREMENT_ID}');`,
-          }}
-        />
+        {/* No analytics tag here on purpose. A previous gtag.js tag was
+            removed: React hoists `<script async>` into the top of <head>,
+            which put it ahead of the Cookiebot script above and defeated
+            Cookiebot's automatic blocking (analytics cookies were set
+            before consent). Any future tag must load outside this
+            React-rendered <head> so Cookiebot stays the first script. */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         {/* Keep the optional site-wide guard in the document because leaf route
