@@ -16,7 +16,14 @@ import "./index.css";
 interface CookiebotApi {
   /** False until the visitor has answered the banner, either way. */
   hasResponse: boolean;
-  show: () => void;
+  /**
+   * `window.Cookiebot` exists as soon as their loader script starts
+   * running, well before the rest of its API is attached — so `show`
+   * may not be a function yet even though `window.Cookiebot` is truthy.
+   * Typed as unknown, not `() => void`, to force callers to check before
+   * calling it; see the `typeof` guard in useRestoreCookiebotBanner.
+   */
+  show?: unknown;
 }
 
 declare global {
@@ -43,6 +50,14 @@ const COOKIEBOT_DIALOG_ID = "CybotCookiebotDialog";
  * uc.js/cc.js it actually serves, and its React guidance), so rather than
  * stop the deletion we re-show the banner here: this effect runs after
  * hydration has committed, so what it shows now survives.
+ *
+ * `window.Cookiebot` is set by their loader before the rest of its API
+ * exists (confirmed live: `Cookiebot.show is not a function`, thrown from
+ * here, took the whole page down — this project's own crash-in-production
+ * during Brave testing, since something about Brave's Shields lengthened
+ * the gap between that assignment and `show` being attached). This effect
+ * must never throw past its own boundary: it runs at the app root, so an
+ * uncaught error here has no error boundary to catch it.
  */
 function useRestoreCookiebotBanner(): void {
   useEffect(() => {
@@ -53,7 +68,14 @@ function useRestoreCookiebotBanner(): void {
       // consent alone would re-prompt them on every cold load.
       if (!cookiebot || cookiebot.hasResponse) return;
       if (document.getElementById(COOKIEBOT_DIALOG_ID)) return;
-      cookiebot.show();
+      if (typeof cookiebot.show !== "function") return;
+      try {
+        cookiebot.show();
+      } catch (error) {
+        // Third-party code we don't control — never let it take the page
+        // down. The next CookiebotOnLoad/animation-frame pass retries.
+        console.error("Cookiebot.show() failed", error);
+      }
     };
 
     restoreIfRemoved();
