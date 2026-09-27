@@ -85,6 +85,14 @@ describe("client story collection", () => {
           path: "/client-stories/city-of-corona/",
         },
         {
+          id: "addison-success-story",
+          path: "/addison-success-story/",
+        },
+        {
+          id: "city-of-centerville-oh-partners-with-madison-ai",
+          path: "/city-of-centerville-oh-partners-with-madison-ai/",
+        },
+        {
           id: "newark-california-kicks-off-madison-ai",
           path: "/newark-california-kicks-off-madison-ai/",
         },
@@ -155,10 +163,6 @@ describe("client story collection", () => {
         {
           id: "chanhassen-success-story",
           path: "/chanhassen-success-story/",
-        },
-        {
-          id: "addison-success-story",
-          path: "/addison-success-story/",
         },
       ]);
 
@@ -325,6 +329,60 @@ describe("client story collection", () => {
           ],
         }),
       ).not.toThrow();
+    });
+
+    it("accepts an inline link inside a lede or paragraph block", () => {
+      const parsed = parseClientStoryAnnouncementBodyProps({
+        blocks: [
+          {
+            type: "lede",
+            text: [
+              "The ",
+              {
+                type: "link",
+                text: "City of Centerville",
+                href: "https://www.centervilleohio.gov/",
+              },
+              ", Ohio, has partnered with Madison AI.",
+            ],
+          },
+          {
+            type: "paragraph",
+            text: "A plain paragraph still works unchanged.",
+          },
+        ],
+      });
+
+      expect(parsed.blocks[0]).toMatchObject({
+        text: [
+          "The ",
+          {
+            type: "link",
+            text: "City of Centerville",
+            href: "https://www.centervilleohio.gov/",
+          },
+          ", Ohio, has partnered with Madison AI.",
+        ],
+      });
+    });
+
+    it("rejects an unsafe inline link URL in a lede or paragraph block", () => {
+      expect(() =>
+        parseClientStoryAnnouncementBodyProps({
+          blocks: [
+            {
+              type: "paragraph",
+              text: [
+                {
+                  type: "link",
+                  text: "Unsafe link",
+                  href: "javascript:alert('unsafe')",
+                },
+              ],
+            },
+          ],
+        }),
+      ).toThrow();
     });
 
     it("accepts a local PDF asset for a client-story download", () => {

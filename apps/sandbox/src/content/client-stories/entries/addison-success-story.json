@@ -2,7 +2,7 @@
   "id": "addison-success-story",
   "path": "/addison-success-story/",
   "sourceUrl": "https://www.madisonai.com/addison-success-story",
-  "order": 190,
+  "order": 1,
   "featured": false,
   "metadata": {
     "title": "Unlocking Decades of Data: Addison's AI Breakthrough",
@@ -37,11 +37,9 @@
           "clientName": "Town of Addison",
           "agencyType": "Town",
           "modelsUsed": [
-            "Administration and Governance Model",
-            "Financial Analysis Model",
-            "Planning Research Model",
+            "Agency-Wide General Assistance Model",
             "Human Resources Model",
-            "Addison Airport Model"
+            "Custom Assistant for Addison Airport"
           ],
           "photo": {
             "asset": "addison-hero.avif",
@@ -179,13 +177,22 @@
       }
     },
     {
-      "type": "client-story-narrative",
+      "type": "client-story-impact-download",
       "props": {
-        "title": "The Impact: Reclaiming 867 Staff Hours",
-        "paragraphs": [
-          "The Town of Addison's partnership with Madison AI has transformed how municipal staff access institutional knowledge and perform daily tasks. Staff can now instantly access accurate historical data, contract terms, and code citations, resulting in operational efficiency that allows them to better serve their community.",
-          "Addison has demonstrated that with the right tools, public agencies can harness artificial intelligence to empower staff and maximize public value, further increasing the quality of life for all residents, businesses, and visitors in Addison."
-        ]
+        "impact": {
+          "eyebrow": "The impact",
+          "title": "Reclaiming 867 Staff Hours",
+          "paragraphs": [
+            "The Town of Addison's partnership with Madison AI has transformed how municipal staff access institutional knowledge and perform daily tasks. Staff can now instantly access accurate historical data, contract terms, and code citations, resulting in operational efficiency that allows them to better serve their community.",
+            "Addison has demonstrated that with the right tools, public agencies can harness artificial intelligence to empower staff and maximize public value, further increasing the quality of life for all residents, businesses, and visitors in Addison."
+          ]
+        },
+        "download": {
+          "title": "Download this case study as a one-page PDF",
+          "clientName": "Town of Addison",
+          "asset": "addison-one-page.pdf",
+          "form": "case-study-download"
+        }
       }
     },
     {

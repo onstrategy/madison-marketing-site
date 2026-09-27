@@ -52,6 +52,11 @@ const ArticleCopyPropsSchema = z
     heading: NonEmptyStringSchema.optional(),
     paragraphs: z.array(ArticleParagraphSchema).default([]),
     items: z.array(ArticleListItemSchema).default([]),
+    // "stats" renders items as a prominent number grid (label as the big
+    // figure, description as its caption) instead of a bulleted list — for
+    // a handful of headline numbers that should read at a glance, the way
+    // client-story-quote-stats' results grid does for client stories.
+    itemsLayout: z.enum(["list", "stats"]).default("list"),
     callout: z
       .object({
         title: NonEmptyStringSchema,
@@ -65,6 +70,12 @@ const ArticleCopyPropsSchema = z
     ({ heading, paragraphs, items }) =>
       heading !== undefined || paragraphs.length > 0 || items.length > 0,
     { message: "article copy needs a heading, paragraph, or list item" },
+  )
+  .refine(
+    ({ itemsLayout, items }) =>
+      itemsLayout !== "stats" ||
+      items.every((item): item is Extract<typeof item, object> => typeof item === "object"),
+    { message: "stats layout requires every item to have a label and description" },
   );
 
 type ArticleCopyProps = z.infer<typeof ArticleCopyPropsSchema>;
@@ -122,6 +133,7 @@ export default function ArticleCopySection({
   heading,
   paragraphs,
   items,
+  itemsLayout,
   callout,
   variant,
 }: ArticleCopyProps) {
@@ -156,7 +168,26 @@ export default function ArticleCopySection({
               ))}
             </div>
           ) : null}
-          {items.length > 0 ? (
+          {items.length > 0 && itemsLayout === "stats" ? (
+            <div className="mt-8 grid grid-cols-2 gap-6 rounded-2xl border border-default bg-panel p-6 sm:grid-cols-4 lg:p-8">
+              {items
+                .filter(
+                  (item): item is Exclude<ArticleListItem, string> =>
+                    typeof item !== "string",
+                )
+                .map((item) => (
+                  <div key={item.label}>
+                    <div className="font-serif text-3xl font-medium tracking-tight text-brand-accent">
+                      {item.label}
+                    </div>
+                    <div className="mt-1 text-sm text-secondary">
+                      {item.description}
+                    </div>
+                  </div>
+                ))}
+            </div>
+          ) : null}
+          {items.length > 0 && itemsLayout === "list" ? (
             <ul className="mt-8 space-y-3">
               {items.map((item) => (
                 <li

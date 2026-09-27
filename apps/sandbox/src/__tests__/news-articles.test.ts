@@ -11,6 +11,7 @@ import { parseProps as parseArticleCopyProps } from "../content/sections/article
 import { sectionRegistry } from "../content/sections/registry";
 
 const EXPECTED_ARTICLE_PATHS = [
+  "/cost-of-generic-ai-in-local-government/",
   "/proof-ai-works-in-the-public-sector/",
   "/peter-pirnejad/",
   "/public-records-crisis/",
@@ -156,11 +157,13 @@ describe("article copy validation", () => {
       heading: "A section",
       paragraphs: [],
       items: [],
+      itemsLayout: "list",
     });
     expect(parseArticleCopyProps({ paragraphs: ["A continuation."] })).toEqual({
       variant: "editorial",
       paragraphs: ["A continuation."],
       items: [],
+      itemsLayout: "list",
     });
   });
 
@@ -179,11 +182,35 @@ describe("article copy validation", () => {
         "A plain item",
         { label: "1,204 hours", description: "of staff time reclaimed" },
       ],
+      itemsLayout: "list",
     });
   });
 
   it("rejects an empty article copy section", () => {
     expect(() => parseArticleCopyProps({})).toThrow();
+  });
+
+  it("supports a stats layout for headline-number items", () => {
+    expect(
+      parseArticleCopyProps({
+        itemsLayout: "stats",
+        items: [{ label: "261", description: "staff members" }],
+      }),
+    ).toEqual({
+      variant: "editorial",
+      paragraphs: [],
+      itemsLayout: "stats",
+      items: [{ label: "261", description: "staff members" }],
+    });
+  });
+
+  it("rejects a stats layout with a plain-string item", () => {
+    expect(() =>
+      parseArticleCopyProps({
+        itemsLayout: "stats",
+        items: ["A plain item"],
+      }),
+    ).toThrow();
   });
 
   it("rejects unsafe inline link URLs", () => {
