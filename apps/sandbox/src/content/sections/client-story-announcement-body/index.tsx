@@ -29,10 +29,39 @@ function isAboutMadisonAiHeading(text: string): boolean {
 
 const NonEmptyStringSchema = z.string().trim().min(1);
 
+// An inline link inside a "lede" or "paragraph" block's text — e.g. the
+// first mention of a client's name linking out to their own site. Restricted
+// to https so a block can't be authored with a javascript: URL or similar.
+const RichTextLinkSchema = z
+  .object({
+    type: z.literal("link"),
+    text: NonEmptyStringSchema,
+    href: z.string().url().refine((href) => href.startsWith("https://"), {
+      message: "must use an https URL",
+    }),
+  })
+  .strict();
+
+// Unlike NonEmptyStringSchema, this validates without trimming: a string part
+// sitting next to a link (e.g. "The " before a linked "City of Centerville")
+// carries meaningful leading/trailing whitespace that separates it from its
+// neighbor, and trimming it away would silently glue the words together.
+const RichTextPartSchema = z.string().refine((text) => text.trim().length > 0, {
+  message: "text must not be empty",
+});
+
+// Plain text stays a bare string (the common case, and every existing
+// entry's authored form); a block only pays for the richer shape when it
+// actually needs an inline link.
+const RichTextSchema = z.union([
+  NonEmptyStringSchema,
+  z.array(z.union([RichTextPartSchema, RichTextLinkSchema])).min(1),
+]);
+
 const ParagraphBlockSchema = z
   .object({
     type: z.literal("paragraph"),
-    text: NonEmptyStringSchema,
+    text: RichTextSchema,
     emphasis: z.boolean().optional(),
   })
   .strict();
@@ -52,7 +81,7 @@ const HeadingBlockSchema = z
 const LedeBlockSchema = z
   .object({
     type: z.literal("lede"),
-    text: NonEmptyStringSchema,
+    text: RichTextSchema,
   })
   .strict();
 
@@ -139,9 +168,29 @@ type ClientStoryAnnouncementBodyProps = z.infer<
   typeof ClientStoryAnnouncementBodyPropsSchema
 >;
 type AnnouncementBlock = ClientStoryAnnouncementBodyProps["blocks"][number];
+type RichText = z.infer<typeof RichTextSchema>;
 
 export function parseProps(input: unknown): ClientStoryAnnouncementBodyProps {
   return ClientStoryAnnouncementBodyPropsSchema.parse(input);
+}
+
+function RichTextContent({ text }: { text: RichText }) {
+  if (typeof text === "string") return text;
+  return text.map((part, index) =>
+    typeof part === "string" ? (
+      part
+    ) : (
+      <a
+        key={`${part.href}-${index}`}
+        href={part.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-semibold text-brand-accent underline-offset-4 hover:underline"
+      >
+        {part.text}
+      </a>
+    ),
+  );
 }
 
 function AnnouncementBlockContent({ block }: { block: AnnouncementBlock }) {
@@ -150,7 +199,7 @@ function AnnouncementBlockContent({ block }: { block: AnnouncementBlock }) {
   if (block.type === "lede") {
     return (
       <p className="text-pretty text-base sm:text-lg font-semibold leading-relaxed text-primary">
-        {block.text}
+        <RichTextContent text={block.text} />
       </p>
     );
   }
@@ -177,7 +226,7 @@ function AnnouncementBlockContent({ block }: { block: AnnouncementBlock }) {
             : "text-pretty text-base sm:text-lg leading-relaxed text-secondary"
         }
       >
-        {block.text}
+        <RichTextContent text={block.text} />
       </p>
     );
   }

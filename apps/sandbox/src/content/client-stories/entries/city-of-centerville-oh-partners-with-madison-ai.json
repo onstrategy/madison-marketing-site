@@ -1,0 +1,123 @@
+{
+  "id": "city-of-centerville-oh-partners-with-madison-ai",
+  "path": "/city-of-centerville-oh-partners-with-madison-ai/",
+  "sourceUrl": "https://www.madisonai.com/city-of-centerville-oh-partners-with-madison-ai",
+  "order": 2,
+  "featured": false,
+  "metadata": {
+    "title": "City of Centerville, OH, Partners with Madison AI to Centralize Municipal Knowledge and Streamline Operations",
+    "description": "The City of Centerville, Ohio has partnered with Madison AI to launch a citywide AI assistant that centralizes institutional knowledge and streamlines operations across every department.",
+    "seoTitle": "City of Centerville, OH, Partners with Madison AI to Centralize Municipal Knowledge and Streamline Operations"
+  },
+  "card": {
+    "kicker": "New Deployment",
+    "title": "City of Centerville, OH, Partners with Madison AI to Centralize Municipal Knowledge and Streamline Operations",
+    "summary": "Centralizing institutional knowledge and streamlining operations citywide",
+    "clientName": "City of Centerville",
+    "photo": {
+      "asset": "centerville-hero.jpg",
+      "alt": "Centerville, Ohio municipal landscape",
+      "width": 1008,
+      "height": 600
+    },
+    "logo": {
+      "asset": "centerville.png",
+      "alt": "City of Centerville, Ohio",
+      "width": 250,
+      "height": 250
+    }
+  },
+  "sections": [
+    {
+      "type": "client-story-announcement-hero",
+      "props": {
+        "category": "New Deployment",
+        "title": "City of Centerville, OH, Partners with Madison AI to Centralize Municipal Knowledge and Streamline Operations",
+        "photo": {
+          "asset": "centerville-hero.jpg",
+          "alt": "Centerville, Ohio municipal landscape",
+          "width": 1008,
+          "height": 600
+        }
+      }
+    },
+    {
+      "type": "client-story-announcement-body",
+      "props": {
+        "blocks": [
+          {
+            "type": "lede",
+            "text": [
+              "The ",
+              {
+                "type": "link",
+                "text": "City of Centerville",
+                "href": "https://www.centervilleohio.gov/"
+              },
+              ", Ohio, has partnered with Madison AI to implement a citywide artificial intelligence (AI) assistant that cuts through administrative complexities, accelerates routine tasks, and improves staff's access to critical information across all departments."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "This customized tool equips employees to instantly locate internal policies, retrieve decades of institutional knowledge, and streamline daily workflows. By seamlessly bridging the information gap between departments, the tool ensures that staff can bypass hours of manual research, gaining valuable time back to better serve the Centerville community."
+          },
+          {
+            "type": "paragraph",
+            "text": "To kick off the partnership, the Madison AI team conducted a hands-on, onsite training with 60 City staff. Centerville demonstrates a strong commitment to innovation as departments actively engaged with the training and incorporated the Madison AI tool into their daily operations."
+          },
+          {
+            "type": "paragraph",
+            "text": "Because the citywide assistant is trained strictly on Centerville’s enterprise data, it ensures total accuracy while retaining control and privacy over its information. This approach prevents the hallucinations common in generic AI tools, guaranteeing that every answer provided to staff is securely cited from the City's records."
+          },
+          {
+            "type": "quote",
+            "text": "We are thrilled to welcome the City of Centerville to the Madison AI community. When departments are empowered with instant access to their own operational truth, it completely transforms how they collaborate and serve the public. Our mission is to dismantle the barriers of scattered data and siloed departments, providing Centerville’s dedicated staff with a secure platform that amplifies their hard work and commitment to serving their residents.",
+            "attribution": "Erica Olsen, CEO of Madison AI",
+            "photo": {
+              "asset": "madison-erica-olsen.png",
+              "alt": "Erica Olsen, CEO of Madison AI",
+              "width": 603,
+              "height": 603
+            }
+          },
+          {
+            "type": "heading",
+            "text": "About the City of Centerville, OH"
+          },
+          {
+            "type": "paragraph",
+            "text": [
+              "Located in Montgomery County, Centerville is a suburban City about 15 miles south of downtown Dayton, Ohio. With a population of approximately 25,000 residents, Centerville pairs its historic stone architecture with top-rated schools, extensive park and recreation facilities, and family-focused community programs. Learn more about the ",
+              {
+                "type": "link",
+                "text": "City of Centerville",
+                "href": "https://www.centervilleohio.gov/"
+              },
+              ", OH."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "About Madison AI"
+          },
+          {
+            "type": "paragraph",
+            "text": "Madison AI is the AI engine for local government. Using enterprise data and systems of record, Madison AI’s suite of purpose-built artificial intelligence assistants is designed to support the primary internal functions of local government. These include assistants for the Office of the City Manager, Community Development, Procurement, and related operational areas. Madison AI accelerates administrative tasks, such as preparing staff reports, generating zoning verification letters, and drafting requests for proposals, using the agency’s own enterprise data to ensure accuracy and reliability. Co-founded by Washoe County and trusted by nearly 50 local governments, Madison AI supports public-sector staff by reducing administrative workload and enabling teams to direct more time to serving their communities."
+          }
+        ]
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "client-story-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form below, and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

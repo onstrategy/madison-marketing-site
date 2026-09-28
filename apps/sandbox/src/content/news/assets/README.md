@@ -24,3 +24,5 @@ legacy Webflow CDN at runtime.
 | `dana-searcy.avif` | `https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/692ef06b3a9cfadffd9b73f1_65249c10e29e067827efb3cc546bc830_2025%20Dana%20Searcy%20square.avif` |
 | `most-innovative-solution-card.avif` | `https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/693035520a6419e24ee3e565_Award.avif` |
 | `most-innovative-solution-hero.avif` | `https://cdn.prod.website-files.com/691d9787eade11d4963fe1d2/6931cfb3dde4c63aef84935b_CivStart.avif` |
+| `cost-of-generic-ai-in-local-government.jpg` | Supplied directly by the contributor (title-card graphic) — no external source |
+| `cost-of-generic-ai-in-local-government-hero.jpg` | Cropped and converted to black & white from a photo by Mark McLaughlin on Unsplash (free to use under the [Unsplash License](https://unsplash.com/license)): `https://unsplash.com/photos/8_UDWAPHISM` |
