@@ -27,6 +27,9 @@ export const ClientStoryDocumentSchema = z
     }),
     order: z.number().int().nonnegative(),
     featured: z.boolean(),
+    // Keeps the story's own page live but leaves it off the Client Stories
+    // listing (e.g. a deployment announcement with no case study behind it).
+    unlisted: z.boolean().optional(),
     metadata: z
       .object({
         title: NonEmptyStringSchema,
