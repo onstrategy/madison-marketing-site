@@ -32,6 +32,8 @@ declare global {
   }
 }
 
+const GA_MEASUREMENT_ID = "G-3EYM1Q0C6H";
+
 const COOKIEBOT_DIALOG_ID = "CybotCookiebotDialog";
 
 /**
@@ -139,12 +141,42 @@ export function Layout({ children }: { children: ReactNode }) {
           data-blockingmode="auto"
           type="text/javascript"
         />
-        {/* No analytics tag here on purpose. A previous gtag.js tag was
-            removed: React hoists `<script async>` into the top of <head>,
-            which put it ahead of the Cookiebot script above and defeated
-            Cookiebot's automatic blocking (analytics cookies were set
-            before consent). Any future tag must load outside this
-            React-rendered <head> so Cookiebot stays the first script. */}
+        {/* HubSpot's site-wide tracking script, gated on Cookiebot consent.
+            `type="text/plain"` + `data-cookieconsent="marketing"` is
+            Cookiebot's declarative pattern: the browser will not execute
+            the tag, and Cookiebot swaps it for a real script only once the
+            visitor accepts the Marketing category (including on a later
+            visit). Declined or unanswered means HubSpot never loads and
+            sets no cookies. No `async`/`defer`: a previous gtag.js tag was
+            removed because React hoists `<script async>` to the top of
+            <head>, ahead of the Cookiebot script above, which defeated
+            Cookiebot's blocking. Any future tag must follow the same rules. */}
+        <script
+          id="hs-script-loader"
+          src="https://js.hs-scripts.com/54493.js"
+          type="text/plain"
+          data-cookieconsent="marketing"
+        />
+        {/* Google Analytics (gtag.js), gated on the Statistics category with
+            the same declarative pattern as HubSpot above: neither tag runs
+            until the visitor accepts Statistics cookies. Both are needed —
+            the loader and the config call — and no `async`, for the same
+            DOM-order reason. */}
+        <script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          type="text/plain"
+          data-cookieconsent="statistics"
+        />
+        <script
+          type="text/plain"
+          data-cookieconsent="statistics"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');`,
+          }}
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         {/* Keep the optional site-wide guard in the document because leaf route
