@@ -40,3 +40,4 @@ Added after the capture (not from the live site):
 - `four-ways-to-get-more-card.avif` — supplied directly ("web-cover-four-ways.jpg"), converted to AVIF
 - `two-paths-to-prr-card.avif` — supplied directly ("two-paths.jpg"), converted to AVIF
 - `how-to-build-dais-ready-reports-card.avif` — supplied directly ("Dana-Kamryn.jpg"), converted to AVIF
+- `six-ways-card.jpg` — supplied directly (cover for AI In Action 025), kept as JPEG
