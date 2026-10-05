@@ -4,21 +4,21 @@
   "order": 0,
   "sourceUrl": "https://www.madisonai.com/six-ways",
   "metadata": {
-    "title": "Six Ways to Lead Your Agency Through AI",
+    "title": "Six Leadership Practices to Guide AI Transformation",
     "description": "Six lessons from Ron Holifield on leading your agency through AI: trust as infrastructure, data ownership, shared values, the full cost, and bringing your community with you.",
-    "seoTitle": "Six Ways to Lead Your Agency Through AI"
+    "seoTitle": "Six Leadership Practices to Guide AI Transformation"
   },
   "card": {
-    "title": "Six Ways to Lead Your Agency Through AI",
+    "title": "Six Leadership Practices to Guide AI Transformation",
     "imageAsset": "six-ways-card.jpg",
-    "imageAlt": "Six Ways to Lead Your Agency Through AI"
+    "imageAlt": "Six Leadership Practices to Guide AI Transformation"
   },
   "sections": [
     {
       "type": "webinar-hero",
       "props": {
         "category": "AI In Action Webinar",
-        "title": "Six Ways to Lead Your Agency Through AI",
+        "title": "Six Leadership Practices to Guide AI Transformation",
         "subtitle": "AI is moving faster than most policies, contracts, and council conversations. On October 1, Erica Olsen and Kamryn Onorato sat down with Ron Holifield, founder of Strategic Government Resources and president of Civic Marketplace, to talk about leading through this moment before it leads you."
       }
     },
