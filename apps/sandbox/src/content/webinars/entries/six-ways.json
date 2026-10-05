@@ -37,6 +37,7 @@
     {
       "type": "webinar-segment",
       "props": {
+        "anchor": "tip1",
         "heading": "Lead the Change Before It Leads You",
         "paragraphs": [
           "AI will change how you do business as dramatically as the internet did, and Ron believes the same core leadership principles still work. Right now, AI ranks among the top four anxieties he hears in city halls, alongside a possible economic downturn, pressure from state legislatures, and data centers. Erica framed the question for your team: How do you lead your organization through this transformation so staff and residents feel guided?"
@@ -63,6 +64,7 @@
     {
       "type": "webinar-segment",
       "props": {
+        "anchor": "tip2",
         "heading": "Trust Is Now Your Infrastructure",
         "paragraphs": [
           "Vendors used to protect themselves by making your data hard to reach and move. Ron says trust is now the only advantage that lasts, and your agency sets the standard. He compared trust to a car with an engine rated for 155 mph and tires rated for 85. Your whole system runs at the speed of its weakest part. When residents feel blindsided by one tool, like a license plate reader rollout with little public discussion, every future tool faces a steeper climb. Erica’s advice: publish where, how, and why you use AI."
@@ -85,6 +87,7 @@
     {
       "type": "webinar-segment",
       "props": {
+        "anchor": "tip3",
         "heading": "Govern Before You Deploy, Starting With Your Data",
         "paragraphs": [
           "Ron starts before the guardrails. Values come first, and the policies follow. Top of his list: your agency owns its data, keeps free or low-cost access to it, and approves every use. He also wants vendors to prove how they protect it. Many legacy contracts predate these questions entirely. Erica urged you to treat data as an asset and confirm you can retrieve it if you leave a vendor. Madison runs in each agency’s own Microsoft tenant and never trains foundation models on customer data. One city CIO already writes data ownership and sovereignty terms into her contracts."
@@ -115,6 +118,7 @@
     {
       "type": "webinar-segment",
       "props": {
+        "anchor": "tip4",
         "heading": "Set Your AI Values",
         "paragraphs": [
           "Ron draws a clear line between roles. Elected officials set the vision and values. Staff build the plan to make it real. AI values differ in every community, so your governing body needs to work through them directly. Ron hears from city managers caught between digital-native council members pushing for speed and longtime members asking to slow down. Starting with values breaks that cycle, and most councils agree on values more than they expect. With post-election retreats ahead, Erica sees January as the natural time to start."
@@ -141,6 +145,7 @@
     {
       "type": "webinar-segment",
       "props": {
+        "anchor": "tip5",
         "heading": "Count the Full Cost",
         "paragraphs": [
           "Every new tool carries costs beyond the price tag: political capital, public trust, and environmental impact. Madison AI’s internal analysis found shared compute lowers each customer’s footprint. A fully deployed midsize jurisdiction on Madison produces emissions roughly equal to two to three gallons of gas a year. Agencies can also ask vendors to use solar-powered data centers with water recirculation. Ron pointed to the leverage local governments hold together. A thousand cities asking for the same standard can move the market."
@@ -163,6 +168,7 @@
     {
       "type": "webinar-segment",
       "props": {
+        "anchor": "tip6",
         "heading": "Tell the Story First and Bring Your Community With You",
         "paragraphs": [
           "When criticism starts, the instinct is to pull back. Ron calls that the wrong strategy. Most residents welcome change when leaders act thoughtfully and independently. During one controversial planning effort, his team ran 28 community meetings where elected officials only listened. The community found real unity on the path forward. Then you close the loop: share what you heard and the guardrails you built. Ron also suggests a citizen advisory council drawn from local employers, since many residents already use AI at work."
@@ -185,6 +191,7 @@
     {
       "type": "webinar-segment",
       "props": {
+        "anchor": "tip7",
         "heading": "Connect with Ron Holifield",
         "paragraphs": [
           "Connect with Ron Holifield on two efforts built for local government."
@@ -218,6 +225,7 @@
     {
       "type": "webinar-full-session",
       "props": {
+        "anchor": "full",
         "heading": "Full Session Video",
         "videoTitle": "025_AI In Action: Leading Change Before AI Forces It (full)",
         "wistiaId": "th2xrg4z9g"

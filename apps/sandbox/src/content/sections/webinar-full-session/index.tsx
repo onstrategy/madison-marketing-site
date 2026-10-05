@@ -6,6 +6,9 @@ const NonEmptyStringSchema = z.string().trim().min(1);
 
 const WebinarFullSessionPropsSchema = z
   .object({
+    // Optional in-page link target (e.g. "tip1" -> /page/#tip1), so intro
+    // copy and shared links can jump straight to this section.
+    anchor: z.string().regex(/^[a-z][a-z0-9-]*$/).optional(),
     heading: NonEmptyStringSchema,
     videoTitle: NonEmptyStringSchema,
     wistiaId: z.string().regex(/^[a-z0-9]+$/),
@@ -19,12 +22,16 @@ export function parseProps(input: unknown): WebinarFullSessionProps {
 }
 
 export default function WebinarFullSessionSection({
+  anchor,
   heading,
   videoTitle,
   wistiaId,
 }: WebinarFullSessionProps) {
   return (
-    <section className="dark border-b border-default bg-app px-gutter py-17 sm:py-24">
+    <section
+      id={anchor}
+      className="dark scroll-mt-24 border-b border-default bg-app px-gutter py-17 sm:py-24"
+    >
       <div className="mx-auto max-w-4xl">
         <Reveal>
           <div className="mb-8 flex items-center gap-3.5">

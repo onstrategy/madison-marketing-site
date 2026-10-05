@@ -69,6 +69,9 @@ const WebinarCalloutSchema = z
 
 const WebinarSegmentInputSchema = z
   .object({
+    // Optional in-page link target (e.g. "tip1" -> /page/#tip1), so intro
+    // copy and shared links can jump straight to this section.
+    anchor: z.string().regex(/^[a-z][a-z0-9-]*$/).optional(),
     eyebrow: NonEmptyStringSchema.optional(),
     heading: NonEmptyStringSchema,
     paragraphs: z.array(NonEmptyStringSchema).default([]),
@@ -156,6 +159,7 @@ function ItemContent({ item }: { item: WebinarListItem }) {
 }
 
 export default function WebinarSegmentSection({
+  anchor,
   eyebrow,
   heading,
   paragraphs,
@@ -165,7 +169,10 @@ export default function WebinarSegmentSection({
   callout,
 }: WebinarSegmentProps) {
   return (
-    <section className="border-b border-default bg-app px-gutter py-14 sm:py-20">
+    <section
+      id={anchor}
+      className="scroll-mt-24 border-b border-default bg-app px-gutter py-14 sm:py-20"
+    >
       <div className="mx-auto max-w-3xl">
         <Reveal>
           {eyebrow ? <Eyebrow className="mb-4">{eyebrow}</Eyebrow> : null}
