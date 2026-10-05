@@ -1,0 +1,239 @@
+{
+  "id": "six-ways",
+  "path": "/six-ways/",
+  "order": 0,
+  "sourceUrl": "https://www.madisonai.com/six-ways",
+  "metadata": {
+    "title": "Six Ways to Lead Your Agency Through AI",
+    "description": "Six lessons from Ron Holifield on leading your agency through AI: trust as infrastructure, data ownership, shared values, the full cost, and bringing your community with you.",
+    "seoTitle": "Six Ways to Lead Your Agency Through AI"
+  },
+  "card": {
+    "title": "Six Ways to Lead Your Agency Through AI",
+    "imageAsset": "six-ways-card.jpg",
+    "imageAlt": "Six Ways to Lead Your Agency Through AI"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "Six Ways to Lead Your Agency Through AI",
+        "subtitle": "AI is moving faster than most policies, contracts, and council conversations. On October 1, Erica Olsen and Kamryn Onorato sat down with Ron Holifield, founder of Strategic Government Resources and president of Civic Marketplace, to talk about leading through this moment before it leads you."
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "paragraphs": [
+          "Ron spends his year in city halls, county offices, and governing body retreats nationwide. He saw a shift like this with the dawn of the internet, and he believes the same leadership principles hold. The conversation kept returning to one idea: trust. It belongs in every technology decision from day one. It erodes fast when residents feel left out. And it now matters more than any single tool.",
+          "Here are six lessons for your next leadership meeting, council retreat, or vendor conversation. Each links to a short clip."
+        ],
+        "callout": {
+          "title": "Every department adopts AI a little differently. Share this with your department heads."
+        }
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Lead the Change Before It Leads You",
+        "paragraphs": [
+          "AI will change how you do business as dramatically as the internet did, and Ron believes the same core leadership principles still work. Right now, AI ranks among the top four anxieties he hears in city halls, alongside a possible economic downturn, pressure from state legislatures, and data centers. Erica framed the question for your team: How do you lead your organization through this transformation so staff and residents feel guided?"
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"This is an organizational transformation impacting humans and the way that we serve citizens.\"",
+            "attribution": "Erica Olsen, Madison AI",
+            "portrait": {
+              "asset": "erica-olsen-ceo-madison-ai-220d8018.png",
+              "alt": "Erica Olsen, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "025_AI In Action: Lead the Change Before It Leads You",
+            "wistiaId": "slmb59i85u"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Trust Is Now Your Infrastructure",
+        "paragraphs": [
+          "Vendors used to protect themselves by making your data hard to reach and move. Ron says trust is now the only advantage that lasts, and your agency sets the standard. He compared trust to a car with an engine rated for 155 mph and tires rated for 85. Your whole system runs at the speed of its weakest part. When residents feel blindsided by one tool, like a license plate reader rollout with little public discussion, every future tool faces a steeper climb. Erica’s advice: publish where, how, and why you use AI."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"Trust needs to be treated as infrastructure just as much as technology does, and it needs to be baked into how we do everything.\"",
+            "attribution": "Ron Holifield, Founder, Strategic Government Resources"
+          }
+        ],
+        "videos": [
+          {
+            "title": "025_AI In Action: Trust Is Now Your Infrastructure",
+            "wistiaId": "rmewxtrvgf"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Govern Before You Deploy, Starting With Your Data",
+        "paragraphs": [
+          "Ron starts before the guardrails. Values come first, and the policies follow. Top of his list: your agency owns its data, keeps free or low-cost access to it, and approves every use. He also wants vendors to prove how they protect it. Many legacy contracts predate these questions entirely. Erica urged you to treat data as an asset and confirm you can retrieve it if you leave a vendor. Madison runs in each agency’s own Microsoft tenant and never trains foundation models on customer data. One city CIO already writes data ownership and sovereignty terms into her contracts."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"So you need to be explicit that you own your data.\"",
+            "attribution": "Ron Holifield, Founder, Strategic Government Resources"
+          },
+          {
+            "quote": "\"And actually make sure that you can get it if you leave.\"",
+            "attribution": "Erica Olsen, Madison AI",
+            "portrait": {
+              "asset": "erica-olsen-ceo-madison-ai-220d8018.png",
+              "alt": "Erica Olsen, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "025_AI In Action: Govern Before You Deploy, Starting With Your Data",
+            "wistiaId": "vgop8aca1s"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Set Your AI Values",
+        "paragraphs": [
+          "Ron draws a clear line between roles. Elected officials set the vision and values. Staff build the plan to make it real. AI values differ in every community, so your governing body needs to work through them directly. Ron hears from city managers caught between digital-native council members pushing for speed and longtime members asking to slow down. Starting with values breaks that cycle, and most councils agree on values more than they expect. With post-election retreats ahead, Erica sees January as the natural time to start."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"Whenever we miss that overarching value set… we tend to be a little rudderless.\"",
+            "attribution": "Erica Olsen, Madison AI",
+            "portrait": {
+              "asset": "erica-olsen-ceo-madison-ai-220d8018.png",
+              "alt": "Erica Olsen, Madison AI"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "title": "025_AI In Action: Set Your AI Values",
+            "wistiaId": "gdb8u6c85m"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Count the Full Cost",
+        "paragraphs": [
+          "Every new tool carries costs beyond the price tag: political capital, public trust, and environmental impact. Madison AI’s internal analysis found shared compute lowers each customer’s footprint. A fully deployed midsize jurisdiction on Madison produces emissions roughly equal to two to three gallons of gas a year. Agencies can also ask vendors to use solar-powered data centers with water recirculation. Ron pointed to the leverage local governments hold together. A thousand cities asking for the same standard can move the market."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"The power of local government to profoundly change the future is off the charts.\"",
+            "attribution": "Ron Holifield, Founder, Strategic Government Resources"
+          }
+        ],
+        "videos": [
+          {
+            "title": "025_AI In Action: Count the Full Cost",
+            "wistiaId": "z4q4zt9pwq"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Tell the Story First and Bring Your Community With You",
+        "paragraphs": [
+          "When criticism starts, the instinct is to pull back. Ron calls that the wrong strategy. Most residents welcome change when leaders act thoughtfully and independently. During one controversial planning effort, his team ran 28 community meetings where elected officials only listened. The community found real unity on the path forward. Then you close the loop: share what you heard and the guardrails you built. Ron also suggests a citizen advisory council drawn from local employers, since many residents already use AI at work."
+        ],
+        "items": [],
+        "quotes": [
+          {
+            "quote": "\"We listened to you. We heard you. Here’s what we’ve done to build the guardrails, to build the policies.\"",
+            "attribution": "Ron Holifield, Founder, Strategic Government Resources"
+          }
+        ],
+        "videos": [
+          {
+            "title": "025_AI In Action: Tell the Story First and Bring Your Community With You",
+            "wistiaId": "yln7gly2q8"
+          }
+        ]
+      }
+    },
+    {
+      "type": "webinar-segment",
+      "props": {
+        "heading": "Connect with Ron Holifield",
+        "paragraphs": [
+          "Connect with Ron Holifield on two efforts built for local government."
+        ],
+        "items": [
+          {
+            "label": "AI UnConference | November 10, Philadelphia.",
+            "description": "Explore AI solutions built for local government, co-hosted with Delaware Valley Trusts, the self-insurance risk pool for Pennsylvania local governments."
+          },
+          {
+            "label": "Civic Marketplace.",
+            "description": "Thinking about tech procurement? Work with pre-vetted, pre-bid suppliers and procure in days. Compare suppliers, request quotes, and manage documents in one place."
+          }
+        ],
+        "quotes": [],
+        "videos": [
+          {
+            "title": "025_AI In Action: Ron Holifield | AI UnConference & Civic Marketplace",
+            "wistiaId": "22wx5kptop"
+          }
+        ],
+        "callout": {
+          "title": "Questions for Ron?",
+          "link": {
+            "label": "Email ron@civicmarketplace.com",
+            "href": "mailto:ron@civicmarketplace.com"
+          }
+        }
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "heading": "Full Session Video",
+        "videoTitle": "025_AI In Action: Leading Change Before AI Forces It (full)",
+        "wistiaId": "th2xrg4z9g"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}
