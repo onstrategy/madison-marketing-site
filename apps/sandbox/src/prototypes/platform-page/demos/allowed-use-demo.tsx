@@ -305,6 +305,9 @@ export function AllowedUseDemo() {
     fontWeight: 700,
     padding: "1px 5px",
     borderRadius: 5,
+    // The app's base layer zeroes `sup` line-height, which collapses the pill
+    // to its padding and lets the number spill out of it.
+    lineHeight: "normal",
     verticalAlign: "super",
     marginLeft: 3,
     ...metaFont,
