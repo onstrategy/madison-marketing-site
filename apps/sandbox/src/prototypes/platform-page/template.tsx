@@ -7,6 +7,7 @@ import { LogoMark as MadisonMark } from "@madison/ui/logo";
 import { HubSpotForm } from "../../content/forms/HubSpotForm";
 import { Nav, Footer } from "../landing/sections";
 import { Reveal, Eyebrow, SectionHeading, BrowserFrame } from "../landing/parts";
+import { AllowedUseDemo } from "./demos/allowed-use-demo";
 import { StaffReportDemo } from "./demos/staff-report-demo";
 import { SolicitationDemo } from "./demos/solicitation-demo";
 import { PraDemo } from "./demos/pra-demo";
@@ -72,7 +73,7 @@ export interface PlatformPageData {
      * fixed-timeline loop of one real workflow — see ./demos/. Pages without
      * an approved demo yet fall back to the static placeholder frame.
      */
-    demo?: "staff-report" | "solicitation" | "public-records";
+    demo?: "staff-report" | "solicitation" | "public-records" | "allowed-use";
   };
   howItWorks: {
     eyebrow: string;
@@ -578,6 +579,8 @@ export function PlatformPageTemplate({ data }: { data: PlatformPageData }) {
                     <StaffReportDemo />
                   ) : data.media.demo === "public-records" ? (
                     <PraDemo />
+                  ) : data.media.demo === "allowed-use" ? (
+                    <AllowedUseDemo />
                   ) : (
                     <div className="flex h-80 items-center justify-center bg-app text-sm text-muted">
                       Product walkthrough
