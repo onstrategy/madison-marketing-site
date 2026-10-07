@@ -305,10 +305,15 @@ export function AllowedUseDemo() {
     fontWeight: 700,
     padding: "1px 5px",
     borderRadius: 5,
-    // The app's base layer zeroes `sup` line-height, which collapses the pill
-    // to its padding and lets the number spill out of it.
-    lineHeight: "normal",
-    verticalAlign: "super",
+    // Sits on the text line, nudged up a touch, rather than `vertical-align:
+    // super` — that lifts the pill into the line above on wrapped rows. A
+    // fixed line-height also overrides the base layer's `sup { line-height: 0 }`,
+    // which otherwise collapses the pill to its padding.
+    display: "inline-block",
+    lineHeight: 1.1,
+    verticalAlign: "baseline",
+    position: "relative",
+    top: -2,
     marginLeft: 3,
     ...metaFont,
   };
