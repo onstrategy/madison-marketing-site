@@ -40,7 +40,7 @@ const DATA: PlatformPageData = {
   },
   media: {
     title: "Madison AI — Community Development",
-    demo: "staff-report",
+    demo: "allowed-use",
   },
   howItWorks: {
     eyebrow: "How it works",
