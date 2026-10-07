@@ -1,5 +1,10 @@
 import { useLayoutEffect, useRef } from "react";
-import { logoForSource } from "../../landing/source-logos";
+import accela from "./allowed-use-logos/accela.png";
+import esri from "./allowed-use-logos/esri.png";
+import granicus from "./allowed-use-logos/granicus.png";
+import laserfiche from "./allowed-use-logos/laserfiche.png";
+import municode from "./allowed-use-logos/municode.jpg";
+import sharepoint from "./allowed-use-logos/sharepoint.png";
 import {
   Caret,
   DemoKeyframes,
@@ -66,18 +71,20 @@ const metaFont: Style = { fontFamily: SANS, letterSpacing: "0.04em" };
 interface Chip {
   name: string;
   meta: string;
+  /** The wordmark supplied with the approved animation, sized below. */
+  logo: string;
   /** Logo box height / width÷height ratio, as authored against the 1920 stage. */
   logoH: number;
   ar: number;
 }
 
 const CHIPS: Chip[] = [
-  { name: "Granicus", meta: "6 agendas", logoH: 47, ar: 4.831 },
-  { name: "Laserfiche", meta: "3 staff reports", logoH: 62, ar: 3.285 },
-  { name: "Esri", meta: "9 GIS layers", logoH: 48, ar: 2.635 },
-  { name: "Accela", meta: "3 permits", logoH: 30, ar: 7.547 },
-  { name: "SharePoint", meta: "12 files", logoH: 88, ar: 1.779 },
-  { name: "Municode", meta: "Ch. 110", logoH: 41, ar: 5.464 },
+  { name: "Granicus", logo: granicus, meta: "6 agendas", logoH: 47, ar: 4.831 },
+  { name: "Laserfiche", logo: laserfiche, meta: "3 staff reports", logoH: 62, ar: 3.285 },
+  { name: "Esri", logo: esri, meta: "9 GIS layers", logoH: 48, ar: 2.635 },
+  { name: "Accela", logo: accela, meta: "3 permits", logoH: 30, ar: 7.547 },
+  { name: "SharePoint", logo: sharepoint, meta: "12 files", logoH: 88, ar: 1.779 },
+  { name: "Municode", logo: municode, meta: "Ch. 110", logoH: 41, ar: 5.464 },
 ];
 
 const LAYER_T = [10.6, 11.4, 12.4, 13.4, 14.2, 15.0];
@@ -325,7 +332,7 @@ export function AllowedUseDemo() {
     const appear = T.searchT + i * 0.4;
     const found = t >= appear + 1.2;
     const visible = t >= appear;
-    return { ...c, visible, found, searching: visible && !found, logo: logoForSource(c.name) };
+    return { ...c, visible, found, searching: visible && !found };
   });
   const statusShow = t >= T.searchT && t < lastFound;
   const searchDoneShow = t >= lastFound && t < T.cardAppear + 2;
@@ -668,22 +675,16 @@ export function AllowedUseDemo() {
                         }}
                       />
                     ) : null}
-                    {c.logo ? (
-                      <span
-                        role="img"
-                        aria-label={c.name}
-                        style={{
-                          flex: "0 0 auto",
-                          width: Math.round(c.logoH * c.ar),
-                          height: c.logoH,
-                          background: `url('${c.logo}') left center / contain no-repeat`,
-                        }}
-                      />
-                    ) : (
-                      <span style={{ fontWeight: 600, fontSize: 27, color: token("--text-primary"), whiteSpace: "nowrap" }}>
-                        {c.name}
-                      </span>
-                    )}
+                    <span
+                      role="img"
+                      aria-label={c.name}
+                      style={{
+                        flex: "0 0 auto",
+                        width: Math.round(c.logoH * c.ar),
+                        height: c.logoH,
+                        background: `url('${c.logo}') left center / contain no-repeat`,
+                      }}
+                    />
                     <span
                       style={{
                         marginLeft: "auto",
