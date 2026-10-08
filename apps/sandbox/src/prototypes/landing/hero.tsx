@@ -23,14 +23,14 @@ const AUDIENCES: PromptDemoItem[] = [
     prompt:
       "Draft a staff report to approve a new resolution and agreement between the transportation commission and City for flood equipment storage",
     reply:
-      "Pulling your report template, five prior reports, and Ordinance 24-07 — a first draft is ready to edit.",
+      "Pulling your report template, five prior reports, and Ordinance 24-07. A first draft is ready to edit.",
   },
   {
     id: "electeds",
     label: "For Elected",
     prompt: "Brief me on tonight's agenda.",
     reply:
-      "Summarizing all twelve items, the packet, and prior votes — your briefing is ready before the meeting.",
+      "Summarizing all twelve items, the packet, and prior votes. Your briefing is ready before the meeting.",
   },
   {
     id: "records",
@@ -38,7 +38,7 @@ const AUDIENCES: PromptDemoItem[] = [
     prompt:
       "Find me all documents, records, and emails about any action related to the Senior Center in 2025",
     reply:
-      "Scoping the request, flagging exemptions, and drafting the response letter — ready for your review.",
+      "Scoping the request, flagging exemptions, and drafting the response letter. Ready for your review.",
   },
 ];
 
@@ -102,8 +102,8 @@ export function Hero() {
           </Reveal>
           <Reveal delay={120}>
             <p className="mt-6 max-w-md text-pretty text-lg text-secondary">
-              One platform for everyone who runs your community — staff, elected
-              officials, and citizens — built from your own record.
+              One platform for staff, elected officials, and citizens, built from
+              your community&rsquo;s own record.
             </p>
           </Reveal>
           <Reveal delay={180}>
