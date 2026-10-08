@@ -4,7 +4,6 @@ import {
   ArrowRight,
   Landmark,
   ShieldCheck,
-  Map as MapIcon,
   Lock,
   Building2,
   LandPlot,
@@ -341,7 +340,7 @@ const CAPABILITIES = [
   {
     icon: Building2,
     title: "Citywide AI",
-    desc: "One model grounded across every department — trained on your government's full record, not just one office's files.",
+    desc: "One model grounded across every department and trained on your government's full record, not just one office's files.",
     href: "/citywide-ai/",
   },
   {
@@ -353,7 +352,7 @@ const CAPABILITIES = [
   {
     icon: FileSignature,
     title: "AI for Procurement & Contracts",
-    desc: "RFP drafting, contract review, and vendor history — cited to your own procurement record.",
+    desc: "RFP drafting, contract review, and vendor history, all cited to your own procurement record.",
     href: "/procurement-contracts-ai/",
   },
   {
@@ -389,8 +388,8 @@ export function Capabilities() {
             </h2>
           </div>
           <p className="mb-10 text-lg text-secondary">
-            One platform, four modules — powered by department-specific
-            models trained on your government&rsquo;s record.
+            One platform, four modules, each powered by a department-specific
+            model trained on your government&rsquo;s record.
           </p>
         </Reveal>
         <div ref={gridRef} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -713,13 +712,9 @@ export function TheMoment() {
         <div className="grid items-start gap-8 lg:grid-cols-[2fr_3fr] lg:gap-24">
           <Reveal>
             <p className="max-w-md text-pretty leading-relaxed text-secondary">
-              The municipal sector is undergoing its most significant
-              operational shift in a generation. Governments that leaned into
-              purpose-built AI early are already seeing tangible returns.
-              <br />
-              <br />
-              This is the early framework for what staff and electeds can
-              reasonably expect.
+              Governments that adopted purpose-built AI early are already
+              seeing results, and the numbers below show what staff and
+              elected officials can reasonably expect.
             </p>
           </Reveal>
           <div className="flex flex-col">
@@ -772,28 +767,26 @@ export function Vision() {
             </h2>
             <div className="space-y-4 leading-relaxed text-secondary">
               <p>
-                Local government holds the longest, deepest, most decision-rich
-                record of how a community lives. That record is currently
-                scattered across PDFs, filing cabinets, and three decades of
-                meeting tapes.
+                Local government keeps the most detailed record of how a
+                community lives. Right now that record is scattered across
+                PDFs, filing cabinets, and three decades of meeting tapes.
               </p>
               <p>
-                Our vision is to make that record continuously useful — so
-                every staff member has the institutional knowledge of a
-                thirty-year clerk, on demand, and every elected official walks
-                into the room already briefed.
+                We want that record to be useful every day, so every staff
+                member has the institutional knowledge of a thirty-year clerk
+                on demand, and every elected official walks into the room
+                already briefed.
               </p>
             </div>
             <div className="space-y-4 leading-relaxed text-secondary">
               <p>
-                Madison is built with — not for — the people who run the
-                building. Every workflow we ship was prototyped first in a real
-                county office, with the staff who will use it daily.
+                We build Madison alongside the people who run the building.
+                Every workflow we ship is prototyped first in a real county
+                office, with the staff who will use it daily.
               </p>
               <p>
-                The goal is not to replace civic judgment. The goal is to clear
-                the path so judgment can focus on the work that only humans can
-                do.
+                Madison takes the paperwork off people&rsquo;s plates so they
+                can spend their time on the decisions that need them.
               </p>
             </div>
           </div>
@@ -829,7 +822,7 @@ export function Vision() {
 }
 
 // ---------------------------------------------------------------------------
-// SECURITY — cool tinted band + four standards
+// SECURITY — cool tinted band + three standards
 // ---------------------------------------------------------------------------
 
 const STANDARDS = [
@@ -842,11 +835,6 @@ const STANDARDS = [
     icon: Landmark,
     title: "FedRAMP",
     desc: "Inherited from Microsoft Azure. Authorized for encryption, audit, and residency requirements.",
-  },
-  {
-    icon: MapIcon,
-    title: "StateRAMP",
-    desc: "In process. Continuous monitoring for SLG cloud workloads.",
   },
   {
     icon: Lock,
@@ -862,8 +850,7 @@ export function Security() {
         <Reveal>
           <div className="mb-11 grid gap-8 lg:grid-cols-2 lg:gap-14">
             <h3 className="text-balance text-3xl font-medium tracking-tight text-primary">
-              Compliant with the most rigorous public-sector security
-              standards.
+              Built to meet public-sector security standards.
             </h3>
             <div className="self-end">
               <p className="mb-4 leading-relaxed text-secondary">
@@ -880,7 +867,7 @@ export function Security() {
             </div>
           </div>
         </Reveal>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-3">
           {STANDARDS.map((std, i) => (
             <Reveal key={std.title} delay={i * 60}>
               <div className="h-full rounded-xl border border-default bg-surface p-5.5">
@@ -917,8 +904,8 @@ export function FinalCta() {
       <Reveal>
         <div className="mx-auto max-w-2xl">
           <h2 className="mb-4.5 text-balance text-3xl font-medium tracking-tight text-primary md:text-4xl">
-            From records requests to staff reports, let&rsquo;s transform your
-            everyday work.
+            From records requests to staff reports, let&rsquo;s take the
+            busywork off your team.
           </h2>
           <p className="mx-auto mb-8.5 max-w-lg text-lg leading-relaxed text-secondary">
             We&rsquo;ll load Madison with a sample of your records and walk
@@ -985,7 +972,7 @@ export function Footer() {
           <NavFooterLogo className="mb-3.5" />
 
           <p className="max-w-70 text-sm leading-relaxed text-secondary">
-            The vertical AI platform for cities and counties — grounded in
+            The vertical AI platform for cities and counties, grounded in
             your own record.
           </p>
         </div>

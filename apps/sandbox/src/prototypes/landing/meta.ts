@@ -1,7 +1,7 @@
 import type { PrototypeMeta } from "../../prototype-registry";
 
 const description =
-  "One platform for everyone who runs your community — staff, elected officials, and citizens — built from your own record.";
+  "One platform for staff, elected officials, and citizens, built from your community's own record.";
 
 const meta = {
   title: "Madison",
