@@ -85,16 +85,16 @@ describe("client story collection", () => {
           path: "/client-stories/city-of-corona/",
         },
         {
+          id: "deforest-partners-with-madison-ai",
+          path: "/deforest-partners-with-madison-ai/",
+        },
+        {
           id: "addison-success-story",
           path: "/addison-success-story/",
         },
         {
           id: "city-of-centerville-oh-partners-with-madison-ai",
           path: "/city-of-centerville-oh-partners-with-madison-ai/",
-        },
-        {
-          id: "deforest-partners-with-madison-ai",
-          path: "/deforest-partners-with-madison-ai/",
         },
         {
           id: "newark-california-kicks-off-madison-ai",
