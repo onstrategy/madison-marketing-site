@@ -85,6 +85,10 @@ describe("client story collection", () => {
           path: "/client-stories/city-of-corona/",
         },
         {
+          id: "deforest-partners-with-madison-ai",
+          path: "/deforest-partners-with-madison-ai/",
+        },
+        {
           id: "addison-success-story",
           path: "/addison-success-story/",
         },
@@ -164,10 +168,6 @@ describe("client story collection", () => {
           id: "chanhassen-success-story",
           path: "/chanhassen-success-story/",
         },
-        {
-          id: "deforest-partners-with-madison-ai",
-          path: "/deforest-partners-with-madison-ai/",
-        },
       ]);
 
       for (const story of clientStories) {
@@ -177,14 +177,6 @@ describe("client story collection", () => {
         );
         expect(story.path).toBe(sourcePath);
       }
-    });
-
-    it("keeps the DeForest announcement published but off the listing", () => {
-      const deforest = clientStories.find(
-        ({ id }) => id === "deforest-partners-with-madison-ai",
-      );
-      expect(deforest?.unlisted).toBe(true);
-      expect(clientStories.filter(({ unlisted }) => unlisted)).toHaveLength(1);
     });
 
     it("rejects a path without the public trailing slash", () => {

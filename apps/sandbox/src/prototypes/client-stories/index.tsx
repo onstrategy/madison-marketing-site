@@ -68,7 +68,7 @@ const FEATURED = {
 };
 
 const OTHER_STORIES: ClientStorySummary[] = clientStories
-  .filter((story) => story.id !== featuredStory.id && !story.unlisted)
+  .filter((story) => story.id !== featuredStory.id)
   .map(toSummary);
 
 function FeaturedHero({ data }: { data: typeof FEATURED }) {

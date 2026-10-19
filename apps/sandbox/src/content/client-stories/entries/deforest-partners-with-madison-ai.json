@@ -2,13 +2,13 @@
   "id": "deforest-partners-with-madison-ai",
   "path": "/deforest-partners-with-madison-ai/",
   "sourceUrl": "https://www.madisonai.com/deforest-partners-with-madison-ai",
-  "order": 190,
+  "order": 1,
   "featured": false,
-  "unlisted": true,
   "metadata": {
     "title": "DeForest Partners with Madison AI to Lead Wisconsin Municipalities Toward the Era of AI",
     "description": "The Village of DeForest, Wisconsin has partnered with Madison AI to become the first municipality in the state to deploy a citywide AI assistant.",
-    "seoTitle": "DeForest Partners with Madison AI to Lead Wisconsin Municipalities Toward the Era of AI"
+    "seoTitle": "DeForest Partners with Madison AI to Lead Wisconsin Municipalities Toward the Era of AI",
+    "ogImageAsset": "deforest-og.jpg"
   },
   "card": {
     "kicker": "New Deployment",

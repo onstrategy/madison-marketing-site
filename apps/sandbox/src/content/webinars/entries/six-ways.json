@@ -73,7 +73,11 @@
         "quotes": [
           {
             "quote": "\"Trust needs to be treated as infrastructure just as much as technology does, and it needs to be baked into how we do everything.\"",
-            "attribution": "Ron Holifield, Founder, Strategic Government Resources"
+            "attribution": "Ron Holifield, Founder, Strategic Government Resources",
+            "portrait": {
+              "asset": "ron-holifield.png",
+              "alt": "Ron Holifield, Founder, Strategic Government Resources"
+            }
           }
         ],
         "videos": [
@@ -96,7 +100,11 @@
         "quotes": [
           {
             "quote": "\"So you need to be explicit that you own your data.\"",
-            "attribution": "Ron Holifield, Founder, Strategic Government Resources"
+            "attribution": "Ron Holifield, Founder, Strategic Government Resources",
+            "portrait": {
+              "asset": "ron-holifield.png",
+              "alt": "Ron Holifield, Founder, Strategic Government Resources"
+            }
           },
           {
             "quote": "\"And actually make sure that you can get it if you leave.\"",
@@ -154,7 +162,11 @@
         "quotes": [
           {
             "quote": "\"The power of local government to profoundly change the future is off the charts.\"",
-            "attribution": "Ron Holifield, Founder, Strategic Government Resources"
+            "attribution": "Ron Holifield, Founder, Strategic Government Resources",
+            "portrait": {
+              "asset": "ron-holifield.png",
+              "alt": "Ron Holifield, Founder, Strategic Government Resources"
+            }
           }
         ],
         "videos": [
@@ -177,7 +189,11 @@
         "quotes": [
           {
             "quote": "\"We listened to you. We heard you. Here’s what we’ve done to build the guardrails, to build the policies.\"",
-            "attribution": "Ron Holifield, Founder, Strategic Government Resources"
+            "attribution": "Ron Holifield, Founder, Strategic Government Resources",
+            "portrait": {
+              "asset": "ron-holifield.png",
+              "alt": "Ron Holifield, Founder, Strategic Government Resources"
+            }
           }
         ],
         "videos": [
