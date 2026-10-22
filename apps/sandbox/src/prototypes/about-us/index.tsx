@@ -1,5 +1,6 @@
 import { ArrowRight, Linkedin } from "lucide-react";
 import { Button } from "@madison/ui/button";
+import { cn } from "@madison/ui/utils";
 import { Nav, Footer } from "../landing/sections";
 import { Reveal, Eyebrow } from "../landing/parts";
 import heroTeam from "./hero-team.avif";
@@ -18,6 +19,15 @@ import liv from "./team/liv.png";
 import sarah from "./team/sarah.png";
 import dave from "./team/dave.avif";
 import behzad from "./team/behzad.webp";
+import connie from "./team/connie.jpg";
+import josh from "./team/josh.jpg";
+import kamryn from "./team/kamryn.jpg";
+import leigh from "./team/leigh.jpg";
+import jay from "./team/jay.jpg";
+import ryan from "./team/ryan.jpg";
+import logan from "./team/logan.jpg";
+import giani from "./team/giani.jpg";
+import jd from "./team/jd.jpg";
 
 // ============================================================================
 // About Us — recreated from madisonai.com/about-us. Narrative sections are
@@ -30,7 +40,8 @@ interface Person {
   name: string;
   title: string;
   bio: string;
-  photo: string;
+  /** Omitted until a headshot is supplied; the card shows the person's initials instead. */
+  photo?: string;
   /** Personal LinkedIn profile — omitted for the county partners, who don't have one on the live site. */
   linkedin?: string;
 }
@@ -80,7 +91,7 @@ const LEADERSHIP: Person[] = [
   },
   {
     name: "Kendal Ferris",
-    title: "Sales Manager",
+    title: "AI Solutions Advisor",
     bio: "Background at GoDaddy and Citrix.",
     photo: kendal,
     linkedin: "https://www.linkedin.com/in/kendalferris/",
@@ -127,6 +138,68 @@ const LEADERSHIP: Person[] = [
     photo: sarah,
     linkedin: "https://www.linkedin.com/in/sarah-orner-a2b83a330/",
   },
+  {
+    name: "Connie Armstrong",
+    title: "Head of Client Operations",
+    bio: "15+ years in client operations, leading billing, scoping, and delivery.",
+    photo: connie,
+    linkedin: "https://www.linkedin.com/in/connie-armstrong-727b953/",
+  },
+  {
+    name: "Josh Cole",
+    title: "Project/Product Manager",
+    bio: "Product lead behind the OnStrategy platform, with a background in data and text analytics.",
+    photo: josh,
+    linkedin: "https://www.linkedin.com/in/josh-cole-mba-0616892/",
+  },
+  {
+    name: "Kamryn Onorato",
+    title: "Principal Strategist",
+    bio: "Consultant in strategy design and project management across government and corporate.",
+    photo: kamryn,
+    linkedin: "https://www.linkedin.com/in/kamrynmock/",
+  },
+  {
+    name: "Leigh Abbott",
+    title: "Senior Strategist",
+    bio: "Decades leading strategic planning and change management for county governments and Fortune 500 clients.",
+    photo: leigh,
+    linkedin: "https://www.linkedin.com/in/leighabbott/",
+  },
+  {
+    name: "Jay Stearley",
+    title: "Lead Strategist",
+    bio: "20+ years delivering strategic planning, change management, and leadership.",
+    photo: jay,
+    linkedin: "https://www.linkedin.com/in/jay-stearley-m-b-a-m-a-s-p-i-905a9326",
+  },
+  {
+    name: "Ryan Olsen",
+    title: "Project Manager",
+    bio: "20+ years bringing structure, consistency, and execution to complex ideas.",
+    photo: ryan,
+    linkedin: "https://www.linkedin.com/in/ryanbolsen/",
+  },
+  {
+    name: "Logan Patterson",
+    title: "Software Engineer",
+    bio: "2026 University of Illinois graduate specializing in data science and AI.",
+    photo: logan,
+  },
+  {
+    name: "Giani Bennett",
+    title: "AI Solutions Advisor",
+    bio: "Ex-HPE, with 8+ years in enterprise technology sales, cybersecurity, and public-sector growth.",
+    photo: giani,
+    linkedin: "https://www.linkedin.com/in/gianibennett/",
+  },
+  {
+    name: "JD Walker",
+    title: "AI Solutions Advisor",
+    bio: "7+ years supporting local governments at Euna Solutions, AmpliFund, and Navigate360.",
+    photo: jd,
+    linkedin: "https://www.linkedin.com/in/jdwalkersaas/",
+  },
 ];
 
 const COUNTY_PARTNERS: Person[] = [
@@ -143,6 +216,41 @@ const COUNTY_PARTNERS: Person[] = [
     photo: behzad,
   },
 ];
+
+function initialsOf(name: string): string {
+  return name
+    .split(/\s+/)
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+}
+
+/** Headshot, or the person's initials until a photo is supplied. */
+function Avatar({ person, className }: { person: Person; className: string }) {
+  if (person.photo) {
+    return (
+      <img
+        src={person.photo}
+        alt={person.name}
+        loading="lazy"
+        className={cn(className, "object-cover")}
+      />
+    );
+  }
+  return (
+    <div
+      role="img"
+      aria-label={person.name}
+      className={cn(
+        className,
+        "flex items-center justify-center bg-surface font-sans text-base font-semibold text-secondary",
+      )}
+    >
+      {initialsOf(person.name)}
+    </div>
+  );
+}
 
 function HeroSection() {
   return (
@@ -240,11 +348,9 @@ function LeadershipSection() {
             <Reveal key={person.name} delay={i * 30}>
               <div className="h-full rounded-2xl border border-default bg-panel p-5">
                 <div className="mb-4 flex items-start justify-between gap-2">
-                  <img
-                    src={person.photo}
-                    alt={person.name}
-                    loading="lazy"
-                    className="size-16 rounded-full border border-default object-cover"
+                  <Avatar
+                    person={person}
+                    className="size-16 rounded-full border border-default"
                   />
                   {/* Only this icon is interactive — the card itself stays
                       static, per explicit request (not the whole-card link
@@ -289,11 +395,9 @@ function CountyPartnersSection() {
           {COUNTY_PARTNERS.map((person, i) => (
             <Reveal key={person.name} delay={i * 60}>
               <div className="h-full rounded-2xl border border-default bg-surface p-6">
-                <img
-                  src={person.photo}
-                  alt={person.name}
-                  loading="lazy"
-                  className="mb-4 size-16 rounded-full border border-default object-cover"
+                <Avatar
+                  person={person}
+                  className="mb-4 size-16 rounded-full border border-default"
                 />
                 <div className="font-sans text-lg font-semibold text-primary">{person.name}</div>
                 <div className="mt-0.5 text-sm font-medium text-brand-accent">{person.title}</div>
