@@ -75,3 +75,10 @@
   for = "/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+# Team email-signature banner images: public so mail apps can load them, but
+# kept out of search engines (including image search).
+[[headers]]
+  for = "/sig-bumceoquwx/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

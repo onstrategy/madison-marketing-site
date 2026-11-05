@@ -1,0 +1,204 @@
+[
+  {
+    "slug": "alex",
+    "name": "Alex Chernyshev",
+    "title": "Software Engineer",
+    "email": "alex@madisonai.com"
+  },
+  {
+    "slug": "connie",
+    "name": "Connie Armstrong",
+    "title": "Head of Client Operations",
+    "email": "connie@madisonai.com",
+    "phone": "+1 775 398 1566",
+    "photo": "connie.jpg"
+  },
+  {
+    "slug": "connor",
+    "name": "Connor Ferris",
+    "title": "AI Solutions Advisor",
+    "email": "connor@madisonai.com",
+    "phone": "+1 775 398 1577",
+    "photo": "connor.png"
+  },
+  {
+    "slug": "dana",
+    "name": "Dana Searcy",
+    "title": "Principal Strategist",
+    "email": "dana@madisonai.com",
+    "phone": "+1 775 737 0561",
+    "photo": "dana.jpg"
+  },
+  {
+    "slug": "erica",
+    "name": "Erica Olsen",
+    "title": "CEO, Co-Founder",
+    "email": "erica@madisonai.com",
+    "phone": "+1 775 398 1574",
+    "photo": "erica.webp"
+  },
+  {
+    "slug": "francisco",
+    "name": "Francisco Arias",
+    "title": "Software Engineer",
+    "email": "fransisco@madisonai.com"
+  },
+  {
+    "slug": "giani",
+    "name": "Giani Bennett",
+    "title": "AI Solutions Advisor",
+    "email": "giani@madisonai.com",
+    "phone": "+1 775 800 9265",
+    "photo": "giani.jpg"
+  },
+  {
+    "slug": "heyden",
+    "name": "Heyden Enochson",
+    "title": "Head of GTM",
+    "email": "heyden@madisonai.com",
+    "phone": "+1 775 722 7436",
+    "photo": "heyden.webp",
+    "useDesignPhoto": true
+  },
+  {
+    "slug": "howard",
+    "name": "Howard Olsen",
+    "email": "howard@onstrategyhq.com"
+  },
+  {
+    "slug": "jay",
+    "name": "Jay Stearley",
+    "title": "Lead Strategist",
+    "email": "jay@onstrategyhq.com",
+    "phone": "+1 775 398 1585",
+    "photo": "jay.jpg"
+  },
+  {
+    "slug": "jd",
+    "name": "JD Walker",
+    "title": "AI Solutions Advisor",
+    "email": "jd@madisonai.com",
+    "phone": "+1 775 398 1581",
+    "photo": "jd.jpg"
+  },
+  {
+    "slug": "josh",
+    "name": "Josh Cole",
+    "title": "Project/Product Manager",
+    "email": "josh@madisonai.com",
+    "phone": "+1 775 398 1584",
+    "photo": "josh.jpg"
+  },
+  {
+    "slug": "kamryn",
+    "name": "Kamryn Onorato",
+    "title": "Principal Strategist",
+    "email": "kamryn@madisonai.com",
+    "phone": "+1 775 398 1578",
+    "photo": "kamryn.jpg"
+  },
+  {
+    "slug": "kendal",
+    "name": "Kendal Ferris",
+    "title": "AI Solutions Advisor",
+    "email": "kendal@madisonai.com",
+    "phone": "+1 775 398 1565",
+    "photo": "kendal.webp"
+  },
+  {
+    "slug": "kim",
+    "name": "Kim Perkins",
+    "title": "Principal Strategist",
+    "email": "kim@madisonai.com",
+    "phone": "+1 775 398 1575",
+    "photo": "kim.webp"
+  },
+  {
+    "slug": "kristine",
+    "name": "Kristine Richter",
+    "title": "Head of Client Success",
+    "email": "kristine@madisonai.com",
+    "phone": "+1 775 391 3580",
+    "photo": "kristine.webp"
+  },
+  {
+    "slug": "leigh",
+    "name": "Leigh Abbott",
+    "title": "Senior Strategist",
+    "email": "leigh@madisonai.com",
+    "photo": "leigh.jpg"
+  },
+  {
+    "slug": "liv",
+    "name": "Liv Bailey",
+    "title": "Software Engineer",
+    "email": "liv@madisonai.com",
+    "photo": "liv.png"
+  },
+  {
+    "slug": "logan",
+    "name": "Logan Patterson",
+    "title": "Software Engineer",
+    "email": "logan@madisonai.com",
+    "photo": "logan.jpg"
+  },
+  {
+    "slug": "mark",
+    "name": "Mark Wheeler",
+    "title": "Chief Public Data Officer",
+    "email": "mark@madisonai.com",
+    "phone": "+1 775 524 4560",
+    "photo": "mark.jpeg"
+  },
+  {
+    "slug": "nikita",
+    "name": "Nikita Khorev",
+    "title": "Software Engineer",
+    "email": "nikita@madisonai.com"
+  },
+  {
+    "slug": "olivia",
+    "name": "Olivia Sheridan",
+    "email": "olivia@madisonai.com"
+  },
+  {
+    "slug": "raymond",
+    "name": "Raymond Coplin",
+    "title": "Software Engineer",
+    "email": "ray@madisonai.com"
+  },
+  {
+    "slug": "reid",
+    "name": "Reid Weber",
+    "title": "Senior Software Engineer",
+    "email": "reid@madisonai.com",
+    "photo": "reid.png"
+  },
+  {
+    "slug": "ryan",
+    "name": "Ryan Olsen",
+    "title": "Project Manager",
+    "email": "ryan@madisonai.com",
+    "photo": "ryan.jpg"
+  },
+  {
+    "slug": "sarah",
+    "name": "Sarah Orner",
+    "title": "Software Engineer",
+    "email": "sarah@madisonai.com",
+    "photo": "sarah.png"
+  },
+  {
+    "slug": "stepan",
+    "name": "Stepan Fedyanov",
+    "title": "Software Engineer",
+    "email": "stepan@madisonai.com"
+  },
+  {
+    "slug": "todd",
+    "name": "Todd Ballowe",
+    "title": "Head of Engineering & AI",
+    "email": "todd@madisonai.com",
+    "photo": "todd.webp"
+  }
+]
