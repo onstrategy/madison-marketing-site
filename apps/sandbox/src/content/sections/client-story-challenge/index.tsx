@@ -41,6 +41,14 @@ type ClientStoryChallengeProps = z.output<
   typeof ClientStoryChallengePropsSchema
 >;
 
+// Boxes always fill the full row: 2 boxes split it in half, 3 in thirds.
+function columnsClass(count: number): string {
+  if (count <= 1) return "grid-cols-1";
+  if (count === 2) return "sm:grid-cols-2";
+  if (count === 3) return "sm:grid-cols-3";
+  return "sm:grid-cols-2 lg:grid-cols-4";
+}
+
 export function parseProps(input: unknown): ClientStoryChallengeProps {
   return ClientStoryChallengePropsSchema.parse(input);
 }
@@ -66,7 +74,7 @@ export default function ClientStoryChallengeSection({
             {intro}
           </p>
         </Reveal>
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className={`grid gap-4 ${columnsClass(items.length)}`}>
           {items.map((item, index) => (
             <Reveal key={item.title} delay={index * 60}>
               <div className="h-full rounded-2xl border border-default bg-panel p-6">

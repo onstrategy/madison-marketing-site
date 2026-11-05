@@ -27,6 +27,15 @@ export const ClientStoryDocumentSchema = z
     }),
     order: z.number().int().nonnegative(),
     featured: z.boolean(),
+    // Keeps the story's own page live but leaves it off the Client Stories
+    // listing (e.g. a page shared directly with a prospect).
+    unlisted: z.boolean().optional(),
+    // Puts the page behind a password. SHA-256 (hex) of `<id>:<password>`;
+    // see client-stories/password-gate.tsx for what this does and doesn't protect.
+    passwordHash: z
+      .string()
+      .regex(/^[a-f0-9]{64}$/)
+      .optional(),
     metadata: z
       .object({
         title: NonEmptyStringSchema,

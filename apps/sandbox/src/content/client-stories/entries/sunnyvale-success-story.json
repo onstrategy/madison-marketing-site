@@ -1,0 +1,217 @@
+{
+  "id": "sunnyvale-success-story",
+  "path": "/sunnyvale-success-story/",
+  "sourceUrl": "https://www.madisonai.com/sunnyvale-success-story",
+  "order": 210,
+  "featured": false,
+  "unlisted": true,
+  "passwordHash": "a99455f946a92639afdc119ccc14876c3265f8d3e88ac38fbc49f2e077b4d185",
+  "metadata": {
+    "title": "Modernizing Municipal Governance: AI Innovation in Sunnyvale",
+    "description": "See how the City of Sunnyvale recovered 2,178.5 staff hours and an estimated $217,850 in one quarter with Citywide, Planning and Community Development models.",
+    "seoTitle": "Modernizing Municipal Governance: AI Innovation in Sunnyvale",
+    "noindex": true
+  },
+  "card": {
+    "kicker": "Client Story",
+    "title": "Modernizing Municipal Governance: AI Innovation in Sunnyvale",
+    "summary": "How the City of Sunnyvale recovered 2,178.5 staff hours in a single quarter",
+    "clientName": "City of Sunnyvale",
+    "photo": {
+      "asset": "sunnyvale-hero.jpg",
+      "alt": "City of Sunnyvale, California",
+      "width": 1920,
+      "height": 1080
+    },
+    "logo": {
+      "asset": "sunnyvale-story.png",
+      "alt": "City of Sunnyvale",
+      "width": 250,
+      "height": 250
+    }
+  },
+  "sections": [
+    {
+      "type": "client-story-hero-intro",
+      "props": {
+        "hero": {
+          "kicker": "Client Story",
+          "title": "Modernizing Municipal Governance: AI Innovation in Sunnyvale",
+          "clientName": "City of Sunnyvale",
+          "agencyType": "City",
+          "modelsUsed": [
+            "Citywide",
+            "Community Development",
+            "Planning"
+          ],
+          "photo": {
+            "asset": "sunnyvale-hero.jpg",
+            "alt": "City of Sunnyvale, California",
+            "width": 1920,
+            "height": 1080
+          },
+          "logoAsset": "sunnyvale-story.png",
+          "logoAlt": "City of Sunnyvale",
+          "logoWidth": 250,
+          "logoHeight": 250,
+          "showDownloadButton": false
+        },
+        "intro": {
+          "headline": "Meet Kathleen Boutté Foster",
+          "paragraphs": [
+            "Kathleen Boutté Foster is the Chief Information Officer at the City of Sunnyvale. Kathleen and her team provide innovative technology solutions to the over 1,200 users across City Hall.",
+            "With the dedicated innovation funds in her budget, Kathleen leads initiatives that improve and modernize operations. To support this effort, she partnered with Madison AI to translate goals into operational impact."
+          ],
+          "photo": {
+            "asset": "sunnyvale-hero.jpg",
+            "alt": "City of Sunnyvale, California",
+            "width": 1920,
+            "height": 1080
+          }
+        }
+      }
+    },
+    {
+      "type": "client-story-narrative",
+      "props": {
+        "title": "Sunnyvale’s Search for a Solution",
+        "paragraphs": [
+          "Managing a full-service city generates a massive volume of records and policies, and staff were spending valuable hours searching through these. Rather than enlisting an internet artificial intelligence tool, Sunnyvale searched for an enterprise framework that kept its public records secure.",
+          "By partnering with Madison AI, Sunnyvale deployed a platform trained on its own files and data, ensuring every output is safe and accurate. Following Madison AI’s in-depth, on-site training, user adoption surged dramatically.",
+          "Across three knowledge domains, 237 staff members integrated Madison AI into their daily research and document drafting workflows."
+        ]
+      }
+    },
+    {
+      "type": "client-story-narrative",
+      "props": {
+        "title": "One City, Multi-Domain Excellence: Workflows Across Sunnyvale",
+        "paragraphs": [
+          "To support a wide spectrum of municipal operations, Sunnyvale started with a Citywide model and later added Planning and Community Development models. The Citywide model handled 57.4% of activity, including policy research, budget data consolidation, and human resources inquiries. The Planning and Community Development models supported technical planning, permitting, and land-use analysis.",
+          "Usage climbed as time went on, reaching a 32% increase in monthly conversation volume. From drafting accessible communications to navigating complex public records research, Madison AI fits perfectly into Sunnyvale’s daily routine."
+        ]
+      }
+    },
+    {
+      "type": "client-story-quote-stats",
+      "props": {
+        "quote": {
+          "text": "With Madison AI, we are giving our staff a time-saving solution to directly and securely access Sunnyvale’s records. The AI models allow our team to cut through administrative noise, streamline data-driven decisions, and focus their energy on serving our community.",
+          "attribution": "Kathleen Boutté Foster, Chief Information Officer, City of Sunnyvale",
+          "photo": {
+            "asset": "sunnyvale-kathleen.png",
+            "alt": "Kathleen Boutté Foster, Chief Information Officer, City of Sunnyvale",
+            "width": 603,
+            "height": 603
+          }
+        },
+        "stats": {
+          "eyebrow": "Results",
+          "items": [
+            {
+              "value": "2,052",
+              "label": "Total conversations (Q2 2026)"
+            },
+            {
+              "value": "$217,850",
+              "label": "Estimated Q2 2026 ROI"
+            },
+            {
+              "value": "237",
+              "label": "Total unique users"
+            },
+            {
+              "value": "2,178.5",
+              "label": "Staff hours saved"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "client-story-challenge",
+      "props": {
+        "eyebrow": "The challenge",
+        "title": "Staff time tied up in search and report assembly",
+        "intro": "Sunnyvale faced increasing demands, with valuable staff capacity tied up in data discovery and report assembly.",
+        "items": [
+          {
+            "icon": "clock",
+            "title": "Eliminating Delays",
+            "description": "Navigating years of policies, contracts, and codes required hours of manual searching across disconnected systems."
+          },
+          {
+            "icon": "file-search",
+            "title": "Reporting Burden",
+            "description": "The extensive research needed to draft staff reports pulled attention away from high-value work."
+          },
+          {
+            "icon": "database",
+            "title": "Isolated Institutional Knowledge",
+            "description": "Critical context was scattered across archives, making information research time-consuming."
+          }
+        ]
+      }
+    },
+    {
+      "type": "client-story-solution-timeline",
+      "props": {
+        "eyebrow": "The solution",
+        "title": "Three knowledge domains for one city",
+        "phases": [
+          {
+            "title": "Understanding Operational Friction",
+            "description": "Leadership identified high-friction administrative tasks across departments, including Public Records Act research, contract review, human resources policies, and staff report drafting."
+          },
+          {
+            "title": "Identifying Appropriate Model Deployment",
+            "description": "Madison AI implemented distinct knowledge domains tailored to Sunnyvale’s operational structure."
+          },
+          {
+            "title": "Data Integrity and Security",
+            "description": "The system was built securely around Sunnyvale’s data and records, ensuring answers are cited from approved sources."
+          },
+          {
+            "title": "Staff Adoption",
+            "description": "The rollout saw significant uptake, covering parks, public works, finance, legal compliance, human resources, and planning. Madison AI trained Sunnyvale staff and implemented the Citywide and Community Development models."
+          },
+          {
+            "title": "Expanding to Complex Workflows",
+            "description": "Sunnyvale expanded usage to high-leverage workflows, such as generating council-ready staff reports and executing policy and compliance analysis."
+          }
+        ]
+      }
+    },
+    {
+      "type": "client-story-impact-download",
+      "props": {
+        "impact": {
+          "eyebrow": "The Impact",
+          "title": "Saving 2,178.5 Staff Hours",
+          "paragraphs": [
+            "Sunnyvale’s partnership with Madison AI transformed how staff access institutional knowledge and complete daily tasks. In a single quarter, the platform recovered 2,178.5 hours of staff time, delivering an estimated $217,850 in quarterly ROI, while supporting 2,052 conversations across nine distinct subjects.",
+            "As one of the Bay Area’s most innovative cities, Sunnyvale prioritizes supporting its municipal workforce. By eliminating hours of tedious research and drafting, Madison AI enables planners, engineers, financial analysts, and administrators to refocus on community engagement and public projects.",
+            "The partnership between Madison AI and Sunnyvale demonstrates the power of collaboration in the public sector."
+          ]
+        },
+        "download": {
+          "title": "Download this case study as a one-page PDF",
+          "clientName": "City of Sunnyvale",
+          "form": "case-study-download"
+        }
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "client-story-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form below, and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

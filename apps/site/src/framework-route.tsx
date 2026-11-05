@@ -37,7 +37,10 @@ export function loader({ request }: Route.LoaderArgs) {
   const responsibleAiData = responsibleAiRouteData(pathname, origin);
   return {
     page: page ?? null,
-    story: story ?? null,
+    // Password-protected stories go out without their sections, so the
+    // prerendered HTML and loader data never carry the story body. The page
+    // looks the full story up in the client bundle once the visitor unlocks it.
+    story: story?.passwordHash ? { ...story, sections: [] } : (story ?? null),
     storyMetadata: story ? clientStoryMetadata(story, origin) : null,
     article: articleData?.article ?? null,
     articleOgImage: articleData?.ogImage,
@@ -125,7 +128,11 @@ export function meta({ data: loaderData }: Route.MetaArgs) {
 
 export default function FrameworkRoute({ loaderData }: Route.ComponentProps) {
   if (loaderData.story) {
-    return <ClientStoryPage story={loaderData.story} />;
+    const { story } = loaderData;
+    const fullStory = story.passwordHash
+      ? (findClientStoryByPath(story.path) ?? story)
+      : story;
+    return <ClientStoryPage story={fullStory} />;
   }
   if (loaderData.article) {
     return <NewsArticlePage article={loaderData.article} />;

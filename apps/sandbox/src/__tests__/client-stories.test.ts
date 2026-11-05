@@ -168,6 +168,18 @@ describe("client story collection", () => {
           id: "chanhassen-success-story",
           path: "/chanhassen-success-story/",
         },
+        {
+          id: "oiaa-success-story",
+          path: "/oiaa-success-story/",
+        },
+        {
+          id: "sunnyvale-success-story",
+          path: "/sunnyvale-success-story/",
+        },
+        {
+          id: "valley-water-success-story",
+          path: "/valley-water-success-story/",
+        },
       ]);
 
       for (const story of clientStories) {
@@ -177,6 +189,35 @@ describe("client story collection", () => {
         );
         expect(story.path).toBe(sourcePath);
       }
+    });
+
+    it("keeps the directly shared stories published but off the listing", () => {
+      const unlisted = clientStories
+        .filter(({ unlisted }) => unlisted)
+        .map(({ id }) => id);
+
+      expect(unlisted).toEqual([
+        "oiaa-success-story",
+        "sunnyvale-success-story",
+        "valley-water-success-story",
+      ]);
+    });
+
+    it("keeps every unlisted story out of search engines and the sitemap", () => {
+      for (const story of clientStories.filter(({ unlisted }) => unlisted)) {
+        expect(story.metadata.noindex).toBe(true);
+      }
+    });
+
+    it("puts every unlisted story behind its own salted password hash", () => {
+      const hashes = clientStories
+        .filter(({ unlisted }) => unlisted)
+        .map(({ passwordHash }) => passwordHash);
+
+      for (const hash of hashes) {
+        expect(hash).toMatch(/^[a-f0-9]{64}$/);
+      }
+      expect(new Set(hashes).size).toBe(hashes.length);
     });
 
     it("rejects a path without the public trailing slash", () => {

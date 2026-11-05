@@ -25,13 +25,23 @@ const ClientStoryHeroIntroInputSchema = z
         logoAlt: NonEmptyStringSchema,
         logoWidth: z.number().int().positive(),
         logoHeight: z.number().int().positive(),
+        // The "Download case study" button jumps to the download section lower
+        // on the page. Stories that have no PDF set this to false so the hero
+        // does not carry a button that goes nowhere.
+        showDownloadButton: z.boolean().default(true),
       })
       .strict(),
     intro: z
       .object({
         headline: NonEmptyStringSchema,
         paragraphs: z.array(NonEmptyStringSchema).min(1),
-        photo: ClientStoryImageInputSchema,
+        // Optional so a story can go live before the featured person's
+        // headshot arrives; the intro then reads as a single column of text.
+        photo: ClientStoryImageInputSchema.optional(),
+        // "feature" is the large image frame beside the text, for a scene or
+        // office photo. "portrait" is a small round headshot next to the
+        // heading, for a single person's photo that should not dominate.
+        photoStyle: z.enum(["feature", "portrait"]).default("feature"),
       })
       .strict(),
   })
@@ -69,7 +79,7 @@ const ClientStoryHeroIntroPropsSchema = ClientStoryHeroIntroInputSchema.transfor
     },
     intro: {
       ...intro,
-      photo: resolveClientStoryImage(intro.photo),
+      photo: intro.photo ? resolveClientStoryImage(intro.photo) : undefined,
     },
   }),
 );
@@ -168,11 +178,13 @@ function HeroSection({
           <h1 className="mb-8 max-w-4xl text-balance font-serif text-3xl font-medium tracking-tight text-primary md:text-4xl">
             {data.title}
           </h1>
-          <Button size="lg" asChild>
-            <a href="#download">
-              Download case study <Download className="size-4" />
-            </a>
-          </Button>
+          {data.showDownloadButton ? (
+            <Button size="lg" asChild>
+              <a href="#download">
+                Download case study <Download className="size-4" />
+              </a>
+            </Button>
+          ) : null}
         </Reveal>
       </div>
       {/* Below `sm`, HeroMetaCard stacks to 4 rows (see its own
@@ -214,16 +226,47 @@ function IntroSection({
 }: {
   data: ClientStoryHeroIntroProps["intro"];
 }) {
+  const showFeaturePhoto = Boolean(data.photo) && data.photoStyle === "feature";
   return (
     <section className="border-b border-default bg-app px-gutter pb-18 sm:pb-26 pt-12 sm:pt-44">
-      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-stretch">
+      <div
+        className={
+          showFeaturePhoto
+            ? "mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-stretch"
+            : "mx-auto max-w-3xl"
+        }
+      >
         <Reveal>
           {/* text-2xl on phones (one step down from text-3xl) so this reads
               as secondary to the hero h1 above, which just moved up to
               text-3xl on phones too; unchanged from sm up. */}
-          <h2 className="mb-6 text-balance text-2xl sm:text-3xl font-medium tracking-tight text-primary">
-            {data.headline}
-          </h2>
+          <div
+            className={
+              data.photo && !showFeaturePhoto
+                ? "mb-6 flex items-center gap-5"
+                : undefined
+            }
+          >
+            {data.photo && !showFeaturePhoto ? (
+              <img
+                src={data.photo.url}
+                alt={data.photo.alt}
+                width={data.photo.width}
+                height={data.photo.height}
+                loading="lazy"
+                className="size-20 shrink-0 rounded-full border border-default object-cover sm:size-24"
+              />
+            ) : null}
+            <h2
+              className={
+                data.photo && !showFeaturePhoto
+                  ? "text-balance text-2xl sm:text-3xl font-medium tracking-tight text-primary"
+                  : "mb-6 text-balance text-2xl sm:text-3xl font-medium tracking-tight text-primary"
+              }
+            >
+              {data.headline}
+            </h2>
+          </div>
           <div className="space-y-5">
             {data.paragraphs.map((paragraph) => (
               <p key={paragraph} className="text-pretty text-base sm:text-lg text-secondary">
@@ -232,18 +275,20 @@ function IntroSection({
             ))}
           </div>
         </Reveal>
-        <Reveal delay={100}>
-          <div className="h-full overflow-hidden rounded-2xl border border-default">
-            <img
-              src={data.photo.url}
-              alt={data.photo.alt}
-              width={data.photo.width}
-              height={data.photo.height}
-              loading="lazy"
-              className="aspect-4/3 size-full object-cover lg:aspect-auto"
-            />
-          </div>
-        </Reveal>
+        {showFeaturePhoto && data.photo ? (
+          <Reveal delay={100}>
+            <div className="h-full overflow-hidden rounded-2xl border border-default">
+              <img
+                src={data.photo.url}
+                alt={data.photo.alt}
+                width={data.photo.width}
+                height={data.photo.height}
+                loading="lazy"
+                className="aspect-4/3 size-full object-cover lg:aspect-auto"
+              />
+            </div>
+          </Reveal>
+        ) : null}
       </div>
     </section>
   );

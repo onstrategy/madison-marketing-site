@@ -2,6 +2,8 @@ import { useCallback, useState } from "react";
 import { CheckCircle2, ExternalLink } from "lucide-react";
 import { z } from "zod";
 import { Button } from "@madison/ui/button";
+import { Input } from "@madison/ui/input";
+import { Label } from "@madison/ui/label";
 import { resolveClientStoryAsset } from "../../client-stories/assets";
 import { HubSpotForm } from "../../forms/HubSpotForm";
 import {
@@ -29,9 +31,12 @@ const ClientStoryImpactDownloadPropsSchema = z
         // City of Corona case study is ready"). Omitted, the confirmation just
         // says "the case study".
         clientName: NonEmptyStringSchema.optional(),
+        // Omitted while the one-page PDF isn't ready: the box still shows,
+        // but its form is a placeholder that sends nothing.
         asset: z
           .string()
-          .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*\.pdf$/),
+          .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*\.pdf$/)
+          .optional(),
         form: NonEmptyStringSchema.refine(isHubSpotFormName, {
           message: `must be a registered HubSpot form name (available: ${HUBSPOT_FORM_NAMES.join(", ")})`,
         }),
@@ -56,11 +61,61 @@ export function downloadConfirmation(clientName?: string): string {
     : "Your copy of the case study is ready.";
 }
 
+// Stand-in for the real download form until the PDF exists. Mirrors the
+// layout of the live "case-study-download" HubSpot form (see
+// forms/hubspot-form.css) but collects and sends nothing.
+function PlaceholderDownloadForm() {
+  return (
+    <form onSubmit={(event) => event.preventDefault()} noValidate>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <Label htmlFor="download-first-name" className="mb-1.5 block">
+            First name
+          </Label>
+          <Input
+            id="download-first-name"
+            type="text"
+            autoComplete="given-name"
+            placeholder="First name"
+          />
+        </div>
+        <div>
+          <Label htmlFor="download-last-name" className="mb-1.5 block">
+            Last name
+          </Label>
+          <Input
+            id="download-last-name"
+            type="text"
+            autoComplete="family-name"
+            placeholder="Last name"
+          />
+        </div>
+      </div>
+      <div className="mt-4">
+        <Label htmlFor="download-email" className="mb-1.5 block">
+          Organization e-mail address*
+        </Label>
+        <Input
+          id="download-email"
+          type="email"
+          autoComplete="email"
+          placeholder="Organization Email Address"
+        />
+      </div>
+      <Button type="submit" size="lg" className="mt-6 w-full">
+        Get the case study PDF
+      </Button>
+    </form>
+  );
+}
+
 export default function ClientStoryImpactDownloadSection({
   impact,
   download,
 }: ClientStoryImpactDownloadProps) {
-  const downloadUrl = resolveClientStoryAsset(download.asset);
+  const downloadUrl = download.asset
+    ? resolveClientStoryAsset(download.asset)
+    : undefined;
   const [submitted, setSubmitted] = useState(false);
   const handleSubmitted = useCallback(() => {
     setSubmitted(true);
@@ -87,7 +142,7 @@ export default function ClientStoryImpactDownloadSection({
         </Reveal>
         <Reveal delay={100}>
           <div className="dark rounded-2xl border border-default bg-panel p-8">
-            {submitted ? (
+            {submitted && downloadUrl ? (
               <div role="status">
                 <CheckCircle2
                   aria-hidden
@@ -121,10 +176,14 @@ export default function ClientStoryImpactDownloadSection({
                   </p>
                 ) : null}
                 <div className="mt-6">
-                  <HubSpotForm
-                    form={download.form}
-                    onSubmitted={handleSubmitted}
-                  />
+                  {downloadUrl ? (
+                    <HubSpotForm
+                      form={download.form}
+                      onSubmitted={handleSubmitted}
+                    />
+                  ) : (
+                    <PlaceholderDownloadForm />
+                  )}
                 </div>
               </>
             )}
