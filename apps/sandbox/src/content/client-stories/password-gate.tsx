@@ -1,4 +1,9 @@
-import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import {
+  useState,
+  useSyncExternalStore,
+  type FormEvent,
+  type ReactNode,
+} from "react";
 import { Lock } from "lucide-react";
 import { Button } from "@madison/ui/button";
 import { Input } from "@madison/ui/input";
@@ -38,6 +43,11 @@ function rememberUnlocked(storyId: string, passwordHash: string): void {
   }
 }
 
+function subscribeToStorage(onChange: () => void): () => void {
+  window.addEventListener("storage", onChange);
+  return () => window.removeEventListener("storage", onChange);
+}
+
 export function PasswordGate({
   storyId,
   passwordHash,
@@ -47,14 +57,17 @@ export function PasswordGate({
   passwordHash: string;
   children: ReactNode;
 }) {
-  // Always starts locked, so the prerendered HTML never contains the story.
-  const [unlocked, setUnlocked] = useState(false);
+  // The server snapshot is always "locked", so the prerendered HTML never
+  // contains the story; a returning visitor is unlocked right after hydration.
+  const rememberedUnlocked = useSyncExternalStore(
+    subscribeToStorage,
+    () => readUnlocked(storyId, passwordHash),
+    () => false,
+  );
+  const [unlockedHere, setUnlockedHere] = useState(false);
   const [password, setPassword] = useState("");
   const [wrong, setWrong] = useState(false);
-
-  useEffect(() => {
-    if (readUnlocked(storyId, passwordHash)) setUnlocked(true);
-  }, [storyId, passwordHash]);
+  const unlocked = rememberedUnlocked || unlockedHere;
 
   if (unlocked) return <>{children}</>;
 
@@ -63,7 +76,7 @@ export function PasswordGate({
     const attempt = await hashPassword(storyId, password.trim());
     if (attempt === passwordHash) {
       rememberUnlocked(storyId, passwordHash);
-      setUnlocked(true);
+      setUnlockedHere(true);
     } else {
       setWrong(true);
     }
