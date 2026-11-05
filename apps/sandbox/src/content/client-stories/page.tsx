@@ -4,6 +4,7 @@ import {
   resolveClientStoryImage,
 } from "./assets";
 import type { ClientStoryImage } from "./image";
+import { PasswordGate } from "./password-gate";
 import type { ClientStoryDocument } from "./schema";
 
 const logoAssets = import.meta.glob<string>(
@@ -25,12 +26,19 @@ function resolveLogo(asset: string): string {
 }
 
 export function ClientStoryPage({ story }: { story: ClientStoryDocument }) {
-  return (
+  const page = (
     <ContentPage
       sections={story.sections}
       source={story.id}
       activeNavItem="client-stories"
     />
+  );
+  if (!story.passwordHash) return page;
+
+  return (
+    <PasswordGate storyId={story.id} passwordHash={story.passwordHash}>
+      {page}
+    </PasswordGate>
   );
 }
 
