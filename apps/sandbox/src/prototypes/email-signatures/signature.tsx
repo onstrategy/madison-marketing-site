@@ -31,11 +31,21 @@ const CREAM = "#EAE5DF";
 const TERRACOTTA = "#C75A3B";
 const FONT = "Arial, Helvetica, sans-serif";
 
+// Cream behind every element of the text side, set three ways because mail apps
+// respect different ones: the bgcolor attribute, background-color, and a flat
+// gradient image. The banner image carries its own cream and has transparent
+// rounded corners, so nothing cream sits behind those corners.
+const CREAM_ATTR = { bgcolor: CREAM };
+const CREAM_FILL = {
+  backgroundColor: CREAM,
+  backgroundImage: `linear-gradient(${CREAM}, ${CREAM})`,
+};
+
 // 400px wide, scaled from the 1377px design.
 const CARD_WIDTH = 400;
 const BANNER_WIDTH = 217;
 const BANNER_HEIGHT = 150;
-const RADIUS = 11;
+const RADIUS = 12.2;
 
 function plainLink(color: string, bold: boolean) {
   return {
@@ -65,8 +75,6 @@ export function Signature({
         width: CARD_WIDTH,
         borderCollapse: "separate",
         borderSpacing: 0,
-        backgroundColor: CREAM,
-        borderRadius: RADIUS,
         fontFamily: FONT,
       }}
     >
@@ -91,26 +99,27 @@ export function Signature({
             />
           </td>
           <td
+            {...CREAM_ATTR}
             valign="middle"
             style={{
+              ...CREAM_FILL,
               padding: "0 7px 0 9px",
-              backgroundColor: CREAM,
               borderRadius: `0 ${RADIUS}px ${RADIUS}px 0`,
               fontFamily: FONT,
             }}
           >
-            <table
+            <table {...CREAM_ATTR}
               role="presentation"
               cellPadding={0}
               cellSpacing={0}
               border={0}
               width="100%"
-              style={{ width: "100%", borderCollapse: "collapse" }}
+              style={{ ...CREAM_FILL, width: "100%", borderCollapse: "collapse" }}
             >
               <tbody>
                 <tr>
-                  <td
-                    style={{
+                  <td {...CREAM_ATTR}
+                    style={{ ...CREAM_FILL,
                       fontFamily: FONT,
                       fontSize: 17,
                       lineHeight: "20px",
@@ -124,8 +133,8 @@ export function Signature({
                 </tr>
                 {person.title ? (
                 <tr>
-                  <td
-                    style={{
+                  <td {...CREAM_ATTR}
+                    style={{ ...CREAM_FILL,
                       fontFamily: FONT,
                       fontSize: longTitle ? 7.5 : 8.5,
                       lineHeight: "10px",
@@ -140,8 +149,8 @@ export function Signature({
                 </tr>
                 ) : null}
                 <tr>
-                  <td
-                    style={{
+                  <td {...CREAM_ATTR}
+                    style={{ ...CREAM_FILL,
                       borderTop: `1px solid ${NAVY}`,
                       fontSize: 0,
                       lineHeight: 0,
@@ -154,8 +163,8 @@ export function Signature({
                 </tr>
                 {person.phone ? (
                   <tr>
-                    <td
-                      style={{
+                    <td {...CREAM_ATTR}
+                      style={{ ...CREAM_FILL,
                         fontFamily: FONT,
                         fontSize: 11.5,
                         lineHeight: "14px",
@@ -174,8 +183,8 @@ export function Signature({
                   </tr>
                 ) : null}
                 <tr>
-                  <td
-                    style={{
+                  <td {...CREAM_ATTR}
+                    style={{ ...CREAM_FILL,
                       fontFamily: FONT,
                       fontSize: 11.5,
                       lineHeight: "14px",
@@ -192,8 +201,8 @@ export function Signature({
                   </td>
                 </tr>
                 <tr>
-                  <td
-                    style={{
+                  <td {...CREAM_ATTR}
+                    style={{ ...CREAM_FILL,
                       borderTop: `1px solid ${NAVY}`,
                       fontSize: 0,
                       lineHeight: 0,
@@ -205,8 +214,8 @@ export function Signature({
                   </td>
                 </tr>
                 <tr>
-                  <td
-                    style={{
+                  <td {...CREAM_ATTR}
+                    style={{ ...CREAM_FILL,
                       fontFamily: FONT,
                       fontSize: 11.5,
                       lineHeight: "14px",
@@ -221,8 +230,8 @@ export function Signature({
                   </td>
                 </tr>
                 <tr>
-                  <td
-                    style={{
+                  <td {...CREAM_ATTR}
+                    style={{ ...CREAM_FILL,
                       fontFamily: FONT,
                       fontSize: 7.5,
                       lineHeight: "9px",

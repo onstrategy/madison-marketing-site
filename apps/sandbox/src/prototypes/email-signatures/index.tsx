@@ -75,8 +75,9 @@ function SignatureCard({ person }: { person: SignaturePerson }) {
           Your browser blocked copying. Click the page once and try again.
         </p>
       ) : null}
-      {/* Fixed 400px, exactly as it will appear in an inbox; scrolls on a phone. */}
-      <div className="overflow-x-auto rounded-md bg-app p-4">
+      {/* Fixed 400px, exactly as it will appear in an inbox; scrolls on a phone.
+          White behind it, like a mail app's message area, so the rounded corners read true. */}
+      <div className="overflow-x-auto rounded-md border border-default bg-plate p-4">
         <Signature person={person} imageBase="/sig-bumceoquwx/" />
       </div>
     </section>
