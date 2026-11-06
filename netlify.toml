@@ -93,6 +93,31 @@
   to = "/story-downloads/carson.pdf"
   status = 200
 
+[[redirects]]
+  from = "/chanhassen-download"
+  to = "/story-downloads/chanhassen.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/clovis-download"
+  to = "/story-downloads/clovis.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/fresno-download"
+  to = "/story-downloads/fresno.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/quickstart-guide-download"
+  to = "/story-downloads/quickstart-guide.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/playbook-download"
+  to = "/story-downloads/playbook.pdf"
+  status = 200
+
 # React Router emits a generic SPA fallback as well as one real index.html per
 # declared route. Do not route to the SPA fallback: unknown URLs must preserve
 # their URL and return the prerendered Madison 404 with a real HTTP 404 status.
@@ -162,5 +187,30 @@
 
 [[headers]]
   for = "/carson-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/chanhassen-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/clovis-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/fresno-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/quickstart-guide-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/playbook-download"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"

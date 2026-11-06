@@ -27,7 +27,7 @@ function noindexHeaderPaths(): string[] {
     .map((block) => block.match(/for\s*=\s*"([^"]+)"/)?.[1] ?? "");
 }
 
-describe("client-story PDF download links", () => {
+describe("client-story and resource PDF download links", () => {
   const rules = downloadRules();
 
   it("defines the campaign links", () => {
@@ -35,9 +35,14 @@ describe("client-story PDF download links", () => {
       [
         "/addison-download",
         "/carson-download",
+        "/chanhassen-download",
+        "/clovis-download",
         "/corona-download",
+        "/fresno-download",
         "/los-altos-hills-download",
         "/lvmwd-download",
+        "/playbook-download",
+        "/quickstart-guide-download",
         "/washoe-download",
         "/wrcog-download",
       ].sort(),
