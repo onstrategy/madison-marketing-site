@@ -26,7 +26,7 @@ const HEIGHT = 516;
 const PANEL_WIDTH = 495; // navy panel, left of the cream area
 const WIDTH = 745; // panel + the headshot's overhang + room for its shadow
 const PHOTO = { left: 437, top: 77, width: 282, height: 378, radius: 50 };
-const CARD_RADIUS = 40;
+const CARD_RADIUS = 42;
 // The banner shows at 217px wide in the email; 540px keeps it sharp on retina screens.
 const OUTPUT_WIDTH = 540;
 const CREAM = { r: 0xea, g: 0xe5, b: 0xdf };
@@ -63,10 +63,46 @@ const shadowFit = await sharp(shadow)
   .extract({ left: 0, top: 0, width: WIDTH - SHADOW_LEFT, height: HEIGHT - SHADOW_TOP })
   .toBuffer();
 
-// Left corners rounded like the card, right edge square (the text cell continues the card).
-const cardMask = await sharp(
-  Buffer.from(`<svg width="${WIDTH}" height="${HEIGHT}"><rect x="0" y="0" width="${WIDTH + CARD_RADIUS}" height="${HEIGHT}" rx="${CARD_RADIUS}" ry="${CARD_RADIUS}"/></svg>`),
-).png().toBuffer();
+// Left corners rounded like the card, right edge square (the text side continues the card).
+const R = CARD_RADIUS;
+function leftCornersMask() {
+  const alpha = Buffer.alloc(WIDTH * HEIGHT * 4, 255);
+  for (let y = 0; y < HEIGHT; y++) {
+    for (let x = 0; x < R; x++) {
+      const cy = y < R ? R : y >= HEIGHT - R ? HEIGHT - R : undefined;
+      if (cy === undefined) continue;
+      const coverage = Math.max(0, Math.min(1, R - Math.hypot(R - (x + 0.5), cy - (y + 0.5)) + 0.5));
+      alpha[(y * WIDTH + x) * 4 + 3] = Math.round(coverage * 255);
+    }
+  }
+  return alpha;
+}
+const cardMask = leftCornersMask();
+
+// The design's own rounded corners leave a faint light edge just inside the arc. Before
+// the arc is cut, repaint that last few pixels from the pixels just inside it.
+const FRINGE = 4; // how wide the light edge is
+const REACH = 5; // how far in to borrow from
+const panelRaw = await sharp(cleanPanel).raw().toBuffer({ resolveWithObject: true });
+{
+  const { data, info } = panelRaw;
+  const source = Buffer.from(data);
+  for (let y = 0; y < HEIGHT; y++) {
+    for (let x = 0; x < R + FRINGE; x++) {
+      const cy = y < R ? R : y >= HEIGHT - R ? HEIGHT - R : undefined;
+      if (cy === undefined || x >= R) continue;
+      const dx = R - (x + 0.5);
+      const dy = cy - (y + 0.5);
+      const d = Math.hypot(dx, dy);
+      if (d <= R - FRINGE) continue;
+      const k = (R - REACH) / d;
+      const sx = Math.min(info.width - 1, Math.max(0, Math.round(R - dx * k - 0.5)));
+      const sy = Math.min(info.height - 1, Math.max(0, Math.round(cy - dy * k - 0.5)));
+      for (let c = 0; c < info.channels; c++) data[(y * info.width + x) * info.channels + c] = source[(sy * info.width + sx) * info.channels + c];
+    }
+  }
+}
+const repaintedPanel = await sharp(panelRaw.data, { raw: { width: panelRaw.info.width, height: panelRaw.info.height, channels: panelRaw.info.channels } }).png().toBuffer();
 
 await mkdir(outDir, { recursive: true });
 
@@ -135,10 +171,10 @@ for (const person of selected) {
   const file = join(outDir, `${person.slug}.png`);
   const banner = await sharp({ create: { width: WIDTH, height: HEIGHT, channels: 4, background: { ...CREAM, alpha: 1 } } })
     .composite([
-      { input: cleanPanel, left: 0, top: 0 },
+      { input: repaintedPanel, left: 0, top: 0 },
       { input: shadowFit, left: SHADOW_LEFT, top: SHADOW_TOP },
       { input: headshot, left: PHOTO.left, top: PHOTO.top },
-      { input: cardMask, blend: "dest-in" },
+      { input: cardMask, raw: { width: WIDTH, height: HEIGHT, channels: 4 }, blend: "dest-in" },
     ])
     .png()
     .toBuffer();
