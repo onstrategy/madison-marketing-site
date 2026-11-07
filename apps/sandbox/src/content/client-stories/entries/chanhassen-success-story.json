@@ -261,6 +261,24 @@
       }
     },
     {
+      "type": "client-story-impact-download",
+      "props": {
+        "impact": {
+          "eyebrow": "The impact",
+          "title": "Reclaiming 158 Hours Every Month",
+          "paragraphs": [
+            "With Madison AI, Chanhassen's staff now spend less time on administrative work and more time on what matters most to the community: roughly 158 hours and $15K in time savings every month."
+          ]
+        },
+        "download": {
+          "title": "Download this case study as a one-page PDF",
+          "clientName": "City of Chanhassen",
+          "asset": "chanhassen-one-page.pdf",
+          "form": "case-study-download"
+        }
+      }
+    },
+    {
       "type": "client-logos",
       "props": {}
     },

@@ -52,6 +52,72 @@
   status = 301
   force = true
 
+# ─── Client-story PDF download links (used in email campaigns) ───────────────
+# Short, branded URLs that serve the one-page PDF in apps/site/public/story-downloads/
+# (status 200 = the address bar keeps the short link). Not linked from anywhere on
+# the site and marked noindex below. To add one: drop <name>.pdf into that folder
+# and add a rule + header block here.
+
+[[redirects]]
+  from = "/corona-download"
+  to = "/story-downloads/corona.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/los-altos-hills-download"
+  to = "/story-downloads/los-altos-hills.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/lvmwd-download"
+  to = "/story-downloads/lvmwd.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/wrcog-download"
+  to = "/story-downloads/wrcog.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/washoe-download"
+  to = "/story-downloads/washoe.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/addison-download"
+  to = "/story-downloads/addison.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/carson-download"
+  to = "/story-downloads/carson.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/chanhassen-download"
+  to = "/story-downloads/chanhassen.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/clovis-download"
+  to = "/story-downloads/clovis.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/fresno-download"
+  to = "/story-downloads/fresno.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/quickstart-guide-download"
+  to = "/story-downloads/quickstart-guide.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/playbook-download"
+  to = "/story-downloads/playbook.pdf"
+  status = 200
+
 # React Router emits a generic SPA fallback as well as one real index.html per
 # declared route. Do not route to the SPA fallback: unknown URLs must preserve
 # their URL and return the prerendered Madison 404 with a real HTTP 404 status.
@@ -80,5 +146,71 @@
 # kept out of search engines (including image search).
 [[headers]]
   for = "/sig-bumceoquwx/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# Client-story PDF download links: reachable by link, kept out of search engines.
+[[headers]]
+  for = "/story-downloads/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/corona-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/los-altos-hills-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/lvmwd-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/wrcog-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/washoe-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/addison-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/carson-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/chanhassen-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/clovis-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/fresno-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/quickstart-guide-download"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/playbook-download"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
