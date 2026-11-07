@@ -42,3 +42,4 @@ Added after the capture (not from the live site):
 - `how-to-build-dais-ready-reports-card.avif` — supplied directly ("Dana-Kamryn.jpg"), converted to AVIF
 - `six-ways-card.jpg` — supplied directly (cover for AI In Action 025), kept as JPEG
 - `threefold-logo.svg` — supplied directly ("logo-light.svg"), Threefold logo (white, for the dark callout box) on the 027 recap
+- `ai-powering-services-threefold-card.avif` — supplied directly (cover for AI In Action 027), converted to AVIF
