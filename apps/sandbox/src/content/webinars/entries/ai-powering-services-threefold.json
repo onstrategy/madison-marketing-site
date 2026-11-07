@@ -1,0 +1,81 @@
+{
+  "id": "ai-powering-services-threefold",
+  "path": "/ai-powering-services-threefold/",
+  "order": 0,
+  "sourceUrl": "https://www.madisonai.com/ai_powering_services_threefold",
+  "metadata": {
+    "title": "How 3 Cities are AI-Powering their 311 Service & Operations",
+    "description": "Ido Ivry of Threefold and Erica Olsen of Madison AI walk through three agencies where AI delivered on its promise, and what leaders can take from it.",
+    "seoTitle": "How 3 Cities are AI-Powering their 311 Service & Operations"
+  },
+  "card": {
+    "title": "How 3 Cities are AI-Powering their 311 Service & Operations",
+    "imageAsset": "madison-webinar-og.jpg",
+    "imageAlt": "How 3 Cities are AI-Powering their 311 Service & Operations"
+  },
+  "sections": [
+    {
+      "type": "webinar-hero",
+      "props": {
+        "category": "AI In Action Webinar",
+        "title": "How 3 Cities are AI-Powering their 311 Service & Operations",
+        "subtitle": "New AI tools are everywhere, and each one promises to give staff time back. The real test is whether a tool delivers on that promise once it’s running in your agency. Ido Ivry, CEO of Threefold, joined Erica Olsen, CEO of Madison AI, to walk through three agencies where AI passed that test. Here’s what leaders can take from it."
+      }
+    },
+    {
+      "type": "article-copy",
+      "props": {
+        "items": [
+          {
+            "label": "Find the bottleneck first.",
+            "description": "Time disappears between systems: re-keyed tickets, status chasing, and manual spreadsheets. Aim AI there."
+          },
+          {
+            "label": "Connect what you already have.",
+            "description": "One mid-size city linked its ticketing, code enforcement, and asset management systems. Handling a ticket dropped from 20 to 25 minutes to about two."
+          },
+          {
+            "label": "Fix the workflow before you add AI.",
+            "description": "A village of 5,000 combined special pickups into one flow: request, payment, scheduling, and day-of reminders."
+          },
+          {
+            "label": "Start where it hurts and the fix is simple.",
+            "description": "One city’s social services team lost its receptionist. AI now answers calls and sorts them by urgency, which saves 25 to 30 staff hours a month."
+          },
+          {
+            "label": "Treat AI as an enterprise investment.",
+            "description": "Every agency runs differently, so effective AI takes configuration and close work with your team. Choose a partner ready to provide that level of service."
+          }
+        ],
+        "callout": {
+          "title": "Connect with Threefold",
+          "link": {
+            "label": "www.threefold.ai",
+            "href": "https://www.threefold.ai"
+          }
+        }
+      }
+    },
+    {
+      "type": "webinar-full-session",
+      "props": {
+        "anchor": "full",
+        "heading": "Full Video",
+        "videoTitle": "027 AI In Action: How 3 Cities are AI-Powering their 311 Service & Operations Video",
+        "wistiaId": "9glsi4n5cz"
+      }
+    },
+    {
+      "type": "client-logos",
+      "props": {}
+    },
+    {
+      "type": "news-cta",
+      "props": {
+        "title": "Book a demo today",
+        "description": "Fill in the form and our team will get back to you within one business day.",
+        "primaryCta": "Book a demo"
+      }
+    }
+  ]
+}

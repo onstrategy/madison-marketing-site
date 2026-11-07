@@ -61,6 +61,16 @@ const ArticleCopyPropsSchema = z
       .object({
         title: NonEmptyStringSchema,
         body: NonEmptyStringSchema.optional(),
+        // Optional trailing link, e.g. a partner's website.
+        link: z
+          .object({
+            label: NonEmptyStringSchema,
+            href: z.string().url().refine((href) => href.startsWith("https://"), {
+              message: "must use an https URL",
+            }),
+          })
+          .strict()
+          .optional(),
       })
       .strict()
       .optional(),
@@ -222,6 +232,16 @@ export default function ArticleCopySection({
               </h3>
               {callout.body ? (
                 <p className="mt-3 leading-relaxed text-secondary">{callout.body}</p>
+              ) : null}
+              {callout.link ? (
+                <a
+                  href={callout.link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex text-sm font-semibold text-brand-accent hover:underline"
+                >
+                  {callout.link.label}
+                </a>
               ) : null}
             </aside>
           ) : null}
