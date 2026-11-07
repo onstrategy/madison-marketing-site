@@ -1,6 +1,7 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { z } from "zod";
 import { Button } from "@madison/ui/button";
+import { cn } from "@madison/ui/utils";
 import { resolveWebinarAsset } from "../../webinars/assets";
 import { Reveal } from "../../../prototypes/landing/parts";
 
@@ -229,12 +230,19 @@ export default function ArticleCopySection({
             </ul>
           ) : null}
           {callout ? (
-            <aside className="dark mt-10 rounded-2xl bg-brand-subtle p-6 lg:p-8">
+            <aside
+              className={cn(
+                "dark mt-10 rounded-2xl bg-brand-subtle p-6 lg:p-8",
+                // A callout with a logo or button is a standalone call to
+                // action, so it's centered; title-only callouts stay left-aligned.
+                (callout.logo || callout.link) && "text-center",
+              )}
+            >
               {callout.logo ? (
                 <img
                   src={resolveWebinarAsset(callout.logo.asset)}
                   alt={callout.logo.alt}
-                  className="mb-6 h-9 w-auto"
+                  className="mx-auto mb-6 h-9 w-auto"
                 />
               ) : null}
               {/* A title-only callout is a full sentence, not a heading — one
