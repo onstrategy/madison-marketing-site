@@ -1,5 +1,5 @@
 const assets = import.meta.glob<string>(
-  "./assets/*.{png,jpg,jpeg,webp,avif,pdf}",
+  "./assets/*.{png,jpg,jpeg,webp,avif,pdf,svg}",
   {
     eager: true,
     import: "default",

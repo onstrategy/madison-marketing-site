@@ -1,5 +1,7 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { z } from "zod";
+import { Button } from "@madison/ui/button";
+import { resolveWebinarAsset } from "../../webinars/assets";
 import { Reveal } from "../../../prototypes/landing/parts";
 
 const NonEmptyStringSchema = z.string().trim().min(1);
@@ -61,7 +63,16 @@ const ArticleCopyPropsSchema = z
       .object({
         title: NonEmptyStringSchema,
         body: NonEmptyStringSchema.optional(),
-        // Optional trailing link, e.g. a partner's website.
+        // Optional partner logo (an asset in webinars/assets) shown above the
+        // title; meant for a light-on-transparent mark, as the box is dark.
+        logo: z
+          .object({
+            asset: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*\.(?:png|svg|webp|avif)$/),
+            alt: NonEmptyStringSchema,
+          })
+          .strict()
+          .optional(),
+        // Optional trailing link, shown as a button, e.g. a partner's website.
         link: z
           .object({
             label: NonEmptyStringSchema,
@@ -219,11 +230,19 @@ export default function ArticleCopySection({
           ) : null}
           {callout ? (
             <aside className="dark mt-10 rounded-2xl bg-brand-subtle p-6 lg:p-8">
+              {callout.logo ? (
+                <img
+                  src={resolveWebinarAsset(callout.logo.asset)}
+                  alt={callout.logo.alt}
+                  className="mb-6 h-9 w-auto"
+                />
+              ) : null}
               {/* A title-only callout is a full sentence, not a heading — one
-                  step smaller than a callout that has body copy under it. */}
+                  step smaller than a callout that has body copy or a button
+                  under it. */}
               <h3
                 className={
-                  callout.body
+                  callout.body || callout.link
                     ? "font-serif text-2xl font-medium tracking-tight text-primary"
                     : "font-serif text-xl font-medium leading-normal tracking-tight text-primary"
                 }
@@ -234,14 +253,19 @@ export default function ArticleCopySection({
                 <p className="mt-3 leading-relaxed text-secondary">{callout.body}</p>
               ) : null}
               {callout.link ? (
-                <a
-                  href={callout.link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-flex text-sm font-semibold text-brand-accent hover:underline"
+                <Button
+                  className="mt-6 h-auto min-h-12 w-full whitespace-normal py-3 sm:w-auto"
+                  size="lg"
+                  asChild
                 >
-                  {callout.link.label}
-                </a>
+                  <a
+                    href={callout.link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {callout.link.label} <ArrowUpRight className="size-4" />
+                  </a>
+                </Button>
               ) : null}
             </aside>
           ) : null}

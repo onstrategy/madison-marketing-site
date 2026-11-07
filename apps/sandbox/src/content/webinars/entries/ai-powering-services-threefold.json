@@ -48,9 +48,13 @@
           }
         ],
         "callout": {
+          "logo": {
+            "asset": "threefold-logo.svg",
+            "alt": "Threefold"
+          },
           "title": "Connect with Threefold",
           "link": {
-            "label": "www.threefold.ai",
+            "label": "Visit www.threefold.ai",
             "href": "https://www.threefold.ai"
           }
         }
