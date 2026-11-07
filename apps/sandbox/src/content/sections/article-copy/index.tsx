@@ -1,5 +1,8 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { z } from "zod";
+import { Button } from "@madison/ui/button";
+import { cn } from "@madison/ui/utils";
+import { resolveWebinarAsset } from "../../webinars/assets";
 import { Reveal } from "../../../prototypes/landing/parts";
 
 const NonEmptyStringSchema = z.string().trim().min(1);
@@ -61,6 +64,25 @@ const ArticleCopyPropsSchema = z
       .object({
         title: NonEmptyStringSchema,
         body: NonEmptyStringSchema.optional(),
+        // Optional partner logo (an asset in webinars/assets) shown above the
+        // title; meant for a light-on-transparent mark, as the box is dark.
+        logo: z
+          .object({
+            asset: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*\.(?:png|svg|webp|avif)$/),
+            alt: NonEmptyStringSchema,
+          })
+          .strict()
+          .optional(),
+        // Optional trailing link, shown as a button, e.g. a partner's website.
+        link: z
+          .object({
+            label: NonEmptyStringSchema,
+            href: z.string().url().refine((href) => href.startsWith("https://"), {
+              message: "must use an https URL",
+            }),
+          })
+          .strict()
+          .optional(),
       })
       .strict()
       .optional(),
@@ -208,12 +230,27 @@ export default function ArticleCopySection({
             </ul>
           ) : null}
           {callout ? (
-            <aside className="dark mt-10 rounded-2xl bg-brand-subtle p-6 lg:p-8">
+            <aside
+              className={cn(
+                "dark mt-10 rounded-2xl bg-brand-subtle p-6 lg:p-8",
+                // A callout with a logo or button is a standalone call to
+                // action, so it's centered; title-only callouts stay left-aligned.
+                (callout.logo || callout.link) && "text-center",
+              )}
+            >
+              {callout.logo ? (
+                <img
+                  src={resolveWebinarAsset(callout.logo.asset)}
+                  alt={callout.logo.alt}
+                  className="mx-auto mb-6 h-9 w-auto"
+                />
+              ) : null}
               {/* A title-only callout is a full sentence, not a heading — one
-                  step smaller than a callout that has body copy under it. */}
+                  step smaller than a callout that has body copy or a button
+                  under it. */}
               <h3
                 className={
-                  callout.body
+                  callout.body || callout.link
                     ? "font-serif text-2xl font-medium tracking-tight text-primary"
                     : "font-serif text-xl font-medium leading-normal tracking-tight text-primary"
                 }
@@ -222,6 +259,21 @@ export default function ArticleCopySection({
               </h3>
               {callout.body ? (
                 <p className="mt-3 leading-relaxed text-secondary">{callout.body}</p>
+              ) : null}
+              {callout.link ? (
+                <Button
+                  className="mt-6 h-auto min-h-12 w-full whitespace-normal py-3 sm:w-auto"
+                  size="lg"
+                  asChild
+                >
+                  <a
+                    href={callout.link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {callout.link.label} <ArrowUpRight className="size-4" />
+                  </a>
+                </Button>
               ) : null}
             </aside>
           ) : null}

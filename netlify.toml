@@ -118,6 +118,13 @@
   to = "/story-downloads/playbook.pdf"
   status = 200
 
+# The webinar's original underscore link (from the content brief) lands on the
+# hyphenated page; the page's own path must be lowercase-with-hyphens.
+[[redirects]]
+  from = "/ai_powering_services_threefold"
+  to = "/ai-powering-services-threefold/"
+  status = 301
+
 # React Router emits a generic SPA fallback as well as one real index.html per
 # declared route. Do not route to the SPA fallback: unknown URLs must preserve
 # their URL and return the prerendered Madison 404 with a real HTTP 404 status.
