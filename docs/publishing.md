@@ -68,7 +68,7 @@ Non-root public URLs end in `/`. Netlify redirects a slashless request such as `
 
 | Context | URL | When |
 |---|---|---|
-| **Production** | `madison-marketing-site.netlify.app` | every merge to `main` |
+| **Production** | `madisonai.com` (also reachable at `madison-marketing-site.netlify.app`, which redirects there) | every merge to `main` |
 | **Branch deploy** | `preview--madison-marketing-site.netlify.app` | every push to the `preview` branch |
 | **Deploy Preview** | `deploy-preview-<n>--madison-marketing-site.netlify.app` | every pull request |
 
