@@ -4,6 +4,11 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
+      // Turbo hides any env var not listed here from the task it runs. The site
+      // reads these two to build its canonical tags and sitemap
+      // (apps/site/src/site-origin.server.ts); unlisted, they never arrive and
+      // the build silently falls back to the *.netlify.app address.
+      "env": ["SITE_ORIGIN", "URL"],
       // dist-ssr is @madison/site's prerender bundle. Cached alongside dist so a
       // cache hit can't leave the prerender step without the entry it renders from.
       "outputs": ["dist/**", "dist-ssr/**"]
