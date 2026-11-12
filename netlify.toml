@@ -25,6 +25,15 @@
   BUN_VERSION = "1.3.9"
   NODE_VERSION = "22"
 
+# The address search engines should treat as "the site". It feeds every canonical
+# tag, og:url, structured-data URL and the sitemap (see site-origin.server.ts).
+# Without it the build falls back to Netlify's own *.netlify.app address, which is
+# what Google then shows in search results. Production only, so Deploy Previews keep
+# pointing at themselves. Netlify serves www.madisonai.com -> madisonai.com, so the
+# bare domain is the final address; keep this, the redirects below and robots.txt in step.
+[context.production.environment]
+  SITE_ORIGIN = "https://madisonai.com"
+
 # ─── Redirects ────────────────────────────────────────────────────────────────
 # Order matters: Netlify applies the first matching rule. Real files on disk are
 # served before unforced rules; forced redirects also apply to existing files.
@@ -33,13 +42,13 @@
 # Match only this hostname so Deploy Previews and branch deploys remain usable.
 [[redirects]]
   from = "https://madison-marketing-site.netlify.app/*"
-  to = "https://www.madisonai.com/:splat"
+  to = "https://madisonai.com/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "http://madison-marketing-site.netlify.app/*"
-  to = "https://www.madisonai.com/:splat"
+  to = "https://madisonai.com/:splat"
   status = 301
   force = true
 
