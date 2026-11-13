@@ -20,7 +20,12 @@ const ClientStoryHeroIntroInputSchema = z
         clientName: NonEmptyStringSchema,
         agencyType: NonEmptyStringSchema,
         modelsUsed: z.array(NonEmptyStringSchema).min(1),
-        photo: ClientStoryImageInputSchema,
+        // The hero backdrop. A story gets either a `collage` (a transparent
+        // landscape illustration that sits along the bottom of the hero,
+        // behind the white details card) or, until its collage exists, a
+        // `photo` (full-bleed, darkened and blurred behind the title).
+        photo: ClientStoryImageInputSchema.optional(),
+        collage: ClientStoryImageInputSchema.optional(),
         logoAsset: LogoAssetSchema,
         logoAlt: NonEmptyStringSchema,
         logoWidth: z.number().int().positive(),
@@ -30,7 +35,10 @@ const ClientStoryHeroIntroInputSchema = z
         // does not carry a button that goes nowhere.
         showDownloadButton: z.boolean().default(true),
       })
-      .strict(),
+      .strict()
+      .refine(({ photo, collage }) => photo !== undefined || collage !== undefined, {
+        message: "hero needs a photo or a collage",
+      }),
     intro: z
       .object({
         headline: NonEmptyStringSchema,
@@ -69,7 +77,8 @@ const ClientStoryHeroIntroPropsSchema = ClientStoryHeroIntroInputSchema.transfor
   ({ hero, intro }) => ({
     hero: {
       ...hero,
-      photo: resolveClientStoryImage(hero.photo),
+      photo: hero.photo ? resolveClientStoryImage(hero.photo) : undefined,
+      collage: hero.collage ? resolveClientStoryImage(hero.collage) : undefined,
       logo: {
         src: resolveLogo(hero.logoAsset),
         alt: hero.logoAlt,
@@ -149,19 +158,27 @@ function HeroSection({
 }) {
   return (
     <section className="dark relative border-b border-default bg-app">
-      <div className="absolute inset-0 overflow-hidden">
-        <img
-          src={data.photo.url}
-          alt={data.photo.alt}
-          width={data.photo.width}
-          height={data.photo.height}
-          loading="lazy"
-          className="size-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-app via-app/70 to-app/30" />
-        <div className="absolute inset-0 bg-app/60" />
-      </div>
-      <div className="relative mx-auto max-w-6xl px-gutter pt-28 pb-16 sm:pb-40 lg:px-0 lg:pt-40">
+      {data.photo && !data.collage ? (
+        <div className="absolute inset-0 overflow-hidden">
+          <img
+            src={data.photo.url}
+            alt={data.photo.alt}
+            width={data.photo.width}
+            height={data.photo.height}
+            loading="lazy"
+            className="size-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-app via-app/70 to-app/30" />
+          <div className="absolute inset-0 bg-app/60" />
+        </div>
+      ) : null}
+      <div
+        className={
+          data.collage
+            ? "relative mx-auto max-w-6xl px-gutter pt-28 pb-8 lg:px-0 lg:pt-40"
+            : "relative mx-auto max-w-6xl px-gutter pt-28 pb-16 sm:pb-40 lg:px-0 lg:pt-40"
+        }
+      >
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">{data.kicker}</Eyebrow>
           {/* Long, benefit-driven titles ("Reclaiming $11,000 in Staff Time
@@ -187,6 +204,19 @@ function HeroSection({
           ) : null}
         </Reveal>
       </div>
+      {data.collage ? (
+        // Decorative scene along the bottom of the hero. It sits in normal
+        // flow after the title so it can never cover it; the pull-up lets the
+        // artwork's empty sky tuck behind the title block. The details card
+        // below straddles this image's bottom edge (see the card wrapper).
+        <img
+          src={data.collage.url}
+          alt={data.collage.alt}
+          width={data.collage.width}
+          height={data.collage.height}
+          className="relative block h-auto w-full sm:-mt-8 lg:-mt-16"
+        />
+      ) : null}
       {/* Below `sm`, HeroMetaCard stacks to 4 rows (see its own
           `sm:grid-cols-...`) and its total height then depends on this
           story's own content — how many AI models are listed, whether
@@ -210,7 +240,13 @@ function HeroSection({
           up the card is a single row (predictable height), so the
           original straddle mechanics (`absolute` + `translate-y-1/2`)
           are unchanged there. */}
-      <div className="relative mt-8 px-gutter sm:absolute sm:inset-x-0 sm:bottom-0 sm:mt-0 sm:translate-y-1/2 lg:px-0">
+      <div
+        className={
+          data.collage
+            ? "relative -mt-4 px-gutter sm:absolute sm:inset-x-0 sm:bottom-0 sm:mt-0 sm:translate-y-1/2 lg:px-0"
+            : "relative mt-8 px-gutter sm:absolute sm:inset-x-0 sm:bottom-0 sm:mt-0 sm:translate-y-1/2 lg:px-0"
+        }
+      >
         <div className="mx-auto max-w-6xl">
           <Reveal delay={100}>
             <HeroMetaCard data={data} />
