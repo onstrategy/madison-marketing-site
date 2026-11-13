@@ -44,11 +44,11 @@
             "Public Records Request Model",
             "Capital Projects Model"
           ],
-          "photo": {
-            "asset": "washoe-county-hero.avif",
-            "alt": "Aerial view of Washoe County, Nevada",
-            "width": 2015,
-            "height": 1200
+          "collage": {
+            "asset": "washoe-county-collage.webp",
+            "alt": "Paper-cut collage of Washoe County: desert hills, a red sun, palm leaves and city buildings",
+            "width": 1676,
+            "height": 600
           },
           "logoAsset": "washoe-county.webp",
           "logoAlt": "Washoe County, Nevada",
