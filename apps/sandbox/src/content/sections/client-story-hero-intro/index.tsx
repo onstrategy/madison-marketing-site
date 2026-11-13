@@ -280,7 +280,7 @@ function IntroSection({
     <section
       className={cn(
         "border-b border-default bg-app px-gutter pb-18 sm:pb-26 pt-12 sm:pt-44",
-        closerToCard && "pt-8 lg:pt-36",
+        closerToCard && "pt-6 lg:pt-32",
       )}
     >
       <div
