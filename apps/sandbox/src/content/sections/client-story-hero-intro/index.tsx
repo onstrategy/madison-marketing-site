@@ -193,7 +193,14 @@ function HeroSection({
               text-3xl on phones (one step up from the old text-2xl) so it
               reads as the page's primary headline against IntroSection's
               now-smaller headline below; unchanged from md up. */}
-          <h1 className="mb-8 max-w-4xl text-balance font-serif text-3xl font-medium tracking-tight text-primary md:text-4xl">
+          <h1
+            className={cn(
+              "mb-8 max-w-4xl text-balance font-serif text-3xl font-medium tracking-tight text-primary md:text-4xl",
+              // With the collage the title shares the hero with the artwork,
+              // so on desktop it stays within the left half of the content.
+              data.collage && "lg:max-w-1/2",
+            )}
+          >
             {data.title}
           </h1>
           {data.showDownloadButton ? (
