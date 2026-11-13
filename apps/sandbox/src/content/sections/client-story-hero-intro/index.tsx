@@ -197,8 +197,8 @@ function HeroSection({
             className={cn(
               "mb-8 max-w-4xl text-balance font-serif text-3xl font-medium tracking-tight text-primary md:text-4xl",
               // With the collage the title shares the hero with the artwork,
-              // so on desktop it stays within the left half of the content.
-              data.collage && "lg:max-w-1/2",
+              // so on desktop it stays within the left 60% of the content.
+              data.collage && "lg:max-w-3/5",
             )}
           >
             {data.title}
