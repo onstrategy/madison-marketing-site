@@ -1,6 +1,7 @@
 import { Download } from "lucide-react";
 import { z } from "zod";
 import { Button } from "@madison/ui/button";
+import { cn } from "@madison/ui/utils";
 import { resolveClientStoryImage } from "../../client-stories/assets";
 import { ClientStoryImageInputSchema } from "../../client-stories/image";
 import { Reveal, Eyebrow } from "../../../prototypes/landing/parts";
@@ -259,12 +260,22 @@ function HeroSection({
 
 function IntroSection({
   data,
+  closerToCard,
 }: {
   data: ClientStoryHeroIntroProps["intro"];
+  // With a collage hero the details card sits tight against the artwork, so
+  // the intro text is brought closer beneath it. Tablet widths keep the full
+  // gap, because the card is tallest (and overhangs furthest) there.
+  closerToCard: boolean;
 }) {
   const showFeaturePhoto = Boolean(data.photo) && data.photoStyle === "feature";
   return (
-    <section className="border-b border-default bg-app px-gutter pb-18 sm:pb-26 pt-12 sm:pt-44">
+    <section
+      className={cn(
+        "border-b border-default bg-app px-gutter pb-18 sm:pb-26 pt-12 sm:pt-44",
+        closerToCard && "pt-8 lg:pt-36",
+      )}
+    >
       <div
         className={
           showFeaturePhoto
@@ -337,7 +348,7 @@ export default function ClientStoryHeroIntroSection({
   return (
     <>
       <HeroSection data={hero} />
-      <IntroSection data={intro} />
+      <IntroSection data={intro} closerToCard={Boolean(hero.collage)} />
     </>
   );
 }
