@@ -214,15 +214,18 @@ function HeroSection({
       </div>
       {data.collage ? (
         // Decorative scene along the bottom of the hero. It sits in normal
-        // flow after the title so it can never cover it; the pull-up lets the
-        // artwork's empty sky tuck behind the title block. The details card
+        // flow after the title, pulled well up on desktop (a share of the page
+        // width, so it scales with the artwork) so its empty sky tucks behind
+        // the title block and the hills rise close beneath the button. It is
+        // deliberately not positioned, so the (positioned) title block paints
+        // above it and stays clickable. The details card
         // below straddles this image's bottom edge (see the card wrapper).
         <img
           src={data.collage.url}
           alt={data.collage.alt}
           width={data.collage.width}
           height={data.collage.height}
-          className="relative block h-auto w-full sm:-mt-8 lg:-mt-16"
+          className="block h-auto w-full sm:-mt-8 lg:-mt-[18%]"
         />
       ) : null}
       {/* Below `sm`, HeroMetaCard stacks to 4 rows (see its own
