@@ -1,4 +1,4 @@
-// Client logos for the "Live in 65+ local governments" marquee.
+// Client logos for the "Live in 80+ local governments" marquee.
 //
 // These are Madison's own customer logos, pulled from the live madisonai.com
 // logo wall. The original transparent PNGs remain alongside lossless WebP
