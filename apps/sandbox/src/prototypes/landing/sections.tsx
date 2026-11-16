@@ -277,7 +277,7 @@ export function Nav({
 }
 
 // ---------------------------------------------------------------------------
-// LOGO WALL — "Live in 65+ local governments"
+// LOGO WALL — "Live in 80+ local governments"
 // ---------------------------------------------------------------------------
 
 export function ClientLogos() {
@@ -286,7 +286,7 @@ export function ClientLogos() {
     <section className="light bg-plate px-gutter pb-10 pt-13 sm:pb-14 sm:pt-18">
       <div className="mx-auto max-w-6xl">
         <p className="mb-8 text-center font-sans text-sm uppercase tracking-widest text-secondary">
-          Live in 65+ local governments
+          Live in 80+ local governments
         </p>
         <Marquee
           durationSeconds={60}
@@ -696,7 +696,7 @@ export function ClientStories() {
 
 const MOMENT_STATS = [
   { value: "75%", label: "less time on staff report drafting, measured at City of Reno" },
-  { value: "5 hrs", label: "given back per staff member each week, across 65+ governments" },
+  { value: "5 hrs", label: "given back per staff member each week, across 80+ governments" },
   { value: "$2.1m", label: "annual labor recouped per 100 staff, modeled across departments" },
 ];
 
