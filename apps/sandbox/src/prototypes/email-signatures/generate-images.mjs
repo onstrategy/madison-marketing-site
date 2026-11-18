@@ -146,10 +146,126 @@ function initialsFrame(name) {
   );
 }
 
+// Head-and-shoulders framing for people.json "crop": { cx, top, chin } = where the head sits
+// in the source photo (centre x, hair top, chin, all as 0-1 fractions). Every head is scaled
+// to the same size and centred in the frame, so the team looks consistent. Where the photo
+// runs out (the frame wants more headroom than the photo has, or the photo is a circle),
+// the gap is filled with a soft blur of the photo's own edge colours.
+const HEAD_FRACTION = 0.52; // head height as a share of the frame height
+const HEAD_CENTRE_Y = 0.44; // where the middle of the head sits, top to bottom
+async function framedHeadshot(person) {
+  const frame = { width: PHOTO.width, height: PHOTO.height };
+  const { cx, top, chin } = person.crop;
+  const { data, info } = await sharp(join(teamDir, person.photo)).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const W = info.width;
+  const H = info.height;
+
+  // A copy with no transparent corners: round photos get their edge colours pushed outward.
+  const opaque = Buffer.from(data);
+  const r = Math.min(W, H) / 2;
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      const i = (y * W + x) * 4;
+      if (data[i + 3] >= 250) continue;
+      const dx = x + 0.5 - W / 2;
+      const dy = y + 0.5 - H / 2;
+      const k = (r - 4) / Math.hypot(dx, dy);
+      const sx = Math.min(W - 1, Math.max(0, Math.round(W / 2 + dx * k - 0.5)));
+      const sy = Math.min(H - 1, Math.max(0, Math.round(H / 2 + dy * k - 0.5)));
+      const j = (sy * W + sx) * 4;
+      opaque[i] = data[j];
+      opaque[i + 1] = data[j + 1];
+      opaque[i + 2] = data[j + 2];
+      opaque[i + 3] = 255;
+    }
+  }
+
+  // Square photos are scaled so they always fill the frame (no gaps) and slid, if needed, to
+  // stay inside it. Round photos are scaled to the head size, then lowered so the bottom of
+  // the circle meets the bottom of the frame, which leaves the headroom at the top.
+  const isCircle = opaque.some((_, i) => i % 4 === 3 && data[i] < 250);
+  const head = person.crop.head ?? (isCircle ? 0.56 : HEAD_FRACTION);
+  const cover = isCircle ? frame.width / W : Math.max(frame.height / H, frame.width / W);
+  // Optional nudges from people.json: zoom (1.1 = 10% larger), dx / dy (fractions of the frame
+  // width / height; positive moves the person right / down).
+  const scale = Math.max((head * frame.height) / ((chin - top) * H), cover) * (person.crop.zoom ?? 1);
+  const scaledW = Math.round(W * scale);
+  const scaledH = Math.round(H * scale);
+  let left = Math.round(frame.width / 2 - cx * scaledW + (person.crop.dx ?? 0) * frame.width);
+  let topPx = Math.round(HEAD_CENTRE_Y * frame.height - ((top + chin) / 2) * scaledH + (person.crop.dy ?? 0) * frame.height);
+  if (isCircle) {
+    topPx = Math.max(topPx, frame.height - scaledH);
+  } else {
+    left = Math.min(0, Math.max(frame.width - scaledW, left));
+    topPx = Math.min(0, Math.max(frame.height - scaledH, topPx));
+  }
+
+  // Soft backdrop: the photo placed the same way, edges stretched outward, then blurred.
+  const PAD = 900;
+  const scaledOpaque = await sharp(opaque, { raw: { width: W, height: H, channels: 4 } })
+    .resize(scaledW, scaledH, { kernel: "lanczos3" })
+    .removeAlpha()
+    .png()
+    .toBuffer();
+  const stretched = await sharp(scaledOpaque)
+    .extend({ top: PAD, bottom: PAD, left: PAD, right: PAD, extendWith: "copy" })
+    .png()
+    .toBuffer();
+  const backdrop = await sharp(stretched)
+    .extract({ left: PAD - left, top: PAD - topPx, width: frame.width, height: frame.height })
+    .blur(28)
+    .png()
+    .toBuffer();
+
+  // The sharp photo itself, with its real (round or square) edge, in the same place.
+  const scaledPhoto = await sharp(data, { raw: { width: W, height: H, channels: 4 } })
+    .resize(scaledW, scaledH, { kernel: "lanczos3" })
+    .png()
+    .toBuffer();
+  const x0 = Math.max(0, -left);
+  const y0 = Math.max(0, -topPx);
+  const x1 = Math.min(scaledW, frame.width - left);
+  const y1 = Math.min(scaledH, frame.height - topPx);
+  const visible = await sharp(scaledPhoto).extract({ left: x0, top: y0, width: x1 - x0, height: y1 - y0 }).png().toBuffer();
+  const placed = await sharp({ create: { ...frame, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } })
+    .composite([{ input: visible, left: left + x0, top: topPx + y0 }])
+    .png()
+    .toBuffer();
+  // Feather the photo's edge a little so it melts into the backdrop.
+  const { data: px } = await sharp(placed).raw().toBuffer({ resolveWithObject: true });
+  const w = frame.width;
+  const h = frame.height;
+  const BLUR = 8;
+  const blurred = Buffer.alloc(w * h);
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      let sum = 0;
+      let count = 0;
+      for (let dy = -BLUR; dy <= BLUR; dy++) {
+        for (let dx = -BLUR; dx <= BLUR; dx++) {
+          const yy = Math.min(h - 1, Math.max(0, y + dy));
+          const xx = Math.min(w - 1, Math.max(0, x + dx));
+          sum += px[(yy * w + xx) * 4 + 3];
+          count++;
+        }
+      }
+      blurred[y * w + x] = sum / count;
+    }
+  }
+  const out = Buffer.from(px);
+  // Soften inward only: pixels outside the photo stay fully clear, so no dark rim appears.
+  for (let i = 0; i < w * h; i++) out[i * 4 + 3] = Math.min(px[i * 4 + 3], Math.max(0, Math.min(255, Math.round(blurred[i] * 1.2 - 30))));
+  const feathered = await sharp(out, { raw: { width: w, height: h, channels: 4 } }).png().toBuffer();
+  // Rendered to a picture now: a second composite() on the same pipeline would replace this one.
+  return sharp(await sharp(backdrop).composite([{ input: feathered }]).png().toBuffer());
+}
+
 async function headshotFor(person) {
   const frame = { width: PHOTO.width, height: PHOTO.height };
   let image;
-  if (!person.photo && !person.useDesignPhoto) {
+  if (person.crop) {
+    image = await framedHeadshot(person);
+  } else if (!person.photo && !person.useDesignPhoto) {
     image = initialsFrame(person.name);
   } else if (person.useDesignPhoto) {
     // The design's own portrait: use it as shot, trimmed inside its rounded edge.

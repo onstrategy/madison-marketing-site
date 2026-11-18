@@ -12,7 +12,12 @@
     "title": "Head of Client Operations",
     "email": "connie@madisonai.com",
     "phone": "+1 775 398 1566",
-    "photo": "connie.jpg"
+    "photo": "connie.jpg",
+    "crop": {
+      "cx": 0.5,
+      "top": 0.09,
+      "chin": 0.7
+    }
   },
   {
     "slug": "connor",
@@ -36,7 +41,14 @@
     "title": "CEO, Co-Founder",
     "email": "erica@madisonai.com",
     "phone": "+1 775 398 1574",
-    "photo": "erica.webp"
+    "photo": "erica.webp",
+    "crop": {
+      "cx": 0.53,
+      "top": 0.05,
+      "chin": 0.4,
+      "dx": 0.035,
+      "dy": -0.05
+    }
   },
   {
     "slug": "francisco",
@@ -51,7 +63,13 @@
     "title": "AI Solutions Advisor",
     "email": "giani@madisonai.com",
     "phone": "+1 775 800 9265",
-    "photo": "giani.jpg"
+    "photo": "giani.jpg",
+    "crop": {
+      "cx": 0.57,
+      "top": 0.07,
+      "chin": 0.74,
+      "dx": 0.06
+    }
   },
   {
     "slug": "heyden",
@@ -74,7 +92,12 @@
     "title": "Lead Strategist",
     "email": "jay@onstrategyhq.com",
     "phone": "+1 775 398 1585",
-    "photo": "jay.jpg"
+    "photo": "jay.jpg",
+    "crop": {
+      "cx": 0.5,
+      "top": 0.04,
+      "chin": 0.78
+    }
   },
   {
     "slug": "jd",
@@ -98,7 +121,12 @@
     "title": "Principal Strategist",
     "email": "kamryn@madisonai.com",
     "phone": "+1 775 398 1578",
-    "photo": "kamryn.jpg"
+    "photo": "kamryn.jpg",
+    "crop": {
+      "cx": 0.47,
+      "top": 0.03,
+      "chin": 0.8
+    }
   },
   {
     "slug": "kendal",
@@ -106,7 +134,13 @@
     "title": "AI Solutions Advisor",
     "email": "kendal@madisonai.com",
     "phone": "+1 775 398 1565",
-    "photo": "kendal.webp"
+    "photo": "kendal.webp",
+    "crop": {
+      "cx": 0.49,
+      "top": 0.08,
+      "chin": 0.72,
+      "zoom": 1.166
+    }
   },
   {
     "slug": "kim",
@@ -114,7 +148,13 @@
     "title": "Principal Strategist",
     "email": "kim@madisonai.com",
     "phone": "+1 775 398 1575",
-    "photo": "kim.webp"
+    "photo": "kim.webp",
+    "crop": {
+      "cx": 0.52,
+      "top": 0.04,
+      "chin": 0.6,
+      "zoom": 1.08
+    }
   },
   {
     "slug": "kristine",
@@ -136,14 +176,25 @@
     "name": "Liv Bailey",
     "title": "Software Engineer",
     "email": "liv@madisonai.com",
-    "photo": "liv.png"
+    "photo": "liv.png",
+    "crop": {
+      "cx": 0.51,
+      "top": 0.09,
+      "chin": 0.7,
+      "zoom": 1.08
+    }
   },
   {
     "slug": "logan",
     "name": "Logan Patterson",
     "title": "Software Engineer",
     "email": "logan@madisonai.com",
-    "photo": "logan.jpg"
+    "photo": "logan.jpg",
+    "crop": {
+      "cx": 0.5,
+      "top": 0.1,
+      "chin": 0.84
+    }
   },
   {
     "slug": "mark",
@@ -151,7 +202,12 @@
     "title": "Chief Public Data Officer",
     "email": "mark@madisonai.com",
     "phone": "+1 775 524 4560",
-    "photo": "mark.jpeg"
+    "photo": "mark.jpeg",
+    "crop": {
+      "cx": 0.5,
+      "top": 0.11,
+      "chin": 0.72
+    }
   },
   {
     "slug": "nikita",
@@ -205,6 +261,12 @@
     "name": "Todd Ballowe",
     "title": "Head of Engineering & AI",
     "email": "todd@madisonai.com",
-    "photo": "todd.webp"
+    "photo": "todd.webp",
+    "crop": {
+      "cx": 0.48,
+      "top": 0.05,
+      "chin": 0.7,
+      "zoom": 1.331
+    }
   }
 ]
