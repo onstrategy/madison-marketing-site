@@ -3,7 +3,8 @@
     "slug": "alex",
     "name": "Alex Chernyshev",
     "title": "Software Engineer",
-    "email": "alex@madisonai.com"
+    "email": "alex@madisonai.com",
+    "noPhoto": true
   },
   {
     "slug": "connie",
@@ -41,7 +42,8 @@
     "slug": "francisco",
     "name": "Francisco Arias",
     "title": "Software Engineer",
-    "email": "fransisco@madisonai.com"
+    "email": "fransisco@madisonai.com",
+    "noPhoto": true
   },
   {
     "slug": "giani",
@@ -63,7 +65,8 @@
   {
     "slug": "howard",
     "name": "Howard Olsen",
-    "email": "howard@onstrategyhq.com"
+    "email": "howard@onstrategyhq.com",
+    "noPhoto": true
   },
   {
     "slug": "jay",
@@ -154,7 +157,8 @@
     "slug": "nikita",
     "name": "Nikita Khorev",
     "title": "Software Engineer",
-    "email": "nikita@madisonai.com"
+    "email": "nikita@madisonai.com",
+    "noPhoto": true
   },
   {
     "slug": "olivia",
@@ -165,7 +169,8 @@
     "slug": "raymond",
     "name": "Raymond Coplin",
     "title": "Software Engineer",
-    "email": "ray@madisonai.com"
+    "email": "ray@madisonai.com",
+    "noPhoto": true
   },
   {
     "slug": "reid",
@@ -192,7 +197,8 @@
     "slug": "stepan",
     "name": "Stepan Fedyanov",
     "title": "Software Engineer",
-    "email": "stepan@madisonai.com"
+    "email": "stepan@madisonai.com",
+    "noPhoto": true
   },
   {
     "slug": "todd",

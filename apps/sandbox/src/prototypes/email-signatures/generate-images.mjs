@@ -29,6 +29,11 @@ const PHOTO = { left: 437, top: 77, width: 282, height: 378, radius: 50 };
 const CARD_RADIUS = 42;
 // The banner shows at 217px wide in the email; 540px keeps it sharp on retina screens.
 const OUTPUT_WIDTH = 540;
+// Logo-only banner (people.json "noPhoto"): just the navy panel, cut from the design so
+// the logo sits centred (it spans x 75-391 of the design), clear of the headshot's
+// shadow. It shows at 113px wide in the email.
+const COMPACT = { left: 38, width: 390 };
+const COMPACT_OUTPUT_WIDTH = 290;
 const CREAM = { r: 0xea, g: 0xe5, b: 0xdf };
 
 const people = JSON.parse(await readFile(join(here, "people.json"), "utf8"));
@@ -65,19 +70,20 @@ const shadowFit = await sharp(shadow)
 
 // Left corners rounded like the card, right edge square (the text side continues the card).
 const R = CARD_RADIUS;
-function leftCornersMask() {
-  const alpha = Buffer.alloc(WIDTH * HEIGHT * 4, 255);
+function leftCornersMask(width) {
+  const alpha = Buffer.alloc(width * HEIGHT * 4, 255);
   for (let y = 0; y < HEIGHT; y++) {
     for (let x = 0; x < R; x++) {
       const cy = y < R ? R : y >= HEIGHT - R ? HEIGHT - R : undefined;
       if (cy === undefined) continue;
       const coverage = Math.max(0, Math.min(1, R - Math.hypot(R - (x + 0.5), cy - (y + 0.5)) + 0.5));
-      alpha[(y * WIDTH + x) * 4 + 3] = Math.round(coverage * 255);
+      alpha[(y * width + x) * 4 + 3] = Math.round(coverage * 255);
     }
   }
   return alpha;
 }
-const cardMask = leftCornersMask();
+const cardMask = leftCornersMask(WIDTH);
+const compactMask = leftCornersMask(COMPACT.width);
 
 // The design's own rounded corners leave a faint light edge just inside the arc. Before
 // the arc is cut, repaint that last few pixels from the pixels just inside it.
@@ -165,10 +171,33 @@ async function headshotFor(person) {
     .toBuffer();
 }
 
+// The design's panel with no headshot at all: a straight cut of the original pixels.
+const compactPanel = await sharp(design)
+  .extract({ left: COMPACT.left, top: 0, width: COMPACT.width, height: HEIGHT })
+  .png()
+  .toBuffer();
+
 for (const person of selected) {
+  const file = join(outDir, `${person.slug}.png`);
+
+  if (person.noPhoto) {
+    const compact = await sharp({ create: { width: COMPACT.width, height: HEIGHT, channels: 4, background: { ...CREAM, alpha: 1 } } })
+      .composite([
+        { input: compactPanel, left: 0, top: 0 },
+        { input: compactMask, raw: { width: COMPACT.width, height: HEIGHT, channels: 4 }, blend: "dest-in" },
+      ])
+      .png()
+      .toBuffer();
+    await sharp(compact)
+      .resize({ width: COMPACT_OUTPUT_WIDTH })
+      .png({ palette: true, quality: 90, effort: 10, dither: 1 })
+      .toFile(file);
+    console.log("wrote", file, "(logo only)");
+    continue;
+  }
+
   const headshot = await headshotFor(person);
 
-  const file = join(outDir, `${person.slug}.png`);
   const banner = await sharp({ create: { width: WIDTH, height: HEIGHT, channels: 4, background: { ...CREAM, alpha: 1 } } })
     .composite([
       { input: repaintedPanel, left: 0, top: 0 },
