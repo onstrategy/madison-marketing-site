@@ -17,6 +17,8 @@ export interface SignaturePerson {
   title?: string;
   email: string;
   phone?: string;
+  /** Logo-only banner: no headshot or initials, just the Madison panel beside the text. */
+  noPhoto?: boolean;
 }
 
 export const SIGNATURE_PEOPLE: SignaturePerson[] = people;
@@ -44,6 +46,9 @@ const CREAM_FILL = {
 // 400px wide, scaled from the 1377px design.
 const CARD_WIDTH = 400;
 const BANNER_WIDTH = 217;
+// The logo-only banner is the navy panel alone, at the same height (390px of the
+// 516px-high design), so the text side takes the rest of the width.
+const COMPACT_BANNER_WIDTH = 113;
 const BANNER_HEIGHT = 150;
 const RADIUS = 12.2;
 
@@ -64,6 +69,7 @@ export function Signature({
 }) {
   // Long titles get tighter lettering so they stay on one line.
   const longTitle = (person.title?.length ?? 0) > 20;
+  const bannerWidth = person.noPhoto ? COMPACT_BANNER_WIDTH : BANNER_WIDTH;
   return (
     <table
       role="presentation"
@@ -81,19 +87,19 @@ export function Signature({
       <tbody>
         <tr>
           <td
-            width={BANNER_WIDTH}
+            width={bannerWidth}
             valign="top"
-            style={{ width: BANNER_WIDTH, padding: 0, lineHeight: 0, fontSize: 0 }}
+            style={{ width: bannerWidth, padding: 0, lineHeight: 0, fontSize: 0 }}
           >
             <img
               src={`${imageBase}${person.slug}.png`}
               alt={`Madison AI · ${person.name}`}
-              width={BANNER_WIDTH}
+              width={bannerWidth}
               height={BANNER_HEIGHT}
               style={{
                 display: "block",
                 border: 0,
-                width: BANNER_WIDTH,
+                width: bannerWidth,
                 height: BANNER_HEIGHT,
               }}
             />
