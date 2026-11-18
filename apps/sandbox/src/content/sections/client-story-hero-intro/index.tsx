@@ -1,6 +1,7 @@
 import { Download } from "lucide-react";
 import { z } from "zod";
 import { Button } from "@madison/ui/button";
+import { cn } from "@madison/ui/utils";
 import { resolveClientStoryImage } from "../../client-stories/assets";
 import { ClientStoryImageInputSchema } from "../../client-stories/image";
 import { Reveal, Eyebrow } from "../../../prototypes/landing/parts";
@@ -20,7 +21,12 @@ const ClientStoryHeroIntroInputSchema = z
         clientName: NonEmptyStringSchema,
         agencyType: NonEmptyStringSchema,
         modelsUsed: z.array(NonEmptyStringSchema).min(1),
-        photo: ClientStoryImageInputSchema,
+        // The hero backdrop. A story gets either a `collage` (a transparent
+        // landscape illustration that sits along the bottom of the hero,
+        // behind the white details card) or, until its collage exists, a
+        // `photo` (full-bleed, darkened and blurred behind the title).
+        photo: ClientStoryImageInputSchema.optional(),
+        collage: ClientStoryImageInputSchema.optional(),
         logoAsset: LogoAssetSchema,
         logoAlt: NonEmptyStringSchema,
         logoWidth: z.number().int().positive(),
@@ -30,7 +36,10 @@ const ClientStoryHeroIntroInputSchema = z
         // does not carry a button that goes nowhere.
         showDownloadButton: z.boolean().default(true),
       })
-      .strict(),
+      .strict()
+      .refine(({ photo, collage }) => photo !== undefined || collage !== undefined, {
+        message: "hero needs a photo or a collage",
+      }),
     intro: z
       .object({
         headline: NonEmptyStringSchema,
@@ -69,7 +78,8 @@ const ClientStoryHeroIntroPropsSchema = ClientStoryHeroIntroInputSchema.transfor
   ({ hero, intro }) => ({
     hero: {
       ...hero,
-      photo: resolveClientStoryImage(hero.photo),
+      photo: hero.photo ? resolveClientStoryImage(hero.photo) : undefined,
+      collage: hero.collage ? resolveClientStoryImage(hero.collage) : undefined,
       logo: {
         src: resolveLogo(hero.logoAsset),
         alt: hero.logoAlt,
@@ -149,19 +159,27 @@ function HeroSection({
 }) {
   return (
     <section className="dark relative border-b border-default bg-app">
-      <div className="absolute inset-0 overflow-hidden">
-        <img
-          src={data.photo.url}
-          alt={data.photo.alt}
-          width={data.photo.width}
-          height={data.photo.height}
-          loading="lazy"
-          className="size-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-app via-app/70 to-app/30" />
-        <div className="absolute inset-0 bg-app/60" />
-      </div>
-      <div className="relative mx-auto max-w-6xl px-gutter pt-28 pb-16 sm:pb-40 lg:px-0 lg:pt-40">
+      {data.photo && !data.collage ? (
+        <div className="absolute inset-0 overflow-hidden">
+          <img
+            src={data.photo.url}
+            alt={data.photo.alt}
+            width={data.photo.width}
+            height={data.photo.height}
+            loading="lazy"
+            className="size-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-app via-app/70 to-app/30" />
+          <div className="absolute inset-0 bg-app/60" />
+        </div>
+      ) : null}
+      <div
+        className={
+          data.collage
+            ? "relative mx-auto max-w-6xl px-gutter pt-28 pb-8 lg:px-0 lg:pt-40"
+            : "relative mx-auto max-w-6xl px-gutter pt-28 pb-16 sm:pb-40 lg:px-0 lg:pt-40"
+        }
+      >
         <Reveal>
           <Eyebrow className="mb-6 text-brand-accent">{data.kicker}</Eyebrow>
           {/* Long, benefit-driven titles ("Reclaiming $11,000 in Staff Time
@@ -175,7 +193,14 @@ function HeroSection({
               text-3xl on phones (one step up from the old text-2xl) so it
               reads as the page's primary headline against IntroSection's
               now-smaller headline below; unchanged from md up. */}
-          <h1 className="mb-8 max-w-4xl text-balance font-serif text-3xl font-medium tracking-tight text-primary md:text-4xl">
+          <h1
+            className={cn(
+              "mb-8 max-w-4xl text-balance font-serif text-3xl font-medium tracking-tight text-primary md:text-4xl",
+              // With the collage the title shares the hero with the artwork,
+              // so on desktop it stays within the left 60% of the content.
+              data.collage && "lg:max-w-3/5",
+            )}
+          >
             {data.title}
           </h1>
           {data.showDownloadButton ? (
@@ -187,6 +212,22 @@ function HeroSection({
           ) : null}
         </Reveal>
       </div>
+      {data.collage ? (
+        // Decorative scene along the bottom of the hero. It sits in normal
+        // flow after the title, pulled well up on desktop (a share of the page
+        // width, so it scales with the artwork) so its empty sky tucks behind
+        // the title block and the hills rise close beneath the button. It is
+        // deliberately not positioned, so the (positioned) title block paints
+        // above it and stays clickable. The details card
+        // below straddles this image's bottom edge (see the card wrapper).
+        <img
+          src={data.collage.url}
+          alt={data.collage.alt}
+          width={data.collage.width}
+          height={data.collage.height}
+          className="block h-auto w-full sm:-mt-8 lg:-mt-[18%]"
+        />
+      ) : null}
       {/* Below `sm`, HeroMetaCard stacks to 4 rows (see its own
           `sm:grid-cols-...`) and its total height then depends on this
           story's own content — how many AI models are listed, whether
@@ -210,7 +251,13 @@ function HeroSection({
           up the card is a single row (predictable height), so the
           original straddle mechanics (`absolute` + `translate-y-1/2`)
           are unchanged there. */}
-      <div className="relative mt-8 px-gutter sm:absolute sm:inset-x-0 sm:bottom-0 sm:mt-0 sm:translate-y-1/2 lg:px-0">
+      <div
+        className={
+          data.collage
+            ? "relative -mt-4 px-gutter sm:absolute sm:inset-x-0 sm:bottom-0 sm:mt-0 sm:translate-y-1/2 lg:px-0"
+            : "relative mt-8 px-gutter sm:absolute sm:inset-x-0 sm:bottom-0 sm:mt-0 sm:translate-y-1/2 lg:px-0"
+        }
+      >
         <div className="mx-auto max-w-6xl">
           <Reveal delay={100}>
             <HeroMetaCard data={data} />
@@ -223,12 +270,22 @@ function HeroSection({
 
 function IntroSection({
   data,
+  closerToCard,
 }: {
   data: ClientStoryHeroIntroProps["intro"];
+  // With a collage hero the details card sits tight against the artwork, so
+  // the intro text is brought closer beneath it. Tablet widths keep the full
+  // gap, because the card is tallest (and overhangs furthest) there.
+  closerToCard: boolean;
 }) {
   const showFeaturePhoto = Boolean(data.photo) && data.photoStyle === "feature";
   return (
-    <section className="border-b border-default bg-app px-gutter pb-18 sm:pb-26 pt-12 sm:pt-44">
+    <section
+      className={cn(
+        "border-b border-default bg-app px-gutter pb-18 sm:pb-26 pt-12 sm:pt-44",
+        closerToCard && "pt-6 lg:pt-32",
+      )}
+    >
       <div
         className={
           showFeaturePhoto
@@ -301,7 +358,7 @@ export default function ClientStoryHeroIntroSection({
   return (
     <>
       <HeroSection data={hero} />
-      <IntroSection data={intro} />
+      <IntroSection data={intro} closerToCard={Boolean(hero.collage)} />
     </>
   );
 }
