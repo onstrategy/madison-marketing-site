@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
-import { Plug, ScanLine, Tag } from "lucide-react";
-import { NavFooterLogo } from "../landing/nav-footer-logo";
+import { ScanLine, Tag } from "lucide-react";
 import {
   Abs,
+  DONE,
   H,
   SERIF,
   W,
@@ -13,19 +13,16 @@ import {
   prog,
   rise,
   token,
-  typed,
+  Typed,
   type Clock,
 } from "./engine";
 import {
   AppWindow,
   Bubble,
-  CITY,
   Headline,
   InfoCard,
-  Kicker,
   LockBadge,
-  PEOPLE,
-  Seat,
+  Speaker,
   SourcePill,
   TextBars,
 } from "./parts";
@@ -68,44 +65,6 @@ function Trace({ d, p, opacity = 0.75 }: { d: string; p: number; opacity?: numbe
       strokeLinecap="round"
       opacity={opacity}
     />
-  );
-}
-
-// ── Holding slide ───────────────────────────────────────────────────────────
-
-const HOLD_LINE = makePath([
-  [-60, 790],
-  [480, 790],
-  [960, 790],
-  [1440, 790],
-  [1980, 790],
-]);
-
-export function Hold({ c }: { c: Clock }) {
-  return (
-    <>
-      <Abs x={160} y={130}>
-        <NavFooterLogo svgClassName="h-16 w-auto" />
-      </Abs>
-      <Abs x={160} y={400} w={1600}>
-        <Kicker>9:47 p.m. at the dais</Kicker>
-        <Headline size={150} style={{ marginTop: 28 }}>
-          The life of a decision.
-        </Headline>
-      </Abs>
-      <Wisp path={HOLD_LINE} head={1} g={c.g} line amp={13} />
-      <Abs
-        x={160}
-        y={990}
-        style={{
-          fontSize: 24,
-          color: token("--text-muted"),
-          opacity: 0.8 * (1 - prog(9, 1.5, c.g)),
-        }}
-      >
-        Press F for full screen. Click, or press the right arrow, to begin.
-      </Abs>
-    </>
   );
 }
 
@@ -214,10 +173,7 @@ export function Given({ c }: { c: Clock }) {
   const a = c.at(S.given);
   return (
     <>
-      <Abs x={120} y={92} style={rise(ep(0.3, 0.6, a))}>
-        <Kicker>The life of a decision</Kicker>
-      </Abs>
-      <Abs x={120} y={142} w={1700} style={rise(ep(0.45, 0.7, a))}>
+      <Abs x={120} y={110} w={1700} style={rise(ep(0.45, 0.7, a))}>
         <Headline size={96}>AI assisting our work is a given.</Headline>
       </Abs>
       {DESK_ROWS.map((row) =>
@@ -234,86 +190,119 @@ export function Given({ c }: { c: Clock }) {
       )}
       <Abs
         x={120}
-        y={286}
+        y={254}
         style={{ fontSize: 42, color: token("--text-secondary"), ...rise(ep(2.6, 0.6, a)) }}
       >
-        An assistant on every desk.
+        The future: an assistant on every desk.
       </Abs>
     </>
   );
 }
 
-// ── The clock that sits in the corner through scenes 2 to 5 ─────────────────
+// ── The time cards ──────────────────────────────────────────────────────────
 
-export function NightClock({ c }: { c: Clock }) {
-  const a = c.at(S.nine47);
-  const move = ease(prog(1.9, 1.0, a));
+/**
+ * The time of day, alone in the middle of the screen. It sets the scene for
+ * one click and is gone on the next; it never follows the story around.
+ */
+export function TimeCard({ c, step, time }: { c: Clock; step: number; time: string }) {
+  const a = c.at(step);
   return (
-    <div
-      style={{
-        position: "absolute",
-        left: "50%",
-        top: "50%",
-        transform: `translate(calc(-50% + ${lerp(0, 700, move)}px), calc(-50% + ${lerp(0, -452, move)}px)) scale(${lerp(1, 0.2, move)})`,
-        fontFamily: SERIF,
-        fontSize: 300,
-        fontWeight: 500,
-        letterSpacing: "-0.02em",
-        whiteSpace: "nowrap",
-        fontVariantNumeric: "lining-nums",
-        opacity: prog(0.3, 0.7, a),
-      }}
-    >
-      9:47 p.m.
-    </div>
+    <Abs x={0} y={0} w={W} h={H} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <Headline
+        size={300}
+        style={{
+          letterSpacing: "-0.02em",
+          whiteSpace: "nowrap",
+          fontVariantNumeric: "lining-nums",
+          ...rise(ep(0.2, 0.9, a), 24),
+        }}
+      >
+        {time}
+      </Headline>
+    </Abs>
   );
 }
 
 // ── 2 · 9:47 p.m. ───────────────────────────────────────────────────────────
 
-const PROMISE_LINES = ["Two years ago you promised", "to fix the flooding", "on Elm Street."];
+const PROMISE_LINES = [
+  "Two years ago you promised to fix",
+  "the flooding on Elm Street.",
+  "Nothing has happened.",
+];
 
-/** Each word of `lines` with its place in the whole quote, for a word-by-word build. */
+/** Each word with its place in the whole quote, for a word-by-word build. */
 const PROMISE_WORDS = PROMISE_LINES.map((line, li) => {
   const before = PROMISE_LINES.slice(0, li).reduce((n, l) => n + l.split(" ").length, 0);
-  return { line, words: line.split(" ").map((word, wi) => ({ word, i: before + wi })) };
+  return { line, li, words: line.split(" ").map((word, wi) => ({ word, i: before + wi })) };
 });
 
-const RISE_PATH = makePath([
-  [930, 535],
-  [1040, 580],
-  [1180, 545],
-  [1300, 462],
-  [1440, 474],
-  [1540, 400],
-]);
+/** The council's "typing…" bubble: three dots rising and falling in turn. */
+function Thinking({ g, opacity }: { g: number; opacity: number }) {
+  return (
+    <div
+      style={{
+        display: "inline-flex",
+        gap: 16,
+        padding: "30px 38px",
+        borderRadius: 40,
+        background: token("--bg-hover"),
+        opacity,
+      }}
+    >
+      {[0, 1, 2].map((i) => {
+        const wave = Math.max(0, Math.sin(g * 5 - i * 0.9));
+        return (
+          <span
+            key={i}
+            style={{
+              width: 22,
+              height: 22,
+              borderRadius: "50%",
+              background: token("--text-primary"),
+              opacity: 0.35 + 0.65 * wave,
+              transform: `translateY(${-10 * wave}px)`,
+            }}
+          />
+        );
+      })}
+    </div>
+  );
+}
 
-export function Nine47({ c }: { c: Clock }) {
-  const a = c.at(S.nine47);
-  const b = c.at(S.isThatTrue);
+/**
+ * The exchange at the dais, laid out like a chat: the resident's words on the
+ * left, the council on the right. On the first visit the council is still
+ * thinking; when we come back after the assistant and the bots have failed,
+ * the thinking turns into the only reply it has.
+ */
+function DaisChat({
+  resident,
+  council,
+  reply,
+  g,
+}: {
+  resident: number;
+  council: number;
+  reply: number;
+  g: number;
+}) {
+  // The last sentence lands a beat after the promise.
+  const wordAt = (i: number, li: number) => 3.1 + i * 0.16 + (li === 2 ? 0.5 : 0);
+  // On the reply click the dots hold for a moment, then become the answer.
+  const answered = ep(1.0, 0.6, reply);
   return (
     <>
-      <Seat x={190} y={318} r={44} label="Resident" side="none" opacity={ep(2.9, 0.5, a)} />
-      <Abs
-        x={280}
-        y={200}
-        style={{
-          fontSize: 24,
-          fontWeight: 600,
-          letterSpacing: "0.18em",
-          textTransform: "uppercase",
-          color: token(PEOPLE),
-          opacity: ep(2.9, 0.5, a),
-        }}
-      >
-        Resident
+      <Abs x={120} y={150} style={rise(ep(2.9, 0.5, resident), 14)}>
+        <Speaker who="resident" size={48} />
       </Abs>
-      <Abs x={280} y={246} w={1500}>
-        <Headline size={92} style={{ lineHeight: 1.18 }}>
-          {PROMISE_WORDS.map(({ line, words }) => (
+      <Abs x={120} y={236} w={1560}>
+        <Headline size={76} style={{ lineHeight: 1.16 }}>
+          {PROMISE_WORDS.map(({ line, li, words }) => (
             <div key={line}>
               {words.map(({ word, i }) => (
-                <span key={`${i}-${word}`} style={{ opacity: prog(3.1 + i * 0.16, 0.5, a) }}>
+                <span key={`${i}-${word}`} style={{ opacity: prog(wordAt(i, li), 0.5, resident) }}>
                   {word}{" "}
                 </span>
               ))}
@@ -321,236 +310,356 @@ export function Nine47({ c }: { c: Clock }) {
           ))}
         </Headline>
       </Abs>
-      <Wisp path={RISE_PATH} head={glide(prog(5.3, 2.4, a))} g={c.g} />
 
-      <Seat x={700} y={818} r={44} label="Council" side="none" opacity={ep(0.2, 0.5, b)} />
       <Abs
-        x={790}
-        y={706}
-        style={{
-          fontSize: 24,
-          fontWeight: 600,
-          letterSpacing: "0.18em",
-          textTransform: "uppercase",
-          color: token(PEOPLE),
-          opacity: ep(0.2, 0.5, b),
-        }}
+        x={0}
+        y={600}
+        w={1800}
+        style={{ display: "flex", justifyContent: "flex-end", ...rise(ep(0.2, 0.5, council), 14) }}
       >
-        Council
+        <Speaker who="council" size={48} />
       </Abs>
-      <Abs x={786} y={738} style={rise(ep(0.5, 0.7, b))}>
-        <Headline size={150}>Is that true?</Headline>
+      <Abs
+        x={0}
+        y={690}
+        w={1800}
+        style={{ display: "flex", justifyContent: "flex-end", ...rise(ep(0.5, 0.5, council), 10) }}
+      >
+        <Thinking g={g} opacity={1 - answered} />
       </Abs>
+      {reply >= 0 ? (
+        <Abs x={0} y={680} w={1806} style={{ textAlign: "right", ...rise(answered, 16) }}>
+          <Headline size={110}>“We’ll get back to you.”</Headline>
+        </Abs>
+      ) : null}
     </>
   );
+}
+
+export function Nine47({ c }: { c: Clock }) {
+  // The resident's words were timed to follow the old on-screen clock; the
+  // time now has its own click, so they start straight away.
+  const r = c.at(S.nine47);
+  return (
+    <DaisChat resident={r < 0 ? -1 : r + 2.6} council={c.at(S.isThatTrue)} reply={-1} g={c.g} />
+  );
+}
+
+/**
+ * Back at the dais after the assistant and the bots have failed: the same
+ * exchange, and the council's thinking turns into "We'll get back to you."
+ */
+export function GetBack({ c }: { c: Clock }) {
+  return <DaisChat resident={DONE} council={DONE} reply={c.at(S.getBack)} g={c.g} />;
 }
 
 // ── 3 · The smart stranger ──────────────────────────────────────────────────
 
 const GENERIC_ANSWER = "Drainage repairs are usually scheduled in a capital improvement plan.";
 
-const SLIDE_OFF = makePath([
-  [1440, 474],
-  [1540, 400],
-  [1505, 290],
-  [1425, 222],
-  [1372, 300],
-  [1378, 480],
-  [1420, 640],
-  [1500, 770],
-  [1560, 850],
-]);
-
-const BREAK_UP = makePath([
-  [1500, 770],
-  [1560, 850],
-  [1650, 838],
-  [1700, 750],
-  [1664, 642],
-]);
-
-/** Where the wisp breaks up against a label. */
-const PUFF_AT: Pt = [1664, 636];
-const PUFFS = [
-  { angle: 200, dist: 70, r: 7 },
-  { angle: 165, dist: 96, r: 5 },
-  { angle: 128, dist: 80, r: 8 },
-  { angle: 92, dist: 110, r: 5 },
-  { angle: 58, dist: 84, r: 7 },
-  { angle: 22, dist: 100, r: 5 },
-  { angle: -14, dist: 72, r: 6 },
+/**
+ * The systems the bots reach on the second click, laid out on their own, and
+ * what each one actually hands back: a file name, a scan nobody can read, or
+ * nothing at all.
+ */
+const SOURCES: {
+  system: string;
+  gets: ReactNode;
+  note: string;
+  kind: "label" | "scan" | "locked";
+}[] = [
+  { system: "Minutes", gets: <>2019-03-12<br />minutes.pdf</>, note: "File name only", kind: "label" },
+  { system: "Staff reports", gets: <>Staff report<br />Sept 2019</>, note: "File name only", kind: "label" },
+  { system: "Permits", gets: <>Permits export<br />2021</>, note: "File name only", kind: "label" },
+  { system: "Contracts", gets: null, note: "Scanned. Can’t be read", kind: "scan" },
+  { system: "Budget", gets: "No access", note: "Walled off", kind: "locked" },
 ];
+const SOURCE_W = 330;
+const SOURCE_GAP = 30;
+const SOURCE_TOP = 150;
+const SOURCE_H = 200;
+const sourceX = (i: number) => 75 + i * (SOURCE_W + SOURCE_GAP);
 
-const LABEL_SUB = { marginTop: 4, fontSize: 24, fontWeight: 400, color: token("--text-muted") };
-
-/** A dashed lead from the assistant to a system, with the connector's plug on it. */
-function Connector({ x, y, p }: { x: number; y: number; p: number }) {
-  return (
-    <Abs x={x} y={y - 16} w={70} h={32} style={{ opacity: p }}>
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          top: 15,
-          borderTop: `3px dashed ${token("--border-active")}`,
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          left: 19,
-          top: 0,
-          width: 32,
-          height: 32,
-          borderRadius: "50%",
-          background: token("--bg-app"),
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Plug size={22} color={token("--text-muted")} />
-      </div>
-    </Abs>
-  );
-}
-
-const DISAGREE = ["Funded in 2020.", "Funded in 2021.", "No record found."];
+/** Three askings of the same question, three different replies. */
+const DISAGREE = [
+  { ask: "First ask", answer: "Funded in 2020.", from: [0, 1] },
+  { ask: "Second ask", answer: "Funded in 2021.", from: [2, 3] },
+  { ask: "Third ask", answer: "No record found.", from: [4] },
+];
+const ANSWER_W = 460;
+const ANSWER_TOP = 560;
+const answerX = (i: number) => 200 + i * (ANSWER_W + 70);
 
 export function Stranger({ c }: { c: Clock }) {
   const a = c.at(S.stranger);
   const b = c.at(S.connectors);
   const d = c.at(S.getBack);
   const dim = 1 - 0.72 * prog(0, 0.6, d);
-  const card = (i: number) => ep(0.3 + i * 0.22, 0.55, b);
-  const labelIcon = <Tag size={22} />;
-  const puff = prog(2.9, 1.3, b);
+  // The first half clears completely before the sources come in.
+  const first = 1 - prog(0, 0.5, b);
+  const source = (i: number) => ep(0.6 + i * 0.15, 0.55, b);
+  const lineAt = (i: number) => 1.7 + i * 0.6;
+  const answer = (i: number) => ep(lineAt(i) + 0.6, 0.5, b);
 
   return (
     <>
-      <div style={{ position: "absolute", inset: 0, opacity: dim }}>
-        <AppWindow
-          title="Assistant"
-          tag="Visitor"
-          style={{ left: 560, top: 190, width: 800, height: 480, ...rise(ep(0.3, 0.6, a)) }}
-        >
-          {a >= 0.7 ? <Bubble from="person">{typed(QUESTION, 0.7, 1.3, a)}</Bubble> : null}
-          {a >= 2.5 ? (
-            <Bubble from="assistant" style={{ marginTop: 20 }}>
-              {typed(GENERIC_ANSWER, 2.6, 1.4, a)}
-            </Bubble>
-          ) : null}
-          <div
-            style={{
-              display: "inline-block",
-              marginTop: 18,
-              padding: "4px 16px",
-              borderRadius: 999,
-              border: `2px solid ${token("--border-active")}`,
-              fontSize: 24,
-              color: token("--text-muted"),
-              opacity: ep(4.4, 0.5, a),
-            }}
+      {/* First click: the council asks, the assistant answers with confidence
+          and nothing behind it. Same chat layout as the slide before. */}
+      {first > 0 ? (
+        <div style={{ position: "absolute", inset: 0, opacity: first }}>
+          <AppWindow
+            style={{ left: 460, top: 110, width: 1000, height: 560, ...rise(ep(0.2, 0.6, a)) }}
           >
-            No sources
-          </div>
-        </AppWindow>
+            {/* The council asks… */}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 12 }}>
+              <Speaker who="council" size={28} style={rise(ep(0.5, 0.4, a), 8)} />
+              {a >= 0.6 ? (
+                <Bubble from="person" style={rise(ep(0.6, 0.35, a), 8)}>
+                  <Typed text={QUESTION} start={0.7} dur={1.3} t={a} />
+                </Bubble>
+              ) : null}
+            </div>
+            {/* …and the assistant answers. */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                gap: 12,
+                marginTop: 34,
+              }}
+            >
+              <Speaker who="assistant" size={28} style={rise(ep(2.3, 0.4, a), 8)} />
+              {a >= 2.5 ? (
+                <Bubble from="assistant" style={rise(ep(2.5, 0.35, a), 8)}>
+                  <Typed text={GENERIC_ANSWER} start={2.6} dur={1.6} t={a} />
+                </Bubble>
+              ) : null}
+            </div>
+          </AppWindow>
 
-        {/* The fixes on offer: connectors that bring back a label, not the page. */}
-        <Connector x={490} y={285} p={card(0)} />
-        <Connector x={490} y={465} p={card(1)} />
-        <Connector x={490} y={645} p={card(2)} />
-        <Connector x={1360} y={375} p={card(3)} />
-        <Connector x={1360} y={555} p={card(4)} />
-
-        <InfoCard kicker="Label" icon={labelIcon} style={{ left: 70, top: 210, width: 420, height: 150, ...rise(card(0)) }}>
-          2019-03-12 minutes.pdf
-          <div style={LABEL_SUB}>Mar 12, 2019 · Council / 2019</div>
-        </InfoCard>
-        <InfoCard kicker="Label" icon={labelIcon} style={{ left: 70, top: 390, width: 420, height: 150, ...rise(card(1)) }}>
-          Permits export
-          <div style={LABEL_SUB}>2021</div>
-        </InfoCard>
-        <InfoCard
-          kicker="Scanned file"
-          icon={<ScanLine size={22} />}
-          style={{ left: 70, top: 570, width: 420, height: 150, ...rise(card(2)) }}
-        >
-          <TextBars rows={[0.92, 0.7, 0.82]} gap={14} blur={4} style={{ marginTop: 12 }} />
-        </InfoCard>
-        <InfoCard kicker="Label" icon={labelIcon} style={{ left: 1430, top: 300, width: 420, height: 150, ...rise(card(3)) }}>
-          Staff report
-          <div style={LABEL_SUB}>Sept 2019</div>
-        </InfoCard>
-        <InfoCard
-          kicker="Walled off"
-          icon={<LockBadge size={22} />}
-          style={{ left: 1430, top: 480, width: 420, height: 150, ...rise(card(4)) }}
-        >
-          Budget
-          <div style={LABEL_SUB}>No access</div>
-        </InfoCard>
-
-        {/* Ask three times, get three answers. */}
-        {DISAGREE.map((answer, i) => (
-          <Abs
-            key={answer}
-            x={495 + i * 320}
-            y={724}
-            w={290}
-            style={{
-              boxSizing: "border-box",
-              padding: "16px 0",
-              textAlign: "center",
-              borderRadius: 18,
-              background: token("--bg-hover"),
-              fontSize: 30,
-              ...rise(ep(3.6 + i * 0.7, 0.5, b)),
-            }}
-          >
-            {answer}
+          <Abs x={0} y={712} w={W} style={{ textAlign: "center" }}>
+            <div style={rise(ep(4.4, 0.8, a), 24)}>
+              <Headline size={84} style={{ lineHeight: 1.12 }}>
+                A smart stranger
+                <br />
+                with no memory of Elm Street.
+              </Headline>
+            </div>
+            <div
+              style={{
+                marginTop: 26,
+                fontFamily: SERIF,
+                fontSize: 52,
+                color: token("--text-secondary"),
+                ...rise(ep(5.4, 0.8, a), 16),
+              }}
+            >
+              Total confidence. No sources.
+            </div>
           </Abs>
-        ))}
-      </div>
+        </div>
+      ) : null}
 
-      {/* The wisp drifts to the assistant and slides off it … */}
-      <Wisp
-        path={SLIDE_OFF}
-        head={lerp(0.16, 1, glide(prog(3.2, 2.8, a)))}
-        g={c.g}
-        opacity={(1 - 0.45 * prog(5.2, 0.8, a)) * (1 - prog(0, 0.4, b))}
-      />
-      {/* … then breaks up against a label it cannot open. */}
+      {/* Second click: the systems as the bots see them, feeding three replies. */}
       {b >= 0 ? (
-        <Wisp
-          path={BREAK_UP}
-          head={lerp(0.35, 1, glide(prog(1.5, 1.4, b)))}
-          g={c.g}
-          opacity={0.6 * (1 - prog(2.9, 0.7, b))}
-        />
-      ) : null}
-      {puff > 0 && puff < 1 ? (
-        <Lines>
-          {PUFFS.map(({ angle, dist, r }) => {
-            const rad = (angle * Math.PI) / 180;
-            const out = ease(puff) * dist;
-            return (
-              <circle
-                key={angle}
-                cx={PUFF_AT[0] + Math.cos(rad) * out}
-                cy={PUFF_AT[1] + Math.sin(rad) * out}
-                r={r * (1 - 0.4 * puff)}
-                fill={token("--brand-accent")}
-                opacity={0.7 * (1 - puff)}
-              />
-            );
-          })}
-        </Lines>
+        <div style={{ position: "absolute", inset: 0, opacity: dim }}>
+          {SOURCES.map(({ system, gets, note, kind }, i) => (
+            <InfoCard
+              key={system}
+              kicker={system}
+              icon={
+                kind === "locked" ? (
+                  <LockBadge size={24} />
+                ) : kind === "scan" ? (
+                  <ScanLine size={24} />
+                ) : (
+                  <Tag size={22} />
+                )
+              }
+              style={{
+                left: sourceX(i),
+                top: SOURCE_TOP,
+                width: SOURCE_W,
+                height: SOURCE_H,
+                ...rise(source(i)),
+              }}
+            >
+              {kind === "scan" ? (
+                <TextBars rows={[0.92, 0.7]} gap={16} height={12} blur={4} style={{ margin: "14px 0 24px" }} />
+              ) : (
+                gets
+              )}
+              <div style={{ marginTop: 6, fontSize: 24, fontWeight: 400, color: token("--text-muted") }}>
+                {note}
+              </div>
+            </InfoCard>
+          ))}
+
+          <Lines>
+            {DISAGREE.map(({ answer: reply, from }, i) =>
+              from.map((s) => {
+                const x0 = sourceX(s) + SOURCE_W / 2;
+                const y0 = SOURCE_TOP + SOURCE_H;
+                const x1 = answerX(i) + ANSWER_W / 2;
+                const y1 = ANSWER_TOP;
+                const p = ep(lineAt(i), 0.7, b);
+                if (p <= 0) return null;
+                return (
+                  <path
+                    key={`${reply}-${s}`}
+                    d={`M ${x0} ${y0} C ${x0} ${y0 + 110}, ${x1} ${y1 - 110}, ${x1} ${y1}`}
+                    pathLength={1}
+                    strokeDasharray={1}
+                    strokeDashoffset={1 - p}
+                    stroke={token("--border-active")}
+                    strokeWidth={3}
+                    strokeLinecap="round"
+                  />
+                );
+              }),
+            )}
+          </Lines>
+
+          {/* Ask three times, get three answers: replies to the same question. */}
+          {DISAGREE.map(({ ask, answer: reply }, i) => (
+            <Abs
+              key={ask}
+              x={answerX(i)}
+              y={ANSWER_TOP}
+              w={ANSWER_W}
+              style={{
+                boxSizing: "border-box",
+                padding: "18px 28px 22px",
+                borderRadius: 20,
+                background: token("--bg-hover"),
+                ...rise(answer(i)),
+              }}
+            >
+              <div style={{ fontSize: 24, fontWeight: 600, color: token("--text-muted") }}>
+                {ask}
+              </div>
+              <div style={{ marginTop: 4, fontSize: 42, fontWeight: 500 }}>{reply}</div>
+            </Abs>
+          ))}
+        </div>
       ) : null}
 
-      <Abs x={0} y={838} w={W} style={{ textAlign: "center", ...rise(ep(0.3, 0.7, d)) }}>
-        <Headline size={120}>“We’ll get back to you.”</Headline>
+      <Abs
+        x={0}
+        y={800}
+        w={W}
+        style={{ textAlign: "center", opacity: 1 - prog(0, 0.4, d) }}
+      >
+        <div style={rise(ep(4.3, 0.8, b), 24)}>
+          <Headline size={96}>Ask three times. Get three answers.</Headline>
+        </div>
+      </Abs>
+
+    </>
+  );
+}
+
+// ── The switch ──────────────────────────────────────────────────────────────
+
+/**
+ * A beat of its own between the two halves of the story: the screen clears,
+ * a single switch appears, and it flips on. Same question, same assistant;
+ * the only thing that changes is the city's memory behind it.
+ */
+/** Where the switch's knob rests once it is on; the wisp starts from here. */
+export const KNOB_ON: Pt = [1030, 400];
+
+export function MemoryOn({ c }: { c: Clock }) {
+  const a = c.at(S.memoryOn);
+  // The next click: the switch melts away and its knob becomes the wisp.
+  const m = c.at(S.minutes);
+  const melt = ease(prog(0, 0.7, m));
+  const on = ease(prog(1.6, 0.6, a));
+  const glow = on * (0.85 + 0.15 * Math.sin(c.g * 2.2)) * (1 - melt);
+  const TRACK_W = 300;
+  const TRACK_H = 160;
+  const KNOB = 124;
+  const BORDER = 4;
+  const inset = (TRACK_H - KNOB) / 2 - BORDER;
+  const trackX = W / 2 - TRACK_W / 2;
+  const trackY = 400 - TRACK_H / 2;
+  const arrive = rise(ep(0.2, 0.7, a), 20);
+  // The knob's centre, sliding from off to on.
+  const knobX = trackX + BORDER + inset + KNOB / 2 + on * (TRACK_W - KNOB - 2 * inset - 2 * BORDER);
+  const knobY = KNOB_ON[1];
+  const size = lerp(KNOB, 36, melt);
+
+  return (
+    <>
+      {/* A soft blue bloom behind the switch once it is on. */}
+      <div
+        style={{
+          position: "absolute",
+          left: W / 2 - 520,
+          top: 400 - 520,
+          width: 1040,
+          height: 1040,
+          borderRadius: "50%",
+          background: `radial-gradient(circle, ${token("--brand-accent", 0.22)} 0%, ${token("--brand-accent", 0)} 62%)`,
+          opacity: glow,
+        }}
+      />
+
+      <Abs x={0} y={0} w={W} h={0} style={arrive}>
+        <Abs
+          x={trackX}
+          y={trackY}
+          w={TRACK_W}
+          h={TRACK_H}
+          style={{
+            boxSizing: "border-box",
+            borderRadius: TRACK_H / 2,
+            border: `${BORDER}px solid ${on > 0.5 ? token("--brand-accent") : token("--border-active")}`,
+            background: on > 0 ? token("--brand-primary", on) : token("--bg-hover"),
+            boxShadow: `0 0 ${80 * glow}px ${token("--brand-accent", 0.5 * glow)}`,
+            transition: "border-color .3s",
+            opacity: 1 - prog(0, 0.45, m),
+            transform: `scale(${1 - 0.15 * melt})`,
+          }}
+        />
+        {/* The knob: white when on, then it shrinks to the wisp's own blue orb. */}
+        <div
+          style={{
+            position: "absolute",
+            left: knobX - size / 2,
+            top: knobY - size / 2,
+            width: size,
+            height: size,
+            borderRadius: "50%",
+            background:
+              melt > 0.35
+                ? token("--brand-accent")
+                : on > 0.5
+                  ? token("--brand-foreground")
+                  : token("--text-muted"),
+            boxShadow:
+              melt > 0
+                ? `0 0 ${40 * melt}px ${token("--brand-accent", 0.7)}`
+                : "var(--elevation-lg)",
+            transition: "background .3s",
+            opacity: 1 - prog(0.7, 0.15, m),
+          }}
+        />
+      </Abs>
+
+      {/* One line only, arriving as the switch flips on. */}
+      <Abs
+        x={0}
+        y={560}
+        w={W}
+        style={{
+          textAlign: "center",
+          ...rise(ep(1.6, 0.7, a), 16),
+          opacity: ep(1.6, 0.7, a) * (1 - prog(0, 0.35, m)),
+        }}
+      >
+        <Headline size={96}>Turn on the city’s memory.</Headline>
       </Abs>
     </>
   );
@@ -561,10 +670,21 @@ export function Stranger({ c }: { c: Clock }) {
 /** Stage y of the three passages the wisp lifts out of the minutes. */
 const PASSAGE_Y = [377, 569, 761];
 
+/** What the wisp lifts out of the minutes, one row per passage, into one list. */
+const EXTRACTED = [
+  { label: "Item", value: "7B · Elm Street drainage" },
+  { label: "Motion", value: "Direct staff to design and fund the repair" },
+  { label: "Vote", value: "Passed 5 to 0" },
+];
+const EXTRACT_TOP = 250;
+const EXTRACT_H = 480;
+/** Row offsets inside the list card. */
+const EXTRACT_ROW_Y = [28, 140, 290];
+
 const INTO_MINUTES = makePath([
-  [-60, 100],
-  [150, 180],
-  [520, 270],
+  KNOB_ON,
+  [960, 330],
+  [820, 282],
   [650, 362],
   [430, 470],
   [190, 558],
@@ -579,35 +699,51 @@ const PASSAGE_AT = [
   fracAt(INTO_MINUTES, [560, 755]),
 ];
 
+/**
+ * From the foot of the minutes, the wisp weaves through the body of every
+ * other source, bottom to top: across one card, round the end, back across
+ * the next, so each one visibly gets read rather than passed by.
+ */
 const THROUGH_SOURCES = makePath([
   [690, 860],
   [760, 950],
-  [930, 1036],
-  [1180, 1042],
-  [1320, 992],
-  [1362, 880],
-  [1362, 665],
-  [1362, 475],
-  [1362, 285],
-  [1380, 172],
-  [1460, 122],
+  [930, 1030],
+  [1180, 1020],
+  [1330, 900],
+  [1420, 866],
+  [1600, 855],
+  [1780, 846],
+  [1868, 760],
+  [1780, 676],
+  [1600, 665],
+  [1420, 656],
+  [1334, 570],
+  [1420, 486],
+  [1600, 475],
+  [1780, 466],
+  [1868, 380],
+  [1780, 296],
+  [1600, 285],
+  [1420, 276],
+  [1350, 200],
 ]);
-/** Sources top to bottom; the wisp reaches the bottom one first. */
-const SOURCE_AT = [285, 475, 665, 855].map((y) => fracAt(THROUGH_SOURCES, [1362, y]));
-
-const TO_ASSISTANT = makePath([
-  [180, 236],
-  [380, 150],
-  [700, 112],
-  [1100, 104],
-  [1340, 120],
-  [1440, 160],
-  [1464, 204],
-]);
+/** Where the wisp enters each source, top to bottom; it reaches the bottom one first. */
+const SOURCE_AT = (
+  [
+    [1780, 296],
+    [1420, 486],
+    [1780, 676],
+    [1420, 866],
+  ] as Pt[]
+).map((pt) => fracAt(THROUGH_SOURCES, pt));
 
 const MINUTES_ROWS = Array.from({ length: 21 }, (_, i) => 0.62 + ((i * 37) % 34) / 100);
 /** Rows of the minutes page that are the passages (see PASSAGE_Y). */
 const PASSAGE_ROWS = [3, 9, 15];
+
+/** Where the cited lines sit inside the answer window (centre of line one), and their spacing. */
+const ANSWER_LINE_Y = 548;
+const ANSWER_LINE_H = 76;
 
 const ANSWER = [
   { line: "March 2019: council directs the fix. Passed 5 to 0.", source: "Minutes · March 12, 2019" },
@@ -623,9 +759,9 @@ export function MemoryWakes({ c }: { c: Clock }) {
   const d = c.at(S.answer);
   const docs = 1 - prog(0, 0.5, d);
 
-  const headA = glide(prog(0.9, 4.4, a));
+  const headA = glide(prog(0.7, 4.6, a));
   const passage = PASSAGE_AT.map((f) => headA >= f);
-  const headB = glide(prog(0.7, 3.8, b));
+  const headB = lerp(0.04, 1, glide(prog(0.7, 5.2, b)));
   const source = SOURCE_AT.map((f) => b >= 0 && headB >= f);
   const fly = (i: number) => {
     const p = ep(0.1 + i * 0.12, 0.6, b);
@@ -635,9 +771,6 @@ export function MemoryWakes({ c }: { c: Clock }) {
 
   return (
     <>
-      <Abs x={120} y={84} style={rise(ep(0.2, 0.6, a))}>
-        <Kicker>Follow the decision</Kicker>
-      </Abs>
 
       {docs > 0 ? (
         <div style={{ position: "absolute", inset: 0, opacity: docs }}>
@@ -680,23 +813,68 @@ export function MemoryWakes({ c }: { c: Clock }) {
             })}
           </Abs>
 
-          {/* The passages that matter lift out, each tied back to its line. */}
+          {/* One list, filled line by line from the same page, then its source. */}
           <Lines>
-            {PASSAGE_Y.map((y, i) => (
-              <Trace key={y} d={`M 688 ${y} L 820 ${y}`} p={passage[i] ? ep(0, 0.5, a - 0.9 - PASSAGE_AT[i] * 4.4) : 0} />
-            ))}
+            {PASSAGE_Y.map((y, i) => {
+              const ry = EXTRACT_TOP + EXTRACT_ROW_Y[i] + 30;
+              return (
+                <Trace
+                  key={y}
+                  d={`M 688 ${y} C 760 ${y}, 760 ${ry}, 820 ${ry}`}
+                  p={passage[i] ? ep(0, 0.5, a - 0.7 - PASSAGE_AT[i] * 4.6) : 0}
+                />
+              );
+            })}
           </Lines>
-          <InfoCard kicker="Item" lit={passage[0]} style={{ left: 820, top: 322, width: 480, height: 110, opacity: passage[0] ? 1 : 0, transition: "opacity .5s, border-color .5s, box-shadow .5s" }}>
-            7B · Elm Street drainage
-          </InfoCard>
-          <InfoCard kicker="Motion" lit={passage[1]} style={{ left: 820, top: 494, width: 480, height: 150, opacity: passage[1] ? 1 : 0, transition: "opacity .5s, border-color .5s, box-shadow .5s" }}>
-            Direct staff to design and fund the repair
-          </InfoCard>
-          <InfoCard kicker="Vote" lit={passage[2]} style={{ left: 820, top: 706, width: 480, height: 110, opacity: passage[2] ? 1 : 0, transition: "opacity .5s, border-color .5s, box-shadow .5s" }}>
-            Passed 5 to 0
-          </InfoCard>
-          <InfoCard kicker="Source" style={{ left: 820, top: 850, width: 480, height: 150, opacity: headA >= 0.97 ? 1 : 0, transition: "opacity .6s" }}>
-            Minutes, March 12, 2019, page 14
+          <InfoCard
+            lit={passage[0]}
+            style={{
+              left: 820,
+              top: EXTRACT_TOP,
+              width: 480,
+              height: EXTRACT_H,
+              padding: 0,
+              opacity: ep(0.4, 0.6, a),
+            }}
+          >
+            {EXTRACTED.map(({ label, value }, i) => (
+              <div
+                key={label}
+                style={{
+                  position: "absolute",
+                  left: 28,
+                  right: 28,
+                  top: EXTRACT_ROW_Y[i],
+                  opacity: passage[i] ? 1 : 0,
+                  transform: `translateX(${passage[i] ? 0 : -16}px)`,
+                  transition: "opacity .5s, transform .5s",
+                }}
+              >
+                <div style={{ fontSize: 24, fontWeight: 600, color: token("--brand-accent") }}>{label}</div>
+                <div style={{ marginTop: 4 }}>{value}</div>
+              </div>
+            ))}
+            <div
+              style={{
+                position: "absolute",
+                left: 28,
+                right: 28,
+                bottom: 24,
+                paddingTop: 18,
+                borderTop: `2px solid ${token("--border-default")}`,
+                display: "flex",
+                alignItems: "center",
+                gap: 14,
+                fontSize: 26,
+                fontWeight: 500,
+                color: token("--text-secondary"),
+                opacity: headA >= 0.97 ? 1 : 0,
+                transition: "opacity .6s",
+              }}
+            >
+              <SourcePill n={1} size={38} />
+              Minutes, March 12, 2019, page 14
+            </div>
           </InfoCard>
 
           {/* The other systems the decision passed through. */}
@@ -725,8 +903,8 @@ export function MemoryWakes({ c }: { c: Clock }) {
             Permit 21-0442 · Open · Final inspection: none
           </InfoCard>
 
-          <Wisp path={INTO_MINUTES} head={headA} g={c.g} orb={b < 0} trail={0.35} />
-          {b >= 0 ? <Wisp path={THROUGH_SOURCES} head={lerp(0.05, 1, headB)} g={c.g} /> : null}
+          <Wisp path={INTO_MINUTES} head={headA} g={c.g} orb={b < 0} />
+          {b >= 0 ? <Wisp path={THROUGH_SOURCES} head={headB} g={c.g} /> : null}
         </div>
       ) : null}
 
@@ -763,7 +941,7 @@ export function MemoryWakes({ c }: { c: Clock }) {
           <Lines>
             {ANSWER.map(({ line }, i) => {
               const y0 = 306 + i * 138;
-              const y1 = 402 + i * 84;
+              const y1 = ANSWER_LINE_Y + i * ANSWER_LINE_H;
               return (
                 <Trace
                   key={line}
@@ -773,14 +951,18 @@ export function MemoryWakes({ c }: { c: Clock }) {
               );
             })}
           </Lines>
+          {/* The same window and the same question as the smart stranger.
+              This time the city's own assistant answers, and shows its work. */}
           <AppWindow
-            title="Assistant"
-            tag={d >= 1.5 ? CITY : "Visitor"}
-            tagLit={d >= 1.5}
             style={{ left: 720, top: 170, width: 1080, height: 790, ...rise(ep(0.4, 0.6, d)) }}
           >
-            <Bubble from="person">{QUESTION}</Bubble>
-            <div style={{ marginTop: 34 }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 12 }}>
+              <Speaker who="council" size={28} />
+              <Bubble from="person">{QUESTION}</Bubble>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 12, marginTop: 34 }}>
+              <Speaker who="city" size={28} style={rise(ep(1.4, 0.4, d), 8)} />
+              <div>
               {ANSWER.map(({ line }, i) => (
                 <div
                   key={line}
@@ -788,8 +970,8 @@ export function MemoryWakes({ c }: { c: Clock }) {
                     display: "flex",
                     alignItems: "center",
                     gap: 20,
-                    height: 84,
-                    fontSize: 36,
+                    height: ANSWER_LINE_H,
+                    fontSize: 32,
                     ...rise(ep(lineAt(i), 0.6, d), 16),
                   }}
                 >
@@ -797,9 +979,9 @@ export function MemoryWakes({ c }: { c: Clock }) {
                   {line}
                 </div>
               ))}
+              </div>
             </div>
           </AppWindow>
-          <Wisp path={TO_ASSISTANT} head={glide(prog(0.4, 1.2, d))} g={c.g} ribbon={300} />
         </>
       ) : null}
     </>
@@ -818,20 +1000,14 @@ const STOPS = [
   { x: 1700, when: "Permit 21-0442", what: "Open · final inspection" },
 ];
 const LINE_Y = 736;
+/** The frame drawn around all five stops on "Every promise." */
+const FRAME = { x: 64, y: 694, w: 1830, h: 320 };
+/** Where the resident's question returns, above the frame it connects to. */
+const QUOTE_Y = 520;
 
 const TIMELINE = makePath([[40, LINE_Y], ...STOPS.map(({ x }): Pt => [x, LINE_Y])]);
 const STOP_AT = STOPS.map(({ x }) => fracAt(TIMELINE, [x, LINE_Y]));
 
-const BACK_TO_PROMISE = makePath([
-  [1700, LINE_Y],
-  [1842, 672],
-  [1850, 556],
-  [1720, 472],
-  [1450, 456],
-  [1180, 452],
-  [1076, 420],
-  [1052, 376],
-]);
 
 export function SlowMotion({ c }: { c: Clock }) {
   const a = c.at(S.decision);
@@ -849,18 +1025,28 @@ export function SlowMotion({ c }: { c: Clock }) {
   const visited = STOP_AT.map((f) => head >= f - 0.002);
   // Which stops the beat on screen is talking about.
   const focus = e >= 0 ? [0, 1, 2, 3, 4] : d >= 0 ? [4] : b >= 0 ? [2, 3] : [0];
-  const beatAt = [ep(2.4, 0.7, a), ep(1.9, 0.7, b), ep(1.3, 0.7, d), ep(2.5, 0.7, e)];
+  const beatAt = [ep(2.4, 0.7, a), ep(1.9, 0.7, b), ep(1.3, 0.7, d), ep(0.2, 0.7, e)];
   const cellPulse = d >= 0 ? 0.55 + 0.45 * Math.sin(c.g * 3) : 0;
 
   return (
     <>
-      <Abs x={120} y={84} style={rise(ep(0.2, 0.6, a))}>
-        <Kicker>The life of a decision</Kicker>
-      </Abs>
 
-      {BEATS.map((beat, i) => (
-        <Abs key={beat} x={120} y={140 + i * 126} style={rise(beatAt[i], 30)}>
-          <Headline size={108}>{beat}</Headline>
+      {/* The four beats, two to a line, each arriving with its click. */}
+      {[0, 1].map((row) => (
+        <Abs key={row} x={120} y={100 + row * 128}>
+          <Headline size={108}>
+            {[0, 1].map((col) => {
+              const i = row * 2 + col;
+              return (
+                <span
+                  key={BEATS[i]}
+                  style={{ display: "inline-block", marginRight: col === 0 ? 34 : 0, ...rise(beatAt[i], 30) }}
+                >
+                  {BEATS[i]}
+                </span>
+              );
+            })}
+          </Headline>
         </Abs>
       ))}
 
@@ -894,66 +1080,71 @@ export function SlowMotion({ c }: { c: Clock }) {
             <InfoCard
               kicker={when}
               lit={lit}
-              style={{ left: x - 165, top: 778, width: 330, height: 206, ...rise(p) }}
+              style={{ left: x - 165, top: 778, width: 330, height: 214, ...rise(p) }}
             >
               {what}
               {i === 4 ? (
                 <div
                   style={{
                     marginTop: 10,
-                    width: 150,
-                    height: 40,
+                    height: 48,
                     boxSizing: "border-box",
                     borderRadius: 8,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                     border: `3px dashed ${d >= 0 ? token("--brand-accent", cellPulse) : token("--border-active")}`,
+                    background: token("--brand-accent", 0.12 * ep(0.9, 0.6, d)),
+                    color: token("--brand-accent"),
+                    fontSize: 24,
+                    fontWeight: 700,
+                    whiteSpace: "nowrap",
                   }}
-                />
+                >
+                  <span style={{ opacity: ep(1.0, 0.6, d) }}>No completion notice</span>
+                </div>
               ) : null}
             </InfoCard>
           </div>
         );
       })}
-      <Abs
-        x={1200}
-        y={1000}
-        w={665}
-        style={{
-          textAlign: "right",
-          fontSize: 28,
-          fontWeight: 600,
-          color: token("--brand-accent"),
-          ...rise(ep(3.6, 0.6, e), 12),
-        }}
-      >
-        What the record doesn’t show.
-      </Abs>
 
-      {/* Every promise: back to the words the resident just said. */}
-      <Seat x={1050} y={318} r={38} label="Resident" side="none" opacity={ep(2.0, 0.6, e)} />
-      <Abs
-        x={1112}
-        y={250}
-        style={{
-          fontSize: 24,
-          fontWeight: 600,
-          letterSpacing: "0.18em",
-          textTransform: "uppercase",
-          color: token(PEOPLE),
-          opacity: ep(2.0, 0.6, e),
-        }}
-      >
-        Resident
-      </Abs>
-      <Abs x={1112} y={288} w={700} style={rise(ep(2.1, 0.7, e))}>
-        <Headline size={44} style={{ lineHeight: 1.25 }}>
-          “You promised to fix the flooding on Elm Street.”
-        </Headline>
-      </Abs>
-
-      <Wisp path={TIMELINE} head={head} g={c.g} orb={e < 0} trail={0.5} amp={7} />
+      {/* Every promise: the five stops framed as one record, answering the
+          question the resident asked at 9:47. */}
       {e >= 0 ? (
-        <Wisp path={BACK_TO_PROMISE} head={glide(prog(0.3, 2.4, e))} g={c.g} />
+        <>
+          <Lines>
+            <rect
+              x={FRAME.x}
+              y={FRAME.y}
+              width={FRAME.w}
+              height={FRAME.h}
+              rx={28}
+              pathLength={1}
+              strokeDasharray={1}
+              strokeDashoffset={1 - ep(0.6, 1.0, e)}
+              stroke={token("--brand-accent")}
+              strokeWidth={4}
+              style={{ filter: `drop-shadow(0 0 12px ${token("--brand-accent", 0.5)})` }}
+            />
+            <Trace d={`M ${W / 2} ${FRAME.y} L ${W / 2} ${QUOTE_Y + 96}`} p={ep(1.6, 0.5, e)} opacity={1} />
+          </Lines>
+          <Abs
+            x={0}
+            y={QUOTE_Y - 64}
+            w={W}
+            style={{ display: "flex", justifyContent: "center", ...rise(ep(2.0, 0.5, e), 12) }}
+          >
+            <Speaker who="resident" size={34} />
+          </Abs>
+          <Abs x={0} y={QUOTE_Y} w={W} style={{ textAlign: "center", ...rise(ep(2.1, 0.7, e), 14) }}>
+            <Headline size={52}>“Two years ago you promised to fix the flooding on Elm Street.”</Headline>
+          </Abs>
+        </>
       ) : null}
+
+      <Wisp path={TIMELINE} head={head} g={c.g} orb={e < 0} amp={7} />
+
     </>
   );
 }

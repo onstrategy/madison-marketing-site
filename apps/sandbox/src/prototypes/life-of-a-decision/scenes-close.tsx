@@ -15,10 +15,10 @@ import {
   token,
   type Clock,
 } from "./engine";
-import { CITY, Headline, Kicker, LockBadge, SourcePill, Stamp, TextBars } from "./parts";
+import { CITY, Headline, LockBadge, SourcePill, Stamp, TextBars } from "./parts";
 import { MiniWindow } from "./scenes-night";
 import { S } from "./steps";
-import { Wisp, glide, makePath } from "./wisp";
+import { Wisp, glide, makePath, type Pt } from "./wisp";
 
 // ============================================================================
 // The closing scenes, back on navy: scenes 9 to 12 of the storyboard. The bar
@@ -86,8 +86,9 @@ export function Bar({ c }: { c: Clock }) {
   const a = c.at(S.bar);
   return (
     <>
-      <Abs x={0} y={268} w={W} style={{ textAlign: "center", ...rise(ep(0.4, 0.6, a)) }}>
-        <Kicker style={{ fontSize: 30 }}>Dais ready</Kicker>
+      {/* The standard itself, then the four things it means. */}
+      <Abs x={0} y={150} w={W} style={{ textAlign: "center", ...rise(ep(0.4, 0.7, a)) }}>
+        <Headline size={120}>DAIS ready.</Headline>
       </Abs>
       {BAR.map(({ word, x, proof }, i) => {
         const p = ep(1.0 + i * 0.9, 0.7, a);
@@ -95,12 +96,12 @@ export function Bar({ c }: { c: Clock }) {
           <Abs
             key={word}
             x={x - 225}
-            y={390}
+            y={400}
             w={450}
             style={{ display: "flex", flexDirection: "column", alignItems: "center", ...rise(p, 30) }}
           >
             <div style={{ height: 110, display: "flex", alignItems: "center" }}>{proof}</div>
-            <Headline size={96} style={{ marginTop: 30 }}>
+            <Headline size={76} style={{ marginTop: 30 }}>
               {word}
             </Headline>
           </Abs>
@@ -127,7 +128,6 @@ export function Bar({ c }: { c: Clock }) {
 // ── 10 · You're not first ───────────────────────────────────────────────────
 
 const PEER_COUNT = 80;
-const LIT = 84;
 const WASHOE = { col: 4, row: 9 };
 
 /** Stable pseudo-random value in 0..1 for a grid cell. */
@@ -139,15 +139,17 @@ const scatter = (col: number, row: number) => {
 /**
  * The field of governments. Cells behind the headline, and behind Washoe
  * County's label, are left out; the rest are ranked by a stable scatter and
- * the first LIT of them light up in that order.
+ * all of them light up in that order.
  */
 const FIELD = (() => {
   const cells: { x: number; y: number; rank: number; washoe: boolean }[] = [];
   for (let row = 0; row < 12; row++) {
     for (let col = 0; col < 23; col++) {
       const washoe = col === WASHOE.col && row === WASHOE.row;
-      const underHeadline = col <= 10 && row <= 6;
-      const underLabel = row === WASHOE.row && col > WASHOE.col && col <= WASHOE.col + 5;
+      // Leave a clear row under the text; the dots that sat there move into a
+      // column just to the right of it instead.
+      const underHeadline = col <= 9 && row <= 6;
+      const underLabel = row === WASHOE.row && col > WASHOE.col && col <= WASHOE.col + 4;
       if (underHeadline || underLabel) continue;
       cells.push({
         x: 80 + col * 80,
@@ -168,8 +170,8 @@ export function Peers({ c }: { c: Clock }) {
   return (
     <>
       {FIELD.map(({ x, y, order, washoe }) => {
-        const lit = order < LIT;
-        const on = lit ? ep(0.8 + (order / LIT) * 4.2, 0.5, a) : 0;
+        // Every dot lights, in a scattered order, finishing as the count lands.
+        const on = ep(0.8 + (order / FIELD.length) * 3.7, 0.5, a);
         const twinkle = 1 + 0.08 * Math.sin(c.g * 1.6 + order);
         const size = washoe ? 34 : 22;
         return (
@@ -193,10 +195,7 @@ export function Peers({ c }: { c: Clock }) {
         );
       })}
 
-      <Abs x={120} y={92} style={rise(ep(0.3, 0.6, a))}>
-        <Kicker>The AI for the business of government</Kicker>
-      </Abs>
-      <Abs x={112} y={120} style={{ opacity: ep(0.5, 0.6, a) }}>
+      <Abs x={112} y={58} style={{ opacity: ep(0.5, 0.6, a) }}>
         <Headline
           size={300}
           style={{
@@ -207,12 +206,12 @@ export function Peers({ c }: { c: Clock }) {
           {count >= PEER_COUNT ? "80+" : count}
         </Headline>
       </Abs>
-      <Abs x={120} y={424} style={rise(ep(0.7, 0.7, a))}>
+      <Abs x={120} y={362} style={rise(ep(0.7, 0.7, a))}>
         <Headline size={100}>governments</Headline>
       </Abs>
       <Abs
         x={122}
-        y={552}
+        y={490}
         style={{ fontSize: 40, color: token("--text-secondary"), ...rise(ep(5.0, 0.7, a)) }}
       >
         have turned on their memory.
@@ -249,7 +248,7 @@ const SYSTEMS = [
   { label: "Permits", locked: false },
   { label: "Email", locked: true },
 ];
-const MEMORY_Y = 500;
+const MEMORY_Y = 600;
 const MEMORY_LINE = makePath([
   [120, MEMORY_Y],
   [680, MEMORY_Y],
@@ -273,8 +272,17 @@ export function Easy({ c }: { c: Clock }) {
 
   return (
     <>
-      <Abs x={120} y={84} style={rise(ep(0.2, 0.6, a))}>
-        <Kicker>It isn’t hard</Kicker>
+
+      {/* What all of this is: one memory, reading every system read-only. */}
+      <Abs x={120} y={52} style={rise(ep(0.2, 0.7, a))}>
+        <Headline size={96}>Madison Memory</Headline>
+      </Abs>
+      <Abs
+        x={122}
+        y={170}
+        style={{ fontSize: 34, fontWeight: 500, color: token("--text-secondary"), ...rise(ep(0.5, 0.7, a), 12) }}
+      >
+        Connected read-only
       </Abs>
 
       {SYSTEMS.map(({ label, locked }, i) => {
@@ -285,7 +293,7 @@ export function Easy({ c }: { c: Clock }) {
           <div key={label}>
             <Abs
               x={x}
-              y={150}
+              y={250}
               w={250}
               h={220}
               style={{
@@ -320,9 +328,9 @@ export function Easy({ c }: { c: Clock }) {
             {/* Read-only: a dashed lead down to the memory. Nothing moves. */}
             <Abs
               x={x + 124}
-              y={370}
+              y={470}
               w={0}
-              h={(MEMORY_Y - 370) * drop}
+              h={(MEMORY_Y - 470) * drop}
               style={{ borderLeft: `3px dashed ${token("--brand-accent", 0.7)}` }}
             />
           </div>
@@ -330,40 +338,10 @@ export function Easy({ c }: { c: Clock }) {
       })}
 
       <Wisp path={MEMORY_LINE} head={glide(prog(1.0, 1.6, a))} g={c.g} line amp={8} />
-      <Abs
-        x={120}
-        y={532}
-        style={{
-          padding: "8px 22px",
-          borderRadius: 999,
-          border: `2px solid ${token("--brand-accent")}`,
-          background: token("--brand-accent", 0.14),
-          color: token("--brand-accent"),
-          fontSize: 28,
-          fontWeight: 700,
-          ...rise(ep(1.2, 0.6, a), 12),
-        }}
-      >
-        Madison Memory
-      </Abs>
-      <Abs
-        x={1500}
-        y={540}
-        w={300}
-        style={{
-          textAlign: "right",
-          fontSize: 26,
-          fontWeight: 600,
-          color: token("--text-secondary"),
-          opacity: ep(EASY_LINES[1].at + 0.6, 0.6, a),
-        }}
-      >
-        Connected read-only
-      </Abs>
 
       {EASY_LINES.map(({ text, at }, i) => (
-        <Abs key={text} x={120} y={640 + i * 118} style={rise(ep(at, 0.7, a))}>
-          <Headline size={72}>{text}</Headline>
+        <Abs key={text} x={120} y={690 + i * 104} style={rise(ep(at, 0.7, a))}>
+          <Headline size={64}>{text}</Headline>
         </Abs>
       ))}
 
@@ -378,7 +356,7 @@ export function Easy({ c }: { c: Clock }) {
                 {fall > 0 && fall < 1 ? (
                   <Abs
                     x={x - 18}
-                    y={lerp(70, 132, easeOut(fall))}
+                    y={lerp(196, 232, easeOut(fall))}
                     w={36}
                     h={46}
                     style={{
@@ -393,7 +371,7 @@ export function Easy({ c }: { c: Clock }) {
                 {read > 0 && read < 1 ? (
                   <Abs
                     x={x - 9}
-                    y={lerp(370, MEMORY_Y, read) - 8}
+                    y={lerp(470, MEMORY_Y, read) - 8}
                     w={18}
                     h={18}
                     style={{
@@ -474,24 +452,40 @@ export function Close({ c }: { c: Clock }) {
       <Abs x={160} y={812} style={rise(ep(0.3, 0.8, d))}>
         <Headline size={72}>When it needs to be right, we’re your people.</Headline>
       </Abs>
-
-      <Abs
-        x={160}
-        y={1010}
-        style={{ fontSize: 24, color: token("--text-muted"), opacity: ep(1.4, 0.8, d) }}
-      >
-        Illustrative scenario · sample city
-      </Abs>
     </>
   );
 }
 
 // ── Sign-off ────────────────────────────────────────────────────────────────
 
+/**
+ * The wisp's last flourish: it drifts in from the left, makes one full lap
+ * around the logo and tagline (wide enough never to cross them), then carries
+ * on over the top and slips away off the right edge.
+ */
+const ORBIT = (() => {
+  const cx = W / 2;
+  const cy = H / 2;
+  const rx = 660;
+  const ry = 240;
+  const pts: Pt[] = [
+    [-90, 800],
+    [140, 720],
+  ];
+  // From the left, clockwise over the top: one lap and a quarter.
+  for (let k = 0; k <= 15; k++) {
+    const th = Math.PI + (k / 12) * 2 * Math.PI;
+    pts.push([cx + rx * Math.cos(th), cy + ry * Math.sin(th)]);
+  }
+  pts.push([1420, 270], [1760, 230], [2040, 210]);
+  return makePath(pts);
+})();
+
 /** The last thing on screen: the Madison AI logo and tagline, alone and centered. */
 export function SignOff({ c }: { c: Clock }) {
   const a = c.at(S.signOff);
   return (
+    <>
     <Abs
       x={0}
       y={0}
@@ -519,5 +513,8 @@ export function SignOff({ c }: { c: Clock }) {
         Your government’s AI. You own it.
       </div>
     </Abs>
+    {/* One lap of emphasis around the name, then gone. */}
+    {a >= 1.6 ? <Wisp path={ORBIT} head={glide(prog(1.8, 3.6, a))} g={c.g} amp={6} /> : null}
+    </>
   );
 }
