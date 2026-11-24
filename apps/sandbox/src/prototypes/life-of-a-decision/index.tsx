@@ -2,15 +2,16 @@ import { useEffect } from "react";
 import { cn } from "@madison/ui/utils";
 import { Layer, Stage, prog, useDeck, type Clock } from "./engine";
 import { Bar, Close, Easy, Peers, SignOff } from "./scenes-close";
-import { Morning, OneMemory, Review } from "./scenes-day";
+import { OneMemory, PortalChat, Transparent } from "./scenes-day";
 import {
+  GetBack,
   Given,
-  Hold,
+  MemoryOn,
   MemoryWakes,
   Nine47,
-  NightClock,
   SlowMotion,
   Stranger,
+  TimeCard,
 } from "./scenes-night";
 import { S, TOTAL } from "./steps";
 
@@ -101,7 +102,7 @@ export default function LifeOfADecisionPrototype() {
   useControls({ next, back, go });
 
   // Navy for the night at the dais, paper for the next morning.
-  const morning = c.step >= S.morning && c.step <= S.transparent;
+  const morning = c.step >= S.clock815 && c.step <= S.transparent;
 
   return (
     <div
@@ -113,20 +114,30 @@ export default function LifeOfADecisionPrototype() {
     >
       <h1 className="sr-only">The life of a decision</h1>
       <Stage>
-        <Layer theme="dark" opacity={fade(c, S.hold, S.hold)}>
-          <Hold c={c} />
-        </Layer>
         <Layer theme="dark" opacity={fade(c, S.given, S.given)}>
           <Given c={c} />
         </Layer>
-        <Layer theme="dark" opacity={fade(c, S.nine47, S.promise)}>
-          <NightClock c={c} />
+        <Layer theme="dark" opacity={fade(c, S.clock947, S.clock947)}>
+          <TimeCard c={c} step={S.clock947} time="9:47 p.m." />
         </Layer>
         <Layer theme="dark" opacity={fade(c, S.nine47, S.isThatTrue)}>
           <Nine47 c={c} />
         </Layer>
-        <Layer theme="dark" opacity={fade(c, S.stranger, S.getBack)}>
+        <Layer theme="dark" opacity={fade(c, S.stranger, S.connectors)}>
           <Stranger c={c} />
+        </Layer>
+        {/* Back at the dais: the same exchange, and staff has no answer. */}
+        <Layer theme="dark" opacity={fade(c, S.getBack, S.getBack)}>
+          <GetBack c={c} />
+        </Layer>
+        {/* Stays up into the next click, so its knob can turn into the wisp. */}
+        <Layer
+          theme="dark"
+          opacity={
+            c.step === S.minutes ? 1 - prog(0.8, 0.2, c.t) : fade(c, S.memoryOn, S.memoryOn)
+          }
+        >
+          <MemoryOn c={c} />
         </Layer>
         <Layer theme="dark" opacity={fade(c, S.minutes, S.answer)}>
           <MemoryWakes c={c} />
@@ -134,14 +145,18 @@ export default function LifeOfADecisionPrototype() {
         <Layer theme="dark" opacity={fade(c, S.decision, S.promise)}>
           <SlowMotion c={c} />
         </Layer>
-        <Layer theme="light" opacity={fade(c, S.morning, S.morning)}>
-          <Morning c={c} />
+        <Layer theme="light" opacity={fade(c, S.clock815, S.clock815)}>
+          <TimeCard c={c} step={S.clock815} time="8:15 a.m." />
         </Layer>
-        <Layer theme="light" opacity={fade(c, S.review, S.signed)}>
-          <Review c={c} />
+        {/* One conversation across the morning: it scrolls rather than cuts. */}
+        <Layer theme="light" opacity={fade(c, S.morning, S.signed)}>
+          <PortalChat c={c} />
         </Layer>
-        <Layer theme="light" opacity={fade(c, S.seats, S.transparent)}>
+        <Layer theme="light" opacity={fade(c, S.seats, S.unify)}>
           <OneMemory c={c} />
+        </Layer>
+        <Layer theme="light" opacity={fade(c, S.transparent, S.transparent)}>
+          <Transparent c={c} />
         </Layer>
         <Layer theme="dark" opacity={fade(c, S.bar, S.bar)}>
           <Bar c={c} />

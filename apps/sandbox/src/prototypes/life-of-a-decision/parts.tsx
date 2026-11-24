@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Lock } from "lucide-react";
+import { Bot, Briefcase, Landmark, Lock, UserRound } from "lucide-react";
 import { SANS, SERIF, token, type Style } from "./engine";
 
 // ============================================================================
@@ -20,82 +20,54 @@ export const PEOPLE = "--semantic-info";
 /** The city every document in the deck belongs to. Illustrative, not a real place. */
 export const CITY = "City of Alder Falls";
 
-/** The small all-caps line that names a scene. */
-export function Kicker({ children, style }: { children: ReactNode; style?: Style }) {
+
+/**
+ * Every actor in the story, as one kind of pill, so the audience always knows
+ * who is speaking. People are the resident (terracotta), the council (solid
+ * ink) and staff (outlined ink). The generic assistant is a cool slate; the
+ * city's own assistant, with its memory behind it, is the brand blue, so the
+ * before and after read apart at a glance.
+ */
+const SPEAKERS = {
+  resident: { label: "Resident", Icon: UserRound, bg: PEOPLE, fg: "--semantic-info-fg", edge: PEOPLE },
+  council: { label: "Council", Icon: Landmark, bg: "--text-primary", fg: "--bg-app", edge: "--text-primary" },
+  staff: { label: "Staff", Icon: Briefcase, bg: "--bg-surface", fg: "--text-primary", edge: "--text-primary" },
+  assistant: { label: "Assistant", Icon: Bot, bg: "--bg-hover", fg: "--text-primary", edge: "--border-active" },
+  city: { label: CITY, Icon: Bot, bg: "--brand-primary", fg: "--brand-foreground", edge: "--brand-primary" },
+} as const;
+
+export function Speaker({
+  who,
+  size = 40,
+  style,
+}: {
+  who: keyof typeof SPEAKERS;
+  /** Label size in stage pixels; the pill scales with it. */
+  size?: number;
+  style?: Style;
+}) {
+  const { label, Icon, bg, fg, edge } = SPEAKERS[who];
   return (
     <div
       style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: size * 0.4,
+        padding: `${size * 0.3}px ${size * 0.75}px ${size * 0.3}px ${size * 0.55}px`,
+        borderRadius: 999,
+        background: token(bg),
+        color: token(fg),
+        boxShadow: `inset 0 0 0 2px ${token(edge)}`,
         fontFamily: SANS,
-        fontSize: 24,
+        fontSize: size,
         fontWeight: 600,
-        letterSpacing: "0.22em",
-        textTransform: "uppercase",
-        color: token("--brand-accent"),
+        lineHeight: 1,
+        whiteSpace: "nowrap",
         ...style,
       }}
     >
-      {children}
-    </div>
-  );
-}
-
-/** A person: one of the three seats the answer has to reach. */
-export function Seat({
-  x,
-  y,
-  r = 46,
-  label,
-  side = "below",
-  opacity = 1,
-}: {
-  /** Center of the seat, in stage coordinates. */
-  x: number;
-  y: number;
-  r?: number;
-  label: string;
-  side?: "below" | "above" | "none";
-  opacity?: number;
-}) {
-  return (
-    <div
-      style={{
-        position: "absolute",
-        left: x - r,
-        top: y - r,
-        width: r * 2,
-        height: r * 2,
-        opacity,
-      }}
-    >
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          borderRadius: "50%",
-          background: token("--bg-app"),
-          boxShadow: `inset 0 0 0 ${r * 2}px ${token(PEOPLE, 0.16)}`,
-          border: `3px solid ${token(PEOPLE)}`,
-          boxSizing: "border-box",
-        }}
-      />
-      {side === "none" ? null : (
-        <div
-          style={{
-            position: "absolute",
-            left: "50%",
-            transform: "translateX(-50%)",
-            ...(side === "below" ? { top: r * 2 + 14 } : { bottom: r * 2 + 14 }),
-            whiteSpace: "nowrap",
-            fontSize: 24,
-            fontWeight: 600,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: token(PEOPLE),
-          }}
-        >
-          {label}
-        </div>
-      )}
+      <Icon size={size * 1.05} strokeWidth={2.2} />
+      {label}
     </div>
   );
 }
@@ -108,7 +80,8 @@ export function AppWindow({
   style,
   children,
 }: {
-  title: string;
+  /** Shown in the window bar; leave it out for a bar with only the window dots. */
+  title?: string;
   tag?: string;
   /** The tag reads as the city's own once its memory is behind the assistant. */
   tagLit?: boolean;
@@ -117,6 +90,7 @@ export function AppWindow({
 }) {
   return (
     <div
+      data-window
       style={{
         position: "absolute",
         display: "flex",
@@ -134,8 +108,8 @@ export function AppWindow({
           display: "flex",
           alignItems: "center",
           gap: 10,
-          height: 68,
-          padding: "0 26px",
+          height: 88,
+          padding: "0 30px",
           borderBottom: `2px solid ${token("--border-default")}`,
           flex: "0 0 auto",
         }}
@@ -144,22 +118,26 @@ export function AppWindow({
           <span
             key={dot}
             style={{
-              width: 13,
-              height: 13,
+              width: 16,
+              height: 16,
               borderRadius: "50%",
               border: `2px solid ${token("--border-active")}`,
               boxSizing: "border-box",
             }}
           />
         ))}
-        <span style={{ marginLeft: 12, fontSize: 24, color: token("--text-muted") }}>{title}</span>
+        {title ? (
+          <span style={{ marginLeft: 16, fontSize: 36, fontWeight: 600, color: token("--text-primary") }}>
+            {title}
+          </span>
+        ) : null}
         {tag ? (
           <span
             style={{
               marginLeft: "auto",
-              padding: "5px 16px",
+              padding: "6px 20px",
               borderRadius: 999,
-              fontSize: 24,
+              fontSize: 30,
               fontWeight: 600,
               transition: "background .5s, color .5s, border-color .5s",
               border: `2px solid ${tagLit ? token("--brand-accent") : token("--border-active")}`,

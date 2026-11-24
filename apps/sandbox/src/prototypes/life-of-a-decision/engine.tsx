@@ -48,11 +48,44 @@ export const prog = (start: number, dur: number, t: number) =>
 /** The same progress, eased out. */
 export const ep = (start: number, dur: number, t: number) => easeOut(prog(start, dur, t));
 
-/** Reveals `full` one character at a time across `dur`, starting at `start`. */
-export const typed = (full: string, start: number, dur: number, t: number) => {
-  if (t < start) return "";
-  return full.slice(0, Math.floor(prog(start, dur, t) * full.length));
-};
+/**
+ * Types `text` in across `dur`, starting at `start`. The whole line is laid
+ * out from the first frame and only revealed in place, so words never jump
+ * to the next line and the bubble never grows as it types. The letters at
+ * the edge fade in over a short run instead of popping, which keeps the
+ * motion soft.
+ */
+export function Typed({
+  text,
+  start,
+  dur,
+  t,
+}: {
+  text: string;
+  start: number;
+  dur: number;
+  t: number;
+}) {
+  const FADE = 6;
+  const at = prog(start, dur, t) * (text.length + FADE);
+  const settled = Math.max(0, Math.floor(at - FADE));
+  const edge = text.slice(settled, Math.min(text.length, Math.ceil(at)));
+  return (
+    <>
+      {text.slice(0, settled)}
+      {[...edge].map((ch, i) => (
+        <span
+          // Position within the fading run is the identity here.
+          key={`${settled + i}`}
+          style={{ opacity: clamp(at - FADE - (settled + i) + FADE, 0, FADE) / FADE }}
+        >
+          {ch}
+        </span>
+      ))}
+      <span style={{ opacity: 0 }}>{text.slice(settled + edge.length)}</span>
+    </>
+  );
+}
 
 /** Token-backed color, so the deck follows the design system's palette. */
 export const token = (name: string, alpha?: number) =>

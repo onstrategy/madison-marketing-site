@@ -112,11 +112,9 @@ interface WispProps {
   ribbon?: number;
   /** Wave amplitude, in stage pixels. */
   amp?: number;
-  /** Opacity of the thin line left behind the ribbon — the way back to the source. */
-  trail?: number;
   /** A settled wisp: an even glowing line with no taper. */
   line?: boolean;
-  /** False once the wisp has moved on: only the thin line it left stays. */
+  /** False once the wisp has moved on: it leaves nothing behind. */
   orb?: boolean;
 }
 
@@ -125,9 +123,8 @@ export function Wisp({
   head,
   g,
   opacity = 1,
-  ribbon = 380,
+  ribbon = 360,
   amp = 9,
-  trail = 0.3,
   line = false,
   orb = true,
 }: WispProps) {
@@ -177,33 +174,34 @@ export function Wisp({
     const all = join(points);
     return (
       <svg width={W} height={H} style={svg} fill="none" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points={all} stroke={blue} strokeWidth={30} opacity={0.07} />
-        <polyline points={all} stroke={blue} strokeWidth={14} opacity={0.16} />
-        <polyline points={all} stroke={blue} strokeWidth={4.5} />
-        <polyline points={all} stroke={core} strokeWidth={1.5} opacity={0.8} />
+        <polyline points={all} stroke={blue} strokeWidth={60} opacity={0.07} />
+        <polyline points={all} stroke={blue} strokeWidth={28} opacity={0.16} />
+        <polyline points={all} stroke={blue} strokeWidth={9} />
+        <polyline points={all} stroke={core} strokeWidth={3} opacity={0.8} />
         {head < 0.995 ? (
           <>
-            <circle cx={tip[0]} cy={tip[1]} r={26 * breath} fill={blue} opacity={0.14} />
-            <circle cx={tip[0]} cy={tip[1]} r={7} fill={core} />
+            <circle cx={tip[0]} cy={tip[1]} r={52 * breath} fill={blue} opacity={0.14} />
+            <circle cx={tip[0]} cy={tip[1]} r={14} fill={core} />
           </>
         ) : null}
       </svg>
     );
   }
 
-  if (!orb) {
-    return (
-      <svg width={W} height={H} style={svg} fill="none" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points={join(points)} stroke={blue} strokeWidth={2.5} opacity={trail} />
-      </svg>
-    );
-  }
+  // A travelling wisp leaves no trail: once it has moved on, it is gone.
+  if (!orb) return null;
 
-  // The ribbon: the bright stretch behind the orb, built from short chunks
-  // that widen and brighten toward the head.
-  const ribbonCount = Math.min(points.length, Math.max(2, Math.round(ribbon / SPACING)));
+  // The glow: a short feathered tail behind the orb, built from short chunks
+  // that widen and brighten toward the head and fade to nothing behind it.
+  // It draws itself in as the wisp sets off, and pulls in under the orb as
+  // the wisp comes to rest at the end of its path.
+  const settle = clamp((1 - head) / 0.1, 0.12, 1);
+  const ribbonCount = Math.min(
+    points.length,
+    Math.max(2, Math.round((ribbon * settle) / SPACING)),
+  );
   const ribbonPts = points.slice(points.length - ribbonCount);
-  const CHUNKS = 14;
+  const CHUNKS = 18;
   const chunks: { pts: string; f: number }[] = [];
   for (let k = 0; k < CHUNKS; k++) {
     const from = Math.floor((k / CHUNKS) * (ribbonPts.length - 1));
@@ -215,23 +213,28 @@ export function Wisp({
 
   return (
     <svg width={W} height={H} style={svg} fill="none" strokeLinecap="round" strokeLinejoin="round">
-      {trail > 0 ? (
-        <polyline points={join(points)} stroke={blue} strokeWidth={2} opacity={trail} />
-      ) : null}
-      <polyline points={join(ribbonPts)} stroke={blue} strokeWidth={22} opacity={0.06} />
+      {chunks.map((chunk) => (
+        <polyline
+          key={`glow-${chunk.f}`}
+          points={chunk.pts}
+          stroke={blue}
+          strokeWidth={lerp(8, 60, chunk.f)}
+          opacity={0.14 * Math.pow(chunk.f, 2)}
+        />
+      ))}
       {chunks.map((chunk) => (
         <polyline
           key={chunk.f}
           points={chunk.pts}
           stroke={blue}
-          strokeWidth={lerp(1.5, 6.5, chunk.f)}
-          opacity={Math.pow(chunk.f, 1.3)}
+          strokeWidth={lerp(1.6, 13, chunk.f)}
+          opacity={Math.pow(chunk.f, 2.2)}
         />
       ))}
-      <circle cx={tip[0]} cy={tip[1]} r={38 * breath} fill={blue} opacity={0.08} />
-      <circle cx={tip[0]} cy={tip[1]} r={20 * breath} fill={blue} opacity={0.2} />
-      <circle cx={tip[0]} cy={tip[1]} r={9} fill={blue} />
-      <circle cx={tip[0]} cy={tip[1]} r={5} fill={core} />
+      <circle cx={tip[0]} cy={tip[1]} r={76 * breath} fill={blue} opacity={0.08} />
+      <circle cx={tip[0]} cy={tip[1]} r={40 * breath} fill={blue} opacity={0.2} />
+      <circle cx={tip[0]} cy={tip[1]} r={18} fill={blue} />
+      <circle cx={tip[0]} cy={tip[1]} r={10} fill={core} />
     </svg>
   );
 }
