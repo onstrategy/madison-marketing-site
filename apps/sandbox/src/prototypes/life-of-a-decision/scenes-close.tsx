@@ -15,7 +15,7 @@ import {
   token,
   type Clock,
 } from "./engine";
-import { CITY, Headline, LockBadge, SourcePill, Stamp, TextBars } from "./parts";
+import { CITY, Headline, LockBadge, SourcePill, TextBars } from "./parts";
 import { MiniWindow } from "./scenes-night";
 import { S } from "./steps";
 import { Wisp, glide, makePath, type Pt } from "./wisp";
@@ -56,9 +56,9 @@ const BAR: { word: string; x: number; proof: ReactNode }[] = [
     ),
   },
   {
-    word: "Safe",
+    word: "Secure",
     x: 1185,
-    proof: <Stamp size={46} style={{ transform: "rotate(-6deg)" }} />,
+    proof: <LockBadge size={84} lit />,
   },
   {
     word: "Owned",
@@ -235,6 +235,46 @@ export function Peers({ c }: { c: Clock }) {
         <div style={{ fontSize: 32, fontWeight: 600, whiteSpace: "nowrap" }}>Washoe County</div>
       </Abs>
     </>
+  );
+}
+
+// ── Hours saved ─────────────────────────────────────────────────────────────
+
+/**
+ * Total staff hours saved across every Madison deployment.
+ * PLACEHOLDER until marketing confirms the real, sourced figure: while it is
+ * null the slide shows a visible "[hours]" marker so it can't ship by mistake.
+ */
+const HOURS_SAVED: number | null = null;
+
+export function Hours({ c }: { c: Clock }) {
+  const a = c.at(S.hours);
+  const shown =
+    HOURS_SAVED === null
+      ? "[hours]"
+      : `${Math.round(lerp(0, HOURS_SAVED, ease(prog(0.4, 2.2, a)))).toLocaleString("en-US")}+`;
+  return (
+    <Abs
+      x={0}
+      y={0}
+      w={W}
+      h={H}
+      style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}
+    >
+      <div style={{ opacity: ep(0.2, 0.6, a) }}>
+        <Headline
+          size={260}
+          style={{ lineHeight: 1, fontVariantNumeric: "lining-nums tabular-nums", textAlign: "center" }}
+        >
+          {shown}
+        </Headline>
+      </div>
+      <div style={{ marginTop: 36, ...rise(ep(0.9, 0.7, a), 18) }}>
+        <Headline size={64} style={{ color: token("--text-secondary") }}>
+          hours saved across our deployments.
+        </Headline>
+      </div>
+    </Abs>
   );
 }
 

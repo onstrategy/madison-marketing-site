@@ -22,6 +22,7 @@ import {
   Headline,
   InfoCard,
   LockBadge,
+  PEOPLE,
   Speaker,
   SourcePill,
   TextBars,
@@ -1005,15 +1006,73 @@ const FRAME = { x: 64, y: 694, w: 1830, h: 320 };
 /** Where the resident's question returns, above the frame it connects to. */
 const QUOTE_Y = 520;
 
+/**
+ * Extended version only: the people-shaped milestones a seat cares about,
+ * slotted into the same record. Each one slides into place between two stops.
+ */
+const EXTRA_STOPS = {
+  council: { when: "December 2020", what: "New council members seated" },
+  pm: { when: "2022", what: "Project manager retires" },
+} as const;
+type StopKey = 0 | 1 | 2 | 3 | 4 | keyof typeof EXTRA_STOPS;
+
+/** The stops in timeline order, with the extras that are showing. */
+function stopOrder(council: boolean, pm: boolean): StopKey[] {
+  const keys: StopKey[] = [0, 1, 2];
+  if (council) keys.push("council");
+  keys.push(3);
+  if (pm) keys.push("pm");
+  keys.push(4);
+  return keys;
+}
+
+/** Where each stop sits, and how wide its card is, for a given set of stops. */
+function stopLayout(keys: StopKey[]) {
+  const n = keys.length;
+  const [x0, x1] = n <= 5 ? [260, 1700] : [200, 1760];
+  const gap = (x1 - x0) / (n - 1);
+  const xs = new Map<StopKey, number>(keys.map((k, i) => [k, x0 + i * gap]));
+  return { xs, width: Math.min(330, gap - 28), font: n <= 5 ? 30 : 24, height: n <= 5 ? 214 : 230 };
+}
+
+/** What each seat gets from the same record, in the extended version. */
+const SEAT_LINES = {
+  resident: "“Two years ago you promised to fix the flooding on Elm Street.”",
+  staff: "Complete Elm Street project status and contract adherence.",
+  official: "Detailed legislative background and previous Council discussion.",
+} as const;
+
 const TIMELINE = makePath([[40, LINE_Y], ...STOPS.map(({ x }): Pt => [x, LINE_Y])]);
 const STOP_AT = STOPS.map(({ x }) => fracAt(TIMELINE, [x, LINE_Y]));
 
 
-export function SlowMotion({ c }: { c: Clock }) {
+export function SlowMotion({ c, extended = false }: { c: Clock; extended?: boolean }) {
   const a = c.at(S.decision);
   const b = c.at(S.dollar);
   const d = c.at(S.permit);
   const e = c.at(S.promise);
+  // Extended version only: the record as staff, then an elected official, get it.
+  const staff = extended ? c.at(S.staffAsk) : -1;
+  const official = extended ? c.at(S.officialAsk) : -1;
+
+  // The timeline re-flows as milestones join it: from the layout before this
+  // click to the one after, over the first moment of the click.
+  const [before, after, mv] =
+    official >= 0
+      ? [stopOrder(false, true), stopOrder(true, true), ease(prog(0, 0.9, official))]
+      : staff >= 0
+        ? [stopOrder(false, false), stopOrder(false, true), ease(prog(0, 0.9, staff))]
+        : [stopOrder(false, false), stopOrder(false, false), 1];
+  const from = stopLayout(before);
+  const to = stopLayout(after);
+  const stopX = (k: StopKey) => {
+    const xa = to.xs.get(k) ?? 0;
+    const xb = from.xs.get(k);
+    return xb === undefined ? xa : lerp(xb, xa, mv);
+  };
+  const cardW = lerp(from.width, to.width, mv);
+  const cardFont = lerp(from.font, to.font, mv);
+  const cardH = lerp(from.height, to.height, mv);
 
   // The wisp's place on the timeline: one stretch of travel per click.
   const head =
@@ -1058,7 +1117,8 @@ export function SlowMotion({ c }: { c: Clock }) {
         h={3}
         style={{ background: token("--border-active"), opacity: ep(0.3, 0.8, a) }}
       />
-      {STOPS.map(({ x, when, what }, i) => {
+      {STOPS.map(({ when, what }, i) => {
+        const x = stopX(i as StopKey);
         const lit = visited[i] && focus.includes(i);
         const p = ep(0.4 + i * 0.14, 0.6, a);
         return (
@@ -1080,30 +1140,72 @@ export function SlowMotion({ c }: { c: Clock }) {
             <InfoCard
               kicker={when}
               lit={lit}
-              style={{ left: x - 165, top: 778, width: 330, height: 214, ...rise(p) }}
+              style={{ left: x - cardW / 2, top: 778, width: cardW, height: cardH, ...rise(p) }}
             >
-              {what}
+              <div style={{ fontSize: cardFont }}>{what}</div>
               {i === 4 ? (
                 <div
                   style={{
                     marginTop: 10,
-                    height: 48,
+                    minHeight: 48,
+                    padding: "6px 8px",
                     boxSizing: "border-box",
                     borderRadius: 8,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    textAlign: "center",
+                    lineHeight: 1.15,
                     border: `3px dashed ${d >= 0 ? token("--brand-accent", cellPulse) : token("--border-active")}`,
                     background: token("--brand-accent", 0.12 * ep(0.9, 0.6, d)),
                     color: token("--brand-accent"),
-                    fontSize: 24,
+                    fontSize: lerp(24, 20, (30 - cardFont) / 6),
                     fontWeight: 700,
-                    whiteSpace: "nowrap",
                   }}
                 >
                   <span style={{ opacity: ep(1.0, 0.6, d) }}>No completion notice</span>
                 </div>
               ) : null}
+            </InfoCard>
+          </div>
+        );
+      })}
+
+      {/* Extended version only: the people in the story join the record. */}
+      {(["council", "pm"] as const).map((k) => {
+        const t = k === "council" ? official : staff;
+        if (t < 0) return null;
+        const x = stopX(k);
+        const p = ep(0.5, 0.6, t);
+        const { when, what } = EXTRA_STOPS[k];
+        return (
+          <div key={k}>
+            <Abs
+              x={x - 13}
+              y={LINE_Y - 13}
+              w={26}
+              h={26}
+              style={{
+                boxSizing: "border-box",
+                borderRadius: "50%",
+                background: token(PEOPLE),
+                boxShadow: `0 0 0 6px ${token(PEOPLE, 0.2)}`,
+                opacity: p,
+              }}
+            />
+            <InfoCard
+              kicker={<span style={{ color: token(PEOPLE) }}>{when}</span>}
+              style={{
+                left: x - cardW / 2,
+                top: 778,
+                width: cardW,
+                height: cardH,
+                borderColor: token(PEOPLE),
+                boxShadow: `0 0 36px ${token(PEOPLE, 0.25)}`,
+                ...rise(p),
+              }}
+            >
+              <div style={{ fontSize: cardFont }}>{what}</div>
             </InfoCard>
           </div>
         );
@@ -1129,17 +1231,31 @@ export function SlowMotion({ c }: { c: Clock }) {
             />
             <Trace d={`M ${W / 2} ${FRAME.y} L ${W / 2} ${QUOTE_Y + 96}`} p={ep(1.6, 0.5, e)} opacity={1} />
           </Lines>
-          <Abs
-            x={0}
-            y={QUOTE_Y - 64}
-            w={W}
-            style={{ display: "flex", justifyContent: "center", ...rise(ep(2.0, 0.5, e), 12) }}
-          >
-            <Speaker who="resident" size={34} />
-          </Abs>
-          <Abs x={0} y={QUOTE_Y} w={W} style={{ textAlign: "center", ...rise(ep(2.1, 0.7, e), 14) }}>
-            <Headline size={52}>“Two years ago you promised to fix the flooding on Elm Street.”</Headline>
-          </Abs>
+          {/* Who the record answers: the resident, then (extended version)
+              staff and an elected official, each swapping in on its click. */}
+          {(
+            [
+              ["resident", ep(2.0, 0.6, e) * (1 - prog(0, 0.4, staff))],
+              ["staff", ep(0.4, 0.6, staff) * (1 - prog(0, 0.4, official))],
+              ["official", ep(0.4, 0.6, official)],
+            ] as const
+          ).map(([who, o]) =>
+            o > 0 ? (
+              <div key={who} style={{ position: "absolute", inset: 0, opacity: o }}>
+                <Abs
+                  x={0}
+                  y={QUOTE_Y - 64}
+                  w={W}
+                  style={{ display: "flex", justifyContent: "center", ...rise(o, 12) }}
+                >
+                  <Speaker who={who} size={34} />
+                </Abs>
+                <Abs x={0} y={QUOTE_Y} w={W} style={{ textAlign: "center", ...rise(o, 14) }}>
+                  <Headline size={52}>{SEAT_LINES[who]}</Headline>
+                </Abs>
+              </div>
+            ) : null,
+          )}
         </>
       ) : null}
 

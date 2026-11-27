@@ -113,7 +113,10 @@ export interface Clock {
  * `back` returns to the previous step in its finished state, so stepping back
  * shows the slide as it was left rather than replaying its build.
  */
-export function useDeck(total: number) {
+/** Stable "skip nothing" list, so `go` keeps its identity between renders. */
+const NO_SKIP: readonly number[] = [];
+
+export function useDeck(total: number, skip: readonly number[] = NO_SKIP) {
   const reduced = useReducedMotion();
   const [step, setStep] = useState(0);
   const [now, setNow] = useState({ t: 0, g: 0 });
@@ -123,7 +126,11 @@ export function useDeck(total: number) {
 
   const go = useCallback(
     (n: number, done: boolean) => {
-      const target = clamp(n, 0, total - 1);
+      let target = clamp(n, 0, total - 1);
+      // A step that isn't part of this version is never landed on: move past
+      // it in the direction of travel.
+      const dir = n < stepRef.current ? -1 : 1;
+      while (skip.includes(target) && target > 0 && target < total - 1) target += dir;
       if (target === stepRef.current && !done) return;
       stepRef.current = target;
       startRef.current = performance.now();
@@ -133,7 +140,7 @@ export function useDeck(total: number) {
       // A refresh mid-talk comes back to the same step.
       window.history.replaceState(null, "", `#${target}`);
     },
-    [total],
+    [total, skip],
   );
 
   const next = useCallback(() => go(stepRef.current + 1, false), [go]);

@@ -32,6 +32,7 @@ const SPEAKERS = {
   resident: { label: "Resident", Icon: UserRound, bg: PEOPLE, fg: "--semantic-info-fg", edge: PEOPLE },
   council: { label: "Council", Icon: Landmark, bg: "--text-primary", fg: "--bg-app", edge: "--text-primary" },
   staff: { label: "Staff", Icon: Briefcase, bg: "--bg-surface", fg: "--text-primary", edge: "--text-primary" },
+  official: { label: "Elected official", Icon: Landmark, bg: "--text-primary", fg: "--bg-app", edge: "--text-primary" },
   assistant: { label: "Assistant", Icon: Bot, bg: "--bg-hover", fg: "--text-primary", edge: "--border-active" },
   city: { label: CITY, Icon: Bot, bg: "--brand-primary", fg: "--brand-foreground", edge: "--brand-primary" },
 } as const;
