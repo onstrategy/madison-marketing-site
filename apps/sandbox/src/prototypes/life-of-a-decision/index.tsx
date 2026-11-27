@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { cn } from "@madison/ui/utils";
 import { Layer, Stage, prog, useDeck, type Clock } from "./engine";
-import { Bar, Close, Easy, Peers, SignOff } from "./scenes-close";
+import { Bar, Close, Easy, Hours, Peers, SignOff } from "./scenes-close";
 import { OneMemory, PortalChat, Transparent } from "./scenes-day";
 import {
   GetBack,
@@ -13,7 +13,7 @@ import {
   Stranger,
   TimeCard,
 } from "./scenes-night";
-import { S, TOTAL } from "./steps";
+import { EXTENDED_ONLY, S, TOTAL } from "./steps";
 
 // ============================================================================
 // The life of a decision — the visual for the GovAI Coalition lightning talk.
@@ -97,8 +97,13 @@ function useControls({
   }, [next, back, go]);
 }
 
-export default function LifeOfADecisionPrototype() {
-  const { clock: c, next, back, go } = useDeck(TOTAL);
+/**
+ * The deck itself. The standard version is the default export below; the
+ * extended version (its own hidden page) adds the clicks that show the same
+ * record as staff and an elected official get it.
+ */
+export function LifeOfADecisionDeck({ extended = false }: { extended?: boolean }) {
+  const { clock: c, next, back, go } = useDeck(TOTAL, extended ? undefined : EXTENDED_ONLY);
   useControls({ next, back, go });
 
   // Navy for the night at the dais, paper for the next morning.
@@ -142,8 +147,8 @@ export default function LifeOfADecisionPrototype() {
         <Layer theme="dark" opacity={fade(c, S.minutes, S.answer)}>
           <MemoryWakes c={c} />
         </Layer>
-        <Layer theme="dark" opacity={fade(c, S.decision, S.promise)}>
-          <SlowMotion c={c} />
+        <Layer theme="dark" opacity={fade(c, S.decision, S.officialAsk)}>
+          <SlowMotion c={c} extended={extended} />
         </Layer>
         <Layer theme="light" opacity={fade(c, S.clock815, S.clock815)}>
           <TimeCard c={c} step={S.clock815} time="8:15 a.m." />
@@ -164,6 +169,9 @@ export default function LifeOfADecisionPrototype() {
         <Layer theme="dark" opacity={fade(c, S.peers, S.peers)}>
           <Peers c={c} />
         </Layer>
+        <Layer theme="dark" opacity={fade(c, S.hours, S.hours)}>
+          <Hours c={c} />
+        </Layer>
         <Layer theme="dark" opacity={fade(c, S.easy, S.easy)}>
           <Easy c={c} />
         </Layer>
@@ -176,4 +184,8 @@ export default function LifeOfADecisionPrototype() {
       </Stage>
     </div>
   );
+}
+
+export default function LifeOfADecisionPrototype() {
+  return <LifeOfADecisionDeck />;
 }

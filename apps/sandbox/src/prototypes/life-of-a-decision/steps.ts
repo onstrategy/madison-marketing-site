@@ -23,30 +23,42 @@ export const S = {
   dollar: 12,
   permit: 13,
   promise: 14,
+  /** Extended version only: the same record, as staff get it. */
+  staffAsk: 15,
+  /** Extended version only: the same record, as an elected official gets it. */
+  officialAsk: 16,
   /** The time, alone: 8:15 a.m. the next morning. */
-  clock815: 15,
+  clock815: 17,
   // 6 · The next morning
-  morning: 16,
+  morning: 18,
   // 7 · The review
-  review: 17,
-  signed: 18,
+  review: 19,
+  signed: 20,
   // 8 · One memory
-  seats: 19,
+  seats: 21,
   /** Every seat's work drops into one shared answer. */
-  unify: 20,
-  transparent: 21,
+  unify: 22,
+  transparent: 23,
   // 9 · The bar
-  bar: 22,
+  bar: 24,
   // 10 · You're not first
-  peers: 23,
+  peers: 25,
+  /** The hours saved across every deployment. */
+  hours: 26,
   // 11 · It isn't hard
-  easy: 24,
+  easy: 27,
   // 12 · Close
-  beats: 25,
-  memory: 26,
-  people: 27,
+  beats: 28,
+  memory: 29,
+  people: 30,
   /** The logo and tagline on their own, left up as the talk ends. */
-  signOff: 28,
+  signOff: 31,
 } as const;
 
-export const TOTAL = 29;
+export const TOTAL = 32;
+
+/**
+ * Steps that exist only in the extended version of the talk. The standard
+ * version's clicker steps straight over them.
+ */
+export const EXTENDED_ONLY: readonly number[] = [S.staffAsk, S.officialAsk];
